@@ -1,0 +1,3 @@
+node_modules/
+migrate-to-supabase.mjs
+supabase-schema.sql

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "kafka",
+    "title": "Apache Kafka",
+    "description": "분산 메시지 스트리밍 플랫폼",
+    "file": "kafka.json",
+    "tags": ["backend", "messaging", "infra"],
+    "nodeCount": 18,
+    "author": "a17135"
+  }
+]

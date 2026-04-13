@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>knowledge.tree</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --surface2: #1c2128;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #e6edf3;
+  --muted:    #7d8590;
+  --accent:   #3fb950;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#header {
+  height: 48px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  flex-shrink: 0;
+  z-index: 200;
+}
+#logo { font-size: 15px; font-weight: 600; letter-spacing: -0.3px; white-space: nowrap; }
+#logo em { color: var(--accent); font-style: normal; }
+#node-count {
+  font-size: 11px; color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  padding: 2px 8px; border-radius: 20px;
+  white-space: nowrap;
+}
+
+#search-wrap {
+  flex: 1; max-width: 400px;
+  position: relative;
+}
+#search-icon {
+  position: absolute; left: 10px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted); font-size: 13px;
+  pointer-events: none;
+}
+#search-input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 6px 34px 6px 30px;
+  color: var(--text); font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+#search-input::placeholder { color: var(--muted); }
+#search-input:focus { border-color: rgba(63,185,80,0.4); background: rgba(255,255,255,0.07); }
+#search-input:disabled { opacity: 0.4; cursor: not-allowed; }
+#search-spinner {
+  position: absolute; right: 10px; top: 50%;
+  transform: translateY(-50%);
+  width: 13px; height: 13px;
+  border: 2px solid rgba(255,255,255,0.08);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+#search-spinner.show { display: block; }
+@keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+#search-results {
+  position: absolute;
+  top: calc(100% + 5px); left: 0; right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  display: none; z-index: 500;
+}
+#search-results.show { display: block; }
+.sr-item {
+  padding: 10px 14px; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+.sr-item:last-child { border-bottom: none; }
+.sr-item:hover { background: rgba(255,255,255,0.04); }
+.sr-item.focused { background: rgba(255,255,255,0.06); outline: none; }
+.sr-title { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+.sr-crumb { font-size: 11px; color: var(--muted); }
+.sr-crumb span { color: var(--accent); opacity: 0.8; }
+.sr-empty { padding: 14px; font-size: 13px; color: var(--muted); text-align: center; }
+
+#model-status { font-size: 11px; color: var(--muted); white-space: nowrap; opacity: 0.6; }
+
+#main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+#sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 10px 0 20px;
+}
+#sidebar::-webkit-scrollbar { width: 3px; }
+#sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+
+.sb-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--muted); padding: 8px 14px 4px;
+}
+.sb-topic {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 14px;
+  cursor: pointer; user-select: none;
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  border-left: 2px solid transparent;
+  transition: background 0.1s, color 0.1s;
+}
+.sb-topic:hover { background: rgba(255,255,255,0.03); color: var(--text); }
+.sb-topic.active { color: var(--text); border-left-color: var(--accent); background: rgba(63,185,80,0.06); }
+.sb-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+.sb-sections { overflow: hidden; }
+.sb-section {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 14px 5px 24px;
+  font-size: 12px; color: var(--muted);
+  cursor: pointer;
+  transition: color 0.1s;
+}
+.sb-section:hover { color: var(--text); }
+.sb-section::before { content: '›'; opacity: 0.5; }
+
+#content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 36px 44px 80px;
+}
+#content::-webkit-scrollbar { width: 5px; }
+#content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+
+#content-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+#content-inner.wide {
+  max-width: 1100px;
+}
+
+.section-detail-layout {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+}
+.section-detail-main {
+  flex: 1;
+  min-width: 0;
+  padding-right: 64px;
+}
+.section-detail-toc {
+  width: 210px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  margin-top: 56px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+.section-detail-toc::-webkit-scrollbar { width: 2px; }
+.section-detail-toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); }
+
+#empty {
+  display: flex; align-items: center; justify-content: center;
+  height: 100%;
+  font-size: 13px; color: var(--muted);
+}
+
+.topic-header {
+  margin-bottom: 40px;
+}
+.topic-header-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.7px;
+  margin-bottom: 8px;
+}
+.topic-header h1 {
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.5px; margin-bottom: 6px;
+}
+.topic-header p {
+  font-size: 13px; color: var(--muted); line-height: 1.6;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.sc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.12s;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.sc-card:hover { border-color: var(--border2); background: var(--surface2); }
+.sc-card-header {
+  display: flex; align-items: center; gap: 8px;
+}
+.sc-title {
+  font-size: 14px; font-weight: 600; color: var(--text); flex: 1;
+}
+.sc-count {
+  font-size: 10px; color: var(--muted);
+  background: rgba(255,255,255,0.05);
+  padding: 2px 8px; border-radius: 10px; flex-shrink: 0;
+}
+.sc-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.55;
+}
+.sc-tags {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  margin-top: auto;
+}
+.sc-tag {
+  font-size: 11px; color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 2px 8px; border-radius: 4px;
+  white-space: nowrap;
+}
+.sc-tag-more { font-size: 11px; color: var(--muted); padding: 2px 0; }
+.sc-arrow {
+  font-size: 14px; color: var(--muted); margin-left: auto; opacity: 0.4;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.sc-card:hover .sc-arrow { opacity: 1; transform: translateX(3px); }
+
+.section-detail-nav {
+  margin-bottom: 20px;
+}
+.back-btn {
+  background: none; border: none; padding: 0;
+  color: var(--muted); font-size: 12px;
+  cursor: pointer; display: flex; align-items: center; gap: 5px;
+  transition: color 0.15s;
+}
+.back-btn:hover { color: var(--text); }
+.section-detail-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.section-detail-header h2 {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
+}
+.section-detail-desc {
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.sb-back {
+  padding: 6px 14px 4px;
+  font-size: 11px; color: var(--muted);
+  cursor: pointer; transition: color 0.1s;
+}
+.sb-back:hover { color: var(--text); }
+.sb-concept {
+  display: block;
+  padding: 4px 14px 4px 24px;
+  font-size: 11px; color: var(--muted);
+  cursor: pointer; transition: color 0.1s;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.sb-concept:hover { color: var(--text); }
+
+.toc-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.7px;
+  color: var(--muted); margin-bottom: 10px;
+}
+.toc-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column;
+}
+.toc-list li {
+  display: flex; align-items: baseline; gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--border);
+}
+.toc-list li:last-child { border-bottom: none; }
+.toc-num {
+  font-size: 9px; color: var(--muted); opacity: 0.35;
+  flex-shrink: 0; min-width: 14px; text-align: right;
+}
+.toc-link {
+  font-size: 11px; color: var(--muted);
+  cursor: pointer; flex: 1; line-height: 1.45;
+  transition: color 0.1s;
+}
+.toc-link:hover { color: var(--text); }
+.toc-link.active { color: var(--text); font-weight: 500; }
+
+.concept-section {
+  padding: 32px 0;
+  scroll-margin-top: 16px;
+}
+.concept-section:last-child { padding-bottom: 0; }
+.concept-section-header {
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.concept-section-title {
+  font-size: 16px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.2px;
+}
+.concept-section-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.section-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.section-box-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--muted);
+  user-select: none;
+}
+.section-box-count {
+  margin-left: auto;
+  font-size: 10px; font-weight: 500;
+  background: rgba(255,255,255,0.05);
+  padding: 1px 7px; border-radius: 10px;
+  letter-spacing: 0;
+}
+
+.filter-bar {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 24px;
+}
+.filter-btn {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px; cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+.filter-btn.active { background: var(--surface2); color: var(--text); border-color: rgba(255,255,255,0.2); }
+.filter-count { font-size: 10px; color: var(--muted); margin-left: auto; }
+
+.level-badge {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  padding: 2px 7px; border-radius: 4px;
+  flex-shrink: 0;
+}
+.level-badge.basic {
+  background: rgba(63,185,80,0.12);
+  color: #3fb950;
+}
+.level-badge.deep {
+  background: rgba(155,89,182,0.15);
+  color: #c084fc;
+}
+.md h2 { font-size: 13px; font-weight: 600; margin: 18px 0 6px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.md h3 { font-size: 11px; color: var(--muted); margin: 12px 0 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.md p { font-size: 13px; line-height: 1.85; color: #8b949e; margin-bottom: 8px; }
+.md code { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px; font-family: 'SFMono-Regular', monospace; font-size: 12px; }
+.md pre { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 7px; padding: 14px; margin: 10px 0; overflow-x: auto; }
+.md pre code { background: none; padding: 0; font-size: 12px; line-height: 1.6; }
+.md ul, .md ol { margin: 4px 0 9px 16px; }
+.md li { font-size: 13px; line-height: 1.75; color: #8b949e; margin-bottom: 2px; }
+.md blockquote { border-left: 3px solid var(--accent); padding: 7px 13px; margin: 10px 0; background: rgba(63,185,80,0.05); border-radius: 0 5px 5px 0; }
+.md table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
+.md th { background: rgba(255,255,255,0.04); padding: 6px 9px; text-align: left; border: 1px solid var(--border); font-weight: 500; }
+.md td { padding: 6px 9px; border: 1px solid var(--border); color: #8b949e; }
+
+.card-questions {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.card-questions-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--muted); margin-bottom: 8px;
+}
+.card-questions-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.card-questions-list li {
+  font-size: 12px; color: var(--muted);
+  line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 7px;
+}
+.card-questions-list li::before {
+  content: 'Q';
+  font-size: 10px; font-weight: 700;
+  color: var(--accent); opacity: 0.5;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+.related-concepts {
+  margin-top: 20px;
+  padding-top: 16px;
+}
+.related-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--muted); margin-bottom: 10px;
+}
+.related-list {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.related-item {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 8px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.12s;
+  max-width: 220px;
+}
+.related-item:hover {
+  border-color: var(--border2);
+  background: rgba(255,255,255,0.05);
+}
+.related-title {
+  font-size: 12px; font-weight: 500; color: var(--text);
+}
+.related-crumb {
+  font-size: 10px; color: var(--muted);
+}
+
+#tooltip {
+  position: fixed;
+  background: rgba(22,27,34,0.97); border: 1px solid var(--border2); border-radius: 6px;
+  padding: 6px 10px; font-size: 12px; color: var(--text);
+  pointer-events: none; opacity: 0; transition: opacity 0.1s;
+  max-width: 200px; line-height: 1.5; z-index: 300;
+}
+#tooltip.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div id="logo">knowledge<em>.</em>tree</div>
+  <div id="node-count"></div>
+  <div id="search-wrap">
+    <span id="search-icon">⌕</span>
+    <input id="search-input" placeholder="개념 검색..." autocomplete="off" disabled>
+    <div id="search-spinner"></div>
+    <div id="search-results"></div>
+  </div>
+  <div id="model-status">모델 로딩 중…</div>
+</div>
+
+<div id="main">
+  <div id="sidebar"></div>
+  <div id="content">
+    <div id="content-inner">
+      <div id="empty">← 주제를 선택하세요</div>
+    </div>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+const TOPIC_COLORS = ['#f0932b','#e55039','#3498db','#2ecc71','#9b59b6','#1abc9c','#e74c3c'];
+
+const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
+const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+const S = {
+  topicColors: {},
+  topics: [],
+  metas: [],
+  selectedTopicId: null,
+  selectedSectionId: null,
+};
+
+function topicColor(id) { return S.topicColors[id] || '#7c6af7'; }
+
+function buildSidebar() {
+  const html = `
+    <div class="sb-label">Topics</div>
+    ${S.metas.map(m => `
+      <div class="sb-topic" id="tab-${m.id}">
+        <div class="sb-dot" style="background:${topicColor(m.id)}"></div>
+        ${m.title}
+      </div>
+      <div class="sb-sections" id="secs-${m.id}" style="display:none"></div>
+    `).join('')}
+  `;
+  document.getElementById('sidebar').innerHTML = html;
+  S.metas.forEach(m => {
+    document.getElementById(`tab-${m.id}`).addEventListener('click', () => selectTopic(m.id));
+  });
+}
+
+function updateSidebarSections(topicId) {
+  S.metas.forEach(m => {
+    const el = document.getElementById(`secs-${m.id}`);
+    if (el) el.style.display = 'none';
+  });
+  const topic = S.topics.find(t => t.id === topicId);
+  const container = document.getElementById(`secs-${topicId}`);
+  if (!topic || !container) return;
+  container.innerHTML = (topic.children || []).map(sec => `
+    <div class="sb-section" data-section="${sec.id}">${sec.title}</div>
+  `).join('');
+  container.style.display = 'block';
+  container.querySelectorAll('.sb-section').forEach(el => {
+    el.addEventListener('click', () => openSection(topicId, el.dataset.section));
+  });
+}
+
+function updateSidebarConcepts(topicId, sectionId) {
+  S.metas.forEach(m => {
+    const el = document.getElementById(`secs-${m.id}`);
+    if (el) el.style.display = 'none';
+  });
+  const topic = S.topics.find(t => t.id === topicId);
+  const section = (topic?.children || []).find(s => s.id === sectionId);
+  const container = document.getElementById(`secs-${topicId}`);
+  if (!section || !container) return;
+  container.innerHTML = `
+    <div class="sb-back" id="sb-back-btn">← 목록으로</div>
+    ${(section.children || []).map(c => `
+      <div class="sb-concept" data-id="${c.id}">${c.title}</div>
+    `).join('')}
+  `;
+  container.style.display = 'block';
+  container.querySelector('#sb-back-btn').addEventListener('click', backToTopic);
+  container.querySelectorAll('.sb-concept').forEach(el => {
+    el.addEventListener('click', () => scrollToCard(el.dataset.id));
+  });
+}
+
+function selectTopic(id) {
+  S.selectedTopicId = id;
+  S.selectedSectionId = null;
+  document.querySelectorAll('.sb-topic').forEach(el => el.classList.remove('active'));
+  const tab = document.getElementById(`tab-${id}`);
+  if (tab) tab.classList.add('active');
+  updateSidebarSections(id);
+  renderTopicOverview(id);
+}
+
+async function openSection(topicId, sectionId) {
+  S.selectedSectionId = sectionId;
+  updateSidebarConcepts(topicId, sectionId);
+  await renderSectionDetail(topicId, sectionId);
+}
+
+function backToTopic() {
+  S.selectedSectionId = null;
+  updateSidebarSections(S.selectedTopicId);
+  renderTopicOverview(S.selectedTopicId);
+}
+
+let activeFilter = 'all';
+
+function renderTopicOverview(topicId) {
+  const topic = S.topics.find(t => t.id === topicId);
+  if (!topic) return;
+  const color = topicColor(topicId);
+
+  let html = `
+    <div class="topic-header">
+      <div class="topic-header-badge">
+        <div style="width:8px;height:8px;border-radius:50%;background:${color};box-shadow:0 0 6px ${color}88;"></div>
+        <span style="color:${color}">${topic.title}</span>
+      </div>
+      <h1>${topic.title}</h1>
+      ${topic.description ? `<p>${topic.description}</p>` : ''}
+    </div>
+    <div class="section-grid">
+  `;
+
+  (topic.children || []).forEach(section => {
+    const concepts = section.children || [];
+    if (concepts.length === 0) return;
+    const preview = concepts.slice(0, 4).map(c => `<span class="sc-tag">${c.title}</span>`).join('');
+    const more = concepts.length > 4 ? `<span class="sc-tag-more">+${concepts.length - 4}</span>` : '';
+    html += `
+      <div class="sc-card" onclick="openSection('${topicId}', '${section.id}')">
+        <div class="sc-card-header">
+          <span class="sc-title">${section.title}</span>
+          <span class="sc-count">${concepts.length}</span>
+        </div>
+        ${section.description ? `<div class="sc-desc">${section.description}</div>` : ''}
+        <div class="sc-tags">${preview}${more}</div>
+        <div class="sc-arrow">→</div>
+      </div>
+    `;
+  });
+
+  html += `</div>`;
+
+  const inner = document.getElementById('content-inner');
+  inner.classList.remove('wide');
+  if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+  inner.innerHTML = html;
+  document.getElementById('content').scrollTop = 0;
+}
+
+function renderConceptSection(concept, color) {
+  const raw = contentCache.get(concept.id) ?? concept.content ?? '';
+  const strippedContent = raw ? raw.replace(/^#{1,3}\s+[^\n]*\n+/, '') : '';
+  const md = strippedContent ? marked.parse(strippedContent) : '';
+  const level = concept.level || null;
+
+  const levelBadge = level
+    ? `<span class="level-badge ${level}">${level === 'basic' ? '기본' : '심화'}</span>`
+    : '';
+
+  const questionsHtml = (concept.questions && concept.questions.length > 0)
+    ? `<div class="card-questions">
+        <div class="card-questions-label">관련 질문</div>
+        <ul class="card-questions-list">
+          ${concept.questions.map(q => `<li>${q}</li>`).join('')}
+        </ul>
+      </div>`
+    : '';
+
+  return `
+    <div class="concept-section" id="row-${concept.id}">
+      <div class="concept-section-header">
+        ${levelBadge}
+        <span class="concept-section-title">${concept.title}</span>
+      </div>
+      ${concept.description ? `<p class="concept-section-desc">${concept.description}</p>` : ''}
+      ${raw ? `<div class="md">${md}</div>` : ''}
+      ${questionsHtml}
+    </div>
+  `;
+}
+
+async function renderSectionDetail(topicId, sectionId) {
+  const topic = S.topics.find(t => t.id === topicId);
+  const section = (topic?.children || []).find(s => s.id === sectionId);
+  if (!topic || !section) return;
+  const color = topicColor(topicId);
+
+  const concepts = section.children || [];
+  const hasLevels = concepts.some(c => c.level);
+  const deepCount = concepts.filter(c => c.level === 'deep').length;
+  const basicCount = concepts.filter(c => c.level === 'basic' || !c.level).length;
+  const filtered = concepts.filter(c => matchesFilter(c));
+
+  await fetchSectionContent(filtered);
+
+  const filterBar = hasLevels ? `
+    <div class="filter-bar">
+      <button class="filter-btn ${activeFilter === 'all' ? 'active' : ''}"
+        onclick="setFilter('all','${topicId}','${sectionId}')">전체 <span style="opacity:.5">${concepts.length}</span></button>
+      <button class="filter-btn ${activeFilter === 'basic' ? 'active' : ''}"
+        onclick="setFilter('basic','${topicId}','${sectionId}')">기본 <span style="opacity:.5">${basicCount}</span></button>
+      <button class="filter-btn ${activeFilter === 'deep' ? 'active' : ''}"
+        onclick="setFilter('deep','${topicId}','${sectionId}')">심화 <span style="opacity:.5">${deepCount}</span></button>
+    </div>
+  ` : '';
+
+  const tocItems = filtered.map((c, i) => `
+    <li>
+      <span class="toc-num">${i + 1}</span>
+      <span class="toc-link" id="toc-${c.id}"
+        onclick="document.getElementById('row-${c.id}').scrollIntoView({behavior:'smooth',block:'start'})"
+      >${c.title}</span>
+    </li>
+  `).join('');
+
+  const html = `
+    <div class="section-detail-layout">
+      <div class="section-detail-main">
+        <div class="section-detail-nav">
+          <button class="back-btn" onclick="backToTopic()">← ${topic.title}</button>
+        </div>
+        <div class="section-detail-header">
+          <h2>${section.title}</h2>
+          <span class="section-box-count">${filtered.length}</span>
+        </div>
+        ${section.description ? `<p class="section-detail-desc">${section.description}</p>` : ''}
+        ${filterBar}
+        ${filtered.map(c => renderConceptSection(c, color)).join('')}
+        ${renderSectionRelated(filtered, sectionId, topicId)}
+      </div>
+      <div class="section-detail-toc">
+        <div class="toc-label">목차</div>
+        <ol class="toc-list">${tocItems}</ol>
+      </div>
+    </div>
+  `;
+
+  const inner = document.getElementById('content-inner');
+  inner.classList.add('wide');
+  inner.innerHTML = html;
+  document.getElementById('content').scrollTop = 0;
+
+  initTocObserver(filtered, document.getElementById('content'));
+}
+
+let tocObserver = null;
+function initTocObserver(concepts, scroller) {
+  if (tocObserver) tocObserver.disconnect();
+  tocObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.id.replace('row-', '');
+      const link = document.getElementById(`toc-${id}`);
+      if (link) link.classList.toggle('active', entry.isIntersecting);
+    });
+  }, { root: scroller, rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+
+  concepts.forEach(c => {
+    const el = document.getElementById(`row-${c.id}`);
+    if (el) tocObserver.observe(el);
+  });
+}
+
+function matchesFilter(concept) {
+  if (activeFilter === 'all') return true;
+  if (activeFilter === 'deep') return concept.level === 'deep';
+  if (activeFilter === 'basic') return concept.level === 'basic' || !concept.level;
+  return true;
+}
+
+async function setFilter(filter, topicId, sectionId) {
+  activeFilter = filter;
+  if (sectionId) await renderSectionDetail(topicId, sectionId);
+  else renderTopicOverview(topicId);
+}
+
+let embedder = null;
+let corpus = [];
+let searchDebounce = null;
+let currentResults = [];
+let activeResultIdx = -1;
+let isSearching = false;
+let pendingQuery = null;
+let relatedMap = new Map();
+const contentCache = new Map();
+
+function buildCorpus() {
+  corpus = [];
+  S.topics.forEach(topic => {
+    (topic.children || []).forEach(section => {
+      (section.children || []).forEach(concept => {
+        const base = {
+          title: concept.title,
+          topicId: topic.id,
+          topicTitle: topic.title,
+          sectionId: section.id,
+          sectionTitle: section.title,
+          conceptId: concept.id,
+          embedding: null,
+        };
+        if (concept.questions && concept.questions.length > 0) {
+                  concept.questions.forEach(q => {
+            corpus.push({ ...base, matchedQuestion: q, text: q });
+          });
+        } else {
+          const text = [concept.title, concept.description || ''].join(' ').trim();
+          corpus.push({ ...base, matchedQuestion: null, text });
+        }
+      });
+    });
+  });
+}
+
+async function embedCorpus() {
+  for (const item of corpus) {
+    const out = await embedder(item.text, { pooling: 'mean', normalize: true });
+    item.embedding = Array.from(out.data);
+  }
+}
+
+async function fetchSectionContent(concepts) {
+  await Promise.all(concepts.map(async c => {
+    if (contentCache.has(c.id)) return;
+    if (c.contentFile) {
+      try {
+        const text = await fetch(c.contentFile).then(r => {
+          if (!r.ok) throw new Error(r.status);
+          return r.text();
+        });
+        contentCache.set(c.id, text);
+      } catch (e) {
+        console.warn(`Failed to load ${c.contentFile}`, e);
+        contentCache.set(c.id, c.content || '');
+      }
+    } else {
+      contentCache.set(c.id, c.content || '');
+    }
+  }));
+}
+
+function renderSectionRelated(concepts, currentSectionId, topicId) {
+  const seen = new Map();
+  for (const c of concepts) {
+    const related = (relatedMap.get(c.id) || []).filter(r => r.sectionId !== currentSectionId);
+    for (const r of related) {
+      if (!seen.has(r.sectionId) || seen.get(r.sectionId).score < r.score) {
+        seen.set(r.sectionId, r);
+      }
+    }
+  }
+  const sections = Array.from(seen.values())
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 4);
+
+  if (sections.length === 0) return '';
+  return `
+    <div class="related-concepts">
+      <div class="related-label">연관 섹션</div>
+      <div class="related-list">
+        ${sections.map(r => `
+          <div class="related-item" onclick="openSection('${topicId}', '${r.sectionId}')">
+            <span class="related-title">${r.sectionTitle}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function buildRelatedMap() {
+  const repMap = new Map();
+  for (const item of corpus) {
+    if (!repMap.has(item.conceptId) && item.embedding) {
+      repMap.set(item.conceptId, item);
+    }
+  }
+  const reps = Array.from(repMap.values());
+
+  relatedMap = new Map();
+  for (const rep of reps) {
+    const scored = reps
+      .filter(r => r.conceptId !== rep.conceptId && r.topicId === rep.topicId)
+      .map(r => ({ ...r, score: cosineSim(rep.embedding, r.embedding) }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3)
+      .filter(r => r.score > 0.4);
+    relatedMap.set(rep.conceptId, scored);
+  }
+}
+
+function cosineSim(a, b) {
+  let dot = 0;
+  for (let i = 0; i < a.length; i++) dot += a[i] * b[i];
+  return dot;
+}
+
+async function runSearch(query) {
+  if (!embedder || !query.trim()) { hideResults(); return; }
+
+  if (isSearching) { pendingQuery = query; return; }
+
+  isSearching = true;
+  document.getElementById('search-spinner').classList.add('show');
+  try {
+    const out = await embedder(query.trim(), { pooling: 'mean', normalize: true });
+    const qVec = Array.from(out.data);
+
+    const scored = corpus
+      .filter(i => i.embedding)
+      .map(i => ({ ...i, score: cosineSim(qVec, i.embedding) }))
+      .sort((a, b) => b.score - a.score);
+
+    const seen = new Set();
+    const results = [];
+    for (const item of scored) {
+      if (!seen.has(item.conceptId)) {
+        seen.add(item.conceptId);
+        results.push(item);
+      }
+      if (results.length >= 6) break;
+    }
+
+    showResults(results.filter(i => i.score > 0.15));
+  } finally {
+    document.getElementById('search-spinner').classList.remove('show');
+    isSearching = false;
+    if (pendingQuery) {
+      const q = pendingQuery;
+      pendingQuery = null;
+      runSearch(q);
+    }
+  }
+}
+
+function showResults(results) {
+  currentResults = results;
+  activeResultIdx = -1;
+  const box = document.getElementById('search-results');
+  if (results.length === 0) {
+    box.innerHTML = `<div class="sr-empty">관련 개념을 찾지 못했습니다</div>`;
+  } else {
+    box.innerHTML = results.map((r, i) => `
+      <div class="sr-item" data-idx="${i}">
+        <div class="sr-title">${r.matchedQuestion || r.title}</div>
+        <div class="sr-crumb">
+          ${r.matchedQuestion ? `${r.title} · ` : ''}<span>${r.topicTitle}</span> › ${r.sectionTitle}
+        </div>
+      </div>
+    `).join('');
+    box.querySelectorAll('.sr-item').forEach(el => {
+      const idx = parseInt(el.dataset.idx);
+      el.addEventListener('click', () => navigateTo(results[idx]));
+    });
+  }
+  box.classList.add('show');
+}
+
+function hideResults() {
+  currentResults = [];
+  activeResultIdx = -1;
+  document.getElementById('search-results').classList.remove('show');
+}
+
+function updateResultHighlight() {
+  document.querySelectorAll('.sr-item').forEach((el, i) => {
+    el.classList.toggle('focused', i === activeResultIdx);
+    if (i === activeResultIdx) el.scrollIntoView({ block: 'nearest' });
+  });
+}
+
+function navigateTo(item) {
+  hideResults();
+  document.getElementById('search-input').value = '';
+
+  const topicChanged = S.selectedTopicId !== item.topicId;
+  const sectionChanged = S.selectedSectionId !== item.sectionId;
+
+  if (topicChanged) {
+    selectTopic(item.topicId);
+    setTimeout(() => {
+      openSection(item.topicId, item.sectionId);
+      setTimeout(() => scrollToCard(item.conceptId), 100);
+    }, 50);
+  } else if (sectionChanged) {
+    openSection(item.topicId, item.sectionId);
+    setTimeout(() => scrollToCard(item.conceptId), 100);
+  } else {
+    scrollToCard(item.conceptId);
+  }
+}
+
+function scrollToCard(conceptId) {
+  const el = document.getElementById(`row-${conceptId}`);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function initEmbedder() {
+  try {
+    const { pipeline, env } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2');
+    env.allowLocalModels = false;
+    embedder = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', { quantized: true });
+    buildCorpus();
+    await embedCorpus();
+    buildRelatedMap();
+    document.getElementById('search-input').disabled = false;
+    document.getElementById('search-input').placeholder = '개념 검색…';
+    document.getElementById('model-status').textContent = '';
+  } catch (e) {
+    document.getElementById('model-status').textContent = '검색 불가';
+    console.warn('Embedder failed:', e);
+  }
+}
+
+let isComposing = false;
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('compositionstart', () => { isComposing = true; });
+searchInput.addEventListener('compositionend', e => {
+  isComposing = false;
+  const q = e.target.value;
+  clearTimeout(searchDebounce);
+  if (!q.trim()) { hideResults(); return; }
+  searchDebounce = setTimeout(() => runSearch(q), 30);
+});
+searchInput.addEventListener('input', e => {
+  const q = e.target.value;
+  clearTimeout(searchDebounce);
+  if (!q.trim()) { hideResults(); return; }
+  searchDebounce = setTimeout(() => runSearch(q), 30);
+});
+searchInput.addEventListener('keydown', e => {
+  if (isComposing || e.keyCode === 229) return;
+  if (e.key === 'Escape') { hideResults(); e.target.blur(); return; }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    clearTimeout(searchDebounce);
+    if (currentResults.length === 0) return;
+    activeResultIdx = Math.min(activeResultIdx + 1, currentResults.length - 1);
+    updateResultHighlight();
+    return;
+  }
+  if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    clearTimeout(searchDebounce);
+    if (currentResults.length === 0) return;
+    activeResultIdx = Math.max(activeResultIdx - 1, 0);
+    updateResultHighlight();
+    return;
+  }
+  if (e.key === 'Enter') {
+    if (activeResultIdx >= 0 && currentResults[activeResultIdx]) {
+      navigateTo(currentResults[activeResultIdx]);
+    }
+  }
+});
+document.addEventListener('click', e => {
+  if (!document.getElementById('search-wrap').contains(e.target)) hideResults();
+});
+
+async function initFromSupabase() {
+  const { data: topics, error: tErr } = await sb.from('topics').select('*').order('sort_order');
+  if (tErr) throw tErr;
+
+  const { data: sections, error: sErr } = await sb.from('sections').select('*').order('sort_order');
+  if (sErr) throw sErr;
+
+  const { data: concepts, error: cErr } = await sb.from('concepts').select('*').order('sort_order');
+  if (cErr) throw cErr;
+
+  for (const t of topics) {
+    S.topicColors[t.id] = t.color || TOPIC_COLORS[topics.indexOf(t) % TOPIC_COLORS.length];
+    S.metas.push({ id: t.id, title: t.title, description: t.description, tags: t.tags, nodeCount: t.node_count, author: t.author });
+
+    const topicSections = sections.filter(s => s.topic_id === t.id);
+    const topicObj = { id: t.id, title: t.title, question: t.question, description: t.description, children: [] };
+
+    for (const s of topicSections) {
+      const sectionConcepts = concepts.filter(c => c.section_id === s.id);
+      const rootConcepts = sectionConcepts.filter(c => !c.parent_concept_id);
+      const buildTree = (list) => list.map(c => {
+        const kids = sectionConcepts.filter(ch => ch.parent_concept_id === c.id);
+        const node = { id: c.id, title: c.title, question: c.question, description: c.description, level: c.level, questions: c.questions || [], content: c.content };
+        if (kids.length > 0) node.children = buildTree(kids);
+        return node;
+      });
+      topicObj.children.push({ id: s.id, title: s.title, description: s.description, children: buildTree(rootConcepts) });
+    }
+    S.topics.push(topicObj);
+  }
+}
+
+async function initFromJSON() {
+  const metas = await fetch('topics/index.json').then(r => r.json());
+  S.metas = metas;
+  metas.forEach((m, i) => { S.topicColors[m.id] = TOPIC_COLORS[i % TOPIC_COLORS.length]; });
+  for (const meta of metas) {
+    const data = await fetch(`topics/${meta.file}`).then(r => r.json());
+    S.topics.push(data);
+  }
+}
+
+async function init() {
+  try {
+    if (sb && !SUPABASE_URL.includes('YOUR_PROJECT')) {
+      await initFromSupabase();
+      console.log('✅ Loaded from Supabase');
+    } else {
+      await initFromJSON();
+      console.log('✅ Loaded from JSON (Supabase not configured)');
+    }
+  } catch (e) {
+    console.warn('Supabase failed, falling back to JSON:', e);
+    S.metas = []; S.topics = []; S.topicColors = {};
+    await initFromJSON();
+  }
+
+  let total = 0;
+  S.topics.forEach(t => {
+    total += 1;
+    (t.children || []).forEach(s => { total += 1 + (s.children || []).length; });
+  });
+  document.getElementById('node-count').textContent = `${total} nodes`;
+
+  buildSidebar();
+  if (S.metas.length > 0) selectTopic(S.metas[0].id);
+  initEmbedder();
+}
+
+init().catch(console.error);
+</script>
+</body>
+</html>

@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>knowledge.tree — Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:       #0a0e13;
+  --surface:  #12171e;
+  --surface2: #1a2029;
+  --surface3: #222a35;
+  --border:   rgba(255,255,255,0.06);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #e2e8f0;
+  --muted:    #64748b;
+  --accent:   #22c55e;
+  --accent2:  #16a34a;
+  --danger:   #ef4444;
+  --warn:     #f59e0b;
+  --info:     #3b82f6;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.admin-header {
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.admin-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-logo em { color: var(--accent); font-style: normal; }
+.admin-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(34,197,94,0.12);
+  color: var(--accent);
+  border: 1px solid rgba(34,197,94,0.2);
+}
+.admin-spacer { flex: 1; }
+.admin-status {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+.status-dot.connected { background: var(--accent); }
+.admin-link {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border2);
+  transition: all 0.15s;
+}
+.admin-link:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+.auth-panel {
+  max-width: 380px;
+  margin: 120px auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px;
+}
+.auth-panel h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.auth-panel p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.form-group {
+  margin-bottom: 14px;
+}
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.form-input {
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.form-input:focus { border-color: rgba(34,197,94,0.4); }
+.form-input::placeholder { color: var(--muted); }
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border2);
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn:hover { background: var(--surface3); border-color: rgba(255,255,255,0.2); }
+.btn-primary {
+  background: var(--accent2);
+  border-color: var(--accent2);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+.btn-danger {
+  color: var(--danger);
+  border-color: rgba(239,68,68,0.3);
+}
+.btn-danger:hover { background: rgba(239,68,68,0.1); }
+.btn-sm { padding: 5px 10px; font-size: 11px; }
+.btn-block { width: 100%; justify-content: center; }
+
+.admin-layout {
+  display: flex;
+  min-height: calc(100vh - 56px);
+}
+.admin-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 16px 0;
+  overflow-y: auto;
+}
+.admin-content {
+  flex: 1;
+  padding: 28px 36px;
+  overflow-y: auto;
+}
+
+.sb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.sb-header-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  transition: all 0.1s;
+  border-left: 2px solid transparent;
+}
+.tree-item:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+.tree-item.active { color: var(--text); border-left-color: var(--accent); background: rgba(34,197,94,0.04); }
+.tree-item.depth-1 { padding-left: 28px; font-size: 12px; }
+.tree-item.depth-2 { padding-left: 42px; font-size: 11px; }
+.tree-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tree-icon {
+  font-size: 11px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.tree-count {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+.panel-count {
+  font-size: 10px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.panel-actions { margin-left: auto; display: flex; gap: 8px; }
+.panel-body { padding: 20px; }
+.panel-empty {
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-row-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.form-full { grid-column: 1 / -1; }
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.tags-input-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 6px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  min-height: 38px;
+  align-items: center;
+  cursor: text;
+}
+.tags-input-wrap:focus-within { border-color: rgba(34,197,94,0.4); }
+.tag-chip {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.2);
+  color: var(--accent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.tag-chip-x {
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 13px;
+}
+.tag-chip-x:hover { opacity: 1; }
+.tags-input {
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 12px;
+  outline: none;
+  flex: 1;
+  min-width: 80px;
+  font-family: inherit;
+}
+.tags-input::placeholder { color: var(--muted); }
+
+.q-list { display: flex; flex-direction: column; gap: 8px; }
+.q-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.q-item .form-input { flex: 1; }
+.q-remove {
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+.q-remove:hover { opacity: 1; }
+
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  animation: toastIn 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 360px;
+}
+.toast.success { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); color: var(--accent); }
+.toast.error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: var(--danger); }
+@keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.concept-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+  cursor: pointer;
+}
+.concept-row:last-child { border-bottom: none; }
+.concept-row:hover { background: rgba(255,255,255,0.02); }
+.concept-row.active { background: rgba(34,197,94,0.04); }
+.concept-title { font-size: 13px; font-weight: 500; flex: 1; }
+.concept-level {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.concept-level.basic { background: rgba(34,197,94,0.1); color: var(--accent); }
+.concept-level.deep { background: rgba(192,132,252,0.12); color: #c084fc; }
+.concept-desc {
+  font-size: 11px;
+  color: var(--muted);
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+}
+.dialog h3 { font-size: 14px; margin-bottom: 8px; }
+.dialog p { font-size: 12px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+.md-editor-wrap {
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.md-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+.md-tool-btn {
+  width: 28px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.1s;
+}
+.md-tool-btn:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+.md-tool-sep {
+  width: 1px;
+  height: 16px;
+  background: var(--border2);
+  margin: 0 4px;
+}
+.md-tab-group {
+  margin-left: auto;
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.md-tab {
+  padding: 3px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.md-tab.active { background: var(--surface3); color: var(--text); }
+.md-tab:not(:last-child) { border-right: 1px solid var(--border2); }
+.md-panels {
+  display: flex;
+  height: 420px;
+}
+.md-panels.mode-write .md-edit-pane { flex: 1; display: block; }
+.md-panels.mode-write .md-preview-pane { display: none; }
+.md-panels.mode-preview .md-edit-pane { display: none; }
+.md-panels.mode-preview .md-preview-pane { flex: 1; display: block; }
+.md-panels.mode-split .md-edit-pane { flex: 1; display: block; }
+.md-panels.mode-split .md-preview-pane { flex: 1; display: block; border-left: 1px solid var(--border); }
+.md-edit-pane textarea {
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  resize: none;
+  outline: none;
+}
+.md-edit-pane textarea::placeholder { color: var(--muted); }
+.md-preview-pane {
+  padding: 14px;
+  overflow-y: auto;
+  font-size: 13px;
+}
+.md-preview-pane::-webkit-scrollbar { width: 3px; }
+.md-preview-pane::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); }
+.md-preview-pane h2 { font-size: 13px; font-weight: 600; margin: 18px 0 6px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.md-preview-pane h3 { font-size: 11px; color: var(--muted); margin: 12px 0 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.md-preview-pane p { font-size: 13px; line-height: 1.85; color: #8b949e; margin-bottom: 8px; }
+.md-preview-pane code { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+.md-preview-pane pre { background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 7px; padding: 14px; margin: 10px 0; overflow-x: auto; }
+.md-preview-pane pre code { background: none; padding: 0; font-size: 12px; line-height: 1.6; }
+.md-preview-pane ul, .md-preview-pane ol { margin: 4px 0 9px 16px; }
+.md-preview-pane li { font-size: 13px; line-height: 1.75; color: #8b949e; margin-bottom: 2px; }
+.md-preview-pane blockquote { border-left: 3px solid var(--accent); padding: 7px 13px; margin: 10px 0; background: rgba(34,197,94,0.05); border-radius: 0 5px 5px 0; }
+.md-preview-pane table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
+.md-preview-pane th { background: rgba(255,255,255,0.04); padding: 6px 9px; text-align: left; border: 1px solid var(--border); font-weight: 500; }
+.md-preview-pane td { padding: 6px 9px; border: 1px solid var(--border); color: #8b949e; }
+.md-preview-empty { color: var(--muted); font-size: 12px; opacity: 0.5; padding-top: 20px; text-align: center; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div class="admin-header">
+  <div class="admin-logo">knowledge<em>.</em>tree <span class="admin-badge">admin</span></div>
+  <div class="admin-spacer"></div>
+  <div class="admin-status" id="conn-status">
+    <span class="status-dot" id="status-dot"></span>
+    <span id="status-text">연결 안 됨</span>
+  </div>
+  <a href="index.html" class="admin-link">← 메인으로</a>
+  <button class="btn btn-sm" id="logout-btn" style="display:none" onclick="logout()">로그아웃</button>
+</div>
+
+<div id="auth-view">
+  <div class="auth-panel">
+    <h2>관리자 로그인</h2>
+    <p>Supabase 이메일/비밀번호로 로그인하세요.<br>
+    계정이 없으면 Supabase Dashboard → Authentication에서 추가하세요.</p>
+    <div class="form-group">
+      <label class="form-label">이메일</label>
+      <input class="form-input" type="email" id="auth-email" placeholder="admin@example.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label">비밀번호</label>
+      <input class="form-input" type="password" id="auth-password" placeholder="••••••••">
+    </div>
+    <div style="margin-top:20px">
+      <button class="btn btn-primary btn-block" onclick="login()">로그인</button>
+    </div>
+    <div id="auth-error" style="margin-top:12px;font-size:12px;color:var(--danger);display:none"></div>
+  </div>
+</div>
+
+<div id="admin-view" style="display:none">
+  <div class="admin-layout">
+    <div class="admin-sidebar" id="sidebar"></div>
+    <div class="admin-content" id="content">
+      <div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toasts"></div>
+<div id="dialog-root"></div>
+
+<script>
+const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
+
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentUser = null;
+let topics = [];
+let sections = [];
+let concepts = [];
+let selectedItem = null;
+
+async function login() {
+  const email = document.getElementById('auth-email').value;
+  const password = document.getElementById('auth-password').value;
+  const errEl = document.getElementById('auth-error');
+  errEl.style.display = 'none';
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    errEl.textContent = error.message;
+    errEl.style.display = 'block';
+    return;
+  }
+  currentUser = data.user;
+  showAdmin();
+}
+
+async function logout() {
+  await sb.auth.signOut();
+  currentUser = null;
+  document.getElementById('admin-view').style.display = 'none';
+  document.getElementById('auth-view').style.display = 'block';
+  document.getElementById('logout-btn').style.display = 'none';
+  updateStatus(false);
+}
+
+async function checkSession() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (session) {
+    currentUser = session.user;
+    showAdmin();
+  }
+}
+
+function showAdmin() {
+  document.getElementById('auth-view').style.display = 'none';
+  document.getElementById('admin-view').style.display = 'block';
+  document.getElementById('logout-btn').style.display = '';
+  updateStatus(true);
+  loadAll();
+}
+
+function updateStatus(connected) {
+  document.getElementById('status-dot').classList.toggle('connected', connected);
+  document.getElementById('status-text').textContent = connected ? 'Supabase 연결됨' : '연결 안 됨';
+}
+
+async function loadAll() {
+  const [t, s, c] = await Promise.all([
+    sb.from('topics').select('*').order('sort_order'),
+    sb.from('sections').select('*').order('sort_order'),
+    sb.from('concepts').select('*').order('sort_order'),
+  ]);
+  if (t.error || s.error || c.error) { toast('데이터 로딩 실패', 'error'); return; }
+  topics = t.data;
+  sections = s.data;
+  concepts = c.data;
+  buildSidebar();
+}
+
+function buildSidebar() {
+  const el = document.getElementById('sidebar');
+  let html = `
+    <div class="sb-header">
+      <span class="sb-header-title">Topics</span>
+      <button class="btn btn-sm btn-primary" onclick="showTopicForm()">+ 주제</button>
+    </div>
+  `;
+  for (const t of topics) {
+    const isActive = selectedItem?.type === 'topic' && selectedItem.id === t.id;
+    const secs = sections.filter(s => s.topic_id === t.id);
+    html += `<div class="tree-item ${isActive ? 'active' : ''}" onclick="selectItem('topic','${t.id}')">
+      <div class="tree-dot" style="background:${t.color || '#7c6af7'}"></div>
+      ${t.title}
+      <span class="tree-count">${secs.length}</span>
+    </div>`;
+    for (const s of secs) {
+      const secActive = selectedItem?.type === 'section' && selectedItem.id === s.id;
+      const cpts = concepts.filter(c => c.section_id === s.id);
+      html += `<div class="tree-item depth-1 ${secActive ? 'active' : ''}" onclick="selectItem('section','${s.id}')">
+        <span class="tree-icon">›</span>
+        ${s.title}
+        <span class="tree-count">${cpts.length}</span>
+      </div>`;
+    }
+  }
+  el.innerHTML = html;
+}
+
+function selectItem(type, id) {
+  selectedItem = { type, id };
+  buildSidebar();
+  if (type === 'topic') renderTopicDetail(id);
+  else if (type === 'section') renderSectionDetail(id);
+}
+
+function renderTopicDetail(id) {
+  const t = topics.find(x => x.id === id);
+  if (!t) return;
+  const secs = sections.filter(s => s.topic_id === id);
+
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <div class="panel-header">
+        <div class="tree-dot" style="background:${t.color || '#7c6af7'};width:8px;height:8px"></div>
+        <span class="panel-title">${t.title}</span>
+        <div class="panel-actions">
+          <button class="btn btn-sm" onclick="showTopicForm('${id}')">편집</button>
+          <button class="btn btn-sm btn-danger" onclick="confirmDelete('topic','${id}','${t.title}')">삭제</button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div style="font-size:12px;color:var(--muted);line-height:1.8">
+          ${t.description ? `<p>${t.description}</p>` : '<p style="opacity:.4">설명 없음</p>'}
+          ${t.question ? `<p style="margin-top:8px"><strong>질문:</strong> ${t.question}</p>` : ''}
+          <p style="margin-top:8px"><strong>Tags:</strong> ${(t.tags||[]).join(', ') || '없음'} · <strong>Author:</strong> ${t.author || '미지정'}</p>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">섹션</span>
+        <span class="panel-count">${secs.length}</span>
+        <div class="panel-actions">
+          <button class="btn btn-sm btn-primary" onclick="showSectionForm('${id}')">+ 섹션</button>
+        </div>
+      </div>
+      ${secs.length === 0 ? '<div class="panel-empty">섹션이 없습니다</div>' :
+        secs.map(s => {
+          const cnt = concepts.filter(c => c.section_id === s.id).length;
+          return `<div class="concept-row" onclick="selectItem('section','${s.id}')">
+            <span class="concept-title">${s.title}</span>
+            <span class="concept-desc">${s.description || ''}</span>
+            <span style="font-size:10px;color:var(--muted)">${cnt} concepts</span>
+          </div>`;
+        }).join('')}
+    </div>
+  `;
+}
+
+function renderSectionDetail(sectionId) {
+  const s = sections.find(x => x.id === sectionId);
+  if (!s) return;
+  const t = topics.find(x => x.id === s.topic_id);
+  const cpts = concepts.filter(c => c.section_id === sectionId && !c.parent_concept_id).sort((a,b) => a.sort_order - b.sort_order);
+
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <div class="panel-header">
+        <span style="font-size:11px;color:var(--muted);cursor:pointer" onclick="selectItem('topic','${s.topic_id}')">← ${t?.title || ''}</span>
+        <span class="panel-title" style="margin-left:8px">${s.title}</span>
+        <div class="panel-actions">
+          <button class="btn btn-sm" onclick="showSectionForm('${s.topic_id}','${sectionId}')">편집</button>
+          <button class="btn btn-sm btn-danger" onclick="confirmDelete('section','${sectionId}','${s.title}')">삭제</button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="font-size:12px;color:var(--muted)">${s.description || '설명 없음'}</p>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">개념</span>
+        <span class="panel-count">${cpts.length}</span>
+        <div class="panel-actions">
+          <button class="btn btn-sm btn-primary" onclick="showConceptForm('${s.topic_id}','${sectionId}')">+ 개념</button>
+        </div>
+      </div>
+      ${cpts.length === 0 ? '<div class="panel-empty">개념이 없습니다</div>' :
+        cpts.map(c => {
+          const kids = concepts.filter(ch => ch.parent_concept_id === c.id);
+          return `<div class="concept-row" onclick="showConceptForm('${s.topic_id}','${sectionId}','${c.id}')">
+            <span class="concept-title">${c.title}</span>
+            ${c.level ? `<span class="concept-level ${c.level}">${c.level === 'basic' ? '기본' : '심화'}</span>` : ''}
+            <span class="concept-desc">${c.description || ''}</span>
+            ${kids.length > 0 ? `<span style="font-size:10px;color:var(--muted)">+${kids.length} sub</span>` : ''}
+          </div>`;
+        }).join('')}
+    </div>
+  `;
+}
+
+function showTopicForm(editId) {
+  const t = editId ? topics.find(x => x.id === editId) : null;
+  const isEdit = !!t;
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">${isEdit ? '주제 편집' : '새 주제 추가'}</span>
+      </div>
+      <div class="panel-body">
+        <div class="form-row" style="margin-bottom:14px">
+          <div class="form-group">
+            <label class="form-label">ID (영문, 하이픈)</label>
+            <input class="form-input" id="f-id" value="${t?.id || ''}" placeholder="my-topic" ${isEdit ? 'disabled' : ''}>
+          </div>
+          <div class="form-group">
+            <label class="form-label">제목</label>
+            <input class="form-input" id="f-title" value="${t?.title || ''}" placeholder="주제 이름">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">질문 (이 주제를 공부하게 된 계기)</label>
+          <input class="form-input" id="f-question" value="${t?.question || ''}" placeholder="왜 이걸 공부하게 됐나?">
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">설명</label>
+          <input class="form-input" id="f-desc" value="${t?.description || ''}" placeholder="한 줄 설명">
+        </div>
+        <div class="form-row" style="margin-bottom:14px">
+          <div class="form-group">
+            <label class="form-label">Author</label>
+            <input class="form-input" id="f-author" value="${t?.author || ''}" placeholder="github username">
+          </div>
+          <div class="form-group">
+            <label class="form-label">색상</label>
+            <input class="form-input" id="f-color" value="${t?.color || '#3498db'}" type="color" style="height:38px;padding:4px">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">Tags (Enter로 추가)</label>
+          <div class="tags-input-wrap" id="tags-wrap" onclick="document.getElementById('tags-input').focus()">
+            ${(t?.tags||[]).map(tag => `<span class="tag-chip">${tag}<span class="tag-chip-x" onclick="removeTag(this,'${tag}')">&times;</span></span>`).join('')}
+            <input class="tags-input" id="tags-input" placeholder="태그 입력...">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn" onclick="cancelForm()">취소</button>
+          <button class="btn btn-primary" onclick="saveTopic('${editId || ''}')">${isEdit ? '저장' : '추가'}</button>
+        </div>
+      </div>
+    </div>
+  `;
+  setupTagsInput();
+}
+
+function showSectionForm(topicId, editId) {
+  const s = editId ? sections.find(x => x.id === editId) : null;
+  const isEdit = !!s;
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">${isEdit ? '섹션 편집' : '새 섹션 추가'}</span>
+      </div>
+      <div class="panel-body">
+        <div class="form-row" style="margin-bottom:14px">
+          <div class="form-group">
+            <label class="form-label">ID</label>
+            <input class="form-input" id="f-id" value="${s?.id || ''}" placeholder="section-id" ${isEdit ? 'disabled' : ''}>
+          </div>
+          <div class="form-group">
+            <label class="form-label">제목</label>
+            <input class="form-input" id="f-title" value="${s?.title || ''}" placeholder="섹션 이름">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">설명</label>
+          <input class="form-input" id="f-desc" value="${s?.description || ''}" placeholder="섹션 설명">
+        </div>
+        <div class="form-actions">
+          <button class="btn" onclick="cancelForm()">취소</button>
+          <button class="btn btn-primary" onclick="saveSection('${topicId}','${editId || ''}')">${isEdit ? '저장' : '추가'}</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function showConceptForm(topicId, sectionId, editId) {
+  const c = editId ? concepts.find(x => x.id === editId) : null;
+  const isEdit = !!c;
+  const qs = c?.questions || [];
+
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">${isEdit ? '개념 편집' : '새 개념 추가'}</span>
+      </div>
+      <div class="panel-body">
+        <div class="form-row" style="margin-bottom:14px">
+          <div class="form-group">
+            <label class="form-label">ID</label>
+            <input class="form-input" id="f-id" value="${c?.id || ''}" placeholder="concept-id" ${isEdit ? 'disabled' : ''}>
+          </div>
+          <div class="form-group">
+            <label class="form-label">제목</label>
+            <input class="form-input" id="f-title" value="${c?.title || ''}" placeholder="개념 이름">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">질문</label>
+          <input class="form-input" id="f-question" value="${c?.question || ''}" placeholder="이 개념을 공부하게 된 질문">
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">설명</label>
+          <input class="form-input" id="f-desc" value="${c?.description || ''}" placeholder="카드에 표시되는 한 줄 설명">
+        </div>
+        <div class="form-row" style="margin-bottom:14px">
+          <div class="form-group">
+            <label class="form-label">레벨</label>
+            <select class="form-input" id="f-level">
+              <option value="">미지정</option>
+              <option value="basic" ${c?.level === 'basic' ? 'selected' : ''}>기본 (basic)</option>
+              <option value="deep" ${c?.level === 'deep' ? 'selected' : ''}>심화 (deep)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">정렬 순서</label>
+            <input class="form-input" id="f-sort" type="number" value="${c?.sort_order ?? concepts.filter(x=>x.section_id===sectionId).length}" placeholder="0">
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">검색 질문 (벡터 검색 인덱스)</label>
+          <div class="q-list" id="q-list">
+            ${qs.map((q, i) => `
+              <div class="q-item">
+                <input class="form-input q-input" value="${escapeHtml(q)}" placeholder="질문 ${i+1}">
+                <span class="q-remove" onclick="this.parentElement.remove()">&times;</span>
+              </div>
+            `).join('')}
+          </div>
+          <button class="btn btn-sm" style="margin-top:8px" onclick="addQuestion()">+ 질문 추가</button>
+        </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">Content (마크다운)</label>
+          <div class="md-editor-wrap">
+            <div class="md-toolbar">
+              <button class="md-tool-btn" title="Bold" onclick="mdInsert('**','**')"><b>B</b></button>
+              <button class="md-tool-btn" title="Italic" onclick="mdInsert('*','*')"><i>I</i></button>
+              <button class="md-tool-btn" title="Code" onclick="mdInsert('\`','\`')">‹›</button>
+              <button class="md-tool-btn" title="Code Block" onclick="mdInsert('\\n\`\`\`\\n','\\n\`\`\`\\n')">{ }</button>
+              <span class="md-tool-sep"></span>
+              <button class="md-tool-btn" title="Heading 2" onclick="mdInsertLine('## ')">H2</button>
+              <button class="md-tool-btn" title="Heading 3" onclick="mdInsertLine('### ')">H3</button>
+              <span class="md-tool-sep"></span>
+              <button class="md-tool-btn" title="List" onclick="mdInsertLine('- ')">•</button>
+              <button class="md-tool-btn" title="Blockquote" onclick="mdInsertLine('> ')">❝</button>
+              <button class="md-tool-btn" title="Table" onclick="mdInsertTable()">⊞</button>
+              <div class="md-tab-group">
+                <button class="md-tab active" data-mode="split" onclick="setEditorMode('split')">Split</button>
+                <button class="md-tab" data-mode="write" onclick="setEditorMode('write')">Write</button>
+                <button class="md-tab" data-mode="preview" onclick="setEditorMode('preview')">Preview</button>
+              </div>
+            </div>
+            <div class="md-panels mode-split" id="md-panels">
+              <div class="md-edit-pane">
+                <textarea id="f-content" placeholder="마크다운을 입력하세요..." oninput="updatePreview()">${escapeHtml(c?.content || '')}</textarea>
+              </div>
+              <div class="md-preview-pane" id="md-preview"></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn" onclick="cancelForm()">취소</button>
+          ${isEdit ? `<button class="btn btn-danger" onclick="confirmDelete('concept','${editId}','${escapeHtml(c.title)}')">삭제</button>` : ''}
+          <button class="btn btn-primary" onclick="saveConcept('${topicId}','${sectionId}','${editId || ''}')">${isEdit ? '저장' : '추가'}</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function addQuestion() {
+  const list = document.getElementById('q-list');
+  const div = document.createElement('div');
+  div.className = 'q-item';
+  div.innerHTML = `<input class="form-input q-input" placeholder="질문"><span class="q-remove" onclick="this.parentElement.remove()">&times;</span>`;
+  list.appendChild(div);
+  div.querySelector('input').focus();
+}
+
+function getQuestions() {
+  return Array.from(document.querySelectorAll('.q-input')).map(el => el.value.trim()).filter(Boolean);
+}
+
+function cancelForm() {
+  if (selectedItem) {
+    if (selectedItem.type === 'topic') renderTopicDetail(selectedItem.id);
+    else if (selectedItem.type === 'section') renderSectionDetail(selectedItem.id);
+  } else {
+    document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
+  }
+}
+
+async function saveTopic(editId) {
+  const id = editId || document.getElementById('f-id').value.trim();
+  const title = document.getElementById('f-title').value.trim();
+  if (!id || !title) { toast('ID와 제목은 필수입니다', 'error'); return; }
+
+  const tags = getTagValues();
+  const row = {
+    id,
+    title,
+    question: document.getElementById('f-question').value.trim() || null,
+    description: document.getElementById('f-desc').value.trim() || null,
+    author: document.getElementById('f-author').value.trim() || null,
+    color: document.getElementById('f-color').value || null,
+    tags,
+    sort_order: editId ? (topics.find(t=>t.id===editId)?.sort_order || 0) : topics.length,
+  };
+
+  const { error } = await sb.from('topics').upsert(row);
+  if (error) { toast(`저장 실패: ${error.message}`, 'error'); return; }
+  toast(editId ? '주제 수정됨' : '주제 추가됨', 'success');
+  selectedItem = { type: 'topic', id };
+  await loadAll();
+  renderTopicDetail(id);
+}
+
+async function saveSection(topicId, editId) {
+  const id = editId || document.getElementById('f-id').value.trim();
+  const title = document.getElementById('f-title').value.trim();
+  if (!id || !title) { toast('ID와 제목은 필수입니다', 'error'); return; }
+
+  const row = {
+    id,
+    topic_id: topicId,
+    title,
+    description: document.getElementById('f-desc').value.trim() || null,
+    sort_order: editId ? (sections.find(s=>s.id===editId)?.sort_order || 0) : sections.filter(s=>s.topic_id===topicId).length,
+  };
+
+  const { error } = await sb.from('sections').upsert(row);
+  if (error) { toast(`저장 실패: ${error.message}`, 'error'); return; }
+  toast(editId ? '섹션 수정됨' : '섹션 추가됨', 'success');
+  selectedItem = { type: 'section', id };
+  await loadAll();
+  renderSectionDetail(id);
+}
+
+async function saveConcept(topicId, sectionId, editId) {
+  const id = editId || document.getElementById('f-id').value.trim();
+  const title = document.getElementById('f-title').value.trim();
+  if (!id || !title) { toast('ID와 제목은 필수입니다', 'error'); return; }
+
+  const row = {
+    id,
+    section_id: sectionId,
+    topic_id: topicId,
+    title,
+    question: document.getElementById('f-question').value.trim() || null,
+    description: document.getElementById('f-desc').value.trim() || null,
+    level: document.getElementById('f-level').value || null,
+    questions: getQuestions(),
+    content: document.getElementById('f-content').value || null,
+    sort_order: parseInt(document.getElementById('f-sort').value) || 0,
+  };
+
+  const { error } = await sb.from('concepts').upsert(row);
+  if (error) { toast(`저장 실패: ${error.message}`, 'error'); return; }
+  toast(editId ? '개념 수정됨' : '개념 추가됨', 'success');
+  selectedItem = { type: 'section', id: sectionId };
+  await loadAll();
+  renderSectionDetail(sectionId);
+}
+
+function confirmDelete(type, id, name) {
+  const labels = { topic: '주제', section: '섹션', concept: '개념' };
+  document.getElementById('dialog-root').innerHTML = `
+    <div class="overlay" onclick="if(event.target===this)closeDialog()">
+      <div class="dialog">
+        <h3>${labels[type]} 삭제</h3>
+        <p>"${name}" ${type === 'topic' ? '와 하위 섹션/개념을 모두' : type === 'section' ? '와 하위 개념을 모두' : '를'} 삭제합니다. 되돌릴 수 없습니다.</p>
+        <div class="dialog-actions">
+          <button class="btn" onclick="closeDialog()">취소</button>
+          <button class="btn btn-danger" onclick="doDelete('${type}','${id}')">삭제</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function closeDialog() { document.getElementById('dialog-root').innerHTML = ''; }
+
+async function doDelete(type, id) {
+  closeDialog();
+  const { error } = await sb.from(type === 'topic' ? 'topics' : type === 'section' ? 'sections' : 'concepts').delete().eq('id', id);
+  if (error) { toast(`삭제 실패: ${error.message}`, 'error'); return; }
+  toast('삭제됨', 'success');
+
+  if (type === 'concept') {
+    const c = concepts.find(x => x.id === id);
+    if (c) { selectedItem = { type: 'section', id: c.section_id }; }
+  } else if (type === 'section') {
+    const s = sections.find(x => x.id === id);
+    if (s) { selectedItem = { type: 'topic', id: s.topic_id }; }
+  } else {
+    selectedItem = null;
+  }
+
+  await loadAll();
+  if (selectedItem) {
+    if (selectedItem.type === 'topic') renderTopicDetail(selectedItem.id);
+    else renderSectionDetail(selectedItem.id);
+  } else {
+    document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
+  }
+}
+
+let tagValues = [];
+function setupTagsInput() {
+  const existing = topics.find(t => t.id === (selectedItem?.id));
+  tagValues = existing?.tags ? [...existing.tags] : [];
+  const input = document.getElementById('tags-input');
+  if (!input) return;
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && input.value.trim()) {
+      e.preventDefault();
+      const val = input.value.trim().toLowerCase();
+      if (!tagValues.includes(val)) {
+        tagValues.push(val);
+        renderTags();
+      }
+      input.value = '';
+    }
+    if (e.key === 'Backspace' && !input.value && tagValues.length > 0) {
+      tagValues.pop();
+      renderTags();
+    }
+  });
+}
+
+function renderTags() {
+  const wrap = document.getElementById('tags-wrap');
+  const input = document.getElementById('tags-input');
+  wrap.querySelectorAll('.tag-chip').forEach(el => el.remove());
+  tagValues.forEach(tag => {
+    const span = document.createElement('span');
+    span.className = 'tag-chip';
+    span.innerHTML = `${tag}<span class="tag-chip-x" onclick="removeTag(this,'${tag}')">&times;</span>`;
+    wrap.insertBefore(span, input);
+  });
+}
+
+function removeTag(el, tag) {
+  tagValues = tagValues.filter(t => t !== tag);
+  el.parentElement.remove();
+}
+
+function getTagValues() { return tagValues; }
+
+function updatePreview() {
+  const textarea = document.getElementById('f-content');
+  const preview = document.getElementById('md-preview');
+  if (!textarea || !preview) return;
+  const val = textarea.value;
+  if (!val.trim()) {
+    preview.innerHTML = '<div class="md-preview-empty">미리보기가 여기에 표시됩니다</div>';
+  } else {
+    preview.innerHTML = marked.parse(val);
+  }
+}
+
+function setEditorMode(mode) {
+  const panels = document.getElementById('md-panels');
+  if (!panels) return;
+  panels.className = 'md-panels mode-' + mode;
+  document.querySelectorAll('.md-tab').forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
+  if (mode === 'preview' || mode === 'split') updatePreview();
+}
+
+function mdInsert(before, after) {
+  const ta = document.getElementById('f-content');
+  if (!ta) return;
+  const start = ta.selectionStart;
+  const end = ta.selectionEnd;
+  const selected = ta.value.substring(start, end);
+  const replacement = before + (selected || '텍스트') + after;
+  ta.setRangeText(replacement, start, end, 'select');
+  ta.focus();
+  updatePreview();
+}
+
+function mdInsertLine(prefix) {
+  const ta = document.getElementById('f-content');
+  if (!ta) return;
+  const start = ta.selectionStart;
+  const lineStart = ta.value.lastIndexOf('\n', start - 1) + 1;
+  const selected = ta.value.substring(ta.selectionStart, ta.selectionEnd) || '내용';
+  ta.setRangeText(prefix + selected, ta.selectionStart, ta.selectionEnd, 'end');
+  ta.focus();
+  updatePreview();
+}
+
+function mdInsertTable() {
+  const ta = document.getElementById('f-content');
+  if (!ta) return;
+  const table = '\n| 제목 | 설명 |\n|---|---|\n| 내용 | 내용 |\n';
+  ta.setRangeText(table, ta.selectionStart, ta.selectionEnd, 'end');
+  ta.focus();
+  updatePreview();
+}
+
+const _origShowConceptForm = showConceptForm;
+showConceptForm = function(...args) {
+  _origShowConceptForm(...args);
+  setTimeout(updatePreview, 0);
+};
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toast(msg, type = 'success') {
+  const container = document.getElementById('toasts');
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.textContent = msg;
+  container.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3000);
+}
+
+checkSession();
+</script>
+</body>
+</html>
