@@ -190,6 +190,7 @@ body {
   flex: 1;
   overflow-y: auto;
   padding: 36px 44px 80px;
+  outline: none;
 }
 #content::-webkit-scrollbar { width: 5px; }
 #content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
@@ -290,7 +291,8 @@ body {
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 .landing-card.kb-focus {
-  border-color: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.02);
 }
 .landing-card-icon {
   width: 32px; height: 32px;
@@ -369,7 +371,10 @@ body {
   display: flex; flex-direction: column; gap: 10px;
 }
 .sc-card:hover { border-color: var(--border2); background: var(--surface2); }
-.sc-card.kb-focus { border-color: rgba(255,255,255,0.1); }
+.sc-card.kb-focus {
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.02);
+}
 .sc-card-header {
   display: flex; align-items: center; gap: 8px;
 }
@@ -475,10 +480,9 @@ body {
 .toc-link.active { color: var(--text); font-weight: 500; }
 
 .concept-section.kb-focus {
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  padding-left: 0;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
 }
 .concept-section {
   padding: 32px 0;
@@ -699,7 +703,10 @@ body {
   transition: background 0.1s;
 }
 .search-page-item:hover { background: rgba(255,255,255,0.02); }
-.search-page-item.kb-focus { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.15); }
+.search-page-item.kb-focus {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.24);
+}
 .search-page-item:last-child { border-bottom: none; }
 .search-page-title {
   font-size: 15px; font-weight: 600; color: var(--text);
@@ -736,7 +743,7 @@ body {
 
 <div id="main">
   <div id="sidebar"></div>
-  <div id="content">
+  <div id="content" tabindex="-1">
     <div id="content-inner">
       <div id="empty">← 주제를 선택하세요</div>
     </div>
@@ -758,7 +765,10 @@ const S = {
   metas: [],
   selectedTopicId: null,
   selectedSectionId: null,
+  lastSectionId: null,
 };
+
+let tocLockUntil = 0;
 
 function topicColor(id) { return S.topicColors[id] || '#7c6af7'; }
 
@@ -832,6 +842,10 @@ function renderLanding() {
   const inner = document.getElementById('content-inner');
   inner.classList.remove('wide');
   if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+  if (tocScrollHandler) {
+    document.getElementById('content').removeEventListener('scroll', tocScrollHandler);
+    tocScrollHandler = null;
+  }
 
   const cards = S.metas.map((m, i) => {
     const color = topicColor(m.id);
@@ -888,6 +902,7 @@ function selectTopic(id) {
 }
 
 async function openSection(topicId, sectionId) {
+  S.lastSectionId = sectionId;
   S.selectedSectionId = sectionId;
   updateSidebarConcepts(topicId, sectionId);
   await renderSectionDetail(topicId, sectionId);
@@ -897,6 +912,12 @@ function backToTopic() {
   S.selectedSectionId = null;
   updateSidebarSections(S.selectedTopicId);
   renderTopicOverview(S.selectedTopicId);
+  requestAnimationFrame(() => {
+    const topic = S.topics.find(t => t.id === S.selectedTopicId);
+    const sections = topic?.children || [];
+    const idx = sections.findIndex(s => s.id === S.lastSectionId);
+    if (idx >= 0) kbSetFocus(idx);
+  });
 }
 
 let activeFilter = 'all';
@@ -941,6 +962,10 @@ function renderTopicOverview(topicId) {
   const inner = document.getElementById('content-inner');
   inner.classList.remove('wide');
   if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+  if (tocScrollHandler) {
+    document.getElementById('content').removeEventListener('scroll', tocScrollHandler);
+    tocScrollHandler = null;
+  }
   inner.innerHTML = html;
   document.getElementById('content').scrollTop = 0;
 }
@@ -1005,9 +1030,7 @@ async function renderSectionDetail(topicId, sectionId) {
   const tocItems = filtered.map((c, i) => `
     <li>
       <span class="toc-num">${i + 1}</span>
-      <span class="toc-link" id="toc-${c.id}"
-        onclick="document.getElementById('row-${c.id}').scrollIntoView({behavior:'smooth',block:'start'})"
-      >${c.title}</span>
+      <span class="toc-link" id="toc-${c.id}" onclick="scrollToConcept('${c.id}')">${c.title}</span>
     </li>
   `).join('');
 
@@ -1036,26 +1059,56 @@ async function renderSectionDetail(topicId, sectionId) {
   const inner = document.getElementById('content-inner');
   inner.classList.add('wide');
   inner.innerHTML = html;
-  document.getElementById('content').scrollTop = 0;
+  const content = document.getElementById('content');
+  content.scrollTop = 0;
+  content.focus({ preventScroll: true });
 
-  initTocObserver(filtered, document.getElementById('content'));
+  initTocObserver(filtered, content);
 }
 
 let tocObserver = null;
-function initTocObserver(concepts, scroller) {
-  if (tocObserver) tocObserver.disconnect();
-  tocObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const id = entry.target.id.replace('row-', '');
-      const link = document.getElementById(`toc-${id}`);
-      if (link) link.classList.toggle('active', entry.isIntersecting);
-    });
-  }, { root: scroller, rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+let tocScrollHandler = null;
 
-  concepts.forEach(c => {
-    const el = document.getElementById(`row-${c.id}`);
-    if (el) tocObserver.observe(el);
-  });
+function scrollToConcept(conceptId) {
+  const row = document.getElementById(`row-${conceptId}`);
+  if (!row) return;
+  tocLockUntil = performance.now() + 400;
+  document.querySelectorAll('.toc-link.active').forEach(el => el.classList.remove('active'));
+  const link = document.getElementById(`toc-${conceptId}`);
+  if (link) link.classList.add('active');
+  row.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function initTocObserver(concepts, scroller) {
+  if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+  if (tocScrollHandler) {
+    scroller.removeEventListener('scroll', tocScrollHandler);
+    tocScrollHandler = null;
+  }
+
+  const sections = concepts
+    .map(c => ({ id: c.id, el: document.getElementById(`row-${c.id}`) }))
+    .filter(x => x.el);
+
+  const syncActiveToc = () => {
+    if (sections.length === 0) return;
+    if (performance.now() < tocLockUntil) return;
+
+    const y = scroller.scrollTop + 120;
+    let bestId = sections[0].id;
+    for (const s of sections) {
+      if (s.el.offsetTop <= y) bestId = s.id;
+      else break;
+    }
+
+    document.querySelectorAll('.toc-link.active').forEach(el => el.classList.remove('active'));
+    const active = document.getElementById(`toc-${bestId}`);
+    if (active) active.classList.add('active');
+  };
+
+  tocScrollHandler = () => requestAnimationFrame(syncActiveToc);
+  scroller.addEventListener('scroll', tocScrollHandler, { passive: true });
+  syncActiveToc();
 }
 
 function matchesFilter(concept) {
@@ -1486,7 +1539,11 @@ function kbSetFocus(idx) {
   kbFocusIdx = Math.max(0, Math.min(idx, items.length - 1));
   const el = items[kbFocusIdx];
   el.classList.add('kb-focus');
-  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (el.classList.contains('concept-section')) {
+    scrollToConcept(el.id.replace('row-', ''));
+  } else {
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 }
 
 function kbOpenFocused() {
@@ -1494,27 +1551,6 @@ function kbOpenFocused() {
   if (kbFocusIdx < 0 || kbFocusIdx >= items.length) return;
   items[kbFocusIdx].click();
   kbClearFocus();
-}
-
-function getTocLinks() {
-  return Array.from(document.querySelectorAll('.toc-link'));
-}
-
-function getActiveTocIndex() {
-  const links = getTocLinks();
-  if (links.length === 0) return -1;
-  const activeIdx = links.findIndex(el => el.classList.contains('active'));
-  if (activeIdx >= 0) return activeIdx;
-  return 0;
-}
-
-function jumpToTocIndex(idx) {
-  const links = getTocLinks();
-  if (links.length === 0) return;
-  const clamped = Math.max(0, Math.min(idx, links.length - 1));
-  const id = links[clamped].id.replace('toc-', '');
-  const row = document.getElementById(`row-${id}`);
-  if (row) row.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function kbGoBack() {
@@ -1576,8 +1612,8 @@ function toggleKbHelp() {
         <li><span class="kb-help-key">k</span> <span class="kb-help-key">↑</span><span class="kb-help-desc">이전 항목</span></li>
         <li><span class="kb-help-key">h</span> <span class="kb-help-key">←</span><span class="kb-help-desc">왼쪽 / 뒤로가기</span></li>
         <li><span class="kb-help-key">l</span> <span class="kb-help-key">→</span><span class="kb-help-desc">오른쪽 / 열기</span></li>
-        <li><span class="kb-help-key">1</span>~<span class="kb-help-key">9</span><span class="kb-help-desc">목차 바로 이동</span></li>
         <li><span class="kb-help-key">Enter</span><span class="kb-help-desc">항목 열기</span></li>
+        <li><span class="kb-help-key">g</span><span class="kb-help-desc">목차 번호로 이동</span></li>
         <li><span class="kb-help-key">Esc</span><span class="kb-help-desc">닫기 / 뒤로가기</span></li>
       </ul>
     </div>
@@ -1588,12 +1624,66 @@ function toggleKbHelp() {
   document.body.appendChild(overlay);
 }
 
+function showTocGoto() {
+  const existing = document.getElementById('toc-goto');
+  if (existing) { existing.remove(); return; }
+  const links = document.querySelectorAll('.toc-link');
+  if (!links.length) return;
+  const overlay = document.createElement('div');
+  overlay.id = 'toc-goto';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding-top:20vh;';
+  overlay.innerHTML = `
+    <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;padding:16px 20px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:8px;min-width:200px;">
+      <div style="font-size:12px;color:var(--muted);">목차 번호로 이동 (1~${links.length})</div>
+      <input id="toc-goto-input" type="number" min="1" max="${links.length}"
+        style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:14px;outline:none;width:100%;-moz-appearance:textfield;"
+        autocomplete="off" />
+    </div>
+  `;
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+  const input = document.getElementById('toc-goto-input');
+  input.focus();
+  input.addEventListener('keydown', e => {
+    e.stopPropagation();
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const n = parseInt(input.value, 10);
+      if (n >= 1 && n <= links.length) links[n - 1].click();
+      overlay.remove();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      overlay.remove();
+    }
+  });
+  input.addEventListener('keyup', e => {
+    e.stopPropagation();
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      overlay.remove();
+    }
+  });
+  input.addEventListener('blur', () => {
+    overlay.remove();
+  });
+}
+
 document.addEventListener('keydown', e => {
-  if (isComposing || e.keyCode === 229) return;
-  const inInput = document.activeElement === searchInput || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
   const code = e.code;
 
+  if (S.selectedSectionId && code === 'KeyG' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    const inInput = document.activeElement === searchInput || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
+    if (!inInput) { e.preventDefault(); showTocGoto(); return; }
+  }
+
+  if (isComposing || e.keyCode === 229) return;
+  const inInput = document.activeElement === searchInput || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
+
   if (e.key === 'Escape') {
+    if (document.getElementById('toc-goto')) {
+      document.getElementById('toc-goto').remove();
+      return;
+    }
     if (document.getElementById('kb-help')) {
       document.getElementById('kb-help').remove();
       return;
@@ -1609,12 +1699,8 @@ document.addEventListener('keydown', e => {
   }
   if (inInput) return;
 
-  if (S.selectedSectionId && !e.metaKey && !e.ctrlKey && !e.altKey) {
-    if (e.key >= '1' && e.key <= '9') {
-      e.preventDefault();
-      jumpToTocIndex(parseInt(e.key, 10) - 1);
-      return;
-    }
+  if (S.selectedSectionId && (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+    return;
   }
 
   const isGrid = !S.selectedSectionId;
@@ -1622,12 +1708,12 @@ document.addEventListener('keydown', e => {
 
   if (code === 'KeyJ' || e.key === 'ArrowDown') {
     e.preventDefault();
-    kbSetFocus(kbFocusIdx < 0 ? 0 : kbFocusIdx + cols);
+    kbSetFocus(kbFocusIdx < 0 ? 0 : kbFocusIdx + 1);
     return;
   }
   if (code === 'KeyK' || e.key === 'ArrowUp') {
     e.preventDefault();
-    kbSetFocus(kbFocusIdx < 0 ? 0 : kbFocusIdx - cols);
+    kbSetFocus(kbFocusIdx < 0 ? 0 : kbFocusIdx - 1);
     return;
   }
   if (code === 'KeyH' || e.key === 'ArrowLeft') {
