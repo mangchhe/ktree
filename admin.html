@@ -648,6 +648,10 @@ async function setDataSource(source) {
   toast(`데이터 소스 전환: ${source.toUpperCase()}`, 'success');
 }
 
+function generateId() {
+  return Math.random().toString(36).substring(2, 10);
+}
+
 async function login() {
   const email = document.getElementById('auth-email').value;
   const password = document.getElementById('auth-password').value;
@@ -766,7 +770,6 @@ function renderTopicDetail(id) {
       <div class="panel-body">
         <div style="font-size:12px;color:var(--muted);line-height:1.8">
           ${t.description ? `<p>${t.description}</p>` : '<p style="opacity:.4">설명 없음</p>'}
-          ${t.question ? `<p style="margin-top:8px"><strong>질문:</strong> ${t.question}</p>` : ''}
           <p style="margin-top:8px"><strong>Tags:</strong> ${(t.tags||[]).join(', ') || '없음'} · <strong>Author:</strong> ${t.author || '미지정'}</p>
         </div>
       </div>
@@ -843,33 +846,17 @@ function showTopicForm(editId) {
         <span class="panel-title">${isEdit ? '주제 편집' : '새 주제 추가'}</span>
       </div>
       <div class="panel-body">
-        <div class="form-row" style="margin-bottom:14px">
-          <div class="form-group">
-            <label class="form-label">ID (영문, 하이픈)</label>
-            <input class="form-input" id="f-id" value="${t?.id || ''}" placeholder="my-topic" ${isEdit ? 'disabled' : ''}>
-          </div>
-          <div class="form-group">
-            <label class="form-label">제목</label>
-            <input class="form-input" id="f-title" value="${t?.title || ''}" placeholder="주제 이름">
-          </div>
-        </div>
         <div class="form-group" style="margin-bottom:14px">
-          <label class="form-label">질문 (이 주제를 공부하게 된 계기)</label>
-          <input class="form-input" id="f-question" value="${t?.question || ''}" placeholder="왜 이걸 공부하게 됐나?">
+          <label class="form-label">제목</label>
+          <input class="form-input" id="f-title" value="${t?.title || ''}" placeholder="주제 이름">
         </div>
         <div class="form-group" style="margin-bottom:14px">
           <label class="form-label">설명</label>
           <input class="form-input" id="f-desc" value="${t?.description || ''}" placeholder="한 줄 설명">
         </div>
-        <div class="form-row" style="margin-bottom:14px">
-          <div class="form-group">
-            <label class="form-label">Author</label>
-            <input class="form-input" id="f-author" value="${t?.author || ''}" placeholder="github username">
-          </div>
-          <div class="form-group">
-            <label class="form-label">색상</label>
-            <input class="form-input" id="f-color" value="${t?.color || '#3498db'}" type="color" style="height:38px;padding:4px">
-          </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">색상</label>
+          <input class="form-input" id="f-color" value="${t?.color || '#3498db'}" type="color" style="height:38px;padding:4px">
         </div>
         <div class="form-group" style="margin-bottom:14px">
           <label class="form-label">Tags (Enter로 추가)</label>
@@ -897,15 +884,9 @@ function showSectionForm(topicId, editId) {
         <span class="panel-title">${isEdit ? '섹션 편집' : '새 섹션 추가'}</span>
       </div>
       <div class="panel-body">
-        <div class="form-row" style="margin-bottom:14px">
-          <div class="form-group">
-            <label class="form-label">ID</label>
-            <input class="form-input" id="f-id" value="${s?.id || ''}" placeholder="section-id" ${isEdit ? 'disabled' : ''}>
-          </div>
-          <div class="form-group">
-            <label class="form-label">제목</label>
-            <input class="form-input" id="f-title" value="${s?.title || ''}" placeholder="섹션 이름">
-          </div>
+        <div class="form-group" style="margin-bottom:14px">
+          <label class="form-label">제목</label>
+          <input class="form-input" id="f-title" value="${s?.title || ''}" placeholder="섹션 이름">
         </div>
         <div class="form-group" style="margin-bottom:14px">
           <label class="form-label">설명</label>
@@ -931,19 +912,9 @@ function showConceptForm(topicId, sectionId, editId) {
         <span class="panel-title">${isEdit ? '개념 편집' : '새 개념 추가'}</span>
       </div>
       <div class="panel-body">
-        <div class="form-row" style="margin-bottom:14px">
-          <div class="form-group">
-            <label class="form-label">ID</label>
-            <input class="form-input" id="f-id" value="${c?.id || ''}" placeholder="concept-id" ${isEdit ? 'disabled' : ''}>
-          </div>
-          <div class="form-group">
-            <label class="form-label">제목</label>
-            <input class="form-input" id="f-title" value="${c?.title || ''}" placeholder="개념 이름">
-          </div>
-        </div>
         <div class="form-group" style="margin-bottom:14px">
-          <label class="form-label">질문</label>
-          <input class="form-input" id="f-question" value="${c?.question || ''}" placeholder="이 개념을 공부하게 된 질문">
+          <label class="form-label">제목</label>
+          <input class="form-input" id="f-title" value="${c?.title || ''}" placeholder="개념 이름">
         </div>
         <div class="form-group" style="margin-bottom:14px">
           <label class="form-label">설명</label>
@@ -1037,17 +1008,15 @@ function cancelForm() {
 }
 
 async function saveTopic(editId) {
-  const id = editId || document.getElementById('f-id').value.trim();
+  const id = editId || generateId();
   const title = document.getElementById('f-title').value.trim();
-  if (!id || !title) { toast('ID와 제목은 필수입니다', 'error'); return; }
+  if (!title) { toast('제목은 필수입니다', 'error'); return; }
 
   const tags = getTagValues();
   const row = {
     id,
     title,
-    question: document.getElementById('f-question').value.trim() || null,
     description: document.getElementById('f-desc').value.trim() || null,
-    author: document.getElementById('f-author').value.trim() || null,
     color: document.getElementById('f-color').value || null,
     tags,
     sort_order: editId ? (topics.find(t=>t.id===editId)?.sort_order || 0) : topics.length,
@@ -1063,9 +1032,9 @@ async function saveTopic(editId) {
 }
 
 async function saveSection(topicId, editId) {
-  const id = editId || document.getElementById('f-id').value.trim();
+  const id = editId || generateId();
   const title = document.getElementById('f-title').value.trim();
-  if (!id || !title) { toast('ID와 제목은 필수입니다', 'error'); return; }
+  if (!title) { toast('제목은 필수입니다', 'error'); return; }
 
   const row = {
     id,
@@ -1085,16 +1054,15 @@ async function saveSection(topicId, editId) {
 }
 
 async function saveConcept(topicId, sectionId, editId) {
-  const id = editId || document.getElementById('f-id').value.trim();
+  const id = editId || generateId();
   const title = document.getElementById('f-title').value.trim();
-  if (!id || !title) { toast('ID와 제목은 필수입니다', 'error'); return; }
+  if (!title) { toast('제목은 필수입니다', 'error'); return; }
 
   const row = {
     id,
     section_id: sectionId,
     topic_id: topicId,
     title,
-    question: document.getElementById('f-question').value.trim() || null,
     description: document.getElementById('f-desc').value.trim() || null,
     level: document.getElementById('f-level').value || null,
     questions: getQuestions(),
