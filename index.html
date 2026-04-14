@@ -41,7 +41,15 @@ body {
   flex-shrink: 0;
   z-index: 200;
 }
-#logo { font-size: 15px; font-weight: 600; letter-spacing: -0.3px; white-space: nowrap; }
+#logo { 
+  font-size: 15px; font-weight: 600; letter-spacing: -0.3px; white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+#logo:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
 #logo em { color: var(--accent); font-style: normal; }
 #node-count {
   font-size: 11px; color: var(--muted);
@@ -55,7 +63,7 @@ body {
   position: relative;
 }
 #search-icon {
-  position: absolute; left: 10px; top: 50%;
+  position: absolute; left: 12px; top: 50%;
   transform: translateY(-50%);
   color: var(--muted); font-size: 13px;
   pointer-events: none;
@@ -65,8 +73,9 @@ body {
   background: rgba(255,255,255,0.05);
   border: 1px solid var(--border2);
   border-radius: 6px;
-  padding: 6px 34px 6px 30px;
-  color: var(--text); font-size: 13px;
+  padding: 6px 10px 6px 32px;
+  font-size: 13px;
+  color: var(--text);
   outline: none;
   transition: border-color 0.15s, background 0.15s;
 }
@@ -766,7 +775,7 @@ body {
 <body>
 
 <div id="header">
-  <div id="logo">knowledge<em>.</em>tree</div>
+  <div id="logo" onclick="resetView()">🌳 knowledge<em>.</em>tree</div>
   <div id="node-count"></div>
   <div id="search-wrap">
     <span id="search-icon">⌕</span>
@@ -942,6 +951,22 @@ function updateSidebarSections(topicId) {
   container.querySelectorAll('.sb-section').forEach(el => {
     el.addEventListener('click', () => openSection(topicId, el.dataset.section));
   });
+}
+
+function resetView() {
+  S.selectedTopicId = null;
+  S.selectedSectionId = null;
+  document.querySelectorAll('.sb-topic').forEach(el => {
+    el.classList.remove('active');
+    el.style.borderLeftColor = 'transparent';
+  });
+  S.metas.forEach(m => {
+    const secs = document.getElementById(`secs-${m.id}`);
+    const desc = document.getElementById(`desc-${m.id}`);
+    if (secs) secs.style.maxHeight = '0';
+    if (desc) desc.style.display = '';
+  });
+  renderLanding();
 }
 
 function updateSidebarConcepts(topicId, sectionId) {
