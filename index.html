@@ -111,6 +111,43 @@ body {
 .sr-empty { padding: 14px; font-size: 13px; color: var(--muted); text-align: center; }
 
 #model-status { font-size: 11px; color: var(--muted); white-space: nowrap; opacity: 0.6; }
+.mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--border2);
+  border-radius: 7px;
+}
+.mode-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.mode-btn.active {
+  background: rgba(255,255,255,0.12);
+  color: var(--text);
+}
+#private-logout-btn {
+  display: none;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#private-logout-btn:hover {
+  color: var(--text);
+  border-color: rgba(255,255,255,0.2);
+}
 #kb-help-btn {
   background: none; border: none; cursor: pointer;
   font-size: 14px; color: var(--muted); opacity: 0.4;
@@ -737,8 +774,14 @@ body {
     <div id="search-spinner"></div>
     <div id="search-results"></div>
   </div>
+  <button id="kb-help-btn" title="단축키" onclick="toggleKbHelp()">?</button>
+  <div style="flex:1"></div>
   <div id="model-status">모델 로딩 중…</div>
-  <button id="kb-help-btn" title="단축키" onclick="toggleKbHelp()">⌨</button>
+  <div class="mode-toggle" id="mode-toggle">
+    <button class="mode-btn" id="mode-public" onclick="switchAppMode('public')">PUBLIC</button>
+    <button class="mode-btn" id="mode-private" onclick="switchAppMode('private')">PRIVATE</button>
+  </div>
+  <button id="private-logout-btn" onclick="logoutPrivate()">로그아웃</button>
 </div>
 
 <div id="main">
@@ -758,6 +801,93 @@ const TOPIC_COLORS = ['#f0932b','#e55039','#3498db','#2ecc71','#9b59b6','#1abc9c
 const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
 const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const APP_MODE = new URLSearchParams(window.location.search).get('mode') === 'private' ? 'private' : 'public';
+const VIEW_TABLES = {
+  public: { topics: 'topics', sections: 'sections', concepts: 'concepts' },
+  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private' }
+};
+
+function getViewTables() {
+  return VIEW_TABLES[APP_MODE] || VIEW_TABLES.public;
+}
+
+function updateModeUI() {
+  const isPrivate = APP_MODE === 'private';
+  const pub = document.getElementById('mode-public');
+  const prv = document.getElementById('mode-private');
+  if (pub) pub.classList.toggle('active', !isPrivate);
+  if (prv) prv.classList.toggle('active', isPrivate);
+}
+
+function switchAppMode(mode) {
+  if (mode !== 'public' && mode !== 'private') return;
+  if (mode === APP_MODE) return;
+  const url = new URL(window.location.href);
+  if (mode === 'private') url.searchParams.set('mode', 'private');
+  else url.searchParams.delete('mode');
+  window.location.href = url.toString();
+}
+
+function setPrivateAuthUI(isLoggedIn) {
+  const btn = document.getElementById('private-logout-btn');
+  if (!btn) return;
+  btn.style.display = APP_MODE === 'private' && isLoggedIn ? 'inline-block' : 'none';
+}
+
+async function logoutPrivate() {
+  if (!sb) return;
+  await sb.auth.signOut();
+  window.location.reload();
+}
+
+function renderPrivateLogin(message = '') {
+  const inner = document.getElementById('content-inner');
+  if (!inner) return;
+  inner.classList.remove('wide');
+  inner.innerHTML = `
+    <div style="max-width:360px;margin:72px auto;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;">
+      <h3 style="margin:0 0 6px;font-size:16px;">Private 로그인</h3>
+      <p style="margin:0 0 16px;font-size:12px;color:var(--muted);line-height:1.6;">private 모드 접근에는 로그인이 필요합니다.</p>
+      <input id="private-login-email" type="email" placeholder="이메일" style="width:100%;padding:9px 11px;margin-bottom:8px;background:var(--bg);border:1px solid var(--border2);border-radius:6px;color:var(--text);outline:none;" />
+      <input id="private-login-password" type="password" placeholder="비밀번호" style="width:100%;padding:9px 11px;margin-bottom:10px;background:var(--bg);border:1px solid var(--border2);border-radius:6px;color:var(--text);outline:none;" />
+      <button id="private-login-btn" style="width:100%;padding:9px 12px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:700;cursor:pointer;">로그인</button>
+      <div id="private-login-error" style="margin-top:10px;font-size:12px;color:#ff7a7a;display:${message ? 'block' : 'none'}">${message || ''}</div>
+      <div style="margin-top:10px;font-size:11px;color:var(--muted);">기존 관리자 계정으로 로그인하세요.</div>
+    </div>
+  `;
+
+  const emailEl = document.getElementById('private-login-email');
+  const pwEl = document.getElementById('private-login-password');
+  const btnEl = document.getElementById('private-login-btn');
+  const errEl = document.getElementById('private-login-error');
+
+  const doLogin = async () => {
+    const email = (emailEl?.value || '').trim();
+    const password = pwEl?.value || '';
+    if (!email || !password) {
+      errEl.textContent = '이메일/비밀번호를 입력하세요.';
+      errEl.style.display = 'block';
+      return;
+    }
+    btnEl.disabled = true;
+    btnEl.textContent = '로그인 중...';
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) {
+      errEl.textContent = error.message;
+      errEl.style.display = 'block';
+      btnEl.disabled = false;
+      btnEl.textContent = '로그인';
+      return;
+    }
+    window.location.reload();
+  };
+
+  btnEl.addEventListener('click', doLogin);
+  pwEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+  emailEl.focus();
+}
 
 const S = {
   topicColors: {},
@@ -1470,13 +1600,26 @@ document.addEventListener('click', e => {
 });
 
 async function initFromSupabase() {
-  const { data: topics, error: tErr } = await sb.from('topics').select('*').order('sort_order');
+  if (APP_MODE === 'private') {
+    const { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      setPrivateAuthUI(false);
+      renderPrivateLogin();
+      return false;
+    }
+    setPrivateAuthUI(true);
+  } else {
+    setPrivateAuthUI(false);
+  }
+
+  const tNames = getViewTables();
+  const { data: topics, error: tErr } = await sb.from(tNames.topics).select('*').order('sort_order');
   if (tErr) throw tErr;
 
-  const { data: sections, error: sErr } = await sb.from('sections').select('*').order('sort_order');
+  const { data: sections, error: sErr } = await sb.from(tNames.sections).select('*').order('sort_order');
   if (sErr) throw sErr;
 
-  const { data: concepts, error: cErr } = await sb.from('concepts').select('*').order('sort_order');
+  const { data: concepts, error: cErr } = await sb.from(tNames.concepts).select('*').order('sort_order');
   if (cErr) throw cErr;
 
   for (const t of topics) {
@@ -1499,6 +1642,8 @@ async function initFromSupabase() {
     }
     S.topics.push(topicObj);
   }
+
+  return true;
 }
 
 async function initFromJSON() {
@@ -1760,14 +1905,27 @@ document.addEventListener('keydown', e => {
 
 async function init() {
   try {
+    updateModeUI();
+    setPrivateAuthUI(APP_MODE === 'private');
     if (sb && !SUPABASE_URL.includes('YOUR_PROJECT')) {
-      await initFromSupabase();
+      const loaded = await initFromSupabase();
+      if (!loaded) return;
       console.log('✅ Loaded from Supabase');
     } else {
+      if (APP_MODE === 'private') {
+        setPrivateAuthUI(true);
+        renderPrivateLogin('private 모드는 Supabase 연결이 필요합니다.');
+        return;
+      }
       await initFromJSON();
       console.log('✅ Loaded from JSON (Supabase not configured)');
     }
   } catch (e) {
+    if (APP_MODE === 'private') {
+      setPrivateAuthUI(true);
+      renderPrivateLogin('private 데이터 로딩에 실패했습니다. 권한 또는 정책(RLS)을 확인하세요.');
+      return;
+    }
     console.warn('Supabase failed, falling back to JSON:', e);
     S.metas = []; S.topics = []; S.topicColors = {};
     await initFromJSON();
