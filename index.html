@@ -111,6 +111,12 @@ body {
 .sr-empty { padding: 14px; font-size: 13px; color: var(--muted); text-align: center; }
 
 #model-status { font-size: 11px; color: var(--muted); white-space: nowrap; opacity: 0.6; }
+#kb-help-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 14px; color: var(--muted); opacity: 0.4;
+  padding: 4px; transition: opacity 0.15s, color 0.15s;
+}
+#kb-help-btn:hover { opacity: 1; color: var(--text); }
 
 #main {
   display: flex;
@@ -278,10 +284,13 @@ body {
   height: 3px;
   border-radius: 10px 10px 0 0;
 }
-.landing-card:hover {
+.landing-card:hover, .landing-card.kb-focus {
   border-color: var(--border2);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.landing-card.kb-focus {
+  border-color: rgba(255,255,255,0.15);
 }
 .landing-card-icon {
   width: 32px; height: 32px;
@@ -359,7 +368,8 @@ body {
   transition: border-color 0.15s, background 0.12s;
   display: flex; flex-direction: column; gap: 10px;
 }
-.sc-card:hover { border-color: var(--border2); background: var(--surface2); }
+.sc-card:hover, .sc-card.kb-focus { border-color: var(--border2); background: var(--surface2); }
+.sc-card.kb-focus { border-color: rgba(255,255,255,0.15); }
 .sc-card-header {
   display: flex; align-items: center; gap: 8px;
 }
@@ -464,6 +474,12 @@ body {
 .toc-link:hover { color: var(--text); }
 .toc-link.active { color: var(--text); font-weight: 500; }
 
+.concept-section.kb-focus {
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  box-shadow: inset 2px 0 0 rgba(255,255,255,0.12);
+  padding-left: 6px;
+}
 .concept-section {
   padding: 32px 0;
   scroll-margin-top: 16px;
@@ -619,6 +635,55 @@ body {
   max-width: 200px; line-height: 1.5; z-index: 300;
 }
 #tooltip.show { opacity: 1; }
+
+.kb-help-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 600;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.kb-help-panel {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 28px 32px;
+  min-width: 320px;
+  max-width: 400px;
+}
+.kb-help-title {
+  font-size: 14px; font-weight: 600;
+  margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.kb-help-close {
+  font-size: 12px; color: var(--muted);
+  cursor: pointer;
+  background: none; border: none; padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.1s;
+}
+.kb-help-close:hover { color: var(--text); }
+.kb-help-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.kb-help-list li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 12px; color: var(--muted);
+}
+.kb-help-key {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 28px; height: 22px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  font-size: 11px; font-weight: 600; color: var(--text);
+  padding: 0 6px;
+  font-family: 'SFMono-Regular', monospace;
+}
+.kb-help-desc { flex: 1; }
 </style>
 </head>
 <body>
@@ -633,6 +698,7 @@ body {
     <div id="search-results"></div>
   </div>
   <div id="model-status">모델 로딩 중…</div>
+  <button id="kb-help-btn" title="단축키" onclick="toggleKbHelp()">⌨</button>
 </div>
 
 <div id="main">
@@ -729,6 +795,7 @@ function updateSidebarConcepts(topicId, sectionId) {
 }
 
 function renderLanding() {
+  kbClearFocus();
   const inner = document.getElementById('content-inner');
   inner.classList.remove('wide');
   if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
@@ -767,9 +834,11 @@ function renderLanding() {
     </div>
   `;
   document.getElementById('content').scrollTop = 0;
+  requestAnimationFrame(() => kbSetFocus(0));
 }
 
 function selectTopic(id) {
+  kbClearFocus();
   S.selectedTopicId = id;
   S.selectedSectionId = null;
   document.querySelectorAll('.sb-topic').forEach(el => {
@@ -1293,6 +1362,187 @@ async function initFromJSON() {
     S.topics.push(data);
   }
 }
+
+let kbFocusIdx = -1;
+
+function getFocusableItems() {
+  if (!S.selectedTopicId && !S.selectedSectionId) {
+    return document.querySelectorAll('.landing-card');
+  }
+  if (S.selectedTopicId && !S.selectedSectionId) {
+    return document.querySelectorAll('.sc-card');
+  }
+  return document.querySelectorAll('.concept-section');
+}
+
+function kbClearFocus() {
+  kbFocusIdx = -1;
+  document.querySelectorAll('.landing-card.kb-focus, .sc-card.kb-focus, .concept-section.kb-focus').forEach(el => {
+    el.classList.remove('kb-focus');
+  });
+}
+
+function kbSetFocus(idx) {
+  const items = getFocusableItems();
+  if (items.length === 0) return;
+  kbClearFocus();
+  kbFocusIdx = Math.max(0, Math.min(idx, items.length - 1));
+  const el = items[kbFocusIdx];
+  el.classList.add('kb-focus');
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function kbOpenFocused() {
+  const items = getFocusableItems();
+  if (kbFocusIdx < 0 || kbFocusIdx >= items.length) return;
+  items[kbFocusIdx].click();
+  kbClearFocus();
+}
+
+function kbGoBack() {
+  if (document.getElementById('search-results').classList.contains('show')) {
+    hideResults();
+    document.getElementById('search-input').blur();
+    return;
+  }
+  if (document.activeElement === searchInput) {
+    searchInput.blur();
+    return;
+  }
+  if (S.selectedSectionId) {
+    backToTopic();
+  } else if (S.selectedTopicId) {
+    S.selectedTopicId = null;
+    document.querySelectorAll('.sb-topic').forEach(el => {
+      el.classList.remove('active');
+      el.style.borderLeftColor = 'transparent';
+    });
+    S.metas.forEach(m => {
+      const secs = document.getElementById(`secs-${m.id}`);
+      const desc = document.getElementById(`desc-${m.id}`);
+      if (secs) secs.style.maxHeight = '0';
+      if (desc) desc.style.display = '';
+    });
+    renderLanding();
+  }
+}
+
+function getGridCols() {
+  const items = getFocusableItems();
+  if (items.length === 0) return 1;
+  const first = items[0].getBoundingClientRect();
+  const second = items.length > 1 ? items[1].getBoundingClientRect() : null;
+  if (second && Math.abs(first.top - second.top) < 5) return 2;
+  const third = items.length > 2 ? items[2].getBoundingClientRect() : null;
+  if (third && Math.abs(first.top - third.top) < 5) return 3;
+  const fourth = items.length > 3 ? items[3].getBoundingClientRect() : null;
+  if (fourth && Math.abs(first.top - fourth.top) < 5) return 4;
+  return Math.abs(first.top - (second || first).top) < 5 ? 2 : 1;
+}
+
+function toggleKbHelp() {
+  const existing = document.getElementById('kb-help');
+  if (existing) { existing.remove(); return; }
+  const overlay = document.createElement('div');
+  overlay.id = 'kb-help';
+  overlay.className = 'kb-help-overlay';
+  overlay.innerHTML = `
+    <div class="kb-help-panel">
+      <div class="kb-help-title">
+        키보드 단축키
+        <button class="kb-help-close" onclick="document.getElementById('kb-help').remove()">Esc</button>
+      </div>
+      <ul class="kb-help-list">
+        <li><span class="kb-help-key">s</span><span class="kb-help-desc">개념 검색</span></li>
+        <li><span class="kb-help-key">j</span> <span class="kb-help-key">↓</span><span class="kb-help-desc">다음 항목</span></li>
+        <li><span class="kb-help-key">k</span> <span class="kb-help-key">↑</span><span class="kb-help-desc">이전 항목</span></li>
+        <li><span class="kb-help-key">h</span> <span class="kb-help-key">←</span><span class="kb-help-desc">왼쪽 / 뒤로가기</span></li>
+        <li><span class="kb-help-key">l</span> <span class="kb-help-key">→</span><span class="kb-help-desc">오른쪽 / 열기</span></li>
+        <li><span class="kb-help-key">Enter</span><span class="kb-help-desc">항목 열기</span></li>
+        <li><span class="kb-help-key">Esc</span><span class="kb-help-desc">닫기 / 뒤로가기</span></li>
+      </ul>
+    </div>
+  `;
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.remove();
+  });
+  document.body.appendChild(overlay);
+}
+
+document.addEventListener('keydown', e => {
+  if (isComposing || e.keyCode === 229) return;
+  const inInput = document.activeElement === searchInput || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
+  const code = e.code;
+
+  if (e.key === 'Escape') {
+    if (document.getElementById('kb-help')) {
+      document.getElementById('kb-help').remove();
+      return;
+    }
+    kbGoBack();
+    return;
+  }
+  if (code === 'KeyS' && !inInput) {
+    e.preventDefault();
+    searchInput.focus();
+    return;
+  }
+  if (inInput) return;
+
+  const isGrid = !S.selectedSectionId;
+  const cols = isGrid ? getGridCols() : 1;
+
+  if (code === 'KeyJ' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    kbSetFocus(kbFocusIdx < 0 ? 0 : kbFocusIdx + cols);
+    return;
+  }
+  if (code === 'KeyK' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    kbSetFocus(kbFocusIdx < 0 ? 0 : kbFocusIdx - cols);
+    return;
+  }
+  if (code === 'KeyH' || e.key === 'ArrowLeft') {
+    if (isGrid && kbFocusIdx > 0) {
+      e.preventDefault();
+      kbSetFocus(kbFocusIdx - 1);
+    } else {
+      kbGoBack();
+    }
+    return;
+  }
+  if (code === 'KeyL') {
+    if (isGrid) {
+      const items = getFocusableItems();
+      if (kbFocusIdx < 0) {
+        e.preventDefault();
+        kbSetFocus(0);
+      } else if (kbFocusIdx < items.length - 1) {
+        e.preventDefault();
+        kbSetFocus(kbFocusIdx + 1);
+      } else {
+        kbOpenFocused();
+      }
+    } else {
+      kbOpenFocused();
+    }
+    return;
+  }
+  if (e.key === 'ArrowRight') {
+    if (isGrid) {
+      e.preventDefault();
+      if (kbFocusIdx < 0) kbSetFocus(0);
+      else kbSetFocus(kbFocusIdx + 1);
+    } else {
+      kbOpenFocused();
+    }
+    return;
+  }
+  if (e.key === 'Enter') {
+    if (kbFocusIdx >= 0) kbOpenFocused();
+    return;
+  }
+});
 
 async function init() {
   try {
