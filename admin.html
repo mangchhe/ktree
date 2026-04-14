@@ -81,6 +81,30 @@ body {
   background: var(--danger);
 }
 .status-dot.connected { background: var(--accent); }
+.source-toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 3px;
+  border: 1px solid var(--border2);
+  border-radius: 7px;
+  margin-right: 8px;
+}
+.source-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 5px 9px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.source-btn.active {
+  background: rgba(34,197,94,0.16);
+  color: var(--accent);
+}
 .admin-link {
   font-size: 12px;
   color: var(--muted);
@@ -544,6 +568,10 @@ body {
     <span class="status-dot" id="status-dot"></span>
     <span id="status-text">연결 안 됨</span>
   </div>
+  <div class="source-toggle" id="source-toggle">
+    <button class="source-btn active" id="source-public" onclick="setDataSource('public')">PUBLIC</button>
+    <button class="source-btn" id="source-private" onclick="setDataSource('private')">PRIVATE</button>
+  </div>
   <a href="index.html" class="admin-link">← 메인으로</a>
   <button class="btn btn-sm" id="logout-btn" style="display:none" onclick="logout()">로그아웃</button>
 </div>
@@ -591,6 +619,34 @@ let topics = [];
 let sections = [];
 let concepts = [];
 let selectedItem = null;
+let dataSource = 'public';
+
+const TABLES = {
+  public: { topics: 'topics', sections: 'sections', concepts: 'concepts' },
+  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private' }
+};
+
+function getTables() {
+  return TABLES[dataSource] || TABLES.public;
+}
+
+function updateSourceUI() {
+  const isPublic = dataSource === 'public';
+  const pubBtn = document.getElementById('source-public');
+  const prvBtn = document.getElementById('source-private');
+  if (pubBtn) pubBtn.classList.toggle('active', isPublic);
+  if (prvBtn) prvBtn.classList.toggle('active', !isPublic);
+}
+
+async function setDataSource(source) {
+  if (!TABLES[source] || source === dataSource) return;
+  dataSource = source;
+  updateSourceUI();
+  selectedItem = null;
+  await loadAll();
+  document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
+  toast(`데이터 소스 전환: ${source.toUpperCase()}`, 'success');
+}
 
 async function login() {
   const email = document.getElementById('auth-email').value;
@@ -614,6 +670,7 @@ async function logout() {
   document.getElementById('admin-view').style.display = 'none';
   document.getElementById('auth-view').style.display = 'block';
   document.getElementById('logout-btn').style.display = 'none';
+  document.getElementById('source-toggle').style.display = 'none';
   updateStatus(false);
 }
 
@@ -629,20 +686,24 @@ function showAdmin() {
   document.getElementById('auth-view').style.display = 'none';
   document.getElementById('admin-view').style.display = 'block';
   document.getElementById('logout-btn').style.display = '';
+  document.getElementById('source-toggle').style.display = 'flex';
+  updateSourceUI();
   updateStatus(true);
   loadAll();
 }
 
 function updateStatus(connected) {
   document.getElementById('status-dot').classList.toggle('connected', connected);
-  document.getElementById('status-text').textContent = connected ? 'Supabase 연결됨' : '연결 안 됨';
+  document.getElementById('status-text').textContent = connected ? `Supabase 연결됨 · ${dataSource.toUpperCase()}` : '연결 안 됨';
 }
 
 async function loadAll() {
+  updateStatus(!!currentUser);
+  const tNames = getTables();
   const [t, s, c] = await Promise.all([
-    sb.from('topics').select('*').order('sort_order'),
-    sb.from('sections').select('*').order('sort_order'),
-    sb.from('concepts').select('*').order('sort_order'),
+    sb.from(tNames.topics).select('*').order('sort_order'),
+    sb.from(tNames.sections).select('*').order('sort_order'),
+    sb.from(tNames.concepts).select('*').order('sort_order'),
   ]);
   if (t.error || s.error || c.error) { toast('데이터 로딩 실패', 'error'); return; }
   topics = t.data;
@@ -992,7 +1053,8 @@ async function saveTopic(editId) {
     sort_order: editId ? (topics.find(t=>t.id===editId)?.sort_order || 0) : topics.length,
   };
 
-  const { error } = await sb.from('topics').upsert(row);
+  const { topics: topicsTable } = getTables();
+  const { error } = await sb.from(topicsTable).upsert(row);
   if (error) { toast(`저장 실패: ${error.message}`, 'error'); return; }
   toast(editId ? '주제 수정됨' : '주제 추가됨', 'success');
   selectedItem = { type: 'topic', id };
@@ -1013,7 +1075,8 @@ async function saveSection(topicId, editId) {
     sort_order: editId ? (sections.find(s=>s.id===editId)?.sort_order || 0) : sections.filter(s=>s.topic_id===topicId).length,
   };
 
-  const { error } = await sb.from('sections').upsert(row);
+  const { sections: sectionsTable } = getTables();
+  const { error } = await sb.from(sectionsTable).upsert(row);
   if (error) { toast(`저장 실패: ${error.message}`, 'error'); return; }
   toast(editId ? '섹션 수정됨' : '섹션 추가됨', 'success');
   selectedItem = { type: 'section', id };
@@ -1039,7 +1102,8 @@ async function saveConcept(topicId, sectionId, editId) {
     sort_order: parseInt(document.getElementById('f-sort').value) || 0,
   };
 
-  const { error } = await sb.from('concepts').upsert(row);
+  const { concepts: conceptsTable } = getTables();
+  const { error } = await sb.from(conceptsTable).upsert(row);
   if (error) { toast(`저장 실패: ${error.message}`, 'error'); return; }
   toast(editId ? '개념 수정됨' : '개념 추가됨', 'success');
   selectedItem = { type: 'section', id: sectionId };
@@ -1067,7 +1131,9 @@ function closeDialog() { document.getElementById('dialog-root').innerHTML = ''; 
 
 async function doDelete(type, id) {
   closeDialog();
-  const { error } = await sb.from(type === 'topic' ? 'topics' : type === 'section' ? 'sections' : 'concepts').delete().eq('id', id);
+  const tNames = getTables();
+  const targetTable = type === 'topic' ? tNames.topics : type === 'section' ? tNames.sections : tNames.concepts;
+  const { error } = await sb.from(targetTable).delete().eq('id', id);
   if (error) { toast(`삭제 실패: ${error.message}`, 'error'); return; }
   toast('삭제됨', 'success');
 

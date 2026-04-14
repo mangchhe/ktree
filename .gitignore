@@ -1,3 +1,4 @@
 node_modules/
 migrate-to-supabase.mjs
 supabase-schema.sql
+TWO_TRACK_EXECUTION_PLAN.md
