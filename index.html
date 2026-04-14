@@ -284,13 +284,13 @@ body {
   height: 3px;
   border-radius: 10px 10px 0 0;
 }
-.landing-card:hover, .landing-card.kb-focus {
+.landing-card:hover {
   border-color: var(--border2);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 .landing-card.kb-focus {
-  border-color: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.1);
 }
 .landing-card-icon {
   width: 32px; height: 32px;
@@ -368,8 +368,8 @@ body {
   transition: border-color 0.15s, background 0.12s;
   display: flex; flex-direction: column; gap: 10px;
 }
-.sc-card:hover, .sc-card.kb-focus { border-color: var(--border2); background: var(--surface2); }
-.sc-card.kb-focus { border-color: rgba(255,255,255,0.15); }
+.sc-card:hover { border-color: var(--border2); background: var(--surface2); }
+.sc-card.kb-focus { border-color: rgba(255,255,255,0.1); }
 .sc-card-header {
   display: flex; align-items: center; gap: 8px;
 }
@@ -475,10 +475,10 @@ body {
 .toc-link.active { color: var(--text); font-weight: 500; }
 
 .concept-section.kb-focus {
-  background: rgba(255,255,255,0.02);
-  border-radius: 8px;
-  box-shadow: inset 2px 0 0 rgba(255,255,255,0.12);
-  padding-left: 6px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding-left: 0;
 }
 .concept-section {
   padding: 32px 0;
@@ -684,6 +684,39 @@ body {
   font-family: 'SFMono-Regular', monospace;
 }
 .kb-help-desc { flex: 1; }
+
+.search-page { max-width: 680px; padding: 20px 0; }
+.search-page-header {
+  font-size: 13px; color: var(--muted);
+  margin-bottom: 16px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.search-page-header strong { color: var(--text); }
+.search-page-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.search-page-item:hover { background: rgba(255,255,255,0.02); }
+.search-page-item.kb-focus { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.15); }
+.search-page-item:last-child { border-bottom: none; }
+.search-page-title {
+  font-size: 15px; font-weight: 600; color: var(--text);
+  margin-bottom: 4px;
+}
+.search-page-question {
+  font-size: 13px; color: var(--accent); opacity: 0.8;
+  margin-bottom: 4px;
+}
+.search-page-crumb {
+  font-size: 11px; color: var(--muted);
+}
+.search-page-crumb .sp-topic { color: var(--accent); opacity: 0.7; }
+.search-page-empty {
+  padding: 40px 0; text-align: center;
+  color: var(--muted); font-size: 14px;
+}
 </style>
 </head>
 <body>
@@ -1045,6 +1078,7 @@ let currentResults = [];
 let activeResultIdx = -1;
 let isSearching = false;
 let pendingQuery = null;
+let pendingResolve = null;
 let relatedMap = new Map();
 const contentCache = new Map();
 
@@ -1161,7 +1195,7 @@ function cosineSim(a, b) {
 async function runSearch(query) {
   if (!embedder || !query.trim()) { hideResults(); return; }
 
-  if (isSearching) { pendingQuery = query; return; }
+  if (isSearching) { pendingQuery = query; return new Promise(r => { pendingResolve = r; }); }
 
   isSearching = true;
   document.getElementById('search-spinner').classList.add('show');
@@ -1192,6 +1226,9 @@ async function runSearch(query) {
       const q = pendingQuery;
       pendingQuery = null;
       runSearch(q);
+    } else if (pendingResolve) {
+      pendingResolve();
+      pendingResolve = null;
     }
   }
 }
@@ -1258,6 +1295,48 @@ function scrollToCard(conceptId) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function renderSearchPage(query, results) {
+  kbClearFocus();
+  const inner = document.getElementById('content-inner');
+  inner.classList.remove('wide');
+  if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+
+  const color = topicColor(S.selectedTopicId || S.metas[0]?.id);
+
+  if (results.length === 0) {
+    inner.innerHTML = `
+      <div class="search-page">
+        <div class="search-page-header">"<strong>${query}</strong>" 검색 결과</div>
+        <div class="search-page-empty">관련 개념을 찾지 못했습니다</div>
+      </div>`;
+  } else {
+    inner.innerHTML = `
+      <div class="search-page">
+        <div class="search-page-header">"<strong>${query}</strong>" — ${results.length}개 결과</div>
+        ${results.map(r => `
+          <div class="search-page-item" data-cid="${r.conceptId}" data-tid="${r.topicId}" data-sid="${r.sectionId}">
+            <div class="search-page-title">${r.title}</div>
+            ${r.matchedQuestion ? `<div class="search-page-question">Q. ${r.matchedQuestion}</div>` : ''}
+            <div class="search-page-crumb"><span class="sp-topic">${r.topicTitle}</span> › ${r.sectionTitle}</div>
+          </div>
+        `).join('')}
+      </div>`;
+    inner.querySelectorAll('.search-page-item').forEach(el => {
+      el.addEventListener('click', () => {
+        navigateTo({
+          conceptId: el.dataset.cid,
+          topicId: el.dataset.tid,
+          sectionId: el.dataset.sid,
+          title: el.querySelector('.search-page-title').textContent,
+          topicTitle: el.querySelector('.sp-topic').textContent,
+          sectionTitle: el.querySelector('.search-page-crumb').textContent.split('› ').pop()
+        });
+      });
+    });
+  }
+  document.getElementById('content').scrollTop = 0;
+}
+
 async function initEmbedder() {
   try {
     const { pipeline, env } = await import('https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2');
@@ -1312,8 +1391,24 @@ searchInput.addEventListener('keydown', e => {
     return;
   }
   if (e.key === 'Enter') {
+    e.preventDefault();
+    const q = e.target.value.trim();
+    if (!q) return;
     if (activeResultIdx >= 0 && currentResults[activeResultIdx]) {
       navigateTo(currentResults[activeResultIdx]);
+    } else {
+      const savedResults = [...currentResults];
+      hideResults();
+      document.getElementById('search-results').classList.remove('show');
+      e.target.blur();
+      if (savedResults.length > 0) {
+        renderSearchPage(q, savedResults);
+      } else {
+        runSearch(q).then(() => {
+          document.getElementById('search-results').classList.remove('show');
+          renderSearchPage(q, currentResults);
+        });
+      }
     }
   }
 });
@@ -1366,6 +1461,8 @@ async function initFromJSON() {
 let kbFocusIdx = -1;
 
 function getFocusableItems() {
+  const sp = document.querySelector('.search-page');
+  if (sp) return sp.querySelectorAll('.search-page-item');
   if (!S.selectedTopicId && !S.selectedSectionId) {
     return document.querySelectorAll('.landing-card');
   }
@@ -1377,7 +1474,7 @@ function getFocusableItems() {
 
 function kbClearFocus() {
   kbFocusIdx = -1;
-  document.querySelectorAll('.landing-card.kb-focus, .sc-card.kb-focus, .concept-section.kb-focus').forEach(el => {
+  document.querySelectorAll('.kb-focus').forEach(el => {
     el.classList.remove('kb-focus');
   });
 }
@@ -1397,6 +1494,27 @@ function kbOpenFocused() {
   if (kbFocusIdx < 0 || kbFocusIdx >= items.length) return;
   items[kbFocusIdx].click();
   kbClearFocus();
+}
+
+function getTocLinks() {
+  return Array.from(document.querySelectorAll('.toc-link'));
+}
+
+function getActiveTocIndex() {
+  const links = getTocLinks();
+  if (links.length === 0) return -1;
+  const activeIdx = links.findIndex(el => el.classList.contains('active'));
+  if (activeIdx >= 0) return activeIdx;
+  return 0;
+}
+
+function jumpToTocIndex(idx) {
+  const links = getTocLinks();
+  if (links.length === 0) return;
+  const clamped = Math.max(0, Math.min(idx, links.length - 1));
+  const id = links[clamped].id.replace('toc-', '');
+  const row = document.getElementById(`row-${id}`);
+  if (row) row.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function kbGoBack() {
@@ -1458,6 +1576,7 @@ function toggleKbHelp() {
         <li><span class="kb-help-key">k</span> <span class="kb-help-key">↑</span><span class="kb-help-desc">이전 항목</span></li>
         <li><span class="kb-help-key">h</span> <span class="kb-help-key">←</span><span class="kb-help-desc">왼쪽 / 뒤로가기</span></li>
         <li><span class="kb-help-key">l</span> <span class="kb-help-key">→</span><span class="kb-help-desc">오른쪽 / 열기</span></li>
+        <li><span class="kb-help-key">1</span>~<span class="kb-help-key">9</span><span class="kb-help-desc">목차 바로 이동</span></li>
         <li><span class="kb-help-key">Enter</span><span class="kb-help-desc">항목 열기</span></li>
         <li><span class="kb-help-key">Esc</span><span class="kb-help-desc">닫기 / 뒤로가기</span></li>
       </ul>
@@ -1484,10 +1603,19 @@ document.addEventListener('keydown', e => {
   }
   if (code === 'KeyS' && !inInput) {
     e.preventDefault();
+    searchInput.value = '';
     searchInput.focus();
     return;
   }
   if (inInput) return;
+
+  if (S.selectedSectionId && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    if (e.key >= '1' && e.key <= '9') {
+      e.preventDefault();
+      jumpToTocIndex(parseInt(e.key, 10) - 1);
+      return;
+    }
+  }
 
   const isGrid = !S.selectedSectionId;
   const cols = isGrid ? getGridCols() : 1;
