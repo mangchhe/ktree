@@ -136,26 +136,49 @@ body {
 }
 .sb-topic {
   display: flex; align-items: center; gap: 8px;
-  padding: 7px 14px;
+  padding: 8px 14px;
   cursor: pointer; user-select: none;
   font-size: 13px; font-weight: 500; color: var(--muted);
   border-left: 2px solid transparent;
-  transition: background 0.1s, color 0.1s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .sb-topic:hover { background: rgba(255,255,255,0.03); color: var(--text); }
-.sb-topic.active { color: var(--text); border-left-color: var(--accent); background: rgba(63,185,80,0.06); }
-.sb-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.sb-topic.active { color: var(--text); background: rgba(63,185,80,0.06); }
+.sb-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; transition: box-shadow 0.2s; }
+.sb-topic.active .sb-dot { box-shadow: 0 0 6px currentColor; }
+.sb-topic-count {
+  margin-left: auto;
+  font-size: 10px; color: var(--muted); opacity: 0.5;
+  background: rgba(255,255,255,0.04);
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+.sb-topic-desc {
+  font-size: 10px; color: var(--muted); opacity: 0.6;
+  padding: 0 14px 6px 29px;
+  line-height: 1.4;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
 
-.sb-sections { overflow: hidden; }
+.sb-sections {
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
 .sb-section {
   display: flex; align-items: center; gap: 6px;
-  padding: 5px 14px 5px 24px;
+  padding: 5px 14px 5px 28px;
   font-size: 12px; color: var(--muted);
   cursor: pointer;
-  transition: color 0.1s;
+  transition: color 0.1s, background 0.1s;
+  border-left: 2px solid transparent;
 }
-.sb-section:hover { color: var(--text); }
-.sb-section::before { content: '›'; opacity: 0.5; }
+.sb-section:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+.sb-section.active { color: var(--text); background: rgba(255,255,255,0.03); }
+.sb-section::before { content: '›'; opacity: 0.4; font-size: 10px; }
+.sb-section-count {
+  margin-left: auto;
+  font-size: 9px; opacity: 0.4;
+}
 
 #content {
   flex: 1;
@@ -203,6 +226,106 @@ body {
   display: flex; align-items: center; justify-content: center;
   height: 100%;
   font-size: 13px; color: var(--muted);
+}
+
+.landing {
+  display: flex; flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+.landing-hero {
+  margin-bottom: 48px;
+}
+.landing-logo {
+  font-size: 32px; font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+.landing-logo em { color: var(--accent); font-style: normal; }
+.landing-tagline {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.7;
+  max-width: 420px;
+}
+.landing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+.landing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  width: 260px;
+  flex-shrink: 0;
+}
+.landing-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 10px 10px 0 0;
+}
+.landing-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.landing-card-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  margin-bottom: 12px;
+}
+.landing-card-title {
+  font-size: 15px; font-weight: 600;
+  margin-bottom: 4px;
+}
+.landing-card-desc {
+  font-size: 12px; color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.landing-card-meta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; color: var(--muted);
+}
+.landing-card-count {
+  background: rgba(255,255,255,0.05);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.landing-card-tags {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  margin-top: 10px;
+}
+.landing-card-tag {
+  font-size: 10px; color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+.landing-anim {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: landingIn 0.5s ease forwards;
+}
+@keyframes landingIn {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .topic-header {
@@ -298,13 +421,21 @@ body {
 }
 .sb-back:hover { color: var(--text); }
 .sb-concept {
-  display: block;
-  padding: 4px 14px 4px 24px;
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 14px 4px 28px;
   font-size: 11px; color: var(--muted);
   cursor: pointer; transition: color 0.1s;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .sb-concept:hover { color: var(--text); }
+.sb-concept-level {
+  font-size: 8px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.3px;
+  padding: 1px 4px; border-radius: 2px;
+  flex-shrink: 0;
+}
+.sb-concept-level.basic { background: rgba(63,185,80,0.12); color: #3fb950; }
+.sb-concept-level.deep { background: rgba(155,89,182,0.15); color: #c084fc; }
 
 .toc-label {
   font-size: 10px; font-weight: 600;
@@ -535,13 +666,18 @@ function topicColor(id) { return S.topicColors[id] || '#7c6af7'; }
 function buildSidebar() {
   const html = `
     <div class="sb-label">Topics</div>
-    ${S.metas.map(m => `
-      <div class="sb-topic" id="tab-${m.id}">
+    ${S.metas.map(m => {
+      const topic = S.topics.find(t => t.id === m.id);
+      const nodeCount = topic ? (topic.children || []).reduce((acc, s) => acc + 1 + (s.children || []).length, 1) : 0;
+      return `
+      <div class="sb-topic" id="tab-${m.id}" style="--topic-color:${topicColor(m.id)}">
         <div class="sb-dot" style="background:${topicColor(m.id)}"></div>
         ${m.title}
+        <span class="sb-topic-count">${nodeCount}</span>
       </div>
-      <div class="sb-sections" id="secs-${m.id}" style="display:none"></div>
-    `).join('')}
+      <div class="sb-topic-desc" id="desc-${m.id}">${m.description || ''}</div>
+      <div class="sb-sections" id="secs-${m.id}" style="max-height:0"></div>
+    `;}).join('')}
   `;
   document.getElementById('sidebar').innerHTML = html;
   S.metas.forEach(m => {
@@ -551,16 +687,19 @@ function buildSidebar() {
 
 function updateSidebarSections(topicId) {
   S.metas.forEach(m => {
-    const el = document.getElementById(`secs-${m.id}`);
-    if (el) el.style.display = 'none';
+    const secs = document.getElementById(`secs-${m.id}`);
+    const desc = document.getElementById(`desc-${m.id}`);
+    if (secs) secs.style.maxHeight = '0';
+    if (desc) desc.style.display = m.id === topicId ? 'none' : '';
   });
   const topic = S.topics.find(t => t.id === topicId);
   const container = document.getElementById(`secs-${topicId}`);
   if (!topic || !container) return;
-  container.innerHTML = (topic.children || []).map(sec => `
-    <div class="sb-section" data-section="${sec.id}">${sec.title}</div>
-  `).join('');
-  container.style.display = 'block';
+  container.innerHTML = (topic.children || []).map(sec => {
+    const cnt = (sec.children || []).length;
+    return `<div class="sb-section" data-section="${sec.id}">${sec.title}<span class="sb-section-count">${cnt}</span></div>`;
+  }).join('');
+  container.style.maxHeight = container.scrollHeight + 200 + 'px';
   container.querySelectorAll('.sb-section').forEach(el => {
     el.addEventListener('click', () => openSection(topicId, el.dataset.section));
   });
@@ -568,8 +707,8 @@ function updateSidebarSections(topicId) {
 
 function updateSidebarConcepts(topicId, sectionId) {
   S.metas.forEach(m => {
-    const el = document.getElementById(`secs-${m.id}`);
-    if (el) el.style.display = 'none';
+    const secs = document.getElementById(`secs-${m.id}`);
+    if (secs) secs.style.maxHeight = '0';
   });
   const topic = S.topics.find(t => t.id === topicId);
   const section = (topic?.children || []).find(s => s.id === sectionId);
@@ -577,23 +716,71 @@ function updateSidebarConcepts(topicId, sectionId) {
   if (!section || !container) return;
   container.innerHTML = `
     <div class="sb-back" id="sb-back-btn">← 목록으로</div>
-    ${(section.children || []).map(c => `
-      <div class="sb-concept" data-id="${c.id}">${c.title}</div>
-    `).join('')}
+    ${(section.children || []).map(c => {
+      const levelBadge = c.level ? `<span class="sb-concept-level ${c.level}">${c.level === 'basic' ? 'B' : 'D'}</span>` : '';
+      return `<div class="sb-concept" data-id="${c.id}">${levelBadge}${c.title}</div>`;
+    }).join('')}
   `;
-  container.style.display = 'block';
+  container.style.maxHeight = container.scrollHeight + 200 + 'px';
   container.querySelector('#sb-back-btn').addEventListener('click', backToTopic);
   container.querySelectorAll('.sb-concept').forEach(el => {
     el.addEventListener('click', () => scrollToCard(el.dataset.id));
   });
 }
 
+function renderLanding() {
+  const inner = document.getElementById('content-inner');
+  inner.classList.remove('wide');
+  if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+
+  const cards = S.metas.map((m, i) => {
+    const color = topicColor(m.id);
+    const topic = S.topics.find(t => t.id === m.id);
+    const nodeCount = topic ? (topic.children || []).reduce((acc, s) => acc + 1 + (s.children || []).length, 1) : 0;
+    const sectionCount = (topic?.children || []).length;
+    const tags = (m.tags || []).slice(0, 3);
+    const delay = i * 80;
+    return `
+      <div class="landing-card landing-anim" style="animation-delay:${delay}ms" onclick="selectTopic('${m.id}')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${color};border-radius:10px 10px 0 0"></div>
+        <div class="landing-card-icon" style="background:${color}18;color:${color}">${m.title.charAt(0)}</div>
+        <div class="landing-card-title">${m.title}</div>
+        <div class="landing-card-desc">${m.description || ''}</div>
+        <div class="landing-card-meta">
+          <span class="landing-card-count">${nodeCount} nodes</span>
+          <span>${sectionCount} sections</span>
+        </div>
+        ${tags.length > 0 ? `<div class="landing-card-tags">${tags.map(t => `<span class="landing-card-tag">${t}</span>`).join('')}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  inner.innerHTML = `
+    <div class="landing">
+      <div class="landing-hero landing-anim">
+        <div class="landing-logo">knowledge<em>.</em>tree</div>
+        <div class="landing-tagline">꼬리물기 질문으로 성장하는 지식 트리<br>주제를 선택해 탐색을 시작하세요</div>
+      </div>
+      <div class="landing-grid">
+        ${cards}
+      </div>
+    </div>
+  `;
+  document.getElementById('content').scrollTop = 0;
+}
+
 function selectTopic(id) {
   S.selectedTopicId = id;
   S.selectedSectionId = null;
-  document.querySelectorAll('.sb-topic').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.sb-topic').forEach(el => {
+    el.classList.remove('active');
+    el.style.borderLeftColor = 'transparent';
+  });
   const tab = document.getElementById(`tab-${id}`);
-  if (tab) tab.classList.add('active');
+  if (tab) {
+    tab.classList.add('active');
+    tab.style.borderLeftColor = topicColor(id);
+  }
   updateSidebarSections(id);
   renderTopicOverview(id);
 }
@@ -1130,7 +1317,7 @@ async function init() {
   document.getElementById('node-count').textContent = `${total} nodes`;
 
   buildSidebar();
-  if (S.metas.length > 0) selectTopic(S.metas[0].id);
+  if (S.metas.length > 0) renderLanding();
   initEmbedder();
 }
 
