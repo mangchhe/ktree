@@ -97,6 +97,116 @@ UPDATE concepts_private SET created_at = '2025-04-13 00:00:00+09' WHERE created_
 
 Supabase Dashboard → **SQL Editor** → 위 쿼리 실행 → Run
 
+### 7. 개념 변경 이력 테이블 추가 (2025-04-15)
+
+개념 수정 히스토리(`details` hover)를 위한 revision 테이블 생성:
+
+```sql
+-- public revisions
+CREATE TABLE IF NOT EXISTS concept_revisions (
+  id text PRIMARY KEY,
+  concept_id text NOT NULL,
+  topic_id text,
+  section_id text,
+  change_type text NOT NULL DEFAULT 'update', -- create | update | delete
+  title text,
+  description text,
+  level text,
+  questions text[],
+  content text,
+  changed_fields jsonb,
+  changed_by text,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_concept_revisions_concept_id_created_at
+  ON concept_revisions (concept_id, created_at DESC);
+
+-- private revisions
+CREATE TABLE IF NOT EXISTS concept_revisions_private (
+  id text PRIMARY KEY,
+  concept_id text NOT NULL,
+  topic_id text,
+  section_id text,
+  change_type text NOT NULL DEFAULT 'update',
+  title text,
+  description text,
+  level text,
+  questions text[],
+  content text,
+  changed_fields jsonb,
+  changed_by text,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_concept_revisions_private_concept_id_created_at
+  ON concept_revisions_private (concept_id, created_at DESC);
+```
+
+Supabase Dashboard → **SQL Editor** → 위 쿼리 실행 → Run
+
+### 8. 기존 개념 Revision 백필 (2025-04-16)
+
+기존 데이터에도 `AS-IS/TO-BE` 비교가 가능하도록, 최초 `create` revision을 개념별 1건씩 생성:
+
+```sql
+-- public concepts 백필
+INSERT INTO concept_revisions (
+  id, concept_id, topic_id, section_id, change_type,
+  title, description, level, questions, content,
+  changed_fields, changed_by, created_at
+)
+SELECT
+  md5('seed-public-' || c.id),
+  c.id,
+  c.topic_id,
+  c.section_id,
+  'create',
+  c.title,
+  c.description,
+  c.level,
+  c.questions,
+  c.content,
+  NULL,
+  'system-backfill',
+  COALESCE(c.created_at, now())
+FROM concepts c
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM concept_revisions r
+  WHERE r.concept_id = c.id
+);
+
+-- private concepts 백필
+INSERT INTO concept_revisions_private (
+  id, concept_id, topic_id, section_id, change_type,
+  title, description, level, questions, content,
+  changed_fields, changed_by, created_at
+)
+SELECT
+  md5('seed-private-' || c.id),
+  c.id,
+  c.topic_id,
+  c.section_id,
+  'create',
+  c.title,
+  c.description,
+  c.level,
+  c.questions,
+  c.content,
+  NULL,
+  'system-backfill',
+  COALESCE(c.created_at, now())
+FROM concepts_private c
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM concept_revisions_private r
+  WHERE r.concept_id = c.id
+);
+```
+
+Supabase Dashboard → **SQL Editor** → 위 쿼리 실행 → Run
+
 ## 배포 (TODO)
 
 정적 파일만 배포하면 됨. 아래 중 하나 선택:

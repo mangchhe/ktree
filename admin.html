@@ -622,8 +622,8 @@ let selectedItem = null;
 let dataSource = 'public';
 
 const TABLES = {
-  public: { topics: 'topics', sections: 'sections', concepts: 'concepts' },
-  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private' }
+  public: { topics: 'topics', sections: 'sections', concepts: 'concepts', revisions: 'concept_revisions' },
+  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private', revisions: 'concept_revisions_private' }
 };
 
 function getTables() {
@@ -1058,6 +1058,8 @@ async function saveConcept(topicId, sectionId, editId) {
   const title = document.getElementById('f-title').value.trim();
   if (!title) { toast('제목은 필수입니다', 'error'); return; }
 
+  const prev = editId ? concepts.find(x => x.id === editId) : null;
+
   const row = {
     id,
     section_id: sectionId,
@@ -1073,6 +1075,37 @@ async function saveConcept(topicId, sectionId, editId) {
   const { concepts: conceptsTable } = getTables();
   const { error } = await sb.from(conceptsTable).upsert(row);
   if (error) { toast(`저장 실패: ${error.message}`, 'error'); return; }
+
+  const { revisions: revisionsTable } = getTables();
+  if (revisionsTable) {
+    const revisionRow = {
+      id: generateId(),
+      concept_id: id,
+      topic_id: topicId,
+      section_id: sectionId,
+      change_type: editId ? 'update' : 'create',
+      title: row.title,
+      description: row.description,
+      level: row.level,
+      questions: row.questions,
+      content: row.content,
+      changed_fields: editId
+        ? {
+            title: prev?.title !== row.title,
+            description: (prev?.description || null) !== row.description,
+            level: (prev?.level || null) !== row.level,
+            questions: JSON.stringify(prev?.questions || []) !== JSON.stringify(row.questions || []),
+            content: (prev?.content || null) !== row.content,
+          }
+        : null,
+      changed_by: currentUser?.email || null,
+    };
+    const { error: revErr } = await sb.from(revisionsTable).insert(revisionRow);
+    if (revErr) {
+      console.warn('revision save failed:', revErr.message);
+    }
+  }
+
   toast(editId ? '개념 수정됨' : '개념 추가됨', 'success');
   selectedItem = { type: 'section', id: sectionId };
   await loadAll();

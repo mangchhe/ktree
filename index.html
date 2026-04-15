@@ -553,31 +553,173 @@ body {
   margin-bottom: 14px;
 }
 .concept-section-meta {
-  position: relative;
   font-size: 11px; color: var(--muted); opacity: 0.7;
   margin-left: auto;
   white-space: nowrap;
-  cursor: default;
 }
-.concept-section-meta-tooltip {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 6px);
-  background: rgba(18, 22, 28, 0.95);
+.concept-details-btn {
   border: 1px solid var(--border2);
-  border-radius: 6px;
-  padding: 4px 8px;
-  color: var(--text);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-2px);
-  transition: opacity 0.15s, transform 0.15s;
-  z-index: 10;
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-size: 11px;
+  border-radius: 999px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
-.concept-section-meta:hover .concept-section-meta-tooltip,
-.concept-section-meta:focus-within .concept-section-meta-tooltip {
-  opacity: 1;
-  transform: translateY(0);
+.concept-details-btn:hover {
+  border-color: rgba(255,255,255,0.2);
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+}
+
+.revision-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 400;
+}
+.revision-modal {
+  width: min(1080px, 92vw);
+  height: min(760px, 86vh);
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.revision-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.revision-modal-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+.revision-modal-close {
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.revision-modal-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+.revision-list {
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 8px;
+}
+.revision-item {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+}
+.revision-item:hover { background: rgba(255,255,255,0.03); }
+.revision-item.active {
+  border-color: rgba(63,185,80,0.35);
+  background: rgba(63,185,80,0.08);
+}
+.revision-item-time { font-size: 11px; color: var(--muted); }
+.revision-item-type { font-size: 12px; margin-top: 3px; }
+
+.revision-diff {
+  overflow-y: auto;
+  padding: 10px;
+}
+.revision-diff-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.diff-field {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.diff-field-name {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  padding: 7px 10px;
+}
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.diff-col {
+  min-width: 0;
+}
+.diff-col + .diff-col {
+  border-left: 1px solid var(--border);
+}
+.diff-col-label {
+  font-size: 10px;
+  color: var(--muted);
+  padding: 6px 10px;
+  border-bottom: 1px dashed var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.diff-value {
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 8px 10px;
+  overflow: visible;
+}
+.diff-line {
+  display: block;
+  padding: 0 2px;
+  border-radius: 4px;
+}
+.diff-line-del { background: rgba(255, 99, 71, 0.22); }
+.diff-line-add { background: rgba(63, 185, 80, 0.22); }
+.diff-line-empty { opacity: 0.35; }
+.revision-empty {
+  color: var(--muted);
+  font-size: 13px;
+  padding: 20px;
+}
+.concept-history-empty {
+  color: var(--muted);
+  opacity: 0.8;
+}
+.concept-history-item + .concept-history-item {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px dashed rgba(255,255,255,0.08);
+}
+.concept-history-time {
+  color: var(--text);
+  opacity: 0.85;
+}
+.concept-history-type {
+  color: var(--accent);
+  opacity: 0.9;
 }
 
 .section-box {
@@ -833,6 +975,7 @@ body {
 </div>
 
 <div id="tooltip"></div>
+<div id="revision-modal-root"></div>
 
 <script>
 const TOPIC_COLORS = ['#f0932b','#e55039','#3498db','#2ecc71','#9b59b6','#1abc9c','#e74c3c'];
@@ -842,8 +985,8 @@ const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
 const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const APP_MODE = new URLSearchParams(window.location.search).get('mode') === 'private' ? 'private' : 'public';
 const VIEW_TABLES = {
-  public: { topics: 'topics', sections: 'sections', concepts: 'concepts' },
-  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private' }
+  public: { topics: 'topics', sections: 'sections', concepts: 'concepts', revisions: 'concept_revisions' },
+  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private', revisions: 'concept_revisions_private' }
 };
 
 function getViewTables() {
@@ -936,6 +1079,9 @@ const S = {
   selectedSectionId: null,
   lastSectionId: null,
 };
+const revisionsByConcept = new Map();
+let activeRevisionConceptId = null;
+let activeRevisionIndex = 0;
 
 let tocLockUntil = 0;
 
@@ -1161,6 +1307,159 @@ function formatDate(dateStr) {
   return date.toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' });
 }
 
+function formatDateTime(dateStr) {
+  if (!dateStr) return '-';
+  const date = new Date(dateStr);
+  return date.toLocaleString('ko-KR', {
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit'
+  });
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function formatFieldValue(v) {
+  if (v === null || v === undefined || v === '') return '∅';
+  if (Array.isArray(v)) return v.length ? v.join('\n') : '[]';
+  if (typeof v === 'object') return JSON.stringify(v, null, 2);
+  return String(v);
+}
+
+function buildLineDiffHtml(beforeRaw, afterRaw) {
+  const before = formatFieldValue(beforeRaw);
+  const after = formatFieldValue(afterRaw);
+  if (before === after) {
+    const same = escapeHtml(before);
+    return {
+      beforeHtml: `<span class="diff-line">${same}</span>`,
+      afterHtml: `<span class="diff-line">${same}</span>`
+    };
+  }
+
+  const a = before.split('\n');
+  const b = after.split('\n');
+  const dp = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      if (a[i - 1] === b[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;
+      else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+    }
+  }
+
+  const ops = [];
+  let i = a.length;
+  let j = b.length;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && a[i - 1] === b[j - 1]) {
+      ops.unshift({ type: 'same', value: a[i - 1] });
+      i--; j--;
+    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+      ops.unshift({ type: 'add', value: b[j - 1] });
+      j--;
+    } else {
+      ops.unshift({ type: 'del', value: a[i - 1] });
+      i--;
+    }
+  }
+
+  const beforeLines = [];
+  const afterLines = [];
+  ops.forEach(op => {
+    if (op.type === 'same') {
+      const line = escapeHtml(op.value || ' ');
+      beforeLines.push(`<span class="diff-line">${line}</span>`);
+      afterLines.push(`<span class="diff-line">${line}</span>`);
+    } else if (op.type === 'del') {
+      const line = escapeHtml(op.value || ' ');
+      beforeLines.push(`<span class="diff-line diff-line-del">${line}</span>`);
+      afterLines.push(`<span class="diff-line diff-line-empty">&nbsp;</span>`);
+    } else {
+      const line = escapeHtml(op.value || ' ');
+      beforeLines.push(`<span class="diff-line diff-line-empty">&nbsp;</span>`);
+      afterLines.push(`<span class="diff-line diff-line-add">${line}</span>`);
+    }
+  });
+
+  return { beforeHtml: beforeLines.join(''), afterHtml: afterLines.join('') };
+}
+
+function closeRevisionModal() {
+  const root = document.getElementById('revision-modal-root');
+  if (!root) return;
+  root.innerHTML = '';
+  activeRevisionConceptId = null;
+  activeRevisionIndex = 0;
+}
+
+function renderRevisionModal() {
+  const root = document.getElementById('revision-modal-root');
+  if (!root || !activeRevisionConceptId) return;
+  const revisions = revisionsByConcept.get(activeRevisionConceptId) || [];
+  const selected = revisions[activeRevisionIndex] || null;
+  const prev = revisions[activeRevisionIndex + 1] || null;
+  const fields = ['title', 'description', 'level', 'questions', 'content'];
+  const changed = selected?.changed_fields && typeof selected.changed_fields === 'object'
+    ? fields.filter(f => selected.changed_fields[f])
+    : [];
+  const showFields = changed.length ? changed : (selected ? fields : []);
+
+  const listHtml = revisions.length
+    ? revisions.slice(0, 30).map((r, i) => {
+        const typeLabel = r.change_type === 'create' ? '생성' : r.change_type === 'update' ? '수정' : '변경';
+        const count = r.changed_fields && typeof r.changed_fields === 'object'
+          ? Object.values(r.changed_fields).filter(Boolean).length
+          : 0;
+        return `<button class="revision-item ${i === activeRevisionIndex ? 'active' : ''}" onclick="selectRevision(${i})"><div class="revision-item-time">${formatDateTime(r.created_at)}</div><div class="revision-item-type">${typeLabel}${count ? ` · ${count}개` : ''}</div></button>`;
+      }).join('')
+    : '<div class="revision-empty">변경 이력이 없습니다.</div>';
+
+  const diffHtml = selected
+    ? showFields.map(field => {
+        const beforeVal = prev ? prev[field] : null;
+        const afterVal = selected[field];
+        const lineDiff = buildLineDiffHtml(beforeVal, afterVal);
+        return `<div class="diff-field"><div class="diff-field-name">${field}</div><div class="diff-grid"><div class="diff-col diff-before"><div class="diff-col-label">AS-IS</div><div class="diff-value">${lineDiff.beforeHtml}</div></div><div class="diff-col diff-after"><div class="diff-col-label">TO-BE</div><div class="diff-value">${lineDiff.afterHtml}</div></div></div></div>`;
+      }).join('')
+    : '<div class="revision-empty">표시할 변경이 없습니다.</div>';
+
+  root.innerHTML = `
+    <div class="revision-modal-overlay" onclick="if(event.target===this)closeRevisionModal()">
+      <div class="revision-modal">
+        <div class="revision-modal-header">
+          <div class="revision-modal-title">변경 이력 · ${escapeHtml(activeRevisionConceptId)}</div>
+          <button class="revision-modal-close" onclick="closeRevisionModal()">닫기</button>
+        </div>
+        <div class="revision-modal-body">
+          <div class="revision-list">${listHtml}</div>
+          <div class="revision-diff">
+            <div class="revision-diff-head"><span>선택 시점: ${selected ? formatDateTime(selected.created_at) : '-'}</span><span>${selected?.changed_by ? `by ${escapeHtml(selected.changed_by)}` : ''}</span></div>
+            ${diffHtml}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function openRevisionModal(conceptId) {
+  activeRevisionConceptId = conceptId;
+  activeRevisionIndex = 0;
+  renderRevisionModal();
+}
+
+function selectRevision(index) {
+  activeRevisionIndex = index;
+  renderRevisionModal();
+}
+
 function renderConceptSection(concept, color) {
   const raw = contentCache.get(concept.id) ?? concept.content ?? '';
   const strippedContent = raw ? raw.replace(/^#{1,3}\s+[^\n]*\n+/, '') : '';
@@ -1181,7 +1480,7 @@ function renderConceptSection(concept, color) {
     : '';
 
   const createdAtHtml = concept.created_at
-    ? `<div class="concept-section-meta">details<span class="concept-section-meta-tooltip">${formatDate(concept.created_at)} 추가</span></div>`
+    ? `<div class="concept-section-meta"><button class="concept-details-btn" onclick="openRevisionModal('${concept.id}')">details</button></div>`
     : '';
 
   return `
@@ -1690,6 +1989,23 @@ async function initFromSupabase() {
   const { data: concepts, error: cErr } = await sb.from(tNames.concepts).select('*').order('sort_order');
   if (cErr) throw cErr;
 
+  revisionsByConcept.clear();
+  if (tNames.revisions) {
+    const { data: revisions, error: rErr } = await sb
+      .from(tNames.revisions)
+      .select('concept_id, change_type, created_at, changed_fields, changed_by, title, description, level, questions, content')
+      .order('created_at', { ascending: false })
+      .limit(300);
+    if (!rErr && revisions) {
+      revisions.forEach(r => {
+        if (!r.concept_id) return;
+        const list = revisionsByConcept.get(r.concept_id) || [];
+        list.push(r);
+        revisionsByConcept.set(r.concept_id, list);
+      });
+    }
+  }
+
   for (const t of topics) {
     S.topicColors[t.id] = t.color || TOPIC_COLORS[topics.indexOf(t) % TOPIC_COLORS.length];
     S.metas.push({ id: t.id, title: t.title, description: t.description, tags: t.tags, nodeCount: t.node_count, author: t.author });
@@ -1702,7 +2018,7 @@ async function initFromSupabase() {
       const rootConcepts = sectionConcepts.filter(c => !c.parent_concept_id);
       const buildTree = (list) => list.map(c => {
         const kids = sectionConcepts.filter(ch => ch.parent_concept_id === c.id);
-        const node = { id: c.id, title: c.title, question: c.question, description: c.description, level: c.level, questions: c.questions || [], content: c.content, created_at: c.created_at };
+        const node = { id: c.id, title: c.title, question: c.question, description: c.description, level: c.level, questions: c.questions || [], content: c.content, created_at: c.created_at, updated_at: c.updated_at };
         if (kids.length > 0) node.children = buildTree(kids);
         return node;
       });
@@ -1883,6 +2199,16 @@ function showTocGoto() {
 
 document.addEventListener('keydown', e => {
   const code = e.code;
+  const revisionModalOpen = !!document.querySelector('#revision-modal-root .revision-modal-overlay');
+
+  if (revisionModalOpen) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
+      closeRevisionModal();
+    }
+    return;
+  }
 
   if (S.selectedSectionId && code === 'KeyG' && !e.metaKey && !e.ctrlKey && !e.altKey) {
     const inInput = document.activeElement === searchInput || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
