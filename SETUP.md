@@ -69,6 +69,34 @@ npm install @supabase/supabase-js
 node migrate-to-supabase.mjs
 ```
 
+### 6. 타임스탬프 컬럼 추가 (2025-04-15)
+
+테이블에 created_at 컬럼 추가 (기존 데이터는 프로젝트 시작일로 설정):
+
+```sql
+-- public 테이블
+ALTER TABLE topics ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+ALTER TABLE sections ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+ALTER TABLE concepts ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+
+-- 기존 데이터 created_at을 프로젝트 시작일(Apr 13)로 설정
+UPDATE topics SET created_at = '2025-04-13 00:00:00+09' WHERE created_at IS NULL;
+UPDATE sections SET created_at = '2025-04-13 00:00:00+09' WHERE created_at IS NULL;
+UPDATE concepts SET created_at = '2025-04-13 00:00:00+09' WHERE created_at IS NULL;
+
+-- private 테이블
+ALTER TABLE topics_private ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+ALTER TABLE sections_private ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+ALTER TABLE concepts_private ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+
+-- 기존 데이터 created_at을 프로젝트 시작일(Apr 13)로 설정
+UPDATE topics_private SET created_at = '2025-04-13 00:00:00+09' WHERE created_at IS NULL;
+UPDATE sections_private SET created_at = '2025-04-13 00:00:00+09' WHERE created_at IS NULL;
+UPDATE concepts_private SET created_at = '2025-04-13 00:00:00+09' WHERE created_at IS NULL;
+```
+
+Supabase Dashboard → **SQL Editor** → 위 쿼리 실행 → Run
+
 ## 배포 (TODO)
 
 정적 파일만 배포하면 됨. 아래 중 하나 선택:
