@@ -38,3 +38,9 @@ npx serve .
 ```
 
 > 셋업, Supabase 연동, 배포 등 자세한 내용은 [SETUP.md](./SETUP.md) 참고
+
+## 콘텐츠 운영
+
+콘텐츠 작성/검토/DB 반영 플로우는 별도 문서에서 관리합니다.
+
+- [CONTENT_WORKFLOW.md](./CONTENT_WORKFLOW.md)

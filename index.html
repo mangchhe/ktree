@@ -1334,9 +1334,13 @@ function formatFieldValue(v) {
 }
 
 function normalizeDiffText(text) {
-  return String(text)
-    .replace(/\r\n/g, '\n')
-    .replace(/^(?:[ \t]*\n)+/, '');
+  const lines = String(text).replace(/\r\n/g, '\n').split('\n');
+  while (lines.length > 0) {
+    const head = (lines[0] || '').replace(/\u200B/g, '').trim();
+    if (head !== '') break;
+    lines.shift();
+  }
+  return lines.join('\n');
 }
 
 function buildLineDiffHtml(beforeRaw, afterRaw) {
@@ -1399,7 +1403,19 @@ function buildLineDiffHtml(beforeRaw, afterRaw) {
 
   const beforeLines = [];
   const afterLines = [];
-  ops.forEach(op => {
+  for (let idx = 0; idx < ops.length; idx++) {
+    const op = ops[idx];
+    const next = ops[idx + 1];
+
+    if (next && ((op.type === 'del' && next.type === 'add') || (op.type === 'add' && next.type === 'del'))) {
+      const delVal = op.type === 'del' ? op.value : next.value;
+      const addVal = op.type === 'add' ? op.value : next.value;
+      beforeLines.push(`<span class="diff-line diff-line-del">${escapeHtml(delVal || ' ')}</span>`);
+      afterLines.push(`<span class="diff-line diff-line-add">${escapeHtml(addVal || ' ')}</span>`);
+      idx++;
+      continue;
+    }
+
     if (op.type === 'same') {
       const line = escapeHtml(op.value || ' ');
       beforeLines.push(`<span class="diff-line">${line}</span>`);
@@ -1413,7 +1429,7 @@ function buildLineDiffHtml(beforeRaw, afterRaw) {
       beforeLines.push(`<span class="diff-line diff-line-empty">&nbsp;</span>`);
       afterLines.push(`<span class="diff-line diff-line-add">${line}</span>`);
     }
-  });
+  }
 
   return { beforeHtml: beforeLines.join(''), afterHtml: afterLines.join('') };
 }
