@@ -1326,15 +1326,41 @@ function escapeHtml(str) {
 }
 
 function formatFieldValue(v) {
-  if (v === null || v === undefined || v === '') return '∅';
+  if (v === null || v === undefined || v === '') return '';
   if (Array.isArray(v)) return v.length ? v.join('\n') : '[]';
   if (typeof v === 'object') return JSON.stringify(v, null, 2);
   return String(v);
 }
 
+function normalizeDiffText(text) {
+  return String(text)
+    .replace(/\r\n/g, '\n')
+    .replace(/^(?:[ \t]*\n)+/, '');
+}
+
 function buildLineDiffHtml(beforeRaw, afterRaw) {
-  const before = formatFieldValue(beforeRaw);
-  const after = formatFieldValue(afterRaw);
+  const before = normalizeDiffText(formatFieldValue(beforeRaw));
+  const after = normalizeDiffText(formatFieldValue(afterRaw));
+  if (!before && !after) {
+    return {
+      beforeHtml: `<span class="diff-line diff-line-empty">∅</span>`,
+      afterHtml: `<span class="diff-line diff-line-empty">∅</span>`
+    };
+  }
+  if (!before && after) {
+    const afterLines = after.split('\n').map(line => `<span class="diff-line diff-line-add">${escapeHtml(line || ' ')}</span>`).join('');
+    return {
+      beforeHtml: `<span class="diff-line diff-line-empty">∅</span>`,
+      afterHtml: afterLines
+    };
+  }
+  if (before && !after) {
+    const beforeLines = before.split('\n').map(line => `<span class="diff-line diff-line-del">${escapeHtml(line || ' ')}</span>`).join('');
+    return {
+      beforeHtml: beforeLines,
+      afterHtml: `<span class="diff-line diff-line-empty">∅</span>`
+    };
+  }
   if (before === after) {
     const same = escapeHtml(before);
     return {
