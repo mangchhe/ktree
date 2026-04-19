@@ -1447,6 +1447,12 @@ document.addEventListener('keydown', e => {
   e.preventDefault();
   if (document.getElementById('import-modal')?.style.display === 'block') { closeImportModal(); return; }
   if (document.querySelector('#content .form-actions')) { document.activeElement?.blur(); cancelForm(); return; }
+  if (document.getElementById('sec-md-content') && selectedItem?.type === 'section') {
+    document.activeElement?.blur();
+    const sec = sections.find(s => s.id === selectedItem.id);
+    if (sec) selectItem('topic', sec.topic_id);
+    return;
+  }
 });
 
 // ── Import / Export ──────────────────────────────────────────────────────────
