@@ -514,10 +514,6 @@ body {
 }
 .md-tab.active { background: var(--surface3); color: var(--text); }
 .md-tab:not(:last-child) { border-right: 1px solid var(--border2); }
-.sec-view-tabs { display: flex; border: 1px solid var(--border2); border-radius: 6px; overflow: hidden; }
-.sec-view-tab { padding: 4px 10px; font-size: 11px; font-weight: 500; background: none; border: none; color: var(--muted); cursor: pointer; transition: all 0.15s; }
-.sec-view-tab.active { background: var(--surface3); color: var(--text); }
-.sec-view-tab:not(:last-child) { border-right: 1px solid var(--border2); }
 .md-panels {
   display: flex;
   height: calc(100vh - 340px);
@@ -921,20 +917,19 @@ function renderTopicDetail(id) {
   `;
 }
 
-function renderSectionDetail(sectionId, activeTab = 'md') {
+function renderSectionDetail(sectionId) {
   const s = sections.find(x => x.id === sectionId);
   if (!s) return;
   const t = topics.find(x => x.id === s.topic_id);
   const cpts = concepts.filter(c => c.section_id === sectionId && !c.parent_concept_id).sort((a,b) => a.sort_order - b.sort_order);
 
-  const cardsHtml = cpts.length === 0 ? '<div class="panel-empty">개념이 없습니다</div>' :
+  const cardsHtml = cpts.length === 0 ? '<div class="panel-empty" style="padding:12px 14px">개념이 없습니다</div>' :
     cpts.map(c => {
       const kids = concepts.filter(ch => ch.parent_concept_id === c.id);
-      return `<div class="concept-row" onclick="showConceptForm('${s.topic_id}','${sectionId}','${c.id}')">
-        <span class="concept-title">${c.title}</span>
+      return `<div class="concept-row" style="padding:8px 12px" onclick="showConceptForm('${s.topic_id}','${sectionId}','${c.id}')">
+        <span class="concept-title" style="font-size:12px">${c.title}</span>
         ${c.level ? `<span class="concept-level ${c.level}">${c.level === 'basic' ? '기본' : '심화'}</span>` : ''}
-        <span class="concept-desc">${c.description || ''}</span>
-        ${kids.length > 0 ? `<span style="font-size:10px;color:var(--muted)">+${kids.length} sub</span>` : ''}
+        ${kids.length > 0 ? `<div style="font-size:10px;color:var(--muted)">+${kids.length} sub</div>` : ''}
       </div>`;
     }).join('');
 
@@ -972,43 +967,38 @@ function renderSectionDetail(sectionId, activeTab = 'md') {
         <span class="panel-title">개념</span>
         <span class="panel-count">${cpts.length}</span>
         <div class="panel-actions" style="display:flex;align-items:center;gap:6px">
-          <div class="sec-view-tabs">
-            <button class="sec-view-tab ${activeTab==='md'?'active':''}" onclick="renderSectionDetail('${sectionId}','md')">Markdown</button>
-            <button class="sec-view-tab ${activeTab==='cards'?'active':''}" onclick="renderSectionDetail('${sectionId}','cards')">카드</button>
-          </div>
+          <button class="btn btn-sm" id="sec-md-write-tab" onclick="setSecEditorMode('write')">Write</button>
+          <button class="btn btn-sm" id="sec-md-preview-tab" onclick="setSecEditorMode('preview')">Preview</button>
+          <button class="btn btn-sm btn-primary" id="sec-md-split-tab" onclick="setSecEditorMode('split')">Split</button>
+          <div style="width:1px;height:16px;background:var(--border2)"></div>
           <button class="btn btn-sm btn-primary" onclick="showConceptForm('${s.topic_id}','${sectionId}')">+ 개념</button>
         </div>
       </div>
-      <div id="sec-cards-view" style="display:${activeTab==='cards'?'block':'none'}">
-        ${cardsHtml}
-      </div>
-      <div id="sec-md-view" style="display:${activeTab==='md'?'flex':'none'};flex-direction:column">
-        <div class="md-editor-wrap" style="border-radius:0;border:none;border-top:1px solid var(--border)">
-          <div class="md-toolbar">
+      <div style="display:flex;height:calc(100vh - 220px);min-height:520px">
+        <div style="flex:1;display:flex;flex-direction:column;border-right:1px solid var(--border)">
+          <div class="md-toolbar" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border2)">
             <button class="md-tool-btn" title="Bold" onclick="mdInsertSec('**','**')"><b>B</b></button>
             <button class="md-tool-btn" title="Italic" onclick="mdInsertSec('*','*')"><i>I</i></button>
             <button class="md-tool-btn" title="Code" onclick="mdInsertSec('\`','\`')">&#96;&#96;</button>
-            <button class="md-tool-btn" title="Heading" onclick="mdInsertLineSec('### ')">H3</button>
-            <div style="flex:1"></div>
-            <button class="md-tab active" id="sec-md-write-tab" onclick="setSecEditorMode('write')">Write</button>
-            <button class="md-tab" id="sec-md-preview-tab" onclick="setSecEditorMode('preview')">Preview</button>
-            <button class="md-tab" id="sec-md-split-tab" onclick="setSecEditorMode('split')">Split</button>
+            <button class="md-tool-btn" title="H3" onclick="mdInsertLineSec('### ')">H3</button>
           </div>
-          <div class="md-panels mode-write" id="sec-md-panels" style="height:calc(100vh - 260px);min-height:480px">
+          <div class="md-panels mode-split" id="sec-md-panels" style="flex:1;height:auto">
             <div class="md-edit-pane">
               <textarea id="sec-md-content" oninput="updateSecPreview()">${escapeHtml(mdContent)}</textarea>
             </div>
             <div class="md-preview-pane" id="sec-md-preview"></div>
           </div>
+          <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0">
+            <button class="btn btn-primary" onclick="saveSectionMd('${s.topic_id}','${sectionId}')">저장</button>
+          </div>
         </div>
-        <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px">
-          <button class="btn" onclick="renderSectionDetail('${sectionId}','cards')">취소</button>
-          <button class="btn btn-primary" onclick="saveSectionMd('${s.topic_id}','${sectionId}')">저장</button>
+        <div style="width:220px;overflow-y:auto;flex-shrink:0">
+          ${cardsHtml}
         </div>
       </div>
     </div>
   `;
-  if (activeTab === 'md') { updateSecPreview(); }
+  updateSecPreview();
 }
 
 function showTopicForm(editId) {
