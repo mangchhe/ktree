@@ -46,15 +46,19 @@ body {
   z-index: 100;
 }
 .admin-logo {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
 }
-.admin-logo em { color: var(--accent); font-style: normal; }
+.admin-logo:hover { transform: scale(1.05); opacity: 0.9; }
+.admin-logo-text { display: inline; letter-spacing: -0.3px; }
+.admin-logo-text em { color: var(--accent); font-style: normal; }
 .admin-badge {
   font-size: 9px;
   font-weight: 700;
@@ -618,7 +622,7 @@ body {
 <body>
 
 <div class="admin-header">
-  <div class="admin-logo">knowledge<em>.</em>tree <span class="admin-badge">admin</span></div>
+  <div class="admin-logo" onclick="goAdminHome()">🌳 <span class="admin-logo-text">knowledge<em>.</em>tree</span> <span class="admin-badge">admin</span></div>
   <div class="admin-spacer"></div>
   <div class="admin-status" id="conn-status">
     <span class="status-dot" id="status-dot"></span>
@@ -1396,6 +1400,14 @@ function toast(msg, type = 'success') {
 checkSession();
 
 // ── Import / Export ──────────────────────────────────────────────────────────
+
+function goAdminHome() {
+  selectedItem = null;
+  location.hash = '';
+  updateExportBtn();
+  document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
+  buildSidebar();
+}
 
 function updateExportBtn() {
   const btn = document.getElementById('export-btn');
