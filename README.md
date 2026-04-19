@@ -1,46 +1,77 @@
-# knowledge.tree 🌱
+# knowledge.tree
 
-꼬리물기 질문으로 성장하는 지식 트리. 공부하면서 생긴 궁금증을 구조화해서 공유합니다.
+English · [한국어](./README.ko.md)
+
+An **open-source knowledge tree template** that grows through chained questions.
+No build step — drop your Supabase keys into two HTML files and you have your own knowledge base.
+
+**Demo**: [mangchhe.github.io/ktree](https://mangchhe.github.io/ktree)
 
 ```
 Apache Kafka
-  ├── 핵심 개념
-  │   ├── Topic
-  │   ├── Partition
-  │   ├── Offset
-  │   └── Consumer Group
-  ├── Consumer 심화
-  │   ├── Consumer Group 프로토콜
-  │   ├── Simple Consumer vs Group Consumer
-  │   ├── 파티션:Consumer 비율
-  │   └── 순서 보장
+  ├── Core Concepts
+  │   ├── Topic · Partition · Offset · Consumer Group
+  ├── Consumer Deep Dive
+  │   ├── Consumer Group Protocol
+  │   ├── Simple vs Group Consumer
+  │   └── Ordering Guarantees
   └── ...
 ```
 
-## 주요 기능
+## Features
 
-- **지식 트리 뷰어** — 주제 → 섹션 → 개념 카드 구조로 탐색
-- **시맨틱 검색** — 브라우저 내 벡터 검색 (질문으로 개념 찾기)
-- **마크다운 콘텐츠** — 개념마다 마크다운으로 상세 설명
-- **관리 페이지** — 로그인 후 CRUD + 마크다운 에디터로 콘텐츠 관리
+- **Hierarchical viewer** — browse Topic → Section → Concept cards with hash-based routing
+- **In-browser semantic search** — match questions to concepts via Xenova/transformers (no server)
+- **Markdown split editor** — Write / Preview / Split modes with bidirectional scroll sync
+- **Section-level bulk editing** — edit all concepts of a section as a single Markdown document
+- **Public / Private dual mode** — keep public publishing separate from private study notes
+- **Revision history** — AS-IS / TO-BE diff for every concept change
+- **Hierarchical Esc navigation** — form → detail → topic → home
+- **Import / Export** — round-trip a topic to/from a Markdown README
 
-## 기술 스택
+## Stack
 
-- **프론트엔드**: Vanilla JS · marked.js · CSS 변수 다크 테마
-- **검색**: Xenova/transformers (all-MiniLM-L6-v2, 브라우저 내 실행)
-- **백엔드**: Supabase (PostgreSQL + REST API + Auth + RLS)
+| Layer | Tech |
+|---|---|
+| Frontend | Vanilla HTML/JS · marked.js · CSS variables (dark theme) |
+| Search | [@xenova/transformers](https://github.com/xenova/transformers.js) (all-MiniLM-L6-v2, runs in browser) |
+| Backend | Supabase (PostgreSQL · REST · Auth · RLS) |
+| Hosting | Static — GitHub Pages / Netlify / Vercel / Cloudflare Pages |
 
-## 로컬 실행
+## Quick start
 
 ```bash
+git clone <your-repo>
+cd knowledge-tree
 npx serve .
 # → http://localhost:3000
 ```
 
-> 셋업, Supabase 연동, 배포 등 자세한 내용은 [SETUP.md](./SETUP.md) 참고
+> Without Supabase keys configured, you'll see a setup notice page.
 
-## 콘텐츠 운영
+### Use as a template
 
-콘텐츠 작성/검토/DB 반영 플로우는 별도 문서에서 관리합니다.
+1. **Fork** or click **Use this template**
+2. Create a project on [supabase.com](https://supabase.com) → run the schema & RLS SQL from [SETUP.md](./SETUP.md)
+3. Replace the Supabase keys at the top of `index.html` and `admin.html`:
 
-- [CONTENT_WORKFLOW.md](./CONTENT_WORKFLOW.md)
+```js
+const SUPABASE_URL = 'https://<your-project>.supabase.co';
+const SUPABASE_ANON_KEY = '<your-anon-key>';
+```
+
+4. Add an admin user in Supabase Authentication → log in at `/admin` → start authoring
+5. Deploy as static files to GitHub Pages / Netlify / Vercel / etc.
+
+> See [SETUP.md](./SETUP.md) for the full schema, RLS policies, and deployment notes.
+
+## Documentation
+
+| File | Description |
+|---|---|
+| [SETUP.md](./SETUP.md) | Supabase setup · schema · deployment |
+| [CONTENT_WORKFLOW.md](./CONTENT_WORKFLOW.md) | Content authoring / review / publish flow |
+
+## License
+
+MIT

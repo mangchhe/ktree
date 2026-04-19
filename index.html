@@ -2101,14 +2101,16 @@ async function initFromSupabase() {
   return true;
 }
 
-async function initFromJSON() {
-  const metas = await fetch('topics/index.json').then(r => r.json());
-  S.metas = metas;
-  metas.forEach((m, i) => { S.topicColors[m.id] = TOPIC_COLORS[i % TOPIC_COLORS.length]; });
-  for (const meta of metas) {
-    const data = await fetch(`topics/${meta.file}`).then(r => r.json());
-    S.topics.push(data);
-  }
+function renderSetupNotice(message) {
+  const inner = document.getElementById('content-inner');
+  if (!inner) return;
+  inner.classList.remove('wide');
+  inner.innerHTML = `
+    <div style="max-width:520px;margin:72px auto;padding:28px;background:var(--surface);border:1px solid var(--border);border-radius:10px;">
+      <h3 style="margin:0 0 10px;font-size:16px;">Supabase 설정이 필요합니다</h3>
+      <p style="margin:0 0 14px;font-size:13px;color:var(--muted);line-height:1.7;">${message || '<code>index.html</code>과 <code>admin.html</code> 상단의 <code>SUPABASE_URL</code>, <code>SUPABASE_ANON_KEY</code>를 본인 프로젝트 값으로 교체하세요.'}</p>
+      <p style="margin:0;font-size:12px;color:var(--muted);">상세 안내: <a href="https://github.com/mangchhe/ktree/blob/main/SETUP.md" target="_blank" style="color:var(--accent);">SETUP.md</a></p>
+    </div>`;
 }
 
 let kbFocusIdx = -1;
@@ -2377,13 +2379,8 @@ async function init() {
       if (!loaded) return;
       console.log('✅ Loaded from Supabase');
     } else {
-      if (APP_MODE === 'private') {
-        setPrivateAuthUI(true);
-        renderPrivateLogin('private 모드는 Supabase 연결이 필요합니다.');
-        return;
-      }
-      await initFromJSON();
-      console.log('✅ Loaded from JSON (Supabase not configured)');
+      renderSetupNotice();
+      return;
     }
   } catch (e) {
     if (APP_MODE === 'private') {
@@ -2391,9 +2388,9 @@ async function init() {
       renderPrivateLogin('private 데이터 로딩에 실패했습니다. 권한 또는 정책(RLS)을 확인하세요.');
       return;
     }
-    console.warn('Supabase failed, falling back to JSON:', e);
-    S.metas = []; S.topics = []; S.topicColors = {};
-    await initFromJSON();
+    console.error('Supabase load failed:', e);
+    renderSetupNotice('Supabase 로딩에 실패했습니다. 키와 RLS 정책을 확인하세요.');
+    return;
   }
 
   let total = 0;
