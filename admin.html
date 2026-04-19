@@ -705,6 +705,7 @@ async function setDataSource(source) {
   dataSource = source;
   updateSourceUI();
   selectedItem = null;
+  location.hash = '';
   await loadAll();
   document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
   toast(`데이터 소스 전환: ${source.toUpperCase()}`, 'success');
@@ -749,7 +750,7 @@ async function checkSession() {
   }
 }
 
-function showAdmin() {
+async function showAdmin() {
   document.getElementById('auth-view').style.display = 'none';
   document.getElementById('admin-view').style.display = 'block';
   document.getElementById('logout-btn').style.display = '';
@@ -757,7 +758,57 @@ function showAdmin() {
   document.getElementById('import-export-group').style.display = 'flex';
   updateSourceUI();
   updateStatus(true);
-  loadAll();
+  await loadAll();
+  restoreFromHash();
+}
+
+function restoreFromHash() {
+  if (selectedItem) return;
+  const hash = location.hash.replace('#', '');
+  if (!hash) return;
+  const parts = hash.split('/');
+  const src = parts[0];
+  if (src === 'private' && dataSource !== 'private') return;
+
+  // form 복원: src/form/topic/{id|new}
+  if (parts[1] === 'form' && parts[2] === 'topic') {
+    const editId = parts[3] !== 'new' ? parts[3] : undefined;
+    if (editId) selectedItem = { type: 'topic', id: editId };
+    buildSidebar();
+    showTopicForm(editId);
+    return;
+  }
+  // src/form/section/{topicId}/{id|new}
+  if (parts[1] === 'form' && parts[2] === 'section' && parts[3]) {
+    const topicId = parts[3];
+    const editId = parts[4] !== 'new' ? parts[4] : undefined;
+    selectedItem = { type: editId ? 'section' : 'topic', id: editId || topicId };
+    buildSidebar();
+    showSectionForm(topicId, editId);
+    return;
+  }
+  // src/form/concept/{topicId}/{sectionId}/{id|new}
+  if (parts[1] === 'form' && parts[2] === 'concept' && parts[3] && parts[4]) {
+    const topicId = parts[3];
+    const sectionId = parts[4];
+    const editId = parts[5] !== 'new' ? parts[5] : undefined;
+    selectedItem = { type: 'section', id: sectionId };
+    buildSidebar();
+    _origShowConceptForm(topicId, sectionId, editId);
+    setTimeout(updatePreview, 0);
+    return;
+  }
+  // 일반 상세 복원: src/topic/{id} or src/section/{id}
+  if (parts.length === 3) {
+    const [, type, id] = parts;
+    if ((type === 'topic' && topics.find(t => t.id === id)) ||
+        (type === 'section' && sections.find(s => s.id === id))) {
+      selectedItem = { type, id };
+      updateExportBtn();
+      if (type === 'topic') renderTopicDetail(id);
+      else if (type === 'section') renderSectionDetail(id);
+    }
+  }
 }
 
 function updateStatus(connected) {
@@ -811,6 +862,7 @@ function buildSidebar() {
 
 function selectItem(type, id) {
   selectedItem = { type, id };
+  location.hash = `${dataSource}/${type}/${id}`;
   buildSidebar();
   updateExportBtn();
   if (type === 'topic') renderTopicDetail(id);
@@ -903,6 +955,7 @@ function renderSectionDetail(sectionId) {
 }
 
 function showTopicForm(editId) {
+  location.hash = `${dataSource}/form/topic/${editId || 'new'}`;
   const t = editId ? topics.find(x => x.id === editId) : null;
   const isEdit = !!t;
   document.getElementById('content').innerHTML = `
@@ -941,6 +994,7 @@ function showTopicForm(editId) {
 }
 
 function showSectionForm(topicId, editId) {
+  location.hash = `${dataSource}/form/section/${topicId}/${editId || 'new'}`;
   const s = editId ? sections.find(x => x.id === editId) : null;
   const isEdit = !!s;
   document.getElementById('content').innerHTML = `
@@ -967,6 +1021,7 @@ function showSectionForm(topicId, editId) {
 }
 
 function showConceptForm(topicId, sectionId, editId) {
+  location.hash = `${dataSource}/form/concept/${topicId}/${sectionId}/${editId || 'new'}`;
   const c = editId ? concepts.find(x => x.id === editId) : null;
   const isEdit = !!c;
   const qs = c?.questions || [];
@@ -1065,9 +1120,11 @@ function getQuestions() {
 
 function cancelForm() {
   if (selectedItem) {
+    location.hash = `${dataSource}/${selectedItem.type}/${selectedItem.id}`;
     if (selectedItem.type === 'topic') renderTopicDetail(selectedItem.id);
     else if (selectedItem.type === 'section') renderSectionDetail(selectedItem.id);
   } else {
+    location.hash = '';
     document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
   }
 }

@@ -1133,6 +1133,7 @@ function updateSidebarSections(topicId) {
 function resetView() {
   S.selectedTopicId = null;
   S.selectedSectionId = null;
+  location.hash = '';
   document.querySelectorAll('.sb-topic').forEach(el => {
     el.classList.remove('active');
     el.style.borderLeftColor = 'transparent';
@@ -1220,6 +1221,7 @@ function selectTopic(id) {
   kbClearFocus();
   S.selectedTopicId = id;
   S.selectedSectionId = null;
+  location.hash = `topic/${id}`;
   document.querySelectorAll('.sb-topic').forEach(el => {
     el.classList.remove('active');
     el.style.borderLeftColor = 'transparent';
@@ -1236,12 +1238,14 @@ function selectTopic(id) {
 async function openSection(topicId, sectionId) {
   S.lastSectionId = sectionId;
   S.selectedSectionId = sectionId;
+  location.hash = `section/${topicId}/${sectionId}`;
   updateSidebarConcepts(topicId, sectionId);
   await renderSectionDetail(topicId, sectionId);
 }
 
 function backToTopic() {
   S.selectedSectionId = null;
+  if (S.selectedTopicId) location.hash = `topic/${S.selectedTopicId}`;
   updateSidebarSections(S.selectedTopicId);
   renderTopicOverview(S.selectedTopicId);
   requestAnimationFrame(() => {
@@ -2376,8 +2380,24 @@ async function init() {
   document.getElementById('node-count').textContent = `${total} nodes`;
 
   buildSidebar();
-  if (S.metas.length > 0) renderLanding();
+  if (!restoreFromHash() && S.metas.length > 0) renderLanding();
   initEmbedder();
+}
+
+function restoreFromHash() {
+  const hash = location.hash.replace('#', '');
+  if (!hash) return false;
+  const parts = hash.split('/');
+  if (parts[0] === 'topic' && parts[1]) {
+    const topic = S.topics.find(t => t.id === parts[1]);
+    if (topic) { selectTopic(parts[1]); return true; }
+  }
+  if (parts[0] === 'section' && parts[1] && parts[2]) {
+    const topic = S.topics.find(t => t.id === parts[1]);
+    const section = (topic?.children || []).find(s => s.id === parts[2]);
+    if (topic && section) { selectTopic(parts[1]); openSection(parts[1], parts[2]); return true; }
+  }
+  return false;
 }
 
 init().catch(console.error);
