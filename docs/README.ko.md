@@ -1,6 +1,6 @@
 # knowledge.tree
 
-[English](./README.md) · 한국어
+[English](../README.md) · 한국어
 
 꼬리물기 질문으로 성장하는 **오픈소스 지식 트리 템플릿**.
 빌드 과정 없이 HTML 2개 + Supabase 키만 넣으면 바로 당신만의 지식 정리 사이트가 됩니다.

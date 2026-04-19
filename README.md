@@ -1,6 +1,6 @@
 # knowledge.tree
 
-English · [한국어](./README.ko.md)
+English · [한국어](./docs/README.ko.md)
 
 An **open-source knowledge tree template** that grows through chained questions.
 No build step — drop your Supabase keys into two HTML files and you have your own knowledge base.
@@ -52,7 +52,7 @@ npx serve .
 ### Use as a template
 
 1. **Fork** or click **Use this template**
-2. Create a project on [supabase.com](https://supabase.com) → run the schema & RLS SQL from [SETUP.md](./SETUP.md)
+2. Create a project on [supabase.com](https://supabase.com) → run the schema & RLS SQL from [SETUP.md](./docs/SETUP.md)
 3. Replace the Supabase keys at the top of `index.html` and `admin.html`:
 
 ```js
@@ -63,14 +63,14 @@ const SUPABASE_ANON_KEY = '<your-anon-key>';
 4. Add an admin user in Supabase Authentication → log in at `/admin` → start authoring
 5. Deploy as static files to GitHub Pages / Netlify / Vercel / etc.
 
-> See [SETUP.md](./SETUP.md) for the full schema, RLS policies, and deployment notes.
+> See [docs/SETUP.md](./docs/SETUP.md) for the full schema, RLS policies, and deployment notes.
 
 ## Documentation
 
 | File | Description |
 |---|---|
-| [SETUP.md](./SETUP.md) | Supabase setup · schema · deployment |
-| [CONTENT_WORKFLOW.md](./CONTENT_WORKFLOW.md) | Content authoring / review / publish flow |
+| [docs/SETUP.md](./docs/SETUP.md) | Supabase setup · schema · deployment |
+| [docs/CONTENT_WORKFLOW.md](./docs/CONTENT_WORKFLOW.md) | Content authoring / review / publish flow |
 
 ## License
 
