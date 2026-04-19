@@ -970,27 +970,37 @@ function renderSectionDetail(sectionId) {
       <div class="panel-header">
         <span class="panel-title">개념</span>
         <span class="panel-count">${cpts.length}</span>
-        <div class="panel-actions" style="display:flex;align-items:center;gap:6px">
-          <button class="btn btn-sm btn-primary" id="sec-md-split-tab" onclick="setSecEditorMode('split')">Split</button>
-          <button class="btn btn-sm" id="sec-md-write-tab" onclick="setSecEditorMode('write')">Write</button>
-          <button class="btn btn-sm" id="sec-md-preview-tab" onclick="setSecEditorMode('preview')">Preview</button>
-          <div style="width:1px;height:16px;background:var(--border2)"></div>
+        <div class="panel-actions">
           <button class="btn btn-sm btn-primary" onclick="showConceptForm('${s.topic_id}','${sectionId}')">+ 개념</button>
         </div>
       </div>
       <div style="display:flex;height:calc(100vh - 220px);min-height:520px">
         <div style="flex:1;display:flex;flex-direction:column;border-right:1px solid var(--border)">
-          <div class="md-toolbar" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border2)">
-            <button class="md-tool-btn" title="Bold" onclick="mdInsertSec('**','**')"><b>B</b></button>
-            <button class="md-tool-btn" title="Italic" onclick="mdInsertSec('*','*')"><i>I</i></button>
-            <button class="md-tool-btn" title="Code" onclick="mdInsertSec('\`','\`')">&#96;&#96;</button>
-            <button class="md-tool-btn" title="H3" onclick="mdInsertLineSec('### ')">H3</button>
-          </div>
-          <div class="md-panels mode-split" id="sec-md-panels" style="flex:1;height:auto">
-            <div class="md-edit-pane">
-              <textarea id="sec-md-content" oninput="updateSecPreview()">${escapeHtml(mdContent)}</textarea>
+          <div class="md-editor-wrap" style="flex:1;display:flex;flex-direction:column;border-radius:0;border:none;border-top:1px solid var(--border)">
+            <div class="md-toolbar">
+              <button class="md-tool-btn" title="Bold" onclick="mdInsertSec('**','**')"><b>B</b></button>
+              <button class="md-tool-btn" title="Italic" onclick="mdInsertSec('*','*')"><i>I</i></button>
+              <button class="md-tool-btn" title="Code" onclick="mdInsertSec('\`','\`')">‹›</button>
+              <button class="md-tool-btn" title="Code Block" onclick="mdInsertSec('\\n\`\`\`\\n','\\n\`\`\`\\n')">{ }</button>
+              <span class="md-tool-sep"></span>
+              <button class="md-tool-btn" title="Heading 2" onclick="mdInsertLineSec('## ')">H2</button>
+              <button class="md-tool-btn" title="Heading 3" onclick="mdInsertLineSec('### ')">H3</button>
+              <span class="md-tool-sep"></span>
+              <button class="md-tool-btn" title="List" onclick="mdInsertLineSec('- ')">•</button>
+              <button class="md-tool-btn" title="Blockquote" onclick="mdInsertLineSec('> ')">❝</button>
+              <button class="md-tool-btn" title="Table" onclick="mdInsertTableSec()">⊞</button>
+              <div class="md-tab-group">
+                <button class="md-tab active" data-sec-mode="split" onclick="setSecEditorMode('split')">Split</button>
+                <button class="md-tab" data-sec-mode="write" onclick="setSecEditorMode('write')">Write</button>
+                <button class="md-tab" data-sec-mode="preview" onclick="setSecEditorMode('preview')">Preview</button>
+              </div>
             </div>
-            <div class="md-preview-pane" id="sec-md-preview"></div>
+            <div class="md-panels mode-split" id="sec-md-panels" style="flex:1;height:auto">
+              <div class="md-edit-pane">
+                <textarea id="sec-md-content" oninput="updateSecPreview()">${escapeHtml(mdContent)}</textarea>
+              </div>
+              <div class="md-preview-pane" id="sec-md-preview"></div>
+            </div>
           </div>
           <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0">
             <button class="btn btn-primary" onclick="saveSectionMd('${s.topic_id}','${sectionId}')">저장</button>
@@ -1388,7 +1398,7 @@ function setEditorMode(mode) {
   const panels = document.getElementById('md-panels');
   if (!panels) return;
   panels.className = 'md-panels mode-' + mode;
-  document.querySelectorAll('.md-tab').forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
+  document.querySelectorAll('.md-tab[data-mode]').forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
   if (mode === 'preview' || mode === 'split') updatePreview();
 }
 
@@ -1514,11 +1524,8 @@ function setSecEditorMode(mode) {
   const panels = document.getElementById('sec-md-panels');
   if (!panels) return;
   panels.className = 'md-panels mode-' + mode;
-  ['write','preview','split'].forEach(m => {
-    const btn = document.getElementById(`sec-md-${m}-tab`);
-    if (!btn) return;
-    btn.classList.toggle('btn-primary', m === mode);
-    btn.classList.toggle('btn-active', m === mode);
+  document.querySelectorAll('.md-tab[data-sec-mode]').forEach(t => {
+    t.classList.toggle('active', t.dataset.secMode === mode);
   });
   if (mode === 'preview' || mode === 'split') updateSecPreview();
 }
@@ -1539,6 +1546,15 @@ function mdInsertLineSec(prefix) {
   const start = ta.selectionStart;
   const lineStart = ta.value.lastIndexOf('\n', start - 1) + 1;
   ta.setRangeText(prefix, lineStart, lineStart, 'start');
+  ta.focus();
+  updateSecPreview();
+}
+
+function mdInsertTableSec() {
+  const ta = document.getElementById('sec-md-content');
+  if (!ta) return;
+  const table = '\n| 제목 | 설명 |\n|---|---|\n| 내용 | 내용 |\n';
+  ta.setRangeText(table, ta.selectionStart, ta.selectionEnd, 'end');
   ta.focus();
   updateSecPreview();
 }
