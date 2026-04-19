@@ -1442,6 +1442,13 @@ function toast(msg, type = 'success') {
 
 checkSession();
 
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('import-modal')?.style.display === 'block') { closeImportModal(); return; }
+  if (document.querySelector('#content .form-actions')) { document.activeElement?.blur(); cancelForm(); return; }
+  if (document.getElementById('sec-md-content')) { document.activeElement?.blur(); cancelForm(); return; }
+});
+
 // ── Import / Export ──────────────────────────────────────────────────────────
 
 // ── Section Markdown Editor ───────────────────────────────────────────────────
