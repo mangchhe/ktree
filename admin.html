@@ -555,6 +555,62 @@ body {
 .md-preview-pane td { padding: 6px 9px; border: 1px solid var(--border); color: #8b949e; }
 .md-preview-empty { color: var(--muted); font-size: 12px; opacity: 0.5; padding-top: 20px; text-align: center; }
 
+.import-export-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+}
+.btn-ie {
+  border-color: rgba(59,130,246,0.3);
+  color: var(--info);
+}
+.btn-ie:hover { background: rgba(59,130,246,0.1); }
+.btn-ie:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.import-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.import-modal-box {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  width: 680px;
+  max-width: 95vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.import-modal-header {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.import-modal-header h3 { font-size: 14px; font-weight: 600; }
+.import-modal-close { background: none; border: none; color: var(--muted); font-size: 18px; cursor: pointer; line-height: 1; }
+.import-modal-body { padding: 16px 20px; overflow-y: auto; flex: 1; }
+.import-preview-section { margin-bottom: 14px; }
+.import-preview-section h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 8px; }
+.import-topic-title { font-size: 15px; font-weight: 600; color: var(--accent); }
+.import-section-row { padding: 6px 0; border-bottom: 1px solid var(--border); }
+.import-section-name { font-size: 12px; font-weight: 600; color: var(--text); }
+.import-concept-list { margin-top: 4px; padding-left: 12px; }
+.import-concept-item { font-size: 11px; color: var(--muted); padding: 2px 0; display: flex; align-items: center; gap: 6px; }
+.import-badge { font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 3px; text-transform: uppercase; }
+.import-badge.basic { background: rgba(34,197,94,0.12); color: var(--accent); border: 1px solid rgba(34,197,94,0.2); }
+.import-badge.deep { background: rgba(59,130,246,0.12); color: var(--info); border: 1px solid rgba(59,130,246,0.2); }
+.import-badge.child { background: rgba(245,158,11,0.12); color: var(--warn); border: 1px solid rgba(245,158,11,0.2); }
+.import-modal-footer { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; }
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 2px; }
 </style>
@@ -571,6 +627,11 @@ body {
   <div class="source-toggle" id="source-toggle">
     <button class="source-btn active" id="source-public" onclick="setDataSource('public')">PUBLIC</button>
     <button class="source-btn" id="source-private" onclick="setDataSource('private')">PRIVATE</button>
+  </div>
+  <div class="import-export-group" id="import-export-group" style="display:none">
+    <button class="btn btn-sm btn-ie" onclick="triggerImport()" title="README 파일로 토픽 가져오기">↑ Import</button>
+    <button class="btn btn-sm btn-ie" id="export-btn" onclick="exportTopic()" title="현재 토픽을 README 파일로 내보내기" disabled>↓ Export</button>
+    <input type="file" id="import-file-input" accept=".md" style="display:none" onchange="handleImportFile(event)">
   </div>
   <a href="index.html" class="admin-link">← 메인으로</a>
   <button class="btn btn-sm" id="logout-btn" style="display:none" onclick="logout()">로그아웃</button>
@@ -607,6 +668,7 @@ body {
 
 <div class="toast-container" id="toasts"></div>
 <div id="dialog-root"></div>
+<div id="import-modal" style="display:none"></div>
 
 <script>
 const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
@@ -675,6 +737,7 @@ async function logout() {
   document.getElementById('auth-view').style.display = 'block';
   document.getElementById('logout-btn').style.display = 'none';
   document.getElementById('source-toggle').style.display = 'none';
+  document.getElementById('import-export-group').style.display = 'none';
   updateStatus(false);
 }
 
@@ -691,6 +754,7 @@ function showAdmin() {
   document.getElementById('admin-view').style.display = 'block';
   document.getElementById('logout-btn').style.display = '';
   document.getElementById('source-toggle').style.display = 'flex';
+  document.getElementById('import-export-group').style.display = 'flex';
   updateSourceUI();
   updateStatus(true);
   loadAll();
@@ -748,6 +812,7 @@ function buildSidebar() {
 function selectItem(type, id) {
   selectedItem = { type, id };
   buildSidebar();
+  updateExportBtn();
   if (type === 'topic') renderTopicDetail(id);
   else if (type === 'section') renderSectionDetail(id);
 }
@@ -1272,6 +1337,289 @@ function toast(msg, type = 'success') {
 }
 
 checkSession();
+
+// ── Import / Export ──────────────────────────────────────────────────────────
+
+function updateExportBtn() {
+  const btn = document.getElementById('export-btn');
+  if (!btn) return;
+  btn.disabled = !selectedItem;
+}
+
+function triggerImport() {
+  const input = document.getElementById('import-file-input');
+  input.value = '';
+  input.click();
+}
+
+function handleImportFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const parsed = parseReadme(e.target.result);
+    if (!parsed) { toast('파일 파싱 실패 — # 토픽 제목이 있는지 확인하세요', 'error'); return; }
+    showImportPreview(parsed);
+  };
+  reader.readAsText(file);
+}
+
+function parseReadme(text) {
+  const lines = text.split('\n');
+  let topic = null;
+  let currentSection = null;
+  let currentConcept = null;
+  let bodyLines = [];
+
+  function flushConcept() {
+    if (!currentConcept || !currentSection) return;
+    const body = bodyLines.join('\n').trim();
+    const paras = body.split(/\n\n+/);
+    currentConcept.description = paras[0] || null;
+    currentConcept.content = paras.slice(1).join('\n\n') || null;
+    bodyLines = [];
+  }
+
+  function flushSection() {
+    flushConcept();
+    currentConcept = null;
+  }
+
+  for (const raw of lines) {
+    const line = raw;
+    if (/^# /.test(line)) {
+      topic = { title: line.replace(/^# /, '').trim(), description: null, sections: [] };
+      currentSection = null;
+      currentConcept = null;
+      bodyLines = [];
+    } else if (/^## /.test(line)) {
+      if (!topic) continue;
+      flushSection();
+      currentSection = { title: line.replace(/^## /, '').trim(), description: null, concepts: [] };
+      topic.sections.push(currentSection);
+      currentConcept = null;
+      bodyLines = [];
+    } else if (/^### /.test(line)) {
+      if (!currentSection) continue;
+      flushSection();
+      currentConcept = { title: line.replace(/^### /, '').trim(), level: null, questions: [], description: null, content: null, parent: null };
+      currentSection.concepts.push(currentConcept);
+      bodyLines = [];
+    } else if (/^#### /.test(line)) {
+      if (!currentSection) continue;
+      flushConcept();
+      const parent = currentConcept;
+      currentConcept = { title: line.replace(/^#### /, '').trim(), level: null, questions: [], description: null, content: null, parent: parent ? parent.title : null };
+      currentSection.concepts.push(currentConcept);
+      bodyLines = [];
+    } else if (/^> level:/.test(line) && currentConcept) {
+      const val = line.replace(/^> level:/, '').trim().toLowerCase();
+      currentConcept.level = (val === 'basic' || val === 'deep') ? val : null;
+    } else if (/^> questions:/.test(line) && currentConcept) {
+      const val = line.replace(/^> questions:/, '').trim();
+      currentConcept.questions = val.split('|').map(q => q.trim()).filter(Boolean);
+    } else if (/^> /.test(line)) {
+      // ignore other blockquotes
+    } else {
+      if (currentConcept) {
+        bodyLines.push(line);
+      } else if (currentSection && !currentConcept) {
+        if (line.trim()) currentSection.description = (currentSection.description ? currentSection.description + '\n' : '') + line.trim();
+      } else if (topic && !currentSection) {
+        if (line.trim()) topic.description = (topic.description ? topic.description + '\n' : '') + line.trim();
+      }
+    }
+  }
+  flushSection();
+  if (!topic) return null;
+  return topic;
+}
+
+function showImportPreview(parsed) {
+  const totalConcepts = parsed.sections.reduce((s, sec) => s + sec.concepts.length, 0);
+  let sectionsHtml = '';
+  for (const sec of parsed.sections) {
+    const conceptsHtml = sec.concepts.map(c => `
+      <div class="import-concept-item">
+        ${c.parent ? '<span class="import-badge child">child</span>' : ''}
+        ${c.level ? `<span class="import-badge ${c.level}">${c.level}</span>` : ''}
+        <span>${escapeHtml(c.title)}</span>
+        ${c.questions.length ? `<span style="color:var(--muted);font-size:10px">(Q: ${c.questions.length})</span>` : ''}
+      </div>`).join('');
+    sectionsHtml += `
+      <div class="import-section-row">
+        <div class="import-section-name">${escapeHtml(sec.title)}</div>
+        <div class="import-concept-list">${conceptsHtml}</div>
+      </div>`;
+  }
+
+  const modal = document.getElementById('import-modal');
+  modal.innerHTML = `
+    <div class="import-modal">
+      <div class="import-modal-box">
+        <div class="import-modal-header">
+          <h3>Import 미리보기</h3>
+          <button class="import-modal-close" onclick="closeImportModal()">×</button>
+        </div>
+        <div class="import-modal-body">
+          <div class="import-preview-section">
+            <h4>토픽</h4>
+            <div class="import-topic-title">${escapeHtml(parsed.title)}</div>
+            ${parsed.description ? `<div style="font-size:11px;color:var(--muted);margin-top:4px">${escapeHtml(parsed.description)}</div>` : ''}
+          </div>
+          <div class="import-preview-section">
+            <h4>구성 — ${parsed.sections.length}개 섹션, ${totalConcepts}개 개념</h4>
+            ${sectionsHtml}
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:12px">
+            기존 동일 제목의 토픽/섹션/개념은 업데이트되고, 없으면 새로 생성됩니다.
+          </div>
+        </div>
+        <div class="import-modal-footer">
+          <button class="btn" onclick="closeImportModal()">취소</button>
+          <button class="btn btn-primary" onclick="doImport(importParsedData)">가져오기</button>
+        </div>
+      </div>
+    </div>`;
+  modal.style.display = 'block';
+  window.importParsedData = parsed;
+}
+
+function closeImportModal() {
+  document.getElementById('import-modal').style.display = 'none';
+  document.getElementById('import-modal').innerHTML = '';
+  window.importParsedData = null;
+}
+
+async function doImport(parsed) {
+  closeImportModal();
+  toast('가져오는 중...', 'success');
+  const tNames = getTables();
+
+  // 1. Topic upsert (title 기준)
+  let topic = topics.find(t => t.title === parsed.title);
+  const topicId = topic ? topic.id : generateId();
+  const topicRow = {
+    id: topicId,
+    title: parsed.title,
+    description: parsed.description || null,
+    sort_order: topic ? topic.sort_order : topics.length,
+    tags: topic ? topic.tags : [],
+  };
+  const { error: tErr } = await sb.from(tNames.topics).upsert(topicRow);
+  if (tErr) { toast(`토픽 저장 실패: ${tErr.message}`, 'error'); return; }
+
+  let sectionOrder = sections.filter(s => s.topic_id === topicId).length;
+
+  for (const sec of parsed.sections) {
+    // 2. Section upsert (topic_id + title 기준)
+    let existSec = sections.find(s => s.topic_id === topicId && s.title === sec.title);
+    const sectionId = existSec ? existSec.id : generateId();
+    const secRow = {
+      id: sectionId,
+      topic_id: topicId,
+      title: sec.title,
+      description: sec.description || null,
+      sort_order: existSec ? existSec.sort_order : sectionOrder++,
+    };
+    const { error: sErr } = await sb.from(tNames.sections).upsert(secRow);
+    if (sErr) { toast(`섹션 저장 실패 (${sec.title}): ${sErr.message}`, 'error'); return; }
+
+    let conceptOrder = concepts.filter(c => c.section_id === sectionId).length;
+    const titleToId = {};
+
+    for (const cpt of sec.concepts) {
+      // 3. Concept upsert (section_id + title 기준)
+      let existCpt = concepts.find(c => c.section_id === sectionId && c.title === cpt.title);
+      const conceptId = existCpt ? existCpt.id : generateId();
+      const parentId = cpt.parent ? (titleToId[cpt.parent] || null) : null;
+      const cptRow = {
+        id: conceptId,
+        section_id: sectionId,
+        topic_id: topicId,
+        parent_concept_id: parentId,
+        title: cpt.title,
+        description: cpt.description || null,
+        level: cpt.level || null,
+        questions: cpt.questions.length ? cpt.questions : [],
+        content: cpt.content || null,
+        sort_order: existCpt ? existCpt.sort_order : conceptOrder++,
+      };
+      const { error: cErr } = await sb.from(tNames.concepts).upsert(cptRow);
+      if (cErr) { toast(`개념 저장 실패 (${cpt.title}): ${cErr.message}`, 'error'); return; }
+      titleToId[cpt.title] = conceptId;
+
+      // 4. revision 백필
+      const changeType = existCpt ? 'update' : 'create';
+      const revRow = {
+        id: generateId(),
+        concept_id: conceptId,
+        topic_id: topicId,
+        section_id: sectionId,
+        change_type: changeType,
+        title: cpt.title,
+        description: cpt.description || null,
+        level: cpt.level || null,
+        questions: cpt.questions.length ? cpt.questions : null,
+        content: cpt.content || null,
+        changed_fields: changeType === 'create' ? null : { imported: true },
+        changed_by: currentUser?.email || null,
+      };
+      await sb.from(tNames.revisions).insert(revRow);
+    }
+  }
+
+  toast(`'${parsed.title}' 가져오기 완료`, 'success');
+  selectedItem = { type: 'topic', id: topicId };
+  await loadAll();
+  renderTopicDetail(topicId);
+}
+
+async function exportTopic() {
+  if (!selectedItem) return;
+  const topicId = selectedItem.type === 'topic' ? selectedItem.id
+    : selectedItem.type === 'section' ? sections.find(s => s.id === selectedItem.id)?.topic_id
+    : concepts.find(c => c.id === selectedItem.id)?.topic_id;
+  if (!topicId) return;
+
+  const topic = topics.find(t => t.id === topicId);
+  if (!topic) return;
+
+  const topicSections = sections.filter(s => s.topic_id === topicId).sort((a, b) => a.sort_order - b.sort_order);
+  let md = `# ${topic.title}\n`;
+  if (topic.description) md += `\n${topic.description}\n`;
+
+  for (const sec of topicSections) {
+    md += `\n## ${sec.title}\n`;
+    if (sec.description) md += `\n${sec.description}\n`;
+
+    const rootCpts = concepts.filter(c => c.section_id === sec.id && !c.parent_concept_id).sort((a, b) => a.sort_order - b.sort_order);
+    const childCpts = concepts.filter(c => c.section_id === sec.id && c.parent_concept_id).sort((a, b) => a.sort_order - b.sort_order);
+
+    function writeConcept(c, level) {
+      const prefix = level === 3 ? '###' : '####';
+      md += `\n${prefix} ${c.title}\n`;
+      if (c.level) md += `\n> level: ${c.level}\n`;
+      if (c.questions && c.questions.length) md += `> questions: ${c.questions.join(' | ')}\n`;
+      if (c.description) md += `\n${c.description}\n`;
+      if (c.content) md += `\n${c.content}\n`;
+      childCpts.filter(ch => ch.parent_concept_id === c.id).forEach(ch => writeConcept(ch, 4));
+    }
+
+    rootCpts.forEach(c => writeConcept(c, 3));
+  }
+
+  const slug = topic.title.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '-').replace(/^-|-$/g, '');
+  const filename = `${slug}.md`;
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast(`${filename} 다운로드됨`, 'success');
+}
 </script>
 </body>
 </html>
