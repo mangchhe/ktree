@@ -13,6 +13,33 @@
 - **ID 타입:** text (UUID 등 사용)
 - **컬럼명:** title (name 아님)
 
+### 구조 관계도
+
+```
+Topic (주제)
+│   예) "JavaScript", "운영체제", "네트워크"
+│   하나의 큰 학습 주제 단위
+│
+└── Section (섹션) [1:N]
+    │   예) "비동기 처리", "프로세스 관리", "TCP/IP"
+    │   Topic을 구성하는 챕터/묶음 단위
+    │
+    └── Concept (개념) [1:N]
+        │   예) "Promise", "async/await", "이벤트 루프"
+        │   실제 학습 콘텐츠 단위 (설명, 레벨, 질문 포함)
+        │
+        └── Concept (자식 개념) [parent_concept_id, 선택]
+                예) "Promise.all", "Promise.race"
+                부모 개념의 세부 개념으로 트리 구조 가능
+```
+
+**관계 요약**
+
+- `Topic` 1 → N `Section`
+- `Section` 1 → N `Concept`
+- `Concept` 0 → N `Concept` (self-referencing, parent_concept_id)
+- `Concept`은 `topic_id`도 직접 보유 (section 없이 topic 기준 조회 가능)
+
 ### 스키마
 
 ```sql
