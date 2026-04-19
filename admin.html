@@ -1440,6 +1440,22 @@ function toast(msg, type = 'success') {
 
 checkSession();
 
+function syncScroll(textarea, preview) {
+  const ratio = textarea.scrollTop / (textarea.scrollHeight - textarea.clientHeight || 1);
+  preview.scrollTop = ratio * (preview.scrollHeight - preview.clientHeight);
+}
+
+document.addEventListener('scroll', e => {
+  const el = e.target;
+  if (el.id === 'sec-md-content') {
+    const p = document.getElementById('sec-md-preview');
+    if (p) syncScroll(el, p);
+  } else if (el.id === 'f-content') {
+    const p = document.getElementById('md-preview');
+    if (p) syncScroll(el, p);
+  }
+}, true);
+
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
   e.preventDefault();
