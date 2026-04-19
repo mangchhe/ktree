@@ -980,7 +980,7 @@ body {
     <button class="mode-btn" id="mode-private" onclick="switchAppMode('private')">PRIVATE</button>
   </div>
   <button id="private-logout-btn" onclick="logoutPrivate()">로그아웃</button>
-  <button id="admin-btn" onclick="location.href='admin.html'">Admin ↗</button>
+  <button id="admin-btn">Admin ↗</button>
 </div>
 
 <div id="main">
@@ -1030,10 +1030,16 @@ function switchAppMode(mode) {
 
 function setPrivateAuthUI(isLoggedIn) {
   const btn = document.getElementById('private-logout-btn');
-  if (btn) btn.style.display = APP_MODE === 'private' && isLoggedIn ? 'inline-block' : 'none';
+  if (btn) btn.style.display = isLoggedIn ? 'inline-block' : 'none';
   const adminBtn = document.getElementById('admin-btn');
-  if (adminBtn) adminBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+  if (adminBtn) {
+    adminBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+  }
 }
+document.getElementById('admin-btn').addEventListener('click', () => {
+  const isPrivate = new URLSearchParams(window.location.search).get('mode') === 'private';
+  location.href = isPrivate ? '/admin?source=private' : '/admin';
+});
 
 async function logoutPrivate() {
   if (!sb) return;
@@ -2032,8 +2038,8 @@ document.addEventListener('click', e => {
 });
 
 async function initFromSupabase() {
+  const { data: { session } } = await sb.auth.getSession();
   if (APP_MODE === 'private') {
-    const { data: { session } } = await sb.auth.getSession();
     if (!session) {
       setPrivateAuthUI(false);
       renderPrivateLogin();
@@ -2041,7 +2047,7 @@ async function initFromSupabase() {
     }
     setPrivateAuthUI(true);
   } else {
-    setPrivateAuthUI(false);
+    setPrivateAuthUI(!!session);
   }
 
   const tNames = getViewTables();

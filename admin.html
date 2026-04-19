@@ -645,7 +645,7 @@ body {
     <button class="btn btn-sm btn-ie" id="export-btn" onclick="exportTopic()" title="현재 토픽을 README 파일로 내보내기" disabled>↓ Export</button>
     <input type="file" id="import-file-input" accept=".md" style="display:none" onchange="handleImportFile(event)">
   </div>
-  <a href="index.html" class="admin-link">← 메인으로</a>
+  <a href="/" class="admin-link" id="back-to-main">← 메인으로</a>
   <button class="btn btn-sm" id="logout-btn" style="display:none" onclick="logout()">로그아웃</button>
 </div>
 
@@ -710,6 +710,12 @@ function updateSourceUI() {
   const prvBtn = document.getElementById('source-private');
   if (pubBtn) pubBtn.classList.toggle('active', isPublic);
   if (prvBtn) prvBtn.classList.toggle('active', !isPublic);
+  const backLink = document.getElementById('back-to-main');
+  if (backLink) backLink.href = isPublic ? '/' : '/?mode=private';
+  const url = new URL(location.href);
+  if (isPublic) url.searchParams.delete('source');
+  else url.searchParams.set('source', 'private');
+  history.replaceState(null, '', url.pathname + url.search + location.hash);
 }
 
 async function setDataSource(source) {
@@ -719,7 +725,7 @@ async function setDataSource(source) {
   selectedItem = null;
   location.hash = '';
   await loadAll();
-  document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
+  renderHome();
   toast(`데이터 소스 전환: ${source.toUpperCase()}`, 'success');
 }
 
@@ -1436,6 +1442,11 @@ function toast(msg, type = 'success') {
   el.textContent = msg;
   container.appendChild(el);
   setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3000);
+}
+
+if (new URLSearchParams(location.search).get('source') === 'private') {
+  dataSource = 'private';
+  history.replaceState(null, '', location.pathname + '?source=private');
 }
 
 checkSession();
