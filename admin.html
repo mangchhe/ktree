@@ -616,6 +616,10 @@ body {
 .import-badge.child { background: rgba(245,158,11,0.12); color: var(--warn); border: 1px solid rgba(245,158,11,0.2); }
 .import-modal-footer { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; }
 
+.home-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; padding: 16px; }
+.home-card { position: relative; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; cursor: pointer; transition: border-color 0.15s, transform 0.1s; }
+.home-card:hover { border-color: var(--border2); transform: translateY(-1px); }
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 2px; }
 </style>
@@ -764,46 +768,35 @@ async function showAdmin() {
   updateSourceUI();
   updateStatus(true);
   await loadAll();
-  restoreFromHash();
+  if (!restoreFromHash()) renderHome();
 }
 
 function restoreFromHash() {
-  if (selectedItem) return;
+  if (selectedItem) return true;
   const hash = location.hash.replace('#', '');
-  if (!hash) return;
+  if (!hash) return false;
   const parts = hash.split('/');
   const src = parts[0];
-  if (src === 'private' && dataSource !== 'private') return;
+  if (src === 'private' && dataSource !== 'private') return false;
 
-  // form 복원: src/form/topic/{id|new}
   if (parts[1] === 'form' && parts[2] === 'topic') {
     const editId = parts[3] !== 'new' ? parts[3] : undefined;
     if (editId) selectedItem = { type: 'topic', id: editId };
-    buildSidebar();
-    showTopicForm(editId);
-    return;
+    buildSidebar(); showTopicForm(editId); return true;
   }
-  // src/form/section/{topicId}/{id|new}
   if (parts[1] === 'form' && parts[2] === 'section' && parts[3]) {
     const topicId = parts[3];
     const editId = parts[4] !== 'new' ? parts[4] : undefined;
     selectedItem = { type: editId ? 'section' : 'topic', id: editId || topicId };
-    buildSidebar();
-    showSectionForm(topicId, editId);
-    return;
+    buildSidebar(); showSectionForm(topicId, editId); return true;
   }
-  // src/form/concept/{topicId}/{sectionId}/{id|new}
   if (parts[1] === 'form' && parts[2] === 'concept' && parts[3] && parts[4]) {
-    const topicId = parts[3];
-    const sectionId = parts[4];
+    const topicId = parts[3], sectionId = parts[4];
     const editId = parts[5] !== 'new' ? parts[5] : undefined;
     selectedItem = { type: 'section', id: sectionId };
-    buildSidebar();
-    _origShowConceptForm(topicId, sectionId, editId);
-    setTimeout(updatePreview, 0);
-    return;
+    buildSidebar(); _origShowConceptForm(topicId, sectionId, editId);
+    setTimeout(updatePreview, 0); return true;
   }
-  // 일반 상세 복원: src/topic/{id} or src/section/{id}
   if (parts.length === 3) {
     const [, type, id] = parts;
     if ((type === 'topic' && topics.find(t => t.id === id)) ||
@@ -812,8 +805,10 @@ function restoreFromHash() {
       updateExportBtn();
       if (type === 'topic') renderTopicDetail(id);
       else if (type === 'section') renderSectionDetail(id);
+      return true;
     }
   }
+  return false;
 }
 
 function updateStatus(connected) {
@@ -1572,15 +1567,49 @@ async function saveSectionMd(topicId, sectionId) {
 
   toast('저장 완료', 'success');
   await loadAll();
-  renderSectionDetail(sectionId, 'md');
+  renderSectionDetail(sectionId);
 }
 
 function goAdminHome() {
   selectedItem = null;
   location.hash = '';
   updateExportBtn();
-  document.getElementById('content').innerHTML = '<div class="panel-empty">← 사이드바에서 항목을 선택하세요</div>';
   buildSidebar();
+  renderHome();
+}
+
+function renderHome() {
+  const secCount = (tid) => sections.filter(s => s.topic_id === tid).length;
+  const cptCount = (tid) => concepts.filter(c => c.topic_id === tid).length;
+  const cards = topics.map(t => {
+    const color = t.color || '#7c6af7';
+    const sc = secCount(t.id), cc = cptCount(t.id);
+    return `
+      <div class="home-card" onclick="selectItem('topic','${t.id}')">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${color};border-radius:8px 8px 0 0"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <div style="width:28px;height:28px;border-radius:8px;background:${color}22;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:${color}">${t.title.charAt(0)}</div>
+          <span style="font-size:13px;font-weight:600">${t.title}</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:10px;min-height:32px">${t.description || ''}</div>
+        <div style="display:flex;gap:10px;font-size:10px;color:var(--muted)">
+          <span>${sc} 섹션</span><span>&middot;</span><span>${cc} 개념</span>
+        </div>
+      </div>`;
+  }).join('');
+  document.getElementById('content').innerHTML = `
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">Topics</span>
+        <span class="panel-count">${topics.length}</span>
+        <div class="panel-actions">
+          <button class="btn btn-sm btn-primary" onclick="showTopicForm()">+ 주제</button>
+        </div>
+      </div>
+      ${topics.length === 0
+        ? '<div class="panel-empty">주제가 없습니다</div>'
+        : `<div class="home-cards">${cards}</div>`}
+    </div>`;
 }
 
 function updateExportBtn() {
