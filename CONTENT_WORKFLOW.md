@@ -5,8 +5,10 @@ English · [한국어](./CONTENT_WORKFLOW.ko.md)
 To balance content quality with speed of publishing, authoring, review, and persistence are split into three stages.
 
 - **Stage 1 (Draft)** — the author sends a draft in the *review format*
-- **Stage 2 (Review)** — the agent enriches explanations and returns a *confirmation summary*
-- **Stage 3 (Apply)** — once approved, the agent produces *SQL for the database*
+- **Stage 2 (Review)** — the agent produces a README (`.md`) with enriched explanations
+- **Stage 3 (Apply)** — once approved, use the admin panel's **↑ Import** to write to the DB
+
+> Draft READMEs live under the `drafts/` folder. It's in `.gitignore`, so drafts stay out of the repository.
 
 ## Database
 
@@ -180,41 +182,32 @@ sections:
         detail: 2–4 sentences of detail
 ```
 
-## 2) Agent's confirmation format
+## 2) Agent's draft (README)
 
-Before any SQL, the agent always confirms these first:
-
-- Final shape: `Topic > Section > Concept`
+- Produce `drafts/{topic-slug}.md` that follows the *README format* above
 - For each concept: `definition + why it matters + real-world context`
-- Change type per item: `new / updated / unchanged`
+- Mark the change type in the commit message or PR comment: `new / updated / unchanged`
+- **Respect DB constraints**
+  - `level` allowed values: `basic`, `deep` (omit for `NULL`)
+  - Do not use non-allowed values like `intermediate`
+  - Check for title collisions with existing Topic/Section/Concept rows beforehand
 
-## 3) Apply format (SQL)
+## 3) Apply (Import)
 
-- After approval, generate `upsert`-centric SQL
-- `id` can come from an auto-generator (manual fixed IDs are not required)
-- Include safeguards against duplicates (keyed by `title` + `section/topic`)
-- Provide verification `SELECT` queries when useful
+1. Open the admin panel (`/admin`)
+2. Choose the target mode (Public / Private)
+3. Click **↑ Import** → select `drafts/{topic-slug}.md`
+4. Review the parse preview (section/concept counts, levels, child markers)
+5. Confirm — runs the upsert and writes `concept_revisions` automatically
 
-### Pre-SQL checks (DB constraints)
+> Import matches by `title`, so existing items are updated and new items are inserted.
+> Fields not present in the README (e.g. `color`, `tags`, `sort_order`) keep their current values.
 
-- `concepts.level` allowed values: `basic`, `deep`, `NULL`
-- Do not use non-allowed values like `intermediate`
-- Check for existing entries with the same title before insert/update
+### After import
 
-### Post-SQL verification
-
-- Make sure `sort_order` reflects intent for topics/sections
+- Check that `sort_order` is correct for topics and sections
 - Verify each concept's `level`, `title`, `description`, `content`
-- When needed, apply a separate policy for `concept_revisions` (create/update history)
-
-### Revision backfill rule (important)
-
-- Saving in `admin.html` records `concept_revisions` automatically
-- Direct `INSERT/UPDATE` on `concepts` via SQL does **not** produce a revision row
-- So when applying via SQL, always do one of the following:
-  - New inserts: backfill `change_type = 'create'`
-  - Bulk updates/cleanups: snapshot the current state (usually `change_type = 'update'`)
-- Operating rule: **content SQL and revision backfill SQL should run in the same unit of work**
+- If needed, compare AS-IS / TO-BE in the revision history on the detail view
 
 ## Operating principles
 
@@ -222,3 +215,4 @@ Before any SQL, the agent always confirms these first:
 - The agent only enriches where needed; avoid over-expanding or inventing new names
 - Write in *explanatory* prose, not bulleted memos
 - Keep topic/section/concept names in the same tone as the existing repo (short, clear nouns)
+- All drafts live in `drafts/` (git-ignored)

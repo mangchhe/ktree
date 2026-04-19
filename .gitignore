@@ -3,3 +3,4 @@ migrate-to-supabase.mjs
 supabase-schema.sql
 TWO_TRACK_EXECUTION_PLAN.md
 *.code-workspace
+drafts/

@@ -5,8 +5,10 @@
 콘텐츠 품질과 반영 속도를 동시에 맞추기 위해, 작성/검토/반영 단계를 분리합니다.
 
 - 1단계(작성): 작성자는 **검토용 포맷**으로 초안 전달
-- 2단계(검토): 에이전트가 개념 설명을 보강한 **컨펌용 요약본** 제시
-- 3단계(반영): 승인 후 **DB 반영용 SQL** 생성
+- 2단계(검토): 에이전트가 개념 설명을 보강한 **README(.md)** 제시
+- 3단계(반영): 승인 후 어드민 패널에서 **↑ Import**로 DB 반영
+
+> 드래프트 README는 `drafts/` 폴더 아래에 생성합니다. 이 폴더는 `.gitignore`에 포함되어 있어 저장소에는 올라가지 않습니다.
 
 ## 데이터베이스
 
@@ -44,129 +46,7 @@ Topic (주제)
 
 ### 스키마
 
-```sql
-CREATE TABLE public.topics (
-  id text NOT NULL,
-  title text NOT NULL,
-  description text,
-  tags ARRAY DEFAULT '{}'::text[],
-  node_count integer DEFAULT 0,
-  color text,
-  sort_order integer DEFAULT 0,
-  created_at timestamp with time zone DEFAULT now(),
-  updated_at timestamp with time zone DEFAULT now(),
-  CONSTRAINT topics_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE public.topics_private (
-  id text NOT NULL,
-  title text NOT NULL,
-  description text,
-  tags ARRAY DEFAULT '{}'::text[],
-  node_count integer DEFAULT 0,
-  color text,
-  sort_order integer DEFAULT 0,
-  created_at timestamp with time zone DEFAULT now(),
-  updated_at timestamp with time zone DEFAULT now(),
-  CONSTRAINT topics_private_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE public.sections (
-  id text NOT NULL,
-  topic_id text NOT NULL,
-  title text NOT NULL,
-  description text,
-  sort_order integer DEFAULT 0,
-  created_at timestamp with time zone DEFAULT now(),
-  updated_at timestamp with time zone DEFAULT now(),
-  CONSTRAINT sections_pkey PRIMARY KEY (id),
-  CONSTRAINT sections_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics(id)
-);
-
-CREATE TABLE public.sections_private (
-  id text NOT NULL,
-  topic_id text NOT NULL,
-  title text NOT NULL,
-  description text,
-  sort_order integer DEFAULT 0,
-  created_at timestamp with time zone DEFAULT now(),
-  updated_at timestamp with time zone DEFAULT now(),
-  CONSTRAINT sections_private_pkey PRIMARY KEY (id),
-  CONSTRAINT sections_private_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics_private(id)
-);
-
-CREATE TABLE public.concepts (
-  id text NOT NULL,
-  section_id text NOT NULL,
-  topic_id text NOT NULL,
-  parent_concept_id text,
-  title text NOT NULL,
-  description text,
-  level text CHECK (level = ANY (ARRAY['basic'::text, 'deep'::text])),
-  questions ARRAY DEFAULT '{}'::text[],
-  content text,
-  sort_order integer DEFAULT 0,
-  created_at timestamp with time zone DEFAULT now(),
-  updated_at timestamp with time zone DEFAULT now(),
-  CONSTRAINT concepts_pkey PRIMARY KEY (id),
-  CONSTRAINT concepts_section_id_fkey FOREIGN KEY (section_id) REFERENCES public.sections(id),
-  CONSTRAINT concepts_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics(id),
-  CONSTRAINT concepts_parent_concept_id_fkey FOREIGN KEY (parent_concept_id) REFERENCES public.concepts(id)
-);
-
-CREATE TABLE public.concepts_private (
-  id text NOT NULL,
-  section_id text NOT NULL,
-  topic_id text NOT NULL,
-  parent_concept_id text,
-  title text NOT NULL,
-  description text,
-  level text CHECK (level = ANY (ARRAY['basic'::text, 'deep'::text])),
-  questions ARRAY DEFAULT '{}'::text[],
-  content text,
-  sort_order integer DEFAULT 0,
-  created_at timestamp with time zone DEFAULT now(),
-  updated_at timestamp with time zone DEFAULT now(),
-  CONSTRAINT concepts_private_pkey PRIMARY KEY (id),
-  CONSTRAINT concepts_private_section_id_fkey FOREIGN KEY (section_id) REFERENCES public.sections_private(id),
-  CONSTRAINT concepts_private_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics_private(id),
-  CONSTRAINT concepts_private_parent_concept_id_fkey FOREIGN KEY (parent_concept_id) REFERENCES public.concepts_private(id)
-);
-
-CREATE TABLE public.concept_revisions (
-  id text NOT NULL,
-  concept_id text NOT NULL,
-  topic_id text,
-  section_id text,
-  change_type text NOT NULL DEFAULT 'update'::text,
-  title text,
-  description text,
-  level text,
-  questions ARRAY,
-  content text,
-  changed_fields jsonb,
-  changed_by text,
-  created_at timestamp with time zone NOT NULL DEFAULT now(),
-  CONSTRAINT concept_revisions_pkey PRIMARY KEY (id)
-);
-
-CREATE TABLE public.concept_revisions_private (
-  id text NOT NULL,
-  concept_id text NOT NULL,
-  topic_id text,
-  section_id text,
-  change_type text NOT NULL DEFAULT 'update'::text,
-  title text,
-  description text,
-  level text,
-  questions ARRAY,
-  content text,
-  changed_fields jsonb,
-  changed_by text,
-  created_at timestamp with time zone NOT NULL DEFAULT now(),
-  CONSTRAINT concept_revisions_private_pkey PRIMARY KEY (id)
-);
-```
+전체 `CREATE TABLE` 정의는 [SETUP.md](./SETUP.ko.md) 참고.
 
 ## README Import / Export
 
@@ -302,41 +182,32 @@ sections:
         detail: 2~4문장 설명
 ```
 
-## 2) 에이전트가 주는 컨펌용 포맷
+## 2) 에이전트가 주는 드래프트 (README)
 
-SQL 전에 반드시 아래 항목으로 먼저 확인합니다.
-
-- 최종 구조: `Topic > Section > Concept`
+- 위 "README 파일 포맷" 규칙에 맞춰 `drafts/{topic-slug}.md` 로 생성
 - 각 Concept: `정의(무엇인지) + 중요성(왜 필요한지) + 실무 맥락`
-- 변경 유형 표기: `신규 / 수정 / 유지`
+- 변경 유형은 커밋 메시지나 PR 코멘트로 표시: `신규 / 수정 / 유지`
+- **DB 제약 준수**
+  - `level` 허용값: `basic`, `deep` (생략 시 NULL)
+  - `intermediate` 같은 비허용 값 사용 금지
+  - 동일 `title`의 기존 Topic/Section/Concept과 충돌 여부를 먼저 확인
 
-## 3) 최종 반영 포맷 (SQL)
+## 3) 반영 (Import)
 
-- 승인 후 `upsert` 중심 SQL 생성
-- `id`는 자동 생성 로직 사용 가능 (수동 고정 ID 강제하지 않음)
-- 중복 입력 방지 조건 포함 (`title` + `section/topic` 기준)
-- 필요 시 검증용 `SELECT` 쿼리 함께 제공
+1. 어드민 패널 접속 (`/admin`)
+2. 반영할 모드 선택 (Public / Private)
+3. **↑ Import** 버튼 → `drafts/{topic-slug}.md` 선택
+4. 파싱 미리보기 확인 (섹션/개념 수, level, child 표시)
+5. 확인 후 반영 — upsert + `concept_revisions` 자동 기록
 
-### SQL 생성 전 필수 체크 (DB 제약)
+> Import는 `title` 기준 매칭이므로, 이미 존재하는 항목은 업데이트, 없는 항목은 신규 생성됩니다.
+> `color`, `tags`, `sort_order` 같이 README에 없는 필드는 기존 값이 보존됩니다.
 
-- `concepts.level` 허용값: `basic`, `deep`, `NULL`
-- `intermediate` 같은 비허용 값 사용 금지
-- 신규 삽입/수정 전, 기존 동일 제목 데이터 존재 여부 확인
+### 반영 후 확인
 
-### SQL 실행 후 검증 체크
-
-- 토픽/섹션 정렬(`sort_order`)이 의도대로 반영되었는지 확인
-- 컨셉별 `level`, `title`, `description`, `content` 반영 확인
-- 필요 시 `concept_revisions` 기록 정책(생성/수정 이력) 별도 적용
-
-### Revision 백필 규칙 (중요)
-
-- `admin.html`에서 저장하면 `concept_revisions`가 자동 기록됨
-- SQL로 `concepts`를 직접 `INSERT/UPDATE`하면 revision이 자동 생성되지 않음
-- 따라서 SQL 반영 시 아래 중 하나를 반드시 같이 수행
-  - 신규 반영: `change_type = 'create'` 백필
-  - 대량 수정/정리: 현재 상태 `snapshot`(보통 `change_type = 'update'`) 기록
-- 운영 원칙: **콘텐츠 반영 SQL과 revision 백필 SQL을 같은 작업 단위로 실행**
+- 토픽/섹션 정렬(`sort_order`)이 의도대로 되었는지 확인
+- 각 Concept의 `level`, `title`, `description`, `content` 확인
+- 필요 시 상세 화면의 Revision 히스토리에서 AS-IS / TO-BE 비교
 
 ## 운영 원칙
 
@@ -344,3 +215,4 @@ SQL 전에 반드시 아래 항목으로 먼저 확인합니다.
 - 에이전트는 필요한 맥락만 보강하되, 과도한 확장/창작 네이밍은 지양
 - 설명은 메모형이 아니라 **개념 설명형**으로 작성
 - 토픽/섹션/컨셉 이름은 기존 저장소 톤(짧고 명확한 명사형)에 맞춤
+- 모든 드래프트는 `drafts/` 폴더에 보관 (git 제외)
