@@ -514,6 +514,10 @@ body {
 }
 .md-tab.active { background: var(--surface3); color: var(--text); }
 .md-tab:not(:last-child) { border-right: 1px solid var(--border2); }
+.sec-view-tabs { display: flex; border: 1px solid var(--border2); border-radius: 6px; overflow: hidden; }
+.sec-view-tab { padding: 4px 10px; font-size: 11px; font-weight: 500; background: none; border: none; color: var(--muted); cursor: pointer; transition: all 0.15s; }
+.sec-view-tab.active { background: var(--surface3); color: var(--text); }
+.sec-view-tab:not(:last-child) { border-right: 1px solid var(--border2); }
 .md-panels {
   display: flex;
   height: calc(100vh - 340px);
@@ -917,11 +921,37 @@ function renderTopicDetail(id) {
   `;
 }
 
-function renderSectionDetail(sectionId) {
+function renderSectionDetail(sectionId, activeTab = 'cards') {
   const s = sections.find(x => x.id === sectionId);
   if (!s) return;
   const t = topics.find(x => x.id === s.topic_id);
   const cpts = concepts.filter(c => c.section_id === sectionId && !c.parent_concept_id).sort((a,b) => a.sort_order - b.sort_order);
+
+  const cardsHtml = cpts.length === 0 ? '<div class="panel-empty">개념이 없습니다</div>' :
+    cpts.map(c => {
+      const kids = concepts.filter(ch => ch.parent_concept_id === c.id);
+      return `<div class="concept-row" onclick="showConceptForm('${s.topic_id}','${sectionId}','${c.id}')">
+        <span class="concept-title">${c.title}</span>
+        ${c.level ? `<span class="concept-level ${c.level}">${c.level === 'basic' ? '기본' : '심화'}</span>` : ''}
+        <span class="concept-desc">${c.description || ''}</span>
+        ${kids.length > 0 ? `<span style="font-size:10px;color:var(--muted)">+${kids.length} sub</span>` : ''}
+      </div>`;
+    }).join('');
+
+  const mdContent = cpts.map(c => {
+    let block = `### ${c.title}\n`;
+    if (c.level) block += `> level: ${c.level}\n`;
+    if (c.questions && c.questions.length) block += `> questions: ${c.questions.join(' | ')}\n`;
+    if (c.level || (c.questions && c.questions.length)) block += `\n`;
+    block += (c.content || '') + '\n';
+    const kids = concepts.filter(ch => ch.parent_concept_id === c.id).sort((a,b) => a.sort_order - b.sort_order);
+    for (const k of kids) {
+      block += `\n#### ${k.title}\n`;
+      if (k.level) block += `> level: ${k.level}\n`;
+      block += (k.content || '') + '\n';
+    }
+    return block;
+  }).join('\n');
 
   document.getElementById('content').innerHTML = `
     <div class="panel">
@@ -941,22 +971,44 @@ function renderSectionDetail(sectionId) {
       <div class="panel-header">
         <span class="panel-title">개념</span>
         <span class="panel-count">${cpts.length}</span>
-        <div class="panel-actions">
+        <div class="panel-actions" style="display:flex;align-items:center;gap:6px">
+          <div class="sec-view-tabs">
+            <button class="sec-view-tab ${activeTab==='cards'?'active':''}" onclick="renderSectionDetail('${sectionId}','cards')">카드</button>
+            <button class="sec-view-tab ${activeTab==='md'?'active':''}" onclick="renderSectionDetail('${sectionId}','md')">Markdown</button>
+          </div>
           <button class="btn btn-sm btn-primary" onclick="showConceptForm('${s.topic_id}','${sectionId}')">+ 개념</button>
         </div>
       </div>
-      ${cpts.length === 0 ? '<div class="panel-empty">개념이 없습니다</div>' :
-        cpts.map(c => {
-          const kids = concepts.filter(ch => ch.parent_concept_id === c.id);
-          return `<div class="concept-row" onclick="showConceptForm('${s.topic_id}','${sectionId}','${c.id}')">
-            <span class="concept-title">${c.title}</span>
-            ${c.level ? `<span class="concept-level ${c.level}">${c.level === 'basic' ? '기본' : '심화'}</span>` : ''}
-            <span class="concept-desc">${c.description || ''}</span>
-            ${kids.length > 0 ? `<span style="font-size:10px;color:var(--muted)">+${kids.length} sub</span>` : ''}
-          </div>`;
-        }).join('')}
+      <div id="sec-cards-view" style="display:${activeTab==='cards'?'block':'none'}">
+        ${cardsHtml}
+      </div>
+      <div id="sec-md-view" style="display:${activeTab==='md'?'flex':'none'};flex-direction:column">
+        <div class="md-editor-wrap" style="border-radius:0;border:none;border-top:1px solid var(--border)">
+          <div class="md-toolbar">
+            <button class="md-tool-btn" title="Bold" onclick="mdInsertSec('**','**')"><b>B</b></button>
+            <button class="md-tool-btn" title="Italic" onclick="mdInsertSec('*','*')"><i>I</i></button>
+            <button class="md-tool-btn" title="Code" onclick="mdInsertSec('\`','\`')">&#96;&#96;</button>
+            <button class="md-tool-btn" title="Heading" onclick="mdInsertLineSec('### ')">H3</button>
+            <div style="flex:1"></div>
+            <button class="md-tab active" id="sec-md-write-tab" onclick="setSecEditorMode('write')">Write</button>
+            <button class="md-tab" id="sec-md-preview-tab" onclick="setSecEditorMode('preview')">Preview</button>
+            <button class="md-tab" id="sec-md-split-tab" onclick="setSecEditorMode('split')">Split</button>
+          </div>
+          <div class="md-panels mode-split" id="sec-md-panels">
+            <div class="md-edit-pane">
+              <textarea id="sec-md-content" oninput="updateSecPreview()">${escapeHtml(mdContent)}</textarea>
+            </div>
+            <div class="md-preview-pane" id="sec-md-preview"></div>
+          </div>
+        </div>
+        <div style="padding:10px 14px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px">
+          <button class="btn" onclick="renderSectionDetail('${sectionId}','cards')">취소</button>
+          <button class="btn btn-primary" onclick="saveSectionMd('${s.topic_id}','${sectionId}')">저장</button>
+        </div>
+      </div>
     </div>
   `;
+  if (activeTab === 'md') { updateSecPreview(); }
 }
 
 function showTopicForm(editId) {
@@ -1401,6 +1453,118 @@ function toast(msg, type = 'success') {
 checkSession();
 
 // ── Import / Export ──────────────────────────────────────────────────────────
+
+// ── Section Markdown Editor ───────────────────────────────────────────────────
+
+function updateSecPreview() {
+  const ta = document.getElementById('sec-md-content');
+  const preview = document.getElementById('sec-md-preview');
+  if (!ta || !preview) return;
+  const val = ta.value;
+  if (!val.trim()) {
+    preview.innerHTML = '<div class="md-preview-empty">미리보기가 여기에 표시됩니다</div>';
+  } else {
+    preview.innerHTML = marked.parse(val);
+  }
+}
+
+function setSecEditorMode(mode) {
+  const panels = document.getElementById('sec-md-panels');
+  if (!panels) return;
+  panels.className = 'md-panels mode-' + mode;
+  ['write','preview','split'].forEach(m => {
+    const btn = document.getElementById(`sec-md-${m}-tab`);
+    if (btn) btn.classList.toggle('active', m === mode);
+  });
+  if (mode === 'preview' || mode === 'split') updateSecPreview();
+}
+
+function mdInsertSec(before, after) {
+  const ta = document.getElementById('sec-md-content');
+  if (!ta) return;
+  const start = ta.selectionStart, end = ta.selectionEnd;
+  const sel = ta.value.substring(start, end);
+  ta.setRangeText(before + sel + after, start, end, 'end');
+  ta.focus();
+  updateSecPreview();
+}
+
+function mdInsertLineSec(prefix) {
+  const ta = document.getElementById('sec-md-content');
+  if (!ta) return;
+  const start = ta.selectionStart;
+  const lineStart = ta.value.lastIndexOf('\n', start - 1) + 1;
+  ta.setRangeText(prefix, lineStart, lineStart, 'start');
+  ta.focus();
+  updateSecPreview();
+}
+
+async function saveSectionMd(topicId, sectionId) {
+  const ta = document.getElementById('sec-md-content');
+  if (!ta) return;
+  const raw = ta.value;
+  const tNames = getTables();
+
+  // ### 헤딩 기준으로 파싱
+  const blocks = [];
+  const lines = raw.split('\n');
+  let cur = null;
+  for (const line of lines) {
+    if (line.startsWith('### ') && !line.startsWith('#### ')) {
+      if (cur) blocks.push(cur);
+      cur = { title: line.slice(4).trim(), metaLines: [], contentLines: [], children: [] };
+    } else if (line.startsWith('#### ') && cur) {
+      cur.children.push({ title: line.slice(5).trim(), contentLines: [] });
+    } else if (cur) {
+      const lastChild = cur.children[cur.children.length - 1];
+      if (lastChild) lastChild.contentLines.push(line);
+      else if (line.startsWith('> ')) cur.metaLines.push(line.slice(2).trim());
+      else cur.contentLines.push(line);
+    }
+  }
+  if (cur) blocks.push(cur);
+
+  if (blocks.length === 0) { toast('### 헤딩이 없습니다', 'error'); return; }
+
+  toast('저장 중...', 'success');
+
+  for (const block of blocks) {
+    const content = block.contentLines.join('\n').trim() || null;
+    let level = null, questions = [];
+    for (const m of block.metaLines) {
+      if (m.startsWith('level:')) level = m.slice(6).trim();
+      if (m.startsWith('questions:')) questions = m.slice(10).split('|').map(q => q.trim()).filter(Boolean);
+    }
+    const existCpt = concepts.find(c => c.section_id === sectionId && c.title === block.title);
+    if (!existCpt) { toast(`"${block.title}" 개념이 없습니다. 먼저 카드 뷰에서 추가하세요.`, 'error'); continue; }
+
+    const row = { id: existCpt.id, section_id: sectionId, topic_id: topicId, title: existCpt.title,
+      description: existCpt.description, sort_order: existCpt.sort_order,
+      level: level || existCpt.level, questions: questions.length ? questions : existCpt.questions,
+      content };
+    const { error } = await sb.from(tNames.concepts).upsert(row);
+    if (error) { toast(`저장 실패 (${block.title}): ${error.message}`, 'error'); continue; }
+
+    // revision
+    await sb.from(tNames.revisions).insert({
+      id: generateId(), concept_id: existCpt.id, topic_id: topicId, section_id: sectionId,
+      change_type: 'update', title: existCpt.title, content, level: row.level,
+      questions: row.questions, changed_by: currentUser?.email || null,
+    });
+
+    // 자식 개념 content 업데이트
+    for (const child of block.children) {
+      const existKid = concepts.find(c => c.parent_concept_id === existCpt.id && c.title === child.title);
+      if (!existKid) continue;
+      const kidContent = child.contentLines.join('\n').trim() || null;
+      await sb.from(tNames.concepts).upsert({ ...existKid, content: kidContent });
+    }
+  }
+
+  toast('저장 완료', 'success');
+  await loadAll();
+  renderSectionDetail(sectionId, 'md');
+}
 
 function goAdminHome() {
   selectedItem = null;
