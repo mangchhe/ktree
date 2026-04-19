@@ -240,27 +240,41 @@ SQL을 직접 작성하는 것보다 README로 편집하는 것이 더 자연스
 ### Import 흐름 (README → DB)
 
 ```
-README.md 파일 제공
-  → 에이전트가 파싱 및 컨펌용 요약본 제시 (기존 2단계 동일)
-  → 승인 후 upsert SQL 생성
-  → concept_revisions 백필 SQL 함께 생성
+어드민 패널에서 ↑ Import 버튼 클릭
+  → .md 파일 선택
+  → 파싱 결과 미리보기 (섹션/개념 수, level, child 표시)
+  → 확인 후 upsert 실행
+  → concept_revisions 자동 백필
 ```
 
-- 기존 동일 title의 concept이 있으면 수정(`UPDATE`), 없으면 신규(`INSERT`)
-- Topic/Section도 없으면 함께 생성
-- `sort_order`는 파일 내 등장 순서 기준으로 자동 부여
+**매칭 기준 (upsert key)**
+
+| 엔티티 | 매칭 기준 |
+|---|---|
+| Topic | `title` |
+| Section | `topic_id` + `title` |
+| Concept | `section_id` + `title` |
+
+**동작 규칙**
+
+- 기존 동일 title의 Topic/Section/Concept이 있으면 `UPDATE`, 없으면 `INSERT`
+- 기존 Topic의 `color`, `tags`, `sort_order` 등 README에 없는 필드는 그대로 보존
+- `sort_order`는 파일 내 등장 순서 기준 (기존 항목은 기존 값 유지, 신규만 끝에 추가)
+- import 직전 DB에서 최신 데이터를 다시 로드하여 stale 캐시로 인한 중복 생성 방지
+- `concept_revisions`에 `change_type: create | update` 자동 기록
 
 ### Export 흐름 (DB → README)
 
 ```
-토픽 ID 또는 title 지정
-  → 에이전트가 SELECT 쿼리로 데이터 조회 요청
-  → 조회 결과를 README 포맷으로 변환하여 제공
+어드민 패널에서 항목 선택 후 ↓ Export 버튼 클릭
+  → 현재 선택된 토픽 전체를 README 포맷으로 변환
+  → {topic-slug}.md 파일로 자동 다운로드
 ```
 
 - 파일명 컨벤션: `{topic-title-kebab-case}.md`
-- sort_order 순서대로 Section, Concept 나열
+- `sort_order` 순서대로 Section → Concept 나열
 - 자식 Concept은 `####`으로 들여쓰기
+- `level`, `questions` 있는 경우 blockquote로 출력
 
 ---
 
