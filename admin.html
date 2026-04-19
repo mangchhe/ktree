@@ -967,9 +967,9 @@ function renderSectionDetail(sectionId) {
         <span class="panel-title">개념</span>
         <span class="panel-count">${cpts.length}</span>
         <div class="panel-actions" style="display:flex;align-items:center;gap:6px">
+          <button class="btn btn-sm btn-primary" id="sec-md-split-tab" onclick="setSecEditorMode('split')">Split</button>
           <button class="btn btn-sm" id="sec-md-write-tab" onclick="setSecEditorMode('write')">Write</button>
           <button class="btn btn-sm" id="sec-md-preview-tab" onclick="setSecEditorMode('preview')">Preview</button>
-          <button class="btn btn-sm btn-primary" id="sec-md-split-tab" onclick="setSecEditorMode('split')">Split</button>
           <div style="width:1px;height:16px;background:var(--border2)"></div>
           <button class="btn btn-sm btn-primary" onclick="showConceptForm('${s.topic_id}','${sectionId}')">+ 개념</button>
         </div>
@@ -1444,9 +1444,9 @@ checkSession();
 
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
+  e.preventDefault();
   if (document.getElementById('import-modal')?.style.display === 'block') { closeImportModal(); return; }
   if (document.querySelector('#content .form-actions')) { document.activeElement?.blur(); cancelForm(); return; }
-  if (document.getElementById('sec-md-content')) { document.activeElement?.blur(); cancelForm(); return; }
 });
 
 // ── Import / Export ──────────────────────────────────────────────────────────
@@ -1471,7 +1471,9 @@ function setSecEditorMode(mode) {
   panels.className = 'md-panels mode-' + mode;
   ['write','preview','split'].forEach(m => {
     const btn = document.getElementById(`sec-md-${m}-tab`);
-    if (btn) btn.classList.toggle('active', m === mode);
+    if (!btn) return;
+    btn.classList.toggle('btn-primary', m === mode);
+    btn.classList.toggle('btn-active', m === mode);
   });
   if (mode === 'preview' || mode === 'split') updateSecPreview();
 }
