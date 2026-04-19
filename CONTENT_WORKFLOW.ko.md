@@ -46,7 +46,7 @@ Topic (주제)
 
 ### 스키마
 
-전체 `CREATE TABLE` 정의는 [SETUP.md](./SETUP.ko.md) 참고.
+전체 테이블 정의와 RLS 정책은 [SETUP.ko.md](./SETUP.ko.md#2-스키마-생성) 참고.
 
 ## README Import / Export
 

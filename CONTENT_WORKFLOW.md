@@ -46,7 +46,7 @@ Topic
 
 ### Schema
 
-See [SETUP.md](./SETUP.md) for the full `CREATE TABLE` statements.
+See [SETUP.md](./SETUP.md#2-create-the-schema) for the full table definitions and RLS policies.
 
 ## README Import / Export
 
