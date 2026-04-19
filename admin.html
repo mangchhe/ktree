@@ -516,7 +516,8 @@ body {
 .md-tab:not(:last-child) { border-right: 1px solid var(--border2); }
 .md-panels {
   display: flex;
-  height: 420px;
+  height: calc(100vh - 340px);
+  min-height: 360px;
 }
 .md-panels.mode-write .md-edit-pane { flex: 1; display: block; }
 .md-panels.mode-write .md-preview-pane { display: none; }
