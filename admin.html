@@ -1440,9 +1440,13 @@ function toast(msg, type = 'success') {
 
 checkSession();
 
-function syncScroll(textarea, preview) {
-  const ratio = textarea.scrollTop / (textarea.scrollHeight - textarea.clientHeight || 1);
-  preview.scrollTop = ratio * (preview.scrollHeight - preview.clientHeight);
+let _scrollLock = null;
+function syncScroll(src, dst) {
+  if (_scrollLock === dst.id) return;
+  _scrollLock = dst.id;
+  const ratio = src.scrollTop / (src.scrollHeight - src.clientHeight || 1);
+  dst.scrollTop = ratio * (dst.scrollHeight - dst.clientHeight);
+  requestAnimationFrame(() => { _scrollLock = null; });
 }
 
 document.addEventListener('scroll', e => {
@@ -1450,9 +1454,15 @@ document.addEventListener('scroll', e => {
   if (el.id === 'sec-md-content') {
     const p = document.getElementById('sec-md-preview');
     if (p) syncScroll(el, p);
+  } else if (el.id === 'sec-md-preview') {
+    const t = document.getElementById('sec-md-content');
+    if (t) syncScroll(el, t);
   } else if (el.id === 'f-content') {
     const p = document.getElementById('md-preview');
     if (p) syncScroll(el, p);
+  } else if (el.id === 'md-preview') {
+    const t = document.getElementById('f-content');
+    if (t) syncScroll(el, t);
   }
 }, true);
 
