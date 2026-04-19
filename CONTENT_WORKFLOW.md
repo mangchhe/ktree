@@ -166,6 +166,104 @@ CREATE TABLE public.concept_revisions_private (
 );
 ```
 
+## README Import / Export
+
+콘텐츠를 마크다운 README 파일로 관리하고, DB와 양방향으로 동기화합니다.
+SQL을 직접 작성하는 것보다 README로 편집하는 것이 더 자연스럽고 리뷰/버전 관리도 용이합니다.
+
+### README 파일 포맷 (파싱 기준)
+
+헤딩 계층으로 Topic → Section → Concept 구조를 표현합니다.
+
+```markdown
+# {Topic title}
+
+{Topic description (선택)}
+
+## {Section title}
+
+{Section description (선택)}
+
+### {Concept title}
+
+> level: basic | deep
+> questions: 질문1 | 질문2
+
+{Concept description}
+
+{Concept content — 상세 설명, 실무 맥락 등. 여러 줄 가능}
+```
+
+**규칙**
+
+- `#` — Topic (파일 당 1개)
+- `##` — Section (여러 개 가능)
+- `###` — Concept (각 Section 아래 여러 개 가능)
+- Concept 바로 아래 `>` blockquote로 메타 표기 (`level`, `questions`)
+- `level` 허용값: `basic`, `deep` (없으면 NULL)
+- `questions`는 `|` 구분자로 여러 개 입력
+- description과 content는 blockquote 이후의 본문으로 처리
+  - 첫 번째 단락 → `description`
+  - 이후 본문 전체 → `content`
+- 자식 Concept은 `####`으로 표현 (parent_concept_id 자동 연결)
+
+**예시**
+
+```markdown
+# JavaScript
+
+자바스크립트 핵심 개념 모음
+
+## 비동기 처리
+
+비동기 프로그래밍 패턴과 런타임 동작 원리
+
+### Promise
+
+> level: basic
+> questions: Promise란 무엇인가 | then과 catch의 차이는
+
+비동기 작업의 최종 완료 또는 실패를 나타내는 객체.
+
+콜백 지옥을 해결하기 위해 ES6에서 도입됐으며, 체이닝을 통해 순차 처리와
+에러 핸들링을 명시적으로 표현할 수 있다.
+
+#### Promise.all
+
+> level: deep
+
+여러 Promise를 병렬로 실행하고 모두 완료될 때까지 기다리는 메서드.
+```
+
+---
+
+### Import 흐름 (README → DB)
+
+```
+README.md 파일 제공
+  → 에이전트가 파싱 및 컨펌용 요약본 제시 (기존 2단계 동일)
+  → 승인 후 upsert SQL 생성
+  → concept_revisions 백필 SQL 함께 생성
+```
+
+- 기존 동일 title의 concept이 있으면 수정(`UPDATE`), 없으면 신규(`INSERT`)
+- Topic/Section도 없으면 함께 생성
+- `sort_order`는 파일 내 등장 순서 기준으로 자동 부여
+
+### Export 흐름 (DB → README)
+
+```
+토픽 ID 또는 title 지정
+  → 에이전트가 SELECT 쿼리로 데이터 조회 요청
+  → 조회 결과를 README 포맷으로 변환하여 제공
+```
+
+- 파일명 컨벤션: `{topic-title-kebab-case}.md`
+- sort_order 순서대로 Section, Concept 나열
+- 자식 Concept은 `####`으로 들여쓰기
+
+---
+
 ## 1) 작성자가 주는 검토용 포맷
 
 아래 템플릿으로 주면, 에이전트가 설명형으로 정리하고 누락 개념을 보강합니다.
