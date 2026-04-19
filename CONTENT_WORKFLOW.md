@@ -6,6 +6,139 @@
 - 2단계(검토): 에이전트가 개념 설명을 보강한 **컨펌용 요약본** 제시
 - 3단계(반영): 승인 후 **DB 반영용 SQL** 생성
 
+## 데이터베이스
+
+- **DBMS:** PostgreSQL
+- **테이블:** topics, sections, concepts, concept_revisions (private 용 _private 접미사 테이블 별도 존재)
+- **ID 타입:** text (UUID 등 사용)
+- **컬럼명:** title (name 아님)
+
+### 스키마
+
+```sql
+CREATE TABLE public.topics (
+  id text NOT NULL,
+  title text NOT NULL,
+  description text,
+  tags ARRAY DEFAULT '{}'::text[],
+  node_count integer DEFAULT 0,
+  color text,
+  sort_order integer DEFAULT 0,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT topics_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.topics_private (
+  id text NOT NULL,
+  title text NOT NULL,
+  description text,
+  tags ARRAY DEFAULT '{}'::text[],
+  node_count integer DEFAULT 0,
+  color text,
+  sort_order integer DEFAULT 0,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT topics_private_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.sections (
+  id text NOT NULL,
+  topic_id text NOT NULL,
+  title text NOT NULL,
+  description text,
+  sort_order integer DEFAULT 0,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT sections_pkey PRIMARY KEY (id),
+  CONSTRAINT sections_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics(id)
+);
+
+CREATE TABLE public.sections_private (
+  id text NOT NULL,
+  topic_id text NOT NULL,
+  title text NOT NULL,
+  description text,
+  sort_order integer DEFAULT 0,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT sections_private_pkey PRIMARY KEY (id),
+  CONSTRAINT sections_private_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics_private(id)
+);
+
+CREATE TABLE public.concepts (
+  id text NOT NULL,
+  section_id text NOT NULL,
+  topic_id text NOT NULL,
+  parent_concept_id text,
+  title text NOT NULL,
+  description text,
+  level text CHECK (level = ANY (ARRAY['basic'::text, 'deep'::text])),
+  questions ARRAY DEFAULT '{}'::text[],
+  content text,
+  sort_order integer DEFAULT 0,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT concepts_pkey PRIMARY KEY (id),
+  CONSTRAINT concepts_section_id_fkey FOREIGN KEY (section_id) REFERENCES public.sections(id),
+  CONSTRAINT concepts_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics(id),
+  CONSTRAINT concepts_parent_concept_id_fkey FOREIGN KEY (parent_concept_id) REFERENCES public.concepts(id)
+);
+
+CREATE TABLE public.concepts_private (
+  id text NOT NULL,
+  section_id text NOT NULL,
+  topic_id text NOT NULL,
+  parent_concept_id text,
+  title text NOT NULL,
+  description text,
+  level text CHECK (level = ANY (ARRAY['basic'::text, 'deep'::text])),
+  questions ARRAY DEFAULT '{}'::text[],
+  content text,
+  sort_order integer DEFAULT 0,
+  created_at timestamp with time zone DEFAULT now(),
+  updated_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT concepts_private_pkey PRIMARY KEY (id),
+  CONSTRAINT concepts_private_section_id_fkey FOREIGN KEY (section_id) REFERENCES public.sections_private(id),
+  CONSTRAINT concepts_private_topic_id_fkey FOREIGN KEY (topic_id) REFERENCES public.topics_private(id),
+  CONSTRAINT concepts_private_parent_concept_id_fkey FOREIGN KEY (parent_concept_id) REFERENCES public.concepts_private(id)
+);
+
+CREATE TABLE public.concept_revisions (
+  id text NOT NULL,
+  concept_id text NOT NULL,
+  topic_id text,
+  section_id text,
+  change_type text NOT NULL DEFAULT 'update'::text,
+  title text,
+  description text,
+  level text,
+  questions ARRAY,
+  content text,
+  changed_fields jsonb,
+  changed_by text,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  CONSTRAINT concept_revisions_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.concept_revisions_private (
+  id text NOT NULL,
+  concept_id text NOT NULL,
+  topic_id text,
+  section_id text,
+  change_type text NOT NULL DEFAULT 'update'::text,
+  title text,
+  description text,
+  level text,
+  questions ARRAY,
+  content text,
+  changed_fields jsonb,
+  changed_by text,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  CONSTRAINT concept_revisions_private_pkey PRIMARY KEY (id)
+);
+```
+
 ## 1) 작성자가 주는 검토용 포맷
 
 아래 템플릿으로 주면, 에이전트가 설명형으로 정리하고 누락 개념을 보강합니다.
