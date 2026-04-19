@@ -1453,6 +1453,10 @@ document.addEventListener('keydown', e => {
     if (sec) selectItem('topic', sec.topic_id);
     return;
   }
+  if (selectedItem?.type === 'topic') {
+    goAdminHome();
+    return;
+  }
 });
 
 // ── Import / Export ──────────────────────────────────────────────────────────
