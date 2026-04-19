@@ -1564,6 +1564,7 @@ async function doImport(parsed) {
   closeImportModal();
   toast('가져오는 중...', 'success');
   const tNames = getTables();
+  await loadAll();
 
   // 1. Topic upsert (title 기준)
   let topic = topics.find(t => t.title === parsed.title);
@@ -1574,6 +1575,7 @@ async function doImport(parsed) {
     description: parsed.description || null,
     sort_order: topic ? topic.sort_order : topics.length,
     tags: topic ? topic.tags : [],
+    ...(topic?.color ? { color: topic.color } : {}),
   };
   const { error: tErr } = await sb.from(tNames.topics).upsert(topicRow);
   if (tErr) { toast(`토픽 저장 실패: ${tErr.message}`, 'error'); return; }
