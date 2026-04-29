@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08090e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Challenge">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon.svg">
+<title>Challenge Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08090e;--card:#111318;--card2:#16181f;--card-el:#1c1f28;
+  --border:#23262f;--border-hl:#3b3f4f;
+  --text:#e8eaef;--sub:#8b8fa3;--dim:#53576a;
+  --eng:#5b8cff;--eng-bg:rgba(91,140,255,.12);--eng-bd:rgba(91,140,255,.28);
+  --fit:#3ddfa0;--fit-bg:rgba(61,223,160,.1);--fit-bd:rgba(61,223,160,.25);
+  --warn:#f0a944;--danger:#ef5e5e;
+  --r:12px;
+}
+body{
+  min-height:100vh;color:var(--text);background:var(--bg);
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:520px;margin:0 auto;padding:12px 12px 40px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* --- header --- */
+.hd{display:flex;align-items:center;justify-content:space-between;padding:6px 0 14px}
+.hd-logo{font-size:15px;font-weight:800;letter-spacing:-.3px;cursor:pointer}
+.hd-logo b{color:var(--fit)}
+.hd-actions{display:flex;gap:6px;align-items:center}
+.hd-btn{
+  font-size:12px;font-weight:600;padding:7px 11px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--border);background:var(--card);color:var(--sub);
+  transition:border-color .15s;text-decoration:none;display:inline-block;
+}
+.hd-btn:hover{border-color:var(--border-hl)}
+
+/* --- nav --- */
+.period-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:10px 14px;margin-bottom:10px;
+}
+.week-nav-label{font-size:13px;font-weight:800}
+.week-nav-sub{font-size:11px;color:var(--dim);margin-top:1px}
+.week-nav-btns{display:flex;gap:6px}
+.week-nav-btn{
+  width:30px;height:30px;border-radius:8px;border:1px solid var(--border);
+  background:var(--card2);color:var(--sub);font-size:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .12s;
+}
+.week-nav-btn:hover{border-color:var(--border-hl);color:var(--text)}
+.week-nav-btn:disabled{opacity:.3;cursor:default;pointer-events:none}
+.view-toggle{display:flex;gap:4px;margin-bottom:10px}
+.view-btn{
+  flex:1;padding:7px;border-radius:8px;border:1px solid var(--border);
+  background:var(--card);color:var(--sub);font-size:11px;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .12s;
+}
+.view-btn.active{background:var(--card2);color:var(--text);border-color:var(--border-hl)}
+
+/* --- member dropdown --- */
+.member-filter-wrap{position:relative;margin-bottom:10px}
+.member-filter-btn{
+  width:100%;padding:8px 12px;border-radius:9px;border:1px solid var(--border);
+  background:var(--card);color:var(--text);font-size:12px;font-weight:700;
+  cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;
+  transition:border-color .12s;
+}
+.member-filter-btn:hover{border-color:var(--border-hl)}
+.member-filter-btn.open{border-color:var(--border-hl)}
+.member-filter-btn .arrow{color:var(--dim);transition:transform .15s}
+.member-filter-btn.open .arrow{transform:rotate(180deg)}
+.member-dropdown{
+  display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:100;
+  background:var(--card);border:1px solid var(--border-hl);border-radius:10px;
+  overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+.member-dropdown.open{display:block}
+.mdf-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;cursor:pointer;transition:background .1s;
+  font-size:12px;font-weight:600;
+}
+.mdf-item:hover{background:var(--card2)}
+.mdf-item:not(:last-child){border-bottom:1px solid var(--border)}
+.mdf-check{
+  width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border-hl);
+  background:var(--card2);flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:9px;transition:all .1s;
+}
+.mdf-item.checked .mdf-check{background:var(--eng);border-color:var(--eng);color:#fff}
+
+/* --- filter bar --- */
+.filter-bar{display:flex;gap:6px;margin-bottom:12px}
+.filter-btn{
+  flex:1;padding:7px;border-radius:8px;border:1px solid var(--border);
+  background:var(--card);color:var(--sub);font-size:11px;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .12s;
+}
+.filter-btn.active-all{border-color:var(--border-hl);color:var(--text);background:var(--card2)}
+.filter-btn.active-eng{border-color:var(--eng-bd);color:var(--eng);background:var(--eng-bg)}
+.filter-btn.active-fit{border-color:var(--fit-bd);color:var(--fit);background:var(--fit-bg)}
+
+/* --- gallery grid --- */
+.gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3px;
+  border-radius:var(--r);overflow:hidden;
+}
+.gallery-item{
+  position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer;
+  background:var(--card2);
+  animation:fadeUp .3s ease both;
+}
+.gallery-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .2s ease;display:block;
+}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .badge{
+  position:absolute;bottom:4px;left:4px;
+  padding:2px 6px;border-radius:4px;font-size:9px;font-weight:800;
+  backdrop-filter:blur(6px);
+}
+.gallery-item .badge.eng{background:rgba(91,140,255,.7);color:#fff}
+.gallery-item .badge.fit{background:rgba(61,223,160,.7);color:#08090e}
+.gallery-item .name-tag{
+  position:absolute;bottom:4px;right:4px;
+  font-size:9px;font-weight:700;color:rgba(255,255,255,.7);
+  text-shadow:0 1px 3px rgba(0,0,0,.8);
+}
+.gallery-item .overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,0);
+  transition:background .15s;
+}
+.gallery-item:hover .overlay{background:rgba(0,0,0,.15)}
+
+/* --- empty / no-proof items --- */
+.gallery-item.no-proof{cursor:default}
+.gallery-item.no-proof .no-proof-inner{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;
+  padding:6px;
+}
+.no-proof-icon{font-size:20px;opacity:.3}
+.no-proof-name{font-size:9px;color:var(--dim);font-weight:600;text-align:center}
+.no-proof-type{font-size:8px;color:var(--dim)}
+
+/* --- empty state --- */
+.empty-state{
+  text-align:center;padding:40px 10px;color:var(--dim);font-size:13px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+}
+
+/* --- lightbox --- */
+.lb-overlay{
+  position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.93);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  animation:fadeUp .12s ease both;
+}
+.lb-img{max-width:100vw;max-height:80vh;object-fit:contain;border-radius:8px}
+.lb-info{
+  margin-top:12px;text-align:center;
+}
+.lb-name{font-size:13px;font-weight:800}
+.lb-meta{font-size:11px;color:var(--sub);margin-top:2px}
+.lb-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);
+  color:#fff;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);
+  color:#fff;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .12s;
+}
+.lb-nav:hover{background:rgba(255,255,255,.12)}
+.lb-nav.prev{left:12px}
+.lb-nav.next{right:12px}
+
+/* --- section label --- */
+.section-label{
+  font-size:11px;font-weight:700;color:var(--dim);
+  margin:14px 0 8px;letter-spacing:.5px;text-transform:uppercase;
+}
+.count-badge{
+  display:inline-block;font-size:10px;font-weight:700;
+  padding:2px 7px;border-radius:5px;margin-left:6px;vertical-align:middle;
+}
+.count-badge.eng{background:var(--eng-bg);color:var(--eng);border:1px solid var(--eng-bd)}
+.count-badge.fit{background:var(--fit-bg);color:var(--fit);border:1px solid var(--fit-bd)}
+
+/* --- login --- */
+.login-card{max-width:380px;margin:60px auto 0;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px}
+.cd-title{font-size:14px;font-weight:800;margin-bottom:2px}
+.cd-sub{font-size:12px;color:var(--sub);line-height:1.5}
+.field{margin-top:10px}
+.field label{display:block;font-size:11px;font-weight:600;color:var(--dim);margin-bottom:4px}
+.field input{
+  width:100%;border-radius:9px;border:1px solid var(--border);
+  padding:10px 11px;background:var(--bg);color:var(--text);font-size:13px;
+  transition:border-color .15s;
+}
+.field input:focus{outline:none;border-color:var(--eng)}
+.login-btn{
+  width:100%;margin-top:12px;padding:11px;border-radius:9px;
+  background:var(--eng);color:#fff;font-size:13px;font-weight:800;
+  border:none;cursor:pointer;transition:opacity .15s;
+}
+.login-btn:hover{opacity:.88}
+.msg{margin-top:8px;border-radius:8px;padding:8px 10px;font-size:12px;display:none;font-weight:600}
+.msg.err{color:#ffb0b0;border:1px solid rgba(239,94,94,.3);background:rgba(239,94,94,.08)}
+
+@media(min-width:760px){
+  .wrap{padding-top:24px}
+  .gallery{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <div class="hd-logo" onclick="location.href='challenge.html'">challenge<b>.</b>gallery</div>
+    <div class="hd-actions">
+      <a class="hd-btn" href="challenge.html">출석하기</a>
+    </div>
+  </div>
+
+  <div id="login-view" style="display:none">
+    <div class="login-card">
+      <div class="cd-title">로그인</div>
+      <p class="cd-sub">팀 계정으로 로그인하세요.</p>
+      <form onsubmit="event.preventDefault();login()">
+        <div class="field">
+          <label>이메일</label>
+          <input id="email" type="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label>비밀번호</label>
+          <input id="password" type="password" placeholder="••••••••">
+        </div>
+        <button class="login-btn" type="submit">로그인</button>
+      </form>
+      <div id="login-error" class="msg err"></div>
+    </div>
+  </div>
+
+  <div id="app-view" style="display:none">
+    <div class="view-toggle">
+      <button class="view-btn active" id="vb-week" onclick="setViewMode('week')">주별</button>
+      <button class="view-btn" id="vb-month" onclick="setViewMode('month')">월별</button>
+    </div>
+    <div class="period-nav" id="period-nav">
+      <div>
+        <div class="week-nav-label" id="week-label">이번 주</div>
+        <div class="week-nav-sub" id="week-range"></div>
+      </div>
+      <div class="week-nav-btns">
+        <button class="week-nav-btn" id="btn-prev" onclick="changePeriod(-1)">‹</button>
+        <button class="week-nav-btn" id="btn-next" onclick="changePeriod(1)" disabled>›</button>
+      </div>
+    </div>
+
+    <div class="member-filter-wrap" id="mf-wrap">
+      <button class="member-filter-btn" id="mf-btn" onclick="toggleMemberDropdown()">
+        <span id="mf-label">멤버: 전체</span>
+        <span class="arrow">▾</span>
+      </button>
+      <div class="member-dropdown" id="mf-dropdown"></div>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active-all" id="f-all" onclick="setFilter('all')">전체</button>
+      <button class="filter-btn" id="f-eng" onclick="setFilter('english')">영어</button>
+      <button class="filter-btn" id="f-fit" onclick="setFilter('exercise')">운동</button>
+    </div>
+
+    <div id="gallery-root"></div>
+  </div>
+</div>
+
+<!-- lightbox -->
+<div id="lb" style="display:none"></div>
+
+<script>
+const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentRule = { week_start: 'mon', start_date: '2026-04-27' };
+let members = [];
+let selectedMemberIds = null;
+let weekOffset = 0;
+let monthOffset = 0;
+let viewMode = 'week';
+let currentFilter = 'all';
+let lbItems = [];
+let lbIdx = 0;
+let currentUserId = null;
+
+function pad(n) { return String(n).padStart(2, '0'); }
+function fmtDate(d) { return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
+function escapeHtml(t) {
+  return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function getWeekRange(offset) {
+  const now = new Date();
+  const ws = currentRule.week_start || 'mon';
+  const day = now.getDay();
+  const startOff = ws === 'sun' ? day : (day === 0 ? 6 : day - 1);
+  const start = new Date(now);
+  start.setDate(now.getDate() - startOff + (offset * 7));
+  start.setHours(0,0,0,0);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  end.setHours(23,59,59,999);
+  return { start, end };
+}
+
+function weekLabel(offset) {
+  if (offset === 0) return '이번 주';
+  if (offset === -1) return '지난주';
+  return `${Math.abs(offset)}주 전`;
+}
+
+function getMonthRange(offset) {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = now.getMonth() + offset;
+  const start = new Date(y, m, 1);
+  const end = new Date(y, m + 1, 0, 23, 59, 59, 999);
+  return { start, end };
+}
+
+function monthLabel(offset) {
+  const { start } = getMonthRange(offset);
+  return `${start.getFullYear()}년 ${start.getMonth() + 1}월`;
+}
+
+function setViewMode(mode) {
+  viewMode = mode;
+  document.getElementById('vb-week').className = 'view-btn' + (mode === 'week' ? ' active' : '');
+  document.getElementById('vb-month').className = 'view-btn' + (mode === 'month' ? ' active' : '');
+  weekOffset = 0; monthOffset = 0;
+  updateNavButtons();
+  loadAndRender();
+}
+
+function updateNavButtons() {
+  const ruleStart = currentRule.start_date || '2026-04-27';
+  if (viewMode === 'week') {
+    const { start } = getWeekRange(weekOffset - 1);
+    document.getElementById('btn-prev').disabled = fmtDate(start) < ruleStart;
+    document.getElementById('btn-next').disabled = weekOffset >= 0;
+  } else {
+    const { start } = getMonthRange(monthOffset - 1);
+    document.getElementById('btn-prev').disabled = fmtDate(start) < ruleStart.slice(0, 8) + '01';
+    document.getElementById('btn-next').disabled = monthOffset >= 0;
+  }
+}
+
+function buildMemberDropdown() {
+  const dd = document.getElementById('mf-dropdown');
+  let html = `<div class="mdf-item checked" id="mdf-all" onclick="toggleMemberAll()">
+    <div class="mdf-check">✓</div><span>전체</span>
+  </div>`;
+  members.forEach(m => {
+    const isMe = m.user_id === currentUserId;
+    html += `<div class="mdf-item checked" id="mdf-${m.id}" onclick="toggleMember('${m.id}')">
+      <div class="mdf-check">✓</div><span>${escapeHtml(m.name)}${isMe ? ' <span style="color:var(--eng);font-size:10px">(나)</span>' : ''}</span>
+    </div>`;
+  });
+  dd.innerHTML = html;
+}
+
+function toggleMemberDropdown() {
+  const btn = document.getElementById('mf-btn');
+  const dd = document.getElementById('mf-dropdown');
+  btn.classList.toggle('open');
+  dd.classList.toggle('open');
+}
+
+function toggleMemberAll() {
+  selectedMemberIds = null;
+  members.forEach(m => {
+    const el = document.getElementById(`mdf-${m.id}`);
+    if (el) el.classList.add('checked');
+    el && el.querySelector('.mdf-check') && (el.querySelector('.mdf-check').textContent = '✓');
+  });
+  const allEl = document.getElementById('mdf-all');
+  allEl.classList.add('checked');
+  allEl.querySelector('.mdf-check').textContent = '✓';
+  updateMemberLabel();
+  renderGallery();
+}
+
+function toggleMember(id) {
+  if (!selectedMemberIds) selectedMemberIds = new Set(members.map(m => m.id));
+  if (selectedMemberIds.has(id)) {
+    selectedMemberIds.delete(id);
+  } else {
+    selectedMemberIds.add(id);
+  }
+  if (selectedMemberIds.size === members.length) selectedMemberIds = null;
+  members.forEach(m => {
+    const el = document.getElementById(`mdf-${m.id}`);
+    const checked = !selectedMemberIds || selectedMemberIds.has(m.id);
+    if (el) {
+      el.classList.toggle('checked', checked);
+      el.querySelector('.mdf-check').textContent = checked ? '✓' : '';
+    }
+  });
+  const allEl = document.getElementById('mdf-all');
+  const allChecked = !selectedMemberIds;
+  allEl.classList.toggle('checked', allChecked);
+  allEl.querySelector('.mdf-check').textContent = allChecked ? '✓' : '';
+  updateMemberLabel();
+  renderGallery();
+}
+
+function updateMemberLabel() {
+  const label = document.getElementById('mf-label');
+  if (!selectedMemberIds) {
+    label.textContent = '멤버: 전체';
+  } else if (selectedMemberIds.size === 0) {
+    label.textContent = '멤버: 없음';
+  } else if (selectedMemberIds.size === 1) {
+    const m = members.find(m => selectedMemberIds.has(m.id));
+    label.textContent = `멤버: ${m ? m.name : ''}`;
+  } else {
+    label.textContent = `멤버: ${selectedMemberIds.size}명`;
+  }
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.getElementById('mf-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('mf-btn')?.classList.remove('open');
+    document.getElementById('mf-dropdown')?.classList.remove('open');
+  }
+});
+
+function setFilter(f) {
+  currentFilter = f;
+  document.getElementById('f-all').className = 'filter-btn' + (f === 'all' ? ' active-all' : '');
+  document.getElementById('f-eng').className = 'filter-btn' + (f === 'english' ? ' active-eng' : '');
+  document.getElementById('f-fit').className = 'filter-btn' + (f === 'exercise' ? ' active-fit' : '');
+  renderGallery();
+}
+
+function changePeriod(dir) {
+  if (viewMode === 'week') {
+    weekOffset += dir;
+  } else {
+    monthOffset += dir;
+  }
+  updateNavButtons();
+  loadAndRender();
+}
+
+let cachedRecords = [];
+
+async function loadAndRender() {
+  let startStr, endStr;
+  if (viewMode === 'week') {
+    const { start, end } = getWeekRange(weekOffset);
+    startStr = fmtDate(start); endStr = fmtDate(end);
+    document.getElementById('week-label').textContent = weekLabel(weekOffset);
+    document.getElementById('week-range').textContent = `${startStr} ~ ${endStr}`;
+  } else {
+    const { start, end } = getMonthRange(monthOffset);
+    startStr = fmtDate(start); endStr = fmtDate(end);
+    document.getElementById('week-label').textContent = monthLabel(monthOffset);
+    document.getElementById('week-range').textContent = `${startStr} ~ ${endStr}`;
+  }
+
+  const { data } = await sb.from('challenge_attendances')
+    .select('id, member_id, activity_type, attended_on, note')
+    .gte('attended_on', startStr)
+    .lte('attended_on', endStr)
+    .order('attended_on', { ascending: false });
+
+  cachedRecords = data || [];
+  renderGallery();
+}
+
+function renderGallery() {
+  const root = document.getElementById('gallery-root');
+  const membersById = new Map(members.map(m => [m.id, m.name]));
+
+  let records = cachedRecords;
+  if (selectedMemberIds) records = records.filter(r => selectedMemberIds.has(r.member_id));
+  if (currentFilter !== 'all') records = records.filter(r => r.activity_type === currentFilter);
+
+  const withProof = records.filter(r => r.note);
+  const noProof = records.filter(r => !r.note);
+
+  if (!records.length) {
+    root.innerHTML = `<div class="empty-state">이번 주 출석 기록이 없습니다.</div>`;
+    return;
+  }
+
+  lbItems = withProof.map(r => ({
+    url: r.note,
+    name: membersById.get(r.member_id) || '?',
+    date: r.attended_on,
+    type: r.activity_type
+  }));
+
+  let html = '';
+
+  if (withProof.length) {
+    const engCnt = withProof.filter(r => r.activity_type === 'english').length;
+    const fitCnt = withProof.filter(r => r.activity_type === 'exercise').length;
+    html += `<div class="section-label">인증샷
+      ${currentFilter !== 'exercise' ? `<span class="count-badge eng">${engCnt}</span>` : ''}
+      ${currentFilter !== 'english' ? `<span class="count-badge fit">${fitCnt}</span>` : ''}
+    </div>`;
+    html += `<div class="gallery">`;
+    withProof.forEach((r, i) => {
+      const name = escapeHtml(membersById.get(r.member_id) || '?');
+      const cls = r.activity_type === 'english' ? 'eng' : 'fit';
+      const label = r.activity_type === 'english' ? '영어' : '운동';
+      html += `<div class="gallery-item" onclick="openLightbox(${i})" style="animation-delay:${i*.04}s">
+        <img src="${escapeHtml(r.note)}" loading="lazy" alt="${name}">
+        <div class="overlay"></div>
+        <span class="badge ${cls}">${label}</span>
+        <span class="name-tag">${name}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (noProof.length && currentFilter === 'all') {
+    html += `<div class="section-label" style="margin-top:18px">인증샷 없음</div>`;
+    html += `<div class="gallery">`;
+    noProof.forEach((r, i) => {
+      const name = escapeHtml(membersById.get(r.member_id) || '?');
+      const label = r.activity_type === 'english' ? '영어' : '운동';
+      html += `<div class="gallery-item no-proof" style="animation-delay:${i*.04}s">
+        <div class="no-proof-inner">
+          <div class="no-proof-icon">📷</div>
+          <div class="no-proof-name">${name}</div>
+          <div class="no-proof-type">${label} · ${r.attended_on.slice(5)}</div>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  root.innerHTML = html;
+}
+
+function openLightbox(idx) {
+  lbIdx = idx;
+  renderLightbox();
+}
+
+function renderLightbox() {
+  if (!lbItems.length) return;
+  const item = lbItems[lbIdx];
+  const lb = document.getElementById('lb');
+  lb.style.display = 'flex';
+  lb.innerHTML = `
+    <div class="lb-overlay" onclick="closeLightboxIfOverlay(event)">
+      ${lbIdx > 0 ? `<button class="lb-nav prev" onclick="event.stopPropagation();moveLb(-1)">‹</button>` : ''}
+      <img class="lb-img" src="${escapeHtml(item.url)}" alt="${escapeHtml(item.name)}">
+      <div class="lb-info">
+        <div class="lb-name">${escapeHtml(item.name)}</div>
+        <div class="lb-meta">${item.date} · ${item.type === 'english' ? '영어' : '운동'}</div>
+      </div>
+      ${lbIdx < lbItems.length - 1 ? `<button class="lb-nav next" onclick="event.stopPropagation();moveLb(1)">›</button>` : ''}
+      <button class="lb-close" onclick="closeLightbox()">✕</button>
+    </div>
+  `;
+}
+
+function moveLb(dir) {
+  lbIdx = Math.max(0, Math.min(lbItems.length - 1, lbIdx + dir));
+  renderLightbox();
+}
+
+function closeLightbox() {
+  document.getElementById('lb').style.display = 'none';
+  document.getElementById('lb').innerHTML = '';
+}
+
+function closeLightboxIfOverlay(e) {
+  if (e.target.classList.contains('lb-overlay')) closeLightbox();
+}
+
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lb').style.display === 'none') return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') moveLb(-1);
+  if (e.key === 'ArrowRight') moveLb(1);
+});
+
+async function login() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  document.getElementById('login-error').style.display = 'none';
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    const el = document.getElementById('login-error');
+    el.textContent = error.message;
+    el.style.display = 'block';
+    return;
+  }
+  await initApp();
+}
+
+async function initApp() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) {
+    document.getElementById('login-view').style.display = 'block';
+    document.getElementById('app-view').style.display = 'none';
+    return;
+  }
+
+  document.getElementById('login-view').style.display = 'none';
+  document.getElementById('app-view').style.display = 'block';
+
+  currentUserId = session?.user?.id || null;
+
+  const { data: ruleData } = await sb.from('challenge_rules').select('*').eq('active', true).order('created_at', { ascending: false }).limit(1);
+  if (ruleData && ruleData.length) currentRule = ruleData[0];
+
+  const { data: mData } = await sb.from('challenge_members').select('id, name, user_id').eq('active', true).order('name');
+  members = mData || [];
+  buildMemberDropdown();
+
+  updateNavButtons();
+  await loadAndRender();
+}
+
+initApp();
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+</script>
+</body>
+</html>
