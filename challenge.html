@@ -592,7 +592,7 @@ async function loadAttendances() {
 async function loadTeamWeekly() {
   const { start, end } = getWeekRange(new Date(), currentRule.week_start || 'mon');
   const [mRes, aRes] = await Promise.all([
-    sb.from('challenge_members').select('id, name').eq('active', true).order('name'),
+    sb.from('challenge_members').select('id, name, required_count, penalty_per_miss').eq('active', true).order('name'),
     sb.from('challenge_attendances').select('member_id, activity_type').gte('attended_on', fmtDate(start)).lte('attended_on', fmtDate(end))
   ]);
   teamWeeklyData.members = mRes.data || [];
@@ -603,20 +603,22 @@ function renderTeamSummary() {
   const el = document.getElementById('team-summary');
   if (!el) return;
   const { members, attendances } = teamWeeklyData;
-  const req = Number(currentRule.required_count_per_week || 4);
+  const defaultReq = Number(currentRule.required_count_per_week || 4);
   const unit = Number(currentRule.penalty_per_miss || 10000);
   if (!members.length) { el.innerHTML = '<div class="tm-row" style="color:var(--dim)">팀원 없음</div>'; return; }
   el.innerHTML = members.map(m => {
+    const req = m.required_count != null ? Number(m.required_count) : defaultReq;
+    const mUnit = m.penalty_per_miss != null ? Number(m.penalty_per_miss) : unit;
     const eng = attendances.filter(a => a.member_id === m.id && a.activity_type === 'english').length;
     const fit = attendances.filter(a => a.member_id === m.id && a.activity_type === 'exercise').length;
     const miss = Math.max(Math.max(0, req - eng), Math.max(0, req - fit));
-    const pen = miss * unit;
+    const pen = miss * mUnit;
     const penCls = pen === 0 ? 'tm-penalty ok' : 'tm-penalty';
     const penText = pen === 0 ? '✓' : money(pen);
     return `<div class="tm-row">
       <span class="tm-name">${escapeHtml(m.name)}</span>
-      <span class="tm-cnt eng"><span class="tm-dot eng"></span>${eng}</span>
-      <span class="tm-cnt fit"><span class="tm-dot fit"></span>${fit}</span>
+      <span class="tm-cnt eng"><span class="tm-dot eng"></span>${eng}<span style="color:var(--dim);font-weight:400">/${req}</span></span>
+      <span class="tm-cnt fit"><span class="tm-dot fit"></span>${fit}<span style="color:var(--dim);font-weight:400">/${req}</span></span>
       <span class="${penCls}">${penText}</span>
     </div>`;
   }).join('');
@@ -729,8 +731,12 @@ function renderCalendarDayDetail() {
 }
 
 function renderSummary() {
-  const req = Number(currentRule.required_count_per_week || 4);
-  const unit = Number(currentRule.penalty_per_miss || 10000);
+  const req = currentMember && currentMember.required_count != null
+    ? Number(currentMember.required_count)
+    : Number(currentRule.required_count_per_week || 4);
+  const unit = currentMember && currentMember.penalty_per_miss != null
+    ? Number(currentMember.penalty_per_miss)
+    : Number(currentRule.penalty_per_miss || 10000);
   const englishDone = weeklyAttendances.filter(x => x.activity_type === 'english').length;
   const exerciseDone = weeklyAttendances.filter(x => x.activity_type === 'exercise').length;
   const englishMiss = Math.max(0, req - englishDone);
