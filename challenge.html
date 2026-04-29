@@ -1002,6 +1002,39 @@ async function init() {
   }
 }
 
+const VAPID_PUBLIC_KEY = 'BBiS1fxusb6K-H4FKXd8QqGsJYj5AQjogJQSToIuCRFNtueunqsuqNMizF02etbN0dYIKgsCDaMsvG0Kt2m4WII';
+
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const raw = atob(base64);
+  return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
+}
+
+async function subscribePush() {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
+  if (!currentMember) return;
+  try {
+    const reg = await navigator.serviceWorker.ready;
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') return;
+    const sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+    });
+    const { endpoint, keys } = sub.toJSON();
+    await sb.from('push_subscriptions').upsert({
+      member_id: currentMember.id,
+      user_id: currentUser.id,
+      endpoint,
+      p256dh: keys.p256dh,
+      auth: keys.auth
+    }, { onConflict: 'user_id,endpoint' });
+  } catch (e) {
+    console.warn('push subscribe failed', e);
+  }
+}
+
 init();
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>

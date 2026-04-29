@@ -17,6 +17,31 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
+self.addEventListener('push', e => {
+  if (!e.data) return;
+  const data = e.data.json();
+  e.waitUntil(
+    self.registration.showNotification(data.title || '챌린지', {
+      body: data.body || '',
+      icon: data.icon || '/icon.svg',
+      badge: '/icon.svg',
+      data: { url: data.url || '/challenge' }
+    })
+  );
+});
+
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  const url = e.notification.data?.url || '/challenge';
+  e.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+      const existing = list.find(c => c.url.includes('challenge'));
+      if (existing) { existing.focus(); existing.navigate(url); }
+      else clients.openWindow(url);
+    })
+  );
+});
+
 self.addEventListener('fetch', e => {
   if (e.request.url.includes('supabase.co')) return;
   e.respondWith(
