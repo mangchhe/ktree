@@ -200,6 +200,20 @@ body{
 .tm-penalty{font-size:10px;font-weight:700;color:var(--danger);min-width:44px;text-align:right}
 .tm-penalty.ok{color:var(--fit)}
 
+/* --- progress bar --- */
+.progress-wrap{margin-bottom:10px}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.progress-track{height:6px;background:var(--card-el);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width .4s ease;background:linear-gradient(90deg,var(--eng),var(--fit))}
+
+/* --- streak --- */
+.streak-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(240,169,68,.1);border:1px solid rgba(240,169,68,.25);
+  color:var(--warn);border-radius:6px;padding:3px 8px;
+  font-size:10px;font-weight:800;margin-left:6px;vertical-align:middle;
+}
+
 /* --- attendance list --- */
 .att-title{font-size:13px;font-weight:800;margin-bottom:8px}
 .att-list{display:flex;flex-direction:column;gap:6px}
@@ -327,6 +341,10 @@ body{
 
     <div class="cd fade" style="animation-delay:.06s">
       <div class="att-title">이번 주 팀원 현황</div>
+      <div class="progress-wrap" id="team-progress-wrap" style="display:none">
+        <div class="progress-label"><span>팀 달성률</span><span id="team-progress-label"></span></div>
+        <div class="progress-track"><div class="progress-fill" id="team-progress-fill" style="width:0%"></div></div>
+      </div>
       <div id="team-summary" class="att-list"></div>
     </div>
 
@@ -606,6 +624,30 @@ async function loadTeamWeekly() {
   teamWeeklyData.attendances = aRes.data || [];
 }
 
+async function calcStreak() {
+  const ws = currentRule.week_start || 'mon';
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  let streak = 0;
+  for (let off = -1; off >= -52; off--) {
+    const { start, end } = getWeekRange(new Date(), ws);
+    const s = new Date(start); s.setDate(s.getDate() + off * 7);
+    const e = new Date(end); e.setDate(e.getDate() + off * 7);
+    const sStr = fmtDate(s), eStr = fmtDate(e);
+    if (eStr < ruleStart) break;
+    const req = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const { data } = await sb.from('challenge_attendances')
+      .select('activity_type')
+      .eq('member_id', currentMember.id)
+      .gte('attended_on', sStr).lte('attended_on', eStr);
+    const rows = data || [];
+    const eng = rows.filter(r => r.activity_type === 'english').length;
+    const fit = rows.filter(r => r.activity_type === 'exercise').length;
+    if (eng >= req && fit >= req) streak++;
+    else break;
+  }
+  return streak;
+}
+
 function renderTeamSummary() {
   const el = document.getElementById('team-summary');
   if (!el) return;
@@ -613,6 +655,23 @@ function renderTeamSummary() {
   const defaultReq = Number(currentRule.required_count_per_week || 4);
   const unit = Number(currentRule.penalty_per_miss || 10000);
   if (!members.length) { el.innerHTML = '<div class="tm-row" style="color:var(--dim)">팀원 없음</div>'; return; }
+
+  let totalSlots = 0, totalDone = 0;
+  members.forEach(m => {
+    const r = m.required_count != null ? Number(m.required_count) : defaultReq;
+    totalSlots += r * 2;
+    const eng = attendances.filter(a => a.member_id === m.id && a.activity_type === 'english').length;
+    const fit = attendances.filter(a => a.member_id === m.id && a.activity_type === 'exercise').length;
+    totalDone += Math.min(eng, r) + Math.min(fit, r);
+  });
+  const pct = totalSlots ? Math.round(totalDone / totalSlots * 100) : 0;
+  const pw = document.getElementById('team-progress-wrap');
+  if (pw) {
+    pw.style.display = 'block';
+    document.getElementById('team-progress-fill').style.width = pct + '%';
+    document.getElementById('team-progress-label').textContent = `${totalDone}/${totalSlots} (${pct}%)`;
+  }
+
   el.innerHTML = members.map(m => {
     const req = m.required_count != null ? Number(m.required_count) : defaultReq;
     const mUnit = m.penalty_per_miss != null ? Number(m.penalty_per_miss) : unit;
@@ -737,7 +796,7 @@ function renderCalendarDayDetail() {
   </div>`;
 }
 
-function renderSummary() {
+async function renderSummary() {
   const req = currentMember && currentMember.required_count != null
     ? Number(currentMember.required_count)
     : Number(currentRule.required_count_per_week || 4);
@@ -751,7 +810,9 @@ function renderSummary() {
   const totalMiss = Math.max(englishMiss, exerciseMiss);
   const penalty = totalMiss * unit;
 
-  document.getElementById('welcome').textContent = `${currentMember.name}님, 이번 주 목표를 채워보세요.`;
+  const streakWeeks = await calcStreak();
+  const streakHtml = streakWeeks >= 2 ? `<span class="streak-badge">🔥 ${streakWeeks}주 연속</span>` : '';
+  document.getElementById('welcome').innerHTML = `${escapeHtml(currentMember.name)}님, 이번 주 목표를 채워보세요.${streakHtml}`;
   document.getElementById('target-count').textContent = `${req} / ${req}`;
   document.getElementById('done-count').textContent = `${englishDone} / ${exerciseDone}`;
   document.getElementById('miss-count').textContent = `${englishMiss} / ${exerciseMiss}`;
