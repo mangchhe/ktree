@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface2: #1c2128;
+  --border: rgba(255,255,255,0.08);
+  --text: #e6edf3;
+  --muted: #7d8590;
+  --accent: #3fb950;
+  --danger: #f85149;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 20px 16px 36px; }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+.logo { font-size: 18px; font-weight: 700; cursor: pointer; }
+.logo em { color: var(--accent); font-style: normal; }
+.top-actions { display: flex; gap: 8px; }
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn.primary { background: var(--accent); color: #08140b; border: none; }
+.btn:hover { border-color: rgba(255,255,255,0.18); }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+.meta { color: var(--muted); font-size: 13px; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+th, td { border-bottom: 1px solid var(--border); padding: 10px 8px; text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+input[type='number'] {
+  width: 100px; padding: 7px 8px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface2); color: var(--text);
+}
+.badge {
+  display: inline-flex; border-radius: 999px; padding: 4px 8px;
+  background: var(--surface2); border: 1px solid var(--border); font-size: 12px;
+}
+.badge.danger { color: var(--danger); }
+.error { margin-top: 10px; color: var(--danger); font-size: 12px; display: none; }
+.info { margin-top: 10px; color: var(--accent); font-size: 12px; display: none; }
+.login-card { max-width: 400px; margin: 70px auto; }
+.field { margin-top: 10px; }
+.field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.field input {
+  width: 100%; padding: 9px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg); color: var(--text);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo" onclick="location.href='index.html'">🏁 challenge<em>.</em>admin</div>
+    <div class="top-actions">
+      <button class="btn" onclick="location.href='challenge.html'">팀원 화면</button>
+      <button class="btn" id="logout-btn" style="display:none" onclick="logout()">로그아웃</button>
+    </div>
+  </div>
+
+  <div id="login-view" class="card login-card" style="display:none">
+    <div style="font-size:20px;font-weight:700;margin-bottom:8px">관리자 로그인</div>
+    <p class="meta">Supabase 인증 계정으로 로그인하세요.</p>
+    <div class="field">
+      <label>이메일</label>
+      <input id="email" type="email" placeholder="admin@example.com">
+    </div>
+    <div class="field">
+      <label>비밀번호</label>
+      <input id="password" type="password" placeholder="••••••••">
+    </div>
+    <div style="margin-top:12px">
+      <button class="btn primary" onclick="login()">로그인</button>
+    </div>
+    <div id="login-error" class="error"></div>
+  </div>
+
+  <div id="app-view" style="display:none">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+        <div>
+          <div style="font-size:20px;font-weight:700">주간 정산 대시보드</div>
+          <div class="meta" id="week-range"></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <span class="badge" id="rule-badge"></span>
+          <button class="btn primary" onclick="saveSettlements('draft')">초안 저장</button>
+          <button class="btn" onclick="saveSettlements('confirmed')">정산 확정</button>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>팀원</th>
+            <th>출석(영/운)</th>
+            <th>미달(영/운)</th>
+            <th>기본 벌금</th>
+            <th>조정</th>
+            <th>최종 금액</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div id="action-info" class="info"></div>
+      <div id="action-error" class="error"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const CHALLENGE_ADMIN_EMAILS = [];
+
+let currentUser = null;
+let currentRule = { required_count_per_week: 4, penalty_per_miss: 10000, week_start: 'mon' };
+let members = [];
+let attendanceRows = [];
+let currentWeek = null;
+let settlementMap = new Map();
+
+function pad(n) { return String(n).padStart(2, '0'); }
+function fmtDate(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
+function money(n) { return `${Number(n || 0).toLocaleString('ko-KR')}원`; }
+
+function getWeekRange(now, weekStart) {
+  const d = new Date(now);
+  const day = d.getDay();
+  const startOffset = weekStart === 'sun' ? day : (day === 0 ? 6 : day - 1);
+  const start = new Date(d);
+  start.setDate(d.getDate() - startOffset);
+  start.setHours(0, 0, 0, 0);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  end.setHours(23, 59, 59, 999);
+  return { start, end };
+}
+
+function toWeekKey(startDate) {
+  return `${startDate.getFullYear()}-${pad(startDate.getMonth() + 1)}-${pad(startDate.getDate())}`;
+}
+
+function showError(msg) {
+  const el = document.getElementById('action-error');
+  const info = document.getElementById('action-info');
+  if (info) info.style.display = 'none';
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function showInfo(msg) {
+  const el = document.getElementById('action-info');
+  const err = document.getElementById('action-error');
+  if (err) err.style.display = 'none';
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function isChallengeAdminUser(user) {
+  if (!user || !user.email) return false;
+  return CHALLENGE_ADMIN_EMAILS.includes(String(user.email).toLowerCase());
+}
+
+function renderAccessDenied(email) {
+  const appView = document.getElementById('app-view');
+  const loginView = document.getElementById('login-view');
+  if (appView) appView.style.display = 'none';
+  if (!loginView) return;
+  loginView.style.display = 'block';
+  loginView.innerHTML = `
+    <div style="font-size:20px;font-weight:700;margin-bottom:8px">🚧 준비중</div>
+    <p class="meta">관리자 기능은 현재 준비중입니다.</p>
+    <div style="margin-top:12px">
+      <button class="btn" onclick="logout()">로그아웃</button>
+    </div>
+  `;
+}
+
+async function login() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  document.getElementById('login-error').style.display = 'none';
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    const err = document.getElementById('login-error');
+    err.textContent = error.message;
+    err.style.display = 'block';
+    return;
+  }
+  await init();
+}
+
+async function logout() {
+  await sb.auth.signOut();
+  location.reload();
+}
+
+async function loadRule() {
+  const { data, error } = await sb
+    .from('challenge_rules')
+    .select('*')
+    .eq('active', true)
+    .order('created_at', { ascending: false })
+    .limit(1);
+  if (!error && data && data.length) currentRule = data[0];
+}
+
+async function loadBaseData() {
+  const { start, end } = getWeekRange(new Date(), currentRule.week_start || 'mon');
+  const weekKey = toWeekKey(start);
+  currentWeek = { start, end, weekKey };
+  document.getElementById('week-range').textContent = `${fmtDate(start)} ~ ${fmtDate(end)} · week_key=${weekKey}`;
+  document.getElementById('rule-badge').textContent = `목표 영어 ${currentRule.required_count_per_week} / 운동 ${currentRule.required_count_per_week} · 미달 1회 ${money(currentRule.penalty_per_miss)}`;
+
+  const [mRes, aRes, sRes] = await Promise.all([
+    sb.from('challenge_members').select('*').eq('active', true).order('name'),
+    sb.from('challenge_attendances').select('member_id, activity_type, attended_on').gte('attended_on', fmtDate(start)).lte('attended_on', fmtDate(end)),
+    sb.from('challenge_settlements').select('*').eq('week_key', weekKey)
+  ]);
+
+  if (mRes.error) throw mRes.error;
+  if (aRes.error) throw aRes.error;
+  if (sRes.error) throw sRes.error;
+
+  members = mRes.data || [];
+  attendanceRows = aRes.data || [];
+  settlementMap = new Map((sRes.data || []).map(x => [x.member_id, x]));
+}
+
+function calcByMember(memberId) {
+  const req = Number(currentRule.required_count_per_week || 4);
+  const unit = Number(currentRule.penalty_per_miss || 10000);
+  const englishDone = attendanceRows.filter(row => row.member_id === memberId && row.activity_type === 'english').length;
+  const exerciseDone = attendanceRows.filter(row => row.member_id === memberId && row.activity_type === 'exercise').length;
+  const englishMiss = Math.max(0, req - englishDone);
+  const exerciseMiss = Math.max(0, req - exerciseDone);
+  const missed = Math.max(englishMiss, exerciseMiss);
+  const penalty = missed * unit;
+  return { englishDone, exerciseDone, englishMiss, exerciseMiss, missed, penalty };
+}
+
+function renderRows() {
+  const tbody = document.getElementById('rows');
+  if (!members.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="meta">활성 팀원이 없습니다.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = members.map(member => {
+    const c = calcByMember(member.id);
+    const old = settlementMap.get(member.id);
+    const adj = old ? Number(old.adjustment_amount || 0) : 0;
+    const final = c.penalty + adj;
+
+    return `
+      <tr>
+        <td>${member.name}</td>
+        <td>${c.englishDone} / ${c.exerciseDone}</td>
+        <td>${c.englishMiss} / ${c.exerciseMiss}</td>
+        <td>${money(c.penalty)}</td>
+        <td>
+          <input type="number" value="${adj}" data-member-id="${member.id}" class="adj-input" step="1000">
+        </td>
+        <td><span class="badge ${final > 0 ? 'danger' : ''}">${money(final)}</span></td>
+      </tr>
+    `;
+  }).join('');
+
+  document.querySelectorAll('.adj-input').forEach(el => {
+    el.addEventListener('input', () => {
+      const tr = el.closest('tr');
+      if (!tr) return;
+      const memberId = el.getAttribute('data-member-id');
+      const c = calcByMember(memberId);
+      const final = c.penalty + Number(el.value || 0);
+      tr.children[5].innerHTML = `<span class="badge ${final > 0 ? 'danger' : ''}">${money(final)}</span>`;
+    });
+  });
+}
+
+async function saveSettlements(status) {
+  const now = new Date().toISOString();
+  const payload = members.map(member => {
+    const c = calcByMember(member.id);
+    const input = document.querySelector(`.adj-input[data-member-id="${member.id}"]`);
+    const adj = Number(input ? input.value : 0);
+    const final = c.penalty + adj;
+    return {
+      week_key: currentWeek.weekKey,
+      member_id: member.id,
+      count_done: c.englishDone + c.exerciseDone,
+      count_missed: c.missed,
+      penalty_amount: c.penalty,
+      adjustment_amount: adj,
+      final_amount: final,
+      status,
+      confirmed_at: status === 'confirmed' ? now : null,
+      confirmed_by: status === 'confirmed' ? currentUser.id : null
+    };
+  });
+
+  const { error } = await sb
+    .from('challenge_settlements')
+    .upsert(payload, { onConflict: 'week_key,member_id' });
+
+  if (error) {
+    showError(error.message);
+    return;
+  }
+
+  showInfo(status === 'confirmed' ? '주간 정산이 확정 저장되었습니다.' : '주간 정산 초안이 저장되었습니다.');
+  await loadBaseData();
+  renderRows();
+}
+
+async function init() {
+  const { data: { session } } = await sb.auth.getSession();
+  const loginView = document.getElementById('login-view');
+  const appView = document.getElementById('app-view');
+  if (!session) {
+    loginView.style.display = 'block';
+    appView.style.display = 'none';
+    return;
+  }
+
+  currentUser = session.user;
+
+  if (!isChallengeAdminUser(currentUser)) {
+    renderAccessDenied(currentUser.email);
+    return;
+  }
+
+  document.getElementById('logout-btn').style.display = 'inline-block';
+  loginView.style.display = 'none';
+  appView.style.display = 'block';
+
+  try {
+    await loadRule();
+    await loadBaseData();
+    renderRows();
+  } catch (e) {
+    showError(e.message || '초기 로딩 실패. 테이블/RLS를 확인하세요.');
+  }
+}
+
+init();
+</script>
+</body>
+</html>

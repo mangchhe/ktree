@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge Check-in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08090e;--card:#111318;--card2:#16181f;--card-el:#1c1f28;
+  --border:#23262f;--border-hl:#3b3f4f;
+  --text:#e8eaef;--sub:#8b8fa3;--dim:#53576a;
+  --eng:#5b8cff;--eng-bg:rgba(91,140,255,.12);--eng-bd:rgba(91,140,255,.28);
+  --fit:#3ddfa0;--fit-bg:rgba(61,223,160,.1);--fit-bd:rgba(61,223,160,.25);
+  --warn:#f0a944;--danger:#ef5e5e;
+  --r:12px;
+}
+body{
+  min-height:100vh;color:var(--text);background:var(--bg);
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:520px;margin:0 auto;padding:12px 12px 40px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadeUp .35s ease both}
+
+/* --- header --- */
+.hd{display:flex;align-items:center;justify-content:space-between;padding:6px 0 14px}
+.hd-logo{font-size:15px;font-weight:800;letter-spacing:-.3px;cursor:pointer}
+.hd-logo b{color:var(--fit)}
+.hd-actions{display:flex;gap:6px}
+.hd-btn{
+  font-size:12px;font-weight:600;padding:7px 11px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--border);background:var(--card);color:var(--sub);
+  transition:border-color .15s;
+}
+.hd-btn:hover{border-color:var(--border-hl)}
+.hd-name{
+  font-size:12px;font-weight:600;color:var(--sub);cursor:pointer;
+  padding:4px 8px;border-radius:6px;border:1px solid transparent;
+  transition:border-color .15s;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.hd-name:hover{border-color:var(--border-hl)}
+.hd-name-edit{
+  font-size:12px;font-weight:600;color:var(--text);padding:4px 8px;
+  border-radius:6px;border:1px solid var(--eng);background:var(--card2);
+  outline:none;width:100px;
+}
+
+/* --- card --- */
+.cd{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.cd-title{font-size:14px;font-weight:800;margin-bottom:2px}
+.cd-sub{font-size:12px;color:var(--sub);line-height:1.5}
+
+/* --- stats --- */
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.st{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px}
+.st-k{font-size:10px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.st-v{font-size:16px;font-weight:800;letter-spacing:-.3px}
+.st-v.w{color:var(--warn)}.st-v.d{color:var(--danger)}
+
+/* --- check-in --- */
+.ci-week{
+  display:inline-block;font-size:11px;font-weight:600;color:var(--sub);
+  background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:5px 10px;margin-top:12px;
+}
+.ci-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ci-btn{
+  position:relative;overflow:hidden;border:none;border-radius:10px;padding:13px 8px;
+  font-size:13px;font-weight:800;cursor:pointer;color:#fff;
+  transition:transform .1s,box-shadow .15s;
+}
+.ci-btn:active{transform:scale(.97)}
+.ci-btn.eng{background:linear-gradient(135deg,#4a7aff,#6b9bff)}
+.ci-btn.fit{background:linear-gradient(135deg,#28c07a,#3ddfa0)}
+.ci-btn.eng:hover{box-shadow:0 4px 18px rgba(74,122,255,.35)}
+.ci-btn.fit:hover{box-shadow:0 4px 18px rgba(61,223,160,.3)}
+.ci-date-toggle{display:flex;gap:4px;margin-top:10px}
+.ci-dt{
+  flex:1;text-align:center;padding:6px 2px;border-radius:8px;font-size:11px;font-weight:700;
+  border:1px solid var(--border);background:var(--card2);color:var(--sub);cursor:pointer;
+  transition:all .15s;line-height:1.3;
+}
+.ci-dt.active{border-color:var(--eng);color:var(--eng);background:rgba(91,140,255,.08)}
+.ci-dt.today{border-color:var(--fit-bd)}
+.ci-dt.disabled{opacity:.25;cursor:default;pointer-events:none}
+.ci-dt .ci-dt-day{font-size:9px;font-weight:400;color:var(--dim)}
+.ci-hint{margin-top:6px;font-size:11px;color:var(--dim)}
+.msg{margin-top:8px;border-radius:8px;padding:8px 10px;font-size:12px;display:none;font-weight:600}
+.msg.err{color:#ffb0b0;border:1px solid rgba(239,94,94,.3);background:rgba(239,94,94,.08)}
+.msg.ok{color:#9dffd3;border:1px solid rgba(61,223,160,.3);background:rgba(61,223,160,.06)}
+
+/* --- calendar --- */
+.cal-hd{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:10px}
+.cal-month{font-size:14px;font-weight:800}
+.cal-nav{
+  width:30px;height:30px;border-radius:8px;border:1px solid var(--border);
+  background:var(--card2);color:var(--sub);font-size:14px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:border-color .15s;
+}
+.cal-nav:hover{border-color:var(--border-hl)}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-wd{text-align:center;font-size:10px;font-weight:600;color:var(--dim);padding:3px 0}
+.cal-wd.sun{color:var(--danger)}.cal-wd.sat{color:var(--eng)}
+.cal-c{
+  aspect-ratio:1/1.15;border-radius:8px;padding:4px;cursor:pointer;
+  border:1px solid transparent;background:var(--card2);
+  display:flex;flex-direction:column;align-items:flex-start;
+  transition:border-color .12s,background .12s;position:relative;
+}
+.cal-c:hover{border-color:var(--border-hl)}
+.cal-c.empty{background:transparent;cursor:default;border:none}
+.cal-c.today{border-color:var(--fit-bd)}
+.cal-c.sel{border-color:var(--eng);background:rgba(91,140,255,.06)}
+.cal-d{font-size:10px;font-weight:700;color:var(--sub);margin-bottom:auto}
+.cal-c.sun .cal-d{color:var(--danger)}.cal-c.sat .cal-d{color:var(--eng)}
+.cal-dots{display:flex;gap:3px;margin-top:2px;flex-wrap:wrap;justify-content:center;width:100%}
+.dot{width:6px;height:6px;border-radius:50%}
+.dot.eng{background:var(--eng)}.dot.fit{background:var(--fit)}
+
+/* --- day detail bottom sheet --- */
+.dd{
+  margin-top:8px;border:1px solid var(--border);border-radius:10px;
+  background:var(--card2);overflow:hidden;
+  animation:fadeUp .2s ease both;
+}
+.dd-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--border)}
+.dd-date{font-size:13px;font-weight:800}
+.dd-close{
+  width:24px;height:24px;border-radius:6px;border:1px solid var(--border);
+  background:var(--card);color:var(--sub);font-size:12px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.dd-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--border)}
+.dd-row:last-child{border-bottom:none}
+.dd-name{font-size:12px;font-weight:600}
+.dd-tag{
+  font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;
+}
+.dd-tag.eng{color:var(--eng);background:var(--eng-bg);border:1px solid var(--eng-bd)}
+.dd-tag.fit{color:var(--fit);background:var(--fit-bg);border:1px solid var(--fit-bd)}
+.dd-empty{padding:14px 12px;text-align:center;font-size:12px;color:var(--dim)}
+
+/* --- photo upload --- */
+.proof-area{margin-top:10px}
+.proof-label{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  border:1px dashed var(--border-hl);border-radius:10px;padding:14px 10px;
+  cursor:pointer;color:var(--sub);font-size:12px;font-weight:600;
+  background:var(--card2);transition:border-color .15s;
+}
+.proof-label:hover{border-color:var(--eng)}
+.proof-label svg{width:18px;height:18px;stroke:var(--sub)}
+.proof-preview{
+  margin-top:8px;position:relative;display:none;
+  border-radius:10px;overflow:hidden;border:1px solid var(--border);
+}
+.proof-preview img{width:100%;max-height:200px;object-fit:cover;display:block}
+.proof-remove{
+  position:absolute;top:6px;right:6px;width:24px;height:24px;border-radius:6px;
+  border:1px solid rgba(0,0,0,.3);background:rgba(0,0,0,.6);color:#fff;
+  font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.proof-thumb{
+  width:32px;height:32px;border-radius:6px;object-fit:cover;
+  border:1px solid var(--border);cursor:pointer;
+}
+.dd-proof{
+  width:100%;max-height:180px;object-fit:cover;border-radius:6px;
+  margin-top:4px;border:1px solid var(--border);cursor:pointer;
+}
+/* --- lightbox --- */
+.lb-overlay{
+  position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.85);
+  display:flex;align-items:center;justify-content:center;
+  animation:fadeUp .15s ease both;cursor:pointer;
+}
+.lb-overlay img{max-width:92vw;max-height:88vh;border-radius:8px;object-fit:contain}
+
+/* --- team summary --- */
+.tm-row{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;border-radius:9px;background:var(--card2);border:1px solid var(--border);
+  font-size:12px;
+}
+.tm-name{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tm-cnt{display:flex;align-items:center;gap:3px;font-weight:700;font-size:11px}
+.tm-cnt.eng{color:var(--eng)}.tm-cnt.fit{color:var(--fit)}
+.tm-dot{width:5px;height:5px;border-radius:50%}
+.tm-dot.eng{background:var(--eng)}.tm-dot.fit{background:var(--fit)}
+.tm-penalty{font-size:10px;font-weight:700;color:var(--danger);min-width:44px;text-align:right}
+.tm-penalty.ok{color:var(--fit)}
+
+/* --- attendance list --- */
+.att-title{font-size:13px;font-weight:800;margin-bottom:8px}
+.att-list{display:flex;flex-direction:column;gap:6px}
+.att-row{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:12px;
+}
+.att-row .att-info{flex:1;display:flex;align-items:center;gap:8px}
+.att-date{color:var(--sub);font-weight:600}
+.att-del{
+  width:22px;height:22px;border-radius:6px;border:1px solid var(--border);
+  background:var(--card);color:var(--dim);font-size:10px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all .15s;
+}
+.att-del:hover{border-color:var(--danger);color:var(--danger)}
+.att-edit{
+  width:22px;height:22px;border-radius:6px;border:1px solid var(--border);
+  background:var(--card);color:var(--dim);font-size:10px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all .15s;
+}
+.att-edit:hover{border-color:var(--eng);color:var(--eng)}
+
+/* --- modal --- */
+.modal-overlay{
+  position:fixed;inset:0;z-index:998;background:rgba(0,0,0,.7);
+  display:flex;align-items:center;justify-content:center;
+  animation:fadeUp .12s ease both;
+}
+.modal-box{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:20px;width:min(320px,90vw);text-align:center;
+}
+.modal-msg{font-size:13px;font-weight:600;line-height:1.6;margin-bottom:16px}
+.modal-btns{display:flex;gap:8px}
+.modal-btn{
+  flex:1;padding:10px;border-radius:9px;font-size:12px;font-weight:800;
+  cursor:pointer;border:1px solid var(--border);transition:all .12s;
+}
+.modal-btn.cancel{background:var(--card2);color:var(--sub)}
+.modal-btn.cancel:hover{border-color:var(--border-hl)}
+.modal-btn.danger{background:rgba(239,94,94,.15);color:var(--danger);border-color:rgba(239,94,94,.3)}
+.modal-btn.danger:hover{background:rgba(239,94,94,.25)}
+
+/* --- login --- */
+.login-card{max-width:380px;margin:60px auto 0}
+.field{margin-top:10px}
+.field label{display:block;font-size:11px;font-weight:600;color:var(--dim);margin-bottom:4px}
+.field input{
+  width:100%;border-radius:9px;border:1px solid var(--border);
+  padding:10px 11px;background:var(--bg);color:var(--text);font-size:13px;
+  transition:border-color .15s;
+}
+.field input:focus{outline:none;border-color:var(--eng)}
+.login-btn{
+  width:100%;margin-top:14px;padding:11px;border:none;border-radius:9px;
+  font-size:13px;font-weight:800;cursor:pointer;
+  background:linear-gradient(135deg,#28c07a,#3ddfa0);color:#062e19;
+}
+
+@media(min-width:760px){
+  .wrap{padding-top:24px}
+  .st-grid{grid-template-columns:repeat(4,1fr)}
+  .cal-c{aspect-ratio:1/1.05}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <div class="hd-logo" onclick="location.href='challenge.html'">challenge<b>.</b>check</div>
+    <div class="hd-actions">
+      <span class="hd-name" id="hd-name" title="클릭해서 이름 변경" style="display:none" onclick="startEditName()"></span>
+      <button class="hd-btn" id="logout-btn" style="display:none" onclick="showModal('로그아웃 하시겠습니까?',logout)">로그아웃</button>
+      <button class="hd-btn" onclick="location.href='challenge-history.html'">정산</button>
+    </div>
+  </div>
+
+  <div id="modal-root"></div>
+
+  <div id="login-view" class="cd login-card" style="display:none">
+    <div class="cd-title">로그인</div>
+    <p class="cd-sub">팀 계정으로 로그인하세요.</p>
+    <form onsubmit="event.preventDefault();login()">
+    <div class="field">
+      <label>이메일</label>
+      <input id="email" type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>비밀번호</label>
+      <input id="password" type="password" placeholder="••••••••">
+    </div>
+    <button class="login-btn" type="submit">로그인</button>
+    </form>
+    <div id="login-error" class="msg err"></div>
+  </div>
+
+  <div id="app-view" style="display:none">
+    <div class="cd fade">
+      <div class="cd-title">이번 주 챌린지</div>
+      <p class="cd-sub" id="welcome"></p>
+      <div class="st-grid">
+        <div class="st"><div class="st-k">목표 (영/운)</div><div class="st-v" id="target-count"></div></div>
+        <div class="st"><div class="st-k">출석 (영/운)</div><div class="st-v" id="done-count"></div></div>
+        <div class="st"><div class="st-k">미달 (영/운)</div><div class="st-v w" id="miss-count"></div></div>
+        <div class="st"><div class="st-k">예상 벌금</div><div class="st-v d" id="penalty-amount"></div></div>
+      </div>
+      <div class="ci-week" id="week-range"></div>
+      <div class="ci-date-toggle" id="date-toggle"></div>
+      <div class="ci-btns">
+        <button class="ci-btn eng" onclick="startCheckIn('english')">영어 출석</button>
+        <button class="ci-btn fit" onclick="startCheckIn('exercise')">운동 출석</button>
+      </div>
+      <input type="file" id="proof-file" accept="image/*" hidden>
+      <div class="proof-preview" id="proof-preview">
+        <img id="proof-img">
+        <button class="proof-remove" onclick="clearProof()">✕</button>
+      </div>
+      <div class="ci-hint">버튼 클릭 → 인증샷 선택 → 출석 완료</div>
+      <div id="action-info" class="msg ok"></div>
+      <div id="action-error" class="msg err"></div>
+    </div>
+
+    <div class="cd fade" style="animation-delay:.06s">
+      <div class="att-title">이번 주 팀원 현황</div>
+      <div id="team-summary" class="att-list"></div>
+    </div>
+
+    <div class="cd fade" style="animation-delay:.12s">
+      <div class="cal-hd">
+        <button class="cal-nav" id="cal-prev">&#8249;</button>
+        <div class="cal-month" id="calendar-month"></div>
+        <button class="cal-nav" id="cal-next">&#8250;</button>
+      </div>
+      <div id="calendar-grid" class="cal-g"></div>
+      <div id="calendar-day-detail"></div>
+    </div>
+
+    <div class="cd fade" style="animation-delay:.18s">
+      <div class="att-title">내 출석 기록</div>
+      <div id="attendance-list" class="att-list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentUser = null;
+let currentMember = null;
+let currentRule = { required_count_per_week: 4, penalty_per_miss: 10000, week_start: 'mon', start_date: '2026-04-27' };
+let weeklyAttendances = [];
+let allMembers = [];
+let calendarAttendances = [];
+let calendarCursor = new Date();
+let selectedCalendarDate = null;
+let teamWeeklyData = { members: [], attendances: [] };
+
+function pad(n) { return String(n).padStart(2, '0'); }
+function fmtDate(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
+function money(n) { return `${Number(n || 0).toLocaleString('ko-KR')}원`; }
+function escapeHtml(text) {
+  return String(text || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+let proofFile = null;
+let pendingCheckInType = null;
+let checkInDate = fmtDate(new Date());
+
+function initDateToggle() {
+  const todayStr = fmtDate(new Date());
+  const { start } = getWeekRange(new Date(), currentRule.week_start || 'mon');
+  const dayNames = ['일','월','화','수','목','금','토'];
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    days.push({ str: fmtDate(d), label: dayNames[d.getDay()], dd: d.getDate() });
+  }
+  const startDate = currentRule.start_date || '2000-01-01';
+  const validDays = days.filter(d => d.str >= startDate && d.str <= todayStr);
+  if (!validDays.find(d => d.str === checkInDate)) checkInDate = todayStr;
+  const el = document.getElementById('date-toggle');
+  el.innerHTML = days.map(d => {
+    const disabled = d.str < startDate || d.str > todayStr;
+    const cls = [
+      'ci-dt',
+      checkInDate === d.str ? 'active' : '',
+      d.str === todayStr ? 'today' : '',
+      disabled ? 'disabled' : ''
+    ].filter(Boolean).join(' ');
+    const onclick = disabled ? '' : `onclick="checkInDate='${d.str}';initDateToggle()"`;
+    return `<div class="${cls}" ${onclick}>${d.dd}<div class="ci-dt-day">${d.label}</div></div>`;
+  }).join('');
+}
+
+document.getElementById('proof-file').addEventListener('change', async function(e) {
+  const file = e.target.files[0];
+  if (!file || !pendingCheckInType) { pendingCheckInType = null; return; }
+  if (file.size > 5 * 1024 * 1024) {
+    showError('action-error', '파일 크기는 5MB 이하만 가능합니다.');
+    e.target.value = '';
+    pendingCheckInType = null;
+    return;
+  }
+  proofFile = file;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    document.getElementById('proof-img').src = ev.target.result;
+    document.getElementById('proof-preview').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+  await checkIn(pendingCheckInType);
+  pendingCheckInType = null;
+});
+
+function clearProof() {
+  proofFile = null;
+  document.getElementById('proof-file').value = '';
+  document.getElementById('proof-preview').style.display = 'none';
+  document.getElementById('proof-img').src = '';
+}
+
+async function uploadProof(memberId, type, dateStr) {
+  if (!proofFile) return null;
+  const ext = proofFile.name.split('.').pop() || 'jpg';
+  const path = `${memberId}/${dateStr}_${type}.${ext}`;
+  const { error } = await sb.storage.from('challenge-proofs').upload(path, proofFile, { upsert: true });
+  if (error) throw new Error('인증샷 업로드 실패: ' + error.message);
+  const { data } = sb.storage.from('challenge-proofs').getPublicUrl(path);
+  return data.publicUrl;
+}
+
+function openLightbox(url) {
+  const overlay = document.createElement('div');
+  overlay.className = 'lb-overlay';
+  overlay.innerHTML = `<img src="${url}">`;
+  overlay.addEventListener('click', () => overlay.remove());
+  document.body.appendChild(overlay);
+}
+
+function getWeekRange(now, weekStart) {
+  const d = new Date(now);
+  const day = d.getDay();
+  const startOffset = weekStart === 'sun' ? day : (day === 0 ? 6 : day - 1);
+  const start = new Date(d);
+  start.setDate(d.getDate() - startOffset);
+  start.setHours(0, 0, 0, 0);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  end.setHours(23, 59, 59, 999);
+  return { start, end };
+}
+
+function getMonthRange(baseDate) {
+  const start = new Date(baseDate.getFullYear(), baseDate.getMonth(), 1);
+  const end = new Date(baseDate.getFullYear(), baseDate.getMonth() + 1, 0);
+  return { start, end };
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function showInfo(msg) {
+  const info = document.getElementById('action-info');
+  const err = document.getElementById('action-error');
+  if (err) err.style.display = 'none';
+  if (!info) return;
+  info.textContent = msg;
+  info.style.display = 'block';
+}
+
+function clearActionMessage() {
+  const info = document.getElementById('action-info');
+  const err = document.getElementById('action-error');
+  if (info) info.style.display = 'none';
+  if (err) err.style.display = 'none';
+}
+
+async function login() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  document.getElementById('login-error').style.display = 'none';
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    showError('login-error', error.message);
+    return;
+  }
+  await init();
+}
+
+async function logout() {
+  await sb.auth.signOut();
+  location.reload();
+}
+
+async function ensureMember() {
+  const { data: rows, error } = await sb
+    .from('challenge_members')
+    .select('*')
+    .eq('user_id', currentUser.id)
+    .limit(1);
+
+  if (error) throw error;
+  if (rows && rows.length) {
+    currentMember = rows[0];
+    return;
+  }
+
+  const defaultName = (currentUser.user_metadata && currentUser.user_metadata.name) || currentUser.email.split('@')[0] || 'member';
+  const payload = {
+    user_id: currentUser.id,
+    email: currentUser.email,
+    name: defaultName,
+    active: true
+  };
+  const { data: inserted, error: insErr } = await sb
+    .from('challenge_members')
+    .insert(payload)
+    .select('*')
+    .single();
+
+  if (insErr) throw insErr;
+  currentMember = inserted;
+}
+
+function startEditName() {
+  const el = document.getElementById('hd-name');
+  const input = document.createElement('input');
+  input.className = 'hd-name-edit';
+  input.value = currentMember.name;
+  input.maxLength = 20;
+  el.replaceWith(input);
+  input.focus();
+  input.select();
+
+  async function save() {
+    const newName = input.value.trim();
+    if (newName && newName !== currentMember.name) {
+      const { error } = await sb.from('challenge_members').update({ name: newName }).eq('id', currentMember.id);
+      if (!error) {
+        currentMember.name = newName;
+        await loadTeamWeekly();
+        renderTeamSummary();
+      }
+    }
+    const span = document.createElement('span');
+    span.className = 'hd-name';
+    span.id = 'hd-name';
+    span.title = '클릭해서 이름 변경';
+    span.textContent = currentMember.name;
+    span.onclick = startEditName;
+    input.replaceWith(span);
+  }
+
+  input.addEventListener('blur', save);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') input.blur(); if (e.key === 'Escape') { input.value = currentMember.name; input.blur(); } });
+}
+
+async function loadRule() {
+  const { data, error } = await sb
+    .from('challenge_rules')
+    .select('*')
+    .eq('active', true)
+    .order('created_at', { ascending: false })
+    .limit(1);
+  if (!error && data && data.length) currentRule = data[0];
+}
+
+async function loadAttendances() {
+  const { start, end } = getWeekRange(new Date(), currentRule.week_start || 'mon');
+  document.getElementById('week-range').textContent = `${fmtDate(start)} ~ ${fmtDate(end)}`;
+  const { data, error } = await sb
+    .from('challenge_attendances')
+    .select('*')
+    .eq('member_id', currentMember.id)
+    .gte('attended_on', fmtDate(start))
+    .lte('attended_on', fmtDate(end))
+    .order('attended_on', { ascending: false });
+  if (error) throw error;
+  weeklyAttendances = data || [];
+}
+
+async function loadTeamWeekly() {
+  const { start, end } = getWeekRange(new Date(), currentRule.week_start || 'mon');
+  const [mRes, aRes] = await Promise.all([
+    sb.from('challenge_members').select('id, name').eq('active', true).order('name'),
+    sb.from('challenge_attendances').select('member_id, activity_type').gte('attended_on', fmtDate(start)).lte('attended_on', fmtDate(end))
+  ]);
+  teamWeeklyData.members = mRes.data || [];
+  teamWeeklyData.attendances = aRes.data || [];
+}
+
+function renderTeamSummary() {
+  const el = document.getElementById('team-summary');
+  if (!el) return;
+  const { members, attendances } = teamWeeklyData;
+  const req = Number(currentRule.required_count_per_week || 4);
+  const unit = Number(currentRule.penalty_per_miss || 10000);
+  if (!members.length) { el.innerHTML = '<div class="tm-row" style="color:var(--dim)">팀원 없음</div>'; return; }
+  el.innerHTML = members.map(m => {
+    const eng = attendances.filter(a => a.member_id === m.id && a.activity_type === 'english').length;
+    const fit = attendances.filter(a => a.member_id === m.id && a.activity_type === 'exercise').length;
+    const miss = Math.max(Math.max(0, req - eng), Math.max(0, req - fit));
+    const pen = miss * unit;
+    const penCls = pen === 0 ? 'tm-penalty ok' : 'tm-penalty';
+    const penText = pen === 0 ? '✓' : money(pen);
+    return `<div class="tm-row">
+      <span class="tm-name">${escapeHtml(m.name)}</span>
+      <span class="tm-cnt eng"><span class="tm-dot eng"></span>${eng}</span>
+      <span class="tm-cnt fit"><span class="tm-dot fit"></span>${fit}</span>
+      <span class="${penCls}">${penText}</span>
+    </div>`;
+  }).join('');
+}
+
+async function loadTeamCalendarData() {
+  const { start, end } = getMonthRange(calendarCursor);
+  const monthLabel = `${start.getFullYear()}년 ${start.getMonth() + 1}월`;
+  document.getElementById('calendar-month').textContent = monthLabel;
+
+  const [mRes, aRes] = await Promise.all([
+    sb.from('challenge_members').select('id, name, active').eq('active', true).order('name'),
+    sb.from('challenge_attendances').select('member_id, activity_type, attended_on, note').gte('attended_on', fmtDate(start)).lte('attended_on', fmtDate(end)).order('attended_on')
+  ]);
+
+  if (mRes.error) throw mRes.error;
+  if (aRes.error) throw aRes.error;
+
+  allMembers = mRes.data || [];
+  calendarAttendances = aRes.data || [];
+}
+
+function renderCalendar() {
+  const grid = document.getElementById('calendar-grid');
+  if (!grid) return;
+
+  const { start, end } = getMonthRange(calendarCursor);
+  const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+  const todayKey = fmtDate(new Date());
+  const dayMap = new Map();
+
+  calendarAttendances.forEach(item => {
+    const list = dayMap.get(item.attended_on) || [];
+    list.push(item);
+    dayMap.set(item.attended_on, list);
+  });
+
+  const wdCls = ['sun','','','','','','sat'];
+  let html = weekdays.map((d,i) => `<div class="cal-wd ${wdCls[i]}">${d}</div>`).join('');
+
+  for (let i = 0; i < start.getDay(); i++) html += '<div class="cal-c empty"></div>';
+
+  for (let day = 1; day <= end.getDate(); day++) {
+    const date = new Date(start.getFullYear(), start.getMonth(), day);
+    const dateKey = fmtDate(date);
+    const dow = date.getDay();
+    const items = dayMap.get(dateKey) || [];
+    const engN = items.filter(x => x.activity_type === 'english').length;
+    const fitN = items.filter(x => x.activity_type === 'exercise').length;
+
+    let dots = '';
+    for (let i = 0; i < engN; i++) dots += '<span class="dot eng"></span>';
+    for (let i = 0; i < fitN; i++) dots += '<span class="dot fit"></span>';
+
+    const cls = [
+      'cal-c',
+      selectedCalendarDate === dateKey ? 'sel' : '',
+      dateKey === todayKey ? 'today' : '',
+      dow === 0 ? 'sun' : dow === 6 ? 'sat' : ''
+    ].filter(Boolean).join(' ');
+
+    html += `<div class="${cls}" data-date="${dateKey}">
+      <div class="cal-d">${day}</div>
+      ${dots ? `<div class="cal-dots">${dots}</div>` : ''}
+    </div>`;
+  }
+
+  grid.innerHTML = html;
+  grid.querySelectorAll('.cal-c[data-date]').forEach(el => {
+    el.addEventListener('click', () => {
+      const d = el.getAttribute('data-date');
+      selectedCalendarDate = selectedCalendarDate === d ? null : d;
+      renderCalendar();
+      renderCalendarDayDetail();
+    });
+  });
+}
+
+function renderCalendarDayDetail() {
+  const el = document.getElementById('calendar-day-detail');
+  if (!el) return;
+  if (!selectedCalendarDate) { el.innerHTML = ''; return; }
+
+  const membersById = new Map(allMembers.map(m => [m.id, m.name]));
+  const rows = calendarAttendances
+    .filter(x => x.attended_on === selectedCalendarDate)
+    .map(x => ({
+      name: membersById.get(x.member_id) || 'unknown',
+      type: x.activity_type,
+      proof: x.note || null
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const dateLabel = selectedCalendarDate.replace(/^\d{4}-/, '').replace('-', '/');
+  const body = rows.length
+    ? rows.map(r => {
+        const cls = r.type === 'english' ? 'eng' : 'fit';
+        const label = r.type === 'english' ? '영어' : '운동';
+        const proofHtml = r.proof
+          ? `<img class="dd-proof" src="${r.proof}" onclick="openLightbox('${r.proof}')">`
+          : '';
+        return `<div class="dd-row" style="flex-wrap:wrap"><div style="display:flex;align-items:center;justify-content:space-between;width:100%"><span class="dd-name">${escapeHtml(r.name)}</span><span class="dd-tag ${cls}">${label}</span></div>${proofHtml}</div>`;
+      }).join('')
+    : '<div class="dd-empty">기록 없음</div>';
+
+  el.innerHTML = `<div class="dd">
+    <div class="dd-hd"><span class="dd-date">${dateLabel}</span><button class="dd-close" onclick="selectedCalendarDate=null;renderCalendar();renderCalendarDayDetail()">✕</button></div>
+    ${body}
+  </div>`;
+}
+
+function renderSummary() {
+  const req = Number(currentRule.required_count_per_week || 4);
+  const unit = Number(currentRule.penalty_per_miss || 10000);
+  const englishDone = weeklyAttendances.filter(x => x.activity_type === 'english').length;
+  const exerciseDone = weeklyAttendances.filter(x => x.activity_type === 'exercise').length;
+  const englishMiss = Math.max(0, req - englishDone);
+  const exerciseMiss = Math.max(0, req - exerciseDone);
+  const totalMiss = Math.max(englishMiss, exerciseMiss);
+  const penalty = totalMiss * unit;
+
+  document.getElementById('welcome').textContent = `${currentMember.name}님, 이번 주 목표를 채워보세요.`;
+  document.getElementById('target-count').textContent = `${req} / ${req}`;
+  document.getElementById('done-count').textContent = `${englishDone} / ${exerciseDone}`;
+  document.getElementById('miss-count').textContent = `${englishMiss} / ${exerciseMiss}`;
+  document.getElementById('penalty-amount').textContent = money(penalty);
+
+  const list = document.getElementById('attendance-list');
+  if (!weeklyAttendances.length) {
+    list.innerHTML = `<div class="att-row"><span class="att-date" style="color:var(--dim)">아직 출석 기록이 없습니다.</span></div>`;
+    return;
+  }
+  list.innerHTML = weeklyAttendances.map(row => {
+    const cls = row.activity_type === 'english' ? 'eng' : 'fit';
+    const label = row.activity_type === 'english' ? '영어' : '운동';
+    const thumb = row.note
+      ? `<img class="proof-thumb" src="${row.note}" onclick="openLightbox('${row.note}')">`
+      : '';
+    const editBtn = `<button class="att-edit" onclick="startReplaceProof('${row.id}','${row.member_id}','${row.activity_type}','${row.attended_on}')" title="사진 ${row.note ? '변경' : '추가'}">📷</button>`;
+    return `<div class="att-row">${thumb}<div class="att-info"><span class="att-date">${row.attended_on}</span><span class="dd-tag ${cls}">${label}</span></div>${editBtn}<button class="att-del" onclick="deleteAttendance('${row.id}','${row.attended_on}','${label}')">✕</button></div>`;
+  }).join('');
+}
+
+function showModal(msg, onConfirm) {
+  const root = document.getElementById('modal-root');
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <div class="modal-msg">${msg}</div>
+      <div class="modal-btns">
+        <button class="modal-btn cancel" id="modal-cancel">취소</button>
+        <button class="modal-btn danger" id="modal-ok">확인</button>
+      </div>
+    </div>
+  `;
+  root.appendChild(overlay);
+  overlay.querySelector('#modal-cancel').onclick = () => overlay.remove();
+  overlay.querySelector('#modal-ok').onclick = () => { overlay.remove(); onConfirm(); };
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+}
+
+function startReplaceProof(attId, memberId, type, dateStr) {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = async () => {
+    const file = input.files[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) { showError('action-error', '5MB 이하만 가능합니다.'); return; }
+    const ext = file.name.split('.').pop() || 'jpg';
+    const path = `${memberId}/${dateStr}_${type}.${ext}`;
+    const { error: upErr } = await sb.storage.from('challenge-proofs').upload(path, file, { upsert: true });
+    if (upErr) { showError('action-error', '업로드 실패: ' + upErr.message); return; }
+    const { data } = sb.storage.from('challenge-proofs').getPublicUrl(path);
+    const url = data.publicUrl + '?t=' + Date.now();
+    const { error } = await sb.from('challenge_attendances').update({ note: url }).eq('id', attId);
+    if (error) { showError('action-error', error.message); return; }
+    showInfo('인증샷이 변경되었습니다.');
+    await loadAttendances();
+    renderSummary();
+    await loadTeamCalendarData();
+    renderCalendar();
+    renderCalendarDayDetail();
+  };
+  input.click();
+}
+
+function deleteAttendance(id, date, label) {
+  showModal(`<b>${date} ${label}</b> 출석을 취소하시겠습니까?`, () => {
+    showModal(`정말로 취소하시겠습니까?<br><span style="font-size:11px;color:var(--dim)">이 작업은 되돌릴 수 없습니다.</span>`, async () => {
+      const { error } = await sb.from('challenge_attendances').delete().eq('id', id);
+      if (error) { showError('action-error', error.message); return; }
+      showInfo(`${date} ${label} 출석이 취소되었습니다.`);
+      await loadAttendances();
+      renderSummary();
+      await Promise.all([loadTeamWeekly(), loadTeamCalendarData()]);
+      renderTeamSummary();
+      renderCalendar();
+      renderCalendarDayDetail();
+    });
+  });
+}
+
+function startCheckIn(type) {
+  clearActionMessage();
+  const targetDate = checkInDate;
+  const already = weeklyAttendances.find(a => a.attended_on === targetDate && a.activity_type === type);
+  if (already) {
+    const label = type === 'english' ? '영어' : '운동';
+    showError('action-error', `${targetDate} ${label}는 이미 출석 처리되었습니다.`);
+    return;
+  }
+  pendingCheckInType = type;
+  document.getElementById('proof-file').click();
+}
+
+async function checkIn(type) {
+  clearActionMessage();
+  const targetDate = checkInDate;
+
+  const already = weeklyAttendances.find(a => a.attended_on === targetDate && a.activity_type === type);
+  if (already) {
+    const label = type === 'english' ? '영어' : '운동';
+    showError('action-error', `${targetDate} ${label}는 이미 출석 처리되었습니다.`);
+    return;
+  }
+
+  let proofUrl = null;
+  try {
+    proofUrl = await uploadProof(currentMember.id, type, targetDate);
+  } catch (e) {
+    showError('action-error', e.message);
+    return;
+  }
+
+  const payload = {
+    member_id: currentMember.id,
+    user_id: currentUser.id,
+    activity_type: type,
+    attended_on: targetDate,
+    note: proofUrl || null
+  };
+
+  const { error } = await sb.from('challenge_attendances').insert(payload);
+  if (error) {
+    showError('action-error', error.message);
+    return;
+  }
+
+  clearProof();
+  showInfo(`${type === 'english' ? '영어' : '운동'} 출석 완료! (${targetDate})`);
+  await loadAttendances();
+  renderSummary();
+  await Promise.all([loadTeamWeekly(), loadTeamCalendarData()]);
+  renderTeamSummary();
+  selectedCalendarDate = targetDate;
+  renderCalendar();
+  renderCalendarDayDetail();
+}
+
+async function init() {
+  const { data: { session } } = await sb.auth.getSession();
+  const loginView = document.getElementById('login-view');
+  const appView = document.getElementById('app-view');
+  if (!session) {
+    loginView.style.display = 'block';
+    appView.style.display = 'none';
+    return;
+  }
+
+  currentUser = session.user;
+  document.getElementById('logout-btn').style.display = 'inline-block';
+  loginView.style.display = 'none';
+  appView.style.display = 'block';
+
+  try {
+    await ensureMember();
+    const hdName = document.getElementById('hd-name');
+    hdName.textContent = currentMember.name;
+    hdName.style.display = 'inline-block';
+    initDateToggle();
+    await loadRule();
+    await loadAttendances();
+    renderSummary();
+    await Promise.all([loadTeamWeekly(), loadTeamCalendarData()]);
+    renderTeamSummary();
+    selectedCalendarDate = fmtDate(new Date());
+    renderCalendar();
+    renderCalendarDayDetail();
+
+    document.getElementById('cal-prev').addEventListener('click', async () => {
+      calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth() - 1, 1);
+      await loadTeamCalendarData();
+      selectedCalendarDate = null;
+      renderCalendar();
+      renderCalendarDayDetail();
+    });
+
+    document.getElementById('cal-next').addEventListener('click', async () => {
+      calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth() + 1, 1);
+      await loadTeamCalendarData();
+      selectedCalendarDate = null;
+      renderCalendar();
+      renderCalendarDayDetail();
+    });
+  } catch (e) {
+    showError('action-error', e.message || '초기 로딩에 실패했습니다. RLS와 테이블을 확인하세요.');
+  }
+}
+
+init();
+</script>
+</body>
+</html>

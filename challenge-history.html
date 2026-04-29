@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08090e;--card:#111318;--card2:#16181f;--card-el:#1c1f28;
+  --border:#23262f;--border-hl:#3b3f4f;
+  --text:#e8eaef;--sub:#8b8fa3;--dim:#53576a;
+  --eng:#5b8cff;--eng-bg:rgba(91,140,255,.12);--eng-bd:rgba(91,140,255,.28);
+  --fit:#3ddfa0;--fit-bg:rgba(61,223,160,.1);--fit-bd:rgba(61,223,160,.25);
+  --warn:#f0a944;--danger:#ef5e5e;
+  --r:12px;
+}
+body{
+  min-height:100vh;color:var(--text);background:var(--bg);
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:520px;margin:0 auto;padding:12px 12px 40px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.hd{display:flex;align-items:center;justify-content:space-between;padding:6px 0 14px}
+.hd-logo{font-size:15px;font-weight:800;letter-spacing:-.3px;cursor:pointer}
+.hd-logo b{color:var(--fit)}
+.hd-actions{display:flex;gap:6px}
+.hd-btn{
+  font-size:12px;font-weight:600;padding:7px 11px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--border);background:var(--card);color:var(--sub);
+  transition:border-color .15s;text-decoration:none;
+}
+.hd-btn:hover{border-color:var(--border-hl)}
+
+/* --- accordion week cards --- */
+.wk{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  margin-bottom:10px;overflow:hidden;
+  animation:fadeUp .3s ease both;
+}
+.wk-hd{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;cursor:pointer;transition:background .12s;
+}
+.wk-hd:hover{background:var(--card2)}
+.wk-left{display:flex;flex-direction:column;gap:2px}
+.wk-title{font-size:13px;font-weight:800}
+.wk-title .current{color:var(--fit);font-size:10px;font-weight:600;margin-left:6px}
+.wk-range{font-size:10px;color:var(--dim);font-weight:400}
+.wk-right{display:flex;align-items:center;gap:10px}
+.wk-total{font-size:12px;font-weight:800;color:var(--danger)}
+.wk-total.ok{color:var(--fit)}
+.wk-arrow{font-size:12px;color:var(--dim);transition:transform .2s}
+.wk.open .wk-arrow{transform:rotate(180deg)}
+.wk-body{display:none;padding:0 14px 12px}
+.wk.open .wk-body{display:block}
+
+.tm-row{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;border-radius:9px;background:var(--card2);border:1px solid var(--border);
+  font-size:12px;margin-bottom:5px;
+}
+.tm-row:last-child{margin-bottom:0}
+.tm-name{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tm-cnt{display:flex;align-items:center;gap:3px;font-weight:700;font-size:11px}
+.tm-cnt.eng{color:var(--eng)}.tm-cnt.fit{color:var(--fit)}
+.tm-dot{width:5px;height:5px;border-radius:50%}
+.tm-dot.eng{background:var(--eng)}.tm-dot.fit{background:var(--fit)}
+.tm-penalty{font-size:10px;font-weight:700;color:var(--danger);min-width:44px;text-align:right}
+.tm-penalty.ok{color:var(--fit)}
+
+.empty-state{text-align:center;padding:28px 10px;color:var(--dim);font-size:13px}
+.load-more{
+  display:block;width:100%;padding:11px;border:1px solid var(--border);border-radius:var(--r);
+  background:var(--card);color:var(--sub);font-size:12px;font-weight:700;
+  cursor:pointer;text-align:center;transition:border-color .15s;
+}
+.load-more:hover{border-color:var(--border-hl)}
+
+.login-card{max-width:380px;margin:60px auto 0;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px}
+@media(min-width:760px){
+  .wrap{padding-top:24px}
+}
+.cd-title{font-size:14px;font-weight:800;margin-bottom:2px}
+.cd-sub{font-size:12px;color:var(--sub);line-height:1.5}
+.field{margin-top:10px}
+.field label{display:block;font-size:11px;font-weight:600;color:var(--dim);margin-bottom:4px}
+.field input{
+  width:100%;border-radius:9px;border:1px solid var(--border);
+  padding:10px 11px;background:var(--bg);color:var(--text);font-size:13px;
+  transition:border-color .15s;
+}
+.field input:focus{outline:none;border-color:var(--eng)}
+.login-btn{
+  width:100%;margin-top:14px;padding:11px;border:none;border-radius:9px;
+  font-size:13px;font-weight:800;cursor:pointer;
+  background:linear-gradient(135deg,#28c07a,#3ddfa0);color:#062e19;
+}
+.msg{margin-top:8px;border-radius:8px;padding:8px 10px;font-size:12px;display:none;font-weight:600}
+.msg.err{color:#ffb0b0;border:1px solid rgba(239,94,94,.3);background:rgba(239,94,94,.08)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <div class="hd-logo" onclick="location.href='challenge.html'">challenge<b>.</b>history</div>
+    <div class="hd-actions">
+      <a class="hd-btn" href="challenge.html">출석하기</a>
+    </div>
+  </div>
+
+  <div id="login-view" class="cd login-card" style="display:none">
+    <div class="cd-title">로그인</div>
+    <p class="cd-sub">팀 계정으로 로그인하세요.</p>
+    <form onsubmit="event.preventDefault();login()">
+    <div class="field">
+      <label>이메일</label>
+      <input id="email" type="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label>비밀번호</label>
+      <input id="password" type="password" placeholder="••••••••">
+    </div>
+    <button class="login-btn" type="submit">로그인</button>
+    </form>
+    <div id="login-error" class="msg err"></div>
+  </div>
+
+  <div id="app-view" style="display:none">
+    <div id="weeks-list"></div>
+    <button class="load-more" id="load-more" onclick="loadMore()">이전 주 더 보기</button>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentRule = { required_count_per_week: 4, penalty_per_miss: 10000, week_start: 'mon', start_date: '2026-04-27' };
+let reachedStart = false;
+let members = [];
+let loadedUntilOffset = 0;
+const BATCH = 4;
+
+function pad(n) { return String(n).padStart(2, '0'); }
+function fmtDate(d) { return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
+function money(n) { return `${Number(n||0).toLocaleString('ko-KR')}원`; }
+function escapeHtml(t) {
+  return String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function getWeekRange(offset) {
+  const now = new Date();
+  const ws = currentRule.week_start || 'mon';
+  const day = now.getDay();
+  const startOff = ws === 'sun' ? day : (day === 0 ? 6 : day - 1);
+  const start = new Date(now);
+  start.setDate(now.getDate() - startOff + (offset * 7));
+  start.setHours(0,0,0,0);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  end.setHours(23,59,59,999);
+  return { start, end };
+}
+
+function weekLabel(offset) {
+  if (offset === 0) return '이번 주';
+  if (offset === -1) return '지난주';
+  return `${Math.abs(offset)}주 전`;
+}
+
+async function loadWeeksBatch(fromOffset, count) {
+  const req = Number(currentRule.required_count_per_week || 4);
+  const unit = Number(currentRule.penalty_per_miss || 10000);
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const container = document.getElementById('weeks-list');
+
+  for (let i = 0; i < count; i++) {
+    const offset = fromOffset - i;
+    const { start, end } = getWeekRange(offset);
+    const startStr = fmtDate(start);
+    const endStr = fmtDate(end);
+
+    if (endStr < ruleStart) {
+      reachedStart = true;
+      document.getElementById('load-more').style.display = 'none';
+      break;
+    }
+
+    const { data: att } = await sb.from('challenge_attendances')
+      .select('member_id, activity_type')
+      .gte('attended_on', startStr).lte('attended_on', endStr);
+    const records = att || [];
+
+    let totalPen = 0;
+    const rows = members.map(m => {
+      const eng = records.filter(a => a.member_id === m.id && a.activity_type === 'english').length;
+      const fit = records.filter(a => a.member_id === m.id && a.activity_type === 'exercise').length;
+      const miss = Math.max(Math.max(0, req - eng), Math.max(0, req - fit));
+      const pen = miss * unit;
+      totalPen += pen;
+      const penCls = pen === 0 ? 'tm-penalty ok' : 'tm-penalty';
+      const penText = pen === 0 ? '✓' : money(pen);
+      return `<div class="tm-row">
+        <span class="tm-name">${escapeHtml(m.name)}</span>
+        <span class="tm-cnt eng"><span class="tm-dot eng"></span>${eng}</span>
+        <span class="tm-cnt fit"><span class="tm-dot fit"></span>${fit}</span>
+        <span class="${penCls}">${penText}</span>
+      </div>`;
+    }).join('');
+
+    const totalCls = totalPen === 0 ? 'wk-total ok' : 'wk-total';
+    const totalText = totalPen === 0 ? '✓' : money(totalPen);
+    const isCurrent = offset === 0 ? '<span class="current">진행중</span>' : '';
+    const isOpen = offset === 0 ? 'open' : '';
+    const delay = `animation-delay:${i * .06}s`;
+
+    const wk = document.createElement('div');
+    wk.className = `wk ${isOpen}`;
+    wk.style.cssText = delay;
+    wk.innerHTML = `
+      <div class="wk-hd" onclick="this.parentElement.classList.toggle('open')">
+        <div class="wk-left">
+          <div class="wk-title">${weekLabel(offset)}${isCurrent}</div>
+          <div class="wk-range">${startStr} ~ ${endStr}</div>
+        </div>
+        <div class="wk-right">
+          <span class="${totalCls}">${totalText}</span>
+          <span class="wk-arrow">▾</span>
+        </div>
+      </div>
+      <div class="wk-body">${rows}</div>
+    `;
+    container.appendChild(wk);
+  }
+
+  loadedUntilOffset = fromOffset - count + 1;
+}
+
+async function loadMore() {
+  if (reachedStart) return;
+  const nextFrom = loadedUntilOffset - 1;
+  await loadWeeksBatch(nextFrom, BATCH);
+}
+
+async function login() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  document.getElementById('login-error').style.display = 'none';
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    const el = document.getElementById('login-error');
+    el.textContent = error.message;
+    el.style.display = 'block';
+    return;
+  }
+  await initApp();
+}
+
+async function initApp() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) {
+    document.getElementById('login-view').style.display = 'block';
+    document.getElementById('app-view').style.display = 'none';
+    return;
+  }
+
+  document.getElementById('login-view').style.display = 'none';
+  document.getElementById('app-view').style.display = 'block';
+
+  const { data: ruleData } = await sb.from('challenge_rules').select('*').eq('active', true).order('created_at', { ascending: false }).limit(1);
+  if (ruleData && ruleData.length) currentRule = ruleData[0];
+
+  const { data: mData } = await sb.from('challenge_members').select('id, name').eq('active', true).order('name');
+  members = mData || [];
+
+  await loadWeeksBatch(0, BATCH);
+}
+
+initApp();
+</script>
+</body>
+</html>
