@@ -82,7 +82,7 @@ SQL을 직접 작성하는 것보다 README로 편집하는 것이 더 자연스
 - `##` — Section (여러 개 가능)
 - `###` — Concept (각 Section 아래 여러 개 가능)
 - Concept 바로 아래 `>` blockquote로 메타 표기 (`level`, `questions`)
-- `level` 허용값: `basic`, `deep` (없으면 NULL)
+- `level` 허용값: `basic`, `deep` (없으면 NULL, 별도 언급 없으면 생략 가능)
 - `questions`는 `|` 구분자로 여러 개 입력
 - description과 content는 blockquote 이후의 본문으로 처리
   - 첫 번째 단락 → `description`
@@ -144,6 +144,8 @@ SQL을 직접 작성하는 것보다 README로 편집하는 것이 더 자연스
 - `sort_order`는 파일 내 등장 순서 기준 (기존 항목은 기존 값 유지, 신규만 끝에 추가)
 - import 직전 DB에서 최신 데이터를 다시 로드하여 stale 캐시로 인한 중복 생성 방지
 - `concept_revisions`에 `change_type: create | update` 자동 기록
+
+> **참고**: Import는 전체 upsert 방식입니다. 변경된 부분만 반영하는 것이 아니라, title이 일치하는 항목의 전체 내용을 README 내용으로 교체합니다. README 파일에는 변경된 부분만 포함시켜야 의도치 않은 전체 교체를 방지할 수 있습니다.
 
 ### Export 흐름 (DB → README)
 
@@ -214,5 +216,6 @@ sections:
 - 원문/사용자 제공 내용을 1순위 기준으로 사용
 - 에이전트는 필요한 맥락만 보강하되, 과도한 확장/창작 네이밍은 지양
 - 설명은 메모형이 아니라 **개념 설명형**으로 작성
+- 질문 없이 "아닙니다", "반대입니다" 같은 대답 형식 지양 - 직접 서술형으로 작성
 - 토픽/섹션/컨셉 이름은 기존 저장소 톤(짧고 명확한 명사형)에 맞춤
 - 모든 드래프트는 `drafts/` 폴더에 보관 (git 제외)

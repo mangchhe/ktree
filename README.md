@@ -71,6 +71,7 @@ const SUPABASE_ANON_KEY = '<your-anon-key>';
 |---|---|
 | [docs/SETUP.md](./docs/SETUP.md) | Supabase setup · schema · deployment |
 | [docs/CONTENT_WORKFLOW.md](./docs/CONTENT_WORKFLOW.md) | Content authoring / review / publish flow |
+| [docs/CHALLENGE_SETUP.ko.md](./docs/CHALLENGE_SETUP.ko.md) | 팀 챌린지 출석/정산 테이블 및 RLS 가이드 (한국어) |
 
 ## License
 

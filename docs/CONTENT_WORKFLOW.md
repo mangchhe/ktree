@@ -82,7 +82,7 @@ Topic → Section → Concept are expressed via heading levels.
 - `##` — Section (many per file)
 - `###` — Concept (many per section)
 - A `>` blockquote directly under a Concept encodes metadata (`level`, `questions`)
-- `level` values: `basic`, `deep` (omit for `NULL`)
+- `level` values: `basic`, `deep` (omit for `NULL`; omit if not specifically mentioned)
 - `questions` are `|`-separated
 - Body after the blockquote becomes `description` + `content`
   - first paragraph → `description`
@@ -144,6 +144,8 @@ Click ↑ Import in the admin panel
 - `sort_order` follows file order (existing items keep their value; new items go to the end)
 - Before import, the latest DB state is re-fetched to avoid duplicate inserts from a stale cache
 - `concept_revisions` get `change_type: create | update` automatically
+
+> **Note**: Import uses full upsert semantics. It replaces the entire content of matching items with the README content, not just the changed parts. To avoid unintended full replacement, include only changed content in the README file.
 
 ### Export flow (DB → README)
 
@@ -214,5 +216,6 @@ sections:
 - Treat the original/author-provided content as the primary source of truth
 - The agent only enriches where needed; avoid over-expanding or inventing new names
 - Write in *explanatory* prose, not bulleted memos
+- Avoid Q&A-style responses like "No" or "That's not it" without the question — write in direct declarative form
 - Keep topic/section/concept names in the same tone as the existing repo (short, clear nouns)
 - All drafts live in `drafts/` (git-ignored)
