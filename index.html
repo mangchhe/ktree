@@ -578,6 +578,49 @@ body {
 .sb-concept-level.basic { background: rgba(63,185,80,0.12); color: #3fb950; }
 .sb-concept-level.deep { background: rgba(155,89,182,0.15); color: #c084fc; }
 
+.sb-section-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-section-header {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 14px 5px 28px;
+  font-size: 12px; color: var(--muted);
+  cursor: pointer;
+  transition: color 0.1s, background 0.1s;
+  border-left: 2px solid transparent;
+}
+.sb-section-header:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+.sb-section-header.active { color: var(--text); background: rgba(255,255,255,0.03); }
+
+.sb-section-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sb-section-arrow {
+  opacity: 0.4;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.sb-section-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.concepts-list {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,0.15);
+  padding: 4px 0;
+}
+
+.concepts-list .sb-concept {
+  padding-left: 44px;
+}
+
 .toc-label {
   font-size: 10px; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.7px;
@@ -1481,23 +1524,49 @@ function resetView() {
 }
 
 function updateSidebarConcepts(topicId, sectionId) {
-  S.metas.forEach(m => {
-    const secs = document.getElementById(`secs-${m.id}`);
-    if (secs) secs.style.maxHeight = '0';
-  });
   const topic = S.topics.find(t => t.id === topicId);
-  const section = (topic?.children || []).find(s => s.id === sectionId);
   const container = document.getElementById(`secs-${topicId}`);
-  if (!section || !container) return;
-  container.innerHTML = `
-    <div class="sb-back" id="sb-back-btn">← 목록으로</div>
-    ${(section.children || []).map(c => {
-      const levelBadge = c.level ? `<span class="sb-concept-level ${c.level}">${c.level === 'basic' ? 'B' : 'D'}</span>` : '';
-      return `<div class="sb-concept" data-id="${c.id}">${levelBadge}${c.title}</div>`;
-    }).join('')}
-  `;
+  if (!topic || !container) return;
+
+  container.innerHTML = (topic.children || []).map(sec => {
+    const isExpanded = sec.id === sectionId;
+    const concepts = sec.children || [];
+    const cnt = concepts.length;
+    const conceptsHtml = isExpanded ? `
+      <div class="concepts-list">
+        ${concepts.map(c => {
+          const levelBadge = c.level ? `<span class="sb-concept-level ${c.level}">${c.level === 'basic' ? 'B' : 'D'}</span>` : '';
+          return `<div class="sb-concept" data-id="${c.id}">${levelBadge}${c.title}</div>`;
+        }).join('')}
+      </div>
+    ` : '';
+    return `
+      <div class="sb-section-item" data-section="${sec.id}">
+        <div class="sb-section-header ${isExpanded ? 'active' : ''}">
+          <svg class="sb-section-arrow ${isExpanded ? 'expanded' : ''}" width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M3 2L7 5L3 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="sb-section-title">${sec.title}</span>
+          <span class="sb-section-count">${cnt}</span>
+        </div>
+        ${conceptsHtml}
+      </div>
+    `;
+  }).join('');
+
   container.style.maxHeight = container.scrollHeight + 200 + 'px';
-  container.querySelector('#sb-back-btn').addEventListener('click', backToTopic);
+
+  container.querySelectorAll('.sb-section-header').forEach(el => {
+    el.addEventListener('click', () => {
+      const sectionId = el.closest('.sb-section-item').dataset.section;
+      if (sectionId === S.selectedSectionId) {
+        backToTopic();
+      } else {
+        openSection(topicId, sectionId);
+      }
+    });
+  });
+
   container.querySelectorAll('.sb-concept').forEach(el => {
     el.addEventListener('click', () => scrollToCard(el.dataset.id));
   });
