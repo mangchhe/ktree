@@ -176,21 +176,6 @@ body {
   background: rgba(34,197,94,0.08);
   border-color: rgba(34,197,94,0.4);
 }
-#challenge-btn {
-  border: 1px solid rgba(121,192,255,0.3);
-  background: transparent;
-  color: #c6e3ff;
-  padding: 5px 10px;
-  border-radius: 7px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.2px;
-}
-#challenge-btn:hover {
-  background: rgba(121,192,255,0.08);
-  border-color: rgba(121,192,255,0.45);
-}
 #kb-help-btn {
   background: none; border: none; cursor: pointer;
   font-size: 14px; color: var(--muted); opacity: 0.4;
@@ -1064,7 +1049,7 @@ body {
   #node-count { display: none; }
   #model-status { display: none; }
   #kb-help-btn { display: none; }
-  #challenge-btn { display: none; }
+  #admin-btn { display: none !important; }
   .mode-toggle { display: none; }
   #search-wrap { flex: 1; min-width: 0; }
   .landing-grid {
@@ -1175,7 +1160,6 @@ body {
     <button class="mode-btn" id="mode-public" onclick="switchAppMode('public')">PUBLIC</button>
     <button class="mode-btn" id="mode-private" onclick="switchAppMode('private')">PRIVATE</button>
   </div>
-  <button id="challenge-btn">Challenge ↗</button>
   <button id="private-logout-btn" onclick="logoutPrivate()">로그아웃</button>
   <button id="admin-btn">Admin ↗</button>
 </div>
@@ -1255,9 +1239,6 @@ function setPrivateAuthUI(isLoggedIn) {
 document.getElementById('admin-btn').addEventListener('click', () => {
   const isPrivate = new URLSearchParams(window.location.search).get('mode') === 'private';
   location.href = isPrivate ? 'admin.html?source=private' : 'admin.html';
-});
-document.getElementById('challenge-btn').addEventListener('click', () => {
-  location.href = 'challenge.html';
 });
 
 async function logoutPrivate() {
@@ -2596,7 +2577,6 @@ async function init() {
     if (sb && !SUPABASE_URL.includes('YOUR_PROJECT')) {
       const loaded = await initFromSupabase();
       if (!loaded) return;
-      console.log('✅ Loaded from Supabase');
     } else {
       renderSetupNotice();
       return;
