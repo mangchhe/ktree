@@ -30,6 +30,7 @@ body {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  max-width: 100vw;
 }
 
 #header {
@@ -357,13 +358,6 @@ body {
   width: 260px;
   flex-shrink: 0;
 }
-.landing-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  border-radius: 10px 10px 0 0;
-}
 .landing-card:hover {
   border-color: var(--border2);
   transform: translateY(-2px);
@@ -372,13 +366,6 @@ body {
 .landing-card.kb-focus {
   border-color: rgba(255,255,255,0.22);
   background: rgba(255,255,255,0.02);
-}
-.landing-card-icon {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; font-weight: 700;
-  margin-bottom: 12px;
 }
 .landing-card-title {
   font-size: 15px; font-weight: 600;
@@ -420,12 +407,6 @@ body {
 
 .topic-header {
   margin-bottom: 40px;
-}
-.topic-header-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 10px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.7px;
-  margin-bottom: 8px;
 }
 .topic-header h1 {
   font-size: 22px; font-weight: 700;
@@ -976,12 +957,209 @@ body {
   padding: 40px 0; text-align: center;
   color: var(--muted); font-size: 14px;
 }
+
+#hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+#mobile-search-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+#drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 200;
+}
+#drawer-header {
+  display: none;
+  height: 48px;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  z-index: 1;
+}
+#drawer-header-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+}
+#drawer-header-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 16px;
+  padding: 4px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  #hamburger {
+    display: block;
+  }
+  #drawer-header {
+    display: flex;
+  }
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 240px;
+    z-index: 201;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    padding-top: 56px;
+    border-right: 1px solid var(--border);
+  }
+  #sidebar.drawer-open {
+    transform: translateX(0);
+  }
+  #drawer-overlay.drawer-open {
+    display: block;
+  }
+  #content {
+    padding: 20px 16px 60px;
+  }
+  #content-inner, #content-inner.wide {
+    max-width: 100%;
+  }
+  .section-detail-layout {
+    flex-direction: column;
+  }
+  .section-detail-toc {
+    display: none;
+  }
+  .section-detail-main {
+    padding-right: 0;
+  }
+  #header {
+    padding: 0 10px;
+    gap: 6px;
+    overflow: hidden;
+  }
+  #node-count { display: none; }
+  #model-status { display: none; }
+  #kb-help-btn { display: none; }
+  #challenge-btn { display: none; }
+  .mode-toggle { display: none; }
+  #search-wrap { flex: 1; min-width: 0; }
+  .landing-grid {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    max-width: 100%;
+  }
+  .landing-card {
+    width: 100%;
+    flex-shrink: 1;
+    padding: 14px 16px;
+  }
+  .landing-card-title {
+    font-size: 14px;
+  }
+  .landing-card-desc {
+    font-size: 11px;
+  }
+  .landing-card-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .sc-card {
+    padding: 10px 12px;
+  }
+  .sc-card-title {
+    font-size: 13px;
+  }
+  .sc-card-desc {
+    font-size: 11px;
+  }
+  .landing {
+    padding: 20px 16px;
+    align-items: stretch;
+  }
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+  #logo {
+    font-size: 13px;
+  }
+  #logo em { display: none; }
+  #logo-text { display: none; }
+  #search-wrap {
+    display: none;
+    position: fixed;
+    top: 48px;
+    left: 0; right: 0;
+    padding: 8px 12px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 300;
+    max-width: 100%;
+    flex: unset;
+  }
+  #search-wrap.mobile-open {
+    display: block;
+  }
+  #search-input {
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #search-icon {
+    left: 32px;
+    font-size: 18px;
+  }
+  #search-input {
+    padding-left: 54px;
+  }
+  #search-results {
+    position: fixed;
+    top: calc(48px + 48px + 16px);
+    left: 0;
+    right: 0;
+    margin-left: 42px;
+    margin-right: 16px;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  #mobile-search-btn {
+    display: flex;
+  }
+  div[style='flex:1'] { flex: 1 !important; }
+}
 </style>
 </head>
 <body>
 
 <div id="header">
-  <div id="logo" onclick="resetView()">🌳 knowledge<em>.</em>tree</div>
+  <button id="hamburger" onclick="toggleDrawer()" aria-label="메뉴">☰</button>
+  <div id="logo" onclick="resetView()">🌳 knowledge<em>.</em><span id="logo-text">tree</span></div>
   <div id="node-count"></div>
   <div id="search-wrap">
     <span id="search-icon">⌕</span>
@@ -991,6 +1169,7 @@ body {
   </div>
   <button id="kb-help-btn" title="단축키" onclick="toggleKbHelp()">?</button>
   <div style="flex:1"></div>
+  <button id="mobile-search-btn" onclick="toggleMobileSearch()" aria-label="검색">⌕</button>
   <div id="model-status">모델 로딩 중…</div>
   <div class="mode-toggle" id="mode-toggle">
     <button class="mode-btn" id="mode-public" onclick="switchAppMode('public')">PUBLIC</button>
@@ -1001,6 +1180,7 @@ body {
   <button id="admin-btn">Admin ↗</button>
 </div>
 
+<div id="drawer-overlay" onclick="closeDrawer()"></div>
 <div id="main">
   <div id="sidebar"></div>
   <div id="content" tabindex="-1">
@@ -1015,6 +1195,24 @@ body {
 
 <script>
 const TOPIC_COLORS = ['#f0932b','#e55039','#3498db','#2ecc71','#9b59b6','#1abc9c','#e74c3c'];
+
+function toggleDrawer() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('drawer-overlay');
+  const open = sb.classList.toggle('drawer-open');
+  ov.classList.toggle('drawer-open', open);
+}
+function closeDrawer() {
+  document.getElementById('sidebar').classList.remove('drawer-open');
+  document.getElementById('drawer-overlay').classList.remove('drawer-open');
+}
+function toggleMobileSearch() {
+  const wrap = document.getElementById('search-wrap');
+  const open = wrap.classList.toggle('mobile-open');
+  if (open) {
+    setTimeout(() => document.getElementById('search-input').focus(), 50);
+  }
+}
 
 const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
@@ -1135,6 +1333,10 @@ function topicColor(id) { return S.topicColors[id] || '#7c6af7'; }
 
 function buildSidebar() {
   const html = `
+    <div id="drawer-header">
+      <span id="drawer-header-title">Topics</span>
+      <button id="drawer-header-close" onclick="closeDrawer()" aria-label="닫기">✕</button>
+    </div>
     <div class="sb-label">Topics</div>
     ${S.metas.map(m => {
       const topic = S.topics.find(t => t.id === m.id);
@@ -1234,8 +1436,6 @@ function renderLanding() {
     const delay = i * 80;
     return `
       <div class="landing-card landing-anim" style="animation-delay:${delay}ms" onclick="selectTopic('${m.id}')">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${color};border-radius:10px 10px 0 0"></div>
-        <div class="landing-card-icon" style="background:${color}18;color:${color}">${m.title.charAt(0)}</div>
         <div class="landing-card-title">${m.title}</div>
         <div class="landing-card-desc">${m.description || ''}</div>
         <div class="landing-card-meta">
@@ -1285,6 +1485,7 @@ async function openSection(topicId, sectionId) {
   S.selectedSectionId = sectionId;
   location.hash = `section/${topicId}/${sectionId}`;
   updateSidebarConcepts(topicId, sectionId);
+  closeDrawer();
   await renderSectionDetail(topicId, sectionId);
 }
 
@@ -1310,10 +1511,6 @@ function renderTopicOverview(topicId) {
 
   let html = `
     <div class="topic-header">
-      <div class="topic-header-badge">
-        <div style="width:8px;height:8px;border-radius:50%;background:${color};box-shadow:0 0 6px ${color}88;"></div>
-        <span style="color:${color}">${topic.title}</span>
-      </div>
       <h1>${topic.title}</h1>
       ${topic.description ? `<p>${topic.description}</p>` : ''}
     </div>
