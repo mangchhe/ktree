@@ -1912,11 +1912,30 @@ async function doImport(parsed) {
     let conceptOrder = existSec ? (concepts.filter(c => c.section_id === sectionId).length) : 0;
     const titleToId = {};
 
+    // 기존 섹션인 경우 파일 순서에 맞게 sort_order 재계산
+    if (existSec) {
+      const existingConcepts = concepts.filter(c => c.section_id === sectionId);
+      const newConcepts = sec.concepts;
+      
+      // 파일 순서에 따라 sort_order 재설정
+      let order = 0;
+      for (const cpt of newConcepts) {
+        const existCpt = existingConcepts.find(c => c.title === cpt.title);
+        if (existCpt) {
+          // 기존 개념도 파일 순서에 따라 sort_order 업데이트
+          await sb.from(tNames.concepts).update({ sort_order: order++ }).eq('id', existCpt.id);
+        } else {
+          // 새 개념은 추후 추가됨
+        }
+      }
+      conceptOrder = order;
+    }
+
     for (const cpt of sec.concepts) {
       // 3. Concept upsert (section_id + title 기준)
       let existCpt = concepts.find(c => c.section_id === sectionId && c.title === cpt.title);
       if (existCpt) {
-        // 기존 개념 있으면 건너뜀
+        // 기존 개념 있으면 건너뜀 (sort_order는 위에서 업데이트함)
         continue;
       }
       const conceptId = generateId();
