@@ -1810,6 +1810,7 @@ async function showImportPreview(parsed) {
       ? '<span class="import-badge new">NEW</span>'
       : '<span class="import-badge existing">기존</span>';
     
+    // 기존 섹션이 있어도 새로운 개념들은 표시
     sectionsHtml += `
       <div class="import-section-row">
         <div class="import-section-name">
@@ -1890,22 +1891,25 @@ async function doImport(parsed) {
   for (const sec of parsed.sections) {
     // 2. Section upsert (topic_id + title 기준)
     let existSec = sections.find(s => s.topic_id === topicId && s.title === sec.title);
+    let sectionId;
     if (existSec) {
-      // 기존 섹션 있으면 건너뜀
-      continue;
+      // 기존 섹션 있으면 재사용
+      sectionId = existSec.id;
+    } else {
+      // 새 섹션 생성
+      sectionId = generateId();
+      const secRow = {
+        id: sectionId,
+        topic_id: topicId,
+        title: sec.title,
+        description: sec.description || null,
+        sort_order: sectionOrder++,
+      };
+      const { error: sErr } = await sb.from(tNames.sections).insert(secRow);
+      if (sErr) { toast(`섹션 저장 실패 (${sec.title}): ${sErr.message}`, 'error'); return; }
     }
-    const sectionId = generateId();
-    const secRow = {
-      id: sectionId,
-      topic_id: topicId,
-      title: sec.title,
-      description: sec.description || null,
-      sort_order: sectionOrder++,
-    };
-    const { error: sErr } = await sb.from(tNames.sections).insert(secRow);
-    if (sErr) { toast(`섹션 저장 실패 (${sec.title}): ${sErr.message}`, 'error'); return; }
 
-    let conceptOrder = 0;
+    let conceptOrder = existSec ? (concepts.filter(c => c.section_id === sectionId).length) : 0;
     const titleToId = {};
 
     for (const cpt of sec.concepts) {
