@@ -17,9 +17,40 @@ LinkedIn이 내부 데이터 파이프라인 문제를 해결하기 위해 개�
 
 ```mermaid
 flowchart LR
-    P[Producer] -->|write| T[(Topic)]
-    T -->|read| C1[Consumer A]
-    T -->|read| C2[Consumer B]
+    subgraph Producers
+        P1[Producer A]
+        P2[Producer B]
+    end
+
+    subgraph "Broker Cluster"
+        subgraph "Topic: orders"
+            subgraph "Partition 0"
+                direction LR
+                O0["offset 0"] --> O1["offset 1"] --> O2["offset 2"]
+            end
+            subgraph "Partition 1"
+                direction LR
+                O3["offset 0"] --> O4["offset 1"]
+            end
+        end
+        ZK["ZooKeeper / KRaft\n(메타데이터·리더선출)"]
+    end
+
+    subgraph "Consumer Group A"
+        C1["Consumer 1\n(Partition 0 담당)"]
+        C2["Consumer 2\n(Partition 1 담당)"]
+    end
+
+    subgraph "Consumer Group B"
+        C3["Consumer 3\n(모든 파티션 독립 소비)"]
+    end
+
+    P1 -->|write| O0
+    P2 -->|write| O3
+    O2 -->|read| C1
+    O4 -->|read| C2
+    O2 -->|read| C3
+    O4 -->|read| C3
 ```
 
 ### Message vs Event
@@ -151,3 +182,4 @@ flowchart TB
     C[Consumer] --> B1
     C --> B3
 ```
+
