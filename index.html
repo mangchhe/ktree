@@ -1291,6 +1291,35 @@ body {
     display: flex;
   }
   div[style='flex:1'] { flex: 1 !important; }
+  
+  /* Revision Modal Mobile View */
+  .revision-modal {
+    width: 96vw;
+    height: 90vh;
+  }
+  .revision-modal-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .revision-list {
+    flex: none;
+    max-height: 30vh;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .revision-diff {
+    flex: 1;
+    min-height: 0;
+  }
+  .diff-grid {
+    grid-template-columns: 1fr;
+  }
+  .diff-col + .diff-col {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    margin-top: 12px;
+    padding-top: 12px;
+  }
 }
 </style>
 </head>
