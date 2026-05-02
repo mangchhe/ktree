@@ -1,12 +1,12 @@
 {
-  "name": "Challenge Check-in",
-  "short_name": "Challenge",
-  "description": "팀 주간 챌린지 출석 체크",
-  "start_url": "/challenge",
+  "name": "knowledge.tree",
+  "short_name": "Knowledge",
+  "description": "개발 지식과 기술 노트를 정리하는 기술 블로그",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#08090e",
-  "theme_color": "#08090e",
-  "orientation": "portrait",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "orientation": "any",
   "icons": [
     {
       "src": "/icon.svg",
