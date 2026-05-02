@@ -93,7 +93,7 @@ body{
 .ci-dt.active{border-color:var(--eng);color:var(--eng);background:rgba(91,140,255,.08)}
 .ci-dt.today{border-color:var(--fit-bd)}
 .ci-dt.disabled{opacity:.25;cursor:default;pointer-events:none}
-.ci-dt.locked{cursor:not-allowed;position:relative;color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.1)}
+.ci-dt.locked{cursor:not-allowed;position:relative;color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.1);user-select:none}
 .ci-dt.locked::after{
   content:attr(data-tooltip);
   position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
@@ -103,7 +103,7 @@ body{
   opacity:0;visibility:hidden;transition:opacity .15s,visibility .15s;
   z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
-.ci-dt.locked:hover::after,.ci-dt.locked:active::after{opacity:1;visibility:visible}
+.ci-dt.locked.tooltip-show::after{opacity:1;visibility:visible}
 .ci-dt .ci-dt-day{font-size:9px;font-weight:400;color:var(--dim)}
 .ci-hint{margin-top:6px;font-size:11px;color:var(--dim)}
 .msg{margin-top:8px;border-radius:8px;padding:8px 10px;font-size:12px;display:none;font-weight:600}
@@ -434,13 +434,33 @@ function initDateToggle() {
       disabled ? 'disabled' : '',
       locked ? 'locked' : ''
     ].filter(Boolean).join(' ');
-    const onclick = future ? '' :
-      locked ? '' :
-      `onclick="checkInDate='${d.str}';initDateToggle()"`;
+    const onclick = future || locked ? '' : `onclick="checkInDate='${d.str}';initDateToggle()"`;
     const tooltip = locked ? 'data-tooltip="2일 이전은 출석 불가"' : '';
     return `<div class="${cls}" ${onclick} ${tooltip}>${d.dd}<div class="ci-dt-day">${d.label}</div></div>`;
   }).join('');
 }
+
+document.getElementById('date-toggle').addEventListener('click', function(e) {
+  const el = e.target.closest('.ci-dt.locked');
+  if (!el) {
+    document.querySelectorAll('.ci-dt.locked.tooltip-show').forEach(t => t.classList.remove('tooltip-show'));
+    return;
+  }
+  const showing = el.classList.contains('tooltip-show');
+  document.querySelectorAll('.ci-dt.locked.tooltip-show').forEach(t => {
+    t.classList.remove('tooltip-show');
+    clearTimeout(t._tooltipTimer);
+  });
+  if (!showing) {
+    el.classList.add('tooltip-show');
+    el._tooltipTimer = setTimeout(() => el.classList.remove('tooltip-show'), 2000);
+  }
+});
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#date-toggle')) {
+    document.querySelectorAll('.ci-dt.locked.tooltip-show').forEach(t => t.classList.remove('tooltip-show'));
+  }
+});
 
 document.getElementById('proof-file').addEventListener('change', async function(e) {
   const file = e.target.files[0];
