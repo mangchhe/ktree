@@ -393,19 +393,100 @@ body {
 .topic-header {
   margin-bottom: 40px;
 }
+.topic-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
 .topic-header h1 {
   font-size: 22px; font-weight: 700;
-  letter-spacing: -0.5px; margin-bottom: 6px;
+  letter-spacing: -0.5px;
 }
 .topic-header p {
   font-size: 13px; color: var(--muted); line-height: 1.6;
+}
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--surface2);
+  padding: 4px;
+  border-radius: 8px;
+}
+.view-toggle-btn {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.view-toggle-btn:hover {
+  color: var(--text);
+}
+.view-toggle-btn.active {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
 }
 
 .section-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 14px;
 }
+
+.section-block {
+  margin-bottom: 32px;
+}
+
+.section-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.section-header p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.concepts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.concept-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.concept-item:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+}
+
+.concept-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.concept-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .sc-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1084,6 +1165,30 @@ body {
   .sc-card-desc {
     font-size: 11px;
   }
+  .section-header h2 {
+    font-size: 16px;
+  }
+  .concept-item {
+    padding: 10px 12px;
+  }
+  .concept-title {
+    font-size: 13px;
+  }
+  .concept-desc {
+    font-size: 11px;
+  }
+  .topic-header-top {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .view-toggle {
+    width: auto;
+  }
+  .view-toggle-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
   .landing {
     padding: 20px 16px;
     align-items: stretch;
@@ -1484,6 +1589,14 @@ function backToTopic() {
 }
 
 let activeFilter = 'all';
+let topicViewMode = 'cards';
+
+function setTopicViewMode(mode) {
+  topicViewMode = mode;
+  if (S.selectedTopicId) {
+    renderTopicOverview(S.selectedTopicId);
+  }
+}
 
 function renderTopicOverview(topicId) {
   const topic = S.topics.find(t => t.id === topicId);
@@ -1492,31 +1605,63 @@ function renderTopicOverview(topicId) {
 
   let html = `
     <div class="topic-header">
-      <h1>${topic.title}</h1>
+      <div class="topic-header-top">
+        <h1>${topic.title}</h1>
+        <div class="view-toggle">
+          <button class="view-toggle-btn ${topicViewMode === 'cards' ? 'active' : ''}" onclick="setTopicViewMode('cards')">카드</button>
+          <button class="view-toggle-btn ${topicViewMode === 'list' ? 'active' : ''}" onclick="setTopicViewMode('list')">목록</button>
+        </div>
+      </div>
       ${topic.description ? `<p>${topic.description}</p>` : ''}
     </div>
-    <div class="section-grid">
   `;
 
-  (topic.children || []).forEach(section => {
-    const concepts = section.children || [];
-    if (concepts.length === 0) return;
-    const preview = concepts.slice(0, 4).map(c => `<span class="sc-tag">${c.title}</span>`).join('');
-    const more = concepts.length > 4 ? `<span class="sc-tag-more">+${concepts.length - 4}</span>` : '';
-    html += `
-      <div class="sc-card" onclick="openSection('${topicId}', '${section.id}')">
-        <div class="sc-card-header">
-          <span class="sc-title">${section.title}</span>
-          <span class="sc-count">${concepts.length}</span>
+  if (topicViewMode === 'list') {
+    (topic.children || []).forEach(section => {
+      const concepts = section.children || [];
+      if (concepts.length === 0) return;
+      html += `
+        <div class="section-block">
+          <div class="section-header">
+            <h2>${section.title}</h2>
+            ${section.description ? `<p>${section.description}</p>` : ''}
+          </div>
+          <div class="concepts-list">
+      `;
+      concepts.forEach(concept => {
+        html += `
+          <div class="concept-item" onclick="openConcept('${topicId}', '${section.id}', '${concept.id}')">
+            <div class="concept-title">${concept.title}</div>
+            ${concept.description ? `<div class="concept-desc">${concept.description}</div>` : ''}
+          </div>
+        `;
+      });
+      html += `
+          </div>
         </div>
-        ${section.description ? `<div class="sc-desc">${section.description}</div>` : ''}
-        <div class="sc-tags">${preview}${more}</div>
-        <div class="sc-arrow">→</div>
-      </div>
-    `;
-  });
-
-  html += `</div>`;
+      `;
+    });
+  } else {
+    html += `<div class="section-grid">`;
+    (topic.children || []).forEach(section => {
+      const concepts = section.children || [];
+      if (concepts.length === 0) return;
+      const preview = concepts.slice(0, 4).map(c => `<span class="sc-tag">${c.title}</span>`).join('');
+      const more = concepts.length > 4 ? `<span class="sc-tag-more">+${concepts.length - 4}</span>` : '';
+      html += `
+        <div class="sc-card" onclick="openSection('${topicId}', '${section.id}')">
+          <div class="sc-card-header">
+            <span class="sc-title">${section.title}</span>
+            <span class="sc-count">${concepts.length}</span>
+          </div>
+          ${section.description ? `<div class="sc-desc">${section.description}</div>` : ''}
+          <div class="sc-tags">${preview}${more}</div>
+          <div class="sc-arrow">→</div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
 
   const inner = document.getElementById('content-inner');
   inner.classList.remove('wide');
@@ -1767,6 +1912,14 @@ function renderConceptSection(concept, color) {
       ${questionsHtml}
     </div>
   `;
+}
+
+function openConcept(topicId, sectionId, conceptId) {
+  S.selectedTopicId = topicId;
+  S.selectedSectionId = sectionId;
+  S.selectedConceptId = conceptId;
+  renderSectionDetail(topicId, sectionId);
+  location.hash = `topic/${topicId}/section/${sectionId}/concept/${conceptId}`;
 }
 
 async function renderSectionDetail(topicId, sectionId) {
