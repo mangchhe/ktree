@@ -194,6 +194,42 @@ sections:
   - `intermediate` 같은 비허용 값 사용 금지
   - 동일 `title`의 기존 Topic/Section/Concept과 충돌 여부를 먼저 확인
 
+### Mermaid 다이어그램
+
+사이트는 concept의 `content` 내 Mermaid 다이어그램을 렌더링한다. 텍스트보다 시각화가 이해에 명확히 도움이 되는 경우에만 사용하고, 모든 concept에 넣을 필요는 없다.
+
+**넣으면 좋은 경우**
+- 컴포넌트 간 데이터 흐름 (예: Producer → Topic → Consumer)
+- 상태/생애주기 시퀀스 (예: poll 루프, 리밸런싱 절차)
+- 산문으로 표현하기 어려운 트리/계층 구조
+
+**생략해도 되는 경우**
+- 단순 정의·용어 설명
+- 짧은 문장으로 구조가 충분히 전달되는 경우
+
+**사용법** — concept 본문 안에 `mermaid` 언어로 펜스드 코드블록을 삽입:
+
+````markdown
+### Consumer
+
+Kafka 토픽에서 레코드를 읽어가는 클라이언트다.
+
+...
+
+```mermaid
+sequenceDiagram
+    participant C as Consumer
+    participant B as Broker
+    loop poll loop
+        C->>B: poll()
+        B-->>C: records
+        C->>B: commitOffset
+    end
+```
+````
+
+지원 다이어그램 타입: `flowchart`, `sequenceDiagram`, `block-beta` 등 표준 Mermaid 타입 대부분 지원.
+
 ## 3) 반영 (Import)
 
 1. 어드민 패널 접속 (`/admin`)

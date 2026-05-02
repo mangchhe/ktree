@@ -6,6 +6,8 @@
 <title>knowledge.tree — Admin</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: false, theme: 'neutral' });</script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1393,6 +1395,7 @@ function updatePreview() {
     preview.innerHTML = '<div class="md-preview-empty">미리보기가 여기에 표시됩니다</div>';
   } else {
     preview.innerHTML = marked.parse(val);
+    mermaid.run({ nodes: preview.querySelectorAll('.language-mermaid') });
   }
 }
 
@@ -1519,6 +1522,7 @@ function updateSecPreview() {
     preview.innerHTML = '<div class="md-preview-empty">미리보기가 여기에 표시됩니다</div>';
   } else {
     preview.innerHTML = marked.parse(val);
+    mermaid.run({ nodes: preview.querySelectorAll('.language-mermaid') });
   }
 }
 

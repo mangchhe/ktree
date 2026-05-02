@@ -194,6 +194,42 @@ sections:
   - Do not use non-allowed values like `intermediate`
   - Check for title collisions with existing Topic/Section/Concept rows beforehand
 
+### Mermaid diagrams
+
+The site renders Mermaid diagrams inside concept `content`. Use them only where a visual makes the explanation meaningfully clearer — not for every concept.
+
+**Good candidates**
+- Data flow between components (e.g. Producer → Topic → Consumer)
+- State/lifecycle sequences (e.g. poll loop, rebalance steps)
+- Tree or hierarchy structures that are hard to read as prose
+
+**Skip diagrams when**
+- The concept is a simple definition
+- A short sentence already makes the structure obvious
+
+**Usage** — place a fenced code block with `mermaid` as the language inside the concept body:
+
+````markdown
+### Consumer
+
+Kafka 토픽에서 레코드를 읽어가는 클라이언트다.
+
+...
+
+```mermaid
+sequenceDiagram
+    participant C as Consumer
+    participant B as Broker
+    loop poll loop
+        C->>B: poll()
+        B-->>C: records
+        C->>B: commitOffset
+    end
+```
+````
+
+Supported diagram types: `flowchart`, `sequenceDiagram`, `block-beta`, and most standard Mermaid types.
+
 ## 3) Apply (Import)
 
 1. Open the admin panel (`/admin`)
