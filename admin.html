@@ -1714,6 +1714,9 @@ function parseReadme(text) {
   }
 
   function flushSection() {
+    if (currentConcept && currentSection) {
+      currentSection.concepts.push(currentConcept);
+    }
     flushConcept();
     currentConcept = null;
   }
@@ -1849,24 +1852,32 @@ async function doImport(parsed) {
   for (const sec of parsed.sections) {
     // 2. Section upsert (topic_id + title 기준)
     let existSec = sections.find(s => s.topic_id === topicId && s.title === sec.title);
-    const sectionId = existSec ? existSec.id : generateId();
+    if (existSec) {
+      // 기존 섹션 있으면 건너뜀
+      continue;
+    }
+    const sectionId = generateId();
     const secRow = {
       id: sectionId,
       topic_id: topicId,
       title: sec.title,
       description: sec.description || null,
-      sort_order: existSec ? existSec.sort_order : sectionOrder++,
+      sort_order: sectionOrder++,
     };
-    const { error: sErr } = await sb.from(tNames.sections).upsert(secRow);
+    const { error: sErr } = await sb.from(tNames.sections).insert(secRow);
     if (sErr) { toast(`섹션 저장 실패 (${sec.title}): ${sErr.message}`, 'error'); return; }
 
-    let conceptOrder = concepts.filter(c => c.section_id === sectionId).length;
+    let conceptOrder = 0;
     const titleToId = {};
 
     for (const cpt of sec.concepts) {
       // 3. Concept upsert (section_id + title 기준)
       let existCpt = concepts.find(c => c.section_id === sectionId && c.title === cpt.title);
-      const conceptId = existCpt ? existCpt.id : generateId();
+      if (existCpt) {
+        // 기존 개념 있으면 건너뜀
+        continue;
+      }
+      const conceptId = generateId();
       const parentId = cpt.parent ? (titleToId[cpt.parent] || null) : null;
       const cptRow = {
         id: conceptId,
@@ -1878,26 +1889,25 @@ async function doImport(parsed) {
         level: cpt.level || null,
         questions: cpt.questions.length ? cpt.questions : [],
         content: cpt.content || null,
-        sort_order: existCpt ? existCpt.sort_order : conceptOrder++,
+        sort_order: conceptOrder++,
       };
-      const { error: cErr } = await sb.from(tNames.concepts).upsert(cptRow);
+      const { error: cErr } = await sb.from(tNames.concepts).insert(cptRow);
       if (cErr) { toast(`개념 저장 실패 (${cpt.title}): ${cErr.message}`, 'error'); return; }
       titleToId[cpt.title] = conceptId;
 
       // 4. revision 백필
-      const changeType = existCpt ? 'update' : 'create';
       const revRow = {
         id: generateId(),
         concept_id: conceptId,
         topic_id: topicId,
         section_id: sectionId,
-        change_type: changeType,
+        change_type: 'create',
         title: cpt.title,
         description: cpt.description || null,
         level: cpt.level || null,
         questions: cpt.questions.length ? cpt.questions : null,
         content: cpt.content || null,
-        changed_fields: changeType === 'create' ? null : { imported: true },
+        changed_fields: null,
         changed_by: currentUser?.email || null,
       };
       await sb.from(tNames.revisions).insert(revRow);
