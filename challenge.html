@@ -93,6 +93,17 @@ body{
 .ci-dt.active{border-color:var(--eng);color:var(--eng);background:rgba(91,140,255,.08)}
 .ci-dt.today{border-color:var(--fit-bd)}
 .ci-dt.disabled{opacity:.25;cursor:default;pointer-events:none}
+.ci-dt.locked{cursor:not-allowed;position:relative;color:rgba(255,255,255,.3);border-color:rgba(255,255,255,.1)}
+.ci-dt.locked::after{
+  content:attr(data-tooltip);
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:#2a2d3e;border:1px solid #444860;color:#ffffff;
+  font-size:10px;font-weight:600;white-space:nowrap;
+  padding:5px 10px;border-radius:6px;pointer-events:none;
+  opacity:0;visibility:hidden;transition:opacity .15s,visibility .15s;
+  z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.5);
+}
+.ci-dt.locked:hover::after,.ci-dt.locked:active::after{opacity:1;visibility:visible}
 .ci-dt .ci-dt-day{font-size:9px;font-weight:400;color:var(--dim)}
 .ci-hint{margin-top:6px;font-size:11px;color:var(--dim)}
 .msg{margin-top:8px;border-radius:8px;padding:8px 10px;font-size:12px;display:none;font-weight:600}
@@ -407,19 +418,27 @@ function initDateToggle() {
     days.push({ str: fmtDate(d), label: dayNames[d.getDay()], dd: d.getDate() });
   }
   const startDate = currentRule.start_date || '2000-01-01';
-  const validDays = days.filter(d => d.str >= startDate && d.str <= todayStr);
+  const minAllowed = fmtDate(new Date(Date.now() - 2 * 24 * 60 * 60 * 1000));
+  const validDays = days.filter(d => d.str >= startDate && d.str <= todayStr && d.str >= minAllowed);
   if (!validDays.find(d => d.str === checkInDate)) checkInDate = todayStr;
   const el = document.getElementById('date-toggle');
   el.innerHTML = days.map(d => {
-    const disabled = d.str < startDate || d.str > todayStr;
+    const future = d.str > todayStr;
+    const tooOld = d.str < minAllowed || d.str < startDate;
+    const disabled = future;
+    const locked = !future && tooOld;
     const cls = [
       'ci-dt',
       checkInDate === d.str ? 'active' : '',
       d.str === todayStr ? 'today' : '',
-      disabled ? 'disabled' : ''
+      disabled ? 'disabled' : '',
+      locked ? 'locked' : ''
     ].filter(Boolean).join(' ');
-    const onclick = disabled ? '' : `onclick="checkInDate='${d.str}';initDateToggle()"`;
-    return `<div class="${cls}" ${onclick}>${d.dd}<div class="ci-dt-day">${d.label}</div></div>`;
+    const onclick = future ? '' :
+      locked ? '' :
+      `onclick="checkInDate='${d.str}';initDateToggle()"`;
+    const tooltip = locked ? 'data-tooltip="2일 이전은 출석 불가"' : '';
+    return `<div class="${cls}" ${onclick} ${tooltip}>${d.dd}<div class="ci-dt-day">${d.label}</div></div>`;
   }).join('');
 }
 
