@@ -340,7 +340,7 @@ body{
         <button class="ci-btn eng" onclick="startCheckIn('english')">영어 출석</button>
         <button class="ci-btn fit" onclick="startCheckIn('exercise')">운동 출석</button>
       </div>
-      <input type="file" id="proof-file" accept="image/*" hidden>
+      <input type="file" id="proof-file" accept="image/*" capture="environment" hidden>
       <div class="proof-preview" id="proof-preview">
         <img id="proof-img">
         <button class="proof-remove" onclick="clearProof()">✕</button>
@@ -407,6 +407,48 @@ let proofFile = null;
 let pendingCheckInType = null;
 let checkInDate = fmtDate(new Date());
 
+async function addTimestampToImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      img.src = e.target.result;
+    };
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+
+      const now = new Date();
+      const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      const label = 'Challenge Check-in';
+
+      const fontSize = Math.max(16, Math.floor(canvas.width / 25));
+      ctx.font = `bold ${fontSize}px Arial, sans-serif`;
+
+      const labelWidth = ctx.measureText(label).width;
+      const timeWidth = ctx.measureText(timestamp).width;
+      const maxWidth = Math.max(labelWidth, timeWidth);
+
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+      ctx.fillRect(10, canvas.height - fontSize * 2 - 30, maxWidth + 20, fontSize * 2 + 26);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(label, 20, canvas.height - fontSize * 2 - 12);
+      ctx.fillText(timestamp, 20, canvas.height - fontSize - 8);
+
+      canvas.toBlob((blob) => {
+        const processedFile = new File([blob], file.name, { type: file.type });
+        resolve(processedFile);
+      }, file.type, 0.92);
+    };
+    img.onerror = () => reject(new Error('이미지 로드 실패'));
+    reader.readAsDataURL(file);
+  });
+}
+
 function initDateToggle() {
   const todayStr = fmtDate(new Date());
   const { start } = getWeekRange(new Date(), currentRule.week_start || 'mon');
@@ -471,13 +513,14 @@ document.getElementById('proof-file').addEventListener('change', async function(
     pendingCheckInType = null;
     return;
   }
-  proofFile = file;
+  const processedFile = await addTimestampToImage(file);
+  proofFile = processedFile;
   const reader = new FileReader();
   reader.onload = (ev) => {
     document.getElementById('proof-img').src = ev.target.result;
     document.getElementById('proof-preview').style.display = 'block';
   };
-  reader.readAsDataURL(file);
+  reader.readAsDataURL(processedFile);
   await checkIn(pendingCheckInType);
   pendingCheckInType = null;
 });
