@@ -1712,9 +1712,6 @@ function parseReadme(text) {
   }
 
   function flushSection() {
-    if (currentConcept && currentSection) {
-      currentSection.concepts.push(currentConcept);
-    }
     flushConcept();
     currentConcept = null;
   }
