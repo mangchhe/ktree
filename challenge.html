@@ -470,9 +470,9 @@ async function addTimestampToImage(file) {
             return;
           }
 
-          const processedFile = new File([blob], file.name, { type: file.type });
+          const processedFile = new File([blob], file.name.replace(/\.[^/.]+$/, '.webp'), { type: 'image/webp' });
           resolve(processedFile);
-        }, file.type, quality);
+        }, 'image/webp', quality);
       };
       compress();
     };
