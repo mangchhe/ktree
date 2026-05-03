@@ -415,11 +415,28 @@ async function addTimestampToImage(file) {
       img.src = e.target.result;
     };
     img.onload = () => {
+      const MAX_WIDTH = 1920;
+      const MAX_HEIGHT = 1920;
+      const MAX_SIZE = 5 * 1024 * 1024;
+
+      let width = img.width;
+      let height = img.height;
+
+      if (width > MAX_WIDTH || height > MAX_HEIGHT) {
+        if (width > height) {
+          height = Math.round((height * MAX_WIDTH) / width);
+          width = MAX_WIDTH;
+        } else {
+          width = Math.round((width * MAX_HEIGHT) / height);
+          height = MAX_HEIGHT;
+        }
+      }
+
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
 
       const now = new Date();
       const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
@@ -439,10 +456,25 @@ async function addTimestampToImage(file) {
       ctx.fillText(label, 20, canvas.height - fontSize * 2 - 12);
       ctx.fillText(timestamp, 20, canvas.height - fontSize - 8);
 
-      canvas.toBlob((blob) => {
-        const processedFile = new File([blob], file.name, { type: file.type });
-        resolve(processedFile);
-      }, file.type, 0.92);
+      let quality = 0.92;
+      const compress = () => {
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            reject(new Error('이미지 처리 실패'));
+            return;
+          }
+
+          if (blob.size > MAX_SIZE && quality > 0.1) {
+            quality -= 0.1;
+            compress();
+            return;
+          }
+
+          const processedFile = new File([blob], file.name, { type: file.type });
+          resolve(processedFile);
+        }, file.type, quality);
+      };
+      compress();
     };
     img.onerror = () => reject(new Error('이미지 로드 실패'));
     reader.readAsDataURL(file);
