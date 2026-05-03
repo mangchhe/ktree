@@ -986,8 +986,17 @@ function startCheckIn(type) {
     showError('action-error', `${targetDate} ${label}는 이미 출석 처리되었습니다.`);
     return;
   }
+
   pendingCheckInType = type;
-  document.getElementById('proof-file').click();
+  const fileInput = document.getElementById('proof-file');
+
+  if (type === 'english') {
+    fileInput.removeAttribute('capture');
+  } else {
+    fileInput.setAttribute('capture', 'environment');
+  }
+
+  fileInput.click();
 }
 
 async function checkIn(type) {
@@ -1002,11 +1011,13 @@ async function checkIn(type) {
   }
 
   let proofUrl = null;
-  try {
-    proofUrl = await uploadProof(currentMember.id, type, targetDate);
-  } catch (e) {
-    showError('action-error', e.message);
-    return;
+  if (proofFile) {
+    try {
+      proofUrl = await uploadProof(currentMember.id, type, targetDate);
+    } catch (e) {
+      showError('action-error', e.message);
+      return;
+    }
   }
 
   const payload = {
