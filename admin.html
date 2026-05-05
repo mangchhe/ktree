@@ -1765,9 +1765,8 @@ function parseReadme(text) {
   function flushConcept() {
     if (!currentConcept || !currentSection) return;
     const body = bodyLines.join('\n').trim();
-    const paras = body.split(/\n\n+/);
-    currentConcept.description = paras[0] || null;
-    currentConcept.content = paras.slice(1).join('\n\n') || null;
+    currentConcept.description = null;
+    currentConcept.content = body || null;
     bodyLines = [];
   }
 
