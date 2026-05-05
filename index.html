@@ -1339,12 +1339,11 @@ body {
   <div style="flex:1"></div>
   <button id="mobile-search-btn" onclick="toggleMobileSearch()" aria-label="검색">⌕</button>
   <div id="model-status">모델 로딩 중…</div>
-  <div class="mode-toggle" id="mode-toggle">
-    <button class="mode-btn" id="mode-public" onclick="switchAppMode('public')">PUBLIC</button>
-    <button class="mode-btn" id="mode-private" onclick="switchAppMode('private')">PRIVATE</button>
+  <div class="mode-toggle" id="mode-switcher" style="display:none">
+    <button class="mode-btn active" onclick="switchAppMode('public')">PUBLIC</button>
   </div>
   <button id="private-logout-btn" onclick="logoutPrivate()">로그아웃</button>
-  <button id="admin-btn">Admin ↗</button>
+  <button id="admin-btn" style="display:none">Admin ↗</button>
 </div>
 
 <div id="drawer-overlay" onclick="closeDrawer()"></div>
@@ -1384,50 +1383,112 @@ function toggleMobileSearch() {
 const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
 const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-const APP_MODE = new URLSearchParams(window.location.search).get('mode') === 'private' ? 'private' : 'public';
-const VIEW_TABLES = {
-  public: { topics: 'topics', sections: 'sections', concepts: 'concepts', revisions: 'concept_revisions' },
-  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private', revisions: 'concept_revisions_private' }
+const APP_MODE = new URLSearchParams(window.location.search).get('mode') || 'public';
+
+const TABLE_SUFFIX = {
+  public: '',
+  private: '_private'
 };
+
+function makeTables(suffix) {
+  return {
+    topics: `topics${suffix}`,
+    sections: `sections${suffix}`,
+    concepts: `concepts${suffix}`,
+    revisions: `concept_revisions${suffix}`
+  };
+}
+
+let VIEW_TABLES = {
+  public: makeTables('')
+};
+
+let userAccessTypes = [];
+
+async function loadUserAccess() {
+  if (!sb) return;
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return;
+  const { data } = await sb.from('user_access').select('access_type');
+  userAccessTypes = (data || []).map(r => r.access_type);
+
+  VIEW_TABLES = { public: makeTables('') };
+  userAccessTypes.forEach(type => {
+    if (type === 'admin') return;
+    const suffix = type === 'private' ? '_private' : `_${type}`;
+    VIEW_TABLES[type] = makeTables(suffix);
+  });
+
+  const adminBtn = document.getElementById('admin-btn');
+  if (adminBtn) adminBtn.style.display = userAccessTypes.includes('admin') ? 'inline-block' : 'none';
+
+  buildModeUI();
+}
+
+function buildModeUI() {
+  const container = document.getElementById('mode-switcher');
+  if (!container) return;
+
+  const modes = ['public', ...userAccessTypes.filter(t => t !== 'admin')];
+  container.innerHTML = modes.map(mode => {
+    const label = mode === 'public' ? 'PUBLIC' : mode.toUpperCase();
+    const isActive = APP_MODE === mode;
+    return `<button class="mode-btn${isActive ? ' active' : ''}" onclick="switchAppMode('${mode}')">${label}</button>`;
+  }).join('');
+}
 
 function getViewTables() {
   return VIEW_TABLES[APP_MODE] || VIEW_TABLES.public;
 }
 
-function updateModeUI() {
-  const isPrivate = APP_MODE === 'private';
-  const pub = document.getElementById('mode-public');
-  const prv = document.getElementById('mode-private');
-  if (pub) pub.classList.toggle('active', !isPrivate);
-  if (prv) prv.classList.toggle('active', isPrivate);
-}
-
 function switchAppMode(mode) {
-  if (mode !== 'public' && mode !== 'private') return;
   if (mode === APP_MODE) return;
   const url = new URL(window.location.href);
-  if (mode === 'private') url.searchParams.set('mode', 'private');
-  else url.searchParams.delete('mode');
+  if (mode === 'public') url.searchParams.delete('mode');
+  else url.searchParams.set('mode', mode);
   window.location.href = url.toString();
 }
 
 function setPrivateAuthUI(isLoggedIn) {
   const btn = document.getElementById('private-logout-btn');
   if (btn) btn.style.display = isLoggedIn ? 'inline-block' : 'none';
-  const adminBtn = document.getElementById('admin-btn');
-  if (adminBtn) {
-    adminBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+  const modeSwitcher = document.getElementById('mode-switcher');
+  if (modeSwitcher) modeSwitcher.style.display = isLoggedIn ? 'flex' : '';
+  if (isLoggedIn) loadUserAccess();
+  else {
+    userAccessTypes = [];
+    VIEW_TABLES = { public: makeTables('') };
+    buildModeUI();
+    const adminBtn = document.getElementById('admin-btn');
+    if (adminBtn) adminBtn.style.display = 'none';
   }
 }
 document.getElementById('admin-btn').addEventListener('click', () => {
-  const isPrivate = new URLSearchParams(window.location.search).get('mode') === 'private';
-  location.href = isPrivate ? 'admin.html?source=private' : 'admin.html';
+  const mode = new URLSearchParams(window.location.search).get('mode') || 'public';
+  location.href = mode === 'public' ? 'admin.html' : `admin.html?source=${mode}`;
 });
 
 async function logoutPrivate() {
   if (!sb) return;
   await sb.auth.signOut();
   window.location.reload();
+}
+
+function renderAccessDenied(mode) {
+  const inner = document.getElementById('content-inner');
+  if (!inner) return;
+  inner.classList.remove('wide');
+  inner.innerHTML = `
+    <div style="max-width:360px;margin:72px auto;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;text-align:center">
+      <div style="font-size:32px;margin-bottom:12px">🚫</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px">접근 권한 없음</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:20px">'${mode.toUpperCase()}' 모드에 대한 접근 권한이 없습니다.</div>
+      <div style="display:flex;gap:8px;justify-content:center">
+        <button style="padding:9px 16px;border:1px solid var(--border2);border-radius:6px;background:transparent;color:var(--text);cursor:pointer" onclick="switchAppMode('public')">← 돌아가기</button>
+        <button style="padding:9px 16px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:700;cursor:pointer" onclick="logoutPrivate()">로그아웃</button>
+      </div>
+    </div>
+  `;
 }
 
 function renderPrivateLogin(message = '') {
@@ -2496,10 +2557,16 @@ document.addEventListener('click', e => {
 
 async function initFromSupabase() {
   const { data: { session } } = await sb.auth.getSession();
-  if (APP_MODE === 'private') {
+  if (APP_MODE !== 'public') {
     if (!session) {
       setPrivateAuthUI(false);
       renderPrivateLogin();
+      return false;
+    }
+    await loadUserAccess();
+    if (!VIEW_TABLES[APP_MODE]) {
+      setPrivateAuthUI(true);
+      renderAccessDenied(APP_MODE);
       return false;
     }
     setPrivateAuthUI(true);
@@ -2829,8 +2896,6 @@ document.addEventListener('keydown', e => {
 
 async function init() {
   try {
-    updateModeUI();
-    setPrivateAuthUI(APP_MODE === 'private');
     if (sb && !SUPABASE_URL.includes('YOUR_PROJECT')) {
       const loaded = await initFromSupabase();
       if (!loaded) return;
@@ -2839,9 +2904,9 @@ async function init() {
       return;
     }
   } catch (e) {
-    if (APP_MODE === 'private') {
+    if (APP_MODE !== 'public') {
       setPrivateAuthUI(true);
-      renderPrivateLogin('private 데이터 로딩에 실패했습니다. 권한 또는 정책(RLS)을 확인하세요.');
+      renderPrivateLogin(`${APP_MODE} 데이터 로딩에 실패했습니다. 권한 또는 정책(RLS)을 확인하세요.`);
       return;
     }
     console.error('Supabase load failed:', e);

@@ -641,8 +641,7 @@ body {
     <span id="status-text">연결 안 됨</span>
   </div>
   <div class="source-toggle" id="source-toggle">
-    <button class="source-btn active" id="source-public" onclick="setDataSource('public')">PUBLIC</button>
-    <button class="source-btn" id="source-private" onclick="setDataSource('private')">PRIVATE</button>
+    <button class="source-btn active" onclick="setDataSource('public')">PUBLIC</button>
   </div>
   <div class="import-export-group" id="import-export-group" style="display:none">
     <button class="btn btn-sm btn-ie" onclick="triggerImport()" title="README 파일로 토픽 가져오기">↑ Import</button>
@@ -653,7 +652,7 @@ body {
   <button class="btn btn-sm" id="logout-btn" style="display:none" onclick="logout()">로그아웃</button>
 </div>
 
-<div id="auth-view">
+<div id="auth-view" style="display:none">
   <div class="auth-panel">
     <h2>관리자 로그인</h2>
     <p>Supabase 이메일/비밀번호로 로그인하세요.<br>
@@ -698,27 +697,59 @@ let sections = [];
 let concepts = [];
 let selectedItem = null;
 let dataSource = 'public';
+let userAccessTypes = [];
 
-const TABLES = {
-  public: { topics: 'topics', sections: 'sections', concepts: 'concepts', revisions: 'concept_revisions' },
-  private: { topics: 'topics_private', sections: 'sections_private', concepts: 'concepts_private', revisions: 'concept_revisions_private' }
-};
+const BASE_TABLES = { topics: 'topics', sections: 'sections', concepts: 'concepts', revisions: 'concept_revisions' };
+
+function makeAdminTables(suffix) {
+  return {
+    topics: `topics${suffix}`,
+    sections: `sections${suffix}`,
+    concepts: `concepts${suffix}`,
+    revisions: `concept_revisions${suffix}`
+  };
+}
+
+let TABLES = { public: BASE_TABLES };
 
 function getTables() {
   return TABLES[dataSource] || TABLES.public;
 }
 
-function updateSourceUI() {
-  const isPublic = dataSource === 'public';
-  const pubBtn = document.getElementById('source-public');
-  const prvBtn = document.getElementById('source-private');
-  if (pubBtn) pubBtn.classList.toggle('active', isPublic);
-  if (prvBtn) prvBtn.classList.toggle('active', !isPublic);
+async function loadUserAccess() {
+  const { data } = await sb.from('user_access').select('access_type');
+  userAccessTypes = (data || []).map(r => r.access_type);
+
+  TABLES = { public: makeAdminTables('') };
+  userAccessTypes.forEach(type => {
+    if (type === 'admin') return;
+    const suffix = type === 'private' ? '_private' : `_${type}`;
+    TABLES[type] = makeAdminTables(suffix);
+  });
+
+  buildSourceUI();
+}
+
+function buildSourceUI() {
+  const toggle = document.getElementById('source-toggle');
+  if (!toggle) return;
+
+  const sources = ['public', ...userAccessTypes];
+  toggle.innerHTML = sources.map(src => {
+    const label = src.toUpperCase();
+    const isActive = dataSource === src;
+    return `<button class="source-btn${isActive ? ' active' : ''}" onclick="setDataSource('${src}')">${label}</button>`;
+  }).join('');
+
   const backLink = document.getElementById('back-to-main');
-  if (backLink) backLink.href = isPublic ? 'index.html' : 'index.html?mode=private';
+  if (backLink) backLink.href = dataSource === 'public' ? 'index.html' : `index.html?mode=${dataSource}`;
+}
+
+function updateSourceUI() {
+  buildSourceUI();
   const url = new URL(location.href);
-  if (isPublic) url.searchParams.delete('source');
-  else url.searchParams.set('source', 'private');
+  if (dataSource === 'public') url.searchParams.delete('source');
+  else url.searchParams.set('source', dataSource);
   history.replaceState(null, '', url.pathname + url.search + location.hash);
 }
 
@@ -769,17 +800,44 @@ async function checkSession() {
   if (session) {
     currentUser = session.user;
     showAdmin();
+  } else {
+    document.getElementById('auth-view').style.display = 'block';
   }
 }
 
+function renderAccessDenied() {
+  document.getElementById('auth-view').style.display = 'block';
+  document.getElementById('admin-view').style.display = 'none';
+  document.getElementById('auth-view').innerHTML = `
+    <div style="max-width:360px;margin:80px auto;padding:24px;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;text-align:center">
+      <div style="font-size:32px;margin-bottom:12px">🚫</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px">접근 권한 없음</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:20px">admin 권한이 필요합니다.</div>
+      <div style="display:flex;gap:8px;justify-content:center">
+        <button class="btn" onclick="location.href='index.html'">← 돌아가기</button>
+        <button class="btn" onclick="logout()">로그아웃</button>
+      </div>
+    </div>
+  `;
+}
+
 async function showAdmin() {
+  updateStatus(true);
+  await loadUserAccess();
+
+  if (!userAccessTypes.includes('admin')) {
+    renderAccessDenied();
+    return;
+  }
+
   document.getElementById('auth-view').style.display = 'none';
   document.getElementById('admin-view').style.display = 'block';
   document.getElementById('logout-btn').style.display = '';
   document.getElementById('source-toggle').style.display = 'flex';
   document.getElementById('import-export-group').style.display = 'flex';
+  const srcParam = new URLSearchParams(location.search).get('source');
+  if (srcParam && TABLES[srcParam]) dataSource = srcParam;
   updateSourceUI();
-  updateStatus(true);
   await loadAll();
   if (!restoreFromHash()) renderHome();
 }
