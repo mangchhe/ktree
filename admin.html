@@ -734,7 +734,7 @@ function buildSourceUI() {
   const toggle = document.getElementById('source-toggle');
   if (!toggle) return;
 
-  const sources = ['public', ...userAccessTypes];
+  const sources = ['public', ...userAccessTypes.filter(t => t !== 'admin')];
   toggle.innerHTML = sources.map(src => {
     const label = src.toUpperCase();
     const isActive = dataSource === src;
