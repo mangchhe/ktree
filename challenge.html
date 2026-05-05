@@ -1022,12 +1022,7 @@ function startCheckIn(type) {
   pendingCheckInType = type;
   const fileInput = document.getElementById('proof-file');
 
-  if (type === 'english') {
-    fileInput.removeAttribute('capture');
-  } else {
-    fileInput.setAttribute('capture', 'environment');
-  }
-
+  fileInput.removeAttribute('capture');
   fileInput.click();
 }
 
