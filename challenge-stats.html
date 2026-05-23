@@ -337,6 +337,7 @@ async function loadStats() {
 
   await checkBadges(attendances);
   renderWeeklyChart(attendances);
+  renderDayPattern(attendances);
   renderHeatmap(attendances);
 }
 
@@ -628,6 +629,42 @@ function renderWeeklyChart(attendances) {
       </div>
     </div>
   `).join('');
+}
+
+function renderDayPattern(attendances) {
+  const container = document.getElementById('day-pattern');
+  const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+  const dayStats = weekdays.map(() => ({ english: 0, exercise: 0 }));
+
+  attendances.filter(a => a.member_id === currentMember.id).forEach(a => {
+    const date = new Date(a.attended_on);
+    const dayIndex = date.getDay();
+    if (a.activity_type === 'english') dayStats[dayIndex].english++;
+    else if (a.activity_type === 'exercise') dayStats[dayIndex].exercise++;
+  });
+
+  const maxCount = Math.max(...dayStats.map(d => Math.max(d.english, d.exercise)), 1);
+
+  container.innerHTML = dayStats.map((stat, i) => {
+    const engWidth = (stat.english / maxCount) * 100;
+    const fitWidth = (stat.exercise / maxCount) * 100;
+    return `
+      <div style="margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px">
+          <span style="color:var(--sub)">${weekdays[i]}요일</span>
+          <span style="font-weight:700">영어 ${stat.english} / 운동 ${stat.exercise}</span>
+        </div>
+        <div style="display:flex;gap:4px;height:8px">
+          <div style="flex:1;background:var(--card-el);border-radius:4px;overflow:hidden">
+            <div style="width:${engWidth}%;height:100%;background:var(--eng);border-radius:4px"></div>
+          </div>
+          <div style="flex:1;background:var(--card-el);border-radius:4px;overflow:hidden">
+            <div style="width:${fitWidth}%;height:100%;background:var(--fit);border-radius:4px"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 function renderHeatmap(attendances) {
