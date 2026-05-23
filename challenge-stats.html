@@ -173,11 +173,11 @@ body{
         </div>
         <div class="stat-item">
           <div class="stat-value" id="avg-weekly">0</div>
-          <div class="stat-label">주간 평균 출석</div>
+          <div class="stat-label">주간 평균 완료</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="holiday-count">0</div>
-          <div class="stat-label">휴일 사용</div>
+          <div class="stat-value" id="preference">-</div>
+          <div class="stat-label">선호 활동</div>
         </div>
       </div>
     </div>
@@ -329,8 +329,8 @@ async function loadStats() {
   document.getElementById('worst-week').textContent = worstWeek + '%';
   document.getElementById('avg-weekly').textContent = avgWeekly;
 
-  const myHolidays = holidays.filter(h => h.requested_by === currentMember.id && h.status === 'approved');
-  document.getElementById('holiday-count').textContent = myHolidays.length;
+  const preference = englishCount > exerciseCount ? '영어' : englishCount < exerciseCount ? '운동' : '균형';
+  document.getElementById('preference').textContent = preference;
 
   const totalPenalty = await calculateTotalPenalty(attendances);
   document.getElementById('total-penalty').textContent = money(totalPenalty);
