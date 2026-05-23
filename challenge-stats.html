@@ -645,7 +645,12 @@ function renderDayPattern(attendances) {
 
   const maxCount = Math.max(...dayStats.map(d => Math.max(d.english, d.exercise)), 1);
 
-  container.innerHTML = dayStats.map((stat, i) => {
+  container.innerHTML = `
+    <div style="display:flex;gap:8px;margin-bottom:8px;font-size:10px;color:var(--sub)">
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:var(--eng);border-radius:2px"></span>영어</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:var(--fit);border-radius:2px"></span>운동</span>
+    </div>
+    ${dayStats.map((stat, i) => {
     const engWidth = (stat.english / maxCount) * 100;
     const fitWidth = (stat.exercise / maxCount) * 100;
     return `
@@ -664,7 +669,8 @@ function renderDayPattern(attendances) {
         </div>
       </div>
     `;
-  }).join('');
+  }).join('')}
+  `;
 }
 
 function renderHeatmap(attendances) {
