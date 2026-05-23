@@ -164,20 +164,20 @@ body{
       <div class="stat-title">활동 비교</div>
       <div class="stat-grid">
         <div class="stat-item">
-          <div class="stat-value" id="english-ratio">0%</div>
-          <div class="stat-label">영어 비중</div>
+          <div class="stat-value" id="best-week">-</div>
+          <div class="stat-label">최고 달성률</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="exercise-ratio">0%</div>
-          <div class="stat-label">운동 비중</div>
+          <div class="stat-value" id="worst-week">-</div>
+          <div class="stat-label">최저 달성률</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="avg-weekly">0</div>
+          <div class="stat-label">주간 평균 출석</div>
         </div>
         <div class="stat-item">
           <div class="stat-value" id="holiday-count">0</div>
           <div class="stat-label">휴일 사용</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" id="trend">-</div>
-          <div class="stat-label">최근 4주</div>
         </div>
       </div>
     </div>
@@ -215,6 +215,11 @@ body{
     <div class="stat-card">
       <div class="stat-title">주간 달성률 (최근 6주)</div>
       <div id="weekly-chart"></div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-title">요일별 활동 패턴</div>
+      <div id="day-pattern"></div>
     </div>
 
     <div class="stat-card">
@@ -319,17 +324,13 @@ async function loadStats() {
   const avgRate = calculateAverageRate(attendances);
   document.getElementById('avg-rate').textContent = avgRate + '%';
 
-  const totalCheckins = englishCount + exerciseCount;
-  const englishRatio = totalCheckins > 0 ? Math.round(englishCount / totalCheckins * 100) : 0;
-  const exerciseRatio = totalCheckins > 0 ? Math.round(exerciseCount / totalCheckins * 100) : 0;
-  document.getElementById('english-ratio').textContent = englishRatio + '%';
-  document.getElementById('exercise-ratio').textContent = exerciseRatio + '%';
+  const { bestWeek, worstWeek, avgWeekly } = calculateWeeklyStats(attendances);
+  document.getElementById('best-week').textContent = bestWeek + '%';
+  document.getElementById('worst-week').textContent = worstWeek + '%';
+  document.getElementById('avg-weekly').textContent = avgWeekly;
 
   const myHolidays = holidays.filter(h => h.requested_by === currentMember.id && h.status === 'approved');
   document.getElementById('holiday-count').textContent = myHolidays.length;
-
-  const trend = calculateTrend(attendances);
-  document.getElementById('trend').textContent = trend;
 
   const totalPenalty = await calculateTotalPenalty(attendances);
   document.getElementById('total-penalty').textContent = money(totalPenalty);
@@ -403,12 +404,27 @@ function calculateAverageRate(attendances) {
   return weekCount > 0 ? Math.round(totalRate / weekCount) : 0;
 }
 
-function calculateTrend(attendances) {
-  const rates = [];
-  for (let i = 3; i >= 0; i--) {
-    const { start, end } = getWeekRange(-i);
-    const startStr = fmtDate(start);
-    const endStr = fmtDate(end);
+function calculateWeeklyStats(attendances) {
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const today = new Date();
+
+  let bestWeek = 0;
+  let worstWeek = 100;
+  let totalWeeklyCheckins = 0;
+  let weekCount = 0;
+
+  let current = new Date(startDate);
+  while (current <= today) {
+    const weekStart = new Date(current);
+    weekStart.setDate(current.getDate() - (current.getDay() === 0 ? 6 : current.getDay() - 1));
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+
+    if (weekEnd > today) break;
+
+    const startStr = fmtDate(weekStart);
+    const endStr = fmtDate(weekEnd);
 
     const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
     const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
@@ -420,18 +436,18 @@ function calculateTrend(attendances) {
     const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
     const rate = req > 0 ? Math.round((Math.min(eng, req) + Math.min(fit, req)) / (req * 2) * 100) : 0;
 
-    rates.push(rate);
+    if (rate > bestWeek) bestWeek = rate;
+    if (rate < worstWeek) worstWeek = rate;
+
+    totalWeeklyCheckins += eng + fit;
+    weekCount++;
+
+    current.setDate(current.getDate() + 7);
   }
 
-  if (rates.length < 2) return '-';
+  const avgWeekly = weekCount > 0 ? Math.round(totalWeeklyCheckins / weekCount) : 0;
 
-  const recent = rates[rates.length - 1];
-  const previous = rates[rates.length - 2];
-  const diff = recent - previous;
-
-  if (diff > 10) return '📈 상승';
-  if (diff < -10) return '📉 하락';
-  return '➡️ 유지';
+  return { bestWeek, worstWeek, avgWeekly };
 }
 
 function calculateAttendanceRate(attendances) {
