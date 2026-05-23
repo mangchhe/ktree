@@ -8,6 +8,7 @@
 - 벌금: `max(영어 미달, 운동 미달) * 10,000원`
 - 주 시작일: 월요일(`week_start = mon`)
 - 출석 단위: 영어/운동 각각 1일 1회 (하루 최대 2회)
+- **휴일**: 팀원 전원 합의 시 해당 날짜는 목표에서 제외 (휴일 1일당 목표 1회 감소)
 
 ## 2) 테이블 생성 SQL
 
@@ -71,6 +72,28 @@ CREATE TABLE IF NOT EXISTS public.challenge_settlements (
   UNIQUE (week_key, member_id)
 );
 
+-- 휴일 요청
+CREATE TABLE IF NOT EXISTS public.challenge_holidays (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  holiday_date date NOT NULL,
+  reason text NOT NULL,
+  status text NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+  requested_by uuid NOT NULL REFERENCES public.challenge_members(id) ON DELETE CASCADE,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (holiday_date)
+);
+
+-- 휴일 투표
+CREATE TABLE IF NOT EXISTS public.challenge_holiday_votes (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  holiday_id uuid NOT NULL REFERENCES public.challenge_holidays(id) ON DELETE CASCADE,
+  member_id uuid NOT NULL REFERENCES public.challenge_members(id) ON DELETE CASCADE,
+  vote boolean NOT NULL, -- true: 동의, false: 거부
+  created_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (holiday_id, member_id)
+);
+
 -- updated_at 트리거
 CREATE OR REPLACE FUNCTION public.challenge_touch_updated_at()
 RETURNS trigger AS $$
@@ -95,6 +118,11 @@ CREATE TRIGGER challenge_settlements_touch
 BEFORE UPDATE ON public.challenge_settlements
 FOR EACH ROW EXECUTE FUNCTION public.challenge_touch_updated_at();
 
+DROP TRIGGER IF EXISTS challenge_holidays_touch ON public.challenge_holidays;
+CREATE TRIGGER challenge_holidays_touch
+BEFORE UPDATE ON public.challenge_holidays
+FOR EACH ROW EXECUTE FUNCTION public.challenge_touch_updated_at();
+
 -- 기본 룰 1건 보장
 INSERT INTO public.challenge_rules (title, required_count_per_week, penalty_per_miss, week_start, active)
 SELECT '영어/운동 주간 챌린지', 4, 10000, 'mon', true
@@ -111,6 +139,8 @@ ALTER TABLE public.challenge_members ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.challenge_rules ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.challenge_attendances ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.challenge_settlements ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.challenge_holidays ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.challenge_holiday_votes ENABLE ROW LEVEL SECURITY;
 
 DROP POLICY IF EXISTS "challenge_rules_read" ON public.challenge_rules;
 DROP POLICY IF EXISTS "challenge_rules_write_auth" ON public.challenge_rules;
@@ -124,6 +154,12 @@ DROP POLICY IF EXISTS "challenge_attendance_delete_own" ON public.challenge_atte
 DROP POLICY IF EXISTS "challenge_settlement_read_auth" ON public.challenge_settlements;
 DROP POLICY IF EXISTS "challenge_settlement_write_auth" ON public.challenge_settlements;
 DROP POLICY IF EXISTS "challenge_settlement_write_admin_email" ON public.challenge_settlements;
+DROP POLICY IF EXISTS "challenge_holidays_read_auth" ON public.challenge_holidays;
+DROP POLICY IF EXISTS "challenge_holidays_insert_auth" ON public.challenge_holidays;
+DROP POLICY IF EXISTS "challenge_holidays_update_approved" ON public.challenge_holidays;
+DROP POLICY IF EXISTS "challenge_holiday_votes_read_auth" ON public.challenge_holiday_votes;
+DROP POLICY IF EXISTS "challenge_holiday_votes_insert_own" ON public.challenge_holiday_votes;
+DROP POLICY IF EXISTS "challenge_holiday_votes_update_own" ON public.challenge_holiday_votes;
 
 -- rules: 모두 읽기 가능, 인증 사용자만 수정
 CREATE POLICY "challenge_rules_read" ON public.challenge_rules
@@ -171,6 +207,32 @@ CREATE POLICY "challenge_settlement_write_admin_email" ON public.challenge_settl
 FOR ALL TO authenticated
 USING (lower((auth.jwt() ->> 'email')) IN ('mylifeforcoding@gmail.com'))
 WITH CHECK (lower((auth.jwt() ->> 'email')) IN ('mylifeforcoding@gmail.com'));
+
+-- holidays: 로그인 사용자 조회 가능, 팀원 요청 가능, 승인된 것만 수정 가능
+CREATE POLICY "challenge_holidays_read_auth" ON public.challenge_holidays
+FOR SELECT TO authenticated USING (true);
+
+CREATE POLICY "challenge_holidays_insert_auth" ON public.challenge_holidays
+FOR INSERT TO authenticated
+WITH CHECK (true);
+
+CREATE POLICY "challenge_holidays_update_approved" ON public.challenge_holidays
+FOR UPDATE TO authenticated
+USING (status = 'approved')
+WITH CHECK (status = 'approved');
+
+-- holiday_votes: 로그인 사용자 조회 가능, 본인만 투표/수정
+CREATE POLICY "challenge_holiday_votes_read_auth" ON public.challenge_holiday_votes
+FOR SELECT TO authenticated USING (true);
+
+CREATE POLICY "challenge_holiday_votes_insert_own" ON public.challenge_holiday_votes
+FOR INSERT TO authenticated
+WITH CHECK (true);
+
+CREATE POLICY "challenge_holiday_votes_update_own" ON public.challenge_holiday_votes
+FOR UPDATE TO authenticated
+USING (true)
+WITH CHECK (true);
 ```
 
 > 운영 시 관리자 이메일이 여러 개면 `IN ('a@x.com','b@x.com')` 형태로 추가하세요.
@@ -203,7 +265,26 @@ USING (bucket_id = 'challenge-proofs');
 
 ## 5) 화면
 
-- `challenge.html`: 팀원 출석 체크 + 인증샷 업로드
-- `challenge-admin.html`: 주간 집계/정산
+- `challenge.html`: 팀원 출석 체크 + 인증샷 업로드 + 휴일 요청/동의
+- `challenge-admin.html`: 주간 집계/정산 + 휴일 관리
 
 두 페이지 모두 Supabase 이메일/비밀번호 로그인 기반입니다.
+
+## 6) 휴일 시스템
+
+팀원 간 합의로 쉬는 날을 지정할 수 있습니다.
+
+**승인 조건:**
+- 팀원 전원 동의 시 승인 (2명 팀 → 2명 동의 필요)
+- 1명이라도 거부하면 거부됨
+
+**정산 반영:**
+- 승인된 휴일은 해당 주의 목표에서 제외
+- 예: 주 4회 목표 + 휴일 1일 = 주 3회 목표로 조정
+
+**UI 흐름:**
+1. 팀원이 `challenge.html`에서 휴일 요청 (날짜, 사유)
+2. 다른 팀원이 동의/거부 투표
+3. 전원 동의 시 자동 승인
+4. 정산 시 휴일이 반영된 목표로 계산
+5. 관리자는 `challenge-admin.html`에서 휴일 관리 가능

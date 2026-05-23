@@ -370,6 +370,11 @@ body{
     </div>
 
     <div class="cd fade" style="animation-delay:.18s">
+      <div class="att-title">휴일 요청</div>
+      <div id="holiday-list" class="att-list"></div>
+    </div>
+
+    <div class="cd fade" style="animation-delay:.18s">
       <div class="att-title">내 출석 기록</div>
       <div id="attendance-list" class="att-list"></div>
     </div>
@@ -390,6 +395,8 @@ let calendarAttendances = [];
 let calendarCursor = new Date();
 let selectedCalendarDate = null;
 let teamWeeklyData = { members: [], attendances: [] };
+let holidays = [];
+let holidayVotes = [];
 
 function pad(n) { return String(n).padStart(2, '0'); }
 function fmtDate(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
@@ -904,16 +911,33 @@ function renderCalendarDayDetail() {
       }).join('')
     : '<div class="dd-empty">기록 없음</div>';
 
+  const existingHoliday = holidays.find(h => h.holiday_date === selectedCalendarDate);
+  let holidayBadge = '';
+  let holidayBtn = '';
+  if (existingHoliday) {
+    const statusColor = existingHoliday.status === 'approved' ? 'var(--eng)' : existingHoliday.status === 'rejected' ? 'var(--danger)' : 'var(--warn)';
+    const statusText = existingHoliday.status === 'approved' ? '승인' : existingHoliday.status === 'rejected' ? '거부' : '대기';
+    holidayBadge = `<span class="dd-tag" style="background:${statusColor};color:#fff;border:none;font-size:10px;padding:3px 8px;margin-left:6px">휴일: ${escapeHtml(existingHoliday.reason)} (${statusText})</span>`;
+  } else {
+    holidayBtn = `<button class="hd-btn" onclick="showHolidayRequestModal('${selectedCalendarDate}')" style="width:100%;margin-top:8px;font-size:11px">+ 휴일 요청</button>`;
+  }
+
   el.innerHTML = `<div class="dd">
-    <div class="dd-hd"><span class="dd-date">${dateLabel}</span><button class="dd-close" onclick="selectedCalendarDate=null;renderCalendar();renderCalendarDayDetail()">✕</button></div>
+    <div class="dd-hd"><span class="dd-date">${dateLabel}${holidayBadge}</span><button class="dd-close" onclick="selectedCalendarDate=null;renderCalendar();renderCalendarDayDetail()">✕</button></div>
     ${body}
+    ${holidayBtn}
   </div>`;
 }
 
 async function renderSummary() {
-  const req = currentMember && currentMember.required_count != null
+  const { start, end } = getWeekRange(new Date(), currentRule.week_start || 'mon');
+  const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= fmtDate(start) && h.holiday_date <= fmtDate(end));
+  const holidayCount = approvedHolidays.length;
+
+  const baseReq = currentMember && currentMember.required_count != null
     ? Number(currentMember.required_count)
     : Number(currentRule.required_count_per_week || 4);
+  const req = Math.max(0, baseReq - holidayCount);
   const unit = currentMember && currentMember.penalty_per_miss != null
     ? Number(currentMember.penalty_per_miss)
     : Number(currentRule.penalty_per_miss || 10000);
@@ -926,7 +950,8 @@ async function renderSummary() {
 
   const streakWeeks = await calcStreak();
   const streakHtml = streakWeeks >= 2 ? `<span class="streak-badge">🔥 ${streakWeeks}주 연속</span>` : '';
-  document.getElementById('welcome').innerHTML = `${escapeHtml(currentMember.name)}님, 이번 주 목표를 채워보세요.${streakHtml}`;
+  const holidayInfo = holidayCount > 0 ? ` (휴일 ${holidayCount}일로 목표 조정)` : '';
+  document.getElementById('welcome').innerHTML = `${escapeHtml(currentMember.name)}님, 이번 주 목표를 채워보세요.${streakHtml}${holidayInfo}`;
   document.getElementById('target-count').textContent = `${req} / ${req}`;
   document.getElementById('done-count').textContent = `${englishDone} / ${exerciseDone}`;
   document.getElementById('miss-count').textContent = `${englishMiss} / ${exerciseMiss}`;
@@ -1072,6 +1097,159 @@ async function checkIn(type) {
   renderCalendarDayDetail();
 }
 
+async function loadHolidays() {
+  const [hRes, vRes] = await Promise.all([
+    sb.from('challenge_holidays').select('*').order('holiday_date', { ascending: true }),
+    sb.from('challenge_holiday_votes').select('*')
+  ]);
+  if (hRes.error) throw hRes.error;
+  if (vRes.error) throw vRes.error;
+  holidays = hRes.data || [];
+  holidayVotes = vRes.data || [];
+}
+
+function renderHolidayList() {
+  const el = document.getElementById('holiday-list');
+  if (!el) return;
+  if (!holidays.length) {
+    el.innerHTML = '<div class="att-row"><span class="att-date" style="color:var(--dim)">휴일 요청이 없습니다.</span></div>';
+    return;
+  }
+
+  const membersById = new Map(allMembers.map(m => [m.id, m.name]));
+  const activeMemberCount = allMembers.length;
+
+  el.innerHTML = holidays.map(h => {
+    const votes = holidayVotes.filter(v => v.holiday_id === h.id);
+    const agreeCount = votes.filter(v => v.vote === true).length;
+    const disagreeCount = votes.filter(v => v.vote === false).length;
+    const myVote = votes.find(v => v.member_id === currentMember.id);
+    const isApproved = h.status === 'approved';
+    const isRejected = h.status === 'rejected';
+    const isPending = h.status === 'pending';
+
+    let statusBadge = '';
+    if (isApproved) statusBadge = '<span class="dd-tag eng" style="font-size:9px;padding:2px 6px">승인</span>';
+    else if (isRejected) statusBadge = '<span class="dd-tag" style="color:var(--danger);background:rgba(239,94,94,.1);border-color:rgba(239,94,94,.3);font-size:9px;padding:2px 6px">거부</span>';
+    else statusBadge = `<span class="dd-tag" style="color:var(--warn);background:rgba(240,169,68,.1);border-color:rgba(240,169,68,.3);font-size:9px;padding:2px 6px">${agreeCount}/${activeMemberCount}</span>`;
+
+    let actionBtn = '';
+    if (isPending && !myVote) {
+      actionBtn = `
+        <div style="display:flex;gap:4px">
+          <button class="hd-btn" onclick="voteHoliday('${h.id}', true)" style="font-size:10px;padding:4px 8px">동의</button>
+          <button class="hd-btn" onclick="voteHoliday('${h.id}', false)" style="font-size:10px;padding:4px 8px;border-color:var(--danger);color:var(--danger)">거부</button>
+        </div>
+      `;
+    } else if (myVote) {
+      const voteText = myVote.vote ? '동의' : '거부';
+      actionBtn = `<span style="font-size:10px;color:var(--dim)">${voteText}</span>`;
+    }
+
+    return `<div class="att-row" style="padding:6px 10px">
+      <span class="att-date" style="min-width:90px">${h.holiday_date}</span>
+      <span style="font-size:11px;color:var(--sub);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(h.reason)}</span>
+      ${statusBadge}
+      <div style="display:flex;align-items:center;gap:8px;margin-left:8px">
+        ${actionBtn}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showHolidayRequestModal(preDate = '') {
+  const root = document.getElementById('modal-root');
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <div class="modal-msg">
+        <div style="font-size:14px;font-weight:700;margin-bottom:12px">휴일 요청</div>
+        <div class="field">
+          <label>날짜</label>
+          <input type="date" id="holiday-date" value="${preDate}" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+        </div>
+        <div class="field">
+          <label>사유</label>
+          <input type="text" id="holiday-reason" placeholder="예: 여행, 개인 일정 등" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text)">
+        </div>
+      </div>
+      <div class="modal-btns">
+        <button class="modal-btn cancel" id="modal-cancel">취소</button>
+        <button class="modal-btn danger" id="modal-ok">요청</button>
+      </div>
+    </div>
+  `;
+  root.appendChild(overlay);
+  overlay.querySelector('#modal-cancel').onclick = () => overlay.remove();
+  overlay.querySelector('#modal-ok').onclick = async () => {
+    const date = document.getElementById('holiday-date').value;
+    const reason = document.getElementById('holiday-reason').value.trim();
+    if (!date) { alert('날짜를 선택하세요.'); return; }
+    if (!reason) { alert('사유를 입력하세요.'); return; }
+
+    const { data: holiday, error } = await sb.from('challenge_holidays').insert({
+      holiday_date: date,
+      reason: reason,
+      requested_by: currentMember.id,
+      status: 'pending'
+    }).select().single();
+    if (error) {
+      alert('요청 실패: ' + error.message);
+      return;
+    }
+
+    const { error: voteError } = await sb.from('challenge_holiday_votes').insert({
+      holiday_id: holiday.id,
+      member_id: currentMember.id,
+      vote: true
+    });
+    if (voteError) {
+      alert('투표 실패: ' + voteError.message);
+      return;
+    }
+
+    overlay.remove();
+    showInfo('휴일 요청이 등록되었습니다.');
+    await loadHolidays();
+    renderHolidayList();
+    if (selectedCalendarDate) renderCalendarDayDetail();
+  };
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+}
+
+async function voteHoliday(holidayId, vote) {
+  const { error } = await sb.from('challenge_holiday_votes').upsert({
+    holiday_id: holidayId,
+    member_id: currentMember.id,
+    vote: vote
+  }, { onConflict: 'holiday_id,member_id' });
+  if (error) {
+    showError('action-error', '투표 실패: ' + error.message);
+    return;
+  }
+
+  await loadHolidays();
+  await checkHolidayApproval(holidayId);
+  renderHolidayList();
+}
+
+async function checkHolidayApproval(holidayId) {
+  const holiday = holidays.find(h => h.id === holidayId);
+  if (!holiday || holiday.status !== 'pending') return;
+
+  const votes = holidayVotes.filter(v => v.holiday_id === holidayId);
+  const activeMemberCount = allMembers.length;
+  const agreeCount = votes.filter(v => v.vote === true).length;
+  const disagreeCount = votes.filter(v => v.vote === false).length;
+
+  if (disagreeCount > 0) {
+    await sb.from('challenge_holidays').update({ status: 'rejected' }).eq('id', holidayId);
+  } else if (agreeCount >= activeMemberCount) {
+    await sb.from('challenge_holidays').update({ status: 'approved' }).eq('id', holidayId);
+  }
+}
+
 async function init() {
   const { data: { session } } = await sb.auth.getSession();
   const loginView = document.getElementById('login-view');
@@ -1096,8 +1274,9 @@ async function init() {
     await loadRule();
     await loadAttendances();
     renderSummary();
-    await Promise.all([loadTeamWeekly(), loadTeamCalendarData()]);
+    await Promise.all([loadTeamWeekly(), loadTeamCalendarData(), loadHolidays()]);
     renderTeamSummary();
+    renderHolidayList();
     selectedCalendarDate = fmtDate(new Date());
     renderCalendar();
     renderCalendarDayDetail();

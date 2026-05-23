@@ -126,6 +126,22 @@ input[type='number'] {
       <div id="action-info" class="info"></div>
       <div id="action-error" class="error"></div>
     </div>
+
+    <div class="card" style="margin-top:16px">
+      <div style="font-size:18px;font-weight:700;margin-bottom:12px">휴일 관리</div>
+      <table>
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>사유</th>
+            <th>상태</th>
+            <th>투표 현황</th>
+            <th>작업</th>
+          </tr>
+        </thead>
+        <tbody id="holiday-rows"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -141,6 +157,8 @@ let members = [];
 let attendanceRows = [];
 let currentWeek = null;
 let settlementMap = new Map();
+let holidays = [];
+let holidayVotes = [];
 
 function pad(n) { return String(n).padStart(2, '0'); }
 function fmtDate(date) { return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`; }
@@ -235,23 +253,34 @@ async function loadBaseData() {
   document.getElementById('week-range').textContent = `${fmtDate(start)} ~ ${fmtDate(end)} · week_key=${weekKey}`;
   document.getElementById('rule-badge').textContent = `목표 영어 ${currentRule.required_count_per_week} / 운동 ${currentRule.required_count_per_week} · 미달 1회 ${money(currentRule.penalty_per_miss)}`;
 
-  const [mRes, aRes, sRes] = await Promise.all([
+  const [mRes, aRes, sRes, hRes, vRes] = await Promise.all([
     sb.from('challenge_members').select('*').eq('active', true).order('name'),
     sb.from('challenge_attendances').select('member_id, activity_type, attended_on').gte('attended_on', fmtDate(start)).lte('attended_on', fmtDate(end)),
-    sb.from('challenge_settlements').select('*').eq('week_key', weekKey)
+    sb.from('challenge_settlements').select('*').eq('week_key', weekKey),
+    sb.from('challenge_holidays').select('*').order('holiday_date', { ascending: true }),
+    sb.from('challenge_holiday_votes').select('*')
   ]);
 
   if (mRes.error) throw mRes.error;
   if (aRes.error) throw aRes.error;
   if (sRes.error) throw sRes.error;
+  if (hRes.error) throw hRes.error;
+  if (vRes.error) throw vRes.error;
 
   members = mRes.data || [];
   attendanceRows = aRes.data || [];
   settlementMap = new Map((sRes.data || []).map(x => [x.member_id, x]));
+  holidays = hRes.data || [];
+  holidayVotes = vRes.data || [];
 }
 
 function calcByMember(memberId) {
-  const req = Number(currentRule.required_count_per_week || 4);
+  const { start, end } = currentWeek;
+  const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= fmtDate(start) && h.holiday_date <= fmtDate(end));
+  const holidayCount = approvedHolidays.length;
+
+  const baseReq = Number(currentRule.required_count_per_week || 4);
+  const req = Math.max(0, baseReq - holidayCount);
   const unit = Number(currentRule.penalty_per_miss || 10000);
   const englishDone = attendanceRows.filter(row => row.member_id === memberId && row.activity_type === 'english').length;
   const exerciseDone = attendanceRows.filter(row => row.member_id === memberId && row.activity_type === 'exercise').length;
@@ -259,7 +288,7 @@ function calcByMember(memberId) {
   const exerciseMiss = Math.max(0, req - exerciseDone);
   const missed = Math.max(englishMiss, exerciseMiss);
   const penalty = missed * unit;
-  return { englishDone, exerciseDone, englishMiss, exerciseMiss, missed, penalty };
+  return { englishDone, exerciseDone, englishMiss, exerciseMiss, missed, penalty, req, holidayCount };
 }
 
 function renderRows() {
@@ -274,12 +303,13 @@ function renderRows() {
     const old = settlementMap.get(member.id);
     const adj = old ? Number(old.adjustment_amount || 0) : 0;
     const final = c.penalty + adj;
+    const holidayInfo = c.holidayCount > 0 ? ` <span style="font-size:11px;color:var(--muted)">(휴일 ${c.holidayCount}일)</span>` : '';
 
     return `
       <tr>
         <td>${member.name}</td>
         <td>${c.englishDone} / ${c.exerciseDone}</td>
-        <td>${c.englishMiss} / ${c.exerciseMiss}</td>
+        <td>${c.englishMiss} / ${c.exerciseMiss}${holidayInfo}</td>
         <td>${money(c.penalty)}</td>
         <td>
           <input type="number" value="${adj}" data-member-id="${member.id}" class="adj-input" step="1000">
@@ -336,6 +366,70 @@ async function saveSettlements(status) {
   renderRows();
 }
 
+function renderHolidayRows() {
+  const tbody = document.getElementById('holiday-rows');
+  if (!tbody) return;
+  if (!holidays.length) {
+    tbody.innerHTML = `<tr><td colspan="5" class="meta">휴일 요청이 없습니다.</td></tr>`;
+    return;
+  }
+
+  const membersById = new Map(members.map(m => [m.id, m.name]));
+  const activeMemberCount = members.length;
+
+  tbody.innerHTML = holidays.map(h => {
+    const votes = holidayVotes.filter(v => v.holiday_id === h.id);
+    const agreeCount = votes.filter(v => v.vote === true).length;
+    const disagreeCount = votes.filter(v => v.vote === false).length;
+
+    let statusBadge = '';
+    if (h.status === 'approved') statusBadge = '<span class="badge" style="color:var(--accent)">승인됨</span>';
+    else if (h.status === 'rejected') statusBadge = '<span class="badge danger">거부됨</span>';
+    else statusBadge = `<span class="badge" style="color:var(--muted)">대기중 (${agreeCount}/${activeMemberCount})</span>`;
+
+    const voteText = `동의 ${agreeCount} / 거부 ${disagreeCount}`;
+
+    return `
+      <tr>
+        <td>${h.holiday_date}</td>
+        <td>${h.reason}</td>
+        <td>${statusBadge}</td>
+        <td>${voteText}</td>
+        <td>
+          ${h.status === 'pending' ? `
+            <button class="btn" onclick="updateHolidayStatus('${h.id}', 'approved')" style="font-size:11px;padding:4px 8px">승인</button>
+            <button class="btn" onclick="updateHolidayStatus('${h.id}', 'rejected')" style="font-size:11px;padding:4px 8px;border-color:var(--danger);color:var(--danger)">거부</button>
+          ` : ''}
+          <button class="btn" onclick="deleteHoliday('${h.id}')" style="font-size:11px;padding:4px 8px;border-color:var(--danger);color:var(--danger)">삭제</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+async function updateHolidayStatus(holidayId, status) {
+  const { error } = await sb.from('challenge_holidays').update({ status }).eq('id', holidayId);
+  if (error) {
+    showError(error.message);
+    return;
+  }
+  showInfo('휴일 상태가 업데이트되었습니다.');
+  await loadBaseData();
+  renderHolidayRows();
+}
+
+async function deleteHoliday(holidayId) {
+  if (!confirm('정말로 삭제하시겠습니까?')) return;
+  const { error } = await sb.from('challenge_holidays').delete().eq('id', holidayId);
+  if (error) {
+    showError(error.message);
+    return;
+  }
+  showInfo('휴일이 삭제되었습니다.');
+  await loadBaseData();
+  renderHolidayRows();
+}
+
 async function init() {
   const { data: { session } } = await sb.auth.getSession();
   const loginView = document.getElementById('login-view');
@@ -361,6 +455,7 @@ async function init() {
     await loadRule();
     await loadBaseData();
     renderRows();
+    renderHolidayRows();
   } catch (e) {
     showError(e.message || '초기 로딩 실패. 테이블/RLS를 확인하세요.');
   }
