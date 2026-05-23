@@ -279,9 +279,10 @@ function calcByMember(memberId) {
   const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= fmtDate(start) && h.holiday_date <= fmtDate(end));
   const holidayCount = approvedHolidays.length;
 
-  const baseReq = Number(currentRule.required_count_per_week || 4);
+  const member = members.find(m => m.id === memberId);
+  const baseReq = member && member.required_count != null ? Number(member.required_count) : Number(currentRule.required_count_per_week || 4);
   const req = Math.max(0, baseReq - holidayCount);
-  const unit = Number(currentRule.penalty_per_miss || 10000);
+  const unit = member && member.penalty_per_miss != null ? Number(member.penalty_per_miss) : Number(currentRule.penalty_per_miss || 10000);
   const englishDone = attendanceRows.filter(row => row.member_id === memberId && row.activity_type === 'english').length;
   const exerciseDone = attendanceRows.filter(row => row.member_id === memberId && row.activity_type === 'exercise').length;
   const englishMiss = Math.max(0, req - englishDone);

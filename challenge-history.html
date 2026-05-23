@@ -77,7 +77,7 @@ body{
 .tm-cnt.eng{color:var(--eng)}.tm-cnt.fit{color:var(--fit)}
 .tm-dot{width:5px;height:5px;border-radius:50%}
 .tm-dot.eng{background:var(--eng)}.tm-dot.fit{background:var(--fit)}
-.tm-penalty{font-size:10px;font-weight:700;color:var(--danger);min-width:44px;text-align:right}
+.tm-penalty{font-size:10px;font-weight:700;color:var(--danger);min-width:20px;text-align:right}
 .tm-penalty.ok{color:var(--fit)}
 
 .empty-state{text-align:center;padding:28px 10px;color:var(--dim);font-size:13px}
@@ -151,6 +151,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let currentRule = { required_count_per_week: 4, penalty_per_miss: 10000, week_start: 'mon', start_date: '2026-04-27' };
 let reachedStart = false;
 let members = [];
+let holidays = [];
 let loadedUntilOffset = 0;
 const BATCH = 4;
 
@@ -204,9 +205,13 @@ async function loadWeeksBatch(fromOffset, count) {
       .gte('attended_on', startStr).lte('attended_on', endStr);
     const records = att || [];
 
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+
     let totalPen = 0;
     const rows = members.map(m => {
-      const req = m.required_count != null ? Number(m.required_count) : defaultReq;
+      const baseReq = m.required_count != null ? Number(m.required_count) : defaultReq;
+      const req = Math.max(0, baseReq - holidayCount);
       const mUnit = m.penalty_per_miss != null ? Number(m.penalty_per_miss) : unit;
       const eng = records.filter(a => a.member_id === m.id && a.activity_type === 'english').length;
       const fit = records.filter(a => a.member_id === m.id && a.activity_type === 'exercise').length;
@@ -287,6 +292,9 @@ async function initApp() {
 
   const { data: mData } = await sb.from('challenge_members').select('id, name, required_count, penalty_per_miss').eq('active', true).order('name');
   members = mData || [];
+
+  const { data: hData } = await sb.from('challenge_holidays').select('*').order('holiday_date', { ascending: true });
+  holidays = hData || [];
 
   await loadWeeksBatch(0, BATCH);
 }

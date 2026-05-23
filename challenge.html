@@ -208,7 +208,7 @@ body{
 .tm-cnt.eng{color:var(--eng)}.tm-cnt.fit{color:var(--fit)}
 .tm-dot{width:5px;height:5px;border-radius:50%}
 .tm-dot.eng{background:var(--eng)}.tm-dot.fit{background:var(--fit)}
-.tm-penalty{font-size:10px;font-weight:700;color:var(--danger);min-width:44px;text-align:right}
+.tm-penalty{font-size:10px;font-weight:700;color:var(--danger);min-width:20px;text-align:right}
 .tm-penalty.ok{color:var(--fit)}
 
 /* --- progress bar --- */
@@ -773,13 +773,20 @@ function renderTeamSummary() {
   const el = document.getElementById('team-summary');
   if (!el) return;
   const { members, attendances } = teamWeeklyData;
+  const { start, end } = getWeekRange(new Date(), currentRule.week_start || 'mon');
+  const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= fmtDate(start) && h.holiday_date <= fmtDate(end));
+  const holidayCount = approvedHolidays.length;
+
   const defaultReq = Number(currentRule.required_count_per_week || 4);
+  const baseReq = defaultReq;
+  const req = Math.max(0, baseReq - holidayCount);
   const unit = Number(currentRule.penalty_per_miss || 10000);
   if (!members.length) { el.innerHTML = '<div class="tm-row" style="color:var(--dim)">팀원 없음</div>'; return; }
 
   let totalSlots = 0, totalDone = 0;
   members.forEach(m => {
-    const r = m.required_count != null ? Number(m.required_count) : defaultReq;
+    const baseR = m.required_count != null ? Number(m.required_count) : defaultReq;
+    const r = Math.max(0, baseR - holidayCount);
     totalSlots += r * 2;
     const eng = attendances.filter(a => a.member_id === m.id && a.activity_type === 'english').length;
     const fit = attendances.filter(a => a.member_id === m.id && a.activity_type === 'exercise').length;
@@ -794,18 +801,19 @@ function renderTeamSummary() {
   }
 
   el.innerHTML = members.map(m => {
-    const req = m.required_count != null ? Number(m.required_count) : defaultReq;
+    const baseMReq = m.required_count != null ? Number(m.required_count) : defaultReq;
+    const mReq = Math.max(0, baseMReq - holidayCount);
     const mUnit = m.penalty_per_miss != null ? Number(m.penalty_per_miss) : unit;
     const eng = attendances.filter(a => a.member_id === m.id && a.activity_type === 'english').length;
     const fit = attendances.filter(a => a.member_id === m.id && a.activity_type === 'exercise').length;
-    const miss = Math.max(Math.max(0, req - eng), Math.max(0, req - fit));
+    const miss = Math.max(Math.max(0, mReq - eng), Math.max(0, mReq - fit));
     const pen = miss * mUnit;
     const penCls = pen === 0 ? 'tm-penalty ok' : 'tm-penalty';
     const penText = pen === 0 ? '✓' : money(pen);
     return `<div class="tm-row">
       <span class="tm-name">${escapeHtml(m.name)}</span>
-      <span class="tm-cnt eng"><span class="tm-dot eng"></span>${eng}<span style="color:var(--dim);font-weight:400">/${req}</span></span>
-      <span class="tm-cnt fit"><span class="tm-dot fit"></span>${fit}<span style="color:var(--dim);font-weight:400">/${req}</span></span>
+      <span class="tm-cnt eng"><span class="tm-dot eng"></span>${eng}<span style="color:var(--dim);font-weight:400">/${mReq}</span></span>
+      <span class="tm-cnt fit"><span class="tm-dot fit"></span>${fit}<span style="color:var(--dim);font-weight:400">/${mReq}</span></span>
       <span class="${penCls}">${penText}</span>
     </div>`;
   }).join('');
@@ -1106,6 +1114,7 @@ async function loadHolidays() {
   if (vRes.error) throw vRes.error;
   holidays = hRes.data || [];
   holidayVotes = vRes.data || [];
+  console.log('휴일 로드:', holidays.map(h => ({ date: h.holiday_date, status: h.status })));
 }
 
 function renderHolidayList() {
@@ -1231,14 +1240,23 @@ async function voteHoliday(holidayId, vote) {
 
   await loadHolidays();
   await checkHolidayApproval(holidayId);
+  await loadHolidays();
   renderHolidayList();
+  if (selectedCalendarDate) renderCalendarDayDetail();
 }
 
 async function checkHolidayApproval(holidayId) {
-  const holiday = holidays.find(h => h.id === holidayId);
-  if (!holiday || holiday.status !== 'pending') return;
+  const [hRes, vRes] = await Promise.all([
+    sb.from('challenge_holidays').select('*').eq('id', holidayId).single(),
+    sb.from('challenge_holiday_votes').select('*').eq('holiday_id', holidayId)
+  ]);
+  if (hRes.error || !hRes.data) return;
+  if (vRes.error) return;
 
-  const votes = holidayVotes.filter(v => v.holiday_id === holidayId);
+  const holiday = hRes.data;
+  if (holiday.status !== 'pending') return;
+
+  const votes = vRes.data || [];
   const activeMemberCount = allMembers.length;
   const agreeCount = votes.filter(v => v.vote === true).length;
   const disagreeCount = votes.filter(v => v.vote === false).length;
@@ -1272,9 +1290,9 @@ async function init() {
     hdName.style.display = 'inline-block';
     initDateToggle();
     await loadRule();
-    await loadAttendances();
+    await Promise.all([loadAttendances(), loadHolidays()]);
     renderSummary();
-    await Promise.all([loadTeamWeekly(), loadTeamCalendarData(), loadHolidays()]);
+    await Promise.all([loadTeamWeekly(), loadTeamCalendarData()]);
     renderTeamSummary();
     renderHolidayList();
     selectedCalendarDate = fmtDate(new Date());
