@@ -142,16 +142,42 @@ body{
           <div class="stat-label">연속 달성 주</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="attendance-rate">0%</div>
-          <div class="stat-label">전체 출석률</div>
+          <div class="stat-value" id="avg-rate">0%</div>
+          <div class="stat-label">평균 달성률</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value" id="total-checkins">0</div>
-          <div class="stat-label">총 출석 횟수</div>
+          <div class="stat-value" id="total-english">0</div>
+          <div class="stat-label">영어 출석</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="total-exercise">0</div>
+          <div class="stat-label">운동 출석</div>
         </div>
         <div class="stat-item">
           <div class="stat-value" id="total-penalty">0원</div>
           <div class="stat-label">총 벌금</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-title">활동 비교</div>
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="english-ratio">0%</div>
+          <div class="stat-label">영어 비중</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="exercise-ratio">0%</div>
+          <div class="stat-label">운동 비중</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="holiday-count">0</div>
+          <div class="stat-label">휴일 사용</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="trend">-</div>
+          <div class="stat-label">최근 4주</div>
         </div>
       </div>
     </div>
@@ -187,12 +213,12 @@ body{
     </div>
 
     <div class="stat-card">
-      <div class="stat-title">주간 달성률</div>
+      <div class="stat-title">주간 달성률 (최근 6주)</div>
       <div id="weekly-chart"></div>
     </div>
 
     <div class="stat-card">
-      <div class="stat-title">출석 히트맵 (최근 12주)</div>
+      <div class="stat-title">출석 히트맵 (최근 6주)</div>
       <div class="heatmap" id="heatmap"></div>
     </div>
   </div>
@@ -283,15 +309,27 @@ async function loadStats() {
   const myAttendances = attendances.filter(a => a.member_id === currentMember.id);
   const englishCount = myAttendances.filter(a => a.activity_type === 'english').length;
   const exerciseCount = myAttendances.filter(a => a.activity_type === 'exercise').length;
-  const totalCheckins = englishCount + exerciseCount;
 
-  document.getElementById('total-checkins').textContent = totalCheckins;
+  document.getElementById('total-english').textContent = englishCount;
+  document.getElementById('total-exercise').textContent = exerciseCount;
 
   const streak = calculateStreak(attendances);
   document.getElementById('streak-val').textContent = streak;
 
-  const attendanceRate = calculateAttendanceRate(attendances);
-  document.getElementById('attendance-rate').textContent = attendanceRate + '%';
+  const avgRate = calculateAverageRate(attendances);
+  document.getElementById('avg-rate').textContent = avgRate + '%';
+
+  const totalCheckins = englishCount + exerciseCount;
+  const englishRatio = totalCheckins > 0 ? Math.round(englishCount / totalCheckins * 100) : 0;
+  const exerciseRatio = totalCheckins > 0 ? Math.round(exerciseCount / totalCheckins * 100) : 0;
+  document.getElementById('english-ratio').textContent = englishRatio + '%';
+  document.getElementById('exercise-ratio').textContent = exerciseRatio + '%';
+
+  const myHolidays = holidays.filter(h => h.requested_by === currentMember.id && h.status === 'approved');
+  document.getElementById('holiday-count').textContent = myHolidays.length;
+
+  const trend = calculateTrend(attendances);
+  document.getElementById('trend').textContent = trend;
 
   const totalPenalty = await calculateTotalPenalty(attendances);
   document.getElementById('total-penalty').textContent = money(totalPenalty);
@@ -305,25 +343,95 @@ function calculateStreak(attendances) {
   let streak = 0;
   const today = new Date();
   const offset = 0;
-  
+
   for (let i = 0; i < 52; i++) {
     const { start, end } = getWeekRange(-i);
     const startStr = fmtDate(start);
     const endStr = fmtDate(end);
-    
+
     const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
     const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
     const holidayCount = approvedHolidays.length;
     const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
     const req = Math.max(0, baseReq - holidayCount);
-    
+
     const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
     const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
-    
+
     if (eng >= req && fit >= req) streak++;
     else break;
   }
   return streak;
+}
+
+function calculateAverageRate(attendances) {
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const today = new Date();
+
+  let totalRate = 0;
+  let weekCount = 0;
+
+  let current = new Date(startDate);
+  while (current <= today) {
+    const weekStart = new Date(current);
+    weekStart.setDate(current.getDate() - (current.getDay() === 0 ? 6 : current.getDay() - 1));
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+
+    if (weekEnd > today) break;
+
+    const startStr = fmtDate(weekStart);
+    const endStr = fmtDate(weekEnd);
+
+    const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+    const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const req = Math.max(0, baseReq - holidayCount);
+
+    const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
+    const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
+    const rate = req > 0 ? Math.round((Math.min(eng, req) + Math.min(fit, req)) / (req * 2) * 100) : 0;
+
+    totalRate += rate;
+    weekCount++;
+
+    current.setDate(current.getDate() + 7);
+  }
+
+  return weekCount > 0 ? Math.round(totalRate / weekCount) : 0;
+}
+
+function calculateTrend(attendances) {
+  const rates = [];
+  for (let i = 3; i >= 0; i--) {
+    const { start, end } = getWeekRange(-i);
+    const startStr = fmtDate(start);
+    const endStr = fmtDate(end);
+
+    const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+    const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const req = Math.max(0, baseReq - holidayCount);
+
+    const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
+    const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
+    const rate = req > 0 ? Math.round((Math.min(eng, req) + Math.min(fit, req)) / (req * 2) * 100) : 0;
+
+    rates.push(rate);
+  }
+
+  if (rates.length < 2) return '-';
+
+  const recent = rates[rates.length - 1];
+  const previous = rates[rates.length - 2];
+  const diff = recent - previous;
+
+  if (diff > 10) return '📈 상승';
+  if (diff < -10) return '📉 하락';
+  return '➡️ 유지';
 }
 
 function calculateAttendanceRate(attendances) {
@@ -467,25 +575,32 @@ async function checkBadges(attendances) {
 function renderWeeklyChart(attendances) {
   const container = document.getElementById('weekly-chart');
   const weeks = [];
-  
-  for (let i = 11; i >= 0; i--) {
+
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const today = new Date();
+
+  const weeksSinceStart = Math.floor((today - startDate) / (7 * 24 * 60 * 60 * 1000)) + 1;
+  const weeksToShow = Math.min(6, weeksSinceStart);
+
+  for (let i = weeksToShow - 1; i >= 0; i--) {
     const { start, end } = getWeekRange(-i);
     const startStr = fmtDate(start);
     const endStr = fmtDate(end);
-    
+
     const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
     const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
     const holidayCount = approvedHolidays.length;
     const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
     const req = Math.max(0, baseReq - holidayCount);
-    
+
     const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
     const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
     const rate = req > 0 ? Math.round((Math.min(eng, req) + Math.min(fit, req)) / (req * 2) * 100) : 0;
-    
+
     weeks.push({ label: `${start.getMonth()+1}/${start.getDate()}`, rate });
   }
-  
+
   container.innerHTML = weeks.map(w => `
     <div style="margin-bottom:8px">
       <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px">
@@ -503,25 +618,30 @@ function renderHeatmap(attendances) {
   const container = document.getElementById('heatmap');
   const today = new Date();
   const cells = [];
-  
-  for (let i = 83; i >= 0; i--) {
+
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const daysSinceStart = Math.floor((today - startDate) / (24 * 60 * 60 * 1000)) + 1;
+  const daysToShow = Math.min(42, daysSinceStart);
+
+  for (let i = daysToShow - 1; i >= 0; i--) {
     const date = new Date(today);
     date.setDate(today.getDate() - i);
     const dateStr = fmtDate(date);
-    
+
     const dayAttendances = attendances.filter(a => a.attended_on === dateStr && a.member_id === currentMember.id);
     const count = dayAttendances.length;
-    
+
     let level = '';
     if (count === 0) level = '';
     else if (count === 1) level = 'level1';
     else if (count === 2) level = 'level2';
     else level = 'level3';
-    
+
     const isToday = dateStr === fmtDate(today);
     cells.push(`<div class="heatmap-cell ${level} ${isToday ? 'today' : ''}">${date.getDate()}</div>`);
   }
-  
+
   container.innerHTML = cells.join('');
 }
 
