@@ -960,7 +960,13 @@ async function renderSummary() {
   const streakWeeks = await calcStreak();
   const streakHtml = streakWeeks >= 2 ? `<span class="streak-badge">🔥 ${streakWeeks}주 연속</span>` : '';
   const holidayInfo = holidayCount > 0 ? ` (휴일 ${holidayCount}일로 목표 조정)` : '';
-  document.getElementById('welcome').innerHTML = `${escapeHtml(currentMember.name)}님, 이번 주 목표를 채워보세요.${streakHtml}${holidayInfo}`;
+  
+  const isComplete = englishDone >= req && exerciseDone >= req;
+  const welcomeText = isComplete 
+    ? `${escapeHtml(currentMember.name)}님, 이번 주 목표를 달성했습니다! 🎉${streakHtml}${holidayInfo}`
+    : `${escapeHtml(currentMember.name)}님, 이번 주 목표를 채워보세요.${streakHtml}${holidayInfo}`;
+  
+  document.getElementById('welcome').innerHTML = welcomeText;
   document.getElementById('target-count').textContent = `${req} / ${req}`;
   document.getElementById('done-count').textContent = `${englishDone} / ${exerciseDone}`;
   document.getElementById('miss-count').textContent = `${englishMiss} / ${exerciseMiss}`;
