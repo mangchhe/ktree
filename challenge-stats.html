@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08090e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Challenge Stats">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon.svg">
+<title>Challenge Stats</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08090e;--card:#111318;--card2:#16181f;--card-el:#1c1f28;
+  --border:#23262f;--border-hl:#3b3f4f;
+  --text:#e8eaef;--sub:#8b8fa3;--dim:#53576a;
+  --eng:#5b8cff;--eng-bg:rgba(91,140,255,.12);--eng-bd:rgba(91,140,255,.28);
+  --fit:#3ddfa0;--fit-bg:rgba(61,223,160,.1);--fit-bd:rgba(61,223,160,.25);
+  --warn:#f0a944;--danger:#ef5e5e;
+  --r:12px;
+}
+body{
+  min-height:100vh;color:var(--text);background:var(--bg);
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:520px;margin:0 auto;padding:12px 12px 40px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.hd{display:flex;align-items:center;justify-content:space-between;padding:6px 0 14px}
+.hd-logo{font-size:15px;font-weight:800;letter-spacing:-.3px;cursor:pointer}
+.hd-logo b{color:var(--fit)}
+.hd-actions{display:flex;gap:6px}
+.hd-btn{
+  font-size:12px;font-weight:600;padding:7px 11px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--border);background:var(--card);color:var(--sub);
+  transition:border-color .15s;text-decoration:none;
+}
+.hd-btn:hover{border-color:var(--border-hl)}
+
+.stat-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:16px;margin-bottom:12px;animation:fadeUp .3s ease both;
+}
+.stat-title{font-size:13px;font-weight:800;margin-bottom:12px;color:var(--sub)}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat-item{
+  background:var(--card2);border:1px solid var(--border);border-radius:10px;
+  padding:12px;text-align:center;
+}
+.stat-value{font-size:20px;font-weight:800;color:var(--text);margin-bottom:2px}
+.stat-label{font-size:10px;color:var(--dim);font-weight:600}
+.stat-item.highlight{border-color:var(--fit);background:rgba(61,223,160,.05)}
+.stat-item.highlight .stat-value{color:var(--fit)}
+
+.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.badge-item{
+  background:var(--card2);border:1px solid var(--border);border-radius:10px;
+  padding:10px;text-align:center;opacity:.5;transition:all .2s;
+}
+.badge-item.earned{opacity:1;border-color:var(--fit);background:rgba(61,223,160,.05)}
+.badge-icon{font-size:24px;margin-bottom:4px}
+.badge-name{font-size:10px;color:var(--sub);font-weight:600}
+.badge-item.earned .badge-name{color:var(--fit)}
+
+.heatmap{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:8px}
+.heatmap-cell{
+  aspect-ratio:1;border-radius:4px;background:var(--card2);
+  display:flex;align-items:center;justify-content:center;font-size:9px;
+  color:var(--dim);font-weight:600;
+}
+.heatmap-cell.level1{background:rgba(61,223,160,.2);color:var(--fit)}
+.heatmap-cell.level2{background:rgba(61,223,160,.4);color:var(--fit)}
+.heatmap-cell.level3{background:rgba(61,223,160,.6);color:var(--fit)}
+.heatmap-cell.level4{background:rgba(61,223,160,.8);color:#fff}
+.heatmap-cell.today{border:1px solid var(--fit)}
+
+.chart-bar{
+  height:8px;background:var(--card-el);border-radius:4px;overflow:hidden;margin-top:6px;
+}
+.chart-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--eng),var(--fit));transition:width .4s ease}
+
+.empty-state{text-align:center;padding:28px 10px;color:var(--dim);font-size:13px}
+
+.login-card{max-width:380px;margin:60px auto 0;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px}
+@media(min-width:760px){
+  .wrap{padding-top:24px}
+}
+.cd-title{font-size:14px;font-weight:800;margin-bottom:2px}
+.cd-sub{font-size:12px;color:var(--sub);line-height:1.5}
+.field{margin-top:10px}
+.field label{display:block;font-size:11px;font-weight:600;color:var(--dim);margin-bottom:4px}
+.field input{
+  width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);
+  background:var(--bg);color:var(--text);font-size:13px;
+}
+.field input:focus{outline:none;border-color:var(--border-hl)}
+.btn{
+  width:100%;padding:11px;border-radius:8px;border:none;background:var(--fit);
+  color:#08090e;font-size:13px;font-weight:800;cursor:pointer;margin-top:12px;
+}
+.btn:hover{opacity:.9}
+.error{color:var(--danger);font-size:11px;margin-top:8px;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <div class="hd-logo" onclick="location.href='/'">챌린지 <b>통계</b></div>
+    <div class="hd-actions">
+      <a href="/challenge" class="hd-btn">출석</a>
+      <a href="/challenge-history" class="hd-btn">히스토리</a>
+    </div>
+  </div>
+
+  <div id="login-view" class="login-card" style="display:none">
+    <div class="cd-title">로그인</div>
+    <div class="cd-sub">챌린지 통계를 보려면 로그인하세요.</div>
+    <div class="field">
+      <label>이메일</label>
+      <input type="email" id="email" placeholder="이메일">
+    </div>
+    <div class="field">
+      <label>비밀번호</label>
+      <input type="password" id="password" placeholder="비밀번호">
+    </div>
+    <button class="btn" onclick="login()">로그인</button>
+    <div class="error" id="login-error"></div>
+  </div>
+
+  <div id="app-view" style="display:none">
+    <div class="stat-card">
+      <div class="stat-title">내 성취</div>
+      <div class="stat-grid">
+        <div class="stat-item highlight">
+          <div class="stat-value" id="streak-val">0</div>
+          <div class="stat-label">연속 달성 주</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="attendance-rate">0%</div>
+          <div class="stat-label">전체 출석률</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="total-checkins">0</div>
+          <div class="stat-label">총 출석 횟수</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="total-penalty">0원</div>
+          <div class="stat-label">총 벌금</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-title">배지</div>
+      <div class="badge-grid" id="badges">
+        <div class="badge-item" data-badge="first-week">
+          <div class="badge-icon">🎯</div>
+          <div class="badge-name">첫 주 완료</div>
+        </div>
+        <div class="badge-item" data-badge="perfect-week">
+          <div class="badge-icon">⭐</div>
+          <div class="badge-name">완벽한 주</div>
+        </div>
+        <div class="badge-item" data-badge="streak-3">
+          <div class="badge-icon">🔥</div>
+          <div class="badge-name">3주 연속</div>
+        </div>
+        <div class="badge-item" data-badge="streak-5">
+          <div class="badge-icon">💪</div>
+          <div class="badge-name">5주 연속</div>
+        </div>
+        <div class="badge-item" data-badge="no-penalty">
+          <div class="badge-icon">💰</div>
+          <div class="badge-name">벌금 없는 주</div>
+        </div>
+        <div class="badge-item" data-badge="english-master">
+          <div class="badge-icon">📚</div>
+          <div class="badge-name">영어 마스터</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-title">주간 달성률</div>
+      <div id="weekly-chart"></div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-title">출석 히트맵 (최근 12주)</div>
+      <div class="heatmap" id="heatmap"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentRule = { required_count_per_week: 4, penalty_per_miss: 10000, week_start: 'mon', start_date: '2026-04-27' };
+let currentMember = null;
+let members = [];
+let holidays = [];
+
+function pad(n) { return String(n).padStart(2, '0'); }
+function fmtDate(d) { return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
+function money(n) { return `${Number(n||0).toLocaleString('ko-KR')}원`; }
+
+function getWeekRange(offset) {
+  const now = new Date();
+  const ws = currentRule.week_start || 'mon';
+  const day = now.getDay();
+  const startOff = ws === 'sun' ? day : (day === 0 ? 6 : day - 1);
+  const start = new Date(now);
+  start.setDate(now.getDate() - startOff + (offset * 7));
+  start.setHours(0,0,0,0);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  end.setHours(23,59,59,999);
+  return { start, end };
+}
+
+async function login() {
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  document.getElementById('login-error').style.display = 'none';
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  if (error) {
+    const el = document.getElementById('login-error');
+    el.textContent = error.message;
+    el.style.display = 'block';
+    return;
+  }
+  await initApp();
+}
+
+async function initApp() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) {
+    document.getElementById('login-view').style.display = 'block';
+    document.getElementById('app-view').style.display = 'none';
+    return;
+  }
+
+  document.getElementById('login-view').style.display = 'none';
+  document.getElementById('app-view').style.display = 'block';
+
+  const { data: ruleData } = await sb.from('challenge_rules').select('*').eq('active', true).order('created_at', { ascending: false }).limit(1);
+  if (ruleData && ruleData.length) currentRule = ruleData[0];
+
+  const { data: mData } = await sb.from('challenge_members').select('*').eq('user_id', session.user.id).single();
+  if (!mData) {
+    document.getElementById('app-view').innerHTML = '<div class="empty-state">팀원 정보를 찾을 수 없습니다.</div>';
+    return;
+  }
+  currentMember = mData;
+
+  const { data: allMembers } = await sb.from('challenge_members').select('*').eq('active', true);
+  members = allMembers || [];
+
+  const { data: hData } = await sb.from('challenge_holidays').select('*').order('holiday_date', { ascending: true });
+  holidays = hData || [];
+
+  await loadStats();
+}
+
+async function loadStats() {
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const today = new Date();
+  
+  const { data: attendances } = await sb.from('challenge_attendances')
+    .select('*')
+    .gte('attended_on', fmtDate(startDate))
+    .lte('attended_on', fmtDate(today));
+
+  const myAttendances = attendances.filter(a => a.member_id === currentMember.id);
+  const englishCount = myAttendances.filter(a => a.activity_type === 'english').length;
+  const exerciseCount = myAttendances.filter(a => a.activity_type === 'exercise').length;
+  const totalCheckins = englishCount + exerciseCount;
+
+  document.getElementById('total-checkins').textContent = totalCheckins;
+
+  const streak = calculateStreak(attendances);
+  document.getElementById('streak-val').textContent = streak;
+
+  const attendanceRate = calculateAttendanceRate(attendances);
+  document.getElementById('attendance-rate').textContent = attendanceRate + '%';
+
+  const totalPenalty = await calculateTotalPenalty(attendances);
+  document.getElementById('total-penalty').textContent = money(totalPenalty);
+
+  await checkBadges(attendances);
+  renderWeeklyChart(attendances);
+  renderHeatmap(attendances);
+}
+
+function calculateStreak(attendances) {
+  let streak = 0;
+  const today = new Date();
+  const offset = 0;
+  
+  for (let i = 0; i < 52; i++) {
+    const { start, end } = getWeekRange(-i);
+    const startStr = fmtDate(start);
+    const endStr = fmtDate(end);
+    
+    const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+    const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const req = Math.max(0, baseReq - holidayCount);
+    
+    const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
+    const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
+    
+    if (eng >= req && fit >= req) streak++;
+    else break;
+  }
+  return streak;
+}
+
+function calculateAttendanceRate(attendances) {
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const today = new Date();
+  
+  let totalRequired = 0;
+  let totalDone = 0;
+  
+  let current = new Date(startDate);
+  while (current <= today) {
+    const { start, end } = getWeekRange(0);
+    const weekStart = new Date(current);
+    weekStart.setDate(current.getDate() - (current.getDay() === 0 ? 6 : current.getDay() - 1));
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    
+    if (weekEnd > today) break;
+    
+    const startStr = fmtDate(weekStart);
+    const endStr = fmtDate(weekEnd);
+    
+    const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+    const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const req = Math.max(0, baseReq - holidayCount);
+    
+    totalRequired += req * 2;
+    const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
+    const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
+    totalDone += Math.min(eng, req) + Math.min(fit, req);
+    
+    current.setDate(current.getDate() + 7);
+  }
+  
+  return totalRequired > 0 ? Math.round(totalDone / totalRequired * 100) : 0;
+}
+
+async function calculateTotalPenalty(attendances) {
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const today = new Date();
+  
+  let totalPenalty = 0;
+  let current = new Date(startDate);
+  
+  while (current <= today) {
+    const weekStart = new Date(current);
+    weekStart.setDate(current.getDate() - (current.getDay() === 0 ? 6 : current.getDay() - 1));
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    
+    if (weekEnd > today) break;
+    
+    const startStr = fmtDate(weekStart);
+    const endStr = fmtDate(weekEnd);
+    
+    const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+    const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const req = Math.max(0, baseReq - holidayCount);
+    const unit = currentMember.penalty_per_miss != null ? Number(currentMember.penalty_per_miss) : Number(currentRule.penalty_per_miss || 10000);
+    
+    const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
+    const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
+    const miss = Math.max(Math.max(0, req - eng), Math.max(0, req - fit));
+    totalPenalty += miss * unit;
+    
+    current.setDate(current.getDate() + 7);
+  }
+  
+  return totalPenalty;
+}
+
+async function checkBadges(attendances) {
+  const ruleStart = currentRule.start_date || '2000-01-01';
+  const startDate = new Date(ruleStart);
+  const today = new Date();
+  
+  const earnedBadges = new Set();
+  
+  let current = new Date(startDate);
+  let weekCount = 0;
+  let perfectWeeks = 0;
+  let noPenaltyWeeks = 0;
+  let englishMasterWeeks = 0;
+  
+  while (current <= today) {
+    const weekStart = new Date(current);
+    weekStart.setDate(current.getDate() - (current.getDay() === 0 ? 6 : current.getDay() - 1));
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    
+    if (weekEnd > today) break;
+    
+    const startStr = fmtDate(weekStart);
+    const endStr = fmtDate(weekEnd);
+    
+    const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+    const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const req = Math.max(0, baseReq - holidayCount);
+    const unit = currentMember.penalty_per_miss != null ? Number(currentMember.penalty_per_miss) : Number(currentRule.penalty_per_miss || 10000);
+    
+    const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
+    const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
+    const miss = Math.max(Math.max(0, req - eng), Math.max(0, req - fit));
+    const pen = miss * unit;
+    
+    weekCount++;
+    
+    if (eng >= req && fit >= req) {
+      if (weekCount === 1) earnedBadges.add('first-week');
+      perfectWeeks++;
+    }
+    
+    if (pen === 0) noPenaltyWeeks++;
+    if (eng >= req * 2) englishMasterWeeks++;
+    
+    current.setDate(current.getDate() + 7);
+  }
+  
+  if (perfectWeeks >= 1) earnedBadges.add('perfect-week');
+  if (noPenaltyWeeks >= 1) earnedBadges.add('no-penalty');
+  if (englishMasterWeeks >= 1) earnedBadges.add('english-master');
+  
+  const streak = calculateStreak(attendances);
+  if (streak >= 3) earnedBadges.add('streak-3');
+  if (streak >= 5) earnedBadges.add('streak-5');
+  
+  document.querySelectorAll('.badge-item').forEach(el => {
+    const badge = el.dataset.badge;
+    if (earnedBadges.has(badge)) el.classList.add('earned');
+  });
+}
+
+function renderWeeklyChart(attendances) {
+  const container = document.getElementById('weekly-chart');
+  const weeks = [];
+  
+  for (let i = 11; i >= 0; i--) {
+    const { start, end } = getWeekRange(-i);
+    const startStr = fmtDate(start);
+    const endStr = fmtDate(end);
+    
+    const weekAttendances = attendances.filter(a => a.attended_on >= startStr && a.attended_on <= endStr && a.member_id === currentMember.id);
+    const approvedHolidays = holidays.filter(h => h.status === 'approved' && h.holiday_date >= startStr && h.holiday_date <= endStr);
+    const holidayCount = approvedHolidays.length;
+    const baseReq = currentMember.required_count != null ? Number(currentMember.required_count) : Number(currentRule.required_count_per_week || 4);
+    const req = Math.max(0, baseReq - holidayCount);
+    
+    const eng = weekAttendances.filter(a => a.activity_type === 'english').length;
+    const fit = weekAttendances.filter(a => a.activity_type === 'exercise').length;
+    const rate = req > 0 ? Math.round((Math.min(eng, req) + Math.min(fit, req)) / (req * 2) * 100) : 0;
+    
+    weeks.push({ label: `${start.getMonth()+1}/${start.getDate()}`, rate });
+  }
+  
+  container.innerHTML = weeks.map(w => `
+    <div style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px">
+        <span style="color:var(--sub)">${w.label}</span>
+        <span style="font-weight:700">${w.rate}%</span>
+      </div>
+      <div class="chart-bar">
+        <div class="chart-fill" style="width:${w.rate}%"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderHeatmap(attendances) {
+  const container = document.getElementById('heatmap');
+  const today = new Date();
+  const cells = [];
+  
+  for (let i = 83; i >= 0; i--) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - i);
+    const dateStr = fmtDate(date);
+    
+    const dayAttendances = attendances.filter(a => a.attended_on === dateStr && a.member_id === currentMember.id);
+    const count = dayAttendances.length;
+    
+    let level = '';
+    if (count === 0) level = '';
+    else if (count === 1) level = 'level1';
+    else if (count === 2) level = 'level2';
+    else level = 'level3';
+    
+    const isToday = dateStr === fmtDate(today);
+    cells.push(`<div class="heatmap-cell ${level} ${isToday ? 'today' : ''}">${date.getDate()}</div>`);
+  }
+  
+  container.innerHTML = cells.join('');
+}
+
+initApp();
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+</script>
+</body>
+</html>
