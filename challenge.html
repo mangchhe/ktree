@@ -125,7 +125,7 @@ body{
 .cal-c{
   aspect-ratio:1/1.15;border-radius:8px;padding:4px;cursor:pointer;
   border:1px solid transparent;background:var(--card2);
-  display:flex;flex-direction:column;align-items:flex-start;
+  display:flex;flex-direction:column;align-items:center;
   transition:border-color .12s,background .12s;position:relative;
 }
 .cal-c:hover{border-color:var(--border-hl)}
@@ -134,6 +134,8 @@ body{
 .cal-c.sel{border-color:var(--eng);background:rgba(91,140,255,.06)}
 .cal-d{font-size:10px;font-weight:700;color:var(--sub);margin-bottom:auto}
 .cal-c.sun .cal-d{color:var(--danger)}.cal-c.sat .cal-d{color:var(--eng)}
+.cal-c.holiday .cal-d{color:var(--fit)}
+.cal-holiday{font-size:10px;text-align:center;margin-top:2px}
 .cal-dots{display:flex;gap:3px;margin-top:2px;flex-wrap:wrap;justify-content:center;width:100%}
 .dot{width:6px;height:6px;border-radius:50%}
 .dot.eng{background:var(--eng)}.dot.fit{background:var(--fit)}
@@ -869,15 +871,20 @@ function renderCalendar() {
     for (let i = 0; i < engN; i++) dots += '<span class="dot eng"></span>';
     for (let i = 0; i < fitN; i++) dots += '<span class="dot fit"></span>';
 
+    const dayHolidays = holidays.filter(h => h.holiday_date === dateKey && h.status === 'approved');
+    const holidayBadge = dayHolidays.length > 0 ? '<span class="holiday-badge">🏖️</span>' : '';
+
     const cls = [
       'cal-c',
       selectedCalendarDate === dateKey ? 'sel' : '',
       dateKey === todayKey ? 'today' : '',
-      dow === 0 ? 'sun' : dow === 6 ? 'sat' : ''
+      dow === 0 ? 'sun' : dow === 6 ? 'sat' : '',
+      dayHolidays.length > 0 ? 'holiday' : ''
     ].filter(Boolean).join(' ');
 
     html += `<div class="${cls}" data-date="${dateKey}">
       <div class="cal-d">${day}</div>
+      ${holidayBadge ? `<div class="cal-holiday">${holidayBadge}</div>` : ''}
       ${dots ? `<div class="cal-dots">${dots}</div>` : ''}
     </div>`;
   }
