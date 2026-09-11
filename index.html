@@ -292,17 +292,8 @@ body {
 .note-toolbar-ext:hover { color:var(--accent); }
 .note-frame {
   display:block; width:100%; border:1px solid var(--border); border-radius:10px;
-  background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.18);
+  background:#0d1117; box-shadow:0 2px 12px rgba(0,0,0,.18);
 }
-/* Tech Notes sidebar group */
-.sb-notes { margin-top:8px; }
-.sb-note {
-  display:flex; align-items:center; gap:8px; padding:7px 14px; cursor:pointer;
-  font-size:13px; color:var(--text); border-left:2px solid transparent;
-}
-.sb-note:hover { background:var(--surface); border-left-color:var(--accent); }
-.sb-note.active { border-left-color:var(--accent); color:var(--accent); }
-.sb-note-date { margin-left:auto; font-size:10px; color:var(--muted); font-family:monospace; }
 
 .section-detail-layout {
   display: flex;
@@ -1598,6 +1589,10 @@ let tocLockUntil = 0;
 
 function topicColor(id) { return S.topicColors[id] || '#7c6af7'; }
 
+// Tech Notes: Supabase 트리엔 없지만 사이드바·랜딩에선 일반 토픽처럼 보이는 의사 토픽
+const NOTES_TID = '__notes__';
+const NOTES_COLOR = '#3fb950'; // ktree --accent 와 통일
+
 function buildSidebar() {
   const html = `
     <div id="drawer-header">
@@ -1618,22 +1613,22 @@ function buildSidebar() {
       <div class="sb-sections" id="secs-${m.id}" style="max-height:0"></div>
     `;}).join('')}
     ${S.notes.length ? `
-    <div class="sb-label" style="margin-top:18px">Tech Notes</div>
-    <div class="sb-notes">
-      ${S.notes.map(n => `
-        <div class="sb-note" id="note-tab-${n.slug}" data-slug="${n.slug}">
-          <span>📝</span><span>${n.title}</span>
-          <span class="sb-note-date">${n.date || ''}</span>
-        </div>`).join('')}
-    </div>` : ''}
+      <div class="sb-topic" id="tab-${NOTES_TID}" style="--topic-color:${NOTES_COLOR}">
+        <div class="sb-dot" style="background:${NOTES_COLOR}"></div>
+        Tech Notes
+        <span class="sb-topic-count">${S.notes.length}</span>
+      </div>
+      <div class="sb-topic-desc" id="desc-${NOTES_TID}">세션에서 증류한 순수 기술 학습노트</div>
+      <div class="sb-sections" id="secs-${NOTES_TID}" style="max-height:0"></div>
+    ` : ''}
   `;
   document.getElementById('sidebar').innerHTML = html;
   S.metas.forEach(m => {
     document.getElementById(`tab-${m.id}`).addEventListener('click', () => selectTopic(m.id));
   });
-  S.notes.forEach(n => {
-    document.getElementById(`note-tab-${n.slug}`)?.addEventListener('click', () => openNote(n.slug));
-  });
+  if (S.notes.length) {
+    document.getElementById(`tab-${NOTES_TID}`)?.addEventListener('click', openNotesTopic);
+  }
 }
 
 function updateSidebarSections(topicId) {
@@ -1664,10 +1659,9 @@ function resetView() {
     el.classList.remove('active');
     el.style.borderLeftColor = 'transparent';
   });
-  document.querySelectorAll('.sb-note').forEach(el => el.classList.remove('active'));
-  S.metas.forEach(m => {
-    const secs = document.getElementById(`secs-${m.id}`);
-    const desc = document.getElementById(`desc-${m.id}`);
+  [...S.metas.map(m => m.id), NOTES_TID].forEach(id => {
+    const secs = document.getElementById(`secs-${id}`);
+    const desc = document.getElementById(`desc-${id}`);
     if (secs) secs.style.maxHeight = '0';
     if (desc) desc.style.display = '';
   });
@@ -1761,6 +1755,15 @@ function renderLanding() {
       </div>
       <div class="landing-grid">
         ${cards}
+        ${S.notes.length ? `
+        <div class="landing-card landing-anim" style="animation-delay:${S.metas.length * 80}ms" onclick="openNotesTopic()">
+          <div class="landing-card-title">Tech Notes</div>
+          <div class="landing-card-desc">세션에서 증류한 도메인-중립 순수 기술 학습노트</div>
+          <div class="landing-card-meta">
+            <span class="landing-card-count">${S.notes.length} notes</span>
+          </div>
+          <div class="landing-card-tags"><span class="landing-card-tag">tech</span></div>
+        </div>` : ''}
       </div>
     </div>
   `;
@@ -1771,7 +1774,11 @@ function renderLanding() {
 function selectTopic(id) {
   kbClearFocus();
   document.getElementById('content-inner').classList.remove('note-mode');
-  document.querySelectorAll('.sb-note').forEach(el => el.classList.remove('active'));
+  // Tech Notes 의사토픽 접기/비활성
+  const nsecs = document.getElementById(`secs-${NOTES_TID}`);
+  if (nsecs) nsecs.style.maxHeight = '0';
+  const ndesc = document.getElementById(`desc-${NOTES_TID}`);
+  if (ndesc) ndesc.style.display = '';
   S.selectedTopicId = id;
   S.selectedSectionId = null;
   location.hash = `topic/${id}`;
@@ -2997,20 +3004,73 @@ async function loadNotes() {
   } catch (_) { /* 매니페스트 없거나 로컬 file:// 제약 → Tech Notes 섹션 숨김 */ }
 }
 
-function openNote(slug) {
-  const note = S.notes.find(n => n.slug === slug);
-  if (!note) return;
-  kbClearFocus();
-  S.selectedTopicId = null;
-  S.selectedSectionId = null;
-  location.hash = `note/${slug}`;
-  // 사이드바 활성 상태 갱신
+function notesTabActive() {
   document.querySelectorAll('.sb-topic').forEach(el => {
     el.classList.remove('active');
     el.style.borderLeftColor = 'transparent';
   });
-  document.querySelectorAll('.sb-note').forEach(el =>
-    el.classList.toggle('active', el.dataset.slug === slug));
+  const tab = document.getElementById(`tab-${NOTES_TID}`);
+  if (tab) { tab.classList.add('active'); tab.style.borderLeftColor = NOTES_COLOR; }
+}
+
+function updateNotesSidebar(activeSlug) {
+  // 다른 토픽 섹션 접기
+  S.metas.forEach(m => {
+    const s = document.getElementById(`secs-${m.id}`);
+    const d = document.getElementById(`desc-${m.id}`);
+    if (s) s.style.maxHeight = '0';
+    if (d) d.style.display = '';
+  });
+  const desc = document.getElementById(`desc-${NOTES_TID}`);
+  if (desc) desc.style.display = 'none';
+  const c = document.getElementById(`secs-${NOTES_TID}`);
+  if (!c) return;
+  c.innerHTML = S.notes.map(n =>
+    `<div class="sb-section${n.slug === activeSlug ? ' active' : ''}" data-slug="${n.slug}">${n.title}<span class="sb-section-count">${n.date || ''}</span></div>`
+  ).join('');
+  c.style.maxHeight = c.scrollHeight + 200 + 'px';
+  c.querySelectorAll('.sb-section').forEach(el =>
+    el.addEventListener('click', () => openNote(el.dataset.slug)));
+}
+
+// Tech Notes 개요 — 일반 토픽 오버뷰와 같은 톤(topic-header + landing-grid)
+function openNotesTopic() {
+  kbClearFocus();
+  S.selectedTopicId = NOTES_TID;
+  S.selectedSectionId = null;
+  location.hash = 'notes';
+  notesTabActive();
+  updateNotesSidebar();
+  closeDrawer();
+
+  const inner = document.getElementById('content-inner');
+  inner.classList.remove('wide', 'note-mode');
+  if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+  const cards = S.notes.map(n => `
+    <div class="landing-card" onclick="openNote('${n.slug}')">
+      <div class="landing-card-title">${n.title}</div>
+      <div class="landing-card-desc">${n.summary || ''}</div>
+      <div class="landing-card-meta"><span class="landing-card-count">${n.date || ''}</span></div>
+    </div>`).join('');
+  inner.innerHTML = `
+    <div class="topic-header">
+      <div class="topic-header-top"><h1>Tech Notes</h1></div>
+      <p>세션에서 회사·도메인을 걷어내고 증류한 순수 기술 학습노트. 각 노트는 self-contained 문서로 열립니다.</p>
+    </div>
+    <div class="landing-grid">${cards}</div>`;
+  document.getElementById('content').scrollTop = 0;
+  requestAnimationFrame(() => kbSetFocus(0));
+}
+
+function openNote(slug) {
+  const note = S.notes.find(n => n.slug === slug);
+  if (!note) return;
+  kbClearFocus();
+  S.selectedTopicId = NOTES_TID;
+  S.selectedSectionId = null;
+  location.hash = `note/${slug}`;
+  notesTabActive();
+  updateNotesSidebar(slug);
   closeDrawer();
 
   const inner = document.getElementById('content-inner');
@@ -3019,7 +3079,7 @@ function openNote(slug) {
   if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
   inner.innerHTML = `
     <div class="note-toolbar">
-      <div class="note-back" onclick="resetView()"><span>←</span> knowledge.tree</div>
+      <div class="note-back" onclick="openNotesTopic()"><span>←</span> Tech Notes</div>
       <span class="note-toolbar-title">${note.title}</span>
       <span class="note-toolbar-date">${note.date || ''}</span>
       <a class="note-toolbar-ext" href="tech-notes/notes/${slug}.html" target="_blank" rel="noopener">새 탭 ↗</a>
@@ -3027,6 +3087,23 @@ function openNote(slug) {
     <iframe id="note-frame" class="note-frame" src="tech-notes/notes/${slug}.html"
       title="${note.title}" loading="lazy"></iframe>
   `;
+  // 같은 오리진 → 로드 후 노트에 ktree 다크 팔레트+폰트 주입해 톤 통일
+  const frame = document.getElementById('note-frame');
+  frame.addEventListener('load', () => {
+    try {
+      const doc = frame.contentDocument;
+      doc.documentElement.setAttribute('data-theme', 'dark');
+      const st = doc.createElement('style');
+      st.textContent = `
+        :root[data-theme="dark"]{
+          --bg:#0d1117; --surface:#161b22; --ink:#e6edf3; --muted:#7d8590; --faint:#6b727c;
+          --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.05);
+          --accent:#3fb950; --accent-soft:#3fb95022; --code-bg:#161b22;
+        }
+        :root{ --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo',sans-serif; }`;
+      doc.head.appendChild(st);
+    } catch (_) { /* cross-origin 등 → 노트 자체 테마 유지 */ }
+  });
   document.getElementById('content').scrollTop = 0;
   fitNoteFrame();
 }
@@ -3045,6 +3122,9 @@ function restoreFromHash() {
   const hash = location.hash.replace('#', '');
   if (!hash) return false;
   const parts = hash.split('/');
+  if (parts[0] === 'notes') {
+    if (S.notes.length) { openNotesTopic(); return true; }
+  }
   if (parts[0] === 'note' && parts[1]) {
     if (S.notes.find(n => n.slug === parts[1])) { openNote(parts[1]); return true; }
   }
