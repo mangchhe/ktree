@@ -277,6 +277,32 @@ body {
 #content-inner.wide {
   max-width: 1100px;
 }
+/* --- Tech Notes (iframe-rendered self-contained HTML) --- */
+#content-inner.note-mode { max-width: 1100px; }
+.note-toolbar { display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.note-back {
+  display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+  background:var(--surface); border:1px solid var(--border); border-radius:7px;
+  padding:6px 11px; font-size:13px; color:var(--text); transition:border-color .15s;
+}
+.note-back:hover { border-color:var(--accent); color:var(--accent); }
+.note-toolbar-title { font-size:15px; font-weight:650; }
+.note-toolbar-date { font-size:12px; color:var(--muted); font-family:monospace; }
+.note-toolbar-ext { margin-left:auto; font-size:12px; color:var(--muted); text-decoration:none; }
+.note-toolbar-ext:hover { color:var(--accent); }
+.note-frame {
+  display:block; width:100%; border:1px solid var(--border); border-radius:10px;
+  background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.18);
+}
+/* Tech Notes sidebar group */
+.sb-notes { margin-top:8px; }
+.sb-note {
+  display:flex; align-items:center; gap:8px; padding:7px 14px; cursor:pointer;
+  font-size:13px; color:var(--text); border-left:2px solid transparent;
+}
+.sb-note:hover { background:var(--surface); border-left-color:var(--accent); }
+.sb-note.active { border-left-color:var(--accent); color:var(--accent); }
+.sb-note-date { margin-left:auto; font-size:10px; color:var(--muted); font-family:monospace; }
 
 .section-detail-layout {
   display: flex;
@@ -1562,6 +1588,7 @@ const S = {
   selectedTopicId: null,
   selectedSectionId: null,
   lastSectionId: null,
+  notes: [],
 };
 const revisionsByConcept = new Map();
 let activeRevisionConceptId = null;
@@ -1590,10 +1617,22 @@ function buildSidebar() {
       <div class="sb-topic-desc" id="desc-${m.id}">${m.description || ''}</div>
       <div class="sb-sections" id="secs-${m.id}" style="max-height:0"></div>
     `;}).join('')}
+    ${S.notes.length ? `
+    <div class="sb-label" style="margin-top:18px">Tech Notes</div>
+    <div class="sb-notes">
+      ${S.notes.map(n => `
+        <div class="sb-note" id="note-tab-${n.slug}" data-slug="${n.slug}">
+          <span>📝</span><span>${n.title}</span>
+          <span class="sb-note-date">${n.date || ''}</span>
+        </div>`).join('')}
+    </div>` : ''}
   `;
   document.getElementById('sidebar').innerHTML = html;
   S.metas.forEach(m => {
     document.getElementById(`tab-${m.id}`).addEventListener('click', () => selectTopic(m.id));
+  });
+  S.notes.forEach(n => {
+    document.getElementById(`note-tab-${n.slug}`)?.addEventListener('click', () => openNote(n.slug));
   });
 }
 
@@ -1625,6 +1664,7 @@ function resetView() {
     el.classList.remove('active');
     el.style.borderLeftColor = 'transparent';
   });
+  document.querySelectorAll('.sb-note').forEach(el => el.classList.remove('active'));
   S.metas.forEach(m => {
     const secs = document.getElementById(`secs-${m.id}`);
     const desc = document.getElementById(`desc-${m.id}`);
@@ -1686,7 +1726,7 @@ function updateSidebarConcepts(topicId, sectionId) {
 function renderLanding() {
   kbClearFocus();
   const inner = document.getElementById('content-inner');
-  inner.classList.remove('wide');
+  inner.classList.remove('wide', 'note-mode');
   if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
   if (tocScrollHandler) {
     document.getElementById('content').removeEventListener('scroll', tocScrollHandler);
@@ -1730,6 +1770,8 @@ function renderLanding() {
 
 function selectTopic(id) {
   kbClearFocus();
+  document.getElementById('content-inner').classList.remove('note-mode');
+  document.querySelectorAll('.sb-note').forEach(el => el.classList.remove('active'));
   S.selectedTopicId = id;
   S.selectedSectionId = null;
   location.hash = `topic/${id}`;
@@ -2936,15 +2978,76 @@ async function init() {
   });
   document.getElementById('node-count').textContent = `${total} nodes`;
 
+  await loadNotes();
   buildSidebar();
   if (!restoreFromHash() && S.metas.length > 0) renderLanding();
   initEmbedder();
 }
 
+// --- Tech Notes: self-contained HTML notes rendered in an isolated iframe ---
+async function loadNotes() {
+  try {
+    const res = await fetch('tech-notes/notes.json', { cache: 'no-cache' });
+    if (!res.ok) return;
+    const list = await res.json();
+    if (Array.isArray(list)) {
+      // 최신순 정렬 (date 내림차순)
+      S.notes = list.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    }
+  } catch (_) { /* 매니페스트 없거나 로컬 file:// 제약 → Tech Notes 섹션 숨김 */ }
+}
+
+function openNote(slug) {
+  const note = S.notes.find(n => n.slug === slug);
+  if (!note) return;
+  kbClearFocus();
+  S.selectedTopicId = null;
+  S.selectedSectionId = null;
+  location.hash = `note/${slug}`;
+  // 사이드바 활성 상태 갱신
+  document.querySelectorAll('.sb-topic').forEach(el => {
+    el.classList.remove('active');
+    el.style.borderLeftColor = 'transparent';
+  });
+  document.querySelectorAll('.sb-note').forEach(el =>
+    el.classList.toggle('active', el.dataset.slug === slug));
+  closeDrawer();
+
+  const inner = document.getElementById('content-inner');
+  inner.classList.remove('wide');
+  inner.classList.add('note-mode');
+  if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+  inner.innerHTML = `
+    <div class="note-toolbar">
+      <div class="note-back" onclick="resetView()"><span>←</span> knowledge.tree</div>
+      <span class="note-toolbar-title">${note.title}</span>
+      <span class="note-toolbar-date">${note.date || ''}</span>
+      <a class="note-toolbar-ext" href="tech-notes/notes/${slug}.html" target="_blank" rel="noopener">새 탭 ↗</a>
+    </div>
+    <iframe id="note-frame" class="note-frame" src="tech-notes/notes/${slug}.html"
+      title="${note.title}" loading="lazy"></iframe>
+  `;
+  document.getElementById('content').scrollTop = 0;
+  fitNoteFrame();
+}
+
+function fitNoteFrame() {
+  const c = document.getElementById('content');
+  const f = document.getElementById('note-frame');
+  if (!c || !f) return;
+  const tb = document.querySelector('.note-toolbar');
+  const avail = c.clientHeight - (tb ? tb.offsetHeight : 0) - 22;
+  f.style.height = Math.max(420, avail) + 'px';
+}
+window.addEventListener('resize', fitNoteFrame);
+
 function restoreFromHash() {
   const hash = location.hash.replace('#', '');
   if (!hash) return false;
   const parts = hash.split('/');
+  if (parts[0] === 'note' && parts[1]) {
+    if (S.notes.find(n => n.slug === parts[1])) { openNote(parts[1]); return true; }
+  }
   if (parts[0] === 'topic' && parts[1]) {
     const topic = S.topics.find(t => t.id === parts[1]);
     if (topic) { selectTopic(parts[1]); return true; }

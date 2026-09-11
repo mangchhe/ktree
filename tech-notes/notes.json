@@ -1,0 +1,8 @@
+[
+  {
+    "slug": "2026-09-03-realtime-websocket-gateway",
+    "title": "실시간 WebSocket 게이트웨이",
+    "date": "2026-09-03",
+    "summary": "TCP·WebSocket·protobuf·Go 런타임·pub/sub·스케일링·서비스 메시·복원력 — 지속 연결 실시간 시스템을 얇은 도메인-중립 게이트웨이로 설계할 때의 17개 개념."
+  }
+]
