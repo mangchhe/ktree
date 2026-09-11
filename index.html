@@ -1427,7 +1427,8 @@ function makeTables(suffix) {
     topics: `topics${suffix}`,
     sections: `sections${suffix}`,
     concepts: `concepts${suffix}`,
-    revisions: `concept_revisions${suffix}`
+    revisions: `concept_revisions${suffix}`,
+    notes: `notes${suffix}`
   };
 }
 
@@ -1618,7 +1619,7 @@ function buildSidebar() {
         Tech Notes
         <span class="sb-topic-count">${S.notes.length}</span>
       </div>
-      <div class="sb-topic-desc" id="desc-${NOTES_TID}">세션에서 증류한 순수 기술 학습노트</div>
+      <div class="sb-topic-desc" id="desc-${NOTES_TID}">주제별 기술 학습노트</div>
       <div class="sb-sections" id="secs-${NOTES_TID}" style="max-height:0"></div>
     ` : ''}
   `;
@@ -1758,7 +1759,7 @@ function renderLanding() {
         ${S.notes.length ? `
         <div class="landing-card landing-anim" style="animation-delay:${S.metas.length * 80}ms" onclick="openNotesTopic()">
           <div class="landing-card-title">Tech Notes</div>
-          <div class="landing-card-desc">세션에서 증류한 도메인-중립 순수 기술 학습노트</div>
+          <div class="landing-card-desc">주제별로 정리한 기술 학습노트</div>
           <div class="landing-card-meta">
             <span class="landing-card-count">${S.notes.length} notes</span>
           </div>
@@ -2991,17 +2992,37 @@ async function init() {
   initEmbedder();
 }
 
-// --- Tech Notes: self-contained HTML notes rendered in an isolated iframe ---
+// --- Tech Notes: self-contained HTML notes stored in Supabase, rendered in an isolated iframe ---
+// 목록에서는 html 을 제외하고 메타만 가져오고, 본문은 열 때 lazy 로드해 캐시한다.
+const noteHtmlCache = new Map();
+
 async function loadNotes() {
+  S.notes = [];
+  if (!sb) return;
   try {
-    const res = await fetch('tech-notes/notes.json', { cache: 'no-cache' });
-    if (!res.ok) return;
-    const list = await res.json();
-    if (Array.isArray(list)) {
-      // 최신순 정렬 (date 내림차순)
-      S.notes = list.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-    }
-  } catch (_) { /* 매니페스트 없거나 로컬 file:// 제약 → Tech Notes 섹션 숨김 */ }
+    const { data, error } = await sb
+      .from(getViewTables().notes)
+      .select('slug, title, date, summary')
+      .order('date', { ascending: false });
+    if (error) throw error;
+    S.notes = data || [];
+  } catch (_) { /* 테이블 미생성 또는 권한 없음 → Tech Notes 섹션 숨김 */ }
+}
+
+async function loadNoteHtml(slug) {
+  if (noteHtmlCache.has(slug)) return noteHtmlCache.get(slug);
+  try {
+    const { data, error } = await sb
+      .from(getViewTables().notes)
+      .select('html')
+      .eq('slug', slug)
+      .single();
+    if (error) throw error;
+    noteHtmlCache.set(slug, data.html);
+    return data.html;
+  } catch (_) {
+    return null;
+  }
 }
 
 function notesTabActive() {
@@ -3055,14 +3076,14 @@ function openNotesTopic() {
   inner.innerHTML = `
     <div class="topic-header">
       <div class="topic-header-top"><h1>Tech Notes</h1></div>
-      <p>세션에서 회사·도메인을 걷어내고 증류한 순수 기술 학습노트. 각 노트는 self-contained 문서로 열립니다.</p>
+      <p>주제별로 정리한 기술 학습노트. 각 노트는 self-contained 문서로 열립니다.</p>
     </div>
     <div class="landing-grid">${cards}</div>`;
   document.getElementById('content').scrollTop = 0;
   requestAnimationFrame(() => kbSetFocus(0));
 }
 
-function openNote(slug) {
+async function openNote(slug) {
   const note = S.notes.find(n => n.slug === slug);
   if (!note) return;
   kbClearFocus();
@@ -3082,13 +3103,24 @@ function openNote(slug) {
       <div class="note-back" onclick="openNotesTopic()"><span>←</span> Tech Notes</div>
       <span class="note-toolbar-title">${note.title}</span>
       <span class="note-toolbar-date">${note.date || ''}</span>
-      <a class="note-toolbar-ext" href="tech-notes/notes/${slug}.html" target="_blank" rel="noopener">새 탭 ↗</a>
+      <a class="note-toolbar-ext" href="#" onclick="openNoteExternal('${slug}');return false;">새 탭 ↗</a>
     </div>
-    <iframe id="note-frame" class="note-frame" src="tech-notes/notes/${slug}.html"
-      title="${note.title}" loading="lazy"></iframe>
+    <iframe id="note-frame" class="note-frame" title="${note.title}"></iframe>
   `;
-  // 같은 오리진 → 로드 후 노트에 ktree 다크 팔레트+폰트 주입해 톤 통일
+  document.getElementById('content').scrollTop = 0;
+  fitNoteFrame();
+
+  const html = await loadNoteHtml(slug);
+  if (location.hash !== `#note/${slug}`) return; // 로드 중 다른 곳으로 이동
   const frame = document.getElementById('note-frame');
+  if (!frame) return;
+  if (html === null) {
+    frame.remove();
+    inner.insertAdjacentHTML('beforeend',
+      `<p style="color:var(--muted);font-size:13px;">노트 본문을 불러오지 못했습니다. 로그인 상태와 접근 권한(RLS)을 확인하세요.</p>`);
+    return;
+  }
+  // srcdoc 은 부모와 같은 오리진 → 로드 후 노트에 ktree 다크 팔레트+폰트 주입해 톤 통일
   frame.addEventListener('load', () => {
     try {
       const doc = frame.contentDocument;
@@ -3104,8 +3136,16 @@ function openNote(slug) {
       doc.head.appendChild(st);
     } catch (_) { /* cross-origin 등 → 노트 자체 테마 유지 */ }
   });
-  document.getElementById('content').scrollTop = 0;
-  fitNoteFrame();
+  frame.srcdoc = html;
+}
+
+// DB 저장이라 노트에 고유 URL 이 없다 → blob URL 로 새 탭에 띄운다
+async function openNoteExternal(slug) {
+  const html = await loadNoteHtml(slug);
+  if (html === null) return;
+  const url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+  window.open(url, '_blank');
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
 
 function fitNoteFrame() {

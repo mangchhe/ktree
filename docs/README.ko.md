@@ -25,6 +25,7 @@ Apache Kafka
 - **마크다운 Split 에디터** — 어드민에서 Write/Preview/Split 모드, 양방향 스크롤 싱크
 - **섹션 단위 일괄 편집** — 섹션의 모든 개념을 하나의 마크다운으로 편집·저장
 - **Public / Private 이중 모드** — 공개용 / 비공개 학습 기록을 같은 코드로 분리
+- **Tech Notes** — self-contained HTML 문서를 DB에 저장하고 격리된 iframe 으로 렌더 (공개/비공개 모두 지원)
 - **Revision 이력** — 개념 변경 시 AS-IS / TO-BE 비교
 - **Esc 계층 내비게이션** — 폼 → 상세 → 토픽 → 홈 순으로 뒤로가기
 - **Import / Export** — README 마크다운으로 주제 가져오기·내보내기

@@ -247,6 +247,68 @@ Supported diagram types: `flowchart`, `sequenceDiagram`, `block-beta`, and most 
 - Verify each concept's `level`, `title`, `description`, `content`
 - If needed, compare AS-IS / TO-BE in the revision history on the detail view
 
+## 4) Tech Notes
+
+Unlike the topic/section/concept tree, a Tech Note is **one self-contained HTML document**.
+The HTML is stored whole in the `notes` / `notes_private` tables and rendered in an isolated
+iframe (`srcdoc`) inside the app.
+
+### Where sources live
+
+| Path | Target | git |
+|---|---|---|
+| `drafts/notes/` | public notes → `notes` table | committed |
+| `drafts/notes-private/` | private notes → `notes_private` table | **git-ignored** |
+
+> Anything committed to the repo is served by GitHub Pages, so a "private" note placed in the
+> repo is not private. Keep private notes in `drafts/notes-private/` and ship them to the DB only.
+
+### Note file format
+
+Name files `YYYY-MM-DD-slug.html` and put a metadata block at the very top:
+
+```html
+<!--ktree
+title: Realtime WebSocket Gateway
+date: 2026-09-03
+summary: One-line summary shown on the list card
+-->
+<title>Realtime WebSocket Gateway — Tech Note</title>
+...
+```
+
+Without the block, the title and date are inferred from `<title>` and the filename.
+CLI flags always win.
+
+### Uploading
+
+```bash
+export KTREE_EMAIL='you@example.com'
+export KTREE_PASSWORD='...'
+
+# public note
+node upload-note.mjs drafts/notes/2026-09-03-realtime-websocket-gateway.html
+
+# private note
+node upload-note.mjs drafts/notes-private/2026-09-12-internal.html --private
+
+# list / delete
+node upload-note.mjs --list
+node upload-note.mjs --list --private
+node upload-note.mjs --delete <slug> --private
+```
+
+Upload is an upsert on `slug`, so re-uploading the same file overwrites it.
+`--private` uploads only pass RLS for accounts holding an `access_type='private'`
+row in `user_access`.
+
+### Viewing in the app
+
+- Public notes: visible under **Tech Notes** in the sidebar for everyone
+- Private notes: log in, then pick **PRIVATE** in the mode switcher (`?mode=private`)
+
+Each mode queries only its own table, so private notes never appear in PUBLIC mode.
+
 ## Operating principles
 
 - Treat the original/author-provided content as the primary source of truth

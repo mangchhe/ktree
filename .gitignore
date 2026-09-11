@@ -3,3 +3,6 @@ migrate-to-supabase.mjs
 supabase-schema.sql
 TWO_TRACK_EXECUTION_PLAN.md
 *.code-workspace
+
+# 비공개 tech note 원본 — notes_private 로만 올라가고 레포에는 절대 들어가지 않는다
+drafts/notes-private/

@@ -247,6 +247,65 @@ sequenceDiagram
 - 각 Concept의 `level`, `title`, `description`, `content` 확인
 - 필요 시 상세 화면의 Revision 히스토리에서 AS-IS / TO-BE 비교
 
+## 4) Tech Notes
+
+토픽/섹션/개념 트리와 달리, Tech Note는 **self-contained HTML 문서 한 개**가 통째로 하나의 노트다.
+`notes` / `notes_private` 테이블에 HTML 을 통으로 저장하고, 앱에서는 격리된 iframe(`srcdoc`)으로 렌더한다.
+
+### 저장 위치
+
+| 경로 | 용도 | git |
+|---|---|---|
+| `drafts/notes/` | 공개 노트 원본 → `notes` 테이블 | 커밋함 |
+| `drafts/notes-private/` | 비공개 노트 원본 → `notes_private` 테이블 | **`.gitignore` 처리됨** |
+
+> 비공개 노트를 레포에 넣으면 GitHub Pages 로 그대로 서빙되므로 비공개가 아니게 된다.
+> 반드시 `drafts/notes-private/` 에 두고 DB 로만 올린다.
+
+### 노트 파일 형식
+
+파일명은 `YYYY-MM-DD-slug.html`, 맨 앞에 메타 블록을 둔다:
+
+```html
+<!--ktree
+title: 실시간 WebSocket 게이트웨이
+date: 2026-09-03
+summary: 목록 카드에 보일 한 줄 요약
+-->
+<title>실시간 WebSocket 게이트웨이 — 기술 노트</title>
+...
+```
+
+메타 블록이 없으면 `<title>` 과 파일명에서 유추하고, CLI 플래그가 항상 우선한다.
+
+### 업로드
+
+```bash
+export KTREE_EMAIL='you@example.com'
+export KTREE_PASSWORD='...'
+
+# 공개 노트
+node upload-note.mjs drafts/notes/2026-09-03-realtime-websocket-gateway.html
+
+# 비공개 노트
+node upload-note.mjs drafts/notes-private/2026-09-12-internal.html --private
+
+# 목록 확인 / 삭제
+node upload-note.mjs --list
+node upload-note.mjs --list --private
+node upload-note.mjs --delete <slug> --private
+```
+
+`slug` 기준 upsert 이므로 같은 파일을 다시 올리면 덮어쓴다.
+`--private` 업로드는 `user_access` 에 `access_type='private'` 행이 있는 계정만 RLS 를 통과한다.
+
+### 앱에서 보기
+
+- 공개 노트: 그냥 접속하면 사이드바 **Tech Notes** 에 보인다
+- 비공개 노트: 로그인 후 모드 스위처에서 **PRIVATE** 선택 (`?mode=private`)
+
+모드별로 해당 테이블만 조회하므로, PUBLIC 모드에서는 비공개 노트가 목록에 아예 나타나지 않는다.
+
 ## 운영 원칙
 
 - 원문/사용자 제공 내용을 1순위 기준으로 사용

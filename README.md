@@ -25,6 +25,7 @@ Apache Kafka
 - **Markdown split editor** — Write / Preview / Split modes with bidirectional scroll sync
 - **Section-level bulk editing** — edit all concepts of a section as a single Markdown document
 - **Public / Private dual mode** — keep public publishing separate from private study notes
+- **Tech Notes** — self-contained HTML documents stored in the DB and rendered in an isolated iframe, public or private
 - **Revision history** — AS-IS / TO-BE diff for every concept change
 - **Hierarchical Esc navigation** — form → detail → topic → home
 - **Import / Export** — round-trip a topic to/from a Markdown README

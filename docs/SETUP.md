@@ -123,6 +123,20 @@ CREATE TABLE public.concepts_private (
   updated_at timestamptz DEFAULT now()
 );
 CREATE TABLE public.concept_revisions_private (LIKE public.concept_revisions INCLUDING ALL);
+
+-- tech notes (self-contained HTML documents, rendered in an isolated iframe)
+CREATE TABLE public.notes (
+  slug text PRIMARY KEY,
+  title text NOT NULL,
+  date date,
+  summary text,
+  html text NOT NULL,
+  created_at timestamptz DEFAULT now(),
+  updated_at timestamptz DEFAULT now()
+);
+CREATE INDEX idx_notes_date ON public.notes (date DESC);
+
+CREATE TABLE public.notes_private (LIKE public.notes INCLUDING ALL);
 ```
 
 ### 3. RLS (Row Level Security) policies
@@ -158,16 +172,18 @@ ALTER TABLE public.topics              ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.sections            ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.concepts            ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.concept_revisions   ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.notes               ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.topics_private              ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.sections_private            ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.concepts_private            ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.concept_revisions_private   ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.notes_private               ENABLE ROW LEVEL SECURITY;
 
 -- public: anyone can read, only authenticated users can write
 DO $$
 DECLARE t text;
 BEGIN
-  FOREACH t IN ARRAY ARRAY['topics','sections','concepts','concept_revisions'] LOOP
+  FOREACH t IN ARRAY ARRAY['topics','sections','concepts','concept_revisions','notes'] LOOP
     EXECUTE format('CREATE POLICY "public_read_%1$s"  ON public.%1$I FOR SELECT USING (true);', t);
     EXECUTE format('CREATE POLICY "auth_write_%1$s"   ON public.%1$I FOR ALL    TO authenticated USING (true) WITH CHECK (true);', t);
   END LOOP;
@@ -177,7 +193,7 @@ END $$;
 DO $$
 DECLARE t text;
 BEGIN
-  FOREACH t IN ARRAY ARRAY['topics_private','sections_private','concepts_private','concept_revisions_private'] LOOP
+  FOREACH t IN ARRAY ARRAY['topics_private','sections_private','concepts_private','concept_revisions_private','notes_private'] LOOP
     EXECUTE format(
       'CREATE POLICY "access_ctrl_%1$s" ON public.%1$I FOR ALL TO authenticated
        USING (EXISTS (
