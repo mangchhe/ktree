@@ -92,8 +92,9 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
   .tag-good{color:var(--good);font-weight:600}
   .tag-bad{color:var(--bad);font-weight:600}
 
-  .fig{margin:20px 0;overflow-x:auto}
-  svg.dgm{display:block;margin:0 auto;height:auto;font-family:var(--mono)}
+  figure.fig{margin:22px 0;overflow-x:auto}
+  figure.fig figcaption{font-size:.86rem;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
+  svg.dgm{display:block;margin:0 auto;max-width:100%;height:auto;font-family:var(--mono)}
   svg.dgm text{fill:var(--ink);font-size:12.5px}
   svg.dgm text.sm{font-size:11px}
   svg.dgm text.b{font-weight:600}
@@ -167,21 +168,35 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
   <div class="body">
     <div class="block"><div class="lbl">구조</div>
       <p>무엇이 무엇을 호출하고 데이터가 어디로 흐르나.</p>
-      <div class="fig">
-        <!-- 다이어그램: 색은 class 로만. fill="#333" 같은 하드코딩 금지 -->
-        <svg class="dgm" width="560" height="120" viewBox="0 0 560 120" role="img" aria-label="구조 개요">
-          <rect class="boxa" x="20" y="40" width="140" height="44" rx="8"/>
-          <text x="90" y="67" text-anchor="middle" class="b">클라이언트</text>
-          <line class="e e-acc" x1="164" y1="62" x2="216" y2="62" marker-end="url(#ar)"/>
-          <rect class="box" x="220" y="40" width="140" height="44" rx="8"/>
-          <text x="290" y="67" text-anchor="middle" class="b">서비스</text>
-          <line class="e e-mut" x1="364" y1="62" x2="416" y2="62" marker-end="url(#ar)"/>
-          <rect class="box" x="420" y="40" width="120" height="44" rx="8"/>
-          <text x="480" y="67" text-anchor="middle" class="b">저장소</text>
+      <!--
+        그림은 "이름"이 아니라 "메커니즘"을 그린다. 박스에 이름만 붙일 거면 문장이 더 빠르다.
+        화살표에는 반드시 라벨을 단다 (쓰기 / 무효화 / 30s마다 폴링 …).
+        대안을 비교할 때는 두 구조를 나란히 놓고 "달라지는 엣지"가 보이게 그린다.
+        색은 class + CSS 변수로만 — 하드코딩 hex 는 다크 테마에서 깨진다.
+      -->
+      <figure class="fig">
+        <svg class="dgm" viewBox="0 0 560 130" role="img"
+             aria-label="클라이언트가 서비스에 요청하고, 서비스가 저장소에 읽기/쓰기 하는 3단 흐름">
+          <rect class="boxa" x="6" y="56" width="140" height="44" rx="8"/>
+          <text x="76" y="83" text-anchor="middle" class="b">클라이언트</text>
+
+          <text x="179" y="68" text-anchor="middle" class="sm mut">요청</text>
+          <line class="e e-acc" x1="150" y1="78" x2="204" y2="78" marker-end="url(#ar)"/>
+
+          <rect class="box" x="212" y="56" width="136" height="44" rx="8"/>
+          <text x="280" y="83" text-anchor="middle" class="b">서비스</text>
+
+          <text x="381" y="68" text-anchor="middle" class="sm mut">읽기/쓰기</text>
+          <line class="e e-mut" x1="352" y1="78" x2="406" y2="78" marker-end="url(#ar)"/>
+
+          <rect class="box" x="414" y="56" width="140" height="44" rx="8"/>
+          <text x="484" y="83" text-anchor="middle" class="b">저장소</text>
+
           <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
             <path d="M0,0 L8,4 L0,8 z" fill="var(--muted)"/></marker></defs>
         </svg>
-      </div></div>
+        <figcaption>이 그림이 보여주는 주장 한 문장. 캡션이 안 써지면 그림이 주장을 안 하고 있는 것이다.</figcaption>
+      </figure></div>
     <div class="block"><div class="lbl">데이터 모델</div>
       <pre><code>-- 스키마 변경분만</code></pre></div>
     <div class="block"><div class="lbl">흐름</div>
