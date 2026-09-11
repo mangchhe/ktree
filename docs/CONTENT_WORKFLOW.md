@@ -280,6 +280,20 @@ summary: One-line summary shown on the list card
 Without the block, the title and date are inferred from `<title>` and the filename.
 CLI flags always win.
 
+### Template
+
+`drafts/templates/spec-note.html` — for planning/design write-ups. It ships sections for
+background, requirements, design, decision log, trade-offs, and open questions. Copy it and
+delete whole sections you don't use.
+
+> Public concept notes (`drafts/notes/`) and design docs are different animals — the former
+> is a run of concept cards, the latter a record of decisions and their rationale. Don't mix
+> the templates.
+
+**Reference colors through CSS variables only.** The app injects the ktree dark palette into
+the iframe, so a hardcoded `fill="#333"` breaks under the dark theme. Give SVG shapes a
+`class` and paint them with `var(--accent)` and friends.
+
 ### Uploading
 
 ```bash
