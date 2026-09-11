@@ -296,6 +296,12 @@ the iframe, so a hardcoded `fill="#333"` breaks under the dark theme. Give SVG s
 
 ### Uploading
 
+Credentials come from the `KTREE_EMAIL` / `KTREE_PASSWORD` environment variables, or from a
+`.env` file at the repo root (git-ignored).
+
+> `~/.zshrc` is read by **interactive shells only**. To cover scripts and agents running the
+> upload on your behalf, put the exports in `~/.zshenv` or use `.env`.
+
 ```bash
 export KTREE_EMAIL='you@example.com'
 export KTREE_PASSWORD='...'

@@ -53,13 +53,29 @@ function readCredentials() {
   return { url, key };
 }
 
+// .zshrc 는 인터랙티브 셸에서만 읽히므로, 에이전트/스크립트가 돌릴 때를 위해 .env 도 본다.
+function loadDotenv() {
+  const out = {};
+  try {
+    const txt = readFileSync(new URL('./.env', import.meta.url), 'utf8');
+    for (const line of txt.split('\n')) {
+      const m = line.match(/^\s*(?:export\s+)?([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/i);
+      if (m) out[m[1]] = m[2].replace(/^(['"])(.*)\1$/, '$2');
+    }
+  } catch (_) { /* .env 없으면 환경변수만 사용 */ }
+  return out;
+}
+
 async function connect() {
   const { url, key } = readCredentials();
   const sb = createClient(url, key, { auth: { persistSession: false } });
 
-  const email = process.env.KTREE_EMAIL;
-  const password = process.env.KTREE_PASSWORD;
-  if (!email || !password) die('KTREE_EMAIL / KTREE_PASSWORD 환경변수가 필요합니다.');
+  const env = loadDotenv();
+  const email = process.env.KTREE_EMAIL || env.KTREE_EMAIL;
+  const password = process.env.KTREE_PASSWORD || env.KTREE_PASSWORD;
+  if (!email || !password) {
+    die('KTREE_EMAIL / KTREE_PASSWORD 가 필요합니다 — 환경변수(~/.zshenv)나 ktree/.env 에 설정하세요.');
+  }
 
   const { error } = await sb.auth.signInWithPassword({ email, password });
   if (error) die(`로그인 실패: ${error.message}`);

@@ -292,6 +292,11 @@ summary: 목록 카드에 보일 한 줄 요약
 
 ### 업로드
 
+자격증명은 환경변수 `KTREE_EMAIL` / `KTREE_PASSWORD`, 또는 레포 루트의 `.env`(gitignore)에서 읽는다.
+
+> `~/.zshrc` 는 **인터랙티브 셸에서만** 읽힌다. 스크립트나 에이전트가 대신 실행하는 경우까지
+> 커버하려면 `~/.zshenv` 에 두거나 `.env` 를 쓴다.
+
 ```bash
 export KTREE_EMAIL='you@example.com'
 export KTREE_PASSWORD='...'
