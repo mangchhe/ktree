@@ -3009,6 +3009,17 @@ async function loadNotes() {
   } catch (_) { /* 테이블 미생성 또는 권한 없음 → Tech Notes 섹션 숨김 */ }
 }
 
+// srcdoc 은 부모의 base URL 을 물려받아 노트 안 <a href="#…"> 가 ktree 앱 URL 로 해석된다
+// (목차를 누르면 앱이 iframe 안에 로드됨). blob URL 을 src 로 주면 문서에 고유 URL 이 생겨
+// 프래그먼트가 노트 내부에서 해석되고, 같은 오리진이라 테마 주입도 그대로 된다.
+const noteBlobUrls = new Map();
+function noteBlobUrl(slug, html) {
+  if (!noteBlobUrls.has(slug)) {
+    noteBlobUrls.set(slug, URL.createObjectURL(new Blob([html], { type: 'text/html' })));
+  }
+  return noteBlobUrls.get(slug);
+}
+
 async function loadNoteHtml(slug) {
   if (noteHtmlCache.has(slug)) return noteHtmlCache.get(slug);
   try {
@@ -3120,7 +3131,7 @@ async function openNote(slug) {
       `<p style="color:var(--muted);font-size:13px;">노트 본문을 불러오지 못했습니다. 로그인 상태와 접근 권한(RLS)을 확인하세요.</p>`);
     return;
   }
-  // srcdoc 은 부모와 같은 오리진 → 로드 후 노트에 ktree 다크 팔레트+폰트 주입해 톤 통일
+  // blob URL 은 부모와 같은 오리진 → 로드 후 노트에 ktree 다크 팔레트+폰트 주입해 톤 통일
   frame.addEventListener('load', () => {
     try {
       const doc = frame.contentDocument;
@@ -3136,25 +3147,24 @@ async function openNote(slug) {
       doc.head.appendChild(st);
     } catch (_) { /* cross-origin 등 → 노트 자체 테마 유지 */ }
   });
-  frame.srcdoc = html;
+  frame.src = noteBlobUrl(slug, html);
 }
 
-// DB 저장이라 노트에 고유 URL 이 없다 → blob URL 로 새 탭에 띄운다
 async function openNoteExternal(slug) {
   const html = await loadNoteHtml(slug);
   if (html === null) return;
-  const url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
-  window.open(url, '_blank');
-  setTimeout(() => URL.revokeObjectURL(url), 60000);
+  window.open(noteBlobUrl(slug, html), '_blank');
 }
 
+// 여백을 상수로 추정하면 부모에 스크롤 여유가 남아, 노트 목차를 누를 때 브라우저가
+// iframe 을 보이게 하려고 부모까지 움직인다. 툴바·마진·패딩을 실측해 정확히 채운다.
 function fitNoteFrame() {
   const c = document.getElementById('content');
   const f = document.getElementById('note-frame');
   if (!c || !f) return;
-  const tb = document.querySelector('.note-toolbar');
-  const avail = c.clientHeight - (tb ? tb.offsetHeight : 0) - 22;
-  f.style.height = Math.max(420, avail) + 'px';
+  const bottomPad = parseFloat(getComputedStyle(c).paddingBottom) || 0;
+  const avail = c.getBoundingClientRect().bottom - f.getBoundingClientRect().top - bottomPad;
+  f.style.height = Math.max(420, Math.floor(avail)) + 'px';
 }
 window.addEventListener('resize', fitNoteFrame);
 
