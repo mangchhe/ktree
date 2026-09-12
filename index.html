@@ -3156,6 +3156,8 @@ function mountNoteFrame(frame, slug, html, withToc) {
         /* 우측 레일이 목차를 대신하므로 노트 자체 목차는 숨긴다 (새 탭으로 열면 그대로 보인다) */
         nav.toc{ display:none !important; }`;
       doc.head.appendChild(st);
+      // 같은 blob URL 을 다시 물리면 브라우저가 이전 스크롤을 복원한다 — 노트는 맨 위에서 시작
+      frame.contentWindow.scrollTo(0, 0);
       if (withToc) buildNoteToc(frame);
     } catch (_) { /* cross-origin 등 → 노트 자체 테마 유지 */ }
   });
