@@ -84,6 +84,21 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
   th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
   .tbl-wrap{overflow-x:auto}
 
+  .badge{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:100px;padding:2px 8px;color:var(--muted);white-space:nowrap}
+  .badge.new{color:var(--good);border-color:var(--good)}
+  .badge.chg{color:var(--amber);border-color:var(--amber)}
+  .badge.del{color:var(--bad);border-color:var(--bad)}
+  td .mono,.mono{font-family:var(--mono);font-size:.88em}
+
+  .ab{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  @media(max-width:620px){.ab{grid-template-columns:1fr}}
+  .ab > div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface)}
+  .ab .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+  .ab .as .lbl{color:var(--bad)}
+  .ab .to .lbl{color:var(--good)}
+  .ab pre{margin:0;background:var(--code-bg)}
+
   .tldr{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:26px 0}
   .tldr .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:4px}
   .open{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0}
@@ -129,10 +144,13 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
   <ol>
     <li><span class="n">01</span><a href="#s1">배경 — 왜 지금</a></li>
     <li><span class="n">02</span><a href="#s2">요구사항</a></li>
-    <li><span class="n">03</span><a href="#s3">설계</a></li>
-    <li><span class="n">04</span><a href="#s4">결정 기록</a></li>
-    <li><span class="n">05</span><a href="#s5">트레이드오프</a></li>
-    <li><span class="n">06</span><a href="#s6">미해결</a></li>
+    <li><span class="n">03</span><a href="#s3">유저 스토리 · 플로우</a></li>
+    <li><span class="n">04</span><a href="#s4">설계</a></li>
+    <li><span class="n">05</span><a href="#s5">API 변경</a></li>
+    <li><span class="n">06</span><a href="#s6">DB 변경</a></li>
+    <li><span class="n">07</span><a href="#s7">결정 기록</a></li>
+    <li><span class="n">08</span><a href="#s8">트레이드오프</a></li>
+    <li><span class="n">09</span><a href="#s9">미해결</a></li>
   </ol>
 </nav>
 
@@ -164,7 +182,65 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
 </section>
 
 <section class="card" id="s3">
-  <div class="head"><span class="num">03</span><h2>설계</h2><span class="cat">design</span></div>
+  <div class="head"><span class="num">03</span><h2>유저 스토리 · 플로우</h2><span class="cat">usecase</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">유저 스토리</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>누가</th><th>무엇을</th><th>왜</th></tr></thead>
+          <tbody>
+            <tr><td>…</td><td>…</td><td>…</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+    <div class="block"><div class="lbl">주 플로우</div>
+      <p>정상 경로에서 사용자 동작이 시스템을 어떻게 통과하는지. 화면·API·저장소를 한 그림에 놓아
+        프론트가 어느 시점에 뭘 호출하는지 보이게 한다.</p>
+      <figure class="fig">
+        <svg class="dgm" viewBox="0 0 660 250" role="img"
+             aria-label="사용자 동작이 화면, API, 저장소를 차례로 통과하고 응답이 화면에 반영되는 순서">
+          <!-- 레인 -->
+          <rect class="boxa" x="20" y="14" width="120" height="30" rx="7"/>
+          <text x="80" y="34" text-anchor="middle" class="b">사용자</text>
+          <rect class="box" x="200" y="14" width="120" height="30" rx="7"/>
+          <text x="260" y="34" text-anchor="middle" class="b">화면</text>
+          <rect class="box" x="380" y="14" width="120" height="30" rx="7"/>
+          <text x="440" y="34" text-anchor="middle" class="b">API</text>
+          <rect class="box" x="540" y="14" width="100" height="30" rx="7"/>
+          <text x="590" y="34" text-anchor="middle" class="b">DB</text>
+
+          <line class="life" x1="80"  y1="48" x2="80"  y2="236"/>
+          <line class="life" x1="260" y1="48" x2="260" y2="236"/>
+          <line class="life" x1="440" y1="48" x2="440" y2="236"/>
+          <line class="life" x1="590" y1="48" x2="590" y2="236"/>
+
+          <text x="170" y="76" text-anchor="middle" class="sm mut">① 동작</text>
+          <line class="e e-acc" x1="86" y1="86" x2="254" y2="86" marker-end="url(#arf)"/>
+
+          <text x="350" y="116" text-anchor="middle" class="sm mut">② POST /…</text>
+          <line class="e e-acc" x1="266" y1="126" x2="434" y2="126" marker-end="url(#arf)"/>
+
+          <text x="515" y="156" text-anchor="middle" class="sm mut">③ 쓰기</text>
+          <line class="e e-mut" x1="446" y1="166" x2="584" y2="166" marker-end="url(#arf)"/>
+
+          <text x="350" y="196" text-anchor="middle" class="sm mut">④ 201 + 결과</text>
+          <line class="e e-mut" x1="434" y1="206" x2="266" y2="206" marker-end="url(#arf)"/>
+
+          <defs><marker id="arf" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="var(--muted)"/></marker></defs>
+        </svg>
+        <figcaption>이 플로우가 보여주는 주장 한 문장.</figcaption>
+      </figure></div>
+
+    <div class="block"><div class="lbl">예외 · 실패 플로우</div>
+      <p>권한 없음, 중복 요청, 외부 API 실패 등. <b>프론트가 뭘 보여줘야 하는지</b>까지 적는다.</p>
+      <ul><li>…</li></ul></div>
+  </div>
+</section>
+
+<section class="card" id="s4">
+  <div class="head"><span class="num">04</span><h2>설계</h2><span class="cat">design</span></div>
   <div class="body">
     <div class="block"><div class="lbl">구조</div>
       <p>무엇이 무엇을 호출하고 데이터가 어디로 흐르나.</p>
@@ -197,15 +273,78 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
         </svg>
         <figcaption>이 그림이 보여주는 주장 한 문장. 캡션이 안 써지면 그림이 주장을 안 하고 있는 것이다.</figcaption>
       </figure></div>
-    <div class="block"><div class="lbl">데이터 모델</div>
-      <pre><code>-- 스키마 변경분만</code></pre></div>
     <div class="block"><div class="lbl">흐름</div>
       <ol class="list"><li>…</li></ol></div>
   </div>
 </section>
 
-<section class="card" id="s4">
-  <div class="head"><span class="num">04</span><h2>결정 기록</h2><span class="cat">decisions</span></div>
+<section class="card" id="s5">
+  <div class="head"><span class="num">05</span><h2>API 변경</h2><span class="cat">interface</span></div>
+  <div class="body">
+    <p>프론트가 읽는 계약. <b>이 섹션만 보고 클라이언트 작업을 시작할 수 있어야 한다.</b></p>
+
+    <div class="block"><div class="lbl">엔드포인트 총정리</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>구분</th><th>메서드 · 경로</th><th>용도</th><th>인증</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge new">신규</span></td><td class="mono">POST /api/…</td><td>…</td><td>…</td></tr>
+            <tr><td><span class="badge chg">변경</span></td><td class="mono">GET /api/…</td><td>…</td><td>…</td></tr>
+            <tr><td><span class="badge del">삭제</span></td><td class="mono">GET /api/…</td><td>…</td><td>…</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+    <div class="block"><div class="lbl">요청 · 응답</div>
+      <p class="mono">POST /api/…</p>
+      <pre><code>// 요청
+{ }
+
+// 200
+{ }</code></pre></div>
+
+    <div class="block"><div class="lbl">변경분 — 프론트가 고쳐야 하는 것</div>
+      <p>변경된 엔드포인트는 AS-IS / TO-BE 를 나란히 둔다. 필드 하나 바뀐 것도 적는다.</p>
+      <div class="ab">
+        <div class="as"><div class="lbl">AS-IS</div><pre><code>{ }</code></pre></div>
+        <div class="to"><div class="lbl">TO-BE</div><pre><code>{ }</code></pre></div>
+      </div></div>
+
+    <div class="block why"><div class="lbl">호환성</div>
+      <p>breaking change 인가. 구버전 클라이언트가 깨지나, 배포 순서(서버 먼저 / 동시)는 어떻게 되나.
+        안 깨진다면 왜 안 깨지는지 한 줄.</p></div>
+  </div>
+</section>
+
+<section class="card" id="s6">
+  <div class="head"><span class="num">06</span><h2>DB 변경</h2><span class="cat">schema</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">변경 총정리</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>구분</th><th>대상</th><th>내용</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge new">신규</span></td><td class="mono">table_name</td><td>…</td><td>…</td></tr>
+            <tr><td><span class="badge chg">컬럼</span></td><td class="mono">table.column</td><td>…</td><td>nullable / 기본값</td></tr>
+            <tr><td><span class="badge chg">인덱스</span></td><td class="mono">idx_…</td><td>…</td><td>어느 쿼리 때문에</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+    <div class="block"><div class="lbl">마이그레이션</div>
+      <pre><code>-- 변경분만. 실행 순서대로.</code></pre></div>
+
+    <div class="block why"><div class="lbl">백필 · 롤백</div>
+      <ul>
+        <li>기존 행 백필이 필요한가 — 필요하면 어떤 값으로, 얼마나 걸리나</li>
+        <li>되돌리려면 무엇을 하나 — 되돌릴 수 없다면 그렇다고 적는다</li>
+        <li>무중단인가 — 락이 걸리는 변경(대형 테이블 컬럼 추가 등)이면 명시</li>
+      </ul></div>
+  </div>
+</section>
+
+<section class="card" id="s7">
+  <div class="head"><span class="num">07</span><h2>결정 기록</h2><span class="cat">decisions</span></div>
   <div class="body">
     <p>나중에 "왜 이렇게 했지?" 할 때 보는 표. <b>택하지 않은 대안</b>을 반드시 남긴다.</p>
     <div class="tbl-wrap">
@@ -219,8 +358,8 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
   </div>
 </section>
 
-<section class="card" id="s5">
-  <div class="head"><span class="num">05</span><h2>트레이드오프</h2><span class="cat">tradeoffs</span></div>
+<section class="card" id="s8">
+  <div class="head"><span class="num">08</span><h2>트레이드오프</h2><span class="cat">tradeoffs</span></div>
   <div class="body">
     <div class="block trade"><div class="lbl">얻는 것</div><p>…</p></div>
     <div class="block trade"><div class="lbl">잃는 것</div><p>…</p></div>
@@ -229,8 +368,8 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
   </div>
 </section>
 
-<section class="card" id="s6">
-  <div class="head"><span class="num">06</span><h2>미해결</h2><span class="cat">open</span></div>
+<section class="card" id="s9">
+  <div class="head"><span class="num">09</span><h2>미해결</h2><span class="cat">open</span></div>
   <div class="body">
     <div class="open"><div class="lbl">열린 질문</div>
       <ul><li>…</li></ul></div>

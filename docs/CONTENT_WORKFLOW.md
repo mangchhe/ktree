@@ -282,9 +282,15 @@ CLI flags always win.
 
 ### Template
 
-`drafts/templates/spec-note.html` — for planning/design write-ups. It ships sections for
-background, requirements, design, decision log, trade-offs, and open questions. Copy it and
-delete whole sections you don't use.
+`drafts/templates/spec-note.html` — skeleton for planning/design write-ups. Copy it and delete
+whole sections you don't use.
+
+Background · requirements · **user stories/flow** · design · **API changes** · **DB changes** ·
+decision log · trade-offs · open questions.
+
+> Don't leave the three bolded sections empty. Whoever reads this later is usually a frontend
+> dev or you in three months, and they read **only those three**. Scattering the same facts
+> through the design prose and skipping these defeats the document.
 
 > Public concept notes (`drafts/notes/`) and design docs are different animals — the former
 > is a run of concept cards, the latter a record of decisions and their rationale. Don't mix
