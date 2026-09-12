@@ -335,6 +335,15 @@ row in `user_access`.
 
 Each mode queries only its own table, so private notes never appear in PUBLIC mode.
 
+### Side-by-side view
+
+Pick another note from **"나란히 보기…"** in the note toolbar to open it in a right-hand pane —
+handy for reading a design doc next to its source spec. The TOC rail steps aside while split.
+
+> External URLs cannot be shown. Notion and claude.ai send `x-frame-options: SAMEORIGIN`, so the
+> browser refuses to embed them in an iframe — being logged in doesn't help. To read a source
+> document alongside a note, upload that document as a private note too.
+
 ## Operating principles
 
 - Treat the original/author-provided content as the primary source of truth
