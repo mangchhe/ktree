@@ -300,8 +300,14 @@ summary: 목록 카드에 보일 한 줄 요약
 
 자격증명은 환경변수 `KTREE_EMAIL` / `KTREE_PASSWORD`, 또는 레포 루트의 `.env`(gitignore)에서 읽는다.
 
-> `~/.zshrc` 는 **인터랙티브 셸에서만** 읽힌다. 스크립트나 에이전트가 대신 실행하는 경우까지
-> 커버하려면 `~/.zshenv` 에 두거나 `.env` 를 쓴다.
+> `~/.zshrc` 는 **인터랙티브 셸에서만** 읽힌다. 거기 넣어둔 채로 스크립트·에이전트가 실행하면
+> "자격증명이 없다"고 나온다. 그럴 땐 옮길 필요 없이 인터랙티브 셸로 감싸면 된다:
+>
+> ```bash
+> zsh -ic 'cd ~/prj/ktree && node upload-note.mjs <파일> --private'
+> ```
+>
+> 아예 안 걸리게 하려면 `~/.zshenv` 로 옮기거나 `.env` 를 쓴다.
 
 ```bash
 export KTREE_EMAIL='you@example.com'
