@@ -12,6 +12,14 @@ summary: 한 줄 요약 — ktree 목록 카드에 이 문장이 보인다.
     3. 안 쓰는 섹션은 통째로 지운다 — 빈 껍데기를 남기지 말 것
     4. node upload-note.mjs drafts/notes-private/YYYY-MM-DD-slug.html --private
 
+  섹션 구조 (건드리지 말 것)
+    ktree 는 이 문서를 읽어 우측 목차 레일을 자동으로 만든다. 노트에 목차를 넣을 필요는 없지만
+    구조는 지켜야 한다 — <section> + id + 그 안의 <h2>.
+      · <div class="card"> 로 바꾸면 레일에서 통째로 빠진다
+      · id 없는 섹션은 조용히 누락된다
+      · 제목을 <h3> 로 쓰면 안 잡힌다 (h2 만 본다)
+    섹션 개수·이름은 자유다. 아래 nav.toc 는 앱에서는 레일과 중복이라 숨겨지고, 새 탭으로 열면 보인다.
+
   팔레트 규칙 (건드리지 말 것)
     색은 :root / @media(prefers-color-scheme:dark) / :root[data-theme] 3중으로 정의돼 있다.
     ktree 앱이 iframe 에 다크 팔레트를 주입할 때 세 번째 정의를 덮어쓰므로,
