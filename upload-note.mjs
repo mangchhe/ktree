@@ -95,7 +95,14 @@ function parseMetaBlock(html) {
 }
 
 function buildRecord(file) {
-  const html = readFileSync(file, 'utf8');
+  let html;
+  try {
+    html = readFileSync(file, 'utf8');
+  } catch (e) {
+    if (e.code === 'ENOENT') die(`파일이 없습니다: ${file}\n  템플릿에서 만들려면: cp drafts/templates/spec-note.html ${file}`);
+    if (e.code === 'EISDIR') die(`디렉터리입니다 — HTML 파일 경로를 주세요: ${file}`);
+    die(`파일을 읽을 수 없습니다 (${e.code}): ${file}`);
+  }
   const meta = parseMetaBlock(html);
   const name = basename(file).replace(/\.html?$/i, '');
 
