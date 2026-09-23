@@ -1490,11 +1490,66 @@ let VIEW_TABLES = {
 
 let userAccessTypes = [];
 
+// ── 인증 흔적 ─────────────────────────────────────────────
+// "자꾸 로그인이 풀린다"를 **증거로** 바꾸기 위한 것. 언제 무슨 일이
+// 있었는지만 남긴다 — 🔴 **토큰은 한 글자도 안 적는다.**
+// 확인: localStorage.getItem('ktree-auth-trail')
+const AUTH_TRAIL_KEY = 'ktree-auth-trail';
+function authTrail(event, detail) {
+  try {
+    const log = JSON.parse(localStorage.getItem(AUTH_TRAIL_KEY) || '[]');
+    // **같은 사건이 이어지면 접는다.** 이 라이브러리는 페이지 로드마다
+    // SIGNED_IN 을 찍는데, 그대로 쌓으면 40칸이 그걸로 차서 **정작 찾으려던
+    // SIGNED_OUT 이 밀려난다.** 횟수만 올리고 마지막 시각을 갱신한다
+    const last = log[log.length - 1];
+    if (last && last.event === event && !detail) {
+      last.n = (last.n || 1) + 1;
+      last.t = new Date().toISOString();
+    } else {
+      log.push({ t: new Date().toISOString(), page: location.pathname.split('/').pop() || 'index.html',
+                 event, detail: detail ? String(detail).slice(0, 120) : undefined });
+    }
+    localStorage.setItem(AUTH_TRAIL_KEY, JSON.stringify(log.slice(-40)));
+  } catch (_) { /* 저장소가 막혀도 앱은 돌아야 한다 */ }
+}
+
+// 세션은 없다는데 갱신 토큰은 남아 있는가. **값은 안 본다 — 있는지만 본다.**
+function hasStoredRefreshToken() {
+  try {
+    for (const k of Object.keys(localStorage)) {
+      if (!/^sb-.*-auth-token$/.test(k)) continue;
+      const v = JSON.parse(localStorage.getItem(k) || 'null');
+      if (v && v.refresh_token) return true;
+    }
+  } catch (_) {}
+  return false;
+}
+
+if (sb) {
+  // SIGNED_OUT 이 **언제 왜** 나는지가 이 문제의 핵심이다
+  sb.auth.onAuthStateChange((event, session) => {
+    if (event === 'INITIAL_SESSION') return;   // 페이지마다 한 번씩 나 시끄럽다
+    authTrail(event, session ? '' : 'no-session');
+  });
+}
+
+// 조회가 **실패**했는지 **권한이 없는지**를 부르는 쪽이 구별할 수 있게 한다.
+// 🔴 전에는 `const { data }` 로 error 를 통째로 버렸다 — 네트워크가 한 번
+//    끊기거나 토큰 갱신이 늦으면 `data` 가 null 이 되어 권한 목록이 비고,
+//    화면에는 **"접근 권한 없음"** 이 떴다. 실제로는 권한이 멀쩡한데.
+let lastAccessError = null;
+
 async function loadUserAccess() {
   if (!sb) return;
+  lastAccessError = null;
   const { data: { session } } = await sb.auth.getSession();
   if (!session) return;
-  const { data } = await sb.from('user_access').select('access_type');
+  const { data, error } = await sb.from('user_access').select('access_type');
+  if (error) {
+    lastAccessError = error;
+    authTrail('access_query_failed', error.message);
+    return;              // **덮어쓰지 않는다** — 직전 권한을 유지한다
+  }
   userAccessTypes = (data || []).map(r => r.access_type);
 
   VIEW_TABLES = { public: makeTables('') };
@@ -1559,15 +1614,17 @@ async function logoutPrivate() {
   window.location.reload();
 }
 
-function renderAccessDenied(mode) {
+function renderAccessDenied(mode, queryError) {
   const inner = document.getElementById('content-inner');
   if (!inner) return;
   inner.classList.remove('wide');
   inner.innerHTML = `
     <div style="max-width:360px;margin:72px auto;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;text-align:center">
       <div style="font-size:32px;margin-bottom:12px">🚫</div>
-      <div style="font-size:16px;font-weight:700;margin-bottom:8px">접근 권한 없음</div>
-      <div style="font-size:13px;color:var(--muted);margin-bottom:20px">'${mode.toUpperCase()}' 모드에 대한 접근 권한이 없습니다.</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px">${queryError ? '권한을 확인하지 못했습니다' : '접근 권한 없음'}</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:20px">${queryError
+        ? `권한 조회가 실패했습니다 — 로그인이 풀린 게 아닙니다.<br><span style="opacity:.7;font-size:11px">${queryError.message || ''}</span><br><br>새로고침하면 대개 해결됩니다.`
+        : `'${mode.toUpperCase()}' 모드에 대한 접근 권한이 없습니다.`}</div>
       <div style="display:flex;gap:8px;justify-content:center">
         <button style="padding:9px 16px;border:1px solid var(--border2);border-radius:6px;background:transparent;color:var(--text);cursor:pointer" onclick="switchAppMode('public')">← 돌아가기</button>
         <button style="padding:9px 16px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:700;cursor:pointer" onclick="logoutPrivate()">로그아웃</button>
@@ -1619,9 +1676,20 @@ function renderPrivateLogin(message = '') {
   };
 
   btnEl.addEventListener('click', doLogin);
-  pwEl.addEventListener('keydown', e => {
-    if (e.key === 'Enter') doLogin();
-  });
+  // 🔴 **Enter 가 비밀번호 칸에만 걸려 있었다.** 포커스는 이메일 칸에서
+  //    시작하는데(아래 focus()), 거기서 Enter 를 치면 아무 일도 안 나서
+  //    **매번 마우스로 버튼을 눌러야 했다.**
+  //    이메일에서 Enter → 비밀번호로 이동(브라우저 기본 동작과 같다),
+  //    비밀번호에서 Enter → 로그인. 둘 다 차 있으면 어디서든 바로 로그인한다
+  const onEnter = e => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    if (!(emailEl.value || '').trim()) { emailEl.focus(); return; }
+    if (!pwEl.value) { pwEl.focus(); return; }
+    doLogin();
+  };
+  emailEl.addEventListener('keydown', onEnter);
+  pwEl.addEventListener('keydown', onEnter);
   emailEl.focus();
 }
 
@@ -2673,7 +2741,19 @@ document.addEventListener('click', e => {
 });
 
 async function initFromSupabase() {
-  const { data: { session } } = await sb.auth.getSession();
+  let { data: { session } } = await sb.auth.getSession();
+
+  // 🔵 **저장소에 갱신 토큰이 남아 있으면 한 번 되살려 본다.**
+  //    getSession() 은 갱신이 실패하면 세션을 **지우고** null 을 준다.
+  //    일시적인 실패(잠깐 끊긴 네트워크, 절전에서 깨어난 탭) 한 번에
+  //    로그인 화면으로 돌아가면, 쓰는 사람에게는 "자꾸 풀린다"가 된다
+  if (!session && hasStoredRefreshToken()) {
+    authTrail('recover_attempt');
+    const { data, error } = await sb.auth.refreshSession();
+    session = data?.session || null;
+    authTrail(session ? 'recover_ok' : 'recover_failed', error?.message);
+  }
+
   if (APP_MODE !== 'public') {
     if (!session) {
       setPrivateAuthUI(false);
@@ -2683,7 +2763,8 @@ async function initFromSupabase() {
     await loadUserAccess();
     if (!VIEW_TABLES[APP_MODE]) {
       setPrivateAuthUI(true);
-      renderAccessDenied(APP_MODE);
+      // 조회가 실패한 것과 권한이 없는 것은 **다른 사건**이다
+      renderAccessDenied(APP_MODE, lastAccessError);
       return false;
     }
     setPrivateAuthUI(true);
