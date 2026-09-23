@@ -2,8 +2,8 @@
 /**
  * Tech Note 업로드 도구 — self-contained HTML 노트를 Supabase notes / notes_private 에 올린다.
  *
- *   node upload-note.mjs <file.html> [--private] [--slug s] [--title t] [--date d] [--summary s]
- *   node upload-note.mjs --list [--private]
+ *   node upload-note.mjs <file.html> [--private] [--slug s] [--title t] [--date d] [--summary s] [--domain d]
+ *   node upload-note.mjs --list [--private] [--domain d]
  *   node upload-note.mjs --delete <slug> [--private]
  *
  * 인증: KTREE_EMAIL / KTREE_PASSWORD 환경변수 (Supabase Auth 계정).
@@ -14,7 +14,11 @@
  *   title: 실시간 WebSocket 게이트웨이
  *   date: 2026-09-03
  *   summary: 한 줄 요약
+ *   domain: project-a     # 선택. 프로젝트별로 목록을 가른다 (project-a / project-b / …)
  *   -->
+ *
+ * domain 은 notes.domain / notes_private.domain 컬럼에 들어간다. 컬럼이 아직 없으면
+ * 업로드가 실패하면서 필요한 SQL 을 알려준다 — 그 한 줄만 Supabase SQL editor 에서 돌리면 된다.
  * 없으면 <title> 과 파일명(YYYY-MM-DD-slug.html)에서 유추하고, CLI 플래그가 항상 우선한다.
  */
 import { readFileSync } from 'node:fs';
@@ -34,6 +38,22 @@ for (let i = 0; i < argv.length; i++) {
 }
 
 const TABLE = flags.private ? 'notes_private' : 'notes';
+
+// notes_private 는 `LIKE notes INCLUDING ALL` 로 만들어져 **생성 시점에 복사**된 것이라
+// 둘이 따로 논다. 한쪽만 고치면 공개/비공개 중 하나가 조용히 어긋난다.
+const DOMAIN_SQL = `
+  다음 SQL 을 Supabase SQL editor 에서 한 번 실행하세요:
+
+    ALTER TABLE public.notes         ADD COLUMN IF NOT EXISTS domain text;
+    ALTER TABLE public.notes_private ADD COLUMN IF NOT EXISTS domain text;
+    CREATE INDEX IF NOT EXISTS idx_notes_domain         ON public.notes (domain);
+    CREATE INDEX IF NOT EXISTS idx_notes_private_domain ON public.notes_private (domain);
+`;
+
+// PostgREST 는 없는 컬럼을 42703 으로 돌려준다. 메시지 문자열에만 기대지 않는다
+function isMissingDomain(err) {
+  return err && (err.code === '42703' || /domain/i.test(err.message || ''));
+}
 
 function die(msg) {
   console.error(`✗ ${msg}`);
@@ -118,18 +138,57 @@ function buildRecord(file) {
 
   if (!summary) console.warn('⚠ summary 가 비어 있습니다 (목록 카드에 설명이 안 보입니다).');
 
-  return { slug, title, date, summary, html, updated_at: new Date().toISOString() };
+  const domain = (flags.domain || meta.domain || '').trim().toLowerCase();
+  if (domain && !/^[a-z0-9][a-z0-9_-]*$/.test(domain)) {
+    die(`domain 형식이 올바르지 않습니다: "${domain}" (소문자 영숫자 _ - 만 허용)`);
+  }
+  if (!domain) {
+    console.warn('⚠ domain 이 비어 있습니다 — 목록에서 "미분류"로 묶입니다.');
+  }
+
+  const rec = { slug, title, date, summary, html, updated_at: new Date().toISOString() };
+  // **없으면 아예 안 보낸다.** null 을 보내면 컬럼이 없는 DB 에서 같은 에러가 나는데,
+  // domain 을 안 쓰는 사람까지 스키마 변경을 강요받을 이유가 없다
+  if (domain) rec.domain = domain;
+  return rec;
 }
 
 // --- 명령 ------------------------------------------------------------------
 async function cmdList(sb) {
-  const { data, error } = await sb.from(TABLE)
-    .select('slug, title, date, summary')
-    .order('date', { ascending: false });
+  // domain 컬럼이 아직 없는 DB 에서도 목록은 떠야 한다 — 한 번 더 시도한다
+  let data, error;
+  ({ data, error } = await sb.from(TABLE)
+    .select('slug, title, date, summary, domain')
+    .order('date', { ascending: false }));
+  if (error && isMissingDomain(error)) {
+    ({ data, error } = await sb.from(TABLE)
+      .select('slug, title, date, summary')
+      .order('date', { ascending: false }));
+    if (!error) console.warn('⚠ domain 컬럼이 없습니다 — 분류 없이 표시합니다.\n' + DOMAIN_SQL + '\n');
+  }
   if (error) die(`조회 실패: ${error.message}`);
-  if (!data.length) { console.log(`(${TABLE} 비어 있음)`); return; }
-  console.log(`${TABLE} — ${data.length} notes\n`);
-  for (const n of data) console.log(`  ${n.date || '----------'}  ${n.slug}\n      ${n.title}`);
+
+  let rows = data || [];
+  if (flags.domain) rows = rows.filter(n => (n.domain || '') === flags.domain);
+  if (!rows.length) { console.log(`(${TABLE}${flags.domain ? ` · domain=${flags.domain}` : ''} 비어 있음)`); return; }
+
+  // **도메인별로 묶어서 낸다.** 섞여 있으면 목록이 길어질수록 읽을 수가 없다
+  const groups = new Map();
+  for (const n of rows) {
+    const d = n.domain || '(미분류)';
+    if (!groups.has(d)) groups.set(d, []);
+    groups.get(d).push(n);
+  }
+  const names = [...groups.keys()].sort((a, b) =>
+    a === '(미분류)' ? 1 : b === '(미분류)' ? -1 : a.localeCompare(b));
+
+  console.log(`${TABLE} — ${rows.length} notes · ${names.length} domains\n`);
+  for (const d of names) {
+    const g = groups.get(d);
+    console.log(`  [${d}] ${g.length}`);
+    for (const n of g) console.log(`    ${n.date || '----------'}  ${n.slug}\n        ${n.title}`);
+    console.log('');
+  }
 }
 
 async function cmdDelete(sb, slug) {
@@ -141,12 +200,17 @@ async function cmdDelete(sb, slug) {
 async function cmdUpload(sb, file) {
   const rec = buildRecord(file);
   const { error } = await sb.from(TABLE).upsert(rec, { onConflict: 'slug' });
+  if (error && isMissingDomain(error)) {
+    die(`업로드 실패 — domain 컬럼이 아직 없습니다.\n${DOMAIN_SQL}\n  ` +
+        `(분류 없이 올리려면 노트의 domain: 줄을 지우세요)`);
+  }
   if (error) die(`업로드 실패: ${error.message}`);
   const kb = (Buffer.byteLength(rec.html, 'utf8') / 1024).toFixed(1);
   console.log(`✓ ${TABLE}/${rec.slug}  (${kb} KB)`);
   console.log(`  title   ${rec.title}`);
   console.log(`  date    ${rec.date || '(없음)'}`);
   console.log(`  summary ${rec.summary || '(없음)'}`);
+  console.log(`  domain  ${rec.domain || '(미분류)'}`);
 }
 
 const sb = await connect();

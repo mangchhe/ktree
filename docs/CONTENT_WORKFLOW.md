@@ -272,6 +272,7 @@ Name files `YYYY-MM-DD-slug.html` and put a metadata block at the very top:
 title: Realtime WebSocket Gateway
 date: 2026-09-03
 summary: One-line summary shown on the list card
+domain: project-a     # optional — groups by project (project-a / project-b / …)
 -->
 <title>Realtime WebSocket Gateway — Tech Note</title>
 ...

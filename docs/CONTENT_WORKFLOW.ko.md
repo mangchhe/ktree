@@ -271,6 +271,7 @@ sequenceDiagram
 title: 실시간 WebSocket 게이트웨이
 date: 2026-09-03
 summary: 목록 카드에 보일 한 줄 요약
+domain: project-a     # 선택 — 프로젝트별 분류 (project-a / project-b / …)
 -->
 <title>실시간 WebSocket 게이트웨이 — 기술 노트</title>
 ...

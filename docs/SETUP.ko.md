@@ -127,13 +127,18 @@ CREATE TABLE public.notes (
   title text NOT NULL,
   date date,
   summary text,
+  -- domain: 프로젝트별로 노트를 가른다 (project-a / project-b / …). NULL 이면 미분류.
+  domain text,
   html text NOT NULL,
   created_at timestamptz DEFAULT now(),
   updated_at timestamptz DEFAULT now()
 );
 CREATE INDEX idx_notes_date ON public.notes (date DESC);
+CREATE INDEX idx_notes_domain ON public.notes (domain);
 
 CREATE TABLE public.notes_private (LIKE public.notes INCLUDING ALL);
+-- NOTE: LIKE copies the structure **at creation time** — the two tables do not stay
+--       in sync. Any later ALTER must be applied to both.
 ```
 
 ### 3. RLS (Row Level Security) 정책

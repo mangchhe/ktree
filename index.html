@@ -377,6 +377,27 @@ body {
   line-height: 1.7;
   max-width: 420px;
 }
+/* 노트를 프로젝트(domain)별로 가르는 머리줄. 한 볼트에 두 프로젝트가 섞이면
+   목록이 길어질수록 "내 것 찾기"가 훑기가 된다 */
+.note-domain {
+  width: 100%; max-width: 800px;
+  display: flex; align-items: center; gap: 10px;
+  margin: 26px 0 2px;
+  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); opacity: 0.75;
+}
+.note-domain:first-child { margin-top: 0; }
+.note-domain::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.note-domain .n { opacity: 0.6; letter-spacing: 0; text-transform: none; }
+/* 사이드바 쪽 — 훨씬 조용하게. 여기는 목록이 주인공이다 */
+.sb-domain {
+  padding: 7px 12px 2px 20px;
+  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); opacity: 0.5;
+}
+
 .landing-grid {
   display: flex;
   flex-wrap: wrap;
@@ -3031,10 +3052,19 @@ async function loadNotes() {
   S.notes = [];
   if (!sb) return;
   try {
-    const { data, error } = await sb
+    // 🔴 **domain 컬럼이 없어도 노트는 떠야 한다.** 없는 컬럼을 select 하면
+    //    PostgREST 가 42703 을 주는데, 아래 catch 가 그걸 삼켜서 **Tech Notes 섹션이
+    //    통째로 사라진다.** 스키마를 아직 안 고친 환경에서 앱이 빈손이 되면 안 된다
+    let { data, error } = await sb
       .from(getViewTables().notes)
-      .select('slug, title, date, summary')
+      .select('slug, title, date, summary, domain')
       .order('date', { ascending: false });
+    if (error) {
+      ({ data, error } = await sb
+        .from(getViewTables().notes)
+        .select('slug, title, date, summary')
+        .order('date', { ascending: false }));
+    }
     if (error) throw error;
     S.notes = data || [];
   } catch (_) { /* 테이블 미생성 또는 권한 없음 → Tech Notes 섹션 숨김 */ }
@@ -3070,6 +3100,22 @@ async function loadNoteHtml(slug) {
   }
 }
 
+// 도메인별로 묶는다. **미분류는 항상 맨 뒤** — 분류된 것이 주인공이다.
+// 순서는 이름순으로 고정한다(Map 삽입 순서에 기대면 데이터 순서가 바뀔 때 화면이 흔들린다).
+function notesByDomain() {
+  const groups = new Map();
+  for (const n of S.notes) {
+    const d = n.domain || '';
+    if (!groups.has(d)) groups.set(d, []);
+    groups.get(d).push(n);
+  }
+  return [...groups.entries()].sort((a, b) =>
+    a[0] === '' ? 1 : b[0] === '' ? -1 : a[0].localeCompare(b[0]));
+}
+
+const DOMAIN_LABEL = { '': '미분류' };
+const domainLabel = d => DOMAIN_LABEL[d] || d;
+
 function notesTabActive() {
   document.querySelectorAll('.sb-topic').forEach(el => {
     el.classList.remove('active');
@@ -3091,8 +3137,14 @@ function updateNotesSidebar(activeSlug) {
   if (desc) desc.style.display = 'none';
   const c = document.getElementById(`secs-${NOTES_TID}`);
   if (!c) return;
-  c.innerHTML = S.notes.map(n =>
-    `<div class="sb-section${n.slug === activeSlug ? ' active' : ''}" data-slug="${n.slug}">${n.title}<span class="sb-section-count">${n.date || ''}</span></div>`
+  const groups = notesByDomain();
+  // 도메인이 하나뿐이면 머리줄을 안 붙인다 — 한 종류인데 이름표가 붙으면 잡음이다
+  const showHeads = groups.length > 1;
+  c.innerHTML = groups.map(([d, list]) =>
+    (showHeads ? `<div class="sb-domain">${domainLabel(d)}</div>` : '') +
+    list.map(n =>
+      `<div class="sb-section${n.slug === activeSlug ? ' active' : ''}" data-slug="${n.slug}">${n.title}<span class="sb-section-count">${n.date || ''}</span></div>`
+    ).join('')
   ).join('');
   c.style.maxHeight = c.scrollHeight + 200 + 'px';
   c.querySelectorAll('.sb-section').forEach(el =>
@@ -3112,12 +3164,17 @@ function openNotesTopic() {
   const inner = document.getElementById('content-inner');
   inner.classList.remove('wide', 'note-mode');
   if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
-  const cards = S.notes.map(n => `
+  const groups = notesByDomain();
+  const showHeads = groups.length > 1;
+  const cards = groups.map(([d, list]) =>
+    (showHeads ? `<div class="note-domain">${domainLabel(d)}<span class="n">${list.length}</span></div>` : '') +
+    list.map(n => `
     <div class="landing-card" onclick="openNote('${n.slug}')">
       <div class="landing-card-title">${n.title}</div>
       <div class="landing-card-desc">${n.summary || ''}</div>
       <div class="landing-card-meta"><span class="landing-card-count">${n.date || ''}</span></div>
-    </div>`).join('');
+    </div>`).join('')
+  ).join('');
   inner.innerHTML = `
     <div class="topic-header">
       <div class="topic-header-top"><h1>Tech Notes</h1></div>
