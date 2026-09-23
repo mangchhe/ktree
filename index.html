@@ -314,6 +314,14 @@ body {
 .note-layout.split { gap:14px; }
 .note-layout.split .note-main { padding-right:0; }
 .note-side { flex:1; min-width:0; }
+/* 카드에 붙는 "딸린 문서" 칩. 목록에서는 숨기되 **있다는 것은 보여야** 한다 */
+.note-chip {
+  margin-left: 8px; padding: 2px 7px; border-radius: 5px;
+  border: 1px solid var(--border2); color: var(--muted);
+  font-size: 10px; letter-spacing: .02em; cursor: pointer; white-space: nowrap;
+}
+.note-chip:hover { color: var(--text); border-color: var(--accent); }
+
 .note-side-pick {
   margin-left:auto; background:var(--surface); color:var(--muted);
   border:1px solid var(--border); border-radius:7px; padding:5px 8px;
@@ -1758,7 +1766,7 @@ function buildSidebar() {
       <div class="sb-topic" id="tab-${NOTES_TID}" style="--topic-color:${NOTES_COLOR}">
         <div class="sb-dot" style="background:${NOTES_COLOR}"></div>
         Tech Notes
-        <span class="sb-topic-count">${S.notes.length}</span>
+        <span class="sb-topic-count">${topLevelNotes().length}</span>
       </div>
       <div class="sb-topic-desc" id="desc-${NOTES_TID}">주제별 기술 학습노트</div>
       <div class="sb-sections" id="secs-${NOTES_TID}" style="max-height:0"></div>
@@ -1902,7 +1910,7 @@ function renderLanding() {
           <div class="landing-card-title">Tech Notes</div>
           <div class="landing-card-desc">주제별로 정리한 기술 학습노트</div>
           <div class="landing-card-meta">
-            <span class="landing-card-count">${S.notes.length} notes</span>
+            <span class="landing-card-count">${topLevelNotes().length} notes</span>
           </div>
           <div class="landing-card-tags"><span class="landing-card-tag">tech</span></div>
         </div>` : ''}
@@ -3157,15 +3165,13 @@ async function loadNotes() {
     // 🔴 **domain 컬럼이 없어도 노트는 떠야 한다.** 없는 컬럼을 select 하면
     //    PostgREST 가 42703 을 주는데, 아래 catch 가 그걸 삼켜서 **Tech Notes 섹션이
     //    통째로 사라진다.** 스키마를 아직 안 고친 환경에서 앱이 빈손이 되면 안 된다
-    let { data, error } = await sb
-      .from(getViewTables().notes)
-      .select('slug, title, date, summary, domain')
-      .order('date', { ascending: false });
-    if (error) {
-      ({ data, error } = await sb
-        .from(getViewTables().notes)
-        .select('slug, title, date, summary')
-        .order('date', { ascending: false }));
+    let data, error;
+    for (const cols of ['slug, title, date, summary, domain, parent',
+                        'slug, title, date, summary, domain',
+                        'slug, title, date, summary']) {
+      ({ data, error } = await sb.from(getViewTables().notes)
+        .select(cols).order('date', { ascending: false }));
+      if (!error) break;
     }
     if (error) throw error;
     S.notes = data || [];
@@ -3204,9 +3210,24 @@ async function loadNoteHtml(slug) {
 
 // 도메인별로 묶는다. **미분류는 항상 맨 뒤** — 분류된 것이 주인공이다.
 // 순서는 이름순으로 고정한다(Map 삽입 순서에 기대면 데이터 순서가 바뀔 때 화면이 흔들린다).
+// 딸린 노트(원문 등)를 부모 slug 로 찾는다. **한 단까지만** 본다 —
+// 업로드 쪽이 2단 중첩을 막고 있어서 여기서 재귀를 돌 이유가 없다
+// 🔴 **세는 것과 보여주는 것이 같아야 한다.** 배지가 13인데 목록이 9줄이면
+//    "네 개는 어디 갔지"가 된다. 딸린 노트는 목록에 없으니 세지도 않는다
+function topLevelNotes() {
+  return S.notes.filter(n => !n.parent);
+}
+
+function childrenOf(slug) {
+  return S.notes.filter(n => n.parent === slug);
+}
+
 function notesByDomain() {
   const groups = new Map();
   for (const n of S.notes) {
+    // 🔵 **딸린 노트는 목록에 안 뜬다.** `[기획서 원문] …` 은 혼자서는 뜻이
+    //    없는 문서인데 동료 카드로 서 있어서 목록만 부풀렸다. 부모 옆에 붙인다
+    if (n.parent) continue;
     const d = n.domain || '';
     if (!groups.has(d)) groups.set(d, []);
     groups.get(d).push(n);
@@ -3270,12 +3291,20 @@ function openNotesTopic() {
   const showHeads = groups.length > 1;
   const cards = groups.map(([d, list]) =>
     (showHeads ? `<div class="note-domain">${domainLabel(d)}<span class="n">${list.length}</span></div>` : '') +
-    list.map(n => `
+    list.map(n => {
+      const kids = childrenOf(n.slug);
+      // 칩을 누르면 **카드 열기와 동시에 짝까지 띄운다** — 전에는 노트를 연 뒤
+      // 전체 노트가 든 드롭다운에서 짝을 직접 찾아야 했다
+      const chips = kids.map(k =>
+        `<span class="note-chip" title="${escapeHtml(k.title)}"
+               onclick="event.stopPropagation();openNote('${n.slug}','${k.slug}')">원문 ↔</span>`).join('');
+      return `
     <div class="landing-card" onclick="openNote('${n.slug}')">
       <div class="landing-card-title">${n.title}</div>
       <div class="landing-card-desc">${n.summary || ''}</div>
-      <div class="landing-card-meta"><span class="landing-card-count">${n.date || ''}</span></div>
-    </div>`).join('')
+      <div class="landing-card-meta"><span class="landing-card-count">${n.date || ''}</span>${chips}</div>
+    </div>`;
+    }).join('')
   ).join('');
   inner.innerHTML = `
     <div class="topic-header">
@@ -3323,9 +3352,12 @@ function mountNoteFrame(frame, slug, html, withToc) {
   frame.src = noteBlobUrl(slug, html);
 }
 
-async function openNote(slug) {
+// <param name="sideSlug">같이 띄울 노트. 카드의 "원문 ↔" 칩이 이걸 쓴다 —
+// 전에는 노트를 연 **뒤** 전체 목록 드롭다운에서 짝을 직접 찾아야 했다.</param>
+async function openNote(slug, sideSlug) {
   const note = S.notes.find(n => n.slug === slug);
   if (!note) return;
+  if (sideSlug !== undefined) noteSideSlug = sideSlug || null;
   kbClearFocus();
   S.selectedTopicId = NOTES_TID;
   S.selectedSectionId = null;
@@ -3343,7 +3375,18 @@ async function openNote(slug) {
   inner.classList.toggle('split-mode', !!side);
   if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
 
-  const picker = `
+  // 딸린 문서는 **드롭다운에서 찾게 하지 않는다** — 단추 하나로 연다
+  const quick = childrenOf(slug)
+    .filter(k => k.slug !== noteSideSlug)
+    .map(k => `<span class="note-chip" title="${escapeHtml(k.title)}"
+                     onclick="setNoteSide('${k.slug}')">원문 ↔</span>`).join('');
+  // 딸린 노트를 직접 열었으면 **부모로 돌아갈 길**을 준다. 목록에 없으니
+  // 여기서 안 주면 주소를 손으로 치는 수밖에 없다
+  const upTo = note.parent && S.notes.find(n => n.slug === note.parent);
+  const up = upTo ? `<span class="note-chip" title="${escapeHtml(upTo.title)}"
+                           onclick="openNote('${upTo.slug}','${slug}')">↑ 설계 노트</span>` : '';
+
+  const picker = quick + up + `
     <select class="note-side-pick" onchange="setNoteSide(this.value)" title="다른 노트를 오른쪽에 나란히 띄웁니다">
       <option value="">나란히 보기…</option>
       ${S.notes.filter(n => n.slug !== slug)

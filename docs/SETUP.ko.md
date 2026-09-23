@@ -129,12 +129,15 @@ CREATE TABLE public.notes (
   summary text,
   -- domain: 프로젝트별로 노트를 가른다 (project-a / project-b / …). NULL 이면 미분류.
   domain text,
+  -- parent: 이 노트가 딸린 노트의 slug (기획서 원문 등). NULL 이면 최상위.
+  parent text,
   html text NOT NULL,
   created_at timestamptz DEFAULT now(),
   updated_at timestamptz DEFAULT now()
 );
 CREATE INDEX idx_notes_date ON public.notes (date DESC);
 CREATE INDEX idx_notes_domain ON public.notes (domain);
+CREATE INDEX idx_notes_parent ON public.notes (parent);
 
 CREATE TABLE public.notes_private (LIKE public.notes INCLUDING ALL);
 -- NOTE: LIKE copies the structure **at creation time** — the two tables do not stay

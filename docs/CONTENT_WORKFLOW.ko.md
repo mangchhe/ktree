@@ -272,6 +272,7 @@ title: 실시간 WebSocket 게이트웨이
 date: 2026-09-03
 summary: 목록 카드에 보일 한 줄 요약
 domain: project-a     # 선택 — 프로젝트별 분류 (project-a / project-b / …)
+parent: 2026-01-01-design   # 선택 — 이 노트가 딸린 곳. 목록에서 숨고 부모 옆에 붙는다
 -->
 <title>실시간 WebSocket 게이트웨이 — 기술 노트</title>
 ...

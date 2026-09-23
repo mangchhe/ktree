@@ -132,12 +132,15 @@ CREATE TABLE public.notes (
   summary text,
   -- domain: groups notes by project (project-a / project-b / …). NULL = unclassified.
   domain text,
+  -- parent: slug of the note this one is attached to (source docs, notes). NULL = top level.
+  parent text,
   html text NOT NULL,
   created_at timestamptz DEFAULT now(),
   updated_at timestamptz DEFAULT now()
 );
 CREATE INDEX idx_notes_date ON public.notes (date DESC);
 CREATE INDEX idx_notes_domain ON public.notes (domain);
+CREATE INDEX idx_notes_parent ON public.notes (parent);
 
 CREATE TABLE public.notes_private (LIKE public.notes INCLUDING ALL);
 -- NOTE: LIKE copies the structure **at creation time** — the two tables do not stay

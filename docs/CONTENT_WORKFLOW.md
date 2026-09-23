@@ -273,6 +273,7 @@ title: Realtime WebSocket Gateway
 date: 2026-09-03
 summary: One-line summary shown on the list card
 domain: project-a     # optional — groups by project (project-a / project-b / …)
+parent: 2026-01-01-design   # optional — attach to another note; hidden from the list
 -->
 <title>Realtime WebSocket Gateway — Tech Note</title>
 ...
