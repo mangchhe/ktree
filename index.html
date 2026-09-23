@@ -152,6 +152,7 @@ body {
   background: rgba(255,255,255,0.12);
   color: var(--text);
 }
+#private-login-btn-top,
 #private-logout-btn {
   display: none;
   border: 1px solid var(--border2);
@@ -162,6 +163,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+#private-login-btn-top:hover,
 #private-logout-btn:hover {
   color: var(--text);
   border-color: rgba(255,255,255,0.2);
@@ -1426,6 +1428,7 @@ body {
   <div class="mode-toggle" id="mode-switcher" style="display:none">
     <button class="mode-btn active" onclick="switchAppMode('public')">PUBLIC</button>
   </div>
+  <button id="private-login-btn-top" onclick="goPrivateLogin()">로그인</button>
   <button id="private-logout-btn" onclick="logoutPrivate()">로그아웃</button>
   <button id="admin-btn" style="display:none">Admin ↗</button>
 </div>
@@ -1592,8 +1595,16 @@ function switchAppMode(mode) {
 function setPrivateAuthUI(isLoggedIn) {
   const btn = document.getElementById('private-logout-btn');
   if (btn) btn.style.display = isLoggedIn ? 'inline-block' : 'none';
+  // 🔵 **로그인 버튼이 아예 없었다.** 로그아웃 버튼만 있어서, 풀린 뒤에
+  //    다시 들어가려면 주소에 `?mode=private` 를 손으로 치거나
+  //    `admin.html` 로 돌아야 했다
+  const inBtn = document.getElementById('private-login-btn-top');
+  if (inBtn) inBtn.style.display = isLoggedIn ? 'none' : 'inline-block';
   const modeSwitcher = document.getElementById('mode-switcher');
-  if (modeSwitcher) modeSwitcher.style.display = isLoggedIn ? 'flex' : '';
+  // 🔴 `''` 는 **인라인 스타일을 지우는 것**이라 마크업의 `display:none` 이
+  //    풀리고 스타일시트의 `flex` 가 살아난다 — 로그아웃 상태에서 고를 것도
+  //    없는 `PUBLIC` 하나짜리 토글이 떠 있었다. 숨기려면 `none` 이라고 말해야 한다
+  if (modeSwitcher) modeSwitcher.style.display = isLoggedIn ? 'flex' : 'none';
   if (isLoggedIn) loadUserAccess();
   else {
     userAccessTypes = [];
@@ -1607,6 +1618,16 @@ document.getElementById('admin-btn').addEventListener('click', () => {
   const mode = new URLSearchParams(window.location.search).get('mode') || 'public';
   location.href = mode === 'public' ? 'admin.html' : `admin.html?source=${mode}`;
 });
+
+// private 모드로 보내면 `initFromSupabase` 가 **세션이 없을 때 이미 로그인
+// 폼을 그린다.** 폼을 여기서 또 그리지 않는 이유가 그것이다 — 로그인 성공 뒤
+// reload 하면 **곧바로 private 화면**이라 클릭이 한 번 줄어든다.
+// 이미 비공개 모드에 있으면(세션만 풀린 경우) 그 자리에서 폼만 그린다.
+function goPrivateLogin() {
+  const mode = new URLSearchParams(window.location.search).get('mode') || 'public';
+  if (mode !== 'public') { renderPrivateLogin(); return; }
+  location.search = '?mode=private';
+}
 
 async function logoutPrivate() {
   if (!sb) return;
