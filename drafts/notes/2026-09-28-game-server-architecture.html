@@ -1,7 +1,7 @@
 <!--ktree
 title: 게임 서버 아키텍처 — stateless 앱 서버와 무엇이 다른가
 date: 2026-09-28
-summary: TCP vs UDP·프로토콜 층위·tick 루프·CCU 용량 산정·authoritative server·레이턴시 은닉·interest management·매치 상태 생애주기·백엔드 토폴로지·fleet 배포·호스팅 모델·WebRTC·P2P의 실제 비용 — 14개 개념.
+summary: TCP vs UDP·프로토콜 층위·tick 루프·CCU 용량 산정·authoritative server·레이턴시 은닉·interest management·매치 상태 생애주기·백엔드 토폴로지·fleet 배포·호스팅 모델·WebRTC·P2P의 실제 비용·대량 유닛 동기화(상태 복제 vs 락스텝) — 16개 개념.
 -->
 <title>게임 서버 아키텍처 — 기술 노트</title>
 <style>
@@ -112,7 +112,7 @@ summary: TCP vs UDP·프로토콜 층위·tick 루프·CCU 용량 산정·author
   <div class="eyebrow">TECH NOTE · 실시간 시스템 · 분산 아키텍처</div>
   <h1>게임 서버 아키텍처 — stateless 앱 서버와 무엇이 다른가</h1>
   <p class="lede">요청-응답 API 서버에 익숙한 백엔드 엔지니어의 눈으로 실시간 게임 서버를 해부한다. 프로토콜 계층부터 tick 루프, authoritative 설계, 상태의 생애주기, 백엔드 토폴로지, 호스팅 모델까지 — "왜 그렇게 만드는가"의 트레이드오프 중심.</p>
-  <div class="meta"><span>2026-09-28</span><span>14 concepts</span><span>TCP/UDP · tick loop · CCU · authoritative · netcode · fleet · WebRTC · P2P</span></div>
+  <div class="meta"><span>2026-09-28</span><span>16 concepts</span><span>TCP/UDP · tick loop · CCU · authoritative · netcode · fleet · WebRTC · P2P · lockstep</span></div>
 </header>
 
 <nav class="toc">
@@ -132,6 +132,8 @@ summary: TCP vs UDP·프로토콜 층위·tick 루프·CCU 용량 산정·author
     <li><span class="n">11</span><a href="#c11">호스팅 모델 — 전용 서버 / 리슨 서버 / P2P·릴레이</a></li>
     <li><span class="n">12</span><a href="#c12">WebRTC — P2P 연결의 표준 배관</a></li>
     <li><span class="n">13</span><a href="#c13">P2P의 실제 비용 — 왜 생각만큼 안 줄어드나</a></li>
+    <li><span class="n">14</span><a href="#c14">대량 유닛 동기화 — 몹 100마리가 전부 이벤트로 가나?</a></li>
+    <li><span class="n">15</span><a href="#c15">결정적 락스텝 — 적군을 전송하지 않고 공유하는 법</a></li>
   </ol>
 </nav>
 
@@ -583,6 +585,102 @@ loop:
     <div class="block trade"><div class="lbl">선택 기준</div>
       <p>협동·캐주얼·친구끼리 방(치트 동기 없음, 결과가 안 중요) → P2P 절감 합리적. 랭킹·경제·경쟁이 있다 → 전용 서버 비용은 아끼는 대상이 아니라 <b>제품의 일부</b>다.</p></div>
     <div class="tldr"><b>한 줄</b> — P2P가 지우는 건 서버 비용이 아니라 신뢰 주체다. 게임에 신뢰가 필요 없으면 싸고, 필요하면 어떤 형태로든 그 비용이 되돌아온다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 14 ============ -->
+<section class="card" id="c14">
+  <div class="head"><span class="num">14</span><h2>대량 유닛 동기화 — 몹 100마리가 전부 이벤트로 가나?</h2><span class="cat">netcode</span></div>
+  <div class="body">
+    <div class="myth"><span class="t">출발 질문</span> — 디펜스 게임에서 타워가 공격할 때마다 몹 100마리의 HP가, 몹과 영웅이 움직일 때마다 그 위치가 전부 이벤트로 네트워크를 타나? <b>어느 방식이든 "유닛별 개별 이벤트"로는 가지 않는다.</b> 접근이 두 갈래로 갈린다.</div>
+    <div class="block"><div class="lbl">접근 ① 상태 복제 (state replication) — "결과를 보낸다"</div>
+      <p>서버가 매 tick 유닛 상태를 내려주되, 유닛별 이벤트 100개가 아니라 <b>tick당 패킷 1개에 변경분을 묶는다</b>:</p>
+<pre><code># 매 tick(예: 50ms) 서버 → 클라이언트, 패킷 1개:
+[tick #1042 | 몹#3: x,y | 몹#17: hp-12 | 몹#54: x,y | 영웅#1: x,y]
+  → 델타 압축: 지난 tick 대비 변한 유닛만, 변한 필드만 (안 움직인 몹 80마리 = 0바이트)
+  → HP는 매 tick이 아니라 변할 때만
+  → 양자화: 좌표를 필요 정밀도만큼만 (float 32bit → 16bit 격자 등)
+  → 관심 영역(07): 시야 밖 유닛은 아예 제외</code></pre>
+      <p>그래도 트래픽이 유닛 수에 비례하므로, 수백 마리가 상시 움직이는 장르에선 부담이 커진다.</p></div>
+    <div class="block"><div class="lbl">접근 ② 결정적 락스텝 (deterministic lockstep) — "입력만 보낸다"</div>
+      <p>발상의 전환: 몹의 위치·HP는 전송할 데이터가 아니라 <b>계산 결과</b>다. 몹의 이동은 경로 탐색 AI가, 타워의 공격은 사거리·쿨다운 규칙이 결정하므로 게임 규칙에서 전부 유도된다. 그래서 모든 참가자가 <b>같은 시뮬레이션을 각자 돌리고, 네트워크로는 플레이어 입력만</b> 보낸다("3번 자리 타워 건설", "영웅 이동 명령"). 몹이 100마리든 1,000마리든 트래픽은 동일 — 고전 RTS가 저속 모뎀으로 유닛 수백을 돌린 방법이고, RTS 리플레이 파일이 수십 KB인 이유다(입력 로그가 전부). 메커니즘은 15번.</p></div>
+    <div class="block"><div class="lbl">영웅 이동은 어느 쪽에서도 "이벤트"가 아니다</div>
+      <p><b>클릭(이동 명령)이 이벤트</b>이고, 그 후 매 프레임의 위치는 시뮬레이션이 만든다. 락스텝이면 위치는 아예 전송되지 않고, 상태 복제라도 명령은 한 번 올라가고 위치는 서버 tick 패킷에 실려 내려온다.</p></div>
+    <table>
+      <tr><th></th><th>상태 복제</th><th>결정적 락스텝</th></tr>
+      <tr><td>트래픽</td><td>유닛 수에 비례</td><td><b>입력 수에만 비례</b> (유닛 수 무관)</td></tr>
+      <tr><td>결정성 요구</td><td>없음 (서버가 진실)</td><td class="tag-bad">엄격 — 깨지면 desync(13)</td></tr>
+      <tr><td>늦은 참가·재접속</td><td class="tag-good">스냅샷 주면 끝(08)</td><td>어려움 — 입력 로그 재생 or 상태 덤프</td></tr>
+      <tr><td>반응성</td><td>prediction(06) 필요</td><td>입력이 몇 tick 늦게 적용 (명령 게임은 커버 가능)</td></tr>
+      <tr><td>적합</td><td>소수 유닛·빠른 액션 (FPS)</td><td>대량 유닛·명령 기반 (RTS·디펜스)</td></tr>
+    </table>
+    <div class="tldr"><b>한 줄</b> — 상태 복제는 "변경분을 tick 단위로 묶어 보내고", 락스텝은 "묶는 것조차 없다 — 입력만 보내고 나머지는 각자 계산". 유닛은 많고 입력은 드문 디펜스류는 전형적인 락스텝 체질이다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 15 ============ -->
+<section class="card" id="c15">
+  <div class="head"><span class="num">15</span><h2>결정적 락스텝 — 적군을 전송하지 않고 공유하는 법</h2><span class="cat">netcode</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">원리</div>
+      <p>멀티인데 적군 데이터가 안 오가는 게 가능한 이유: 적군의 모든 행동은 <b>초기 상태 + 게임 규칙 + 랜덤 시드 + 플레이어 입력들의 순수 함수</b>다. 입력만 같은 순서로 맞춰주면 나머지는 수학처럼 모든 기기에서 똑같이 풀려나온다. 적군은 "공유"되는 게 아니라 각자에게서 동일하게 <b>"재현"</b>된다.</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <ol class="list">
+        <li><b>같은 출발점</b>: 같은 맵·웨이브 테이블·<b>랜덤 시드</b>로 시작. "웨이브 3은 tick 6000에 스폰"은 규칙이고, 랜덤 요소도 시드 공유 RNG라 같은 난수가 나온다.</li>
+        <li><b>입력 지연 스케줄링</b>: 내 입력조차 즉시 적용하지 않는다. tick 100에 클릭하면 "tick 103에 P1이 건설"로 예약해 전원에게 전송하고, tick 103에 <b>나를 포함한 전원이 동시에</b> 적용한다. 그 사이가 상대에게 입력이 도착할 시간 — RTS에서 클릭하면 유닛이 미세하게 늦게 반응하는 것의 정체.</li>
+        <li><b>lock</b>: 각 클라이언트는 tick N에 대한 모든 플레이어의 입력(없으면 "입력 없음" 표시라도)이 도착할 때까지 tick N을 진행하지 못한다. 한 명이 랙 걸리면 전원이 잠긴다 — "플레이어를 기다리는 중..."의 정체.</li>
+        <li><b>desync 감지</b>: 주기적으로 각자 게임 상태의 해시(체크섬)를 교환해 다르면 desync 선언(중단 or 재동기화).</li>
+      </ol></div>
+    <div class="fig">
+      <svg class="dgm" width="660" viewBox="0 0 660 240" role="img" aria-label="락스텝 입력 지연 스케줄링: tick 100 입력이 tick 103에 양쪽에서 동시 적용">
+        <text x="30" y="74" class="b sm">클라 A</text>
+        <text x="30" y="174" class="b sm">클라 B</text>
+        <line x1="80" y1="70" x2="620" y2="70" style="stroke:var(--line);stroke-width:1.5"/>
+        <line x1="80" y1="170" x2="620" y2="170" style="stroke:var(--line);stroke-width:1.5"/>
+        <line x1="120" y1="63" x2="120" y2="77" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="220" y1="63" x2="220" y2="77" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="320" y1="63" x2="320" y2="77" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="420" y1="63" x2="420" y2="77" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="520" y1="63" x2="520" y2="77" style="stroke:var(--muted);stroke-width:1.3"/>
+        <text x="120" y="54" text-anchor="middle" class="sm mut">t100</text>
+        <text x="220" y="54" text-anchor="middle" class="sm mut">t101</text>
+        <text x="320" y="54" text-anchor="middle" class="sm mut">t102</text>
+        <text x="420" y="54" text-anchor="middle" class="sm mut">t103</text>
+        <text x="520" y="54" text-anchor="middle" class="sm mut">t104</text>
+        <line x1="120" y1="163" x2="120" y2="177" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="220" y1="163" x2="220" y2="177" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="320" y1="163" x2="320" y2="177" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="420" y1="163" x2="420" y2="177" style="stroke:var(--muted);stroke-width:1.3"/>
+        <line x1="520" y1="163" x2="520" y2="177" style="stroke:var(--muted);stroke-width:1.3"/>
+        <text x="120" y="194" text-anchor="middle" class="sm mut">t100</text>
+        <text x="220" y="194" text-anchor="middle" class="sm mut">t101</text>
+        <text x="320" y="194" text-anchor="middle" class="sm mut">t102</text>
+        <text x="420" y="194" text-anchor="middle" class="sm mut">t103</text>
+        <text x="520" y="194" text-anchor="middle" class="sm mut">t104</text>
+        <circle cx="120" cy="70" r="6" style="fill:var(--accent)"/>
+        <rect class="chip" x="45" y="20" width="230" height="16" rx="4"/>
+        <text x="160" y="32" text-anchor="middle" class="sm acc">① t100: 건설 클릭 — 즉시 적용 안 함</text>
+        <line class="e e-acc dash" x1="126" y1="76" x2="414" y2="164" marker-end="url(#arA)"/>
+        <rect class="chip" x="165" y="104" width="180" height="16" rx="4"/>
+        <text x="255" y="116" text-anchor="middle" class="sm">② 전송: "t103에 P1 건설"</text>
+        <circle cx="420" cy="70" r="6" style="fill:var(--good)"/>
+        <circle cx="420" cy="170" r="6" style="fill:var(--good)"/>
+        <line class="e e-grn dash" x1="420" y1="78" x2="420" y2="162"/>
+        <rect class="chip" x="432" y="112" width="170" height="16" rx="4"/>
+        <text x="517" y="124" text-anchor="middle" class="sm grn">③ t103: 양쪽 동시 적용</text>
+        <text x="350" y="226" text-anchor="middle" class="sm mut">전원의 입력이 도착해야 다음 tick 진행(lock) — 한 명이 늦으면 전원 대기</text>
+      </svg>
+    </div>
+    <div class="block trade"><div class="lbl">트레이드오프</div>
+      <ul>
+        <li><b>맵핵에 구조적으로 취약</b>: 시뮬레이션을 돌리려면 전장의 안개 속 적 포함 <b>전체 상태가 내 메모리에</b> 있어야 한다. 07의 "애초에 안 보낸다" 방어가 불가능 — RTS 장르에 맵핵이 유독 많았던 이유.</li>
+        <li><b>늦은 참가·재접속 곤란</b>: 중간 참가자는 상태를 재현할 수 없어 입력 로그를 처음부터 빨리감기 재생하거나 상태를 통째로 덤프받아야 한다.</li>
+        <li><b>결정성 유지 부담</b>: 플랫폼 간 부동소수점 차이 하나로 desync(13) — 고정소수점 연산이나 플랫폼 통일로 방어한다.</li>
+        <li><b>보너스</b>: 리플레이가 공짜다 — 입력 로그가 곧 리플레이이고, 11의 롤백 넷코드는 락스텝의 lock(대기)을 예측+되감기로 대체한 사촌이다.</li>
+      </ul></div>
+    <div class="tldr"><b>한 줄</b> — 같은 시드에서 출발해 같은 입력을 같은 tick에 적용하면, 몹 1,000마리도 1바이트 전송 없이 모든 화면에서 동일하다. 데이터를 받아서가 아니라 <b>같은 계산을 하고 있어서</b> 같은 것.</div>
   </div>
   <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
 </section>
