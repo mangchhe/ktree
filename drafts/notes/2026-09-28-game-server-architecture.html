@@ -1,0 +1,593 @@
+<!--ktree
+title: 게임 서버 아키텍처 — stateless 앱 서버와 무엇이 다른가
+date: 2026-09-28
+summary: TCP vs UDP·프로토콜 층위·tick 루프·CCU 용량 산정·authoritative server·레이턴시 은닉·interest management·매치 상태 생애주기·백엔드 토폴로지·fleet 배포·호스팅 모델·WebRTC·P2P의 실제 비용 — 14개 개념.
+-->
+<title>게임 서버 아키텍처 — 기술 노트</title>
+<style>
+  :root{
+    --bg:#f6f5f9; --surface:#ffffff; --ink:#1c1b23; --muted:#5c5a68; --faint:#8d8a99;
+    --line:#e5e3ec; --line2:#efedf4; --accent:#5646c4; --accent-soft:#5646c418;
+    --amber:#b4690e; --good:#1f7a4d; --bad:#b23a48; --code-bg:#f1eff7;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,"Apple SD Gothic Neo",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#131218; --surface:#1b1a23; --ink:#e8e7ee; --muted:#a5a2b2; --faint:#6e6b7c;
+      --line:#2b2937; --line2:#232130; --accent:#978af0; --accent-soft:#978af01f;
+      --amber:#e0a35a; --good:#5fcf95; --bad:#e8737f; --code-bg:#201e2b; }
+  }
+  :root[data-theme="light"]{ --bg:#f6f5f9; --surface:#ffffff; --ink:#1c1b23; --muted:#5c5a68; --faint:#8d8a99;
+    --line:#e5e3ec; --line2:#efedf4; --accent:#5646c4; --accent-soft:#5646c418;
+    --amber:#b4690e; --good:#1f7a4d; --bad:#b23a48; --code-bg:#f1eff7; }
+  :root[data-theme="dark"]{ --bg:#131218; --surface:#1b1a23; --ink:#e8e7ee; --muted:#a5a2b2; --faint:#6e6b7c;
+    --line:#2b2937; --line2:#232130; --accent:#978af0; --accent-soft:#978af01f;
+    --amber:#e0a35a; --good:#5fcf95; --bad:#e8737f; --code-bg:#201e2b; }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;
+    margin:0;padding:0;-webkit-font-smoothing:antialiased;font-size:16px}
+  .wrap{max-width:820px;margin:0 auto;padding:64px 24px 120px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  header .eyebrow{color:var(--faint)}
+  h1{font-size:2.15rem;line-height:1.12;letter-spacing:-.02em;margin:.35em 0 .3em;text-wrap:balance;font-weight:750}
+  .lede{color:var(--muted);font-size:1.06rem;max-width:60ch}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:18px;display:flex;gap:14px;flex-wrap:wrap}
+
+  nav.toc{margin:40px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
+  nav.toc .eyebrow{display:block;margin-bottom:12px}
+  nav.toc ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+  @media(max-width:620px){nav.toc ol{grid-template-columns:1fr}}
+  nav.toc li{display:flex;gap:10px;align-items:baseline;padding:3px 0}
+  nav.toc .n{font-family:var(--mono);font-size:11px;color:var(--faint);min-width:18px}
+  nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+  nav.toc a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+
+  section.card{margin:52px 0;scroll-margin-top:24px}
+  .card > .head{display:flex;gap:16px;align-items:baseline;border-bottom:2px solid var(--accent-soft);padding-bottom:10px}
+  .card .num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;padding-top:2px}
+  .card h2{font-size:1.4rem;letter-spacing:-.01em;margin:0;font-weight:700;flex:1}
+  .card .cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);align-self:flex-start;border:1px solid var(--line);border-radius:100px;padding:3px 9px;white-space:nowrap}
+  .card .body{margin-top:18px}
+  .block{margin:15px 0}
+  .block .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+  .block.why .lbl{color:var(--amber)} .block.trade .lbl{color:var(--accent)}
+  p{margin:.4em 0}
+  ul,ol.list{margin:.4em 0;padding-left:1.2em} li{margin:.22em 0}
+  code{font-family:var(--mono);font-size:.86em;background:var(--code-bg);padding:.12em .38em;border-radius:5px}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:14px 0}
+  pre code{background:none;padding:0;font-size:12.5px;line-height:1.6}
+  .fig{margin:20px 0;overflow-x:auto}
+  svg.dgm{display:block;margin:0 auto;height:auto;font-family:var(--mono)}
+  svg.dgm text{fill:var(--ink);font-size:12.5px}
+  svg.dgm text.sm{font-size:11px}
+  svg.dgm text.b{font-weight:600}
+  svg.dgm .mut{fill:var(--muted)}
+  svg.dgm .acc{fill:var(--accent);font-weight:600}
+  svg.dgm .amb{fill:var(--amber);font-weight:600}
+  svg.dgm .grn{fill:var(--good);font-weight:600}
+  svg.dgm .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5;filter:url(#soft)}
+  svg.dgm .boxa{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5;filter:url(#soft)}
+  svg.dgm .boxg{fill:var(--surface);stroke:var(--good);stroke-width:1.5;filter:url(#soft)}
+  svg.dgm .pill{fill:var(--code-bg);stroke:var(--line);stroke-width:1}
+  svg.dgm .note{fill:var(--line2);stroke:var(--line);stroke-width:1}
+  svg.dgm .frame{fill:none;stroke:var(--line);stroke-width:1.3;stroke-dasharray:2 4}
+  svg.dgm .life{stroke:var(--line);stroke-width:1.3;stroke-dasharray:3 4}
+  svg.dgm .act{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1}
+  svg.dgm .e{stroke-width:1.7;fill:none}
+  svg.dgm .e-mut{stroke:var(--muted)}
+  svg.dgm .e-acc{stroke:var(--accent)}
+  svg.dgm .e-amb{stroke:var(--amber)}
+  svg.dgm .e-grn{stroke:var(--good)}
+  svg.dgm .dash{stroke-dasharray:5 4}
+  svg.dgm .chip{fill:var(--bg)}
+  svg.dgm .step text{fill:#fff;font-weight:700;font-size:11px}
+
+  .tldr{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:11px 15px;margin:16px 0;font-size:.95rem}
+  .tldr b{color:var(--accent)}
+  .myth{border:1px dashed var(--line);border-radius:8px;padding:11px 15px;margin:14px 0;font-size:.94rem;background:var(--line2)}
+  .myth .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bad);font-weight:700}
+
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.92rem;display:block;overflow-x:auto}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--line2);font-weight:600;font-size:.82rem;letter-spacing:.02em}
+  td code{font-size:.82em}
+  .tag-good{color:var(--good);font-weight:600} .tag-bad{color:var(--bad);font-weight:600}
+  footer{margin-top:80px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-family:var(--mono);font-size:11.5px}
+  a.up{color:var(--faint);text-decoration:none;font-family:var(--mono);font-size:11px;float:right}
+  a.up:hover{color:var(--accent)}
+  a{color:var(--accent)}
+</style>
+
+<div class="wrap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="arM" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--muted)"/></marker>
+  <marker id="arA" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--accent)"/></marker>
+  <marker id="arB" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--amber)"/></marker>
+  <marker id="arG" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--good)"/></marker>
+  <filter id="soft" x="-20%" y="-30%" width="140%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000" flood-opacity="0.10"/></filter>
+</defs></svg>
+
+<header>
+  <div class="eyebrow">TECH NOTE · 실시간 시스템 · 분산 아키텍처</div>
+  <h1>게임 서버 아키텍처 — stateless 앱 서버와 무엇이 다른가</h1>
+  <p class="lede">요청-응답 API 서버에 익숙한 백엔드 엔지니어의 눈으로 실시간 게임 서버를 해부한다. 프로토콜 계층부터 tick 루프, authoritative 설계, 상태의 생애주기, 백엔드 토폴로지, 호스팅 모델까지 — "왜 그렇게 만드는가"의 트레이드오프 중심.</p>
+  <div class="meta"><span>2026-09-28</span><span>14 concepts</span><span>TCP/UDP · tick loop · CCU · authoritative · netcode · fleet · WebRTC · P2P</span></div>
+</header>
+
+<nav class="toc">
+  <span class="eyebrow">학습 순서</span>
+  <ol>
+    <li><span class="n">00</span><a href="#c0">밑단: TCP vs UDP — 무엇을 보장하고 무엇을 포기하나</a></li>
+    <li><span class="n">01</span><a href="#c1">프로토콜 계층 — REST와 UDP는 같은 층이 아니다</a></li>
+    <li><span class="n">02</span><a href="#c2">요청-응답 서버 vs 시뮬레이션 서버</a></li>
+    <li><span class="n">03</span><a href="#c3">게임 루프와 tick rate</a></li>
+    <li><span class="n">04</span><a href="#c4">용량 산정 — RPS가 아니라 CCU</a></li>
+    <li><span class="n">05</span><a href="#c5">Authoritative server — 입력을 보내고, 상태를 받는다</a></li>
+    <li><span class="n">06</span><a href="#c6">레이턴시 은닉 3종 세트</a></li>
+    <li><span class="n">07</span><a href="#c7">정보 필터링 (interest management)</a></li>
+    <li><span class="n">08</span><a href="#c8">매치 상태의 생애주기 — 메모리가 진실이다</a></li>
+    <li><span class="n">09</span><a href="#c9">백엔드 토폴로지 — 두 세계와 한 판의 흐름</a></li>
+    <li><span class="n">10</span><a href="#c10">배포와 스케일링 — 드레이닝과 fleet 오케스트레이션</a></li>
+    <li><span class="n">11</span><a href="#c11">호스팅 모델 — 전용 서버 / 리슨 서버 / P2P·릴레이</a></li>
+    <li><span class="n">12</span><a href="#c12">WebRTC — P2P 연결의 표준 배관</a></li>
+    <li><span class="n">13</span><a href="#c13">P2P의 실제 비용 — 왜 생각만큼 안 줄어드나</a></li>
+  </ol>
+</nav>
+
+<!-- ============ 00 ============ -->
+<section class="card" id="c0">
+  <div class="head"><span class="num">00</span><h2>밑단: TCP vs UDP — 무엇을 보장하고 무엇을 포기하나</h2><span class="cat">transport</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>둘 다 IP 위에서 "바이트를 상대 프로세스까지 나르는" 전송 계층 프로토콜. <b>TCP</b>는 연결·순서·전달을 보장하는 스트림이고, <b>UDP</b>는 아무것도 보장하지 않는 개별 데이터그램(패킷) 발사다.</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <ul>
+        <li><b>TCP</b>: 3-way handshake로 연결을 만들고, 모든 세그먼트에 시퀀스 번호를 붙여 수신 측이 순서를 재조립한다. 유실되면 <b>재전송</b>하고, 재전송이 도착할 때까지 <b>그 뒤에 이미 도착한 데이터도 앱에 안 넘겨준다</b>(head-of-line blocking). 혼잡 제어가 전송 속도도 조절한다.</li>
+        <li><b>UDP</b>: 핸드셰이크 없음. 헤더 8바이트(출발/도착 포트, 길이, 체크섬)를 붙여 그냥 쏜다. 유실·중복·순서 뒤바뀜이 전부 가능하고, 처리 여부는 전적으로 애플리케이션 몫.</li>
+      </ul></div>
+    <div class="block trade"><div class="lbl">트레이드오프 — 왜 실시간 게임이 UDP를 고르나</div>
+      <p>게임의 위치·상태 패킷은 <b>수명이 한 tick</b>이다. 유실된 50ms 전 위치를 재전송받아봤자 이미 다음 tick 데이터가 와 있다. 그런데 TCP는 그 죽은 데이터를 살리겠다고 <b>이후의 신선한 데이터까지 막는다</b>(HOL blocking) — 랙 스파이크의 주범. UDP는 잃어버린 건 버리고 최신 것만 쓰면 되니 레이턴시가 일정하다. 대신 "이 메시지는 꼭 도착해야 함"(아이템 획득 등)이 필요하므로, 실전은 UDP 위에 <b>신뢰 채널/비신뢰 채널을 모두 갖춘 자체 프로토콜</b>을 얹는 형태가 표준이다(QUIC이 같은 동기로 UDP 위에 지어진 것과 동일한 이유).</p></div>
+    <div class="tldr"><b>한 줄</b> — TCP의 "전부 순서대로 전달" 보장은 곧 "오래된 데이터가 새 데이터를 막을 수 있다"는 뜻이고, 실시간성엔 그게 독이다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 01 ============ -->
+<section class="card" id="c1">
+  <div class="head"><span class="num">01</span><h2>프로토콜 계층 — REST와 UDP는 같은 층이 아니다</h2><span class="cat">layering</span></div>
+  <div class="body">
+    <div class="myth"><span class="t">흔한 오해</span> — "REST API로 할까, UDP로 할까"는 같은 층위의 선택지다? 아니다. REST는 HTTP 위의 <b>설계 스타일</b>이고, HTTP는 TCP 위의 <b>애플리케이션 프로토콜</b>이며, TCP/UDP는 그 밑의 <b>전송 계층</b>이다. REST API도 결국 밑에서는 TCP로 나르고 있다.</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <p>실제 선택지는 이것이다: <b>"HTTP(+REST)라는 기성 중간층을 쓸 것인가, 전송 계층 바로 위에 내 프로토콜을 직접 얹을 것인가."</b> HTTP는 요청-응답 왕복 구조와 텍스트 헤더 오버헤드를 갖고 있어, 초당 수십 번 양방향으로 쏘는 용도에 안 맞는다. 그래서 게임은 그 층을 걷어내고 바이너리 직렬화(protobuf, FlatBuffers 등) + 자체 프레이밍으로 대체한다.</p></div>
+    <div class="fig">
+      <svg class="dgm" width="660" viewBox="0 0 660 215" role="img" aria-label="웹 API 스택과 게임 실시간 스택의 프로토콜 계층 비교">
+        <text x="170" y="26" text-anchor="middle" class="b">웹 API 스택</text>
+        <text x="490" y="26" text-anchor="middle" class="b">게임 실시간 스택</text>
+        <rect class="boxa" x="60" y="40" width="220" height="36" rx="9"/>
+        <text x="170" y="62" text-anchor="middle">REST — 설계 스타일</text>
+        <rect class="box" x="60" y="82" width="220" height="36" rx="9"/>
+        <text x="170" y="104" text-anchor="middle">HTTP — 앱 프로토콜</text>
+        <rect class="box" x="60" y="124" width="220" height="36" rx="9"/>
+        <text x="170" y="146" text-anchor="middle">TCP — 전송 계층</text>
+        <rect class="pill" x="60" y="166" width="220" height="30" rx="9"/>
+        <text x="170" y="185" text-anchor="middle" class="mut">IP</text>
+        <rect class="boxa" x="380" y="40" width="220" height="78" rx="9"/>
+        <text x="490" y="72" text-anchor="middle" class="b">자체 바이너리 프로토콜</text>
+        <text x="490" y="92" text-anchor="middle" class="mut sm">(신뢰/비신뢰 채널 직접 설계)</text>
+        <rect class="box" x="380" y="124" width="220" height="36" rx="9"/>
+        <text x="490" y="146" text-anchor="middle">UDP (또는 TCP)</text>
+        <rect class="pill" x="380" y="166" width="220" height="30" rx="9"/>
+        <text x="490" y="185" text-anchor="middle" class="mut">IP</text>
+        <line class="e e-mut dash" x1="284" y1="100" x2="376" y2="79" marker-end="url(#arM)"/>
+        <rect class="chip" x="278" y="52" width="104" height="16" rx="4"/>
+        <text x="330" y="64" text-anchor="middle" class="sm mut">이 두 층을 대체</text>
+      </svg>
+    </div>
+    <div class="tldr"><b>한 줄</b> — "REST vs UDP"가 아니라 "HTTP 중간층을 쓸 거냐, 걷어낼 거냐"의 선택이다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 02 ============ -->
+<section class="card" id="c2">
+  <div class="head"><span class="num">02</span><h2>요청-응답 서버 vs 시뮬레이션 서버</h2><span class="cat">architecture</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>백엔드에는 성격이 다른 두 세계가 있다. <b>요청-응답 세계</b>(전형적 앱/API 서버)는 stateless — 요청을 받아 처리하고 응답하면 끝, 상태는 전부 DB/캐시에 있다. <b>시뮬레이션 세계</b>(실시간 게임 서버)는 stateful — 세션(매치)의 살아있는 상태를 서버 프로세스의 메모리에 들고, 요청이 없어도 스스로 돈다.</p></div>
+    <table>
+      <tr><th></th><th>요청-응답 (앱 서버)</th><th>시뮬레이션 (게임 서버)</th></tr>
+      <tr><td>상태</td><td>stateless — DB/캐시가 진실</td><td>stateful — <b>프로세스 메모리가 진실</b></td></tr>
+      <tr><td>구동 방식</td><td>요청이 와야 일함 (수동)</td><td>tick 루프가 상시 돎 (능동, push)</td></tr>
+      <tr><td>연결</td><td>짧은 요청 단위</td><td>지속 연결 (세션 내내)</td></tr>
+      <tr><td>라우팅</td><td>아무 인스턴스나 처리 가능</td><td>세션 어피니티 필수 — "이 매치는 반드시 저 프로세스"</td></tr>
+      <tr><td>스케일링</td><td class="tag-good">수평 확장 쉬움</td><td class="tag-bad">어려움 — 상태를 든 채 옮길 수 없음</td></tr>
+      <tr><td>장애</td><td>다른 인스턴스로 재시도하면 끝</td><td>프로세스 죽으면 그 세션의 상태가 소멸</td></tr>
+      <tr><td>우선 지표</td><td>정합성 · 처리량(RPS)</td><td>레이턴시 · tick 안정성 · 동접(CCU)</td></tr>
+    </table>
+    <div class="block why"><div class="lbl">왜</div>
+      <p>매 조작마다 상태를 DB에서 읽고 쓰면 tick 예산(수십 ms)을 절대 못 맞춘다. 상태를 메모리에 두는 순간 위 표의 오른쪽 열 전부 — 어피니티, 어려운 스케일링, 취약한 장애 복구 — 가 <b>연쇄적으로 따라온다</b>. 게임 서버 설계의 어려움 대부분이 이 stateful함의 대가다.</p></div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 03 ============ -->
+<section class="card" id="c3">
+  <div class="head"><span class="num">03</span><h2>게임 루프와 tick rate</h2><span class="cat">runtime</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p><b>tick</b>은 서버가 월드 상태를 한 번 갱신하는 주기. <b>tick rate</b>는 초당 tick 수 — 대전 FPS는 60~128, MMO나 저속 장르는 10~30 수준.</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+<pre><code>next = now()
+loop:
+    next += 50ms                 # 20 tick/s → tick당 예산 50ms
+    inputs = drain(입력_큐)        # 그동안 도착한 클라이언트 명령 수집
+    world.step(inputs, 50ms)     # 검증 → 물리·판정·AI 시뮬레이션
+    for p in players:
+        send(p, world.visible_to(p))  # 플레이어별 필터링 후 브로드캐스트
+    sleep_until(next)            # 남은 시간 대기 — 초과하면 "tick 밀림"</code></pre>
+      <p>핵심 제약: <b>시뮬레이션 + 직렬화 + 전송이 tick 예산 안에 끝나야 한다.</b> 초과하면 다음 tick이 밀리고, 밀림이 누적되면 방 전체가 랙에 빠진다. 그래서 매치 하나는 보통 <b>싱글 스레드 루프</b>로 돌려 락을 아예 피하고(방 단위로 스레드/프로세스를 나눔), GC 멈춤이 tick을 밀 수 있어 GC 없는 언어(C++, Rust)를 쓰거나 GC 튜닝에 공을 들인다. 액터 모델(Orleans, Akka류)도 "방 = 액터"로 같은 격리를 얻는 인기 선택지. C++과 Rust는 <b>성능은 같은 체급</b>(둘 다 GC 없는 네이티브/LLVM — 같은 인스턴스에서 같은 급으로 돈다)이고, 선택을 가르는 건 생태계(엔진 데디케이티드 서버 통합은 C++ 쪽이 깊음)와 안전성(Rust는 데이터 레이스·메모리 버그를 컴파일 타임에 차단 — 죽으면 판이 날아가는 장수명 stateful 서버에 실질적 장점)이다.</p></div>
+    <div class="block trade"><div class="lbl">트레이드오프</div>
+      <p>tick rate를 올리면 판정이 정밀해지고 체감 반응이 빨라지지만, CPU·대역폭 비용이 정비례로 늘고 방당 수용 인원이 준다. 장르가 요구하는 최소치를 찾는 게 용량 설계의 출발점.</p></div>
+    <div class="tldr"><b>한 줄</b> — 앱 서버는 요청이 없으면 놀지만, 게임 서버는 요청이 없어도 초당 N번 일한다. 그 N번의 마감시한이 전부다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 04 ============ -->
+<section class="card" id="c4">
+  <div class="head"><span class="num">04</span><h2>용량 산정 — RPS가 아니라 CCU</h2><span class="cat">capacity</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">왜 단위가 다른가</div>
+      <p>앱 서버는 요청을 몇 ms 처리하고 자원을 반납하므로 용량 = 처리량(<b>RPS</b>, Requests Per Second). 실시간 서버는 <b>접속자 1명당 상시 비용</b>이 든다:</p>
+      <ul>
+        <li><b>메모리</b> ∝ 연결 수 — 소켓 버퍼 + 세션 상태가 접속 내내 상주</li>
+        <li><b>CPU</b> ∝ 시뮬레이션 — 그 유저가 속한 방의 tick을 매 주기 돌려야 함</li>
+        <li><b>대역폭</b> — N명 방에서 매 tick N명에게 상태를 보내므로, 상태 크기가 인원에 비례하면 방 트래픽은 <b>N² 성격</b>으로 커진다</li>
+      </ul></div>
+    <div class="block"><div class="lbl">어떻게 계산하나</div>
+      <p>단위를 <b>CCU(동시 접속)</b>와 <b>방(매치)당 코어 예산</b>으로 잡는다. "방 하나 = 코어 0.5개 + 메모리 X MB, 서버 한 대 = 방 M개" 식으로 산정하고, 방 수요에 따라 서버 수를 늘린다. 접속자 수 대비 하드웨어 사양이 앱 서버보다 훨씬 높아 보이는 이유가 이것 — 다만 비싼 건 실시간 매치 파트이고, 로그인·상점 같은 메타 파트는 일반 앱 서버와 같은 효율이다.</p></div>
+    <div class="block"><div class="lbl">자릿수 감각 (ballpark — 게임마다 편차 큼)</div>
+      <p>연결 자체는 거의 공짜고 <b>tick 시뮬레이션이 CPU를 다 먹으므로</b>, 예산은 "플레이어당"이 아니라 "방당"으로 잡는다:</p>
+      <table>
+        <tr><th>장르</th><th>tick</th><th>방당 CPU 예산</th></tr>
+        <tr><td>턴제·카드·보드</td><td>이벤트 구동 (tick 없음)</td><td>코어 1개 = <b>수천 방</b> — 사실상 앱 서버와 동급</td></tr>
+        <tr><td>캐주얼 실시간</td><td>10~20Hz, 가벼운 물리</td><td>코어 1개 = 수십~수백 방</td></tr>
+        <tr><td>FPS급</td><td>60~128Hz, 무거운 판정</td><td>10~16인 매치 하나 = <b>코어 0.5~1개</b></td></tr>
+      </table>
+      <ul>
+        <li><b>메모리</b>: 연결당 수십~수백 KB(소켓 버퍼 + 세션 상태; 지속연결 게이트웨이 실측 예 ~47KB/연결). 월드 상태가 큰 MMO는 플레이어당 MB급.</li>
+        <li><b>대역폭</b>: 캐주얼 1~5KB/s, 고tick FPS는 플레이어당 하향 20~50KB/s.</li>
+        <li><b>소인원 방(2인 등)</b>: N이 작으면 팬아웃(N²)은 무의미해지고 남는 변수는 <b>tick rate × 시뮬레이션 무게</b>뿐 — 2인 턴제는 한 프로세스에 방 수천 개, 2인이라도 60Hz 물리(격투 등)면 방당 예산을 제대로 잡아야 한다.</li>
+      </ul></div>
+    <div class="myth"><span class="t">함정 — 버스터블 인스턴스</span> — 1GB·2vCPU급 micro 인스턴스(burstable, t계열)로 얼마나 받나? 메모리로는 수천 연결도 이론상 가능하고, 턴제면 1,000+ CCU·캐주얼 실시간이면 수십~200 CCU·FPS면 매치 1~2개 감각. 하지만 진짜 문제는 <b>버스터블이라는 것 자체</b>다: tick 루프는 <b>지속적</b> CPU 부하라 크레딧을 계속 태우고, 고갈되면 베이스라인(~10~20%)으로 스로틀 → tick 밀림 → 전 방 랙사. 상시 tick 도는 매치 서버는 고정 성능 인스턴스를 쓰고, micro급은 개발·시그널링·소규모 메타 용도에 쓴다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 05 ============ -->
+<section class="card" id="c5">
+  <div class="head"><span class="num">05</span><h2>Authoritative server — 입력을 보내고, 상태를 받는다</h2><span class="cat">design</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>게임의 진실(판정·상태)은 오직 서버가 결정하고, 클라이언트는 <b>입력(명령)만 보낼 수 있는</b> 설계. "나 이 유닛 샀어"가 아니라 "유닛 구매를 <i>요청</i>한다"이며, 골드가 충분한지·그 칸이 비었는지는 서버가 검증한다.</p></div>
+    <div class="block why"><div class="lbl">왜</div>
+      <p>클라이언트는 유저의 손 안에 있다 — 메모리를 조작하든 패킷을 위조하든 <b>언젠가는 뚫린다</b>. 클라이언트가 보내는 것을 "사실"로 믿는 순간 치트가 가능해진다. 그래서 클라이언트가 보내는 데이터의 의미를 <b>사실(state)이 아니라 의도(input)</b>로 제한하는 것이 치트 방지의 구조적 기반이다.</p></div>
+    <div class="block trade"><div class="lbl">트레이드오프</div>
+      <p>모든 판정이 서버 왕복을 거치므로 유저는 자기 입력의 결과를 RTT만큼 늦게 본다. 이 지연을 숨기는 기법들이 다음 카드(06). 반대 선택지 — 클라이언트 판정 — 는 반응성은 완벽하지만 경쟁 게임에선 치트 때문에 선택지가 아니다.</p></div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 06 ============ -->
+<section class="card" id="c6">
+  <div class="head"><span class="num">06</span><h2>레이턴시 은닉 3종 세트</h2><span class="cat">netcode</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">문제</div>
+      <p>authoritative 서버(05)에서 입력 → 서버 판정 → 결과 수신까지 RTT가 걸린다. 100ms 지연 후 캐릭터가 움직이면 게임이 안 된다. 세 가지 기법이 층층이 이를 숨긴다:</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <ol class="list">
+        <li><b>Client-side prediction</b> — 클라이언트가 자기 입력의 결과를 <b>서버 확인 전에 미리 시뮬레이션</b>해서 보여준다. 내 캐릭터는 즉시 움직인다.</li>
+        <li><b>Server reconciliation</b> — 서버의 authoritative 결과가 도착하면 예측과 비교한다. 어긋났으면(서버가 "그 이동 무효" 판정) 클라이언트가 서버 상태로 <b>되감고, 그 이후 보낸 입력들을 재적용</b>한다. 어긋남이 크면 순간이동처럼 보이는 "고무줄(rubber-banding)" 현상이 이것.</li>
+        <li><b>Lag compensation</b> — 사격 판정 시 서버가 "쏜 시점에 쏜 사람이 <b>봤던 과거 월드</b>"로 상태를 되감아 명중을 판정한다. 서버는 최근 수백 ms의 상태 스냅샷을 링버퍼로 보관한다. 덕분에 핑이 있어도 조준한 대로 맞지만, 맞은 쪽 입장에선 "벽 뒤로 숨었는데 맞았다"가 생긴다 — 쏜 사람의 과거와 맞은 사람의 현재가 다르기 때문.</li>
+      </ol></div>
+    <div class="tldr"><b>한 줄</b> — 예측으로 내 지연을 숨기고, 되감기로 예측 오차를 수습하고, 랙 보상으로 상대와의 시차를 심판이 흡수한다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 07 ============ -->
+<section class="card" id="c7">
+  <div class="head"><span class="num">07</span><h2>정보 필터링 (interest management)</h2><span class="cat">design</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>서버가 브로드캐스트할 때 각 플레이어에게 <b>그 플레이어가 알아도 되는 정보만 골라 보내는</b> 것. "전체 상태를 보내고 클라이언트가 가릴 부분을 정한다"가 아니라, 애초에 안 보낸다.</p></div>
+    <div class="block why"><div class="lbl">왜 — 두 가지 이유</div>
+      <ul>
+        <li><b>보안</b>: 클라이언트에 도착한 데이터는 메모리를 뒤지면 볼 수 있다. 벽 뒤 적 위치를 보내면 월핵이, 상대의 비공개 자원(손패, 벤치, 골드)을 보내면 정보 치트가 가능해진다. 05와 같은 원리 — 클라이언트는 신뢰 경계 밖이다.</li>
+        <li><b>대역폭</b>: 대규모 월드에서 전원에게 전체 상태를 보내면 04의 N² 트래픽이 폭발한다. 관심 영역(시야, 근접 구역)만 보내 팬아웃을 자른다.</li>
+      </ul></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <p>tick 루프의 전송 단계가 <code>world.visible_to(p)</code> — 플레이어별 가시성 규칙(시야 판정, 공개/비공개 필드 구분, 구역 격자)을 통과한 부분집합만 직렬화한다. 판 종료 후 전체 정보 공개(리플레이, 결과 화면)는 그때 별도로 내려준다.</p></div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 08 ============ -->
+<section class="card" id="c8">
+  <div class="head"><span class="num">08</span><h2>매치 상태의 생애주기 — 메모리가 진실이다</h2><span class="cat">state</span></div>
+  <div class="body">
+    <div class="myth"><span class="t">흔한 오해</span> — 게임 중의 상태(보드, 골드, HP)도 조작할 때마다 DB에 저장된다? 아니다. <b>매치 진행 중의 유일한 진실은 매치 서버 프로세스의 메모리</b>이고, DB에는 판이 끝날 때 결과만 쓴다.</div>
+    <div class="block"><div class="lbl">어떻게 — 오토배틀러류를 예로</div>
+      <ul>
+        <li><b>입력은 드문 명령</b>: "유닛 구매", "3번 칸 배치", "리롤" 같은 이벤트. 좌표를 매 프레임 쏘는 FPS와 달리 입력 빈도가 낮다.</li>
+        <li><b>서버가 검증 → 메모리 갱신 → 필터링 브로드캐스트</b>(05·07). 전투 연출은 서버가 시뮬레이션한 결과(또는 결정적 시드)를 클라이언트가 재생.</li>
+        <li><b>재접속</b>: 클라이언트가 튕겼다 돌아오면 서버 메모리의 현재 상태를 <b>스냅샷으로 통째로</b> 내려줘 복원한다. 재접속 시 몇 초 로딩이 이 스냅샷 전송.</li>
+        <li><b>영구 저장은 매치 종료 시 한 번</b>: 최종 결과(등수, 레이팅 변동, 통계)만 메타 서버로 server-to-server 전달(직접 호출 또는 메시지 큐) → DB 커밋.</li>
+        <li><b>서버 프로세스가 죽으면?</b> 대부분의 게임은 그 판을 포기한다. 그래서 매치 서버의 안정성에 사활을 건다. (판 개념이 없는 MMO만 주기적 스냅샷 + 중요 이벤트 즉시 저장을 섞는다 — 거래·아이템 획득은 즉시, 위치는 주기적.)</li>
+      </ul></div>
+    <div class="fig">
+      <svg class="dgm" width="660" viewBox="0 0 660 410" role="img" aria-label="매치 상태의 생애주기 시퀀스: 명령, 브로드캐스트, 재접속 스냅샷, 종료 시 영구 저장">
+        <rect class="box" x="35" y="14" width="150" height="44" rx="9"/>
+        <text x="110" y="34" text-anchor="middle" class="b">클라이언트</text>
+        <text x="110" y="50" text-anchor="middle" class="mut sm">게임 앱</text>
+        <rect class="boxa" x="255" y="14" width="150" height="44" rx="9"/>
+        <text x="330" y="34" text-anchor="middle" class="b">매치 서버</text>
+        <text x="330" y="50" text-anchor="middle" class="mut sm">상태 = 메모리</text>
+        <rect class="box" x="475" y="14" width="150" height="44" rx="9"/>
+        <text x="550" y="34" text-anchor="middle" class="b">메타 API + DB</text>
+        <text x="550" y="50" text-anchor="middle" class="mut sm">영구 저장</text>
+        <line class="life" x1="110" y1="58" x2="110" y2="395"/>
+        <line class="life" x1="330" y1="58" x2="330" y2="395"/>
+        <line class="life" x1="550" y1="58" x2="550" y2="395"/>
+        <rect class="act" x="325" y="82" width="10" height="70" rx="3"/>
+        <line class="e e-acc" x1="110" y1="95" x2="322" y2="95" marker-end="url(#arA)"/>
+        <rect class="chip" x="140" y="78" width="160" height="16" rx="4"/>
+        <text x="220" y="90" text-anchor="middle" class="sm">명령: 유닛 구매·배치</text>
+        <rect class="chip" x="345" y="106" width="200" height="16" rx="4"/>
+        <text x="445" y="118" text-anchor="middle" class="sm mut">검증(치트 차단) → 메모리 갱신</text>
+        <line class="e e-amb" x1="325" y1="140" x2="113" y2="140" marker-end="url(#arB)"/>
+        <rect class="chip" x="115" y="122" width="230" height="16" rx="4"/>
+        <text x="230" y="134" text-anchor="middle" class="sm">상태 브로드캐스트 (플레이어별 필터링)</text>
+        <rect class="frame" x="60" y="176" width="330" height="112" rx="6"/>
+        <rect class="boxg" x="60" y="176" width="80" height="20" rx="5"/>
+        <text x="100" y="190" text-anchor="middle" class="sm grn">재접속</text>
+        <rect class="act" x="325" y="210" width="10" height="62" rx="3"/>
+        <line class="e e-acc" x1="110" y1="226" x2="322" y2="226" marker-end="url(#arA)"/>
+        <rect class="chip" x="175" y="209" width="90" height="16" rx="4"/>
+        <text x="220" y="221" text-anchor="middle" class="sm">재접속 요청</text>
+        <line class="e e-amb" x1="325" y1="260" x2="113" y2="260" marker-end="url(#arB)"/>
+        <rect class="chip" x="145" y="242" width="160" height="16" rx="4"/>
+        <text x="225" y="254" text-anchor="middle" class="sm">현재 상태 전체 스냅샷</text>
+        <rect class="frame" x="60" y="306" width="560" height="86" rx="6"/>
+        <rect class="boxg" x="60" y="306" width="94" height="20" rx="5"/>
+        <text x="107" y="320" text-anchor="middle" class="sm grn">매치 종료</text>
+        <rect class="act" x="325" y="332" width="10" height="34" rx="3"/>
+        <line class="e e-grn" x1="335" y1="348" x2="546" y2="348" marker-end="url(#arG)"/>
+        <rect class="chip" x="330" y="330" width="220" height="16" rx="4"/>
+        <text x="440" y="342" text-anchor="middle" class="sm">최종 결과만 전달 (server-to-server)</text>
+        <rect class="chip" x="330" y="366" width="260" height="16" rx="4"/>
+        <text x="460" y="378" text-anchor="middle" class="sm mut">→ DB 커밋: 유일한 영구 저장 시점</text>
+      </svg>
+    </div>
+    <div class="tldr"><b>한 줄</b> — 판 도중엔 메모리가 진실, 재접속은 스냅샷으로, DB는 종료 시 결과만. "언제 저장되나"의 답은 대부분 <b>매치 종료 시점 한 번</b>이다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 09 ============ -->
+<section class="card" id="c9">
+  <div class="head"><span class="num">09</span><h2>백엔드 토폴로지 — 두 세계와 한 판의 흐름</h2><span class="cat">topology</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">구성</div>
+      <p>게임 백엔드는 "서버 두 개"라기보다 <b>성격이 다른 두 세계</b>로 나뉘고, 각 세계 안에서 서비스로 더 쪼개진다:</p>
+      <ul>
+        <li><b>메타(플랫폼) 서버</b> — 로그인·인벤토리·상점·전적·랭킹. 평범한 stateless HTTP 서버 + RDB/캐시. 결제·아이템 지급은 오히려 정합성이 최우선이라 트랜잭션 설계가 핵심.</li>
+        <li><b>매치메이킹</b> — 큐를 관리하고, 조건이 맞으면 fleet에서 매치 서버를 배정.</li>
+        <li><b>매치 서버 fleet</b> — 판 하나를 시뮬레이션하는 stateful 프로세스들(02~08의 주인공).</li>
+        <li><b>지속연결 게이트웨이</b> — 채팅·친구 프레즌스·파티·초대처럼 "실시간 push는 필요하지만 tick 시뮬레이션은 아닌" 것들. WebSocket 등 지속 연결로 처리한다. → 상세는 「실시간 WebSocket 게이트웨이」 노트 참고.</li>
+      </ul></div>
+    <div class="fig">
+      <svg class="dgm" width="700" viewBox="0 0 700 385" role="img" aria-label="게임 백엔드 토폴로지와 한 판의 흐름">
+        <rect class="boxa" x="30" y="140" width="130" height="64" rx="9"/>
+        <text x="95" y="168" text-anchor="middle" class="b">게임</text>
+        <text x="95" y="186" text-anchor="middle" class="b">클라이언트</text>
+        <rect class="box" x="300" y="28" width="170" height="52" rx="9"/>
+        <text x="385" y="50" text-anchor="middle" class="b">메타 API 서버</text>
+        <text x="385" y="68" text-anchor="middle" class="mut sm">stateless · HTTP</text>
+        <rect class="pill" x="540" y="36" width="130" height="36" rx="9"/>
+        <text x="605" y="58" text-anchor="middle" class="mut">RDB / Redis</text>
+        <rect class="box" x="300" y="118" width="170" height="52" rx="9"/>
+        <text x="385" y="140" text-anchor="middle" class="b">매치메이킹</text>
+        <text x="385" y="158" text-anchor="middle" class="mut sm">큐 관리 · 서버 배정</text>
+        <rect class="box" x="316" y="222" width="170" height="64" rx="9"/>
+        <rect class="boxa" x="300" y="208" width="170" height="64" rx="9"/>
+        <text x="385" y="232" text-anchor="middle" class="b">매치 서버 fleet</text>
+        <text x="385" y="250" text-anchor="middle" class="mut sm">stateful · tick 루프</text>
+        <rect class="box" x="300" y="312" width="170" height="52" rx="9"/>
+        <text x="385" y="334" text-anchor="middle" class="b">지속연결 게이트웨이</text>
+        <text x="385" y="352" text-anchor="middle" class="mut sm">채팅·프레즌스 (WS)</text>
+        <line class="e e-mut" x1="160" y1="150" x2="296" y2="60" marker-end="url(#arM)"/>
+        <rect class="chip" x="158" y="88" width="146" height="16" rx="4"/>
+        <text x="231" y="100" text-anchor="middle" class="sm">① 로그인·상점 (HTTP)</text>
+        <line class="e e-mut" x1="160" y1="168" x2="296" y2="150" marker-end="url(#arM)"/>
+        <rect class="chip" x="192" y="138" width="76" height="16" rx="4"/>
+        <text x="230" y="150" text-anchor="middle" class="sm">② 매치 큐</text>
+        <line class="e e-mut" x1="385" y1="170" x2="385" y2="204" marker-end="url(#arM)"/>
+        <rect class="chip" x="395" y="178" width="70" height="16" rx="4"/>
+        <text x="430" y="190" text-anchor="middle" class="sm mut">서버 배정</text>
+        <line class="e e-acc" x1="160" y1="190" x2="296" y2="240" marker-end="url(#arA)"/>
+        <rect class="chip" x="118" y="218" width="194" height="16" rx="4"/>
+        <text x="215" y="230" text-anchor="middle" class="sm acc">③ 게임 중 직접 연결 (UDP/TCP)</text>
+        <path class="e e-grn" d="M470,240 C585,240 585,84 474,64" marker-end="url(#arG)"/>
+        <rect class="chip" x="502" y="142" width="152" height="16" rx="4"/>
+        <text x="578" y="154" text-anchor="middle" class="sm grn">④ 판 결과 보고 (S2S)</text>
+        <line class="e e-mut" x1="470" y1="54" x2="536" y2="54" marker-end="url(#arM)"/>
+        <path class="e e-mut dash" d="M95,204 L95,338 L296,338" marker-end="url(#arM)"/>
+        <rect class="chip" x="128" y="330" width="104" height="16" rx="4"/>
+        <text x="180" y="342" text-anchor="middle" class="sm mut">상시 WS 연결</text>
+      </svg>
+    </div>
+    <div class="block"><div class="lbl">한 판의 흐름</div>
+      <p>① 로비·상점은 HTTP로 메타 서버와. ② 큐를 돌리면 매치메이킹이 매치 서버를 배정하고 클라이언트에 "저 주소로 접속, 이 토큰 지참"을 알린다. ③ 게임 중엔 <b>메타 서버를 거치지 않고 매치 서버에 직접</b> 연결한다 — 레이턴시 경로에 아무것도 안 끼운다. ④ 판이 끝나면 매치 서버가 결과를 메타 쪽에 server-to-server로 보고(중간에 메시지 큐를 끼우기도)하고, 클라이언트는 다시 로비(①)로.</p></div>
+    <div class="block why"><div class="lbl">왜 나누나</div>
+      <p>두 세계는 스케일 단위(RPS vs CCU), 배포 방식(10), 언어·런타임 선택까지 전부 달라서 한 덩어리로 만들면 양쪽 다 손해다. 관측 포인트: 게임사 백엔드 인력의 다수는 사실 메타 서버 — 즉 일반 API 서버 — 를 만든다.</p></div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="card" id="c10">
+  <div class="head"><span class="num">10</span><h2>배포와 스케일링 — 드레이닝과 fleet 오케스트레이션</h2><span class="cat">ops</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">문제</div>
+      <p>stateless 서버는 롤링 배포로 아무 때나 인스턴스를 갈아끼우면 된다. 매치 서버는 <b>진행 중인 판을 죽일 수 없다</b> — 인스턴스 교체가 곧 유저 수백 명의 판 파괴다.</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <ul>
+        <li><b>드레이닝(draining)</b>: 구버전 서버를 "신규 매치 배정 금지"로 표시하고, 진행 중인 판이 자연히 끝날 때까지 기다린 뒤 회수한다. 배포가 몇 십 분~몇 시간 걸리는 이유.</li>
+        <li><b>fleet 오케스트레이션</b>: 매치 서버 프로세스를 필요할 때 띄우고(또는 웜 풀에서 배정) 판이 끝나면 회수하는 전용 레이어. Kubernetes 위의 Agones, 클라우드 관리형 GameLift류가 이 역할 — 일반 오케스트레이터의 "아무 파드나 죽여도 됨" 가정이 안 통해서 전용 도구가 존재한다.</li>
+        <li><b>리전 배치</b>: 레이턴시는 물리 거리를 못 이기므로 매치 서버는 유저 가까운 리전에 분산 배치하고, 매치메이킹이 참가자들의 지연을 고려해 리전을 고른다.</li>
+      </ul></div>
+    <div class="tldr"><b>한 줄</b> — stateless 세계의 배포 상식("아무 때나 갈아끼움")이 stateful 세계에선 성립하지 않는다. 세션의 수명이 배포의 단위가 된다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="card" id="c11">
+  <div class="head"><span class="num">11</span><h2>호스팅 모델 — 전용 서버 / 리슨 서버 / P2P·릴레이</h2><span class="cat">hosting</span></div>
+  <div class="body">
+    <div class="myth"><span class="t">흔한 오해</span> — 멀티 게임에서 핑이 튀면 항상 게임사 서버 문제다? 게임에 따라 <b>서버가 게임사에 없다.</b> "호스트" 방식 게임에선 플레이어 중 한 명의 PC가 서버 역할을 하며, 그 사람의 가정용 회선이 전원의 핑을 좌우한다.</div>
+    <div class="fig">
+      <svg class="dgm" width="700" viewBox="0 0 700 250" role="img" aria-label="호스팅 모델 3종 비교: 전용 서버, 리슨 서버, P2P 릴레이">
+        <text x="115" y="20" text-anchor="middle" class="b">① 전용 서버</text>
+        <text x="350" y="20" text-anchor="middle" class="b">② 리슨 서버</text>
+        <text x="585" y="20" text-anchor="middle" class="b">③ P2P + 릴레이</text>
+        <rect class="frame" x="10" y="30" width="210" height="185" rx="6"/>
+        <rect class="frame" x="245" y="30" width="210" height="185" rx="6"/>
+        <rect class="frame" x="480" y="30" width="210" height="185" rx="6"/>
+        <rect class="boxg" x="60" y="48" width="110" height="38" rx="9"/>
+        <text x="115" y="71" text-anchor="middle" class="sm b">게임사 서버</text>
+        <circle class="pill" cx="55" cy="175" r="12"/>
+        <circle class="pill" cx="115" cy="175" r="12"/>
+        <circle class="pill" cx="175" cy="175" r="12"/>
+        <text x="55" y="205" text-anchor="middle" class="sm mut">P1</text>
+        <text x="115" y="205" text-anchor="middle" class="sm mut">P2</text>
+        <text x="175" y="205" text-anchor="middle" class="sm mut">P3</text>
+        <line class="e e-mut" x1="55" y1="163" x2="85" y2="90" marker-end="url(#arM)"/>
+        <line class="e e-mut" x1="115" y1="163" x2="115" y2="90" marker-end="url(#arM)"/>
+        <line class="e e-mut" x1="175" y1="163" x2="145" y2="90" marker-end="url(#arM)"/>
+        <rect class="boxa" x="290" y="48" width="120" height="38" rx="9"/>
+        <text x="350" y="71" text-anchor="middle" class="sm b">호스트(플레이어1)</text>
+        <circle class="pill" cx="290" cy="175" r="12"/>
+        <circle class="pill" cx="350" cy="175" r="12"/>
+        <circle class="pill" cx="410" cy="175" r="12"/>
+        <text x="290" y="205" text-anchor="middle" class="sm mut">P2</text>
+        <text x="350" y="205" text-anchor="middle" class="sm mut">P3</text>
+        <text x="410" y="205" text-anchor="middle" class="sm mut">P4</text>
+        <line class="e e-amb" x1="290" y1="163" x2="320" y2="90" marker-end="url(#arB)"/>
+        <line class="e e-amb" x1="350" y1="163" x2="350" y2="90" marker-end="url(#arB)"/>
+        <line class="e e-amb" x1="410" y1="163" x2="380" y2="90" marker-end="url(#arB)"/>
+        <rect class="chip" x="308" y="118" width="84" height="16" rx="4"/>
+        <text x="350" y="130" text-anchor="middle" class="sm amb">가정용 회선</text>
+        <rect class="box" x="530" y="48" width="110" height="38" rx="9"/>
+        <text x="585" y="65" text-anchor="middle" class="sm b">릴레이 서버</text>
+        <text x="585" y="80" text-anchor="middle" class="mut sm">중계만, 판정 없음</text>
+        <circle class="pill" cx="525" cy="175" r="12"/>
+        <circle class="pill" cx="585" cy="175" r="12"/>
+        <circle class="pill" cx="645" cy="175" r="12"/>
+        <text x="525" y="205" text-anchor="middle" class="sm acc">P1=권한</text>
+        <text x="585" y="205" text-anchor="middle" class="sm mut">P2</text>
+        <text x="645" y="205" text-anchor="middle" class="sm mut">P3</text>
+        <line class="e e-mut" x1="525" y1="163" x2="555" y2="90" marker-end="url(#arM)"/>
+        <line class="e e-mut" x1="585" y1="163" x2="585" y2="90" marker-end="url(#arM)"/>
+        <line class="e e-mut" x1="645" y1="163" x2="615" y2="90" marker-end="url(#arM)"/>
+        <text x="115" y="237" text-anchor="middle" class="sm mut">레이턴시 공평 · 운영비 ↑</text>
+        <text x="350" y="237" text-anchor="middle" class="sm mut">호스트 회선·성능에 전원 종속</text>
+        <text x="585" y="237" text-anchor="middle" class="sm mut">NAT·IP 노출 해결, 권한은 P1에</text>
+      </svg>
+    </div>
+    <div class="block"><div class="lbl">각 모델의 성격</div>
+      <ul>
+        <li><b>전용 서버(dedicated)</b> — 게임사가 데이터센터에 운영. 전원에게 공평한 레이턴시, 치트 방어(05), 안정성. 대가는 fleet 운영비(10). 경쟁 게임의 표준.</li>
+        <li><b>리슨 서버(listen server)</b> — 플레이어 한 명의 기기가 서버 겸 플레이어. 운영비 0이지만: 전원 트래픽이 호스트의 <b>가정용 회선(특히 좁은 업로드)</b>을 거쳐 호스트 상황에 따라 전원 핑이 튀고, 호스트 본인은 핑 0ms라 판정에서 유리하며(host advantage), 호스트 이탈 시 <b>호스트 마이그레이션</b>(다른 플레이어를 새 호스트로 승격 — 그 몇 초간 전원 멈춤)이 필요하고, 호스트가 곧 심판이라 치트에 취약하다.</li>
+        <li><b>P2P + 릴레이</b> — 트래픽만 게임사 릴레이 서버로 중계해 NAT 통과·IP 노출 문제를 풀되, 게임 판정 권한은 여전히 클라이언트(호스트)에 있다. 전용 서버보다 훨씬 싸고 리슨 서버보다 연결이 안정적인 절충안.</li>
+        <li><b>(별개 계열) 롤백 넷코드</b> — 1:1 격투 게임 등에서 서버 없이 양쪽이 <b>같은 결정적(deterministic) 시뮬레이션</b>을 돌리고 입력만 교환한다. 상대 입력이 늦게 오면 예측으로 진행하다가, 도착하면 그 시점으로 되감아 재시뮬레이션(06의 reconciliation을 P2P에 적용한 꼴).</li>
+      </ul></div>
+    <div class="block trade"><div class="lbl">선택 기준</div>
+      <p>공정성과 치트 방어가 수익에 직결되면(경쟁·랭크) 전용 서버, 캐주얼·협동이라 비용이 우선이면 호스트/릴레이 계열로 기운다. "호스트 형이 유튜브 켜면 전원 핑이 튀는" 경험은 후자의 구조적 한계다.</p></div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="card" id="c12">
+  <div class="head"><span class="num">12</span><h2>WebRTC — P2P 연결의 표준 배관</h2><span class="cat">transport</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>브라우저·게임 엔진에 표준으로 들어 있는 P2P 연결 스택. 11번의 "P2P + 릴레이" 그림을 직접 구현할 때 쓰는 기성 부품으로, NAT 통과·암호화·데이터 채널까지 한 번에 준다. 게임 엔진용 공식/서드파티 패키지로 코드 몇 줄이면 데이터 채널이 열린다 — 단, 열리는 건 <b>파이프까지</b>다.</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <ul>
+        <li><b>시그널링</b>: 두 피어가 처음 만나려면 연결 정보(SDP, ICE candidate)를 교환할 작은 서버가 필요하다. 완전한 서버리스는 아니다 — 연결 성사 후엔 경로에서 빠진다.</li>
+        <li><b>NAT 통과 (ICE)</b>: <b>STUN</b> 서버로 자기 공인 주소를 알아내 직접 연결(hole punching)을 시도하고, 실패하면 <b>TURN</b> 릴레이 경유로 폴백한다. 11번의 "릴레이 서버"가 WebRTC에선 TURN이라는 표준 부품이다.</li>
+        <li><b>데이터 채널</b>: UDP 기반(SCTP over DTLS, 암호화 기본)이고 채널마다 신뢰/순서 보장 여부를 설정할 수 있다 — 00번에서 말한 "UDP 위 신뢰/비신뢰 채널"을 직접 만들 필요 없이 기성품으로 주는 셈.</li>
+      </ul></div>
+    <div class="fig">
+      <svg class="dgm" width="660" viewBox="0 0 660 260" role="img" aria-label="WebRTC 연결 과정: 시그널링, 직접 연결, TURN 릴레이 폴백">
+        <rect class="box" x="265" y="20" width="130" height="44" rx="9"/>
+        <text x="330" y="38" text-anchor="middle" class="b">시그널링 서버</text>
+        <text x="330" y="54" text-anchor="middle" class="mut sm">연결 성사용</text>
+        <rect class="boxa" x="40" y="110" width="130" height="50" rx="9"/>
+        <text x="105" y="140" text-anchor="middle" class="b">피어 A</text>
+        <rect class="boxa" x="490" y="110" width="130" height="50" rx="9"/>
+        <text x="555" y="140" text-anchor="middle" class="b">피어 B</text>
+        <rect class="box" x="265" y="195" width="130" height="50" rx="9"/>
+        <text x="330" y="215" text-anchor="middle" class="b">TURN 릴레이</text>
+        <text x="330" y="232" text-anchor="middle" class="mut sm">전 트래픽 중계</text>
+        <line class="e e-mut dash" x1="105" y1="110" x2="280" y2="64" marker-end="url(#arM)"/>
+        <line class="e e-mut dash" x1="555" y1="110" x2="380" y2="64" marker-end="url(#arM)"/>
+        <rect class="chip" x="240" y="78" width="180" height="16" rx="4"/>
+        <text x="330" y="90" text-anchor="middle" class="sm mut">① SDP·ICE 교환 (시그널링)</text>
+        <line class="e e-acc" x1="170" y1="128" x2="486" y2="128" marker-end="url(#arA)"/>
+        <rect class="chip" x="205" y="102" width="250" height="16" rx="4"/>
+        <text x="330" y="114" text-anchor="middle" class="sm acc">② 직접 연결 (STUN으로 NAT 통과)</text>
+        <line class="e e-amb dash" x1="170" y1="150" x2="265" y2="212" marker-end="url(#arB)"/>
+        <line class="e e-amb dash" x1="395" y1="212" x2="490" y2="150" marker-end="url(#arB)"/>
+        <rect class="chip" x="150" y="176" width="110" height="16" rx="4"/>
+        <text x="205" y="188" text-anchor="middle" class="sm amb">③ 실패 시 폴백</text>
+      </svg>
+    </div>
+    <div class="myth"><span class="t">헷갈리기 쉬운 지점</span> — "WebRTC를 쓰면 호스트 문제가 해결된다"? 아니다. WebRTC는 <b>연결(전송)만</b> 해결한다. 누가 판정 권한을 갖느냐는 그 위의 설계 선택이고, 한 피어를 authority로 세우면 리슨 서버 모델(host advantage·이탈·치트)이, 1:1 결정적 시뮬레이션이면 롤백 넷코드가 — 11번의 트레이드오프가 그대로 적용된다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="card" id="c13">
+  <div class="head"><span class="num">13</span><h2>P2P의 실제 비용 — 왜 생각만큼 안 줄어드나</h2><span class="cat">tradeoff</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">문제</div>
+      <p>"서버가 없으니 비용이 확 줄겠다"는 직관은 절반만 맞다. 문제의 뿌리는 네트워크 불안정이 아니라 <b>신뢰할 수 있는 제3자가 없다는 것 자체</b>다 — 판정, 정보 은닉, 결과 보고, 분쟁 중재가 전부 신뢰 주체를 필요로 하는 일이기 때문.</p></div>
+    <div class="block"><div class="lbl">돈으로 해결 안 되는 것들</div>
+      <ul>
+        <li><b>치트 — 결정타.</b> 심판이 없다. authoritative 검증(05)도 정보 필터링(07)도 사라진다: 호스트가 치트하면 끝이고, P2P에선 전체 상태가 모든 피어에 오가므로 맵핵이 공짜다. 판 결과를 서버에 보고하는 것도 클라이언트라 <b>전적·랭킹·보상 조작이 가능</b>하다. 랭크·경제·경쟁 요소가 있는 순간 P2P가 선택지에서 빠지는 이유.</li>
+        <li><b>desync.</b> 단일 진실(서버 메모리)이 없어 피어 간 상태가 어긋나는 게 고질병. 롤백/락스텝은 모든 기기의 시뮬레이션이 비트 단위로 같아야 하는데(결정성), 플랫폼별 부동소수점 차이 하나로도 판이 갈라지고, 어긋났을 때 "누가 맞는지" 정할 기준도 없다.</li>
+        <li><b>운영 관측 불가.</b> 서버 로그가 없어 버그 재현·분쟁 처리·리플레이·치트 신고 검증이 어렵다. 직접 P2P는 상대에게 <b>IP가 노출</b>돼 저격 DoS·신상 문제로 이어질 수 있고, 이것 때문에 릴레이를 강제하면 아래 비용으로 되돌아온다.</li>
+      </ul></div>
+    <div class="block why"><div class="lbl">비용이 생각만큼 안 줄어드는 이유</div>
+      <ul>
+        <li><b>시그널링 서버</b>는 어차피 필요하고, 로그인·매치메이킹·전적 같은 메타 서버(09)도 그대로 필요하다.</li>
+        <li><b>TURN 릴레이 비용 회귀</b>: NAT 통과는 꽤 실패한다(대칭형 NAT, 회사/학교망 등). 그 유저들은 릴레이 경유인데 TURN은 게임 트래픽 <b>전체</b>를 중계하므로, 릴레이 비율이 높으면 전용 서버 대비 절감폭이 크게 준다.</li>
+        <li><b>스케일 한계</b>: 풀메시 P2P는 연결 N², 각자 업로드 N-1배 — 가정용 업로드 대역폭 때문에 실질 4~8인이 한계. 인원이 늘면 결국 한 명을 호스트로 세우고(스타 토폴로지) 11번의 호스트 종속 문제로 회귀한다.</li>
+      </ul></div>
+    <div class="block trade"><div class="lbl">선택 기준</div>
+      <p>협동·캐주얼·친구끼리 방(치트 동기 없음, 결과가 안 중요) → P2P 절감 합리적. 랭킹·경제·경쟁이 있다 → 전용 서버 비용은 아끼는 대상이 아니라 <b>제품의 일부</b>다.</p></div>
+    <div class="tldr"><b>한 줄</b> — P2P가 지우는 건 서버 비용이 아니라 신뢰 주체다. 게임에 신뢰가 필요 없으면 싸고, 필요하면 어떤 형태로든 그 비용이 되돌아온다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<footer>
+  distilled from a live session · 2026-09-28 · 회사/도메인 맥락 제거됨 · 관련: 실시간 WebSocket 게이트웨이 노트
+</footer>
+</div>
