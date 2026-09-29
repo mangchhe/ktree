@@ -1,7 +1,8 @@
-const CACHE = 'challenge-v1';
+const CACHE = 'ktree-v2';
 const STATIC = [
   '/challenge',
   '/challenge-history',
+  '/english',
   'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap'
 ];
 
@@ -33,9 +34,11 @@ self.addEventListener('push', e => {
 self.addEventListener('notificationclick', e => {
   e.notification.close();
   const url = e.notification.data?.url || '/challenge';
+  // 푸시가 가리키는 페이지(/challenge, /english …)가 이미 열려 있으면 그 탭을 재사용한다
+  const path = new URL(url, self.location.origin).pathname.replace(/\.html$/, '');
   e.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
-      const existing = list.find(c => c.url.includes('challenge'));
+      const existing = list.find(c => new URL(c.url).pathname.replace(/\.html$/, '') === path);
       if (existing) { existing.focus(); existing.navigate(url); }
       else clients.openWindow(url);
     })

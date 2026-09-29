@@ -9,3 +9,6 @@ drafts/notes-private/
 
 # upload-note.mjs 로그인 자격증명
 .env
+
+# 브리핑/카드 오디오 — Storage 에 올라가는 산출물이라 레포엔 안 둔다
+drafts/english/*.mp3
