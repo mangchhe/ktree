@@ -278,6 +278,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .vcard .vm{font-size:13px;color:var(--sub);margin-top:7px;line-height:1.6}
 .vcard .vsrc{font-size:10.5px;color:var(--dim);margin-top:9px}
 .vprog{font-size:11.5px;color:var(--sub);margin-bottom:10px;font-variant-numeric:tabular-nums}
+.strip{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
+.srow{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.strip input,.strip textarea{flex:1 1 auto;min-width:0;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:9px 11px;font:inherit;font-size:13px;color:var(--text)}
+.strip textarea{width:100%;margin-top:8px;resize:vertical}
+.sdet{margin-top:10px}
+.sdet>summary{cursor:pointer;font-size:12.5px;color:var(--sub);list-style:none}
+.sdet>summary::-webkit-details-marker{display:none}
+.sdet>summary::before{content:"▸ ";color:var(--dim)}
+.sdet[open]>summary::before{content:"▾ "}
 
 /* --- tab bar --- */
 .tabbar{
@@ -317,114 +326,30 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       </div>
     </div>
 
-    <!-- ============ HOME ============ -->
-    <!-- ============ 오늘 (개편) ============ -->
+    <!-- ============ 오늘 ============ -->
     <section class="screen on" id="s-today">
       <div id="t-board"></div>
       <div id="t-act" hidden></div>
     </section>
 
-    <section class="screen" id="s-home">
-      <div class="stats">
-        <div class="stat due"><div class="n" id="st-due">—</div><div class="t">오늘 복습</div></div>
-        <div class="stat"><div class="n" id="st-total">—</div><div class="t">전체 카드</div></div>
-        <div class="stat"><div class="n" id="st-acc">—<small>%</small></div><div class="t">이번 주 정답률</div></div>
-      </div>
-
-      <div class="lvlcard">
-        <div class="lvlrow" id="lvlchips">
-          <span class="label">현재 레벨</span>
-        </div>
-        <div class="lvlbar"><i id="lvlbar"></i></div>
-        <div class="lvlmeta" id="lvlmeta">레벨 = 어휘 빈도·관용성·문장 복잡도 (CEFR A2→C1 대응) · 잠금 아님</div>
-        <div class="lvlrow" style="margin-top:12px" id="topics">
-          <span class="label">토픽</span>
-        </div>
-        <div class="tnote">끈 토픽은 큐·자동 보급에서 제외됩니다 — 탭해서 토글, ＋로 추가</div>
-      </div>
-
-      <div class="modes">
-        <button class="mode" data-go="review"><span class="ic">🃏</span>
-          <span><span class="mt">Review</span><br><span class="md" id="md-review">한국어 상황 보고 영어로 말하기</span></span><span class="go">›</span></button>
-        <button class="mode" data-go="listen"><span class="ic" style="background:var(--ok-bg);border-color:var(--ok-bd)">🎧</span>
-          <span><span class="mt">Listen &amp; Shadow</span><br><span class="md">브리핑 듣기 + 문장 따라하기</span></span><span class="go">›</span></button>
-        <button class="mode" data-go="speak"><span class="ic" style="background:var(--warn-bg);border-color:rgba(240,169,68,.25)">🎙️</span>
-          <span><span class="mt">Speak</span><br><span class="md">받아쓰기 마이크로 말해서 답하기</span></span><span class="go">›</span></button>
-        <button class="mode" data-go="journal"><span class="ic" style="background:var(--warn-bg);border-color:rgba(240,169,68,.25)">📓</span>
-          <span><span class="mt">Journal</span><br><span class="md">오늘 하루 3문장 말하기 · 밤사이 교정</span></span><span class="go">›</span></button>
-        <button class="mode" data-go="inbox"><span class="ic" style="background:var(--card-el);border-color:var(--border-hl)">📥</span>
-          <span><span class="mt">Inbox</span><br><span class="md" id="md-inbox">주운 표현 던져놓기</span></span><span class="go">›</span></button>
-      </div>
-
-      <div class="pushrow"><button id="push-btn" onclick="subscribePush(true)">🔔 아침 푸시 켜기</button></div>
-      <div class="buildline">build <b>—</b></div>
+    <!-- ============ 어휘 ============ -->
+    <section class="screen" id="s-vocab">
+      <div id="vb-head"></div>
+      <div id="vb-list"></div>
     </section>
 
-    <!-- ============ REVIEW ============ -->
-    <section class="screen" id="s-review">
-      <div class="tfilter" id="tfilter"></div>
-      <div class="progress">
-        <div class="pbar"><i id="pbar"></i></div>
-        <div class="pnum" id="pnum">—</div>
-      </div>
-      <div id="qwrap"></div>
+    <!-- ============ 보관함 ============ -->
+    <section class="screen" id="s-archive">
+      <div id="av-list"></div>
     </section>
 
-    <!-- ============ LISTEN ============ -->
-    <section class="screen" id="s-listen">
-      <div id="briefwrap"></div>
-      <div class="ctl">
-        <span class="label">재생 속도</span>
-        <div class="rate" id="rate">
-          <button data-r="0.75">0.75×</button>
-          <button data-r="0.9" class="on">0.9×</button>
-          <button data-r="1.1">1.1×</button>
-        </div>
-      </div>
-      <div class="tracks" id="tracks"></div>
-    </section>
-
-    <!-- ============ SPEAK ============ -->
-    <section class="screen" id="s-speak">
-      <div id="speakwrap"></div>
-    </section>
-
-    <!-- ============ JOURNAL ============ -->
-    <section class="screen" id="s-journal">
-      <div class="scard">
-        <span class="label">오늘의 일기 — 쓰지 말고 말하세요</span>
-        <div class="ko" style="font-size:15px">오늘 하루 어땠어요? 3~5문장이면 충분해요.<br>
-          <span style="color:var(--dim);font-size:12px;font-weight:400">힌트: 뭘 했는지 · 어땠는지 · 내일은 뭘 할지</span></div>
-        <div class="micbox">
-          <textarea id="j-in" placeholder="Today was..."></textarea>
-          <div class="michint"><span class="mic">🎙️</span> 키보드의 마이크로 말해서 입력 — 문법 틀려도 그냥 제출하세요, 그게 재료예요</div>
-        </div>
-        <button class="check" id="j-send">제출 — 밤사이 교정됩니다</button>
-        <div class="result good" id="j-done">✅ 제출 완료. 교정되면 아래에 나타나요.</div>
-      </div>
-      <div class="jpast" id="jpast"></div>
-    </section>
-
-    <!-- ============ INBOX ============ -->
-    <section class="screen" id="s-inbox">
-      <div class="inadd">
-        <input id="inb-in" placeholder="방금 들은 표현을 한 줄로 던져두세요" aria-label="표현 추가">
-        <button id="inb-add" aria-label="추가">＋</button>
-      </div>
-      <p class="inhint">유튜브·미드·블로그·회의에서 주운 표현을 던져두면, 밤사이 /eng-pack이 카드로 변환합니다.</p>
-      <div class="inlist" id="inb-list"></div>
-    </section>
   </div>
 </div>
 
 <nav class="tabbar" id="tabbar" style="display:none">
   <button class="tab on" data-s="today"><span class="ti">📋</span>오늘</button>
-  <button class="tab" data-s="home"><span class="ti">🏠</span>홈</button>
-  <button class="tab" data-s="review"><span class="ti">🃏</span>Review</button>
-  <button class="tab" data-s="listen"><span class="ti">🎧</span>Listen</button>
-  <button class="tab" data-s="speak"><span class="ti">🎙️</span>Speak</button>
-  <button class="tab" data-s="journal"><span class="ti">📓</span>일기</button>
-  <button class="tab" data-s="inbox"><span class="ti">📥</span>Inbox</button>
+  <button class="tab" data-s="vocab"><span class="ti">🗂</span>어휘</button>
+  <button class="tab" data-s="archive"><span class="ti">📚</span>보관함</button>
 </nav>
 
 <div class="toast" id="toast"></div>
@@ -437,22 +362,18 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.3';
+const BUILD = '2026-09-30.4';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
-const LS = { queue:'eng.queue', pending:'eng.pendingOps' };
+const LS = { pending:'eng.pendingOps' };   // queue 캐시는 옛 Review 화면과 함께 사라졌다
 
 let currentUser = null;
 let topics = [];        // eng_topics rows
-let cards = [];         // 활성 토픽 카드 (큐 재료)
-let queue = [];         // 현재 필터 기준 순서 있는 큐
-let qIdx = 0, qTotal = 0;
-let filterTp = 'all';
-let rateVal = 0.9;
-let briefing = null;
-let briefAudio = null;
-let speakCard = null;
+/* ⚠️ 오프라인 복습이 지금은 약하다. 옛 설계는 카드 큐를 localStorage 에 캐시해
+   지하철에서 돌렸지만, 새 설계는 장면·기사 오디오를 Storage 에서 받으므로
+   네트워크가 필요하다. 살아 있는 절반은 saveGrade/flushPending — 채점은 오프라인에
+   쌓이고 복귀 때 동기화된다. 어휘까지 오프라인으로 돌리려면 tVocab 을 캐시해야 한다. */
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -475,20 +396,17 @@ async function login(){
 async function logout(){ await sb.auth.signOut(); location.reload(); }
 
 /* ================= 화면 전환 ================= */
-const SCREENS = ['today','home','review','listen','speak','journal','inbox'];
+const SCREENS = ['today','vocab','archive'];
 function show(s){
   SCREENS.forEach(k => $('s-'+k).classList.toggle('on', k===s));
   document.querySelectorAll('#tabbar .tab').forEach(b => b.classList.toggle('on', b.dataset.s===s));
   if ('speechSynthesis' in window) speechSynthesis.cancel();
-  if (briefAudio) briefAudio.pause();
+  // 화면을 떠날 때 소리를 다 끈다. cardAudio 는 어휘 발음, tStopAudio 는 장면·기사.
   if (cardAudio) cardAudio.pause();
+  tStopAudio();
   if (s==='today') renderToday();
-  if (s==='home') renderHome();
-  if (s==='review') renderQ();
-  if (s==='listen') renderListen();
-  if (s==='speak') renderSpeak();
-  if (s==='journal') loadJournal();
-  if (s==='inbox') loadInbox();
+  if (s==='vocab') renderVocab();
+  if (s==='archive') renderArchive();
   window.scrollTo(0,0);
 }
 $('tabbar').addEventListener('click', e => { const b=e.target.closest('[data-s]'); if(b) show(b.dataset.s); });
@@ -508,133 +426,7 @@ async function loadTopics(){
 
 function activeTopicNames(){ return topics.filter(t=>t.active).map(t=>t.name); }
 
-async function loadCards(){
-  const names = activeTopicNames();
-  if (!names.length) { cards = []; return; }
-  const { data, error } = await sb.from('eng_cards')
-    .select('*')
-    .in('topic', names)
-    .neq('status','suspended')
-    .order('next_review').order('created_at')
-    .limit(800);
-  if (error) throw error;
-  cards = data || [];
-  try { localStorage.setItem(LS.queue, JSON.stringify(cards.slice(0,300))); } catch(_){}
-}
-
-/* 큐: due(예정 지난 것) → 신규 → 앞당겨 복습. 절대 바닥나지 않는다 */
-function buildQueue(){
-  const d = today();
-  const pool = filterTp==='all' ? cards : cards.filter(c=>c.topic===filterTp);
-  const due   = pool.filter(c => c.status!=='new' && c.next_review <= d);
-  const fresh = pool.filter(c => c.status==='new');
-  const ahead = pool.filter(c => c.status!=='new' && c.next_review > d);
-  queue = [...due, ...fresh, ...ahead];
-  qIdx = 0;
-  qTotal = due.length + fresh.length;   // 진행바 기준: 오늘 due + 신규
-}
-
 /* ================= 홈 ================= */
-async function renderHome(){
-  const d = today();
-  // due 와 신규를 갈라 센다. 스키마가 next_review 를 current_date 로 채우므로
-  // 신규 카드도 next_review <= 오늘 이다 — 합쳐 세면 "오늘 복습" 자리에 백로그 총량이 들어간다.
-  const dueN   = cards.filter(c => c.status !== 'new' && c.next_review <= d).length;
-  const freshN = cards.filter(c => c.status === 'new').length;
-  $('st-due').textContent = dueN;
-  $('md-review').textContent = (dueN || freshN)
-    ? `복습 ${dueN}장${freshN ? ` · 새 카드 ${freshN}장` : ''} 대기 중`
-    : '한국어 상황 보고 영어로 말하기';
-
-  // 홈의 두 숫자는 같은 기준이어야 한다 — loadCards 와 같은 필터를 쓴다
-  const tnames = activeTopicNames();
-  const { count } = tnames.length
-    ? await sb.from('eng_cards').select('*',{count:'exact',head:true})
-        .in('topic', tnames).neq('status','suspended')
-    : { count: 0 };
-  $('st-total').textContent = count ?? cards.length;
-
-  // 이번 주 정답률 + 스트릭
-  const weekAgo = new Date(Date.now()-7*864e5).toISOString();
-  const { data: logs } = await sb.from('eng_review_log')
-    .select('grade, reviewed_at').gte('reviewed_at', weekAgo).limit(2000);
-  if (logs?.length){
-    const good = logs.filter(l=>l.grade!=='miss').length;
-    $('st-acc').innerHTML = Math.round(good/logs.length*100)+'<small>%</small>';
-  } else $('st-acc').innerHTML = '—<small>%</small>';
-
-  const { data: days } = await sb.from('eng_review_log')
-    .select('reviewed_at').gte('reviewed_at', new Date(Date.now()-90*864e5).toISOString())
-    .order('reviewed_at',{ascending:false}).limit(3000);
-  const dset = new Set((days||[]).map(l => kstDate(l.reviewed_at)));
-  let streak = 0, cursor = Date.now();
-  if (!dset.has(kstDate(cursor))) cursor -= 864e5;              // 오늘 아직 안 했으면 어제부터
-  while (dset.has(kstDate(cursor))) { streak++; cursor -= 864e5; }
-  $('streak').textContent = `🔥 ${streak}일`;
-
-  renderLevel();
-  renderTopics();
-
-  const { count: inb } = await sb.from('eng_inbox').select('*',{count:'exact',head:true}).eq('status','pending');
-  $('md-inbox').textContent = inb ? `주운 표현 던져놓기 · 변환 대기 ${inb}` : '주운 표현 던져놓기';
-
-  // typeof 로 봐야 한다 — 선언 안 된 전역에는 ?. 이 안 먹고 ReferenceError 가 난다.
-  // iOS Safari 는 홈 화면 설치 전에는 Notification 이 아예 없다.
-  if (typeof Notification !== 'undefined' && Notification.permission === 'granted')
-    $('push-btn').textContent = '🔔 아침 푸시 켜짐';
-}
-
-function renderLevel(){
-  // 레벨별: mature 비율(커버리지)로 진행도 계산. 현재 레벨 = 소화 안 끝난 가장 낮은 레벨
-  const byLv = {1:{t:0,m:0},2:{t:0,m:0},3:{t:0,m:0},4:{t:0,m:0}};
-  for (const c of cards){ const b=byLv[c.level]; if(b){ b.t++; if(c.status==='mature') b.m++; } }
-  let cur = 4;
-  for (let l=1; l<=4; l++) if (byLv[l].t===0 || byLv[l].m < byLv[l].t*0.8) { cur=l; break; }
-  const wrap = $('lvlchips');
-  wrap.querySelectorAll('.lvlchip').forEach(x=>x.remove());
-  for (let l=1; l<=4; l++){
-    const s = document.createElement('span');
-    const done = l < cur, isCur = l === cur;
-    s.className = 'lvlchip' + (done?' done':isCur?' cur':'');
-    s.textContent = LEVELS[l] + (done?' ✓':'');
-    wrap.appendChild(s);
-  }
-  const b = byLv[cur], pct = b.t ? Math.round(b.m/b.t*100) : 0;
-  $('lvlbar').style.width = Math.max(pct,3)+'%';
-  $('lvlmeta').innerHTML = b.t
-    ? `${esc(LEVELS[cur])} 진행 <b>${pct}%</b> — ${b.m}/${b.t}장 소화 · 레벨은 잠금이 아니라 라벨`
-    : `${esc(LEVELS[cur])} 카드가 아직 없어요 — /eng-pack 으로 팩을 생성하세요`;
-}
-
-function renderTopics(){
-  const wrap = $('topics');
-  wrap.querySelectorAll('.tchip').forEach(x=>x.remove());
-  for (const t of topics){
-    const b = document.createElement('button');
-    b.className = 'tchip' + (t.active?' on':'');
-    b.textContent = t.name;
-    b.onclick = async () => {
-      t.active = !t.active;
-      b.classList.toggle('on', t.active);
-      await sb.from('eng_topics').update({active:t.active}).eq('id', t.id);
-      await loadCards(); buildQueue(); renderHome();
-    };
-    wrap.appendChild(b);
-  }
-  const add = document.createElement('button');
-  add.className = 'tchip'; add.textContent = '＋';
-  add.onclick = async () => {
-    const name = prompt('추가할 토픽 이름 (예: 인터뷰, 마케팅)');
-    if (!name?.trim()) return;
-    const { data, error } = await sb.from('eng_topics')
-      .insert({ user_id: currentUser.id, name: name.trim(), sort: topics.length }).select().single();
-    if (error) return toast('추가 실패: 이미 있는 이름일 수 있어요');
-    topics.push(data); renderTopics();
-    toast(`"${data.name}" 추가됨 — 밤 보급 때 팩이 생성돼요`);
-  };
-  wrap.appendChild(add);
-}
-
 /* ================= SRS ================= */
 function applyGrade(card, grade){
   if (grade === 'good'){
@@ -649,12 +441,6 @@ function applyGrade(card, grade){
   card.interval_days = Math.min(card.interval_days, 365);
   card.next_review = kstDate(Date.now() + card.interval_days * 864e5);
   card.status = card.interval_days >= 21 ? 'mature' : 'learning';
-}
-
-function previewInterval(card, grade){
-  const c = { ...card, ease:Number(card.ease) };
-  applyGrade(c, grade);
-  return c.interval_days;
 }
 
 async function saveGrade(card, grade, mode){
@@ -696,98 +482,6 @@ async function flushPending(){
 }
 window.addEventListener('online', flushPending);
 
-/* ================= Review ================= */
-function renderFilter(){
-  const el = $('tfilter');
-  el.innerHTML = '';
-  const mk = (label, val) => {
-    const b = document.createElement('button');
-    b.className = 'tchip' + (filterTp===val?' on':'');
-    b.textContent = label;
-    b.onclick = () => { filterTp = val; buildQueue(); renderFilter(); renderQ(); };
-    el.appendChild(b);
-  };
-  mk('전체 믹스','all');
-  for (const t of topics.filter(t=>t.active)) mk(t.name, t.name);
-}
-
-function renderQ(){
-  renderFilter();
-  const wrap = $('qwrap');
-  if (!queue.length){
-    wrap.innerHTML = `<div class="empty">카드가 없어요.<br>시드 팩을 업로드하거나 /eng-pack 으로 생성하세요.</div>`;
-    $('pnum').textContent = '0 / 0'; $('pbar').style.width = '0%';
-    return;
-  }
-  if (qIdx >= queue.length){
-    wrap.innerHTML = `<div class="donebox"><div class="big">🎉</div><h3>큐를 다 돌았어요!</h3>
-      <p>앞당겨 복습까지 전부 끝. 내일 due 카드가 다시 쌓입니다.<br>더 하고 싶으면 /eng-pack 으로 새 팩을 뽑으세요.</p>
-      <button onclick="qIdx=0;renderQ()">처음부터 다시</button></div>`;
-    return;
-  }
-  const c = queue[qIdx];
-  if (qTotal === 0){
-    // 오늘 due 도 신규도 없다 — 앞당겨 복습만 남았으므로 분모가 없다 (`1 / 1 +` 로 보이던 자리)
-    $('pnum').textContent = `앞당겨 ${qIdx+1}`;
-    $('pbar').style.width = Math.min((qIdx+1)/queue.length*100, 100) + '%';
-  } else {
-    $('pnum').textContent = `${Math.min(qIdx+1, qTotal)} / ${qTotal}` + (qIdx >= qTotal ? ' +' : '');
-    $('pbar').style.width = Math.min(qIdx/qTotal*100+6, 100) + '%';
-  }
-
-  const extra = qIdx >= qTotal ? '<span class="ctx newb">앞당겨 복습</span>' : (c.status==='new' ? '<span class="ctx newb">NEW</span>' : '');
-  wrap.innerHTML = `<div class="qcard fade">
-    <div class="chips">
-      <span class="ctx tp">${esc(c.topic)}</span>
-      ${c.scenario ? `<span class="ctx">${esc(c.scenario)}</span>` : ''}
-      <span class="ctx lv">L${c.level}</span>${extra}
-    </div>
-    <div class="ko">${esc(c.prompt_ko)}</div>
-    <div class="hintline">🗣 소리내서 (또는 머릿속으로) 말한 뒤 정답을 확인하세요</div>
-    <div class="answer" id="ans" hidden>
-      <div class="en">“${esc(c.answer_en)}”</div>
-      ${c.note ? `<div class="note">${esc(c.note)}</div>` : ''}
-      ${c.source_ref && /^https?:/.test(c.source_ref) ? `<div class="note" style="margin-top:8px">🔗 <a href="${esc(c.source_ref)}" target="_blank" rel="noopener" style="color:var(--eng)">원문 보기</a></div>` : ''}
-      <button class="replay" id="replay-btn">🔊 다시 듣기</button>
-      <button class="replay" id="suspend-btn" style="margin-left:6px">🚫 이 카드 빼기</button>
-    </div>
-    <button class="reveal" id="reveal">정답 보기</button>
-    <div class="grades" id="grades" hidden>
-      <button class="grade miss">틀림<small>내일 다시</small></button>
-      <button class="grade soso">애매<small>+${previewInterval(c,'soso')}일</small></button>
-      <button class="grade good">맞음<small>+${previewInterval(c,'good')}일</small></button>
-    </div>
-  </div>`;
-
-  $('reveal').onclick = function(){
-    $('ans').hidden = false; $('grades').hidden = false; this.remove();
-    playCard(c);
-    $('replay-btn').onclick = () => playCard(c);
-    $('suspend-btn').onclick = () => suspendCard(c);
-  };
-  $('grades').onclick = e => {
-    const g = e.target.closest('.grade'); if (!g) return;
-    const grade = g.classList.contains('miss') ? 'miss' : g.classList.contains('soso') ? 'soso' : 'good';
-    applyGrade(c, grade);
-    saveGrade(c, grade, 'review');
-    qIdx++;
-    renderQ();
-  };
-}
-
-/* 카드를 큐에서 영구히 뺀다. 카드는 밤마다 생성되므로 어색한 문장이 반드시 섞이고,
-   빼는 길이 없으면 그게 영원히 돌아와 SRS 자체를 못 믿게 된다.
-   buildQueue() 를 다시 부르지 않는다 — qIdx 가 0 으로 돌아가 큐가 처음부터 다시 시작된다. */
-async function suspendCard(card){
-  const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', card.id);
-  if (error) return toast('빼기 실패 — 네트워크를 확인하세요');
-  cards = cards.filter(x => x.id !== card.id);
-  const at = queue.indexOf(card);
-  if (at >= 0){ queue.splice(at, 1); if (at < qTotal) qTotal--; }
-  toast('이 카드는 다시 안 나와요');
-  renderQ();
-}
-
 /* ================= TTS ================= */
 // 폴백용 기기 음성 자동 선택 — 프리미엄/향상된 음성이 있으면 그걸 쓴다.
 // (기본은 미리 구운 네이티브 mp3 재생이라 이건 파일이 없을 때만 쓰인다)
@@ -805,7 +499,7 @@ function speak(text, onend){
   if (!('speechSynthesis' in window)) return;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; u.rate = rateVal;
+  u.lang = 'en-US'; u.rate = tRate;
   const v = pickVoice(); if (v) u.voice = v;
   if (onend) u.onend = onend;
   speechSynthesis.speak(u);
@@ -820,236 +514,18 @@ function playCard(card, onend){
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   const a = new Audio(`${SUPABASE_URL}/storage/v1/object/public/eng-audio/cards/${card.id}.mp3`);
   cardAudio = a;
-  a.playbackRate = rateVal;
+  a.playbackRate = tRate;
   if (onend) a.onended = onend;
   const fallback = () => { noAudio.add(card.id); speak(card.answer_en, onend); };
   a.onerror = fallback;
   a.play().catch(fallback);
 }
-$('rate').addEventListener('click', e => {
-  const b = e.target.closest('[data-r]'); if (!b) return;
-  rateVal = +b.dataset.r;
-  if (briefAudio) briefAudio.playbackRate = rateVal;   // 재생 중에도 즉시 반영
-  if (cardAudio) cardAudio.playbackRate = rateVal;
-  document.querySelectorAll('#rate button').forEach(x=>x.classList.toggle('on', x===b));
-});
-
-/* 원본을 건드리지 않는 Fisher-Yates */
-function shuffled(arr){
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; }
-  return a;
-}
 
 /* ================= Listen ================= */
-async function renderListen(){
-  // 브리핑
-  const bw = $('briefwrap');
-  if (briefing === null){
-    const { data } = await sb.from('eng_briefings')
-      .select('*').order('brief_date',{ascending:false}).limit(1);
-    briefing = data?.[0] || false;
-  }
-  if (briefing){
-    const b = briefing;
-    let script = esc(b.script);
-    for (const ex of (b.expressions || [])) {
-      const e2 = esc(ex);
-      script = script.split(e2).join(`<mark>${e2}</mark>`);
-    }
-    const srcs = (b.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(' · ');
-    const secs = Math.round(b.script.split(/\s+/).length / 2.3);
-    const native = !!b.audio_url;
-    bw.innerHTML = `<div class="brief">
-      <div class="brief-hd"><span class="btag">☀️ 오늘의 브리핑</span><span class="bdur">${esc(b.brief_date)} · 약 ${secs}초${native ? ' · 🎙 네이티브 음성' : ` · L${b.level} 맞춤`}</span></div>
-      <div class="btitle">${esc(b.title)}</div>
-      <button class="bplay" id="bplay">▶ 브리핑 듣기</button>
-      <details class="bscript"><summary>스크립트 보기</summary><p>${script}</p></details>
-      ${srcs ? `<div class="bfoot">출처: ${srcs}</div>` : ''}
-    </div>`;
-    const bp = $('bplay');
-    const reset = () => { bp.classList.remove('playing'); bp.textContent = '▶ 브리핑 듣기'; };
-    bp.onclick = () => {
-      if (bp.classList.contains('playing')){
-        if (briefAudio) { briefAudio.pause(); briefAudio.currentTime = 0; }
-        speechSynthesis.cancel(); reset(); return;
-      }
-      bp.classList.add('playing'); bp.textContent = '⏸ 재생 중 — 탭해서 정지';
-      if (native){
-        if (!briefAudio || !briefAudio.src.includes(b.audio_url)) { briefAudio = new Audio(b.audio_url); }
-        briefAudio.onended = reset;
-        briefAudio.playbackRate = rateVal;
-        briefAudio.currentTime = 0;
-        briefAudio.play().catch(()=>{ // 오디오 로드 실패 시 TTS 폴백
-          speak(b.script, reset);
-        });
-      } else {
-        speak(b.script, reset);
-      }
-    };
-  } else {
-    bw.innerHTML = `<div class="brief"><div class="btag">☀️ 오늘의 브리핑</div>
-      <p style="font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.6">아직 브리핑이 없어요 — 밤 보급(/eng-pack)이 돌면 매일 아침 여기 생깁니다.</p></div>`;
-  }
-
-  // 셰도잉 트랙 20장. **앞에서 자르지 않고 섞어서 뽑는다** — cards 는 next_review 순이라
-  // 앞을 자르면 성숙한 카드가 셰도잉에 영원히 안 나온다.
-  const all = filterTp==='all' ? cards : cards.filter(c=>c.topic===filterTp);
-  const pool = shuffled(all).slice(0, 20);
-  const tr = $('tracks');
-  tr.innerHTML = pool.length ? '' : '<div class="empty">따라할 카드가 없어요.</div>';
-  for (const c of pool){
-    const d = document.createElement('div'); d.className = 'track';
-    d.innerHTML = `<button class="play" aria-label="재생">▶</button>
-      <div class="tx"><div class="te">${esc(c.answer_en)}</div><div class="tk">${esc(c.prompt_ko)}</div></div>`;
-    d.querySelector('.play').onclick = () => {
-      document.querySelectorAll('.track').forEach(t=>t.classList.remove('playing'));
-      d.classList.add('playing');
-      playCard(c, ()=>d.classList.remove('playing'));
-    };
-    tr.appendChild(d);
-  }
-}
-
 /* ================= Speak ================= */
-function renderSpeak(){
-  const pool = filterTp==='all' ? cards : cards.filter(c=>c.topic===filterTp);
-  if (!pool.length){ $('speakwrap').innerHTML = '<div class="empty">카드가 없어요.</div>'; return; }
-  // 전체에서 고른다 (앞 50장으로 자르면 뒤쪽 카드가 Speak 에 영원히 안 나온다).
-  // 직전 카드만 피한다 — 연속으로 같은 게 나오면 다음 버튼이 고장난 것처럼 보인다.
-  const prevId = speakCard?.id;
-  const choices = pool.length > 1 ? pool.filter(c => c.id !== prevId) : pool;
-  speakCard = choices[Math.floor(Math.random()*choices.length)];
-  const c = speakCard;
-  $('speakwrap').innerHTML = `<div class="scard fade">
-    <span class="label">이 상황, 영어로 말해보세요</span>
-    <div class="chips" style="margin:10px 0 0"><span class="ctx tp">${esc(c.topic)}</span><span class="ctx lv">L${c.level}</span></div>
-    <div class="ko">${esc(c.prompt_ko)}</div>
-    <div class="micbox">
-      <textarea id="spoken" placeholder="키보드의 🎙️ 버튼을 눌러 말하면 여기에 받아쓰기됩니다"></textarea>
-      <div class="michint"><span class="mic">🎙️</span> 받아쓰기가 엉뚱하게 적히면 그게 발음 피드백이에요</div>
-    </div>
-    <button class="check" id="check">정답과 비교</button>
-    <div class="result" id="sresult"></div>
-    <div class="grades" id="sgrades" hidden>
-      <button class="grade miss">틀림</button>
-      <button class="grade soso">애매</button>
-      <button class="grade good">맞음</button>
-    </div>
-    <button class="check" id="snext" style="background:var(--card-el);color:var(--sub);display:none">다음 카드 →</button>
-  </div>`;
-
-  $('check').onclick = () => {
-    const said = $('spoken').value.trim();
-    const r = $('sresult');
-    if (!said){ $('spoken').focus(); return; }
-    // 단어 집합 비교는 어순도 군더더기도 못 본다 — 아무 순서로 뱉어도 만점이었다.
-    // 최장 공통 부분수열로 순서를 지키는 일치만 세고, F1 로 빠진 것과 덧붙인 것을 같이 벌한다.
-    // 숫자를 지우지 않는다 (0-9 포함) — "Kafka 4.2" 같은 게 비교에서 빠져 있었다.
-    // 문장부호는 버리되 숫자 안의 소수점은 살린다 — "Kafka 4.1" 이 "4","1" 로 쪼개지면
-    // 4.2 와 4.1 이 절반 일치로 잡혀 필요 이상으로 관대해진다.
-    const norm = s => s.toLowerCase().replace(/[^a-z0-9'. ]/g,' ').split(/\s+/)
-      .map(w => w.replace(/^\.+|\.+$/g,'')).filter(Boolean);
-    const A = norm(c.answer_en), M = norm(said);
-    let lcs = 0;
-    if (A.length && M.length){
-      const dp = Array.from({length:A.length+1}, () => new Array(M.length+1).fill(0));
-      for (let i=1;i<=A.length;i++) for (let j=1;j<=M.length;j++)
-        dp[i][j] = A[i-1]===M[j-1] ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j], dp[i][j-1]);
-      lcs = dp[A.length][M.length];
-    }
-    const score = (A.length + M.length) ? 2*lcs/(A.length + M.length) : 0;
-    const extra = Math.max(0, M.length - lcs);
-    const tone = score>=.7 ? 'good' : score>=.45 ? 'close' : 'close';
-    r.className = 'result show ' + tone;
-    const verdict = score>=.7 ? '✅ 거의 그대로예요!'
-                  : score>=.45 ? '🟡 뜻은 통해요 — 모범답안과 견줘보세요:'
-                  : '🔴 많이 달라요 — 듣고 한 번 더 말해보세요:';
-    r.innerHTML = `${verdict}<br>
-      <span class="model">“${esc(c.answer_en)}”</span>
-      ${c.note ? `<br><span class="sub2">${esc(c.note)}</span>` : ''}
-      <br><span class="sub2">순서 맞는 일치 ${lcs}/${A.length}${extra?` · 군더더기 ${extra}단어`:''} — 스스로 채점해주세요 ↓</span>`;
-    $('sgrades').hidden = false;
-    playCard(c);
-  };
-  $('sgrades').onclick = e => {
-    const g = e.target.closest('.grade'); if (!g) return;
-    const grade = g.classList.contains('miss') ? 'miss' : g.classList.contains('soso') ? 'soso' : 'good';
-    applyGrade(c, grade); saveGrade(c, grade, 'speak');
-    $('sgrades').hidden = true; $('snext').style.display = 'block';
-  };
-  $('snext').onclick = renderSpeak;
-}
-
 /* ================= Journal ================= */
-async function loadJournal(){
-  const { data: rows } = await sb.from('eng_journal')
-    .select('*').order('entry_date',{ascending:false}).limit(8);
-  const t = today();
-  const todayRow = rows?.find(r => r.entry_date === t);
-  const done = $('j-done');
-  if (todayRow){
-    $('j-in').value = todayRow.raw;
-    done.classList.add('show');
-    done.textContent = todayRow.status==='corrected' ? '✅ 오늘 일기는 교정까지 끝났어요.' : '✅ 제출 완료. 밤사이 교정되면 아래에 나타나요.';
-  } else { done.classList.remove('show'); }
-
-  const past = (rows||[]).filter(r => r.status==='corrected' && r.entry_date !== t).slice(0,3);
-  const jp = $('jpast');
-  if (!past.length){ jp.innerHTML=''; return; }
-  jp.innerHTML = '<span class="label">교정된 일기</span>';
-  for (const r of past){
-    const rowsHtml = (r.corrected||[]).map(x => x.ok
-      ? `<div class="jrow"><div class="jok">${esc(x.orig)}</div><div class="jwhy" style="color:var(--ok)">✓ 자연스러워요 — 그대로!</div></div>`
-      : `<div class="jrow"><div class="jbad">${esc(x.orig)}</div><div class="jgood">${esc(x.better)}</div><div class="jwhy">${esc(x.why||'')}</div></div>`
-    ).join('');
-    jp.insertAdjacentHTML('beforeend',
-      `<div class="jentry" style="margin-bottom:8px"><div class="jmeta"><span class="jd">${esc(r.entry_date)}</span></div>${rowsHtml}</div>`);
-  }
-}
-$('j-send').onclick = async () => {
-  const raw = $('j-in').value.trim();
-  if (!raw){ $('j-in').focus(); return; }
-  const { error } = await sb.from('eng_journal')
-    .upsert({ user_id: currentUser.id, entry_date: today(), raw, status:'pending', corrected:null },
-            { onConflict: 'user_id,entry_date' });
-  if (error) return toast('제출 실패 — 네트워크를 확인하세요');
-  const d = $('j-done'); d.classList.add('show'); d.textContent = '✅ 제출 완료. 밤사이 교정되면 아래에 나타나요.';
-  toast('일기 제출됨 📓');
-};
 
 /* ================= Inbox ================= */
-async function loadInbox(){
-  const { data } = await sb.from('eng_inbox')
-    .select('*').order('created_at',{ascending:false}).limit(30);
-  const el = $('inb-list');
-  el.innerHTML = (data?.length) ? '' : '<div class="empty">아직 비어 있어요 — 오늘 주운 표현을 던져보세요.</div>';
-  for (const r of (data||[])){
-    const d = document.createElement('div');
-    d.className = 'initem';
-    // 변환 대기 중인 것만 지울 수 있다 — 이미 카드가 된 건 카드 쪽에서 빼야 한다
-    d.innerHTML = `<div class="itx"><div class="ie">${esc(r.text)}</div>${r.source?`<div class="isrc">${esc(r.source)}</div>`:''}</div>
-      <span class="ipill ${r.status==='converted'?'done':'wait'}">${r.status==='converted'?'카드됨':'변환 대기'}</span>
-      ${r.status==='converted' ? '' : '<button class="indel" aria-label="삭제">✕</button>'}`;
-    const del = d.querySelector('.indel');
-    if (del) del.onclick = async () => {
-      del.disabled = true;
-      const { error } = await sb.from('eng_inbox').delete().eq('id', r.id);
-      if (error){ del.disabled = false; return toast('삭제 실패 — 네트워크를 확인하세요'); }
-      d.remove(); toast('지웠어요');
-      if (!el.querySelector('.initem')) el.innerHTML = '<div class="empty">아직 비어 있어요 — 오늘 주운 표현을 던져보세요.</div>';
-    };
-    el.appendChild(d);
-  }
-}
-async function inbAdd(){
-  const inp = $('inb-in'); const v = inp.value.trim(); if (!v) return;
-  const { error } = await sb.from('eng_inbox').insert({ user_id: currentUser.id, text: v });
-  if (error) return toast('추가 실패 — 네트워크를 확인하세요');
-  inp.value = ''; loadInbox(); toast('인박스에 던져둠 — 밤에 카드로 변환돼요');
-}
-$('inb-add').onclick = inbAdd;
-$('inb-in').addEventListener('keydown', e => { if (e.key==='Enter') inbAdd(); });
 
 /* ================= Push ================= */
 function urlBase64ToUint8Array(s){
@@ -1074,7 +550,7 @@ async function subscribePush(interactive){
     if (member) row.member_id = member.id;
     const { error } = await sb.from('push_subscriptions').upsert(row, { onConflict:'user_id,endpoint' });
     if (error) throw error;
-    $('push-btn').textContent = '🔔 아침 푸시 켜짐';
+    const pb = $('t-push'); if (pb) pb.textContent = '🔔 아침 푸시 켜짐';
     if (interactive) toast('내일 아침부터 복습 푸시가 와요');
   } catch (e) {
     console.warn('push subscribe failed', e);
@@ -1268,9 +744,28 @@ async function renderToday(){
       <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>분</small></div><div class="l">들은 시간</div></div>
       <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">읽은 기사</div></div>
     </div>
-    <p class="leg">순서는 아무거나 먼저 해도 됩니다. 각 칸이 <b>어디까지 했는지 숫자로</b> 말해줍니다.</p>`;
+    <p class="leg">순서는 아무거나 먼저 해도 됩니다. 각 칸이 <b>어디까지 했는지 숫자로</b> 말해줍니다.</p>
+
+    <!-- 옛 Inbox·일기·홈 탭이 하던 일. 탭을 따로 두면 안 쓰니 판 아래로 내렸다 -->
+    <div class="strip">
+      <div class="srow">
+        <input id="t-inb" placeholder="주운 표현 한 줄 — 밤에 카드가 됩니다" aria-label="표현 추가">
+        <button class="btn sm" id="t-inb-add">＋</button>
+      </div>
+      <details class="sdet"><summary>오늘 일기 — 3~5문장 (밤사이 교정됩니다)</summary>
+        <textarea id="t-jr" rows="4" placeholder="Today I..."></textarea>
+        <div class="srow" style="margin-top:8px"><button class="btn sm" id="t-jr-send">제출</button>
+          <span class="leg" id="t-jr-msg" style="margin:0"></span></div>
+      </details>
+      <div class="srow" style="margin-top:10px">
+        <button class="btn sm" id="t-push">🔔 아침 푸시 켜기</button>
+        <span class="leg" style="margin:0">토픽</span>
+        <span id="t-topics" class="srow" style="gap:4px"></span>
+      </div>
+    </div>`;
   box.querySelectorAll('.bcard').forEach(b => b.onclick = () => openAct(b.dataset.a));
   paintXp('');
+  wireStrip();
 }
 
 function actBar(title){
@@ -1314,7 +809,7 @@ function drawScene(el){
     <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
       <b style="color:var(--eng)">상황</b> · ${esc(sc.situation_ko)}</div>
     <div class="actbar">
-      <button class="btn sm" id="sc-listen">▶ 전체 듣기 (0.75×)</button>
+      <button class="btn sm" id="sc-listen">▶ 전체 듣기</button>
       <button class="btn sm" id="sc-fill">역할 채우기</button>
       <button class="btn sm" id="sc-stop">■ 정지</button>
     </div>
@@ -1325,8 +820,10 @@ function drawScene(el){
     </div>`;
   wireBar();
   paintTurns(sc);
-  $('sc-listen').onclick = () => { scMode='listen'; tRate=0.75; wireBar(); turns.forEach(t=>t.open=true); paintTurns(sc); chainTurn(sc,0); };
-  $('sc-fill').onclick   = () => { scMode='fill';   tRate=1;    wireBar(); turns.forEach(t=>t.open=false); paintTurns(sc); chainTurn(sc,0); };
+  // 기본은 1배. 자동으로 0.75× 로 내리면 원속에 귀가 안 익는다 — 실전 속도로
+  // 알아듣는 게 목적이다. 느리게 듣고 싶으면 배율을 직접 누른다.
+  $('sc-listen').onclick = () => { scMode='listen'; turns.forEach(t=>t.open=true); paintTurns(sc); chainTurn(sc,0); };
+  $('sc-fill').onclick   = () => { scMode='fill';   turns.forEach(t=>t.open=false); paintTurns(sc); chainTurn(sc,0); };
   $('sc-stop').onclick   = tStopAudio;
   $('sc-next').onclick = async () => {
     tStopAudio();
@@ -1474,7 +971,15 @@ function actVocab(el){
       body.innerHTML = `<div class="vcard"><div class="vt">${esc(c.answer_en)}</div>
         <div class="vm">${esc(c.note || c.prompt_ko || '')}</div>
         ${c.source_ref ? `<div class="vsrc">출처 · ${esc(c.source_ref)}</div>` : ''}
-        <button class="check" id="v-ok" style="margin-top:12px">들었다 — 다음</button></div>`;
+        <div class="srow" style="margin-top:12px">
+          <button class="check" id="v-ok" style="margin-top:0;flex:1 1 auto">들었다 — 다음</button>
+          <button class="btn sm" id="v-kill" title="이 표현 다시 안 보기">✕</button></div></div>`;
+      $('v-kill').onclick = async () => {
+        // 어색한 카드는 알아챈 자리에서 바로 뺄 수 있어야 한다. 참고 넘기면 계속 돌아온다.
+        await sb.from('eng_cards').update({ status:'suspended' }).eq('id', c.id);
+        toast('이 표현은 다시 안 나와요');
+        list.splice(i, 1); await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
+      };
       $('v-ok').onclick = async () => {
         playVocab(c);
         await bumpXp(XP.recog, '어휘 확인');
@@ -1506,6 +1011,134 @@ function actVocab(el){
 }
 function playVocab(c){ tStopAudio(); playCard(c); }
 
+/* 판 아래 띠 — 인박스 한 줄 · 일기 · 푸시 · 토픽 토글 */
+function wireStrip(){
+  const add = async () => {
+    const el = $('t-inb'), v = el.value.trim();
+    if (!v) return;
+    const { error } = await sb.from('eng_inbox').insert({ user_id: currentUser.id, text: v });
+    if (error) return toast('추가 실패 — 네트워크를 확인하세요');
+    el.value = ''; toast('인박스에 던져둠 — 밤에 카드로 변환돼요');
+  };
+  $('t-inb-add').onclick = add;
+  $('t-inb').addEventListener('keydown', e => { if (e.key === 'Enter') add(); });
+
+  $('t-jr-send').onclick = async () => {
+    const raw = $('t-jr').value.trim();
+    if (!raw) return;
+    const { error } = await sb.from('eng_journal').upsert(
+      { user_id: currentUser.id, entry_date: today(), raw, status: 'pending', corrected: null },
+      { onConflict: 'user_id,entry_date' });
+    $('t-jr-msg').textContent = error ? '제출 실패' : '✅ 제출됨 — 밤사이 교정됩니다';
+    if (!error) toast('일기 제출됨 📓');
+  };
+  sb.from('eng_journal').select('raw,status').eq('entry_date', today()).maybeSingle()
+    .then(({ data }) => {
+      if (!data) return;
+      $('t-jr').value = data.raw || '';
+      $('t-jr-msg').textContent = data.status === 'corrected' ? '✅ 교정까지 끝났어요' : '✅ 제출됨 — 밤사이 교정됩니다';
+    }).catch(() => {});
+
+  const pb = $('t-push');
+  if (typeof Notification !== 'undefined' && Notification.permission === 'granted') pb.textContent = '🔔 아침 푸시 켜짐';
+  pb.onclick = () => subscribePush(true);
+
+  // 토픽 on/off — 어떤 토픽의 어휘를 큐에 넣을지 가른다
+  const tw = $('t-topics'); tw.textContent = '';
+  for (const t of topics) {
+    const b = document.createElement('button');
+    b.className = 'tchip' + (t.active ? ' on' : '');
+    b.textContent = t.name;
+    b.onclick = async () => {
+      t.active = !t.active; b.classList.toggle('on', t.active);
+      await sb.from('eng_topics').update({ active: t.active }).eq('id', t.id);
+      await loadTodayVocab(); renderToday();   // 토픽을 끄면 그 토픽 어휘가 큐에서 빠진다
+    };
+    tw.appendChild(b);
+  }
+}
+
+/* ═══ 어휘 탭 — 쌓인 표현 전부와 SRS 상태 ═══════════════
+   오늘 판의 「어휘 마무리」는 하루치만 본다. 여기는 **전체 장부**다 —
+   무엇이 익었고 무엇이 아직인지, 그리고 앞당겨 복습할 자리. */
+let vbFilter = 'all';
+async function renderVocab(){
+  const head = $('vb-head'), list = $('vb-list');
+  const d = today();
+  // 활성 토픽만 본다 — 토픽을 끄면 그 어휘는 장부에서도 빠져야 앞뒤가 맞는다
+  const names = activeTopicNames();
+  let q = sb.from('eng_cards').select('*').neq('status','suspended');
+  if (names.length) q = q.in('topic', names);
+  const { data, error } = await q.order('next_review').limit(500);
+  if (error) { head.innerHTML = '<div class="empty">어휘를 못 불러왔어요.</div>'; list.textContent=''; return; }
+  const all = data || [];
+  const n = k => all.filter(c => c.status === k).length;
+  const due = all.filter(c => c.status !== 'new' && c.next_review <= d);
+  head.innerHTML = `
+    <div class="tstats">
+      <div class="tstat"><div class="v">${n('mature')}</div><div class="l">익힌 표현<br><small>간격 21일↑</small></div></div>
+      <div class="tstat"><div class="v">${all.length}</div><div class="l">쌓인 표현</div></div>
+      <div class="tstat"><div class="v">${due.length}</div><div class="l">오늘 돌아온 것</div></div>
+    </div>
+    <div class="srow" style="margin:12px 0">
+      ${[['all','전체'],['new','신규'],['learning','학습중'],['mature','익힘']]
+        .map(([k,l]) => `<button class="tchip${vbFilter===k?' on':''}" data-f="${k}">${l}</button>`).join('')}
+    </div>`;
+  head.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { vbFilter = b.dataset.f; renderVocab(); });
+
+  const rows = vbFilter === 'all' ? all : all.filter(c => c.status === vbFilter);
+  if (!rows.length) { list.innerHTML = '<div class="empty">아직 없어요. 오늘 판을 한 번 돌리면 쌓입니다.</div>'; return; }
+  const badge = c => c.status === 'mature' ? '<span class="ipill done">익힘</span>'
+    : c.status === 'new' ? '<span class="ipill wait">신규</span>'
+    : `<span class="ipill wait">${c.interval_days}일</span>`;
+  list.innerHTML = rows.map(c => `<div class="initem">
+      <div class="itx"><div class="ie">${esc(c.answer_en)}</div>
+        <div class="isrc">${esc(c.prompt_ko)}${c.next_review ? ' · 다음 ' + esc(c.next_review) : ''}</div></div>
+      ${badge(c)}<button class="indel" data-id="${c.id}" title="다시 안 나오게">✕</button></div>`).join('');
+  list.querySelectorAll('.indel').forEach(b => b.onclick = async () => {
+    b.disabled = true;
+    const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', b.dataset.id);
+    if (error) { b.disabled = false; return toast('실패 — 네트워크를 확인하세요'); }
+    toast('이 표현은 다시 안 나와요'); renderVocab();
+  });
+}
+
+/* ═══ 보관함 — 지난 장면·기사 다시 하기 ════════════════ */
+async function renderArchive(){
+  const box = $('av-list');
+  const [sc, ar] = await Promise.all([
+    sb.from('eng_scenes').select('*').order('created_at',{ascending:false}).limit(40),
+    sb.from('eng_articles').select('*').order('created_at',{ascending:false}).limit(40),
+  ]);
+  if (sc.error || ar.error) { box.innerHTML = '<div class="empty">보관함을 못 불러왔어요.</div>'; return; }
+  const scenes = sc.data || [], arts = ar.data || [];
+  if (!scenes.length && !arts.length) {
+    box.innerHTML = '<div class="empty">아직 비어 있어요 — 밤 보급이 돌면 여기에 쌓입니다.</div>'; return;
+  }
+  box.innerHTML = `<p class="leg" style="margin:0 0 12px">지난 것을 다시 하고 싶을 때. 주말에 더 하고 싶으면 여기서 고르면 됩니다.</p>
+    ${scenes.length ? `<div class="vprog">상황 대화 ${scenes.length}개</div>` + scenes.map(x =>
+      `<div class="initem"><div class="itx"><div class="ie">${esc(x.situation_ko)}</div>
+        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${esc(x.topic)} L${x.level} · ${Math.round(x.ms/1000)}초</div></div>
+        <button class="btn sm" data-sc="${x.id}">열기</button></div>`).join('') : ''}
+    ${arts.length ? `<div class="vprog" style="margin-top:14px">뉴스 ${arts.length}건</div>` + arts.map(x =>
+      `<div class="initem"><div class="itx"><div class="ie">${esc(x.title)}</div>
+        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${(x.sentences||[]).length}문장 · ${Math.round(x.ms/1000)}초</div></div>
+        <button class="btn sm" data-ar="${x.id}">열기</button></div>`).join('') : ''}`;
+  box.querySelectorAll('[data-sc]').forEach(b => b.onclick = () => {
+    // 보관함에서 고른 장면을 오늘 판의 장면 자리에 끼워 연다 (진행은 안 건드린다)
+    const one = scenes.find(x => x.id === b.dataset.sc);
+    if (!one) return;
+    tScenes = [one]; scIdx = 0; show('today');
+    setTimeout(() => openAct('scene'), 30);
+  });
+  box.querySelectorAll('[data-ar]').forEach(b => b.onclick = () => {
+    const one = arts.find(x => x.id === b.dataset.ar);
+    if (!one) return;
+    tArticle = one; show('today');
+    setTimeout(() => openAct('article'), 30);
+  });
+}
+
 /* 세 칸을 다 채웠으면 완주 보너스. 한 번만 준다 */
 async function maybeComplete(){
   if (!tSession || tSession.completed_at) return;
@@ -1532,13 +1165,10 @@ async function init(){
   try {
     await flushPending();
     await loadTopics();
-    await loadCards();
-    buildQueue();
-    await renderHome();
+    await loadTodayVocab();
   } catch (e) {
     // 오프라인 폴백: 마지막 큐 스냅샷으로 복습은 가능하게
-    try { cards = JSON.parse(localStorage.getItem(LS.queue) || '[]'); buildQueue(); } catch(_){}
-    toast('오프라인 모드 — 마지막 큐로 복습합니다');
+    toast('오프라인 — 채점은 쌓아두고 복귀하면 동기화합니다');
     console.warn(e);
   }
   // 「오늘」이 기본 화면이다. show() 를 안 거치고 뜨므로 여기서 직접 그려야 한다 —
