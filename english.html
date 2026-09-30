@@ -95,6 +95,27 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tgrow i.full{background:var(--eng);border-color:var(--eng)}
 .tgrow i.fut{background:none;border:1px dashed var(--border-hl)}
 
+/* 주/월 토글 머리 */
+.tghead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:4px 0 8px}
+.tghead .tgh{margin:0}
+
+/* 월간 — 사람마다 달력 하나. 한 칸에 둘을 겹치면 누구 것인지 안 읽힌다. */
+.tgmlabel{font-size:11px;color:var(--dim);font-family:var(--num);margin-bottom:8px}
+.tgcal{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:11px 12px}
+.tgcal+.tgcal{margin-top:7px}
+.tgcal.me{background:var(--eng-bg);border-color:var(--eng-bd)}
+.tgcalh{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.tgcalh .nm{font-size:12.5px;font-weight:650;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tgcalh .cnt{margin-left:auto;font-size:10.5px;color:var(--dim);font-family:var(--num);flex:none}
+.tgcalh .cnt b{color:var(--eng);font-size:12px}
+.tgdow,.tggrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.tgdow span{font-size:9px;color:var(--dim);text-align:center;font-family:var(--num);padding-bottom:2px}
+.tggrid i{aspect-ratio:1;border-radius:4px;background:var(--border-hl);border:1px solid transparent;display:block}
+.tggrid i.part{background:var(--eng-bg);border-color:var(--eng)}
+.tggrid i.full{background:var(--eng);border-color:var(--eng)}
+.tggrid i.fut{background:none;border:1px dashed var(--border-hl)}
+.tggrid i.pad{background:none;border:0}
+
 .tgtot{display:flex;flex-direction:column;gap:7px}
 .tgcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:11px 13px}
 .tgcard.me{background:var(--eng-bg);border-color:var(--eng-bd)}
@@ -396,7 +417,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.12';
+const BUILD = '2026-09-30.13';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1390,39 +1411,86 @@ function tgStreak(sessions, id){
 }
 
 /* ═══ Together 탭 — 이번 주와 누적 ═════════════════════ */
+/* 주간은 "이번 주 리듬", 월간은 "흐름". 둘은 다른 질문이라 토글로 가른다.
+   월 이동(prev/next)은 아직 없다 — 이번 달만 본다. */
+let tgMode = 'week';
+let tgMonth = null;                                  // 'YYYY-MM', null 이면 이번 달
+
+function tgCellClass(t, id, day, d){
+  if (day > d) return 'fut';
+  const se = t.sessions.find(r => r.user_id === id && r.session_date === day);
+  if (!se) return '';
+  const pg = se.progress || {};
+  const n = ['scenes','article','vocab'].filter(k => (pg[k]?.done || pg[k]?.sent || 0) > 0).length;
+  return se.completed_at ? 'full' : n ? 'part' : '';
+}
+
+const TG_DOW = ['M','T','W','T','F','S','S'];
+
+function tgWeekGrid(t, d){
+  const now = new Date(Date.now() + 9*3600e3);
+  const dow = (now.getUTCDay() + 6) % 7;               // 월=0
+  const monday = Date.now() - dow*864e5;
+  const week = Array.from({length:7}, (_,i) => kstDate(monday + i*864e5));
+  return `<div class="tgweek">
+    <div class="tgrow head"><span class="nm"></span>${TG_DOW.map(x=>`<span class="dw">${x}</span>`).join('')}</div>
+    ${t.people.map(m => `<div class="tgrow${m.user_id===currentUser.id?' me':''}">
+      <span class="nm">${esc(t.nameOf(m))}</span>
+      ${week.map(day => `<i class="${tgCellClass(t, m.user_id, day, d)}"></i>`).join('')}</div>`).join('')}
+  </div>`;
+}
+
+/* 월간은 사람마다 달력 하나. 한 칸에 두 사람을 겹치면 누구 것인지 읽기 어렵다. */
+function tgMonthGrid(t, d){
+  const ym = tgMonth || d.slice(0,7);
+  const [y, mo] = ym.split('-').map(Number);
+  const first = new Date(Date.UTC(y, mo-1, 1));
+  const lead = (first.getUTCDay() + 6) % 7;             // 월요일 시작까지 앞 빈칸
+  const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+  const cells = [
+    ...Array(lead).fill(null),
+    ...Array.from({length:days}, (_,i) => `${ym}-${String(i+1).padStart(2,'0')}`),
+  ];
+  while (cells.length % 7) cells.push(null);
+  const label = new Date(Date.UTC(y, mo-1, 1)).toLocaleString('en-US',{month:'long',year:'numeric'});
+
+  const counts = id => {
+    const done = cells.filter(c => c && c <= d && tgCellClass(t, id, c, d) === 'full').length;
+    const any  = cells.filter(c => c && c <= d && tgCellClass(t, id, c, d) !== '').length;
+    return { done, any };
+  };
+
+  return `<div class="tgmlabel">${esc(label)}</div>
+    ${t.people.map(m => {
+      const c = counts(m.user_id);
+      return `<div class="tgcal${m.user_id===currentUser.id?' me':''}">
+        <div class="tgcalh"><span class="nm">${esc(t.nameOf(m))}</span>
+          <span class="cnt"><b>${c.done}</b> finished · ${c.any} active</span></div>
+        <div class="tgdow">${TG_DOW.map(x=>`<span>${x}</span>`).join('')}</div>
+        <div class="tggrid">${cells.map(day =>
+          day ? `<i class="${tgCellClass(t, m.user_id, day, d)}" title="${day}"></i>` : '<i class="pad"></i>'
+        ).join('')}</div></div>`;
+    }).join('')}`;
+}
+
 async function renderTogether(){
   const box = $('tg-body'); if (!box) return;
   box.innerHTML = '<div class="empty">Loading…</div>';
   const t = await loadTogether(true);
   if (!t.people.length) { box.innerHTML = '<div class="empty">No one here yet.</div>'; return; }
-
-  // 이번 주 — 월요일 시작 (KST). 미래 칸은 비워 둔다.
-  const now = new Date(Date.now() + 9*3600e3);
-  const dow = (now.getUTCDay() + 6) % 7;                 // 월=0
-  const monday = Date.now() - dow*864e5;
-  const week = Array.from({length:7}, (_,i) => kstDate(monday + i*864e5));
   const d = today();
-  const DOW = ['M','T','W','T','F','S','S'];
-
-  const cell = (id, day) => {
-    if (day > d) return '<i class="fut"></i>';
-    const se = t.sessions.find(r => r.user_id === id && r.session_date === day);
-    if (!se) return '<i></i>';
-    const pg = se.progress || {};
-    const n = ['scenes','article','vocab'].filter(k => (pg[k]?.done || pg[k]?.sent || 0) > 0).length;
-    return `<i class="${se.completed_at ? 'full' : n ? 'part' : ''}"></i>`;
-  };
   const mins = ms => Math.round((ms || 0) / 60000);
   const num = n => (n || 0).toLocaleString();
 
   box.innerHTML = `
-    <h3 class="tgh">This week</h3>
-    <div class="tgweek">
-      <div class="tgrow head"><span class="nm"></span>${week.map((_,i)=>`<span class="dw">${DOW[i]}</span>`).join('')}</div>
-      ${t.people.map(m => `<div class="tgrow${m.user_id===currentUser.id?' me':''}">
-        <span class="nm">${esc(t.nameOf(m))}</span>
-        ${week.map(day => cell(m.user_id, day)).join('')}</div>`).join('')}
+    <div class="tghead">
+      <h3 class="tgh">${tgMode === 'week' ? 'This week' : 'This month'}</h3>
+      <div class="srow" style="gap:4px">
+        ${[['week','Week'],['month','Month']].map(([k,l]) =>
+          `<button class="tchip${tgMode===k?' on':''}" data-m="${k}">${l}</button>`).join('')}
+      </div>
     </div>
+    ${tgMode === 'week' ? tgWeekGrid(t, d) : tgMonthGrid(t, d)}
     <p class="leg">Filled = finished the board · half = started · empty = nothing.</p>
 
     <h3 class="tgh">Totals</h3>
@@ -1442,6 +1510,10 @@ async function renderTogether(){
       }).join('')}
     </div>
     <p class="leg">Vocabulary cards stay private — only these totals are shared.</p>`;
+
+  box.querySelectorAll('[data-m]').forEach(b => b.onclick = () => {
+    tgMode = b.dataset.m; renderTogether();
+  });
 }
 
 /* ═══ 보관함 — 지난 장면·기사 다시 하기 ════════════════
