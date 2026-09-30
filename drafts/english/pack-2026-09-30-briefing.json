@@ -1,0 +1,34 @@
+{
+  "cards": [
+    {
+      "topic": "테크",
+      "scenario": "briefing",
+      "level": 2,
+      "prompt_ko": "새 버전이 그 의존성을 아예 없앴다고 말해봐",
+      "answer_en": "The new version does away with ZooKeeper completely.",
+      "note": "do away with ~ = ~를 폐지하다/없애다. remove 보다 '제도적으로 걷어냈다'는 뉘앙스.",
+      "source": "briefing",
+      "source_ref": "https://www.gravitee.io/blog/apache-kafka-news-2026_whats-next"
+    },
+    {
+      "topic": "테크",
+      "scenario": "briefing",
+      "level": 2,
+      "prompt_ko": "겉으로는 단순한데 내부 동작을 설명하겠다고 말해봐",
+      "answer_en": "Under the hood, it batches the writes before flushing them.",
+      "note": "under the hood = 내부적으로는 (자동차 보닛 아래). internally 보다 훨씬 구어체이고 설계 설명의 단골.",
+      "source": "briefing",
+      "source_ref": "https://www.gravitee.io/blog/apache-kafka-news-2026_whats-next"
+    },
+    {
+      "topic": "테크",
+      "scenario": "briefing",
+      "level": 2,
+      "prompt_ko": "그 도구가 이제 최신 버전을 지원한다고 말해봐",
+      "answer_en": "The operator has finally caught up with the latest release.",
+      "note": "catch up with ~ = 뒤처졌다가 따라잡다. now supports 와 달리 '늦었지만 붙었다'는 함의가 있다.",
+      "source": "briefing",
+      "source_ref": "https://www.gravitee.io/blog/apache-kafka-news-2026_whats-next"
+    }
+  ]
+}

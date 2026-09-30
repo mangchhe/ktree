@@ -1,0 +1,14 @@
+{ "cards": [
+ {"topic":"테크","scenario":"standup","level":1,"prompt_ko":"어제 뭐 했는지 한 줄로 말해봐","answer_en":"Yesterday I worked on the login API.","note":"work on ~ = ~작업을 하다. I did the login API 는 어색하다."},
+ {"topic":"테크","scenario":"standup","level":1,"prompt_ko":"오늘 그걸 마무리할 거라고 말해봐","answer_en":"Today I'll wrap that up.","note":"wrap up = 마무리하다. finish 보다 스탠드업에서 훨씬 자주 쓴다."},
+ {"topic":"테크","scenario":"standup","level":1,"prompt_ko":"막힌 건 없다고 말해봐","answer_en":"No blockers.","note":"스탠드업 3번째 질문의 정답. blocker = 진행을 막는 것. 있으면 I'm blocked on ~."},
+ {"topic":"테크","scenario":"standup","level":1,"prompt_ko":"리뷰를 기다리고 있다고 말해봐","answer_en":"I'm waiting on a review.","note":"wait on(사람·일의 결과를 기다림) vs wait for. PR 맥락에선 wait on 이 자연스럽다."},
+ {"topic":"테크","scenario":"standup","level":1,"prompt_ko":"PR 하나 올렸다고 말해봐","answer_en":"I put up a PR.","note":"put up / open a PR 둘 다 쓴다. upload a PR 은 안 쓴다."},
+ {"topic":"테크","scenario":"standup","level":1,"prompt_ko":"거의 다 됐다고 말해봐","answer_en":"It's almost there.","note":"almost there = 거의 다 왔다. It's almost done 도 되지만 이게 더 구어체."},
+ {"topic":"테크","scenario":"slack","level":1,"prompt_ko":"이 PR 봐줄 수 있냐고 물어봐","answer_en":"Could you take a look at this PR?","note":"take a look at = 봐주다. see 나 check 보다 부탁할 때 부드럽다."},
+ {"topic":"테크","scenario":"slack","level":1,"prompt_ko":"방금 고쳐서 올렸다고 알려봐","answer_en":"I just pushed a fix.","note":"push a fix = 수정을 푸시하다. fixed and uploaded 는 개발 현장 말투가 아니다."},
+ {"topic":"테크","scenario":"slack","level":1,"prompt_ko":"로컬에서는 잘 된다고 말해봐","answer_en":"It works on my machine.","note":"개발자 밈이기도 한 정석 표현. in my computer 가 아니라 on my machine."},
+ {"topic":"테크","scenario":"trouble","level":1,"prompt_ko":"서버가 죽었다고 알려봐","answer_en":"The server is down.","note":"down = 죽음/중단. died 는 안 쓴다. 복구되면 It's back up."},
+ {"topic":"테크","scenario":"trouble","level":1,"prompt_ko":"로그를 확인해보겠다고 말해봐","answer_en":"Let me check the logs.","note":"logs 는 거의 항상 복수. Let me ~ = 내가 ~해볼게 (허락 구하는 뉘앙스)."},
+ {"topic":"테크","scenario":"trouble","level":1,"prompt_ko":"언제부터 그랬냐고 물어봐","answer_en":"When did it start happening?","note":"장애 대응 첫 질문. start happening = 발생하기 시작하다."}
+]}

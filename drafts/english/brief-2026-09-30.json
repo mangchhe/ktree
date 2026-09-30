@@ -1,0 +1,27 @@
+{
+  "brief_date": "2026-09-30",
+  "title": "Kafka finally drops ZooKeeper, and share groups go production-ready",
+  "script": "Good morning! Here's your daily tech briefing.\n\nIf you run Kafka, the big story this year is that ZooKeeper is finally gone. Kafka 4.x does away with it completely and runs on KRaft by default, which cuts down the operational overhead of keeping a separate coordination cluster alive. That's a big deal if you've ever been paged at three in the morning because ZooKeeper lost quorum.\n\nKafka 4.2 also made share groups production-ready. Under the hood, share groups let several consumers read from the same partitions with individual acknowledgement, so you can build queue-like workloads without over-partitioning your topics just to add consumers.\n\nOn the Kubernetes side, version 1.36 shipped with around seventy enhancements, mostly around security, AI workloads and API scalability. And if you run Kafka on Kubernetes, Strimzi has caught up with the 4.1 release.\n\nThat's it for today. Pick one of these and try explaining it out loud in English — that's how it sticks.",
+  "level": 2,
+  "expressions": [
+    "does away with",
+    "cuts down the operational overhead",
+    "a big deal",
+    "Under the hood",
+    "caught up with"
+  ],
+  "sources": [
+    {
+      "title": "Apache Kafka — InfoQ News",
+      "url": "https://www.infoq.com/apache_kafka/news/"
+    },
+    {
+      "title": "Apache Kafka News 2026: KRaft, 4.x & What's Next",
+      "url": "https://www.gravitee.io/blog/apache-kafka-news-2026_whats-next"
+    },
+    {
+      "title": "Kubernetes — InfoQ News",
+      "url": "https://www.infoq.com/Kubernetes/news/"
+    }
+  ]
+}

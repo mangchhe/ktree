@@ -1,0 +1,14 @@
+{ "cards": [
+ {"topic":"비즈니스","scenario":"email","level":1,"prompt_ko":"메일 첫 줄에 연락한 이유를 밝혀봐","answer_en":"I'm writing to ask about the deadline.","note":"I'm writing to ~ = 메일 첫 줄 정석. I want to say~ 로 시작하면 어색하다."},
+ {"topic":"비즈니스","scenario":"email","level":1,"prompt_ko":"파일을 첨부했다고 알려봐","answer_en":"Please find the file attached.","note":"I attached a file 도 되지만 이 표현이 메일 관용구. find 를 '찾아라'로 읽지 말 것."},
+ {"topic":"비즈니스","scenario":"email","level":1,"prompt_ko":"답장 기다린다고 맺어봐","answer_en":"Looking forward to hearing from you.","note":"메일 맺음말 1순위. hearing from you = 연락 받는 것. I'll wait 는 재촉처럼 들린다."},
+ {"topic":"비즈니스","scenario":"email","level":1,"prompt_ko":"늦게 답해서 미안하다고 해봐","answer_en":"Sorry for the late reply.","note":"짧게 이 한 줄이면 충분. I'm sorry that I replied late 는 길고 과하다."},
+ {"topic":"비즈니스","scenario":"slack","level":1,"prompt_ko":"잠깐 시간 있냐고 물어봐","answer_en":"Do you have a minute?","note":"a minute = 잠깐. Do you have time? 은 '시간 남냐'로 들려 덜 자연스럽다."},
+ {"topic":"비즈니스","scenario":"slack","level":1,"prompt_ko":"지금 그거 보고 있다고 답해봐","answer_en":"I'm on it.","note":"세 단어로 '지금 처리 중'. Slack 답장 만능. I'm doing it now 보다 짧고 프로답다."},
+ {"topic":"비즈니스","scenario":"slack","level":1,"prompt_ko":"확인하고 다시 알려주겠다고 해봐","answer_en":"Let me check and get back to you.","note":"get back to you = 나중에 다시 연락하다. I'll tell you later 는 무례하게 들릴 수 있다."},
+ {"topic":"비즈니스","scenario":"slack","level":1,"prompt_ko":"오늘 재택한다고 알려봐","answer_en":"I'm working from home today.","note":"working from home(WFH)이 표준. home work 는 숙제다."},
+ {"topic":"비즈니스","scenario":"meeting","level":1,"prompt_ko":"소리가 안 들린다고 말해봐","answer_en":"Sorry, I can't hear you.","note":"화상회의 필수 문장. I can't listen 은 틀림 — hear(들리다) / listen(귀 기울이다) 구분."},
+ {"topic":"비즈니스","scenario":"meeting","level":1,"prompt_ko":"다시 말해달라고 부탁해봐","answer_en":"Could you say that again?","note":"One more time? 보다 정중. Pardon? 은 격식체라 팀 회의엔 과하다."},
+ {"topic":"비즈니스","scenario":"smalltalk","level":1,"prompt_ko":"새로 온 사람에게 무슨 팀이냐고 물어봐","answer_en":"What team are you on?","note":"전치사가 on 이다. in the team 이 아니라 on the team — 미국식 기본."},
+ {"topic":"비즈니스","scenario":"smalltalk","level":1,"prompt_ko":"여기서 일한 지 얼마나 됐냐고 물어봐","answer_en":"How long have you been here?","note":"현재완료진행. How long do you work here 는 흔한 한국식 오류."}
+]}

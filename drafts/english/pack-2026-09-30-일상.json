@@ -1,0 +1,14 @@
+{ "cards": [
+ {"topic":"일상","scenario":"opinion","level":4,"prompt_ko":"아직 마음을 못 정했다고 말해봐","answer_en":"I'm still on the fence about it, honestly.","note":"on the fence = 담장 위에 앉은, 즉 결정 못 한 상태. I didn't decide yet 보다 훨씬 자연스럽다."},
+ {"topic":"일상","scenario":"opinion","level":4,"prompt_ko":"그건 좀 과장이라고 부드럽게 반박해봐","answer_en":"I think that's a bit of a stretch.","note":"a stretch = 논리를 억지로 늘린 것. That's exaggerated 는 직설적이라 대화가 끊긴다."},
+ {"topic":"일상","scenario":"opinion","level":4,"prompt_ko":"거기까지는 동의 못 한다고 완곡하게 말해봐","answer_en":"I see your point, but I wouldn't go that far.","note":"I wouldn't go that far = 그 정도까지는. 부분 동의 후 선을 긋는 C1 정석 패턴."},
+ {"topic":"일상","scenario":"opinion","level":4,"prompt_ko":"일부러 반대편 입장을 들어보겠다고 말해봐","answer_en":"Let me play devil's advocate for a second.","note":"play devil's advocate = 논의를 위해 일부러 반대 역할. 회의·토론에서 무례하지 않게 반박하는 장치."},
+ {"topic":"일상","scenario":"opinion","level":4,"prompt_ko":"뭔지 딱 집어 말하기 어렵다고 해봐","answer_en":"Something feels off, but I can't put my finger on it.","note":"can't put my finger on it = 정확히 뭔지 짚지 못하다. I don't know exactly 보다 훨씬 표현력이 있다."},
+ {"topic":"일상","scenario":"opinion","level":4,"prompt_ko":"서로 의견이 다른 채로 두자고 마무리해봐","answer_en":"Let's just agree to disagree on this one.","note":"agree to disagree = 합의 못 한 걸 합의하다. 싸움 안 나게 논쟁을 닫는 관용구."},
+ {"topic":"일상","scenario":"smalltalk","level":4,"prompt_ko":"처음엔 별로였는데 점점 좋아졌다고 말해봐","answer_en":"It wasn't really my thing at first, but it grew on me.","note":"grow on someone = 서서히 마음에 들게 되다. 주어가 대상이라는 게 포인트 — I liked it slowly 가 아니다."},
+ {"topic":"일상","scenario":"smalltalk","level":4,"prompt_ko":"이번엔 못 가지만 다음엔 꼭 가겠다고 미뤄봐","answer_en":"I'll have to take a rain check this time.","note":"take a rain check = 이번엔 패스, 다음에. 거절을 약속으로 바꾸는 표현이라 관계가 안 상한다."},
+ {"topic":"일상","scenario":"smalltalk","level":4,"prompt_ko":"요즘 체력이 거의 바닥이라고 말해봐","answer_en":"I've been running on fumes for the past couple of weeks.","note":"run on fumes = 연료 증기로 달리다, 즉 방전 직전. very tired 보다 상태를 정확히 전달한다."},
+ {"topic":"일상","scenario":"smalltalk","level":4,"prompt_ko":"그 일은 이미 지난 일이라고 말해봐","answer_en":"That's water under the bridge at this point.","note":"water under the bridge = 흘러간 물, 더 문제 삼지 않을 과거. It's past 는 뉘앙스가 안 실린다."},
+ {"topic":"일상","scenario":"smalltalk","level":4,"prompt_ko":"그 사람은 생각이 너무 많은 편이라고 말해봐","answer_en":"He tends to overthink things, but his instincts are usually right.","note":"tend to ~ = ~하는 편이다. 사람 평가를 단정 대신 경향으로 눌러 말하는 게 C1 감각."},
+ {"topic":"일상","scenario":"smalltalk","level":4,"prompt_ko":"얘기가 딴 데로 샜다고 짚고 돌아가봐","answer_en":"We've gotten a bit sidetracked — where were we?","note":"get sidetracked = 곁길로 빠지다. Where were we? = 어디까지 얘기했었지."}
+]}
