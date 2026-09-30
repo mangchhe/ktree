@@ -212,14 +212,17 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .dturn.on .line{box-shadow:0 0 0 2px var(--warn)}
 .dturn .intent{display:block;font-size:12px;color:var(--eng);font-weight:600;margin-bottom:5px}
 .dturn .hid{color:var(--dim);font-style:italic;font-size:13.5px}
-/* 뜻은 기본으로 감춘다 — 늘 보이면 듣기가 읽기가 된다. 탭은 이미 재생에 쓰이므로
-   별도 버튼을 둔다 (버튼 탭이 재생으로 새지 않게 stopPropagation). */
-.dturn .mean-btn{
-  display:inline-block;margin-top:6px;padding:2px 8px;border:1px solid var(--border);
-  border-radius:99px;background:none;color:var(--dim);font:inherit;font-size:11px;cursor:pointer;
+/* 뜻은 기본으로 감춘다 — 늘 보이면 듣기가 읽기가 된다. 턴 탭은 이미 재생에 쓰이므로
+   어휘 장부와 같은 셰브론으로 펴고 접는다 (버튼 탭이 재생으로 새지 않게 stopPropagation). */
+.dturn .line{position:relative;padding-right:30px}
+.dturn .tchev{
+  position:absolute;right:6px;top:6px;width:22px;height:22px;padding:0;
+  border:0;background:none;color:var(--dim);font:inherit;font-size:15px;line-height:22px;
+  text-align:center;cursor:pointer;transition:transform .15s;
 }
-.dturn .mean-btn:active{background:var(--card-el)}
-.dturn .mean{display:block;margin-top:6px;font-size:13px;color:var(--dim);line-height:1.55}
+.dturn .tchev.open{transform:rotate(90deg);color:var(--eng)}
+.dturn .mean{display:block;margin-top:7px;padding-top:7px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--dim);line-height:1.55}
 .kw{border-radius:3px;padding:0 .06em}
 .kw.on{background:var(--warn);color:#241a05;font-weight:700;border-radius:4px}
 .kw.red{opacity:.5;border-bottom:1px dotted currentColor}
@@ -912,11 +915,10 @@ function paintTurns(sc){
     d.innerHTML = `<span class="who">${esc(t.role_ko || t.who)}</span><span class="line">
       ${t.is_me && t.intent_ko ? `<span class="intent">↳ ${esc(t.intent_ko)}</span>` : ''}
       ${hide ? '<span class="hid">여기서 내가 말한다 — 눌러서 모범 대사 보기</span>' : segHtml(t.segs || [], t.ev || [])}
-      ${mean ? (t.showMean
-        ? `<span class="mean">${esc(t.meaning_ko)}</span>`
-        : `<button class="mean-btn">뜻</button>`) : ''}</span>`;
-    const mb = d.querySelector('.mean-btn');
-    if (mb) mb.onclick = e => { e.stopPropagation(); t.showMean = true; paintTurns(sc); };
+      ${mean ? `<button class="tchev${t.showMean ? ' open' : ''}" aria-label="뜻 보기" aria-expanded="${!!t.showMean}">›</button>` : ''}
+      ${mean && t.showMean ? `<span class="mean">${esc(t.meaning_ko)}</span>` : ''}</span>`;
+    const mb = d.querySelector('.tchev');
+    if (mb) mb.onclick = e => { e.stopPropagation(); t.showMean = !t.showMean; paintTurns(sc); };
     d.querySelector('.line').onclick = async () => {
       if (hide) {
         t.open = true; paintTurns(sc); playTurnA(sc, i);
