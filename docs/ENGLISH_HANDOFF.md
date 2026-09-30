@@ -1,4 +1,4 @@
-# English 모드 — 인계 노트 (2026-09-29 기준)
+# English 모드 — 인계 노트 (2026-09-30 기준)
 
 > 회사에서 만들다 집에서 이어가기 위한 상태 스냅샷. 전체 사용법·셋업은 [ENGLISH_SETUP.ko.md](./ENGLISH_SETUP.ko.md).
 
@@ -14,6 +14,25 @@
 | 오늘의 브리핑 (웰컴) | ✅ 텍스트+오디오 업로드됨 |
 | `/eng`, `/eng-pack` 스킬 | ✅ **레포 안** `.claude/skills/` — clone 하면 어느 머신에서든 바로 동작 |
 | sw.js | ✅ /english 캐시 + 알림 클릭 일반화 (캐시명 ktree-v2) |
+
+### 마이그레이션 실행 이력
+
+SQL Editor 에서 실행해야 하는 파일들. **2026-09-30 에 라이브 DB 로 전부 실측 확인**했다
+(컬럼·테이블을 실제로 조회해서 확인. 정책은 SQL 의 마지막 SELECT 출력으로 확인).
+
+| 파일 | 무엇을 | 상태 |
+|---|---|---|
+| `english-schema.sql` | eng_topics/cards/review_log/journal/inbox/briefings + RLS | ✅ |
+| `english-audio.sql` | `eng_briefings.audio_url` + `eng-audio` 버킷·정책 | ✅ |
+| `english-v2-schema.sql` | eng_scenes · eng_articles · eng_sessions · eng_progress | ✅ |
+| `english-v3-kind.sql` | `eng_cards.kind` (단어/표현 두 층) | ✅ |
+| `english-v4-shared.sql` | `vocab` jsonb 2개 + 장면·기사 RLS 를 **읽기 공유**로 | ✅ 정책 8줄 확인 |
+
+**v4 백필 (2026-09-30):** v4 이전에 만들어진 장면 4개·기사 1건은 `vocab` 이 비어 있어서,
+공유해도 상대 계정에 어휘 카드가 하나도 안 생겼다. 일회성 스크립트로 24개를 채웠다
+(장면 4·5·4·5 · 기사 6 — 단어 6 · 표현 18). `eng-gen.mjs` 의 `vocabRows()` 와 같은 규칙으로
+검증했다: 단어는 `meaning_ko`, 표현은 `prompt_ko` 가 있어야 실린다.
+**이후 생성분은 생성기가 자동으로 싣는다 — 백필은 다시 할 필요 없다.**
 
 ## 남은 작업 (집에서)
 
