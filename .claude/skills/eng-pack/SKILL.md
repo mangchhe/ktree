@@ -28,6 +28,12 @@ node eng-gen.mjs --recent 12
 하루 목표는 **4~5개**. 토픽을 다섯 갈래로 **골고루** 가른다 —
 `일상 · 여행 · 비즈니스 · 테크 · 마케팅`.
 
+> 🔴 **토픽 값은 한국어 그대로 쓴다.** `eng_topics.name` 으로 저장되고
+> `eng_cards.topic` · `eng_scenes.topic` 필터에 쓰이는 **데이터**다. 영어로 바꾸면
+> 기존 행이 전부 고아가 된다. 앱 화면에는 `english.html` 의 `TOPIC_LABEL` 이
+> 영어 이름을 입힌다 (Daily · Travel · Business · Tech · Marketing).
+> 새 토픽을 만들면 그 매핑에도 한 줄 추가해야 화면에 영어로 나온다.
+
 ### ⚠️ 쓰는 사람이 둘이다 — 한쪽으로 쏠리면 안 된다
 
 장면·기사는 **공유**된다 (RLS 가 읽기를 열어뒀다). 어휘 SRS·세션·XP 만 각자다.
