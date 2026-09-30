@@ -207,6 +207,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .ipill{font-size:10px;font-weight:700;padding:4px 8px;border-radius:99px;flex:none}
 .ipill.wait{color:var(--warn);background:var(--warn-bg)}
 .ipill.done{color:var(--ok);background:var(--ok-bg)}
+.buildline{margin:18px 0 2px;text-align:center;font-size:10.5px;color:var(--dim);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.buildline b{font-weight:600;color:var(--sub)}
+.buildline .stale{color:var(--warn)}
 .initem .indel{flex:none;width:28px;height:28px;border:0;border-radius:8px;background:var(--card-el);color:var(--dim);font-size:13px;cursor:pointer}
 .initem .indel:hover:not(:disabled){color:var(--danger);background:var(--danger-bg)}
 .initem .indel:disabled{opacity:.4}
@@ -237,6 +240,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       <button class="primary-btn" type="submit">로그인</button>
     </form>
     <div id="login-error" class="msg err"></div>
+    <div class="buildline">build <b>—</b></div>
   </div>
 
   <div id="app-view" style="display:none">
@@ -282,6 +286,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       </div>
 
       <div class="pushrow"><button id="push-btn" onclick="subscribePush(true)">🔔 아침 푸시 켜기</button></div>
+      <div class="buildline">build <b>—</b></div>
     </section>
 
     <!-- ============ REVIEW ============ -->
@@ -357,6 +362,10 @@ const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
 const VAPID_PUBLIC_KEY = 'BBiS1fxusb6K-H4FKXd8QqGsJYj5AQjogJQSToIuCRFNtueunqsuqNMizF02etbN0dYIKgsCDaMsvG0Kt2m4WII';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+/* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
+   빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
+const BUILD = '2026-09-30.2';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
@@ -997,8 +1006,27 @@ async function subscribePush(interactive){
   }
 }
 
+/* 버전을 화면에 박는다. 폰에서 "지금 최신을 보고 있나"를 눈으로 확인할 수 있어야 한다.
+   서비스워커 캐시 이름도 같이 읽는다 — PWA 가 구버전을 물고 있으면 두 값이 어긋나서 바로 드러난다. */
+async function paintBuild(){
+  const els = document.querySelectorAll('.buildline');
+  if (!els.length) return;
+  els.forEach(el => { el.innerHTML = `build <b>${esc(BUILD)}</b>`; });
+  if (!('caches' in window)) return;
+  try {
+    const keys = await caches.keys();
+    const mine = keys.filter(k => k.startsWith('ktree-'));
+    const stale = mine.filter(k => k !== `ktree-${BUILD}`);
+    if (!stale.length) return;
+    els.forEach(el => {
+      el.innerHTML = `build <b>${esc(BUILD)}</b> · <span class="stale">캐시 ${esc(stale.join(', '))} — 앱을 완전히 닫고 다시 열어주세요</span>`;
+    });
+  } catch(_) { /* 캐시를 못 읽는 브라우저면 버전만 보여준다 */ }
+}
+
 /* ================= init ================= */
 async function init(){
+  paintBuild();
   const { data: { session } } = await sb.auth.getSession();
   if (!session){ $('login-view').style.display='block'; $('app-view').style.display='none'; $('tabbar').style.display='none'; return; }
   currentUser = session.user;
