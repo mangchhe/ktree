@@ -703,6 +703,9 @@ async function materializeVocab(){
       prompt_ko: prompt, answer_en: v.term,
       note: word ? (v.example || '') : (v.meaning_ko || ''),
       source: g.kind, source_ref: g.ref,
+      // 컬럼 기본값이 current_date(**UTC**)라 KST 00~09 시에 앱을 열면 어제 날짜가 박힌다.
+      // 아침 푸시가 07:30 KST 니 정확히 그 창에서 열게 된다 — 명시적으로 KST 를 넣는다.
+      next_review: today(),
     });
   }
   if (!rows.length) return;
@@ -1204,7 +1207,16 @@ async function renderVocab(){
   const names = activeTopicNames();
   let q = sb.from('eng_cards').select('*').neq('status','suspended');
   if (names.length) q = q.in('topic', names);
-  const { data, error } = await q.order('next_review').limit(500);
+  // 키가 하나면 같은 next_review 끼리 순서가 렌더마다 흔들린다 (Postgres 가 물리 순서로 준다).
+  // 날짜가 몇 개 안 되고 한 날짜에 100장씩 몰려 있어 사실상 무작위로 보였다.
+  //   next_review ↑  밀린 것부터
+  //   created_at  ↓  최근에 배운 것을 위로 — 방금 만난 표현이 가장 찾고 싶은 것이다
+  //   id          ↑  🔴 **동률을 끊는 마지막 키.** 어휘는 배치로 insert 돼 created_at 이
+  //                  수십 장씩 완전히 같다 (실측: 165장이 17개 값을 공유, 최대 덩어리 51장).
+  //                  유일 키를 안 끼우면 2차 정렬을 넣어도 순서가 보장되지 않는다.
+  const { data, error } = await q
+    .order('next_review').order('created_at', { ascending:false }).order('id')
+    .limit(500);
   if (error) { head.innerHTML = '<div class="empty">Could not load vocabulary.</div>'; list.textContent=''; return; }
   const all = data || [];
   const n = k => all.filter(c => c.status === k).length;
