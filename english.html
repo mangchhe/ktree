@@ -223,6 +223,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .vprog{font-size:11.5px;color:var(--sub);margin-bottom:10px;font-variant-numeric:tabular-nums}
 .strip{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
 .strip .btn.sm{flex:none}
+
+/* 어휘 목록 — 누르면 펼쳐지는 줄 */
+.vrow{border:1px solid var(--border);border-radius:11px;background:var(--card);margin-bottom:7px;overflow:hidden;transition:border-color .15s}
+.vrow.open{border-color:var(--eng-bd)}
+.vsum{display:flex;align-items:center;gap:10px;width:100%;padding:11px 13px;background:none;border:0;text-align:left;font:inherit;color:inherit}
+.vsum .itx{flex:1 1 auto;min-width:0}
+.vsum .ie{display:block;font-size:14px;font-weight:700;letter-spacing:-.2px;line-height:1.35;overflow-wrap:anywhere}
+.vsum .isrc{display:block;font-size:11.5px;color:var(--dim);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vsum .ipill{flex:none}
+.vchev{flex:none;color:var(--dim);font-size:15px;transition:transform .15s}
+.vrow.open .vchev{transform:rotate(90deg)}
+.vmore{padding:0 13px 12px}
+.vnote{font-size:12.5px;color:var(--sub);line-height:1.6}
+.vmeta{font-family:var(--num);font-size:10.5px;color:var(--dim);margin-top:6px}
+.vkill{color:var(--danger)!important;border-color:var(--danger-bg)!important}
 .srow{display:flex;gap:7px;align-items:center;flex-wrap:wrap;min-width:0}
 .strip input,.strip textarea{flex:1 1 120px;min-width:0;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font:inherit;font-size:13px;color:var(--text)}
 .strip input::placeholder,.strip textarea::placeholder{color:var(--dim)}
@@ -315,7 +330,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.6';
+const BUILD = '2026-09-30.7';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
@@ -1060,13 +1075,37 @@ async function renderVocab(){
   const badge = c => c.status === 'mature' ? '<span class="ipill done">익힘</span>'
     : c.status === 'new' ? '<span class="ipill wait">신규</span>'
     : `<span class="ipill wait">${c.interval_days}일</span>`;
-  list.innerHTML = rows.map(c => `<div class="initem">
-      <div class="itx"><div class="ie">${esc(c.answer_en)}</div>
-        <div class="isrc">${esc(c.prompt_ko)}${c.next_review ? ' · 다음 ' + esc(c.next_review) : ''}</div></div>
-      ${badge(c)}<button class="indel" data-id="${c.id}" title="다시 안 나오게">✕</button></div>`).join('');
-  list.querySelectorAll('.indel').forEach(b => b.onclick = async () => {
+  // 줄은 **누르면 펼쳐진다.** 발음·뜻·출처·빼기가 그 안에 있다 —
+  // ✕ 를 모든 줄에 상시 노출하면 파괴적 동작이 목록의 기본 상태가 되고, 잘못 누르기도 쉽다.
+  list.innerHTML = rows.map(c => `<div class="vrow" data-id="${esc(c.id)}">
+      <button class="vsum">
+        <span class="itx"><span class="ie">${esc(c.answer_en)}</span>
+          <span class="isrc">${esc(c.prompt_ko)}</span></span>
+        ${badge(c)}<span class="vchev">›</span>
+      </button>
+      <div class="vmore" hidden>
+        ${c.note ? `<div class="vnote">${esc(c.note)}</div>` : ''}
+        <div class="vmeta">${c.next_review ? '다음 복습 ' + esc(c.next_review) : ''}${c.source_ref ? ' · ' + esc(c.source_ref) : ''}</div>
+        <div class="srow" style="margin-top:9px">
+          <button class="btn sm" data-play="${esc(c.id)}">🔊 들어보기</button>
+          <button class="btn sm vkill" data-kill="${esc(c.id)}">다시 안 보기</button>
+        </div>
+      </div></div>`).join('');
+
+  list.querySelectorAll('.vsum').forEach(b => b.onclick = () => {
+    const row = b.closest('.vrow'), more = row.querySelector('.vmore');
+    const open = !more.hidden;
+    list.querySelectorAll('.vmore').forEach(m => m.hidden = true);
+    list.querySelectorAll('.vrow').forEach(r => r.classList.remove('open'));
+    if (!open) { more.hidden = false; row.classList.add('open'); }
+  });
+  const byId = Object.fromEntries(rows.map(c => [c.id, c]));
+  list.querySelectorAll('[data-play]').forEach(b => b.onclick = () => {
+    tStopAudio(); playCard(byId[b.dataset.play]);
+  });
+  list.querySelectorAll('[data-kill]').forEach(b => b.onclick = async () => {
     b.disabled = true;
-    const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', b.dataset.id);
+    const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', b.dataset.kill);
     if (error) { b.disabled = false; return toast('실패 — 네트워크를 확인하세요'); }
     toast('이 표현은 다시 안 나와요'); renderVocab();
   });
