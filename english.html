@@ -57,6 +57,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .streakpill{font-size:12px;font-weight:700;color:var(--warn);background:var(--warn-bg);border-radius:99px;padding:5px 11px}
 .hd-btn{font-size:11px;font-weight:600;padding:6px 10px;border-radius:8px;border:1px solid transparent;background:none;color:var(--dim);flex:none}
 .hd-btn:hover{color:var(--sub)}
+.hd-btn.icon{padding:6px;display:grid;place-items:center}
+.hd-btn.icon svg{width:19px;height:19px;display:block}
+.hd-btn.icon:hover{color:var(--eng)}
 
 /* --- login --- */
 .login-card{max-width:380px;margin:60px auto 0;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
@@ -327,6 +330,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .vcard .vm{font-size:13px;color:var(--sub);margin-top:7px;line-height:1.6}
 .vcard .vsrc{font-size:10.5px;color:var(--dim);margin-top:9px}
 .vprog{font-size:11.5px;color:var(--sub);margin-bottom:10px;font-variant-numeric:tabular-nums}
+.stsec{margin-top:20px;border-top:1px solid var(--border);padding-top:14px}
+.stsec:first-of-type{border-top:0;padding-top:4px}
+.stsec h3{margin:0 0 4px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--dim);font-weight:600}
+.stsec .leg{margin:0 0 10px}
+.stsec .warnline{color:var(--warn)}
 .strip{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
 .strip .btn.sm{flex:none}
 
@@ -396,7 +405,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       <div class="hd-logo">k<b>tree</b> · English</div>
       <div class="hd-right">
         <span class="streakpill" id="streak">🔥 —</span>
-        <button class="hd-btn" onclick="logout()">Sign out</button>
+        <button class="hd-btn icon" id="hd-set" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .32 1.77l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.6 1.6 0 0 0-1.77-.32 1.6 1.6 0 0 0-1 1.47V21a2 2 0 1 1-4 0v-.11a1.6 1.6 0 0 0-1.05-1.46 1.6 1.6 0 0 0-1.77.32l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.6 1.6 0 0 0 .32-1.77 1.6 1.6 0 0 0-1.47-1H3a2 2 0 1 1 0-4h.11a1.6 1.6 0 0 0 1.46-1.05 1.6 1.6 0 0 0-.32-1.77l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.6 1.6 0 0 0 1.77.32H9a1.6 1.6 0 0 0 1-1.47V3a2 2 0 1 1 4 0v.11a1.6 1.6 0 0 0 1 1.47 1.6 1.6 0 0 0 1.77-.32l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.6 1.6 0 0 0-.32 1.77V9a1.6 1.6 0 0 0 1.47 1H21a2 2 0 1 1 0 4h-.11a1.6 1.6 0 0 0-1.47 1z"/></svg>
+        </button>
       </div>
     </div>
 
@@ -420,6 +431,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     <!-- ============ 같이 ============ -->
     <section class="screen" id="s-together">
       <div id="tg-body"></div>
+    </section>
+
+    <!-- ============ 설정 ============
+         탭이 아니다. 헤더 톱니바퀴로만 들어온다 — 하루에 한 번도 안 여는 화면에
+         탭 자리를 주면 매일 쓰는 넷이 좁아진다. -->
+    <section class="screen" id="s-settings">
+      <div id="st-body"></div>
     </section>
 
   </div>
@@ -447,7 +465,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.17';
+const BUILD = '2026-09-30.18';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -504,7 +522,7 @@ async function login(){
 async function logout(){ await sb.auth.signOut(); location.reload(); }
 
 /* ================= 화면 전환 ================= */
-const SCREENS = ['today','vocab','archive','together'];
+const SCREENS = ['today','vocab','archive','together','settings'];   // settings 는 탭이 아니다 — 톱니바퀴로만
 function show(s){
   SCREENS.forEach(k => $('s-'+k).classList.toggle('on', k===s));
   document.querySelectorAll('#tabbar .tab').forEach(b => b.classList.toggle('on', b.dataset.s===s));
@@ -516,9 +534,11 @@ function show(s){
   if (s==='vocab') renderVocab();
   if (s==='archive') renderArchive();
   if (s==='together') renderTogether();
+  if (s==='settings') renderSettings();
   window.scrollTo(0,0);
 }
 $('tabbar').addEventListener('click', e => { const b=e.target.closest('[data-s]'); if(b) show(b.dataset.s); });
+$('hd-set').onclick = () => show('settings');
 document.addEventListener('click', e => { const b=e.target.closest('[data-go]'); if(b) show(b.dataset.go); });
 
 /* ================= 데이터 로드 ================= */
@@ -670,7 +690,9 @@ async function subscribePush(interactive){
     if (member) row.member_id = member.id;
     const { error } = await sb.from('push_subscriptions').upsert(row, { onConflict:'user_id,endpoint' });
     if (error) throw error;
-    const pb = $('t-push'); if (pb) pb.textContent = '🔔 Morning push on';
+    // 버튼은 이제 설정 화면에 있다. 설정을 열어둔 채로 눌렀을 때만 존재한다.
+    const pb = $('st-push');
+    if (pb) { pb.textContent = '🔔 Morning push is on'; pb.classList.add('primary-btn'); }
     if (interactive) toast('Review push starts tomorrow morning');
   } catch (e) {
     console.warn('push subscribe failed', e);
@@ -936,19 +958,11 @@ async function renderToday(){
         <div class="srow" style="margin-top:8px"><button class="btn sm" id="t-jr-send">Submit</button>
           <span class="leg" id="t-jr-msg" style="margin:0"></span></div>
       </details>
-      <div class="srow" style="margin-top:10px">
-        <button class="btn sm" id="t-push">🔔 Turn on morning push</button>
-        <span class="leg" style="margin:0">Topics</span>
-        <span id="t-topics" class="srow" style="gap:4px"></span>
-      </div>
-      <div class="buildline">build <b>—</b></div>
     </div>`;
   box.querySelectorAll('.bcard').forEach(b => b.onclick = () => openAct(b.dataset.a));
   paintXp('');
   wireStrip();
   paintStreak();
-  // 판을 다시 그릴 때마다 채워야 한다 — init 에서 한 번만 부르면 빈 자리로 남는다.
-  paintBuild();
 }
 
 function actBar(title){
@@ -1279,12 +1293,58 @@ function wireStrip(){
       $('t-jr-msg').textContent = data.status === 'corrected' ? '✅ Corrected' : '✅ Submitted — corrected overnight';
     }).catch(() => {});
 
-  const pb = $('t-push');
-  if (typeof Notification !== 'undefined' && Notification.permission === 'granted') pb.textContent = '🔔 Morning push on';
-  pb.onclick = () => subscribePush(true);
+}
+
+/* ═══ 설정 ═══════════════════════════════════════════════
+ *
+ * 오늘 판에서 **설정거리만** 걷어 온 화면이다. 판에는 학습 데이터만 남긴다 —
+ * 푸시 스위치와 토픽 칩은 한 번 정하면 몇 주를 안 건드리는데
+ * 매일 보는 화면 꼬리를 차지하고 있었다.
+ *
+ * 탭이 아니라 헤더 톱니바퀴로만 들어온다. 그래서 돌아갈 길(‹ Today)을
+ * 화면 안에 둔다 — 탭바에 설정이 없으니 선택된 탭이 하나도 없는 상태가 된다.
+ */
+function renderSettings(){
+  const pushOn = typeof Notification !== 'undefined' && Notification.permission === 'granted';
+  const pushNo = typeof Notification === 'undefined';
+  $('st-body').innerHTML = `
+    <div class="actbar"><button class="btn sm back" id="st-back">‹ Today</button>
+      <b style="font-size:14px">Settings</b></div>
+
+    <div class="stsec">
+      <h3>Notifications</h3>
+      <p class="leg">One push in the morning, 07:30 — how many cards are waiting.</p>
+      ${pushNo
+        ? `<p class="leg warnline">This browser can't do web push. On iPhone, add the app to your
+             Home Screen first — Safari only allows push for installed apps.</p>`
+        : `<button class="btn sm${pushOn ? ' primary-btn' : ''}" id="st-push">
+             ${pushOn ? '🔔 Morning push is on' : '🔔 Turn on morning push'}</button>`}
+    </div>
+
+    <div class="stsec">
+      <h3>Topics</h3>
+      <p class="leg">Turned off topics drop out of the vocabulary queue and the ledger.
+        Scenes and articles keep coming — this only changes what you're drilled on.</p>
+      <div id="st-topics" class="srow" style="gap:5px"></div>
+    </div>
+
+    <div class="stsec">
+      <h3>Account</h3>
+      <p class="leg">${esc(currentUser?.email || '—')}</p>
+      <button class="btn sm" id="st-out">Sign out</button>
+    </div>
+
+    <div class="stsec">
+      <h3>App</h3>
+      <div class="buildline" style="margin:6px 0 0;text-align:left"></div>
+    </div>`;
+
+  $('st-back').onclick = () => show('today');
+  $('st-out').onclick = () => logout();
+  const pb = $('st-push'); if (pb) pb.onclick = () => subscribePush(true);
 
   // 토픽 on/off — 어떤 토픽의 어휘를 큐에 넣을지 가른다
-  const tw = $('t-topics'); tw.textContent = '';
+  const tw = $('st-topics'); tw.textContent = '';
   for (const t of topics) {
     const b = document.createElement('button');
     b.className = 'tchip' + (t.active ? ' on' : '');
@@ -1292,10 +1352,12 @@ function wireStrip(){
     b.onclick = async () => {
       t.active = !t.active; b.classList.toggle('on', t.active);
       await sb.from('eng_topics').update({ active: t.active }).eq('id', t.id);
-      await loadTodayVocab(); renderToday();   // 토픽을 끄면 그 토픽 어휘가 큐에서 빠진다
+      // 큐가 바뀌므로 오늘 판을 다시 계산해 둔다. 화면은 설정에 그대로 있는다.
+      await loadTodayVocab();
     };
     tw.appendChild(b);
   }
+  paintBuild();
 }
 
 /* ═══ 어휘 탭 — 쌓인 표현 전부와 SRS 상태 ═══════════════
