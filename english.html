@@ -71,6 +71,19 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .screen{display:none}
 .screen.on{display:block;animation:fadeUp .25s ease both}
 .empty{text-align:center;color:var(--dim);font-size:12.5px;line-height:1.7;padding:30px 16px}
+/* 진도 공유 스트립 — 챌린지앱의 주간 표와 같은 생각이다. 누가 오늘 했는지 한눈에.
+   부담이 아니라 단서여야 하므로 작고 조용하게 둔다. */
+.peers{margin:12px 0 0;border:1px solid var(--border);border-radius:11px;background:var(--card);overflow:hidden}
+.peers .ph{font-size:10.5px;color:var(--dim);padding:8px 12px 0;letter-spacing:.04em;text-transform:uppercase}
+.prow{display:flex;align-items:center;gap:10px;padding:8px 12px}
+.prow+.prow{border-top:1px solid var(--border)}
+.prow.me{background:var(--eng-bg)}
+.prow .pn{flex:1 1 auto;min-width:0;font-size:13px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdots{display:flex;gap:3px;flex:none}
+.pdots i{width:7px;height:7px;border-radius:99px;background:var(--border-hl);display:block}
+.pdots i.on{background:var(--eng)}
+.prow .px{flex:none;font-family:var(--num);font-size:11px;color:var(--dim);min-width:52px;text-align:right}
+.prow .pk{flex:none;font-size:11px;color:var(--dim);min-width:34px;text-align:right}
 .toast{
   position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);
   background:var(--card-el);border:1px solid var(--border-hl);border-radius:99px;
@@ -659,8 +672,10 @@ async function loadToday(){
     const [sc, ar, se, pr] = await Promise.all([
       sb.from('eng_scenes').select('*').eq('status','ready').order('created_at',{ascending:false}).limit(5),
       sb.from('eng_articles').select('*').order('created_at',{ascending:false}).limit(1),
-      sb.from('eng_sessions').select('*').eq('session_date', d).maybeSingle(),
-      sb.from('eng_progress').select('*').maybeSingle(),
+      // 🔴 user_id 를 **명시한다.** 진도 공유로 읽기가 열려 있어, RLS 에 기대면
+      // maybeSingle() 이 두 사람 행을 만나 터지거나 남의 진도를 내 것으로 표시한다.
+      sb.from('eng_sessions').select('*').eq('user_id', currentUser.id).eq('session_date', d).maybeSingle(),
+      sb.from('eng_progress').select('*').eq('user_id', currentUser.id).maybeSingle(),
     ]);
     // 테이블이 아직 없으면 화면이 그 사실을 말해야 한다 — 조용히 비면 버그로 보인다
     const missing = [sc,ar,se,pr].some(r => r.error && /schema cache|does not exist/i.test(r.error.message));
@@ -722,18 +737,21 @@ async function loadTodayVocab(){
   // '지난 것'(neq status new) 질의에도 안 걸리기 때문이다.
   // 실제로 오늘 90장이 만들어져 20장에서 잘렸고 70장이 고아가 될 뻔했다.
   const { data: fresh } = await sb.from('eng_cards').select('*')
+    .eq('user_id', currentUser.id)
     .eq('status','new').neq('status','suspended')
     .gte('created_at', d + 'T00:00:00').limit(VOCAB_NEW);
   let mine = fresh || [];
   if (mine.length < VOCAB_NEW) {
     // 모자라면 **오래된 미학습 카드부터** 채운다 (pack 으로 올린 것도 여기서 소화된다)
     const { data: backlog } = await sb.from('eng_cards').select('*')
+      .eq('user_id', currentUser.id)
       .eq('status','new').neq('status','suspended')
       .lt('created_at', d + 'T00:00:00')
       .order('created_at').limit(VOCAB_NEW - mine.length);
     mine = [...mine, ...(backlog || [])];
   }
   const { data: due } = await sb.from('eng_cards').select('*')
+    .eq('user_id', currentUser.id)
     .neq('status','new').neq('status','suspended').lte('next_review', d)
     .order('next_review').limit(VOCAB_DUE);
   tVocab = { today: mine, past: due || [] };
@@ -806,6 +824,7 @@ async function renderToday(){
       <div class="xtrack"><i id="t-track" style="width:${Math.max(((tProg?.xp_total||0)-r.from)/(r.to-r.from)*100,2)}%"></i></div>
       <div class="gain" id="t-gain"></div>
     </div>
+    <div id="t-peers"></div>
     <div class="board">
       <button class="bcard${cls(sDone,sTot)}" data-a="scene" ${sTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Scenes</span>
@@ -848,6 +867,8 @@ async function renderToday(){
   paintXp('');
   wireStrip();
   paintStreak();
+  // 판이 먼저 뜨고 스트립은 뒤따른다 — 남의 진도를 기다리느라 내 판이 늦어지면 안 된다.
+  renderPeers().catch(e => console.warn('peers', e));
 }
 
 function actBar(title){
@@ -1140,6 +1161,7 @@ async function paintStreak(){
   const el = $('streak'); if (!el) return;
   try {
     const { data } = await sb.from('eng_sessions').select('session_date')
+      .eq('user_id', currentUser.id)
       .order('session_date', { ascending:false }).limit(120);
     const days = new Set((data || []).map(r => r.session_date));
     let n = 0, cur = Date.now();
@@ -1205,7 +1227,7 @@ async function renderVocab(){
   const d = today();
   // 활성 토픽만 본다 — 토픽을 끄면 그 어휘는 장부에서도 빠져야 앞뒤가 맞는다
   const names = activeTopicNames();
-  let q = sb.from('eng_cards').select('*').neq('status','suspended');
+  let q = sb.from('eng_cards').select('*').eq('user_id', currentUser.id).neq('status','suspended');
   if (names.length) q = q.in('topic', names);
   // 키가 하나면 같은 next_review 끼리 순서가 렌더마다 흔들린다 (Postgres 가 물리 순서로 준다).
   // 날짜가 몇 개 안 되고 한 날짜에 100장씩 몰려 있어 사실상 무작위로 보였다.
@@ -1288,6 +1310,58 @@ async function renderVocab(){
       toast('Restored'); renderVocab();
     }});
   });
+}
+
+/* ═══ 진도 공유 — 서로 얼마나 했는지 ═══════════════════
+ *
+ * 챌린지앱을 그대로 따른다: 로스터 + 기간 데이터를 통째로 가져와 앱에서 묶는다.
+ * 읽기만 열려 있고(v5) 쓰기는 본인만이라, 남의 진도를 건드릴 수는 없다.
+ *
+ * 이름은 challenge_members 를 빌려 쓴다 — 같은 프로젝트·같은 계정이고 이미 둘 다 있다.
+ * 거기 없는 사람은 이메일 앞부분으로 떨어뜨린다 (English 만 쓰는 사람이 생길 수 있다).
+ */
+async function renderPeers(){
+  const box = $('t-peers'); if (!box) return;
+  const d = today();
+  const [se, pr, mem] = await Promise.all([
+    sb.from('eng_sessions').select('user_id, progress, xp_earned, completed_at, session_date')
+      .gte('session_date', kstDate(Date.now() - 60*864e5)).order('session_date',{ascending:false}),
+    sb.from('eng_progress').select('user_id, xp_total'),
+    sb.from('challenge_members').select('user_id, name, email'),
+  ]);
+  // 아직 v5 를 안 돌렸으면 내 것만 보인다 — 그때는 스트립을 접는다 (혼자 보는 표는 의미가 없다)
+  const rows = se.data || [];
+  const users = [...new Set([...rows.map(r=>r.user_id), ...(pr.data||[]).map(r=>r.user_id)])];
+  if (users.length < 2) { box.innerHTML = ''; return; }
+
+  const nameOf = id => {
+    const m = (mem.data || []).find(x => x.user_id === id);
+    return m?.name || (m?.email || '').split('@')[0] || 'friend';
+  };
+  const xpOf = id => ((pr.data||[]).find(x => x.user_id === id)?.xp_total) || 0;
+  // 연속일 — 그 사람이 세션을 남긴 날을 오늘부터 거꾸로 센다 (연속일 계산과 같은 규칙)
+  const streakOf = id => {
+    const days = new Set(rows.filter(r=>r.user_id===id).map(r=>r.session_date));
+    let n = 0, cur = Date.now();
+    if (!days.has(kstDate(cur))) cur -= 864e5;
+    while (days.has(kstDate(cur))) { n++; cur -= 864e5; }
+    return n;
+  };
+  const todayOf = id => rows.find(r => r.user_id === id && r.session_date === d);
+
+  const line = id => {
+    const t = todayOf(id), pg = t?.progress || {};
+    const on = k => (pg[k]?.done || pg[k]?.sent || 0) > 0 ? ' on' : '';
+    const done = !!t?.completed_at;
+    return `<div class="prow${id === currentUser.id ? ' me' : ''}">
+      <span class="pn">${esc(nameOf(id))}${done ? ' ✓' : ''}</span>
+      <span class="pdots"><i class="${on('scenes').trim()}"></i><i class="${on('article').trim()}"></i><i class="${on('vocab').trim()}"></i></span>
+      <span class="px">${t?.xp_earned ? '+' + t.xp_earned : '—'}</span>
+      <span class="pk">🔥 ${streakOf(id)}</span></div>`;
+  };
+  // 나를 맨 위에 — 내 줄을 찾느라 훑지 않게
+  const order = [currentUser.id, ...users.filter(u => u !== currentUser.id)].filter(u => users.includes(u));
+  box.innerHTML = `<div class="peers"><div class="ph">Today</div>${order.map(line).join('')}</div>`;
 }
 
 /* ═══ 보관함 — 지난 장면·기사 다시 하기 ════════════════
