@@ -53,7 +53,11 @@ node upload-eng.mjs stats                                        # 재고 확인
 1. 엣지 펑션 배포: Dashboard → Edge Functions → `eng-push-daily` 생성 후
    [`supabase/functions/eng-push-daily/index.ts`](../supabase/functions/eng-push-daily/index.ts) 붙여넣기.
    (`VAPID_PRIVATE_KEY` 시크릿은 push-notify 와 공유 — 이미 설정돼 있음)
-2. SQL Editor 에서 크론 등록 (매일 KST 07:30 = UTC 22:30):
+2. SQL Editor 에서 크론 등록 — [`supabase/eng-push-cron.sql`](../supabase/eng-push-cron.sql) 을
+   **그대로 붙여넣어 실행**하면 된다 (anon key 이미 채워져 있고, 두 번 실행해도 중복 등록 안 됨).
+   배선 확인은 `./supabase/eng-push-test.sh` — 크론을 안 기다리고 지금 한 번 쏜다.
+
+   <details><summary>SQL 원문 (직접 쓰고 싶을 때)</summary>
 
 ```sql
 create extension if not exists pg_cron;
@@ -70,8 +74,7 @@ select cron.schedule(
        body := '{}'::jsonb) $$);
 ```
 
-> `<SUPABASE_ANON_KEY>` 는 index.html 상단의 것. 수동 테스트:
-> `curl -X POST https://mfzlrmwjwwpykjbsafud.supabase.co/functions/v1/eng-push-daily -H "Authorization: Bearer <ANON_KEY>"`
+   </details>
 
 ## 5) 데일리 루프
 
@@ -83,7 +86,29 @@ select cron.schedule(
 | 자기 전 | Journal 에 오늘 하루 3~5문장 (받아쓰기로) | 폰 |
 | 밤 | `/eng-pack` — 재고 보급 + 일기 교정 + 인박스 변환 + 브리핑 생성 | Claude Code (수동 또는 스케줄) |
 
-밤 보급 자동화: Claude Code 에서 `/schedule 매일 05:30에 /eng-pack 실행` 으로 등록.
+### 밤 보급 자동화 — 로컬 launchd
+
+**클라우드 routine(`/schedule`)으로는 안 된다.** 클라우드 에이전트는 로컬 환경변수를 못 읽어서
+`KTREE_EMAIL`/`KTREE_PASSWORD` 가 없고(`upload-eng.mjs` 가 비밀번호 로그인을 쓴다),
+GitHub 연결도 따로 필요하다. routine 설정에 비밀번호를 적는 선택은 하지 않는다.
+
+그래서 이 머신의 launchd 로 돈다:
+
+```
+eng-pack-nightly.sh                                      래퍼 — PATH·자격증명·로그를 챙긴다
+~/Library/LaunchAgents/com.hajoo.ktree.engpack.plist     매일 05:30 (로컬 = KST)
+~/Library/Logs/ktree-engpack.log                         실행 로그 (append, 2MB 회전)
+```
+
+- 준비 상태만 보기: `./eng-pack-nightly.sh --check` — 아무것도 안 바꾸고 재고만 찍는다
+- 지금 한 번 돌리기: `launchctl kickstart -p gui/$(id -u)/com.hajoo.ktree.engpack`
+- 등록 / 해제:
+  `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.hajoo.ktree.engpack.plist`
+  / `launchctl bootout gui/$(id -u)/com.hajoo.ktree.engpack`
+- 권한은 `--allowedTools` 로 필요한 것만 연다. **전체 우회는 쓰지 않는다** — 감독 없이 도는 세션이다.
+  로그에 권한 거부가 보이면 그 명령을 래퍼의 목록에 추가한다.
+- 맥이 자고 있었으면 launchd 가 **깨어난 직후 실행**한다 (cron 과 달리 건너뛰지 않는다).
+- 다른 머신에서는 plist 의 경로와 `Label` 만 바꿔 같은 래퍼를 쓰면 된다.
 
 ## 도구 치트시트
 
