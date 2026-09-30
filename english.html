@@ -423,7 +423,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.14';
+const BUILD = '2026-09-30.15';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -917,11 +917,14 @@ async function renderToday(){
         <span class="leg" style="margin:0">Topics</span>
         <span id="t-topics" class="srow" style="gap:4px"></span>
       </div>
+      <div class="buildline">build <b>—</b></div>
     </div>`;
   box.querySelectorAll('.bcard').forEach(b => b.onclick = () => openAct(b.dataset.a));
   paintXp('');
   wireStrip();
   paintStreak();
+  // 판을 다시 그릴 때마다 채워야 한다 — init 에서 한 번만 부르면 빈 자리로 남는다.
+  paintBuild();
 }
 
 function actBar(title){
