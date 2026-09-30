@@ -334,10 +334,12 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.9';
+const BUILD = '2026-09-30.10';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
-const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
+// 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
+// 토픽은 사람마다 켜고 끌 수 있으니 서로 방해되지 않는다.
+const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크','마케팅'];
 const LS = { pending:'eng.pendingOps' };   // queue 캐시는 옛 Review 화면과 함께 사라졌다
 
 let currentUser = null;
@@ -392,6 +394,17 @@ async function loadTopics(){
     const rows = DEFAULT_TOPICS.map((name,i)=>({ user_id:currentUser.id, name, active:true, sort:i }));
     const ins = await sb.from('eng_topics').insert(rows).select();
     data = ins.data || [];
+  } else {
+    // 기본 토픽이 나중에 늘어나도 기존 사용자에게 붙게 한다 —
+    // '비어 있을 때만 심기'라 마케팅을 추가해도 기존 계정엔 안 생겼다
+    const have = new Set(data.map(t => t.name));
+    const miss = DEFAULT_TOPICS.filter(n => !have.has(n));
+    if (miss.length) {
+      const ins = await sb.from('eng_topics')
+        .insert(miss.map((name,i)=>({ user_id:currentUser.id, name, active:true, sort:data.length+i })))
+        .select();
+      data = [...data, ...(ins.data || [])];
+    }
   }
   topics = data;
 }
@@ -615,12 +628,47 @@ async function loadToday(){
     tSession = se.data || null;
     tProg = pr.data || { xp_total:0, xp_today:0, xp_date:d, listened_ms:0, turns_spoken:0, articles_read:0 };
     if (tProg.xp_date !== d) { tProg.xp_today = 0; tProg.xp_date = d; }   // 날짜가 바뀌면 상한 리셋
+    await materializeVocab();
     await loadTodayVocab();
   } catch (_) { tMissing = true; }
   tLoaded = true;
 }
 
 const VOCAB_NEW = 12, VOCAB_DUE = 8;   // 마무리는 2분짜리다. 더 넣으면 통째로 건너뛰게 된다.
+
+/** 공유 장면·기사에 실린 어휘를 **내 계정의 카드로** 만들어낸다.
+ *
+ * 장면·기사는 둘이 같이 읽지만 SRS 상태는 사람마다 달라야 한다. 그래서 생성기는 어휘를
+ * 행에 싣기만 하고, 카드는 각자의 앱이 여기서 만든다 — 그래야 같은 어휘를 각자의 진도로 간다.
+ *
+ * 🔴 ignoreDuplicates 가 핵심이다. 그냥 upsert 하면 **이미 복습 중인 카드의 SRS 상태가
+ * 매번 초기값으로 덮인다.** 간격도 연속도 다 날아간다. */
+async function materializeVocab(){
+  const src = [
+    ...tScenes.map(x => ({ ref:x.scene_id, topic:x.topic, scen:'scene',    kind:'scene',   v:x.vocab||[] })),
+    ...(tArticle ? [{ ref:tArticle.article_id, topic:tArticle.topic, scen:'briefing', kind:'article', v:tArticle.vocab||[] }] : []),
+  ];
+  const rows = [];
+  for (const g of src) for (const v of g.v) {
+    if (!v.term) continue;
+    const word = v.kind === 'word';
+    const prompt = word ? v.meaning_ko : v.prompt_ko;
+    if (!prompt) continue;
+    rows.push({
+      user_id: currentUser.id, kind: word ? 'word' : 'phrase',
+      topic: g.topic || '일상', scenario: g.scen, level: v.level || 2,
+      // 칸의 역할이 층마다 바뀐다 — word 는 뜻이 정답, phrase 는 상황이 문제다
+      prompt_ko: prompt, answer_en: v.term,
+      note: word ? (v.example || '') : (v.meaning_ko || ''),
+      source: g.kind, source_ref: g.ref,
+    });
+  }
+  if (!rows.length) return;
+  try {
+    await sb.from('eng_cards').upsert(rows,
+      { onConflict:'user_id,prompt_ko,answer_en', ignoreDuplicates:true });
+  } catch (_) { /* 실패해도 화면은 돈다 — 다음 로드에서 다시 시도한다 */ }
+}
 
 async function loadTodayVocab(){
   const d = today();

@@ -212,6 +212,8 @@ async function connect() {
 async function pushRow(table, conflict, row) {
   const { error } = await sb.from(table).upsert({ user_id: uid, ...row }, { onConflict: conflict });
   if (error) {
+    if (/vocab/i.test(error.message))
+      die(`${table} 저장 실패 (${error.message}) — supabase/english-v4-shared.sql 을 먼저 실행해라`);
     // PostgREST 는 없는 테이블을 'schema cache' 로 말한다 (relation does not exist 가 아니다)
     if (/schema cache|does not exist|relation .* does not exist/i.test(error.message))
       die(`${table} 테이블이 없다 — supabase/english-v2-schema.sql 을 먼저 실행해라`);
@@ -227,49 +229,31 @@ async function put(path, buf) {
   return data.publicUrl;
 }
 
-/** 장면·기사의 어휘를 eng_cards 로 올린다.
+/** 어휘를 **행에 실어둔다.** eng_cards 에 직접 넣지 않는다.
  *
- * eng_cards 를 그대로 쓰는 이유: prompt_ko(상황) · answer_en(표현) · note(설명) 구조가
- * 어휘의 **산출 복습**과 정확히 맞고 SRS 필드도 이미 있다. 새 테이블을 만들 이유가 없다.
+ * SRS 상태(다음 복습일·간격·연속)는 사람마다 달라야 해서 카드 행을 공유할 수 없다.
+ * 그래서 장면·기사에 vocab 을 얹어두고, 앱이 처음 만났을 때 **자기 계정으로** 카드를 만들어낸다.
+ * 생성기가 한 계정으로 넣어버리면 같이 쓰는 사람에게는 어휘가 영영 안 생긴다.
  *
- * prompt_ko 가 없는 항목은 **건너뛴다.** 상황이 없으면 "이 상황을 영어로" 를 만들 수 없고,
- * 뜻만 확인하는 카드는 며칠 뒤에 스스로 꺼내보는 훈련이 안 된다.
- * UNIQUE(user_id, prompt_ko, answer_en) 라 같은 표현을 다시 올려도 SRS 상태가 보존된다. */
-async function pushVocab(doc, kind) {
+ * 층마다 필요한 것이 다르다 — 단어는 뜻(meaning_ko), 표현은 상황(prompt_ko).
+ * 없으면 싣지 않는다: 상황 없는 표현으로는 산출 복습을 만들 수 없다. */
+function vocabRows(doc) {
   const items = doc.vocab || [];
-  if (!items.length) return;
-  // 층마다 필요한 것이 다르다. 단어는 뜻만 있으면 되고, 표현은 상황이 있어야 한다.
   const ok = v => v.term && (v.kind === 'word' ? v.meaning_ko : v.prompt_ko);
-  const skipped = items.filter(v => !ok(v));
-  const rows = items.filter(ok).map(v => {
-    const word = v.kind === 'word';
-    return {
-      kind: word ? 'word' : 'phrase',
-      topic: doc.topic || (kind === 'scene' ? '일상' : '테크'),
-      scenario: kind === 'scene' ? 'scene' : 'briefing',
-      level: v.level || doc.level || 2,
-      // 칸의 역할이 층마다 바뀐다 — word 는 뜻이 정답이고, phrase 는 상황이 문제다
-      prompt_ko: word ? v.meaning_ko : v.prompt_ko,
-      answer_en: v.term,
-      note: word ? (v.example || '') : (v.meaning_ko || ''),
-      source: kind,
-      source_ref: doc.id,
-    };
-  });
-  if (rows.length) {
-    const { error } = await sb.from('eng_cards')
-      .upsert(rows.map(r => ({ user_id: uid, ...r })), { onConflict: 'user_id,prompt_ko,answer_en' });
-    if (error) {
-      if (/kind/i.test(error.message))
-        die(`어휘 저장 실패 (${error.message}) — supabase/english-v3-kind.sql 을 먼저 실행해라`);
-      if (/schema cache|does not exist|violates check/i.test(error.message))
-        die(`어휘 저장 실패 (${error.message}) — supabase/english-v2-schema.sql 을 실행했는지 확인해라`);
-      die(`어휘 저장 실패: ${error.message}`);
-    }
-  }
-  const nw = rows.filter(r => r.kind === 'word').length;
-  console.log(`  ${skipped.length ? '⚠' : '✓'} 어휘 ${rows.length}개 저장 (단어 ${nw} · 표현 ${rows.length - nw})` +
-    (skipped.length ? ` · ${skipped.length}개 건너뜀 (단어는 meaning_ko, 표현은 prompt_ko 가 있어야 한다)` : ''));
+  const keep = items.filter(ok).map(v => ({
+    kind: v.kind === 'word' ? 'word' : 'phrase',
+    term: v.term,
+    meaning_ko: v.meaning_ko || '',
+    prompt_ko: v.prompt_ko || '',
+    example: v.example || '',
+    level: v.level || doc.level || 2,
+  }));
+  const dropped = items.length - keep.length;
+  const nw = keep.filter(v => v.kind === 'word').length;
+  console.log(`  ${dropped ? '⚠' : '✓'} 어휘 ${keep.length}개 실음 (단어 ${nw} · 표현 ${keep.length - nw})` +
+    (dropped ? ` · ${dropped}개 제외 (단어는 meaning_ko, 표현은 prompt_ko 가 필요하다)` : '') +
+    ' — 카드는 앱이 사람마다 만들어낸다');
+  return keep;
 }
 
 /* 최근에 뭘 만들었나. 무인 보급이 같은 상황·같은 기사를 또 만들지 않으려면 이게 필요하다. */
@@ -380,18 +364,17 @@ if (!DRY) {
   if (kind === 'scene') {
     await pushRow('eng_scenes', 'user_id,scene_id', {
       scene_id: doc.id, situation_ko: doc.situation_ko || '', topic: doc.topic || '일상',
-      level: doc.level || 2, turns: doc.turns, ms: totalMs,
+      level: doc.level || 2, turns: doc.turns, ms: totalMs, vocab: vocabRows(doc),
     });
   } else {
     await pushRow('eng_articles', 'user_id,article_id', {
       article_id: doc.id, title: doc.title || '', topic: doc.topic || '테크', level: doc.level || 2,
       sentences: doc.sentences, segs: doc.segs, ev: doc.ev, starts: doc.starts,
-      summary_ko: doc.summary_ko || [], sources: doc.sources || [],
+      summary_ko: doc.summary_ko || [], sources: doc.sources || [], vocab: vocabRows(doc),
       audio_url: doc.audio_url || null, voice: doc.voice || '', ms: doc.ms,
     });
   }
   console.log(`  ✓ ${kind === 'scene' ? 'eng_scenes' : 'eng_articles'} 에 저장`);
-  await pushVocab(doc, kind);
 }
 
 if (kind === 'scene') {
