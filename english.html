@@ -77,19 +77,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .screen{display:none}
 .screen.on{display:block;animation:fadeUp .25s ease both}
 .empty{text-align:center;color:var(--dim);font-size:12.5px;line-height:1.7;padding:30px 16px}
-/* 진도 공유 스트립 — 챌린지앱의 주간 표와 같은 생각이다. 누가 오늘 했는지 한눈에.
-   부담이 아니라 단서여야 하므로 작고 조용하게 둔다. */
-.peers{margin:12px 0 0;border:1px solid var(--border);border-radius:11px;background:var(--card);overflow:hidden}
-.peers .ph{font-size:10.5px;color:var(--dim);padding:8px 12px 0;letter-spacing:.04em;text-transform:uppercase}
-.prow{display:flex;align-items:center;gap:10px;padding:8px 12px}
-.prow+.prow{border-top:1px solid var(--border)}
-.prow.me{background:var(--eng-bg)}
-.prow .pn{flex:1 1 auto;min-width:0;font-size:13px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pdots{display:flex;gap:3px;flex:none}
-.pdots i{width:7px;height:7px;border-radius:99px;background:var(--border-hl);display:block}
-.pdots i.on{background:var(--eng)}
-.prow .px{flex:none;font-family:var(--num);font-size:11px;color:var(--dim);min-width:52px;text-align:right}
-.prow .pk{flex:none;font-size:11px;color:var(--dim);min-width:34px;text-align:right}
 /* Together 탭 — 주간 격자와 누적. 챌린지앱의 주간 표와 같은 읽는 법이다. */
 .tgh{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
   font-weight:600;margin:18px 0 8px}
@@ -112,7 +99,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tgcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:11px 13px}
 .tgcard.me{background:var(--eng-bg);border-color:var(--eng-bd)}
 .tgname{font-size:13px;font-weight:650;margin-bottom:6px}
-.tgname em{font-style:normal;font-size:10.5px;color:var(--dim);font-weight:500;margin-left:5px}
+.tgname{display:flex;align-items:baseline;gap:5px;flex-wrap:wrap}
+.tgname em{font-style:normal;font-size:10.5px;color:var(--dim);font-weight:500}
+.tgfire{margin-left:auto;font-size:11px;color:var(--warn);font-weight:600;flex:none}
 .tgfig{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:11.5px;color:var(--dim)}
 .tgfig b{font-family:var(--num);font-size:14px;color:var(--text);font-weight:700;
   font-variant-numeric:tabular-nums;margin-right:3px}
@@ -407,7 +396,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.11';
+const BUILD = '2026-09-30.12';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -864,7 +853,6 @@ async function renderToday(){
       <div class="xtrack"><i id="t-track" style="width:${Math.max(((tProg?.xp_total||0)-r.from)/(r.to-r.from)*100,2)}%"></i></div>
       <div class="gain" id="t-gain"></div>
     </div>
-    <div id="t-peers"></div>
     <div class="board">
       <button class="bcard${cls(sDone,sTot)}" data-a="scene" ${sTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Scenes</span>
@@ -907,8 +895,6 @@ async function renderToday(){
   paintXp('');
   wireStrip();
   paintStreak();
-  // 판이 먼저 뜨고 스트립은 뒤따른다 — 남의 진도를 기다리느라 내 판이 늦어지면 안 된다.
-  renderPeers().catch(e => console.warn('peers', e));
 }
 
 function actBar(title){
@@ -1395,33 +1381,12 @@ async function loadTogether(force){
   return tgCache;
 }
 
-function tgDots(pg){
-  const on = k => ((pg?.[k]?.done || pg?.[k]?.sent || 0) > 0);
-  return ['scenes','article','vocab'].map(k => `<i class="${on(k) ? 'on' : ''}"></i>`).join('');
-}
 function tgStreak(sessions, id){
   const days = new Set(sessions.filter(r=>r.user_id===id).map(r=>r.session_date));
   let n = 0, cur = Date.now();
   if (!days.has(kstDate(cur))) cur -= 864e5;
   while (days.has(kstDate(cur))) { n++; cur -= 864e5; }
   return n;
-}
-
-/* 오늘 판 위의 한 줄 — 탭을 열어야만 보이면 자극이 안 된다. 요약은 여기 남긴다. */
-async function renderPeers(){
-  const box = $('t-peers'); if (!box) return;
-  const t = await loadTogether();
-  if (t.people.length < 2) { box.innerHTML = ''; return; }   // 혼자 보는 표는 의미가 없다
-  const d = today();
-  const row = m => {
-    const se = t.sessions.find(r => r.user_id === m.user_id && r.session_date === d);
-    return `<div class="prow${m.user_id === currentUser.id ? ' me' : ''}">
-      <span class="pn">${esc(t.nameOf(m))}${se?.completed_at ? ' ✓' : ''}</span>
-      <span class="pdots">${tgDots(se?.progress)}</span>
-      <span class="px">${se?.xp_earned ? '+' + se.xp_earned : '—'}</span>
-      <span class="pk">🔥 ${tgStreak(t.sessions, m.user_id)}</span></div>`;
-  };
-  box.innerHTML = `<div class="peers"><div class="ph">Today</div>${t.people.map(row).join('')}</div>`;
 }
 
 /* ═══ Together 탭 — 이번 주와 누적 ═════════════════════ */
@@ -1466,7 +1431,8 @@ async function renderTogether(){
         const p = t.prog.find(x => x.user_id === m.user_id) || {};
         const r = rankOf(p.xp_total || 0);
         return `<div class="tgcard${m.user_id===currentUser.id?' me':''}">
-          <div class="tgname">${esc(t.nameOf(m))} <em>Lv ${r.n} ${esc(r.name)}</em></div>
+          <div class="tgname">${esc(t.nameOf(m))} <em>Lv ${r.n} ${esc(r.name)}</em>
+            <span class="tgfire">🔥 ${tgStreak(t.sessions, m.user_id)}</span></div>
           <div class="tgfig">
             <span><b>${num(p.xp_total)}</b> XP</span>
             <span><b>${num(p.turns_spoken)}</b> turns</span>
