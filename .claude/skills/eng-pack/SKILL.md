@@ -57,7 +57,9 @@ node eng-gen.mjs --recent 12
   "turns": [
     { "who": "a", "role_ko": "프런트", "en": "Front desk, how can I help?" },
     { "who": "b", "role_ko": "나", "is_me": true,
-      "intent_ko": "옆방 소음 때문에 못 잤다고 말해봐", "en": "I couldn't sleep — the room next door was really loud." }
+      "intent_ko": "옆방 소음 때문에 못 잤다고 말해봐", "en": "I couldn't sleep — the room next door was really loud." },
+    { "who": "a", "meaning_ko": "많이 불편하셨겠어요. 방을 바꿔드릴게요.",
+      "en": "I'm so sorry about that. Let me move you to another room." }
   ],
   "vocab": [
     { "term": "I couldn't sleep", "meaning_ko": "잠을 못 잤다",
@@ -69,7 +71,10 @@ node eng-gen.mjs --recent 12
 규칙:
 - **`who`는 두 값만** — `a`(상대역) / `b`(나). `is_me: true` 인 턴이 내가 메울 자리다.
 - `intent_ko` 는 **"~해봐" 상황 지시**다. 영어를 번역하라는 게 아니라 의도만 준다 —
-  영어가 보이면 읽기가 되고 훈련이 안 된다.
+  영어가 보이면 읽기가 되고 훈련이 안 된다. **내 턴에만** 붙인다.
+- **상대 턴(`who:"a"`)에는 `meaning_ko` 를 붙인다** — 그 대사의 뜻이다. 앱에서 기본은
+  감춰져 있고 「뜻」 버튼을 눌러야 펴지므로 듣기를 망치지 않는다. 없으면 못 알아들었을 때
+  확인할 길이 아예 없다 (내 턴은 `intent_ko` 가 그 자리를 대신하므로 붙이지 않는다).
 - `en` 은 모범 대사. 내 턴도 오디오를 굽는다 (셰도잉에서 대화 전체가 흘러야 하고,
   역할 채우기에서 답을 들려줘야 한다).
 - **레벨 = CEFR 앵커**: L1≈A2(고빈도·단문) · L2≈B1(구동사·연어) · L3≈B2(복문·완곡·설득) · L4≈C1(저빈도 관용구·격식 조절)

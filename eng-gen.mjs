@@ -15,7 +15,8 @@
  *   node eng-gen.mjs <파일> --save <dir>                        mp3 를 로컬에도 떨어뜨린다 (미리보기·검수용)
  *   node eng-gen.mjs --recent [N]                               최근 장면·기사 목록 (밤 보급이 중복을 피하려고 본다)
  *
- * 입력(장면):  { "id","situation_ko","voices":{"a","b"},"turns":[{"who","en","intent_ko","is_me"}],
+ * 입력(장면):  { "id","situation_ko","voices":{"a","b"},
+ *                "turns":[{"who","en","is_me","intent_ko","meaning_ko"}],
  *                "vocab":[{"kind","term","meaning_ko","prompt_ko","example"}] }
  *
  *   kind="phrase" (기본) — 목적은 **뱉기**. prompt_ko(그 표현이 나올 수밖에 없는 상황)가
@@ -293,6 +294,7 @@ if (!DRY) sb = await connect();
 console.log(`${kind === 'scene' ? '장면' : '기사'} "${doc.id}" 생성${DRY ? ' (dry — 업로드 안 함)' : ''}`);
 let allOk = true, totalMs = 0, totalBytes = 0;
 
+const missingMean = [];
 if (kind === 'scene') {
   const va = doc.voices?.a || 'en-US-AndrewMultilingualNeural';
   const vb = doc.voices?.b || 'en-US-AvaMultilingualNeural';
@@ -308,6 +310,8 @@ if (kind === 'scene') {
     const rg = alignRanges(t.en, r.words);
     const sc = alignScore(t.en, rg);
     if (sc.pct < 97 || !sc.mono) { console.log(`      ↳ 정렬 ${sc.pct.toFixed(1)}% · 순서 ${sc.mono ? '정상' : '역주행'}`); allOk = false; }
+    // 상대 턴에 뜻이 없으면 못 알아들었을 때 확인할 방법이 없다. 내 턴은 intent_ko 가 그 자리다.
+    if (!t.is_me && !t.meaning_ko) missingMean.push(i);
     t.ms = r.ms; t.voice = voice;
     t.segs = toSegs(t.en, rg.map((x, n) => [n, x]));
     t.ev = rg.map(x => ({ t: x.t, d: x.d }));
@@ -317,6 +321,9 @@ if (kind === 'scene') {
     if (!DRY) t.audio_url = await put(`scenes/${doc.id}/${i}.mp3`, r.buf);
     await new Promise(r2 => setTimeout(r2, 150));
   }
+  console.log(missingMean.length
+    ? `  ⚠ 상대 턴 ${missingMean.length}개에 meaning_ko 가 없다 (턴 ${missingMean.join(', ')}) — 앱에서 「뜻」 버튼이 안 뜬다`
+    : `  ✓ 상대 턴 뜻 모두 있음`);
 } else {
   const voice = doc.voice || 'en-US-AndrewMultilingualNeural';
   // 기사는 **한 덩어리로** 굽는다 — 문장마다 쪼개면 사이가 뚝뚝 끊겨 읽어주는 느낌이 안 난다.
