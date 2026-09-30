@@ -1,0 +1,922 @@
+{
+  "id": "2026-09-30-review-ask",
+  "situation_ko": "동료에게 PR 리뷰를 부탁하는데, 지금은 바쁘다며 미룬다. 언제까지 필요한지 조율한다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "동료",
+      "en": "Hey, what's up?",
+      "ms": 1872,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hey",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "what's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          2
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 63
+        },
+        {
+          "t": 200,
+          "d": 188
+        },
+        {
+          "t": 388,
+          "d": 200
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-review-ask/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "PR 하나 봐줄 수 있냐고 물어봐",
+      "en": "Could you take a look at my PR when you get a chance?",
+      "ms": 3048,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Could",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "PR",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chance",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 125
+        },
+        {
+          "t": 200,
+          "d": 88
+        },
+        {
+          "t": 300,
+          "d": 200
+        },
+        {
+          "t": 513,
+          "d": 50
+        },
+        {
+          "t": 563,
+          "d": 188
+        },
+        {
+          "t": 763,
+          "d": 63
+        },
+        {
+          "t": 838,
+          "d": 163
+        },
+        {
+          "t": 1013,
+          "d": 550
+        },
+        {
+          "t": 1700,
+          "d": 125
+        },
+        {
+          "t": 1825,
+          "d": 88
+        },
+        {
+          "t": 1913,
+          "d": 113
+        },
+        {
+          "t": 2038,
+          "d": 38
+        },
+        {
+          "t": 2088,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-review-ask/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "동료",
+      "en": "I'm pretty swamped today. Is it blocking anything?",
+      "ms": 3120,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pretty",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "swamped",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "blocking",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          7
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 75
+        },
+        {
+          "t": 163,
+          "d": 188
+        },
+        {
+          "t": 350,
+          "d": 400
+        },
+        {
+          "t": 750,
+          "d": 388
+        },
+        {
+          "t": 1550,
+          "d": 88
+        },
+        {
+          "t": 1638,
+          "d": 100
+        },
+        {
+          "t": 1750,
+          "d": 513
+        },
+        {
+          "t": 2263,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-review-ask/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "급하진 않지만 내일까지는 머지하고 싶다고 말해봐",
+      "en": "Not urgent, but I'd like to get it merged by tomorrow if possible.",
+      "ms": 4296,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Not",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "urgent",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "merged",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "possible",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 225
+        },
+        {
+          "t": 313,
+          "d": 438
+        },
+        {
+          "t": 1000,
+          "d": 313
+        },
+        {
+          "t": 1325,
+          "d": 150
+        },
+        {
+          "t": 1488,
+          "d": 163
+        },
+        {
+          "t": 1663,
+          "d": 75
+        },
+        {
+          "t": 1750,
+          "d": 138
+        },
+        {
+          "t": 1900,
+          "d": 75
+        },
+        {
+          "t": 1988,
+          "d": 375
+        },
+        {
+          "t": 2375,
+          "d": 113
+        },
+        {
+          "t": 2500,
+          "d": 563
+        },
+        {
+          "t": 3225,
+          "d": 138
+        },
+        {
+          "t": 3375,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-review-ask/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "동료",
+      "en": "Okay — I can get to it first thing in the morning. How big is it?",
+      "ms": 3840,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "big",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 288
+        },
+        {
+          "t": 850,
+          "d": 113
+        },
+        {
+          "t": 963,
+          "d": 100
+        },
+        {
+          "t": 1063,
+          "d": 138
+        },
+        {
+          "t": 1213,
+          "d": 88
+        },
+        {
+          "t": 1300,
+          "d": 75
+        },
+        {
+          "t": 1388,
+          "d": 275
+        },
+        {
+          "t": 1663,
+          "d": 125
+        },
+        {
+          "t": 1788,
+          "d": 50
+        },
+        {
+          "t": 1850,
+          "d": 38
+        },
+        {
+          "t": 1888,
+          "d": 438
+        },
+        {
+          "t": 2738,
+          "d": 138
+        },
+        {
+          "t": 2888,
+          "d": 250
+        },
+        {
+          "t": 3138,
+          "d": 138
+        },
+        {
+          "t": 3275,
+          "d": 188
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-review-ask/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "작다고 안심시켜봐 — 파일 두 개 정도라고",
+      "en": "It's small — two files, mostly the retry logic.",
+      "ms": 3240,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "It's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "small",
+          1
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "two",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "files",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "mostly",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retry",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "logic",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 125
+        },
+        {
+          "t": 213,
+          "d": 413
+        },
+        {
+          "t": 638,
+          "d": 188
+        },
+        {
+          "t": 838,
+          "d": 475
+        },
+        {
+          "t": 1313,
+          "d": 450
+        },
+        {
+          "t": 1775,
+          "d": 75
+        },
+        {
+          "t": 1863,
+          "d": 400
+        },
+        {
+          "t": 2275,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-review-ask/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "동료",
+      "en": "Perfect. Ping me if I forget.",
+      "ms": 2280,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Perfect",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Ping",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forget",
+          5
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 488
+        },
+        {
+          "t": 975,
+          "d": 138
+        },
+        {
+          "t": 1113,
+          "d": 125
+        },
+        {
+          "t": 1250,
+          "d": 113
+        },
+        {
+          "t": 1363,
+          "d": 100
+        },
+        {
+          "t": 1463,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-review-ask/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "when you get a chance",
+      "meaning_ko": "여유 될 때. 부탁을 압박 없이 만드는 완충 표현",
+      "prompt_ko": "부탁하면서 급하지 않다는 뜻으로 여유 될 때 해달라고 말해봐"
+    },
+    {
+      "term": "I'm pretty swamped",
+      "meaning_ko": "지금 정신없이 바쁘다. busy 보다 정도가 세고 구어체",
+      "prompt_ko": "오늘 일이 너무 많아 정신없다고 말해봐"
+    },
+    {
+      "term": "Is it blocking anything?",
+      "meaning_ko": "그거 때문에 막힌 게 있냐. 우선순위를 확인하는 표준 질문",
+      "prompt_ko": "그 일이 다른 걸 막고 있는지 물어봐"
+    },
+    {
+      "term": "get to it first thing in the morning",
+      "meaning_ko": "아침에 제일 먼저 처리하다. first thing = 최우선으로",
+      "prompt_ko": "내일 아침에 제일 먼저 처리하겠다고 말해봐"
+    },
+    {
+      "term": "Ping me if I forget",
+      "meaning_ko": "잊으면 찔러줘. ping = 짧게 연락하다",
+      "prompt_ko": "내가 잊으면 다시 알려달라고 부탁해봐"
+    }
+  ],
+  "generated_at": "2026-09-30T04:46:08.893Z"
+}

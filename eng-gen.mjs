@@ -13,8 +13,12 @@
  *   node eng-gen.mjs drafts/english/article-<날짜>.json         기사
  *   node eng-gen.mjs <파일> --dry                               업로드 없이 생성·검증만
  *   node eng-gen.mjs <파일> --save <dir>                        mp3 를 로컬에도 떨어뜨린다 (미리보기·검수용)
+ *   node eng-gen.mjs --recent [N]                               최근 장면·기사 목록 (밤 보급이 중복을 피하려고 본다)
  *
- * 입력(장면):  { "id","situation_ko","voices":{"a","b"},"turns":[{"who","en","intent_ko","is_me"}] }
+ * 입력(장면):  { "id","situation_ko","voices":{"a","b"},"turns":[{"who","en","intent_ko","is_me"}],
+ *                "vocab":[{"term","meaning_ko","prompt_ko"}] }
+ *   vocab 의 prompt_ko 는 **그 표현이 나올 수밖에 없는 상황**(한국어)이다. 이게 없으면
+ *   산출 복습을 만들 수 없어서 어휘로 올리지 않는다 — 뜻만 아는 단어는 안 붙는다.
  * 입력(기사):  { "id","title","sentences":[...],"voice" }
  * 출력: 같은 파일에 audio/timings 를 채워 넣고, Storage 에 mp3 를 올린다.
  *
@@ -25,11 +29,12 @@ import { createClient } from '@supabase/supabase-js';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 
 const argv = process.argv.slice(2);
-const FILE = argv.find(a => !a.startsWith('--'));
+const RECENT = argv.includes('--recent');
+const FILE = argv.find(a => !a.startsWith('--') && !/^\d+$/.test(a));
 const DRY = argv.includes('--dry');
 const SAVE = argv.includes('--save') ? argv[argv.indexOf('--save') + 1] : null;
 if (SAVE) mkdirSync(SAVE, { recursive: true });
-if (!FILE) die('사용법: node eng-gen.mjs <장면|기사 json> [--dry]');
+if (!FILE && !RECENT) die('사용법: node eng-gen.mjs <장면|기사 json> [--dry] | --recent [N]');
 
 /** 96kbps CBR 이라 바이트로 길이를 정확히 낸다 (ffprobe 없이) */
 const FMT = OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3;
@@ -219,6 +224,68 @@ async function put(path, buf) {
   return data.publicUrl;
 }
 
+/** 장면·기사의 어휘를 eng_cards 로 올린다.
+ *
+ * eng_cards 를 그대로 쓰는 이유: prompt_ko(상황) · answer_en(표현) · note(설명) 구조가
+ * 어휘의 **산출 복습**과 정확히 맞고 SRS 필드도 이미 있다. 새 테이블을 만들 이유가 없다.
+ *
+ * prompt_ko 가 없는 항목은 **건너뛴다.** 상황이 없으면 "이 상황을 영어로" 를 만들 수 없고,
+ * 뜻만 확인하는 카드는 며칠 뒤에 스스로 꺼내보는 훈련이 안 된다.
+ * UNIQUE(user_id, prompt_ko, answer_en) 라 같은 표현을 다시 올려도 SRS 상태가 보존된다. */
+async function pushVocab(doc, kind) {
+  const items = doc.vocab || [];
+  if (!items.length) return;
+  const skipped = items.filter(v => !v.prompt_ko || !v.term);
+  const rows = items.filter(v => v.prompt_ko && v.term).map(v => ({
+    topic: doc.topic || (kind === 'scene' ? '일상' : '테크'),
+    scenario: kind === 'scene' ? 'scene' : 'briefing',
+    level: doc.level || 2,
+    prompt_ko: v.prompt_ko,
+    answer_en: v.term,
+    note: v.meaning_ko || '',
+    source: kind,                        // 'scene' | 'article' — 스키마 CHECK 에 넣어뒀다
+    source_ref: doc.id,
+  }));
+  if (rows.length) {
+    const { error } = await sb.from('eng_cards')
+      .upsert(rows.map(r => ({ user_id: uid, ...r })), { onConflict: 'user_id,prompt_ko,answer_en' });
+    if (error) {
+      if (/schema cache|does not exist|violates check/i.test(error.message))
+        die(`어휘 저장 실패 (${error.message}) — supabase/english-v2-schema.sql 을 실행했는지 확인해라`);
+      die(`어휘 저장 실패: ${error.message}`);
+    }
+  }
+  console.log(`  ${skipped.length ? '⚠' : '✓'} 어휘 ${rows.length}개 저장` +
+    (skipped.length ? ` · ${skipped.length}개 건너뜀 (prompt_ko 없음 — 산출 복습을 만들 수 없다)` : ''));
+}
+
+/* 최근에 뭘 만들었나. 무인 보급이 같은 상황·같은 기사를 또 만들지 않으려면 이게 필요하다. */
+async function showRecent(n) {
+  sb = await connect();
+  const { data: sc } = await sb.from('eng_scenes')
+    .select('scene_id, situation_ko, topic, level, created_at')
+    .order('created_at', { ascending: false }).limit(n);
+  const { data: ar } = await sb.from('eng_articles')
+    .select('article_id, title, topic, created_at')
+    .order('created_at', { ascending: false }).limit(n);
+  const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  const mine = (rows, k) => (rows || []).filter(r => (r.created_at || '').slice(0, 10) === today).length;
+  console.log(`오늘(${today}) 장면 ${mine(sc)}개 · 기사 ${mine(ar)}개`);
+  console.log('── 최근 장면 ──');
+  for (const r of sc || [])
+    console.log(`  ${(r.created_at||'').slice(0,10)}  ${r.topic} L${r.level}  ${r.scene_id}  ${(r.situation_ko||'').slice(0,42)}`);
+  console.log('── 최근 기사 ──');
+  for (const r of ar || [])
+    console.log(`  ${(r.created_at||'').slice(0,10)}  ${r.topic}  ${(r.title||'').slice(0,54)}`);
+  await sb.auth.signOut();
+}
+
+if (RECENT) {
+  const n = Number(argv.find(a => /^\d+$/.test(a))) || 12;
+  await showRecent(n);
+  process.exit(0);
+}
+
 /* ── 본체 ───────────────────────────────────────────────── */
 
 const doc = JSON.parse(readFileSync(FILE, 'utf8'));
@@ -311,8 +378,7 @@ if (!DRY) {
     });
   }
   console.log(`  ✓ ${kind === 'scene' ? 'eng_scenes' : 'eng_articles'} 에 저장`);
-  const nv = (doc.vocab || []).length;
-  if (nv) console.log(`  · 어휘 ${nv}개는 upload-eng.mjs 가 맡는다 (중복 병합·SRS 보존) — prompt_ko 가 있어야 올라간다`);
+  await pushVocab(doc, kind);
 }
 
 if (kind === 'scene') {

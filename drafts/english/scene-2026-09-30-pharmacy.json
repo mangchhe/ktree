@@ -1,0 +1,934 @@
+{
+  "id": "2026-09-30-pharmacy",
+  "situation_ko": "해외 약국에서 증상을 설명하고 약을 찾는다. 약사가 성분과 복용법을 확인한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "약사",
+      "en": "Hi, how can I help you today?",
+      "ms": 2016,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "how",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          6
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 275
+        },
+        {
+          "t": 388,
+          "d": 200
+        },
+        {
+          "t": 600,
+          "d": 150
+        },
+        {
+          "t": 763,
+          "d": 88
+        },
+        {
+          "t": 863,
+          "d": 200
+        },
+        {
+          "t": 1075,
+          "d": 100
+        },
+        {
+          "t": 1188,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-pharmacy/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "목이 아프고 이틀째라고 증상을 말해봐",
+      "en": "I've had a sore throat for two days now.",
+      "ms": 2832,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I've",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sore",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "throat",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 100
+        },
+        {
+          "t": 275,
+          "d": 50
+        },
+        {
+          "t": 338,
+          "d": 350
+        },
+        {
+          "t": 700,
+          "d": 525
+        },
+        {
+          "t": 1338,
+          "d": 188
+        },
+        {
+          "t": 1538,
+          "d": 263
+        },
+        {
+          "t": 1800,
+          "d": 313
+        },
+        {
+          "t": 2125,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-pharmacy/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "약사",
+      "en": "Any fever, or just the throat?",
+      "ms": 2784,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Any",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fever",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "or",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "throat",
+          5
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 200
+        },
+        {
+          "t": 288,
+          "d": 513
+        },
+        {
+          "t": 1238,
+          "d": 250
+        },
+        {
+          "t": 1563,
+          "d": 213
+        },
+        {
+          "t": 1788,
+          "d": 75
+        },
+        {
+          "t": 1875,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-pharmacy/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "열은 없고 밤에 기침이 심해진다고 말해봐",
+      "en": "No fever, but the cough gets worse at night.",
+      "ms": 2928,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fever",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cough",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gets",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worse",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "night",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 350,
+          "d": 513
+        },
+        {
+          "t": 1100,
+          "d": 113
+        },
+        {
+          "t": 1225,
+          "d": 75
+        },
+        {
+          "t": 1300,
+          "d": 363
+        },
+        {
+          "t": 1675,
+          "d": 163
+        },
+        {
+          "t": 1838,
+          "d": 275
+        },
+        {
+          "t": 2113,
+          "d": 75
+        },
+        {
+          "t": 2188,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-pharmacy/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "약사",
+      "en": "This should help. Take one every eight hours, with food.",
+      "ms": 3816,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "This",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Take",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "every",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "with",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "food",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 163
+        },
+        {
+          "t": 400,
+          "d": 350
+        },
+        {
+          "t": 1163,
+          "d": 213
+        },
+        {
+          "t": 1388,
+          "d": 350
+        },
+        {
+          "t": 1950,
+          "d": 313
+        },
+        {
+          "t": 2275,
+          "d": 138
+        },
+        {
+          "t": 2425,
+          "d": 438
+        },
+        {
+          "t": 2888,
+          "d": 188
+        },
+        {
+          "t": 3088,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-pharmacy/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "졸리게 하는 약인지 물어봐",
+      "en": "Will this make me drowsy? I have to work tomorrow.",
+      "ms": 2928,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Will",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drowsy",
+          4
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 113
+        },
+        {
+          "t": 275,
+          "d": 138
+        },
+        {
+          "t": 425,
+          "d": 100
+        },
+        {
+          "t": 525,
+          "d": 650
+        },
+        {
+          "t": 1588,
+          "d": 50
+        },
+        {
+          "t": 1650,
+          "d": 125
+        },
+        {
+          "t": 1775,
+          "d": 75
+        },
+        {
+          "t": 1863,
+          "d": 175
+        },
+        {
+          "t": 2038,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-pharmacy/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "약사",
+      "en": "Slightly, so don't drive right after. If it's not better in three days, see a doctor.",
+      "ms": 5616,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Slightly",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drive",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "better",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "see",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doctor",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 638
+        },
+        {
+          "t": 950,
+          "d": 313
+        },
+        {
+          "t": 1263,
+          "d": 213
+        },
+        {
+          "t": 1488,
+          "d": 288
+        },
+        {
+          "t": 1788,
+          "d": 188
+        },
+        {
+          "t": 1988,
+          "d": 488
+        },
+        {
+          "t": 2850,
+          "d": 113
+        },
+        {
+          "t": 2975,
+          "d": 125
+        },
+        {
+          "t": 3100,
+          "d": 263
+        },
+        {
+          "t": 3375,
+          "d": 263
+        },
+        {
+          "t": 3650,
+          "d": 188
+        },
+        {
+          "t": 3838,
+          "d": 213
+        },
+        {
+          "t": 4063,
+          "d": 400
+        },
+        {
+          "t": 4475,
+          "d": 213
+        },
+        {
+          "t": 4700,
+          "d": 38
+        },
+        {
+          "t": 4738,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-pharmacy/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "I've had a sore throat for two days",
+      "meaning_ko": "이틀째 목이 아프다. 현재완료로 '계속되고 있음'을 말하는 게 핵심",
+      "prompt_ko": "이틀째 목이 아프다고 증상을 말해봐"
+    },
+    {
+      "term": "the cough gets worse at night",
+      "meaning_ko": "밤에 기침이 심해진다. get worse = 악화되다",
+      "prompt_ko": "밤에 증상이 더 심해진다고 말해봐"
+    },
+    {
+      "term": "Take one every eight hours, with food",
+      "meaning_ko": "여덟 시간마다 한 알, 식후에. 복용법의 정석 어순",
+      "prompt_ko": "약사가 되어 복용법을 알려줘 — 여덟 시간마다 한 알, 식후"
+    },
+    {
+      "term": "Will this make me drowsy?",
+      "meaning_ko": "이거 졸려요? drowsy = 졸린 (sleepy 보다 약 맥락에 맞다)",
+      "prompt_ko": "이 약이 졸리게 하는지 물어봐"
+    },
+    {
+      "term": "If it's not better in three days, see a doctor",
+      "meaning_ko": "사흘 안에 안 나으면 병원 가라. 조건+권고의 표준 문형",
+      "prompt_ko": "사흘 안에 안 나으면 병원에 가라고 권해봐"
+    }
+  ],
+  "generated_at": "2026-09-30T04:46:19.849Z"
+}

@@ -1,0 +1,934 @@
+{
+  "id": "2026-09-30-standup-blocked",
+  "situation_ko": "스탠드업에서 막힌 것을 설명한다. 팀 리드가 원인을 캐묻고 도움을 제안한다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "리드",
+      "en": "Anything blocking you?",
+      "ms": 1872,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Anything",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "blocking",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 313
+        },
+        {
+          "t": 413,
+          "d": 500
+        },
+        {
+          "t": 913,
+          "d": 163
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-standup-blocked/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "스테이징에서 컨슈머가 계속 리밸런싱된다고 말해봐",
+      "en": "Yeah — the consumer keeps rebalancing on staging and I can't pin down why.",
+      "ms": 5328,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yeah",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "consumer",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keeps",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rebalancing",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "staging",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pin",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 350
+        },
+        {
+          "t": 688,
+          "d": 100
+        },
+        {
+          "t": 788,
+          "d": 488
+        },
+        {
+          "t": 1275,
+          "d": 325
+        },
+        {
+          "t": 1613,
+          "d": 725
+        },
+        {
+          "t": 2350,
+          "d": 138
+        },
+        {
+          "t": 2500,
+          "d": 638
+        },
+        {
+          "t": 3575,
+          "d": 100
+        },
+        {
+          "t": 3688,
+          "d": 88
+        },
+        {
+          "t": 3788,
+          "d": 313
+        },
+        {
+          "t": 4100,
+          "d": 175
+        },
+        {
+          "t": 4275,
+          "d": 275
+        },
+        {
+          "t": 4563,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-standup-blocked/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "리드",
+      "en": "Since when? Did anything change on that cluster?",
+      "ms": 3144,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Since",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          1
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Did",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cluster",
+          7
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 350,
+          "d": 325
+        },
+        {
+          "t": 1088,
+          "d": 75
+        },
+        {
+          "t": 1163,
+          "d": 350
+        },
+        {
+          "t": 1525,
+          "d": 475
+        },
+        {
+          "t": 2013,
+          "d": 75
+        },
+        {
+          "t": 2088,
+          "d": 163
+        },
+        {
+          "t": 2263,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-standup-blocked/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "어제 배포 이후부터라고, 로그는 아직 보고 있다고 말해봐",
+      "en": "Since yesterday's deploy. I'm still going through the logs.",
+      "ms": 3624,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Since",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "yesterday's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deploy",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'm",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "logs",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 313
+        },
+        {
+          "t": 413,
+          "d": 538
+        },
+        {
+          "t": 963,
+          "d": 500
+        },
+        {
+          "t": 1838,
+          "d": 100
+        },
+        {
+          "t": 1950,
+          "d": 238
+        },
+        {
+          "t": 2200,
+          "d": 238
+        },
+        {
+          "t": 2450,
+          "d": 125
+        },
+        {
+          "t": 2575,
+          "d": 100
+        },
+        {
+          "t": 2688,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-standup-blocked/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "리드",
+      "en": "Could be the session timeout. Want me to pair with you after this?",
+      "ms": 3576,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Could",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "session",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "timeout",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Want",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pair",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 63
+        },
+        {
+          "t": 238,
+          "d": 75
+        },
+        {
+          "t": 325,
+          "d": 438
+        },
+        {
+          "t": 775,
+          "d": 575
+        },
+        {
+          "t": 1750,
+          "d": 100
+        },
+        {
+          "t": 1850,
+          "d": 50
+        },
+        {
+          "t": 1900,
+          "d": 63
+        },
+        {
+          "t": 1963,
+          "d": 275
+        },
+        {
+          "t": 2238,
+          "d": 125
+        },
+        {
+          "t": 2363,
+          "d": 113
+        },
+        {
+          "t": 2475,
+          "d": 275
+        },
+        {
+          "t": 2750,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-standup-blocked/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "좋다고 하면서 30분만 달라고 해봐",
+      "en": "That'd be great. Give me thirty minutes to narrow it down first.",
+      "ms": 4248,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "great",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Give",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "narrow",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 350
+        },
+        {
+          "t": 413,
+          "d": 138
+        },
+        {
+          "t": 563,
+          "d": 463
+        },
+        {
+          "t": 1400,
+          "d": 138
+        },
+        {
+          "t": 1550,
+          "d": 150
+        },
+        {
+          "t": 1713,
+          "d": 375
+        },
+        {
+          "t": 2100,
+          "d": 375
+        },
+        {
+          "t": 2488,
+          "d": 100
+        },
+        {
+          "t": 2588,
+          "d": 400
+        },
+        {
+          "t": 3000,
+          "d": 100
+        },
+        {
+          "t": 3113,
+          "d": 263
+        },
+        {
+          "t": 3388,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-standup-blocked/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "리드",
+      "en": "Sounds good. Drop what you find in the channel.",
+      "ms": 2832,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Sounds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Drop",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "find",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "channel",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 225
+        },
+        {
+          "t": 338,
+          "d": 238
+        },
+        {
+          "t": 975,
+          "d": 250
+        },
+        {
+          "t": 1225,
+          "d": 100
+        },
+        {
+          "t": 1325,
+          "d": 125
+        },
+        {
+          "t": 1463,
+          "d": 425
+        },
+        {
+          "t": 1900,
+          "d": 50
+        },
+        {
+          "t": 1950,
+          "d": 63
+        },
+        {
+          "t": 2025,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-09-30-standup-blocked/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "I can't pin down why",
+      "meaning_ko": "원인을 딱 짚지 못하고 있다. pin down = 정확히 특정하다",
+      "prompt_ko": "원인을 정확히 짚지 못하고 있다고 말해봐"
+    },
+    {
+      "term": "Since when?",
+      "meaning_ko": "언제부터? 장애 대응의 첫 질문. 두 단어로 끝난다",
+      "prompt_ko": "그 문제가 언제부터인지 짧게 물어봐"
+    },
+    {
+      "term": "I'm still going through the logs",
+      "meaning_ko": "로그를 아직 훑고 있다. go through = 하나씩 살펴보다",
+      "prompt_ko": "로그를 아직 훑어보는 중이라고 말해봐"
+    },
+    {
+      "term": "Want me to pair with you?",
+      "meaning_ko": "같이 붙어서 볼까? pair = 페어 프로그래밍하다",
+      "prompt_ko": "동료에게 같이 붙어서 보자고 제안해봐"
+    },
+    {
+      "term": "Give me thirty minutes to narrow it down",
+      "meaning_ko": "범위를 좁힐 30분만 줘. narrow down = 후보를 줄이다",
+      "prompt_ko": "먼저 혼자 범위를 좁힐 시간을 달라고 해봐"
+    }
+  ],
+  "generated_at": "2026-09-30T04:46:31.354Z"
+}
