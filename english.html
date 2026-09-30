@@ -1278,18 +1278,42 @@ async function renderVocab(){
   });
 }
 
-/* ═══ 보관함 — 지난 장면·기사 다시 하기 ════════════════ */
+/* ═══ 보관함 — 지난 장면·기사 다시 하기 ════════════════
+ *
+ * 세 가지를 지킨다. 안 지키면 콘텐츠가 쌓일수록 어긋난다:
+ *  ① **오늘 것은 뺀다.** 오늘 판에 이미 있는 걸 또 보여주면 "보관함"이 아니다.
+ *  ② **토픽 필터를 건다.** 어휘 장부는 끈 토픽을 빼는데 여기만 안 빼면 앞뒤가 안 맞는다.
+ *  ③ **상한 대신 더 보기.** 하루 4~5개씩 쌓이면 40개는 열흘이면 찬다 —
+ *     고정 limit 이면 그때부터 오래된 것이 말없이 사라진다.
+ */
+const AV_PAGE = 20;
+let avLimit = AV_PAGE;
+
 async function renderArchive(){
   const box = $('av-list');
-  const [sc, ar] = await Promise.all([
-    sb.from('eng_scenes').select('*').order('created_at',{ascending:false}).limit(40),
-    sb.from('eng_articles').select('*').order('created_at',{ascending:false}).limit(40),
-  ]);
+  const names = activeTopicNames();
+  // KST 자정 경계. created_at 은 timestamptz 라 UTC 로 환산해 비교한다.
+  const dayStart = new Date(Date.parse(today() + 'T00:00:00+09:00')).toISOString();
+  const q = t => {
+    let x = sb.from(t).select('*', { count:'exact' })
+      .lt('created_at', dayStart)
+      .order('created_at',{ascending:false}).limit(avLimit);
+    if (names.length) x = x.in('topic', names);
+    return x;
+  };
+  const [sc, ar] = await Promise.all([q('eng_scenes'), q('eng_articles')]);
   if (sc.error || ar.error) { box.innerHTML = '<div class="empty">Could not load the archive.</div>'; return; }
   const scenes = sc.data || [], arts = ar.data || [];
   if (!scenes.length && !arts.length) {
-    box.innerHTML = '<div class="empty">Empty for now — it fills up after the nightly run.</div>'; return;
+    // 왜 비었는지 갈라 말해준다 — "아직 없음"과 "토픽을 다 꺼둠"은 다른 상황이다.
+    // topics 가 비어 있는 건 **로드 전/실패**일 수도 있다. 그걸 "다 꺼둠"이라고 하면 거짓말이 된다.
+    const allOff = topics.length > 0 && !names.length;
+    box.innerHTML = allOff
+      ? '<div class="empty">All topics are off. Turn one on in Today to see archived material.</div>'
+      : '<div class="empty">Nothing here yet — today\'s material moves in tomorrow.</div>';
+    return;
   }
+  const more = (sc.count || 0) > scenes.length || (ar.count || 0) > arts.length;
   box.innerHTML = `<p class="leg" style="margin:0 0 12px">For redoing past material. Want more on the weekend? Pick from here.</p>
     ${scenes.length ? `<div class="vprog">${scenes.length} scenes</div>` + scenes.map(x =>
       `<div class="initem"><div class="itx"><div class="ie">${esc(x.situation_ko)}</div>
@@ -1298,7 +1322,11 @@ async function renderArchive(){
     ${arts.length ? `<div class="vprog" style="margin-top:14px">${arts.length} articles</div>` + arts.map(x =>
       `<div class="initem"><div class="itx"><div class="ie">${esc(x.title)}</div>
         <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${(x.sentences||[]).length} sentences · ${Math.round(x.ms/1000)}s</div></div>
-        <button class="btn sm" data-ar="${x.id}">Open</button></div>`).join('') : ''}`;
+        <button class="btn sm" data-ar="${x.id}">Open</button></div>`).join('') : ''}
+    ${more ? `<div class="actbar" style="margin-top:14px;justify-content:center">
+      <button class="btn sm" id="av-more">Show more</button></div>` : ''}`;
+  const mb = $('av-more');
+  if (mb) mb.onclick = () => { avLimit += AV_PAGE; renderArchive(); };
   box.querySelectorAll('[data-sc]').forEach(b => b.onclick = () => {
     // 보관함에서 고른 장면을 오늘 판의 장면 자리에 끼워 연다 (진행은 안 건드린다)
     const one = scenes.find(x => x.id === b.dataset.sc);
