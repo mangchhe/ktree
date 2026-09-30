@@ -85,6 +85,32 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .pdots i.on{background:var(--eng)}
 .prow .px{flex:none;font-family:var(--num);font-size:11px;color:var(--dim);min-width:52px;text-align:right}
 .prow .pk{flex:none;font-size:11px;color:var(--dim);min-width:34px;text-align:right}
+/* Together 탭 — 주간 격자와 누적. 챌린지앱의 주간 표와 같은 읽는 법이다. */
+.tgh{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
+  font-weight:600;margin:18px 0 8px}
+.tgh:first-child{margin-top:4px}
+.tgweek{border:1px solid var(--border);border-radius:11px;background:var(--card);overflow:hidden}
+.tgrow{display:grid;grid-template-columns:minmax(64px,1fr) repeat(7,26px);gap:6px;
+  align-items:center;padding:9px 12px}
+.tgrow+.tgrow{border-top:1px solid var(--border)}
+.tgrow.me{background:var(--eng-bg)}
+.tgrow.head{padding-bottom:4px;border:0}
+.tgrow .nm{font-size:12.5px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.tgrow .dw{font-size:9.5px;color:var(--dim);text-align:center;font-family:var(--num)}
+.tgrow i{width:18px;height:18px;border-radius:5px;background:var(--border-hl);
+  display:block;margin:0 auto;border:1px solid transparent}
+.tgrow i.part{background:var(--eng-bg);border-color:var(--eng)}
+.tgrow i.full{background:var(--eng);border-color:var(--eng)}
+.tgrow i.fut{background:none;border:1px dashed var(--border-hl)}
+
+.tgtot{display:flex;flex-direction:column;gap:7px}
+.tgcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:11px 13px}
+.tgcard.me{background:var(--eng-bg);border-color:var(--eng-bd)}
+.tgname{font-size:13px;font-weight:650;margin-bottom:6px}
+.tgname em{font-style:normal;font-size:10.5px;color:var(--dim);font-weight:500;margin-left:5px}
+.tgfig{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:11.5px;color:var(--dim)}
+.tgfig b{font-family:var(--num);font-size:14px;color:var(--text);font-weight:700;
+  font-variant-numeric:tabular-nums;margin-right:3px}
 .toast{
   position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);
   background:var(--card-el);border:1px solid var(--border-hl);border-radius:99px;
@@ -346,6 +372,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       <div id="av-list"></div>
     </section>
 
+    <!-- ============ 같이 ============ -->
+    <section class="screen" id="s-together">
+      <div id="tg-body"></div>
+    </section>
+
   </div>
 </div>
 
@@ -356,6 +387,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7.5 4h11A2.5 2.5 0 0 1 21 6.5v11"/></svg>Vocab</button>
   <button class="tab" data-s="archive">
     <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="4.5" rx="1.5"/><path d="M5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10M10 12h4"/></svg>Archive</button>
+  <button class="tab" data-s="together">
+    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.2 15.6a4.6 4.6 0 0 1 5.3 3.9"/></svg>Together</button>
 </nav>
 
 <div class="toast" id="toast"></div>
@@ -426,7 +459,7 @@ async function login(){
 async function logout(){ await sb.auth.signOut(); location.reload(); }
 
 /* ================= 화면 전환 ================= */
-const SCREENS = ['today','vocab','archive'];
+const SCREENS = ['today','vocab','archive','together'];
 function show(s){
   SCREENS.forEach(k => $('s-'+k).classList.toggle('on', k===s));
   document.querySelectorAll('#tabbar .tab').forEach(b => b.classList.toggle('on', b.dataset.s===s));
@@ -437,6 +470,7 @@ function show(s){
   if (s==='today') renderToday();
   if (s==='vocab') renderVocab();
   if (s==='archive') renderArchive();
+  if (s==='together') renderTogether();
   window.scrollTo(0,0);
 }
 $('tabbar').addEventListener('click', e => { const b=e.target.closest('[data-s]'); if(b) show(b.dataset.s); });
@@ -1318,51 +1352,125 @@ async function renderVocab(){
  * 챌린지앱을 그대로 따른다: 로스터 + 기간 데이터를 통째로 가져와 앱에서 묶는다.
  * 읽기만 열려 있고(v5) 쓰기는 본인만이라, 남의 진도를 건드릴 수는 없다.
  *
+ * 🔴 줄은 **로스터**로 만든다. 진도 행이 있는 사람으로 만들면 아직 시작 안 한 사람은
+ *    줄 자체가 안 생겨, "안 했다"와 "공유가 꺼졌다"가 구분되지 않는다.
+ *    안 한 게 보이는 것이 이 기능의 핵심이다.
+ *
  * 이름은 challenge_members 를 빌려 쓴다 — 같은 프로젝트·같은 계정이고 이미 둘 다 있다.
- * 거기 없는 사람은 이메일 앞부분으로 떨어뜨린다 (English 만 쓰는 사람이 생길 수 있다).
+ * 거기 없는 사람은 이메일 앞부분으로 떨어뜨린다.
+ *
+ * eng_cards 는 공유하지 않으므로(개인 SRS) 남의 카드 수는 알 수 없다.
+ * 누적 수치는 eng_progress 가 가진 것만 쓴다.
  */
+let tgCache = null;
+
+async function loadTogether(force){
+  if (tgCache && !force) return tgCache;
+  const since = kstDate(Date.now() - 40*864e5);
+  const [se, pr, mem] = await Promise.all([
+    sb.from('eng_sessions').select('user_id, session_date, progress, xp_earned, completed_at')
+      .gte('session_date', since).order('session_date',{ascending:false}),
+    sb.from('eng_progress').select('user_id, xp_total, turns_spoken, listened_ms, articles_read'),
+    sb.from('challenge_members').select('user_id, name, email, active'),
+  ]);
+  const roster = (mem.data || []).filter(m => m.active !== false);
+  // 로스터에 없지만 진도를 남긴 사람도 놓치지 않는다
+  const extra = [...new Set([...(se.data||[]).map(r=>r.user_id), ...(pr.data||[]).map(r=>r.user_id)])]
+    .filter(u => !roster.some(m => m.user_id === u))
+    .map(u => ({ user_id:u, name:null, email:null }));
+  const people = [...roster, ...extra];
+  const order = [...people].sort((a,b) =>
+    a.user_id === currentUser.id ? -1 : b.user_id === currentUser.id ? 1 : 0);
+  tgCache = {
+    people: order,
+    sessions: se.data || [],
+    prog: pr.data || [],
+    nameOf: m => m.name || (m.email || '').split('@')[0] || 'friend',
+  };
+  return tgCache;
+}
+
+function tgDots(pg){
+  const on = k => ((pg?.[k]?.done || pg?.[k]?.sent || 0) > 0);
+  return ['scenes','article','vocab'].map(k => `<i class="${on(k) ? 'on' : ''}"></i>`).join('');
+}
+function tgStreak(sessions, id){
+  const days = new Set(sessions.filter(r=>r.user_id===id).map(r=>r.session_date));
+  let n = 0, cur = Date.now();
+  if (!days.has(kstDate(cur))) cur -= 864e5;
+  while (days.has(kstDate(cur))) { n++; cur -= 864e5; }
+  return n;
+}
+
+/* 오늘 판 위의 한 줄 — 탭을 열어야만 보이면 자극이 안 된다. 요약은 여기 남긴다. */
 async function renderPeers(){
   const box = $('t-peers'); if (!box) return;
+  const t = await loadTogether();
+  if (t.people.length < 2) { box.innerHTML = ''; return; }   // 혼자 보는 표는 의미가 없다
   const d = today();
-  const [se, pr, mem] = await Promise.all([
-    sb.from('eng_sessions').select('user_id, progress, xp_earned, completed_at, session_date')
-      .gte('session_date', kstDate(Date.now() - 60*864e5)).order('session_date',{ascending:false}),
-    sb.from('eng_progress').select('user_id, xp_total'),
-    sb.from('challenge_members').select('user_id, name, email'),
-  ]);
-  // 아직 v5 를 안 돌렸으면 내 것만 보인다 — 그때는 스트립을 접는다 (혼자 보는 표는 의미가 없다)
-  const rows = se.data || [];
-  const users = [...new Set([...rows.map(r=>r.user_id), ...(pr.data||[]).map(r=>r.user_id)])];
-  if (users.length < 2) { box.innerHTML = ''; return; }
+  const row = m => {
+    const se = t.sessions.find(r => r.user_id === m.user_id && r.session_date === d);
+    return `<div class="prow${m.user_id === currentUser.id ? ' me' : ''}">
+      <span class="pn">${esc(t.nameOf(m))}${se?.completed_at ? ' ✓' : ''}</span>
+      <span class="pdots">${tgDots(se?.progress)}</span>
+      <span class="px">${se?.xp_earned ? '+' + se.xp_earned : '—'}</span>
+      <span class="pk">🔥 ${tgStreak(t.sessions, m.user_id)}</span></div>`;
+  };
+  box.innerHTML = `<div class="peers"><div class="ph">Today</div>${t.people.map(row).join('')}</div>`;
+}
 
-  const nameOf = id => {
-    const m = (mem.data || []).find(x => x.user_id === id);
-    return m?.name || (m?.email || '').split('@')[0] || 'friend';
-  };
-  const xpOf = id => ((pr.data||[]).find(x => x.user_id === id)?.xp_total) || 0;
-  // 연속일 — 그 사람이 세션을 남긴 날을 오늘부터 거꾸로 센다 (연속일 계산과 같은 규칙)
-  const streakOf = id => {
-    const days = new Set(rows.filter(r=>r.user_id===id).map(r=>r.session_date));
-    let n = 0, cur = Date.now();
-    if (!days.has(kstDate(cur))) cur -= 864e5;
-    while (days.has(kstDate(cur))) { n++; cur -= 864e5; }
-    return n;
-  };
-  const todayOf = id => rows.find(r => r.user_id === id && r.session_date === d);
+/* ═══ Together 탭 — 이번 주와 누적 ═════════════════════ */
+async function renderTogether(){
+  const box = $('tg-body'); if (!box) return;
+  box.innerHTML = '<div class="empty">Loading…</div>';
+  const t = await loadTogether(true);
+  if (!t.people.length) { box.innerHTML = '<div class="empty">No one here yet.</div>'; return; }
 
-  const line = id => {
-    const t = todayOf(id), pg = t?.progress || {};
-    const on = k => (pg[k]?.done || pg[k]?.sent || 0) > 0 ? ' on' : '';
-    const done = !!t?.completed_at;
-    return `<div class="prow${id === currentUser.id ? ' me' : ''}">
-      <span class="pn">${esc(nameOf(id))}${done ? ' ✓' : ''}</span>
-      <span class="pdots"><i class="${on('scenes').trim()}"></i><i class="${on('article').trim()}"></i><i class="${on('vocab').trim()}"></i></span>
-      <span class="px">${t?.xp_earned ? '+' + t.xp_earned : '—'}</span>
-      <span class="pk">🔥 ${streakOf(id)}</span></div>`;
+  // 이번 주 — 월요일 시작 (KST). 미래 칸은 비워 둔다.
+  const now = new Date(Date.now() + 9*3600e3);
+  const dow = (now.getUTCDay() + 6) % 7;                 // 월=0
+  const monday = Date.now() - dow*864e5;
+  const week = Array.from({length:7}, (_,i) => kstDate(monday + i*864e5));
+  const d = today();
+  const DOW = ['M','T','W','T','F','S','S'];
+
+  const cell = (id, day) => {
+    if (day > d) return '<i class="fut"></i>';
+    const se = t.sessions.find(r => r.user_id === id && r.session_date === day);
+    if (!se) return '<i></i>';
+    const pg = se.progress || {};
+    const n = ['scenes','article','vocab'].filter(k => (pg[k]?.done || pg[k]?.sent || 0) > 0).length;
+    return `<i class="${se.completed_at ? 'full' : n ? 'part' : ''}"></i>`;
   };
-  // 나를 맨 위에 — 내 줄을 찾느라 훑지 않게
-  const order = [currentUser.id, ...users.filter(u => u !== currentUser.id)].filter(u => users.includes(u));
-  box.innerHTML = `<div class="peers"><div class="ph">Today</div>${order.map(line).join('')}</div>`;
+  const mins = ms => Math.round((ms || 0) / 60000);
+  const num = n => (n || 0).toLocaleString();
+
+  box.innerHTML = `
+    <h3 class="tgh">This week</h3>
+    <div class="tgweek">
+      <div class="tgrow head"><span class="nm"></span>${week.map((_,i)=>`<span class="dw">${DOW[i]}</span>`).join('')}</div>
+      ${t.people.map(m => `<div class="tgrow${m.user_id===currentUser.id?' me':''}">
+        <span class="nm">${esc(t.nameOf(m))}</span>
+        ${week.map(day => cell(m.user_id, day)).join('')}</div>`).join('')}
+    </div>
+    <p class="leg">Filled = finished the board · half = started · empty = nothing.</p>
+
+    <h3 class="tgh">Totals</h3>
+    <div class="tgtot">
+      ${t.people.map(m => {
+        const p = t.prog.find(x => x.user_id === m.user_id) || {};
+        const r = rankOf(p.xp_total || 0);
+        return `<div class="tgcard${m.user_id===currentUser.id?' me':''}">
+          <div class="tgname">${esc(t.nameOf(m))} <em>Lv ${r.n} ${esc(r.name)}</em></div>
+          <div class="tgfig">
+            <span><b>${num(p.xp_total)}</b> XP</span>
+            <span><b>${num(p.turns_spoken)}</b> turns</span>
+            <span><b>${mins(p.listened_ms)}</b> min</span>
+            <span><b>${num(p.articles_read)}</b> articles</span>
+          </div></div>`;
+      }).join('')}
+    </div>
+    <p class="leg">Vocabulary cards stay private — only these totals are shared.</p>`;
 }
 
 /* ═══ 보관함 — 지난 장면·기사 다시 하기 ════════════════
