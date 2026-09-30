@@ -75,6 +75,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   background:var(--card-el);border:1px solid var(--border-hl);border-radius:99px;
   padding:9px 16px;font-size:12.5px;color:var(--text);z-index:50;display:none;white-space:nowrap;
 }
+.toast.has-act{align-items:center;gap:12px;padding-right:8px}
+.toast-act{
+  background:none;border:none;color:var(--accent);font:inherit;font-weight:700;
+  padding:4px 8px;margin:0;border-radius:99px;cursor:pointer;
+}
+.toast-act:active{background:var(--card-el)}
 
 /* --- home --- */
 
@@ -356,8 +362,23 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const KST = 9 * 3600e3;
 const kstDate = t => new Date((t == null ? Date.now() : new Date(t).getTime()) + KST).toISOString().slice(0,10);
 const today = () => kstDate();
-function toast(msg){ const t=$('toast'); t.textContent=msg; t.style.display='block';
-  clearTimeout(toast._t); toast._t=setTimeout(()=>t.style.display='none', 2200); }
+/* action 을 주면 「되돌리기」 같은 버튼이 붙고 더 오래 머문다.
+   되돌릴 수 있는 일은 묻지 말고 **실행하고 물릴 기회를 준다** — 확인 모달은 의도한 탭마다
+   세금을 물리고, '다시 묻지 않기'를 켜는 순간 보호가 통째로 사라진다. */
+function toast(msg, action){
+  const t=$('toast'); t.textContent=msg; clearTimeout(toast._t);
+  t.classList.toggle('has-act', !!action);
+  if (action) {
+    const b=document.createElement('button');
+    b.className='toast-act'; b.textContent=action.label;
+    b.onclick=()=>{ hideToast(); action.onClick(); };
+    t.appendChild(b);
+    t.style.display='flex';
+  } else { t.style.display='block'; }
+  toast._t=setTimeout(hideToast, action ? 6000 : 2200);
+}
+function hideToast(){ const t=$('toast'); clearTimeout(toast._t);
+  t.style.display='none'; t.classList.remove('has-act'); }
 
 /* ================= auth ================= */
 async function login(){
@@ -1018,9 +1039,20 @@ function actVocab(el){
           <button class="btn sm" id="v-kill" title="이 표현 다시 안 보기">✕</button></div></div>`;
       $('v-kill').onclick = async () => {
         // 어색한 카드는 알아챈 자리에서 바로 뺄 수 있어야 한다. 참고 넘기면 계속 돌아온다.
-        await sb.from('eng_cards').update({ status:'suspended' }).eq('id', c.id);
-        toast('이 표현은 다시 안 나와요');
-        list.splice(i, 1); await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
+        // 되돌리기를 붙인 이유: 주 버튼 바로 옆이라 오탭이 잦은데, 한 번 죽이면 장부에서도
+        // 걸러져 앱 어디에서도 다시 못 본다. status 플래그 하나라 복구는 공짜다.
+        const prev = c.status || 'new', at = i;
+        const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', c.id);
+        if (error) return toast('실패 — 네트워크를 확인하세요');
+        const [removed] = list.splice(at, 1);
+        await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
+        toast('이 표현은 다시 안 나와요', { label:'되돌리기', onClick: async () => {
+          const { error } = await sb.from('eng_cards').update({ status:prev }).eq('id', c.id);
+          if (error) return toast('되돌리기 실패 — 네트워크를 확인하세요');
+          list.splice(at, 0, removed);
+          await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
+          toast('되돌렸어요');
+        }});
       };
       $('v-ok').onclick = async () => {
         playVocab(c);
@@ -1205,9 +1237,15 @@ async function renderVocab(){
   });
   list.querySelectorAll('[data-kill]').forEach(b => b.onclick = async () => {
     b.disabled = true;
-    const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', b.dataset.kill);
+    const id = b.dataset.kill, prev = byId[id]?.status || 'new';
+    const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', id);
     if (error) { b.disabled = false; return toast('실패 — 네트워크를 확인하세요'); }
-    toast('이 표현은 다시 안 나와요'); renderVocab();
+    renderVocab();
+    toast('이 표현은 다시 안 나와요', { label:'되돌리기', onClick: async () => {
+      const { error } = await sb.from('eng_cards').update({ status:prev }).eq('id', id);
+      if (error) return toast('되돌리기 실패 — 네트워크를 확인하세요');
+      toast('되돌렸어요'); renderVocab();
+    }});
   });
 }
 
