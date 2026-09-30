@@ -334,7 +334,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.8';
+const BUILD = '2026-09-30.9';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
@@ -620,15 +620,30 @@ async function loadToday(){
   tLoaded = true;
 }
 
+const VOCAB_NEW = 12, VOCAB_DUE = 8;   // 마무리는 2분짜리다. 더 넣으면 통째로 건너뛰게 된다.
+
 async function loadTodayVocab(){
   const d = today();
-  // 오늘 것 = 오늘 만들어진 어휘(인지). 지난 것 = 날짜가 돌아온 것(산출, SRS 채점)
+  // **"오늘 것"은 날짜가 아니라 '아직 안 만난 것'이다.**
+  // 날짜로만 뽑으면 상한에 밀린 신규가 영원히 갇힌다 — status='new' 라서
+  // '지난 것'(neq status new) 질의에도 안 걸리기 때문이다.
+  // 실제로 오늘 90장이 만들어져 20장에서 잘렸고 70장이 고아가 될 뻔했다.
   const { data: fresh } = await sb.from('eng_cards').select('*')
-    .in('source',['scene','article']).gte('created_at', d + 'T00:00:00').limit(20);
+    .eq('status','new').neq('status','suspended')
+    .gte('created_at', d + 'T00:00:00').limit(VOCAB_NEW);
+  let mine = fresh || [];
+  if (mine.length < VOCAB_NEW) {
+    // 모자라면 **오래된 미학습 카드부터** 채운다 (pack 으로 올린 것도 여기서 소화된다)
+    const { data: backlog } = await sb.from('eng_cards').select('*')
+      .eq('status','new').neq('status','suspended')
+      .lt('created_at', d + 'T00:00:00')
+      .order('created_at').limit(VOCAB_NEW - mine.length);
+    mine = [...mine, ...(backlog || [])];
+  }
   const { data: due } = await sb.from('eng_cards').select('*')
     .neq('status','new').neq('status','suspended').lte('next_review', d)
-    .order('next_review').limit(8);
-  tVocab = { today: fresh || [], past: due || [] };
+    .order('next_review').limit(VOCAB_DUE);
+  tVocab = { today: mine, past: due || [] };
 }
 
 async function bumpXp(n, why){
