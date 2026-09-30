@@ -104,7 +104,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   justify-items:center;align-content:center}
 .tgwg .cell .dd{font-size:11.5px;font-family:var(--num);color:var(--sub);line-height:1}
 .tgwg .cell .seg{display:flex;gap:2px;height:3px}
-.tgwg .cell .seg u{width:5px;border-radius:2px;background:var(--border-hl);display:block}
+.tgwg .cell .seg u{width:4px;border-radius:2px;background:var(--border-hl);display:block}
 .tgwg .cell .seg u.on{background:var(--ok)}
 .tgwg .cell .seg u.hf{background:var(--ok);opacity:.45}
 .tgwg .cell.part{background:var(--ok-bg);border-color:var(--ok-bd)}
@@ -262,6 +262,21 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 }
 .bcard:active:not(:disabled){transform:scale(.99)}
 .bcard:disabled{opacity:.45;cursor:not-allowed}
+/* 잠긴 퀴즈는 "고장"이 아니라 "아직"이다 — 점선 테로 그걸 말한다 */
+.bcard.locked{border-style:dashed;opacity:.55}
+.bcard.locked .bar{visibility:hidden}
+
+/* 퀴즈 4지선다 */
+.qopts{display:flex;flex-direction:column;gap:7px;margin-top:14px}
+.qopt{appearance:none;font:inherit;font-size:13.5px;text-align:left;color:var(--text);
+  background:var(--card2);border:1px solid var(--border);border-radius:10px;
+  padding:11px 13px;cursor:pointer;transition:border-color .12s,background .12s}
+.qopt:active:not(:disabled){transform:scale(.995)}
+.qopt:disabled{cursor:default}
+.qopt.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:600}
+.qopt.no{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
+.qgap{display:inline-block;min-width:74px;text-align:center;color:var(--eng);
+  border-bottom:2px solid var(--eng-bd);margin:0 3px}
 .bcard .bt{grid-column:2;font-size:14px;font-weight:700;letter-spacing:-.2px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .bcard .chk{grid-column:1;grid-row:1}
 .bcard .bs{grid-column:3;grid-row:1;justify-self:end;white-space:nowrap}
@@ -465,7 +480,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.18';
+const BUILD = '2026-09-30.19';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -726,7 +741,7 @@ async function paintBuild(){
 // XP 는 **정답률이 아니라 입을 연 횟수**에 붙는다. 정답에만 주면 「맞음」을 거짓으로
 // 누르게 되고, 그러면 복습 간격이 가짜로 벌어져 SRS 전체가 무의미해진다.
 const XP = { turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
-             article:8, recog:1, complete:30, cap:250 };
+             article:8, recog:1, quizOk:5, quizMiss:2, complete:30, cap:250 };
 const RANKS = [
   [0,'Starter'], [400,'Everyday'], [1000,'Conversational'], [1800,'Fluent-ish'],
   [2800,'Confident'], [4000,'Sharp'], [5400,'Native-ish'],
@@ -915,6 +930,11 @@ async function renderToday(){
   const sDone = pg.scenes?.done || 0, sTot = tScenes.length;
   const aSent = pg.article?.sent || 0, aTot = tArticle ? (tArticle.sentences || []).length : 0;
   const vDone = pg.vocab?.done || 0, vTot = tVocab.today.length + tVocab.past.length;
+  // 퀴즈는 세 칸의 재료로 만든다 — 그래서 셋을 끝내기 전에는 열 수 없다.
+  // 문항 수는 날짜로 씨를 고정해 뽑으므로 다시 그려도 같은 수가 나온다.
+  const three = (!sTot || sDone >= sTot) && (!aTot || aSent >= aTot) && (!vTot || vDone >= vTot);
+  const qTot = three ? (pg.quiz?.total ?? buildQuiz().length) : 0;
+  const qDone = pg.quiz?.done || 0;
   const r = rankOf(tProg?.xp_total || 0);
   const cls = (d, t) => !t ? '' : d >= t ? ' done' : d > 0 ? ' part' : '';
   const pct = (d, t) => t ? Math.round(d / t * 100) : 0;
@@ -939,13 +959,18 @@ async function renderToday(){
         <span class="chk">✓</span><span class="bt">Vocab drill</span>
         <span class="bs">${vTot ? `${vDone}/${vTot}` : 'none'}</span>
         <span class="bar"><i style="width:${pct(vDone,vTot)}%"></i></span></button>
+      <button class="bcard${cls(qDone,qTot)}${three && qTot ? '' : ' locked'}" data-a="quiz" ${three && qTot?'':'disabled'}>
+        <span class="chk">✓</span><span class="bt">Quiz</span>
+        <span class="bs">${!three ? 'after the three' : qTot ? `${qDone}/${qTot}` : 'none'}</span>
+        <span class="bar"><i style="width:${pct(qDone,qTot)}%"></i></span></button>
     </div>
     <div class="tstats">
       <div class="tstat"><div class="v">${tProg?.turns_spoken || 0}</div><div class="l">Turns spoken</div></div>
       <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>m</small></div><div class="l">Listened</div></div>
       <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">Articles read</div></div>
     </div>
-    <p class="leg">Do them in any order. Each row tells you <b>how far you got, as a number</b>.</p>
+    <p class="leg">Do the first three in any order. <b>Quiz opens when they're done</b> — it pulls
+      from all three, so it can't come first.</p>
 
     <!-- 옛 Inbox·일기·홈 탭이 하던 일. 탭을 따로 두면 안 쓰니 판 아래로 내렸다 -->
     <div class="strip">
@@ -985,6 +1010,7 @@ function openAct(a){
   const el = $('t-act'); el.hidden = false;
   if (a === 'scene') actScene(el);
   else if (a === 'article') actArticle(el);
+  else if (a === 'quiz') actQuiz(el);
   else actVocab(el);
 }
 
@@ -1248,6 +1274,194 @@ function actVocab(el){
   }
 }
 function playVocab(c){ tStopAudio(); playCard(c); }
+
+/* ── 막 4 · 마무리 퀴즈 ──────────────────────────────────
+ *
+ * 세 칸을 가로지르는 **회수(retrieval)** 한 번. 이 판에서 유일하게
+ * "오늘 배운 걸 오늘 꺼내보는" 자리다 — drill 의 오늘 카드는 보기만 하고,
+ * News 는 아예 확인 장치가 없었다.
+ *
+ * 🔴 **SRS 에 쓰지 않는다.** next_review · interval · ease 를 건드리지 않는다.
+ *    방금 본 것을 채점하면 전부 "맞음"이 나와 복습 간격이 가짜로 벌어진다
+ *    (drill 이 오늘 카드를 일부러 채점 안 하는 것과 같은 이유).
+ *    여기 점수는 오늘 얼마나 회수됐는지를 **보여주기만** 한다.
+ *
+ * 문항은 **오늘 것만**으로 만든다. 새로운 걸 물으면 매일 끝에서 기분 나쁘게 끝난다.
+ */
+
+/* 날짜로 씨를 고정한다. 안 그러면 다시 그릴 때마다 문항이 바뀌어
+   "3/8 까지 했다" 는 진도가 다른 문제를 가리킨다. */
+function seedRng(str){
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++) {
+    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+    h = h << 13 | h >>> 19;
+  }
+  return function(){
+    h = Math.imul(h ^ h >>> 16, 2246822507);
+    h = Math.imul(h ^ h >>> 13, 3266489909);
+    return ((h ^= h >>> 16) >>> 0) / 4294967296;
+  };
+}
+function shuf(arr, rnd){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i],a[j]] = [a[j],a[i]]; }
+  return a;
+}
+
+const QUIZ_MAX = 8;
+
+/* 오늘 재료만으로 조립한다 — 새 데이터도, 스키마도, 밤 보급 변경도 없다. */
+function buildQuiz(){
+  const rnd = seedRng('quiz' + today());
+  const todays = tVocab.today || [];
+  const words   = todays.filter(c => (c.kind || 'phrase') === 'word');
+  const phrases = todays.filter(c => (c.kind || 'phrase') !== 'word');
+  const qs = [];
+
+  // ① 오늘 표현 산출 — drill 에서는 보기만 했던 것을 이제 꺼낸다
+  for (const c of shuf(phrases, rnd).slice(0, 3))
+    qs.push({ t:'prod', card:c, prompt:c.prompt_ko, answer:c.answer_en, note:c.note || '' });
+
+  // ② 오늘 단어 인지 — 4지선다. 오답 보기는 **오늘 다른 카드의 뜻**에서 뽑는다.
+  //    공짜로 생기고, 헷갈리는 것끼리 붙여주는 효과까지 있다.
+  // 🔴 오답 보기는 **같은 층에서** 먼저 뽑는다. 단어 뜻("졸린") 옆에 표현 상황
+  //    ("비용을 떠안았다고 말해봐")을 세우면 생김새만 보고 걸러져서 문제가 안 된다.
+  //    같은 층이 모자랄 때만 다른 층에서 채운다.
+  const all = [...todays, ...(tVocab.past || [])];
+  const meanings = k => [...new Set(all.filter(c => (c.kind || 'phrase') === k)
+    .map(c => c.prompt_ko).filter(Boolean))];
+  const wordPool = meanings('word'), otherPool = meanings('phrase');
+  for (const c of shuf(words, rnd).slice(0, 3)) {
+    const same = shuf(wordPool.filter(m => m !== c.prompt_ko), rnd);
+    const rest = shuf(otherPool.filter(m => m !== c.prompt_ko), rnd);
+    const wrong = [...same, ...rest].slice(0, 3);
+    if (wrong.length < 3) {                       // 보기가 모자라면 4지선다가 성립 안 한다
+      qs.push({ t:'prod', card:c, prompt:'뜻을 떠올려봐', answer:c.answer_en, note:c.prompt_ko });
+      continue;
+    }
+    const opts = shuf([c.prompt_ko, ...wrong], rnd);
+    qs.push({ t:'mcq', card:c, stem:c.answer_en, options:opts, ai:opts.indexOf(c.prompt_ko),
+              note:c.note || '' });
+  }
+
+  // ③ 장면 내 턴 하나 — 오늘 말했던 대사를 다시
+  const mine = [];
+  for (const sc of tScenes) for (const t of (sc.turns || []))
+    if (t.is_me && t.intent_ko && t.en) mine.push({ intent:t.intent_ko, en:t.en });
+  for (const t of shuf(mine, rnd).slice(0, 1))
+    qs.push({ t:'turn', prompt:t.intent, answer:t.en, note:'' });
+
+  // ④ 기사 빈칸 — 오늘 어휘가 실제로 박혀 있는 문장을 찾아 그 자리를 비운다.
+  //    기사 칸에 확인 장치가 하나도 없던 것을 이걸로 메운다 (내용 이해 문항은 v2).
+  const sents = (tArticle?.sentences || []);
+  const terms = todays.map(c => c.answer_en).filter(t => t && t.length > 2);
+  const used = new Set();
+  for (const term of shuf(terms, rnd)) {
+    if (qs.filter(q => q.t === 'cloze').length >= 2) break;
+    const low = term.toLowerCase();
+    const si = sents.findIndex((x, i) => !used.has(i) && x.toLowerCase().includes(low));
+    if (si < 0) continue;
+    const at = sents[si].toLowerCase().indexOf(low);
+    const others = [...new Set(terms.filter(x => x.toLowerCase() !== low))];
+    const wc = t => t.trim().split(/\s+/).length;
+    const near = shuf(others.filter(x => Math.abs(wc(x) - wc(term)) <= 1), rnd);
+    const far  = shuf(others.filter(x => Math.abs(wc(x) - wc(term)) > 1), rnd);
+    const wrong = [...near, ...far].slice(0, 3);
+    if (wrong.length < 3) break;
+    used.add(si);
+    const opts = shuf([term, ...wrong], rnd);
+    qs.push({ t:'cloze', before:sents[si].slice(0, at), after:sents[si].slice(at + term.length),
+              options:opts, ai:opts.indexOf(term), note:'' });
+  }
+
+  // 세 문항이 안 되면 회수 연습이라 부를 게 없다 — 퀴즈 자체를 띄우지 않는다
+  return qs.length >= 3 ? shuf(qs, rnd).slice(0, QUIZ_MAX) : [];
+}
+
+function actQuiz(el){
+  const qs = buildQuiz();
+  let i = tSession?.progress?.quiz?.done || 0;
+  let right = tSession?.progress?.quiz?.right || 0;
+  el.innerHTML = `<div class="actbar"><button class="btn sm back" id="t-back">‹ Today</button>
+      <b style="font-size:14px">Quiz</b></div>
+    <div class="vprog" id="q-prog"></div><div id="q-body"></div>`;
+  $('t-back').onclick = () => { tStopAudio(); renderToday(); };
+  draw();
+
+  async function next(ok, card){
+    if (ok) right++;
+    await bumpXp(ok ? XP.quizOk : XP.quizMiss, ok ? 'Quiz correct' : 'Quiz (XP anyway)');
+    i++;
+    // 🔴 카드의 SRS 는 건드리지 않는다. 진도와 점수만 적는다.
+    await saveProgress({ quiz:{ done:i, right, total:qs.length } });
+    if (i >= qs.length) await maybeComplete();
+    draw();
+  }
+
+  function draw(){
+    const prog = $('q-prog'), body = $('q-body');
+    if (i >= qs.length) {
+      prog.textContent = '';
+      const pct = qs.length ? Math.round(right / qs.length * 100) : 0;
+      body.innerHTML = `<div class="donebox"><div class="big">${pct >= 80 ? '🎯' : pct >= 50 ? '👍' : '🌱'}</div>
+        <h3>${right} / ${qs.length}</h3>
+        <p>Today's board is done. Anything you missed comes back on its own —
+          this score doesn't change the review schedule.</p>
+        <button onclick="renderToday()">Back to Today</button></div>`;
+      return;
+    }
+    const q = qs[i];
+    prog.textContent = `${i+1} / ${qs.length} · ` + ({
+      prod:'Say it in English', mcq:'What does it mean?',
+      turn:'Your line from today', cloze:'Fill the gap',
+    })[q.t];
+
+    if (q.t === 'prod' || q.t === 'turn') {
+      body.innerHTML = `<div class="vcard">
+        <span class="klabel">${q.t === 'turn' ? 'Scene' : 'Phrase'}</span>
+        <div class="vt" style="font-size:16px">${esc(q.prompt)}</div>
+        <button class="check" id="q-rev" style="margin-top:12px">Show answer</button>
+        <div id="q-ans" hidden style="margin-top:12px">
+          <div class="vt">${esc(q.answer)}</div>
+          ${q.note ? `<div class="vm">${esc(q.note)}</div>` : ''}
+          <div class="grades" style="margin-top:12px">
+            <button class="grade miss" data-ok="0">Missed it</button>
+            <button class="grade good" data-ok="1">Got it</button>
+          </div></div></div>`;
+      $('q-rev').onclick = function(){
+        $('q-ans').hidden = false; this.remove();
+        if (q.card) playVocab(q.card);
+      };
+      body.querySelector('.grades').onclick = e => {
+        const b = e.target.closest('[data-ok]'); if (!b) return;
+        next(b.dataset.ok === '1', q.card);
+      };
+      return;
+    }
+
+    // 4지선다 — 누르는 즉시 정·오를 보여주고 잠깐 뒤 넘어간다
+    const stem = q.t === 'mcq'
+      ? `<div class="vt" style="font-size:17px">${esc(q.stem)}</div>`
+      : `<div class="vt" style="font-size:15px;line-height:1.7">${esc(q.before)}<span class="qgap">____</span>${esc(q.after)}</div>`;
+    body.innerHTML = `<div class="vcard"><span class="klabel">${q.t === 'mcq' ? 'Word' : 'From the article'}</span>
+      ${stem}
+      <div class="qopts">${q.options.map((o,k) =>
+        `<button class="qopt" data-k="${k}">${esc(o)}</button>`).join('')}</div></div>`;
+    body.querySelector('.qopts').onclick = e => {
+      const b = e.target.closest('.qopt'); if (!b || b.disabled) return;
+      const k = +b.dataset.k, ok = k === q.ai;
+      body.querySelectorAll('.qopt').forEach((x, xi) => {
+        x.disabled = true;
+        if (xi === q.ai) x.classList.add('ok');
+        else if (xi === k) x.classList.add('no');
+      });
+      if (q.card) playVocab(q.card);
+      setTimeout(() => next(ok, q.card), ok ? 550 : 1300);   // 틀렸으면 정답을 볼 틈을 준다
+    };
+  }
+}
+
 
 /* 연속일. renderHome 을 걷어내면서 아무도 안 채우게 돼 '🔥 —' 로 굳어 있었다.
    세션이 있었던 날을 세되 **오늘 아직 안 했으면 어제부터** 센다 — 그래야 아침에 0으로 안 떨어진다. */
@@ -1518,7 +1732,7 @@ function tgCellClass(t, id, day, d){
   const se = t.sessions.find(r => r.user_id === id && r.session_date === day);
   if (!se) return '';
   const pg = se.progress || {};
-  const n = ['scenes','article','vocab'].filter(k => (pg[k]?.done || pg[k]?.sent || 0) > 0).length;
+  const n = ['scenes','article','vocab','quiz'].filter(k => (pg[k]?.done || pg[k]?.sent || 0) > 0).length;
   return se.completed_at ? 'full' : n ? 'part' : '';
 }
 
@@ -1530,7 +1744,7 @@ function tgDayParts(se){
   const pg = se?.progress || {};
   const one = (o, k) => { const d = o?.[k] || 0, t = o?.total || 0;
     return !d ? 0 : (!t || d >= t) ? 2 : 1; };
-  return [one(pg.scenes,'done'), one(pg.article,'sent'), one(pg.vocab,'done')];
+  return [one(pg.scenes,'done'), one(pg.article,'sent'), one(pg.vocab,'done'), one(pg.quiz,'done')];
 }
 
 function tgWeekGrid(t, d){
@@ -1641,7 +1855,7 @@ async function renderTogether(){
     </div>
     ${tgMode === 'week' ? tgWeekGrid(t, d) : tgMonthGrid(t, d)}
     <p class="leg">${tgMode === 'week'
-      ? 'Filled = finished the board · tinted = started. The three ticks are scenes · article · vocabulary.'
+      ? 'Filled = finished the board · tinted = started. The four ticks are scenes · article · vocabulary · quiz.'
       : 'Filled = finished the board · tinted = started · empty = nothing.'}</p>
 
     <h3 class="tgh">Totals</h3>
@@ -1748,9 +1962,12 @@ async function renderArchive(){
 async function maybeComplete(){
   if (!tSession || tSession.completed_at) return;
   const p = tSession.progress || {};
+  // 퀴즈까지 해야 오늘이 끝난다. total 이 없으면(문항을 못 만든 날) 그 칸은 없는 것으로 친다 —
+  // 재료가 모자라 퀴즈가 안 뜬 날 완주가 불가능해지면 안 된다.
   const ok = (p.scenes?.total && p.scenes.done >= p.scenes.total)
           && (p.article?.total ? p.article.sent >= p.article.total : true)
-          && (p.vocab?.total ? p.vocab.done >= p.vocab.total : true);
+          && (p.vocab?.total ? p.vocab.done >= p.vocab.total : true)
+          && (p.quiz?.total ? p.quiz.done >= p.quiz.total : true);
   if (!ok) return;
   try {
     await sb.from('eng_sessions').update({ completed_at: new Date().toISOString() })
