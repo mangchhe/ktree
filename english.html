@@ -100,7 +100,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tghead .tgh{margin:0}
 
 /* 월간 — 사람마다 달력 하나. 한 칸에 둘을 겹치면 누구 것인지 안 읽힌다. */
-.tgmlabel{font-size:11px;color:var(--dim);font-family:var(--num);margin-bottom:8px}
+.tgnav{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:10px}
+.tgmlabel{font-size:12px;color:var(--sub);font-family:var(--num);font-weight:600;
+  min-width:150px;text-align:center}
+.tgarrow{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);
+  background:var(--card);color:var(--sub);font-size:17px;line-height:1;cursor:pointer;flex:none}
+.tgarrow:hover:not(:disabled){border-color:var(--eng);color:var(--eng)}
+.tgarrow:disabled{opacity:.3;cursor:default}
 .tgcal{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:11px 12px}
 .tgcal+.tgcal{margin-top:7px}
 .tgcal.me{background:var(--eng-bg);border-color:var(--eng-bd)}
@@ -417,7 +423,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.13';
+const BUILD = '2026-09-30.14';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1378,7 +1384,8 @@ let tgCache = null;
 
 async function loadTogether(force){
   if (tgCache && !force) return tgCache;
-  const since = kstDate(Date.now() - 40*864e5);
+  // 월 이동용으로 넉넉히. 사람당 하루 한 행이라 400일이어도 두 명이면 800행이 최대다.
+  const since = kstDate(Date.now() - 400*864e5);
   const [se, pr, mem] = await Promise.all([
     sb.from('eng_sessions').select('user_id, session_date, progress, xp_earned, completed_at')
       .gte('session_date', since).order('session_date',{ascending:false}),
@@ -1460,7 +1467,19 @@ function tgMonthGrid(t, d){
     return { done, any };
   };
 
-  return `<div class="tgmlabel">${esc(label)}</div>
+  // 앞으로는 이번 달까지, 뒤로는 기록이 있는 달까지만 — 빈 달을 끝없이 넘기게 두지 않는다
+  const cur = d.slice(0,7);
+  const oldest = t.sessions.length
+    ? t.sessions.map(r=>r.session_date).sort()[0].slice(0,7) : cur;
+  const shift = (n) => { const dt = new Date(Date.UTC(y, mo-1+n, 1));
+    return `${dt.getUTCFullYear()}-${String(dt.getUTCMonth()+1).padStart(2,'0')}`; };
+  const prev = shift(-1), next = shift(1);
+
+  return `<div class="tgnav">
+      <button class="tgarrow" data-go="${prev}" ${prev < oldest ? 'disabled' : ''} aria-label="Previous month">‹</button>
+      <span class="tgmlabel">${esc(label)}</span>
+      <button class="tgarrow" data-go="${next}" ${next > cur ? 'disabled' : ''} aria-label="Next month">›</button>
+    </div>
     ${t.people.map(m => {
       const c = counts(m.user_id);
       return `<div class="tgcal${m.user_id===currentUser.id?' me':''}">
@@ -1476,7 +1495,7 @@ function tgMonthGrid(t, d){
 async function renderTogether(){
   const box = $('tg-body'); if (!box) return;
   box.innerHTML = '<div class="empty">Loading…</div>';
-  const t = await loadTogether(true);
+  const t = await loadTogether();
   if (!t.people.length) { box.innerHTML = '<div class="empty">No one here yet.</div>'; return; }
   const d = today();
   const mins = ms => Math.round((ms || 0) / 60000);
@@ -1512,7 +1531,13 @@ async function renderTogether(){
     <p class="leg">Vocabulary cards stay private — only these totals are shared.</p>`;
 
   box.querySelectorAll('[data-m]').forEach(b => b.onclick = () => {
-    tgMode = b.dataset.m; renderTogether();
+    tgMode = b.dataset.m;
+    if (tgMode === 'month') tgMonth = null;   // 월 보기로 들어올 땐 항상 이번 달부터
+    renderTogether();
+  });
+  box.querySelectorAll('[data-go]').forEach(b => b.onclick = () => {
+    if (b.disabled) return;
+    tgMonth = b.dataset.go; renderTogether();
   });
 }
 
