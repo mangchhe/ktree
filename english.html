@@ -81,19 +81,39 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tgh{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
   font-weight:600;margin:18px 0 8px}
 .tgh:first-child{margin-top:4px}
-.tgweek{border:1px solid var(--border);border-radius:11px;background:var(--card);overflow:hidden}
-.tgrow{display:grid;grid-template-columns:minmax(64px,1fr) repeat(7,26px);gap:6px;
-  align-items:center;padding:9px 12px}
-.tgrow+.tgrow{border-top:1px solid var(--border)}
-.tgrow.me{background:var(--eng-bg)}
-.tgrow.head{padding-bottom:4px;border:0}
-.tgrow .nm{font-size:12.5px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.tgrow .dw{font-size:9.5px;color:var(--dim);text-align:center;font-family:var(--num)}
-.tgrow i{width:18px;height:18px;border-radius:5px;background:var(--border-hl);
-  display:block;margin:0 auto;border:1px solid transparent}
-.tgrow i.part{background:var(--ok-bg);border-color:var(--ok-bd)}
-.tgrow i.full{background:var(--ok);border-color:var(--ok)}
-.tgrow i.fut{background:none;border:1px solid var(--border)}
+/* 주간 — 월간과 같은 "사람마다 카드" 구조. 다만 칸이 7개뿐이라 색만 칠하지 않고
+   무엇을 했는지(장면·기사·어휘 세 갈래)까지 칸 안에 담는다. 그게 주간의 값이다.
+   칸은 1fr — 한 줄이라 넓어져도 덩어리가 되지 않는다 (월간이 30px 고정인 이유와 반대). */
+.tgwk{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:10px 12px 12px}
+.tgwk+.tgwk{margin-top:7px}
+.tgwk.me{background:var(--eng-bg);border-color:var(--eng-bd)}
+.tgwkh{display:flex;align-items:baseline;gap:8px;margin-bottom:9px}
+.tgwkh .nm{font-size:12.5px;font-weight:650;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tgwkh .cnt{margin-left:auto;font-size:10.5px;color:var(--dim);font-family:var(--num);flex:none}
+.tgwkh .cnt b{color:var(--ok);font-size:12px}
+.tgwg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;
+  max-width:378px;margin:0 auto}   /* 520px 에서 1fr 로 두면 칸이 62px 로 퍼져 납작해진다 */
+.tgwg>div{min-width:0;display:grid;gap:4px;justify-items:center}
+.tgwg .dw{font-size:9px;color:var(--dim);font-family:var(--num);line-height:1}
+.tgwg .dw.we{color:var(--warn);opacity:.75}   /* 주말은 몰아서 할 수 있는 날 */
+.tgwg .cell{width:100%;min-height:40px;border-radius:8px;background:var(--card2);
+  border:1px solid transparent;padding:6px 0;display:grid;gap:5px;
+  justify-items:center;align-content:center}
+.tgwg .cell .dd{font-size:11.5px;font-family:var(--num);color:var(--sub);line-height:1}
+.tgwg .cell .seg{display:flex;gap:2px;height:3px}
+.tgwg .cell .seg u{width:5px;border-radius:2px;background:var(--border-hl);display:block}
+.tgwg .cell .seg u.on{background:var(--ok)}
+.tgwg .cell .seg u.hf{background:var(--ok);opacity:.45}
+.tgwg .cell.part{background:var(--ok-bg);border-color:var(--ok-bd)}
+.tgwg .cell.part .dd{color:var(--ok)}
+.tgwg .cell.full{background:var(--ok);border-color:var(--ok)}
+.tgwg .cell.full .dd{color:#06231a;font-weight:700}
+.tgwg .cell.full .seg u{background:rgba(6,35,26,.3)}
+.tgwg .cell.full .seg u.on{background:#06231a}
+.tgwg .cell.fut{background:none;border-color:var(--border)}
+.tgwg .cell.fut .dd{color:#2b2e39}
+.tgwg .cell.fut .seg{visibility:hidden}
+.tgwg .cell.now{box-shadow:0 0 0 2px var(--warn)}
 
 /* 주/월 토글 머리 */
 .tghead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:4px 0 8px}
@@ -427,7 +447,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.16';
+const BUILD = '2026-09-30.17';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1429,6 +1449,7 @@ function tgStreak(sessions, id){
    월 이동(prev/next)은 아직 없다 — 이번 달만 본다. */
 let tgMode = 'week';
 let tgMonth = null;                                  // 'YYYY-MM', null 이면 이번 달
+let tgWeekOff = 0;                                   // 0 이면 이번 주, -1 이면 지난 주
 
 function tgCellClass(t, id, day, d){
   if (day > d) return 'fut';
@@ -1441,17 +1462,55 @@ function tgCellClass(t, id, day, d){
 
 const TG_DOW = ['M','T','W','T','F','S','S'];
 
+/* 한 날의 세 갈래 상태. 주간 칸 안에 담는다 — 색만으로는 "뭘 했는지"를 못 읽는다.
+   2=끝냄 · 1=손댐 · 0=안 함. total 이 없으면 손댄 것만으로 끝냄으로 본다. */
+function tgDayParts(se){
+  const pg = se?.progress || {};
+  const one = (o, k) => { const d = o?.[k] || 0, t = o?.total || 0;
+    return !d ? 0 : (!t || d >= t) ? 2 : 1; };
+  return [one(pg.scenes,'done'), one(pg.article,'sent'), one(pg.vocab,'done')];
+}
+
 function tgWeekGrid(t, d){
   const now = new Date(Date.now() + 9*3600e3);
   const dow = (now.getUTCDay() + 6) % 7;               // 월=0
-  const monday = Date.now() - dow*864e5;
+  const monday = Date.now() - dow*864e5 + tgWeekOff*7*864e5;
   const week = Array.from({length:7}, (_,i) => kstDate(monday + i*864e5));
-  return `<div class="tgweek">
-    <div class="tgrow head"><span class="nm"></span>${TG_DOW.map(x=>`<span class="dw">${x}</span>`).join('')}</div>
-    ${t.people.map(m => `<div class="tgrow${m.user_id===currentUser.id?' me':''}">
-      <span class="nm">${esc(t.nameOf(m))}</span>
-      ${week.map(day => `<i class="${tgCellClass(t, m.user_id, day, d)}"></i>`).join('')}</div>`).join('')}
-  </div>`;
+  const fmt = s => new Date(s + 'T00:00:00Z')
+    .toLocaleString('en-US', { month:'short', day:'numeric', timeZone:'UTC' });
+  const label = `${fmt(week[0])} – ${fmt(week[6])}`
+    + (tgWeekOff === 0 ? ' · this week' : '');
+
+  // 기록이 있는 주까지만 뒤로 간다. 앞으로는 이번 주가 끝.
+  const oldest = t.sessions.length
+    ? t.sessions.map(r => r.session_date).sort()[0] : d;
+  const prevEnd = kstDate(monday - 864e5);             // 지난 주 일요일
+
+  return `<div class="tgnav">
+      <button class="tgarrow" data-gw="${tgWeekOff-1}" ${prevEnd < oldest ? 'disabled' : ''}
+        aria-label="Previous week">‹</button>
+      <span class="tgmlabel">${esc(label)}</span>
+      <button class="tgarrow" data-gw="${tgWeekOff+1}" ${tgWeekOff >= 0 ? 'disabled' : ''}
+        aria-label="Next week">›</button>
+    </div>
+    ${t.people.map(m => {
+      const mine = t.sessions.filter(r => r.user_id === m.user_id && week.includes(r.session_date));
+      const done = mine.filter(r => r.completed_at).length;
+      const xp   = mine.reduce((a, r) => a + (r.xp_earned || 0), 0);
+      return `<div class="tgwk${m.user_id===currentUser.id?' me':''}">
+        <div class="tgwkh"><span class="nm">${esc(t.nameOf(m))}</span>
+          <span class="cnt"><b>${done}</b>/7 days · ${xp.toLocaleString()} XP</span></div>
+        <div class="tgwg">${week.map((day, i) => {
+          const k = tgCellClass(t, m.user_id, day, d);
+          const se = t.sessions.find(r => r.user_id === m.user_id && r.session_date === day);
+          const seg = tgDayParts(se).map(v =>
+            `<u class="${v === 2 ? 'on' : v === 1 ? 'hf' : ''}"></u>`).join('');
+          const cls = ['cell', k, day === d ? 'now' : ''].filter(Boolean).join(' ');
+          return `<div><span class="dw${i >= 5 ? ' we' : ''}">${TG_DOW[i]}</span>
+            <span class="${cls}" title="${day}"><span class="dd">${+day.slice(8)}</span>
+              <span class="seg">${seg}</span></span></div>`;
+        }).join('')}</div></div>`;
+    }).join('')}`;
 }
 
 /* 월간은 사람마다 달력 하나. 한 칸에 두 사람을 겹치면 누구 것인지 읽기 어렵다. */
@@ -1483,9 +1542,9 @@ function tgMonthGrid(t, d){
   const prev = shift(-1), next = shift(1);
 
   return `<div class="tgnav">
-      <button class="tgarrow" data-go="${prev}" ${prev < oldest ? 'disabled' : ''} aria-label="Previous month">‹</button>
+      <button class="tgarrow" data-gm="${prev}" ${prev < oldest ? 'disabled' : ''} aria-label="Previous month">‹</button>
       <span class="tgmlabel">${esc(label)}</span>
-      <button class="tgarrow" data-go="${next}" ${next > cur ? 'disabled' : ''} aria-label="Next month">›</button>
+      <button class="tgarrow" data-gm="${next}" ${next > cur ? 'disabled' : ''} aria-label="Next month">›</button>
     </div>
     ${t.people.map(m => {
       const c = counts(m.user_id);
@@ -1512,14 +1571,16 @@ async function renderTogether(){
 
   box.innerHTML = `
     <div class="tghead">
-      <h3 class="tgh">${tgMode === 'week' ? 'This week' : 'This month'}</h3>
+      <h3 class="tgh">Rhythm</h3>
       <div class="srow" style="gap:4px">
         ${[['week','Week'],['month','Month']].map(([k,l]) =>
           `<button class="tchip${tgMode===k?' on':''}" data-m="${k}">${l}</button>`).join('')}
       </div>
     </div>
     ${tgMode === 'week' ? tgWeekGrid(t, d) : tgMonthGrid(t, d)}
-    <p class="leg">Filled = finished the board · half = started · empty = nothing.</p>
+    <p class="leg">${tgMode === 'week'
+      ? 'Filled = finished the board · tinted = started. The three ticks are scenes · article · vocabulary.'
+      : 'Filled = finished the board · tinted = started · empty = nothing.'}</p>
 
     <h3 class="tgh">Totals</h3>
     <div class="tgtot">
@@ -1541,12 +1602,19 @@ async function renderTogether(){
 
   box.querySelectorAll('[data-m]').forEach(b => b.onclick = () => {
     tgMode = b.dataset.m;
-    if (tgMode === 'month') tgMonth = null;   // 월 보기로 들어올 땐 항상 이번 달부터
+    // 보기를 갈 때는 늘 현재로 돌아온다 — 3월을 보다 주간으로 오면 어느 주인지 헷갈린다
+    if (tgMode === 'month') tgMonth = null; else tgWeekOff = 0;
     renderTogether();
   });
-  box.querySelectorAll('[data-go]').forEach(b => b.onclick = () => {
+  /* 🔴 data-go 는 쓸 수 없다 — 문서 전역에 화면 전환 핸들러가 걸려 있어서
+     (show(b.dataset.go)) 달 이동을 누르면 화면이 통째로 꺼진다. 그래서 gm/gw. */
+  box.querySelectorAll('[data-gm]').forEach(b => b.onclick = () => {
     if (b.disabled) return;
-    tgMonth = b.dataset.go; renderTogether();
+    tgMonth = b.dataset.gm; renderTogether();
+  });
+  box.querySelectorAll('[data-gw]').forEach(b => b.onclick = () => {
+    if (b.disabled) return;
+    tgWeekOff = +b.dataset.gw; renderTogether();
   });
 }
 
