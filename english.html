@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;800&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth-log.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -350,6 +351,7 @@ const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
 const VAPID_PUBLIC_KEY = 'BBiS1fxusb6K-H4FKXd8QqGsJYj5AQjogJQSToIuCRFNtueunqsuqNMizF02etbN0dYIKgsCDaMsvG0Kt2m4WII';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기록 — auth-log.js
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */

@@ -14,6 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({ startOnLoad: false, theme: 'neutral' });</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth-log.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1478,6 +1479,7 @@ function toggleMobileSearch() {
 const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
 const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+if (sb && window.attachAuthLog) attachAuthLog(sb);   // 세션이 왜 풀리는지 기록 — auth-log.js
 const APP_MODE = new URLSearchParams(window.location.search).get('mode') || 'public';
 
 const TABLE_SUFFIX = {
@@ -1675,8 +1677,20 @@ function renderPrivateLogin(message = '') {
       <button id="private-login-btn" style="width:100%;padding:9px 12px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:700;cursor:pointer;">로그인</button>
       <div id="private-login-error" style="margin-top:10px;font-size:12px;color:#ff7a7a;display:${message ? 'block' : 'none'}">${message || ''}</div>
       <div style="margin-top:10px;font-size:11px;color:var(--muted);">기존 관리자 계정으로 로그인하세요.</div>
+      <div style="margin-top:12px;border-top:1px solid var(--border2);padding-top:10px;">
+        <span id="auth-diag-toggle" style="font-size:11px;color:var(--muted);cursor:pointer;">왜 풀렸지? ›</span>
+        <pre id="auth-diag" hidden style="margin:8px 0 0;font-size:10px;line-height:1.5;color:var(--muted);white-space:pre-wrap;word-break:break-all;max-height:200px;overflow:auto;"></pre>
+      </div>
     </div>
   `;
+
+  // 세션이 풀린 바로 그 자리에서 기록을 볼 수 있어야 한다 — 폰에서는 콘솔을 못 연다.
+  const dt = document.getElementById('auth-diag-toggle');
+  if (dt) dt.onclick = () => {
+    const box = document.getElementById('auth-diag');
+    box.hidden = !box.hidden;
+    if (!box.hidden) box.textContent = (window.authLog ? authLog.text() : '계측 미로드');
+  };
 
   const emailEl = document.getElementById('private-login-email');
   const pwEl = document.getElementById('private-login-password');
