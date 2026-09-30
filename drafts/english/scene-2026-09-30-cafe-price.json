@@ -811,23 +811,41 @@
     {
       "term": "What can I get started for you?",
       "meaning_ko": "주문 받을 때 점원의 정석 인사. what do you want 보다 훨씬 자연스럽다",
-      "prompt_ko": "카페 직원이 되어 손님에게 주문을 받아봐"
+      "prompt_ko": "카페 직원이 되어 손님에게 주문을 받아봐",
+      "kind": "phrase"
     },
     {
       "term": "That's a bit steeper than I expected",
       "meaning_ko": "생각보다 비싸다. expensive 를 직접 안 쓰고 완곡하게 — steep = 가격이 센",
-      "prompt_ko": "가격을 듣고 생각보다 비싸다고 완곡하게 말해봐"
+      "prompt_ko": "가격을 듣고 생각보다 비싸다고 완곡하게 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "Want me to switch it?",
       "meaning_ko": "내가 바꿔줄까? 점원·동료가 제안할 때 쓰는 구어체",
-      "prompt_ko": "상대에게 내가 대신 바꿔줄지 물어봐"
+      "prompt_ko": "상대에게 내가 대신 바꿔줄지 물어봐",
+      "kind": "phrase"
     },
     {
       "term": "Let's do that instead",
       "meaning_ko": "그럼 그걸로 하죠. 제안을 받아들이며 바꿀 때",
-      "prompt_ko": "상대 제안을 받아들이며 원래 것 대신 그걸로 하자고 해봐"
+      "prompt_ko": "상대 제안을 받아들이며 원래 것 대신 그걸로 하자고 해봐",
+      "kind": "phrase"
+    },
+    {
+      "kind": "word",
+      "term": "steep",
+      "meaning_ko": "(가격이) 센, 비싼",
+      "example": "That's a bit steeper than I expected.",
+      "level": 2
+    },
+    {
+      "kind": "word",
+      "term": "switch",
+      "meaning_ko": "바꾸다, 교체하다",
+      "example": "Want me to switch it?",
+      "level": 1
     }
   ],
-  "generated_at": "2026-09-30T04:44:58.966Z"
+  "generated_at": "2026-09-30T05:22:33.652Z"
 }

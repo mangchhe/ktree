@@ -907,28 +907,54 @@
     {
       "term": "I've had a sore throat for two days",
       "meaning_ko": "이틀째 목이 아프다. 현재완료로 '계속되고 있음'을 말하는 게 핵심",
-      "prompt_ko": "이틀째 목이 아프다고 증상을 말해봐"
+      "prompt_ko": "이틀째 목이 아프다고 증상을 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "the cough gets worse at night",
       "meaning_ko": "밤에 기침이 심해진다. get worse = 악화되다",
-      "prompt_ko": "밤에 증상이 더 심해진다고 말해봐"
+      "prompt_ko": "밤에 증상이 더 심해진다고 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "Take one every eight hours, with food",
       "meaning_ko": "여덟 시간마다 한 알, 식후에. 복용법의 정석 어순",
-      "prompt_ko": "약사가 되어 복용법을 알려줘 — 여덟 시간마다 한 알, 식후"
+      "prompt_ko": "약사가 되어 복용법을 알려줘 — 여덟 시간마다 한 알, 식후",
+      "kind": "phrase"
     },
     {
       "term": "Will this make me drowsy?",
       "meaning_ko": "이거 졸려요? drowsy = 졸린 (sleepy 보다 약 맥락에 맞다)",
-      "prompt_ko": "이 약이 졸리게 하는지 물어봐"
+      "prompt_ko": "이 약이 졸리게 하는지 물어봐",
+      "kind": "phrase"
     },
     {
       "term": "If it's not better in three days, see a doctor",
       "meaning_ko": "사흘 안에 안 나으면 병원 가라. 조건+권고의 표준 문형",
-      "prompt_ko": "사흘 안에 안 나으면 병원에 가라고 권해봐"
+      "prompt_ko": "사흘 안에 안 나으면 병원에 가라고 권해봐",
+      "kind": "phrase"
+    },
+    {
+      "kind": "word",
+      "term": "sore",
+      "meaning_ko": "아픈, 쓰린 (근육·목)",
+      "example": "I've had a sore throat for two days.",
+      "level": 1
+    },
+    {
+      "kind": "word",
+      "term": "drowsy",
+      "meaning_ko": "졸린 (약 기운으로)",
+      "example": "Will this make me drowsy?",
+      "level": 2
+    },
+    {
+      "kind": "word",
+      "term": "fever",
+      "meaning_ko": "열",
+      "example": "Any fever, or just the throat?",
+      "level": 1
     }
   ],
-  "generated_at": "2026-09-30T04:46:19.849Z"
+  "generated_at": "2026-09-30T05:22:45.496Z"
 }

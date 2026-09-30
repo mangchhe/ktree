@@ -218,6 +218,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .leg .sw{opacity:.5;border-bottom:1px dotted currentColor}
 .vcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:14px 15px}
 .vcard .vt{font-size:17px;font-weight:700;line-height:1.4}
+.klabel{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.08em;color:var(--eng);
+  background:var(--eng-bg);border:1px solid var(--eng-bd);border-radius:99px;padding:2px 8px;margin-bottom:9px}
+.vex{font-family:var(--num);font-size:12px;color:var(--dim);margin-top:8px;line-height:1.55}
 .vcard .vm{font-size:13px;color:var(--sub);margin-top:7px;line-height:1.6}
 .vcard .vsrc{font-size:10.5px;color:var(--dim);margin-top:9px}
 .vprog{font-size:11.5px;color:var(--sub);margin-bottom:10px;font-variant-numeric:tabular-nums}
@@ -230,6 +233,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .vsum{display:flex;align-items:center;gap:10px;width:100%;padding:11px 13px;background:none;border:0;text-align:left;font:inherit;color:inherit}
 .vsum .itx{flex:1 1 auto;min-width:0}
 .vsum .ie{display:block;font-size:14px;font-weight:700;letter-spacing:-.2px;line-height:1.35;overflow-wrap:anywhere}
+.kdot{font-style:normal;font-size:9px;font-weight:700;color:var(--warn);background:var(--warn-bg);border-radius:99px;padding:1px 6px;margin-left:5px;vertical-align:2px}
 .vsum .isrc{display:block;font-size:11.5px;color:var(--dim);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vsum .ipill{flex:none}
 .vchev{flex:none;color:var(--dim);font-size:15px;transition:transform .15s}
@@ -330,7 +334,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.7';
+const BUILD = '2026-09-30.8';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
@@ -551,7 +555,8 @@ async function paintBuild(){
 
 // XP 는 **정답률이 아니라 입을 연 횟수**에 붙는다. 정답에만 주면 「맞음」을 거짓으로
 // 누르게 되고, 그러면 복습 간격이 가짜로 벌어져 SRS 전체가 무의미해진다.
-const XP = { turn:15, prodGood:10, prodMiss:4, article:8, recog:1, complete:30, cap:250 };
+const XP = { turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
+             article:8, recog:1, complete:30, cap:250 };
 const RANKS = [
   [0,'Starter'], [400,'Everyday'], [1000,'Conversational'], [1800,'Fluent-ish'],
   [2800,'Confident'], [4000,'Sharp'], [5400,'Native-ish'],
@@ -935,10 +940,15 @@ function actVocab(el){
       return;
     }
     const { c, kind } = list[i];
-    prog.textContent = `${i+1} / ${list.length} · ${kind === 'recog' ? '오늘 나온 것 (확인만)' : '지난 것 — 말해보기'}`;
+    const isWord = c.kind === 'word';
+    prog.textContent = `${i+1} / ${list.length} · ` + (kind === 'recog'
+      ? `오늘 나온 ${isWord ? '단어' : '표현'} (확인만)`
+      : isWord ? '지난 단어 — 뜻은?' : '지난 표현 — 말해보기');
     if (kind === 'recog') {
-      body.innerHTML = `<div class="vcard"><div class="vt">${esc(c.answer_en)}</div>
-        <div class="vm">${esc(c.note || c.prompt_ko || '')}</div>
+      body.innerHTML = `<div class="vcard"><span class="klabel">${isWord ? '단어' : '표현'}</span>
+        <div class="vt">${esc(c.answer_en)}</div>
+        <div class="vm">${esc(isWord ? c.prompt_ko : (c.note || c.prompt_ko || ''))}</div>
+        ${isWord && c.note ? `<div class="vex">${esc(c.note)}</div>` : ''}
         ${c.source_ref ? `<div class="vsrc">출처 · ${esc(c.source_ref)}</div>` : ''}
         <div class="srow" style="margin-top:12px">
           <button class="check" id="v-ok" style="margin-top:0;flex:1 1 auto">들었다 — 다음</button>
@@ -954,8 +964,21 @@ function actVocab(el){
         await bumpXp(XP.recog, '어휘 확인');
         i++; await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
       };
+    } else if (isWord) {
+      // 단어는 **영어를 보고 뜻을 떠올리는** 시험이다. 상황을 주고 말하게 하면 층이 어긋난다.
+      body.innerHTML = `<div class="vcard"><span class="klabel">단어</span>
+        <div class="vm" style="margin:0 0 8px">이 단어의 뜻은?</div>
+        <div class="vt">${esc(c.answer_en)}</div>
+        <button class="check" id="v-reveal" style="margin-top:12px">뜻 보기</button>
+        <div id="v-ans" hidden style="margin-top:12px">
+          <div class="vt" style="font-size:16px">${esc(c.prompt_ko)}</div>
+          ${c.note ? `<div class="vex">${esc(c.note)}</div>` : ''}
+          <div class="grades" style="margin-top:12px">
+            <button class="grade miss">몰랐음</button><button class="grade soso">가물</button><button class="grade good">알았음</button>
+          </div></div></div>`;
     } else {
-      body.innerHTML = `<div class="vcard"><div class="vm" style="margin:0 0 8px">이 상황, 영어로</div>
+      body.innerHTML = `<div class="vcard"><span class="klabel">표현</span>
+        <div class="vm" style="margin:0 0 8px">이 상황, 영어로</div>
         <div class="vt" style="font-size:16px">${esc(c.prompt_ko)}</div>
         <button class="check" id="v-reveal" style="margin-top:12px">정답 보기</button>
         <div id="v-ans" hidden style="margin-top:12px">
@@ -964,15 +987,21 @@ function actVocab(el){
           <div class="grades" style="margin-top:12px">
             <button class="grade miss">틀림</button><button class="grade soso">애매</button><button class="grade good">맞음</button>
           </div></div></div>`;
+    }
+    // 배선은 분기 밖에 둔다 — 단어·표현 두 갈래가 같은 reveal/채점을 쓴다.
+    // 분기 안에 두면 새 갈래를 만들 때 조용히 빠진다 (실제로 단어 갈래가 그랬다).
+    if ($('v-reveal')) {
       $('v-reveal').onclick = function(){ $('v-ans').hidden = false; this.remove(); playVocab(c); };
       body.querySelector('.grades').onclick = async e => {
         const g = e.target.closest('.grade'); if (!g) return;
         const grade = g.classList.contains('miss') ? 'miss' : g.classList.contains('soso') ? 'soso' : 'good';
         applyGrade(c, grade);
         await saveGrade(c, grade, 'vocab');
-        tProg.turns_spoken = (tProg.turns_spoken || 0) + 1;
+        if (!isWord) tProg.turns_spoken = (tProg.turns_spoken || 0) + 1;   // 단어는 '말한 턴'이 아니다
         // **오답에도 XP 를 준다.** 0 이면 「맞음」을 거짓으로 누르게 되고 SRS 가 망가진다.
-        await bumpXp(grade === 'miss' ? XP.prodMiss : XP.prodGood, grade === 'miss' ? '산출 (틀려도 XP)' : '산출 정답');
+        const good = grade !== 'miss';
+        const pts = isWord ? (good ? XP.wordGood : XP.wordMiss) : (good ? XP.prodGood : XP.prodMiss);
+        await bumpXp(pts, (isWord ? '단어' : '산출') + (good ? ' 정답' : ' (틀려도 XP)'));
         i++; await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
       };
     }
@@ -1045,7 +1074,7 @@ function wireStrip(){
 /* ═══ 어휘 탭 — 쌓인 표현 전부와 SRS 상태 ═══════════════
    오늘 판의 「어휘 마무리」는 하루치만 본다. 여기는 **전체 장부**다 —
    무엇이 익었고 무엇이 아직인지, 그리고 앞당겨 복습할 자리. */
-let vbFilter = 'all';
+let vbFilter = 'all', vbKind = 'all';
 async function renderVocab(){
   const head = $('vb-head'), list = $('vb-list');
   const d = today();
@@ -1064,13 +1093,20 @@ async function renderVocab(){
       <div class="tstat"><div class="v">${all.length}</div><div class="l">쌓인 표현</div></div>
       <div class="tstat"><div class="v">${due.length}</div><div class="l">오늘 돌아온 것</div></div>
     </div>
-    <div class="srow" style="margin:12px 0">
+    <div class="srow" style="margin:12px 0 7px">
+      ${[['all','전체 층'],['word','단어'],['phrase','표현']]
+        .map(([k,l]) => `<button class="tchip${vbKind===k?' on':''}" data-k="${k}">${l}${
+          k==='all'?'':` ${all.filter(c => (c.kind||'phrase')===k).length}`}</button>`).join('')}
+    </div>
+    <div class="srow" style="margin:0 0 12px">
       ${[['all','전체'],['new','신규'],['learning','학습중'],['mature','익힘']]
         .map(([k,l]) => `<button class="tchip${vbFilter===k?' on':''}" data-f="${k}">${l}</button>`).join('')}
     </div>`;
   head.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { vbFilter = b.dataset.f; renderVocab(); });
+  head.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { vbKind = b.dataset.k; renderVocab(); });
 
-  const rows = vbFilter === 'all' ? all : all.filter(c => c.status === vbFilter);
+  let rows = vbFilter === 'all' ? all : all.filter(c => c.status === vbFilter);
+  if (vbKind !== 'all') rows = rows.filter(c => (c.kind || 'phrase') === vbKind);
   if (!rows.length) { list.innerHTML = '<div class="empty">아직 없어요. 오늘 판을 한 번 돌리면 쌓입니다.</div>'; return; }
   const badge = c => c.status === 'mature' ? '<span class="ipill done">익힘</span>'
     : c.status === 'new' ? '<span class="ipill wait">신규</span>'
@@ -1079,7 +1115,8 @@ async function renderVocab(){
   // ✕ 를 모든 줄에 상시 노출하면 파괴적 동작이 목록의 기본 상태가 되고, 잘못 누르기도 쉽다.
   list.innerHTML = rows.map(c => `<div class="vrow" data-id="${esc(c.id)}">
       <button class="vsum">
-        <span class="itx"><span class="ie">${esc(c.answer_en)}</span>
+        <span class="itx"><span class="ie">${esc(c.answer_en)}
+          ${(c.kind||'phrase')==='word' ? '<em class="kdot">단어</em>' : ''}</span>
           <span class="isrc">${esc(c.prompt_ko)}</span></span>
         ${badge(c)}<span class="vchev">›</span>
       </button>

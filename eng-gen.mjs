@@ -16,9 +16,12 @@
  *   node eng-gen.mjs --recent [N]                               최근 장면·기사 목록 (밤 보급이 중복을 피하려고 본다)
  *
  * 입력(장면):  { "id","situation_ko","voices":{"a","b"},"turns":[{"who","en","intent_ko","is_me"}],
- *                "vocab":[{"term","meaning_ko","prompt_ko"}] }
- *   vocab 의 prompt_ko 는 **그 표현이 나올 수밖에 없는 상황**(한국어)이다. 이게 없으면
- *   산출 복습을 만들 수 없어서 어휘로 올리지 않는다 — 뜻만 아는 단어는 안 붙는다.
+ *                "vocab":[{"kind","term","meaning_ko","prompt_ko","example"}] }
+ *
+ *   kind="phrase" (기본) — 목적은 **뱉기**. prompt_ko(그 표현이 나올 수밖에 없는 상황)가
+ *     **반드시** 있어야 한다. 없으면 산출 복습을 만들 수 없어 올리지 않는다.
+ *   kind="word" — 목적은 **뜻 알기**. prompt_ko 대신 meaning_ko 를 쓴다(뜻이 곧 정답).
+ *     example(그 단어가 쓰인 문장)을 note 에 붙여 맥락을 남긴다.
  * 입력(기사):  { "id","title","sentences":[...],"voice" }
  * 출력: 같은 파일에 audio/timings 를 채워 넣고, Storage 에 mp3 를 올린다.
  *
@@ -235,28 +238,38 @@ async function put(path, buf) {
 async function pushVocab(doc, kind) {
   const items = doc.vocab || [];
   if (!items.length) return;
-  const skipped = items.filter(v => !v.prompt_ko || !v.term);
-  const rows = items.filter(v => v.prompt_ko && v.term).map(v => ({
-    topic: doc.topic || (kind === 'scene' ? '일상' : '테크'),
-    scenario: kind === 'scene' ? 'scene' : 'briefing',
-    level: doc.level || 2,
-    prompt_ko: v.prompt_ko,
-    answer_en: v.term,
-    note: v.meaning_ko || '',
-    source: kind,                        // 'scene' | 'article' — 스키마 CHECK 에 넣어뒀다
-    source_ref: doc.id,
-  }));
+  // 층마다 필요한 것이 다르다. 단어는 뜻만 있으면 되고, 표현은 상황이 있어야 한다.
+  const ok = v => v.term && (v.kind === 'word' ? v.meaning_ko : v.prompt_ko);
+  const skipped = items.filter(v => !ok(v));
+  const rows = items.filter(ok).map(v => {
+    const word = v.kind === 'word';
+    return {
+      kind: word ? 'word' : 'phrase',
+      topic: doc.topic || (kind === 'scene' ? '일상' : '테크'),
+      scenario: kind === 'scene' ? 'scene' : 'briefing',
+      level: v.level || doc.level || 2,
+      // 칸의 역할이 층마다 바뀐다 — word 는 뜻이 정답이고, phrase 는 상황이 문제다
+      prompt_ko: word ? v.meaning_ko : v.prompt_ko,
+      answer_en: v.term,
+      note: word ? (v.example || '') : (v.meaning_ko || ''),
+      source: kind,
+      source_ref: doc.id,
+    };
+  });
   if (rows.length) {
     const { error } = await sb.from('eng_cards')
       .upsert(rows.map(r => ({ user_id: uid, ...r })), { onConflict: 'user_id,prompt_ko,answer_en' });
     if (error) {
+      if (/kind/i.test(error.message))
+        die(`어휘 저장 실패 (${error.message}) — supabase/english-v3-kind.sql 을 먼저 실행해라`);
       if (/schema cache|does not exist|violates check/i.test(error.message))
         die(`어휘 저장 실패 (${error.message}) — supabase/english-v2-schema.sql 을 실행했는지 확인해라`);
       die(`어휘 저장 실패: ${error.message}`);
     }
   }
-  console.log(`  ${skipped.length ? '⚠' : '✓'} 어휘 ${rows.length}개 저장` +
-    (skipped.length ? ` · ${skipped.length}개 건너뜀 (prompt_ko 없음 — 산출 복습을 만들 수 없다)` : ''));
+  const nw = rows.filter(r => r.kind === 'word').length;
+  console.log(`  ${skipped.length ? '⚠' : '✓'} 어휘 ${rows.length}개 저장 (단어 ${nw} · 표현 ${rows.length - nw})` +
+    (skipped.length ? ` · ${skipped.length}개 건너뜀 (단어는 meaning_ko, 표현은 prompt_ko 가 있어야 한다)` : ''));
 }
 
 /* 최근에 뭘 만들었나. 무인 보급이 같은 상황·같은 기사를 또 만들지 않으려면 이게 필요하다. */

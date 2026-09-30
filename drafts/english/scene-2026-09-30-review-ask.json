@@ -895,28 +895,54 @@
     {
       "term": "when you get a chance",
       "meaning_ko": "여유 될 때. 부탁을 압박 없이 만드는 완충 표현",
-      "prompt_ko": "부탁하면서 급하지 않다는 뜻으로 여유 될 때 해달라고 말해봐"
+      "prompt_ko": "부탁하면서 급하지 않다는 뜻으로 여유 될 때 해달라고 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "I'm pretty swamped",
       "meaning_ko": "지금 정신없이 바쁘다. busy 보다 정도가 세고 구어체",
-      "prompt_ko": "오늘 일이 너무 많아 정신없다고 말해봐"
+      "prompt_ko": "오늘 일이 너무 많아 정신없다고 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "Is it blocking anything?",
       "meaning_ko": "그거 때문에 막힌 게 있냐. 우선순위를 확인하는 표준 질문",
-      "prompt_ko": "그 일이 다른 걸 막고 있는지 물어봐"
+      "prompt_ko": "그 일이 다른 걸 막고 있는지 물어봐",
+      "kind": "phrase"
     },
     {
       "term": "get to it first thing in the morning",
       "meaning_ko": "아침에 제일 먼저 처리하다. first thing = 최우선으로",
-      "prompt_ko": "내일 아침에 제일 먼저 처리하겠다고 말해봐"
+      "prompt_ko": "내일 아침에 제일 먼저 처리하겠다고 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "Ping me if I forget",
       "meaning_ko": "잊으면 찔러줘. ping = 짧게 연락하다",
-      "prompt_ko": "내가 잊으면 다시 알려달라고 부탁해봐"
+      "prompt_ko": "내가 잊으면 다시 알려달라고 부탁해봐",
+      "kind": "phrase"
+    },
+    {
+      "kind": "word",
+      "term": "swamped",
+      "meaning_ko": "정신없이 바쁜",
+      "example": "I'm pretty swamped today.",
+      "level": 3
+    },
+    {
+      "kind": "word",
+      "term": "blocking",
+      "meaning_ko": "(진행을) 막고 있는",
+      "example": "Is it blocking anything?",
+      "level": 2
+    },
+    {
+      "kind": "word",
+      "term": "merged",
+      "meaning_ko": "병합된 (PR 을 본류에 합친)",
+      "example": "I'd like to get it merged by tomorrow.",
+      "level": 2
     }
   ],
-  "generated_at": "2026-09-30T04:46:08.893Z"
+  "generated_at": "2026-09-30T05:22:39.699Z"
 }

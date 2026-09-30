@@ -26,27 +26,60 @@
     {
       "term": "does away with",
       "meaning_ko": "~를 아예 없애다. remove 보다 '제도적으로 걷어냈다'는 뉘앙스",
-      "prompt_ko": "새 버전이 그 의존성을 아예 없앴다고 말해봐"
+      "prompt_ko": "새 버전이 그 의존성을 아예 없앴다고 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "cut down the operational overhead",
       "meaning_ko": "운영 부담을 줄이다. overhead = 간접 비용·부담",
-      "prompt_ko": "이 변경으로 운영 부담이 줄었다고 말해봐"
+      "prompt_ko": "이 변경으로 운영 부담이 줄었다고 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "a big deal",
       "meaning_ko": "큰 일, 중요한 변화. It's not a big deal(별거 아니다)로도 쓴다",
-      "prompt_ko": "새벽에 호출당해본 사람에겐 이게 큰 변화라고 말해봐"
+      "prompt_ko": "새벽에 호출당해본 사람에겐 이게 큰 변화라고 말해봐",
+      "kind": "phrase"
     },
     {
       "term": "Under the hood",
       "meaning_ko": "내부적으로는 (자동차 보닛 아래). internally 보다 구어체이고 설계 설명의 단골",
-      "prompt_ko": "겉은 단순한데 내부 동작을 설명하겠다고 운을 떼봐"
+      "prompt_ko": "겉은 단순한데 내부 동작을 설명하겠다고 운을 떼봐",
+      "kind": "phrase"
     },
     {
       "term": "caught up with",
       "meaning_ko": "뒤처졌다가 따라잡다. now supports 와 달리 '늦었지만 붙었다'는 함의",
-      "prompt_ko": "그 도구가 드디어 최신 버전을 지원한다고 말해봐"
+      "prompt_ko": "그 도구가 드디어 최신 버전을 지원한다고 말해봐",
+      "kind": "phrase"
+    },
+    {
+      "kind": "word",
+      "term": "overhead",
+      "meaning_ko": "(운영) 부담, 간접 비용",
+      "example": "It cuts down the operational overhead.",
+      "level": 3
+    },
+    {
+      "kind": "word",
+      "term": "quorum",
+      "meaning_ko": "정족수 (합의에 필요한 최소 수)",
+      "example": "ZooKeeper lost quorum.",
+      "level": 4
+    },
+    {
+      "kind": "word",
+      "term": "acknowledgement",
+      "meaning_ko": "수신 확인 (ack)",
+      "example": "…read with individual acknowledgement.",
+      "level": 3
+    },
+    {
+      "kind": "word",
+      "term": "enhancements",
+      "meaning_ko": "개선 사항",
+      "example": "…shipped with around seventy enhancements.",
+      "level": 2
     }
   ],
   "sources": [
@@ -64,7 +97,7 @@
     }
   ],
   "ms": 60912,
-  "generated_at": "2026-09-30T04:45:01.251Z",
+  "generated_at": "2026-09-30T05:22:52.937Z",
   "segs": [
     [
       [
