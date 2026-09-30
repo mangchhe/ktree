@@ -59,7 +59,7 @@
     }
   ],
   "ms": 60912,
-  "generated_at": "2026-09-30T03:25:13.157Z",
+  "generated_at": "2026-09-30T04:23:20.946Z",
   "segs": [
     [
       [
@@ -1986,5 +1986,6 @@
       "t": 59988,
       "d": 575
     }
-  ]
+  ],
+  "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/articles/2026-09-30-kafka-kraft.mp3"
 }

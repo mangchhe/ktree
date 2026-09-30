@@ -178,7 +178,7 @@ function audit(label, text, r) {
 
 /* ── 업로드 ─────────────────────────────────────────────── */
 
-let sb = null;
+let sb = null, uid = null;
 async function connect() {
   const html = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
   const url = process.env.SUPABASE_URL || html.match(/const SUPABASE_URL = '([^']+)'/)?.[1];
@@ -190,12 +190,25 @@ async function connect() {
       .map(l => l.replace(/^export /, '').split('=').map(s => s.trim().replace(/^['"]|['"]$/g, ''))));
   } catch { /* .env 없으면 환경변수만 */ }
   const c = createClient(url, key, { auth: { persistSession: false } });
-  const { error } = await c.auth.signInWithPassword({
+  const { data, error } = await c.auth.signInWithPassword({
     email: process.env.KTREE_EMAIL || env.KTREE_EMAIL,
     password: process.env.KTREE_PASSWORD || env.KTREE_PASSWORD,
   });
   if (error) die(`로그인 실패: ${error.message}`);
+  uid = data?.user?.id;
+  if (!uid) die('user id 를 못 받았다');
   return c;
+}
+
+/** 장면·기사 행을 올린다. 같은 id 로 다시 돌리면 갱신(upsert) — 음성 교체나 재생성이 안전해야 한다. */
+async function pushRow(table, conflict, row) {
+  const { error } = await sb.from(table).upsert({ user_id: uid, ...row }, { onConflict: conflict });
+  if (error) {
+    // PostgREST 는 없는 테이블을 'schema cache' 로 말한다 (relation does not exist 가 아니다)
+    if (/schema cache|does not exist|relation .* does not exist/i.test(error.message))
+      die(`${table} 테이블이 없다 — supabase/english-v2-schema.sql 을 먼저 실행해라`);
+    die(`${table} 저장 실패: ${error.message}`);
+  }
 }
 
 async function put(path, buf) {
@@ -282,6 +295,25 @@ if (kind === 'scene') {
 
 doc.generated_at = new Date().toISOString();
 writeFileSync(FILE, JSON.stringify(doc, null, 2) + '\n');
+
+if (!DRY) {
+  if (kind === 'scene') {
+    await pushRow('eng_scenes', 'user_id,scene_id', {
+      scene_id: doc.id, situation_ko: doc.situation_ko || '', topic: doc.topic || '일상',
+      level: doc.level || 2, turns: doc.turns, ms: totalMs,
+    });
+  } else {
+    await pushRow('eng_articles', 'user_id,article_id', {
+      article_id: doc.id, title: doc.title || '', topic: doc.topic || '테크', level: doc.level || 2,
+      sentences: doc.sentences, segs: doc.segs, ev: doc.ev, starts: doc.starts,
+      summary_ko: doc.summary_ko || [], sources: doc.sources || [],
+      audio_url: doc.audio_url || null, voice: doc.voice || '', ms: doc.ms,
+    });
+  }
+  console.log(`  ✓ ${kind === 'scene' ? 'eng_scenes' : 'eng_articles'} 에 저장`);
+  const nv = (doc.vocab || []).length;
+  if (nv) console.log(`  · 어휘 ${nv}개는 upload-eng.mjs 가 맡는다 (중복 병합·SRS 보존) — prompt_ko 가 있어야 올라간다`);
+}
 
 if (kind === 'scene') {
   const used = new Set(doc.turns.filter(t => t.voice).map(t => t.voice));
