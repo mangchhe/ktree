@@ -1,0 +1,822 @@
+{
+  "id": "2026-09-30-cafe-price",
+  "situation_ko": "카페에서 주문하다가 생각보다 비싸서 되묻는다. 점원이 더 싼 선택을 제안한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "점원",
+      "en": "Hi there — what can I get started for you?",
+      "ms": 2784,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "started",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 263
+        },
+        {
+          "t": 388,
+          "d": 338
+        },
+        {
+          "t": 1200,
+          "d": 125
+        },
+        {
+          "t": 1325,
+          "d": 125
+        },
+        {
+          "t": 1463,
+          "d": 75
+        },
+        {
+          "t": 1538,
+          "d": 150
+        },
+        {
+          "t": 1700,
+          "d": 313
+        },
+        {
+          "t": 2025,
+          "d": 138
+        },
+        {
+          "t": 2175,
+          "d": 250
+        }
+      ]
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "큰 사이즈 라떼 하나 달라고 해봐",
+      "en": "Could I get a large latte, please?",
+      "ms": 2136,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Could",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "large",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "latte",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          6
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 63
+        },
+        {
+          "t": 238,
+          "d": 75
+        },
+        {
+          "t": 313,
+          "d": 38
+        },
+        {
+          "t": 350,
+          "d": 350
+        },
+        {
+          "t": 700,
+          "d": 425
+        },
+        {
+          "t": 1138,
+          "d": 638
+        }
+      ]
+    },
+    {
+      "who": "a",
+      "role_ko": "점원",
+      "en": "Sure. That'll be fourteen fifty for the large.",
+      "ms": 3408,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That'll",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fourteen",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifty",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "large",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 475
+        },
+        {
+          "t": 913,
+          "d": 213
+        },
+        {
+          "t": 1138,
+          "d": 150
+        },
+        {
+          "t": 1300,
+          "d": 600
+        },
+        {
+          "t": 1913,
+          "d": 363
+        },
+        {
+          "t": 2288,
+          "d": 100
+        },
+        {
+          "t": 2400,
+          "d": 88
+        },
+        {
+          "t": 2500,
+          "d": 550
+        }
+      ]
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "생각보다 비싸다고 완곡하게 말해봐",
+      "en": "Oh — that's a bit steeper than I expected.",
+      "ms": 2880,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "steeper",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expected",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 300
+        },
+        {
+          "t": 838,
+          "d": 163
+        },
+        {
+          "t": 1000,
+          "d": 63
+        },
+        {
+          "t": 1075,
+          "d": 188
+        },
+        {
+          "t": 1263,
+          "d": 450
+        },
+        {
+          "t": 1713,
+          "d": 113
+        },
+        {
+          "t": 1838,
+          "d": 100
+        },
+        {
+          "t": 1950,
+          "d": 575
+        }
+      ]
+    },
+    {
+      "who": "a",
+      "role_ko": "점원",
+      "en": "Ah, the medium's eleven. Want me to switch it?",
+      "ms": 3696,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Ah",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "medium's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eleven",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Want",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "switch",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 388
+        },
+        {
+          "t": 1013,
+          "d": 75
+        },
+        {
+          "t": 1088,
+          "d": 475
+        },
+        {
+          "t": 1575,
+          "d": 463
+        },
+        {
+          "t": 2388,
+          "d": 213
+        },
+        {
+          "t": 2600,
+          "d": 63
+        },
+        {
+          "t": 2663,
+          "d": 75
+        },
+        {
+          "t": 2750,
+          "d": 375
+        },
+        {
+          "t": 3138,
+          "d": 188
+        }
+      ]
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 그걸로 바꿔달라고 해봐",
+      "en": "Yeah, let's do that instead. Thanks for catching that.",
+      "ms": 3360,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Yeah",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Thanks",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "catching",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 125
+        },
+        {
+          "t": 700,
+          "d": 138
+        },
+        {
+          "t": 838,
+          "d": 150
+        },
+        {
+          "t": 988,
+          "d": 175
+        },
+        {
+          "t": 1163,
+          "d": 488
+        },
+        {
+          "t": 2050,
+          "d": 125
+        },
+        {
+          "t": 2175,
+          "d": 113
+        },
+        {
+          "t": 2288,
+          "d": 400
+        },
+        {
+          "t": 2688,
+          "d": 300
+        }
+      ]
+    },
+    {
+      "who": "a",
+      "role_ko": "점원",
+      "en": "No problem at all. It'll be about four minutes.",
+      "ms": 3408,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It'll",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 325
+        },
+        {
+          "t": 425,
+          "d": 400
+        },
+        {
+          "t": 838,
+          "d": 88
+        },
+        {
+          "t": 938,
+          "d": 288
+        },
+        {
+          "t": 1588,
+          "d": 163
+        },
+        {
+          "t": 1763,
+          "d": 138
+        },
+        {
+          "t": 1913,
+          "d": 275
+        },
+        {
+          "t": 2200,
+          "d": 288
+        },
+        {
+          "t": 2500,
+          "d": 538
+        }
+      ]
+    }
+  ],
+  "vocab": [
+    {
+      "term": "what can I get started for you?",
+      "meaning_ko": "주문 받을 때 점원의 정석 인사. what do you want 보다 훨씬 자연스럽다"
+    },
+    {
+      "term": "a bit steeper than I expected",
+      "meaning_ko": "생각보다 비싸다. expensive 를 직접 안 쓰고 완곡하게 — steep = 가격이 센"
+    },
+    {
+      "term": "want me to ~?",
+      "meaning_ko": "내가 ~해줄까? 점원·동료가 제안할 때 쓰는 구어체"
+    },
+    {
+      "term": "let's do that instead",
+      "meaning_ko": "그럼 그걸로 하죠. 제안을 받아들이며 바꿀 때"
+    }
+  ],
+  "generated_at": "2026-09-30T03:25:12.039Z"
+}
