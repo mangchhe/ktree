@@ -36,7 +36,7 @@ body{
 }
 button{font-family:inherit;cursor:pointer}
 button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--eng);outline-offset:2px}
-.wrap{max-width:520px;margin:0 auto;padding:10px 14px calc(104px + env(safe-area-inset-bottom))}
+.wrap{max-width:520px;margin:0 auto;padding:8px 14px calc(112px + env(safe-area-inset-bottom))}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 @media (prefers-reduced-motion:reduce){.fade{animation:none}}
@@ -142,7 +142,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .sit{background:var(--eng-bg);border:1px solid var(--eng-bd);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px}
 .sit b{color:var(--eng)}
 .xpbar{
-  border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px;
+  border:1px solid var(--border);border-radius:14px;padding:13px 15px;margin-bottom:10px;
   background:linear-gradient(160deg,var(--card2),var(--card));
 }
 .xpbar .top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -152,26 +152,32 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   color:var(--eng);background:var(--eng-bg);border:1px solid var(--eng-bd);border-radius:99px;padding:2px 8px;
 }
 .xpbar .n{font-family:var(--num);font-size:11.5px;font-weight:500;color:var(--sub);font-variant-numeric:tabular-nums}
-.xpbar .xtrack{height:8px;border-radius:99px;background:var(--card-el);margin-top:12px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
+.xpbar .xtrack{height:7px;border-radius:99px;background:var(--card-el);margin-top:11px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
 .xpbar .xtrack i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--eng),var(--ok));transition:width .35s ease}
-.xpbar .gain{font-size:11.5px;color:var(--ok);margin-top:9px;font-weight:600;min-height:1.15em}
-.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px}
+/* 얻은 XP 가 없는 날은 줄 자체를 없앤다 — min-height 로 자리를 비워두니 카드에 빈 구멍이 났다 */
+.xpbar .gain{font-size:11.5px;color:var(--ok);font-weight:600}
+.xpbar .gain:not(:empty){margin-top:9px}
+.board{display:flex;flex-direction:column;gap:7px}
 .bcard{
-  position:relative;overflow:hidden;border:1px solid var(--border);border-radius:13px;
-  background:var(--card);padding:13px 14px;text-align:left;cursor:pointer;font:inherit;color:inherit;
+  position:relative;overflow:hidden;border:1px solid var(--border);border-radius:12px;
+  background:var(--card);padding:11px 13px;text-align:left;cursor:pointer;font:inherit;color:inherit;
+  display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;
+  column-gap:9px;row-gap:7px;align-items:center;
   transition:border-color .15s,transform .1s;
 }
-.bcard:active:not(:disabled){transform:scale(.985)}
+.bcard:active:not(:disabled){transform:scale(.99)}
 .bcard:disabled{opacity:.45;cursor:not-allowed}
-.bcard .bt,.bcard .bs{min-width:0;overflow-wrap:anywhere}
-.bcard .bt{font-size:14px;font-weight:700;display:flex;align-items:center;gap:7px;letter-spacing:-.2px}
+.bcard .bt{grid-column:2;font-size:14px;font-weight:700;letter-spacing:-.2px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bcard .chk{grid-column:1;grid-row:1}
+.bcard .bs{grid-column:3;grid-row:1;justify-self:end;white-space:nowrap}
+.bcard .bar{grid-column:1/-1;grid-row:2}
 /* 빈 네모는 '안 누른 체크박스'로 읽혀 할 일이 아니라 양식처럼 보였다. 상태 고리로 바꾼다. */
 .bcard .chk{
   flex:none;width:16px;height:16px;border-radius:99px;border:2px solid var(--dim);
   display:inline-grid;place-items:center;font-size:9px;color:transparent;transition:all .15s;
 }
-.bcard .bs{font-family:var(--num);font-size:11.5px;font-weight:500;color:var(--sub);margin-top:5px;line-height:1.45;font-variant-numeric:tabular-nums}
-.bcard .bar{height:4px;border-radius:99px;background:var(--card-el);margin-top:10px;overflow:hidden}
+.bcard .bs{font-family:var(--num);font-size:11.5px;font-weight:500;color:var(--sub);line-height:1.4;font-variant-numeric:tabular-nums}
+.bcard .bar{display:block;height:3px;border-radius:99px;background:var(--card-el);overflow:hidden}
 .bcard .bar i{display:block;height:100%;border-radius:99px;background:var(--warn);transition:width .3s}
 .bcard.part{border-color:var(--warn-bg)}
 .bcard.part .chk{border-color:var(--warn);box-shadow:0 0 0 3px var(--warn-bg)}
@@ -179,8 +185,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .bcard.done .chk{background:var(--ok);border-color:var(--ok);color:#06210f}
 .bcard.done .bar i{background:var(--ok)}
 /* 학습량은 부차적인 정보다. 카드 세 개로 두면 판의 세 칸과 무게가 같아져 위계가 무너진다. */
-.tstats{display:flex;gap:0;margin-top:12px;border:1px solid var(--border);border-radius:11px;background:var(--card);overflow:hidden}
-.tstat{flex:1 1 0;min-width:0;padding:11px 8px;text-align:center}
+.tstats{display:flex;gap:0;margin-top:10px;border:1px solid var(--border);border-radius:11px;background:var(--card);overflow:hidden}
+.tstat{flex:1 1 0;min-width:0;padding:9px 6px;text-align:center}
 .tstat+.tstat{border-left:1px solid var(--border)}
 .tstat .v{font-family:var(--num);font-size:17px;font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
 .tstat .v small{font-family:'Noto Sans KR',sans-serif;font-size:10px;color:var(--dim);font-weight:400;letter-spacing:0}
@@ -207,7 +213,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .asbox{border:1px solid var(--border);border-radius:11px;padding:11px 13px;background:var(--card);font-size:16px;line-height:1.65;cursor:pointer;transition:border-color .15s,background .15s}
 .asbox+.asbox{margin-top:6px}
 .asbox.on{border-color:var(--warn);box-shadow:0 0 0 2px var(--warn-bg)}
-.leg{font-size:11px;color:var(--dim);margin-top:12px;line-height:1.6}
+.leg{font-size:11px;color:var(--dim);margin-top:10px;line-height:1.55}
 .leg b{color:var(--sub);font-weight:600}
 .leg .sw{opacity:.5;border-bottom:1px dotted currentColor}
 .vcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:14px 15px}
@@ -215,7 +221,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .vcard .vm{font-size:13px;color:var(--sub);margin-top:7px;line-height:1.6}
 .vcard .vsrc{font-size:10.5px;color:var(--dim);margin-top:9px}
 .vprog{font-size:11.5px;color:var(--sub);margin-bottom:10px;font-variant-numeric:tabular-nums}
-.strip{margin-top:22px;border-top:1px solid var(--border);padding-top:16px}
+.strip{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
 .strip .btn.sm{flex:none}
 .srow{display:flex;gap:7px;align-items:center;flex-wrap:wrap;min-width:0}
 .strip input,.strip textarea{flex:1 1 120px;min-width:0;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font:inherit;font-size:13px;color:var(--text)}
@@ -236,7 +242,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   max-width:520px;margin:0 auto;
   border-top:1px solid var(--border);background:rgba(13,15,20,.92);backdrop-filter:blur(10px);
   /* 홈 화면에 설치하지 않은 Safari 는 safe-area 가 0이라 하단 바에 글자가 가린다 */
-  padding:8px 8px calc(16px + env(safe-area-inset-bottom));
+  /* 홈 화면에 설치하지 않은 Safari 는 safe-area 가 0인데 하단 바가 약 50px 덮는다 */
+  padding:8px 8px calc(22px + env(safe-area-inset-bottom));
 }
 /* 이모지는 회색 필터를 씌워도 탁하게 남는다. 선 아이콘이 currentColor 를 따라가 깔끔하다. */
 .tab{background:none;border:none;color:var(--dim);font-size:10.5px;font-weight:700;display:flex;flex-direction:column;gap:4px;align-items:center;padding:6px 0;border-radius:10px;transition:color .15s}
@@ -308,7 +315,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.5';
+const BUILD = '2026-09-30.6';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
@@ -673,17 +680,17 @@ async function renderToday(){
     </div>
     <div class="board">
       <button class="bcard${cls(sDone,sTot)}" data-a="scene" ${sTot?'':'disabled'}>
-        <div class="bt"><span class="chk">✓</span>상황 대화</div>
-        <div class="bs">${sTot ? `${sDone}/${sTot}개` : '오늘 장면이 없어요'}</div>
-        <div class="bar"><i style="width:${pct(sDone,sTot)}%"></i></div></button>
+        <span class="chk">✓</span><span class="bt">상황 대화</span>
+        <span class="bs">${sTot ? `${sDone}/${sTot}` : '없음'}</span>
+        <span class="bar"><i style="width:${pct(sDone,sTot)}%"></i></span></button>
       <button class="bcard${cls(aSent,aTot)}" data-a="article" ${aTot?'':'disabled'}>
-        <div class="bt"><span class="chk">✓</span>뉴스 읽기</div>
-        <div class="bs">${aTot ? `문장 ${aSent}/${aTot}` : '오늘 기사가 없어요'}</div>
-        <div class="bar"><i style="width:${pct(aSent,aTot)}%"></i></div></button>
+        <span class="chk">✓</span><span class="bt">뉴스 읽기</span>
+        <span class="bs">${aTot ? `${aSent}/${aTot}문장` : '없음'}</span>
+        <span class="bar"><i style="width:${pct(aSent,aTot)}%"></i></span></button>
       <button class="bcard${cls(vDone,vTot)}" data-a="vocab" ${vTot?'':'disabled'}>
-        <div class="bt"><span class="chk">✓</span>어휘 마무리</div>
-        <div class="bs">${vTot ? `오늘 ${tVocab.today.length} · 지난 것 ${tVocab.past.length}` : '쌓인 어휘가 없어요'}</div>
-        <div class="bar"><i style="width:${pct(vDone,vTot)}%"></i></div></button>
+        <span class="chk">✓</span><span class="bt">어휘 마무리</span>
+        <span class="bs">${vTot ? `${vDone}/${vTot}` : '없음'}</span>
+        <span class="bar"><i style="width:${pct(vDone,vTot)}%"></i></span></button>
     </div>
     <div class="tstats">
       <div class="tstat"><div class="v">${tProg?.turns_spoken || 0}</div><div class="l">말한 턴</div></div>
