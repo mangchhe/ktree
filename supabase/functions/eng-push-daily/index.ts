@@ -90,15 +90,22 @@ Deno.serve(async (req) => {
   const todayKst = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
 
   // due 카드가 있는 사용자별 집계
-  const { data: due, error } = await sb
+  // status 도 같이 받는다. 스키마가 next_review 를 current_date 로 채우므로
+  // next_review <= 오늘 에는 **신규 카드가 전부 포함된다** — 합쳐 세면 백로그 총량이
+  // "오늘 복습 N장"으로 나가서 보급할수록 숫자가 커지고 문구가 거짓이 된다 (앱 홈과 같은 규칙).
+  const { data: rows, error } = await sb
     .from('eng_cards')
-    .select('user_id')
+    .select('user_id, status')
     .lte('next_review', todayKst)
     .neq('status', 'suspended');
   if (error) return new Response(error.message, { status: 500 });
 
-  const counts = new Map<string, number>();
-  for (const row of due ?? []) counts.set(row.user_id, (counts.get(row.user_id) ?? 0) + 1);
+  const counts = new Map<string, { due: number; fresh: number }>();
+  for (const row of rows ?? []) {
+    const c = counts.get(row.user_id) ?? { due: 0, fresh: 0 };
+    if (row.status === 'new') c.fresh++; else c.due++;
+    counts.set(row.user_id, c);
+  }
   if (!counts.size) return new Response('no due cards', { status: 200 });
 
   const { data: subs } = await sb
@@ -110,13 +117,13 @@ Deno.serve(async (req) => {
   let sent = 0;
   const dead: string[] = [];
   await Promise.allSettled(subs.map(async (s) => {
-    const n = counts.get(s.user_id)!;
-    const payload = JSON.stringify({
-      title: `오늘 복습 카드 ${n}장 🗣️`,
-      body: '출근길에 8분이면 끝나요 — 큐가 기다리고 있어요.',
-      icon: '/icon.svg',
-      url: '/english',
-    });
+    const { due: d, fresh: f } = counts.get(s.user_id)!;
+    // 복습이 있으면 그걸 앞세운다. 복습이 0이고 신규만 있는 날은 "복습 0장"이 아니라 새 카드를 말한다.
+    const title = d > 0 ? `오늘 복습 ${d}장 🗣️` : `새 카드 ${f}장 기다려요 🗣️`;
+    const body = d > 0 && f > 0
+      ? `새 카드도 ${f}장 있어요 — 출근길에 몇 분이면 됩니다.`
+      : '출근길에 몇 분이면 끝나요 — 큐가 기다리고 있어요.';
+    const payload = JSON.stringify({ title, body, icon: '/icon.svg', url: '/english' });
     const status = await sendPush(s, payload);
     if (status === 404 || status === 410) dead.push(s.endpoint);
     else if (status < 300) sent++;

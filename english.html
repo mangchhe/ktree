@@ -207,6 +207,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .ipill{font-size:10px;font-weight:700;padding:4px 8px;border-radius:99px;flex:none}
 .ipill.wait{color:var(--warn);background:var(--warn-bg)}
 .ipill.done{color:var(--ok);background:var(--ok-bg)}
+.initem .indel{flex:none;width:28px;height:28px;border:0;border-radius:8px;background:var(--card-el);color:var(--dim);font-size:13px;cursor:pointer}
+.initem .indel:hover:not(:disabled){color:var(--danger);background:var(--danger-bg)}
+.initem .indel:disabled{opacity:.4}
 
 /* --- tab bar --- */
 .tabbar{
@@ -372,7 +375,11 @@ let speakCard = null;
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const today = () => new Date().toLocaleDateString('sv');   // YYYY-MM-DD (로컬)
+/* 하루의 경계는 KST 고정이다. 아침 푸시(eng-push-daily)가 KST 로 due 를 세므로
+   앱이 기기 로컬 날짜를 쓰면 시차 지역에서 앱과 푸시가 하루 어긋난다 — 여행 토픽이 있는 앱이다. */
+const KST = 9 * 3600e3;
+const kstDate = t => new Date((t == null ? Date.now() : new Date(t).getTime()) + KST).toISOString().slice(0,10);
+const today = () => kstDate();
 function toast(msg){ const t=$('toast'); t.textContent=msg; t.style.display='block';
   clearTimeout(toast._t); toast._t=setTimeout(()=>t.style.display='none', 2200); }
 
@@ -448,11 +455,21 @@ function buildQueue(){
 /* ================= 홈 ================= */
 async function renderHome(){
   const d = today();
-  const due = cards.filter(c => c.next_review <= d).length;
-  $('st-due').textContent = due;
-  $('md-review').textContent = due ? `오늘 큐 ${due}장 대기 중` : '한국어 상황 보고 영어로 말하기';
+  // due 와 신규를 갈라 센다. 스키마가 next_review 를 current_date 로 채우므로
+  // 신규 카드도 next_review <= 오늘 이다 — 합쳐 세면 "오늘 복습" 자리에 백로그 총량이 들어간다.
+  const dueN   = cards.filter(c => c.status !== 'new' && c.next_review <= d).length;
+  const freshN = cards.filter(c => c.status === 'new').length;
+  $('st-due').textContent = dueN;
+  $('md-review').textContent = (dueN || freshN)
+    ? `복습 ${dueN}장${freshN ? ` · 새 카드 ${freshN}장` : ''} 대기 중`
+    : '한국어 상황 보고 영어로 말하기';
 
-  const { count } = await sb.from('eng_cards').select('*',{count:'exact',head:true});
+  // 홈의 두 숫자는 같은 기준이어야 한다 — loadCards 와 같은 필터를 쓴다
+  const tnames = activeTopicNames();
+  const { count } = tnames.length
+    ? await sb.from('eng_cards').select('*',{count:'exact',head:true})
+        .in('topic', tnames).neq('status','suspended')
+    : { count: 0 };
   $('st-total').textContent = count ?? cards.length;
 
   // 이번 주 정답률 + 스트릭
@@ -467,10 +484,10 @@ async function renderHome(){
   const { data: days } = await sb.from('eng_review_log')
     .select('reviewed_at').gte('reviewed_at', new Date(Date.now()-90*864e5).toISOString())
     .order('reviewed_at',{ascending:false}).limit(3000);
-  const dset = new Set((days||[]).map(l => new Date(l.reviewed_at).toLocaleDateString('sv')));
-  let streak = 0; const cur = new Date();
-  if (!dset.has(cur.toLocaleDateString('sv'))) cur.setDate(cur.getDate()-1);  // 오늘 아직 안 했으면 어제부터
-  while (dset.has(cur.toLocaleDateString('sv'))) { streak++; cur.setDate(cur.getDate()-1); }
+  const dset = new Set((days||[]).map(l => kstDate(l.reviewed_at)));
+  let streak = 0, cursor = Date.now();
+  if (!dset.has(kstDate(cursor))) cursor -= 864e5;              // 오늘 아직 안 했으면 어제부터
+  while (dset.has(kstDate(cursor))) { streak++; cursor -= 864e5; }
   $('streak').textContent = `🔥 ${streak}일`;
 
   renderLevel();
@@ -545,8 +562,7 @@ function applyGrade(card, grade){
     card.interval_days = 1;
   }
   card.interval_days = Math.min(card.interval_days, 365);
-  const nr = new Date(); nr.setDate(nr.getDate() + card.interval_days);
-  card.next_review = nr.toLocaleDateString('sv');
+  card.next_review = kstDate(Date.now() + card.interval_days * 864e5);
   card.status = card.interval_days >= 21 ? 'mature' : 'learning';
 }
 
@@ -580,12 +596,18 @@ async function flushPending(){
   const rest = [];
   for (const op of pend){
     try {
-      await sb.from('eng_cards').update(op.fields).eq('id', op.card_id);
-      await sb.from('eng_review_log').insert({ user_id:currentUser.id, card_id:op.card_id, grade:op.grade, mode:op.mode, reviewed_at:op.at });
+      // 🔴 .error 를 반드시 본다. supabase-js 는 PostgREST 오류를 throw 하지 않고
+      // { error } 로 resolve 하므로, 안 보면 실패한 복습이 조용히 버려진다 (saveGrade 와 같은 규칙).
+      const u = await sb.from('eng_cards').update(op.fields).eq('id', op.card_id);
+      if (u.error) throw u.error;
+      const l = await sb.from('eng_review_log').insert({ user_id:currentUser.id, card_id:op.card_id, grade:op.grade, mode:op.mode, reviewed_at:op.at });
+      if (l.error) throw l.error;
     } catch(_) { rest.push(op); }
   }
   localStorage.setItem(LS.pending, JSON.stringify(rest));
-  if (pend.length && !rest.length) toast(`오프라인 복습 ${pend.length}건 동기화됨`);
+  const synced = pend.length - rest.length;
+  if (rest.length) toast(`동기화 ${synced}건 · ${rest.length}건 실패 — 다음에 다시 시도해요`);
+  else if (synced)  toast(`오프라인 복습 ${synced}건 동기화됨`);
 }
 window.addEventListener('online', flushPending);
 
@@ -619,9 +641,14 @@ function renderQ(){
     return;
   }
   const c = queue[qIdx];
-  const denom = Math.max(qTotal, 1);
-  $('pnum').textContent = `${Math.min(qIdx+1, denom)} / ${denom}` + (qIdx >= qTotal ? ' +' : '');
-  $('pbar').style.width = Math.min(qIdx/denom*100+6, 100) + '%';
+  if (qTotal === 0){
+    // 오늘 due 도 신규도 없다 — 앞당겨 복습만 남았으므로 분모가 없다 (`1 / 1 +` 로 보이던 자리)
+    $('pnum').textContent = `앞당겨 ${qIdx+1}`;
+    $('pbar').style.width = Math.min((qIdx+1)/queue.length*100, 100) + '%';
+  } else {
+    $('pnum').textContent = `${Math.min(qIdx+1, qTotal)} / ${qTotal}` + (qIdx >= qTotal ? ' +' : '');
+    $('pbar').style.width = Math.min(qIdx/qTotal*100+6, 100) + '%';
+  }
 
   const extra = qIdx >= qTotal ? '<span class="ctx newb">앞당겨 복습</span>' : (c.status==='new' ? '<span class="ctx newb">NEW</span>' : '');
   wrap.innerHTML = `<div class="qcard fade">
@@ -637,6 +664,7 @@ function renderQ(){
       ${c.note ? `<div class="note">${esc(c.note)}</div>` : ''}
       ${c.source_ref && /^https?:/.test(c.source_ref) ? `<div class="note" style="margin-top:8px">🔗 <a href="${esc(c.source_ref)}" target="_blank" rel="noopener" style="color:var(--eng)">원문 보기</a></div>` : ''}
       <button class="replay" id="replay-btn">🔊 다시 듣기</button>
+      <button class="replay" id="suspend-btn" style="margin-left:6px">🚫 이 카드 빼기</button>
     </div>
     <button class="reveal" id="reveal">정답 보기</button>
     <div class="grades" id="grades" hidden>
@@ -650,6 +678,7 @@ function renderQ(){
     $('ans').hidden = false; $('grades').hidden = false; this.remove();
     playCard(c);
     $('replay-btn').onclick = () => playCard(c);
+    $('suspend-btn').onclick = () => suspendCard(c);
   };
   $('grades').onclick = e => {
     const g = e.target.closest('.grade'); if (!g) return;
@@ -659,6 +688,19 @@ function renderQ(){
     qIdx++;
     renderQ();
   };
+}
+
+/* 카드를 큐에서 영구히 뺀다. 카드는 밤마다 생성되므로 어색한 문장이 반드시 섞이고,
+   빼는 길이 없으면 그게 영원히 돌아와 SRS 자체를 못 믿게 된다.
+   buildQueue() 를 다시 부르지 않는다 — qIdx 가 0 으로 돌아가 큐가 처음부터 다시 시작된다. */
+async function suspendCard(card){
+  const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', card.id);
+  if (error) return toast('빼기 실패 — 네트워크를 확인하세요');
+  cards = cards.filter(x => x.id !== card.id);
+  const at = queue.indexOf(card);
+  if (at >= 0){ queue.splice(at, 1); if (at < qTotal) qTotal--; }
+  toast('이 카드는 다시 안 나와요');
+  renderQ();
 }
 
 /* ================= TTS ================= */
@@ -706,6 +748,13 @@ $('rate').addEventListener('click', e => {
   if (cardAudio) cardAudio.playbackRate = rateVal;
   document.querySelectorAll('#rate button').forEach(x=>x.classList.toggle('on', x===b));
 });
+
+/* 원본을 건드리지 않는 Fisher-Yates */
+function shuffled(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; }
+  return a;
+}
 
 /* ================= Listen ================= */
 async function renderListen(){
@@ -758,8 +807,10 @@ async function renderListen(){
       <p style="font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.6">아직 브리핑이 없어요 — 밤 보급(/eng-pack)이 돌면 매일 아침 여기 생깁니다.</p></div>`;
   }
 
-  // 셰도잉 트랙: 현재 큐 앞쪽 20장
-  const pool = (filterTp==='all' ? cards : cards.filter(c=>c.topic===filterTp)).slice(0, 20);
+  // 셰도잉 트랙 20장. **앞에서 자르지 않고 섞어서 뽑는다** — cards 는 next_review 순이라
+  // 앞을 자르면 성숙한 카드가 셰도잉에 영원히 안 나온다.
+  const all = filterTp==='all' ? cards : cards.filter(c=>c.topic===filterTp);
+  const pool = shuffled(all).slice(0, 20);
   const tr = $('tracks');
   tr.innerHTML = pool.length ? '' : '<div class="empty">따라할 카드가 없어요.</div>';
   for (const c of pool){
@@ -779,7 +830,11 @@ async function renderListen(){
 function renderSpeak(){
   const pool = filterTp==='all' ? cards : cards.filter(c=>c.topic===filterTp);
   if (!pool.length){ $('speakwrap').innerHTML = '<div class="empty">카드가 없어요.</div>'; return; }
-  speakCard = pool[Math.floor(Math.random()*Math.min(pool.length, 50))];
+  // 전체에서 고른다 (앞 50장으로 자르면 뒤쪽 카드가 Speak 에 영원히 안 나온다).
+  // 직전 카드만 피한다 — 연속으로 같은 게 나오면 다음 버튼이 고장난 것처럼 보인다.
+  const prevId = speakCard?.id;
+  const choices = pool.length > 1 ? pool.filter(c => c.id !== prevId) : pool;
+  speakCard = choices[Math.floor(Math.random()*choices.length)];
   const c = speakCard;
   $('speakwrap').innerHTML = `<div class="scard fade">
     <span class="label">이 상황, 영어로 말해보세요</span>
@@ -803,15 +858,32 @@ function renderSpeak(){
     const said = $('spoken').value.trim();
     const r = $('sresult');
     if (!said){ $('spoken').focus(); return; }
-    const norm = s => s.toLowerCase().replace(/[^a-z' ]/g,'').split(/\s+/).filter(Boolean);
-    const a = new Set(norm(c.answer_en)), mine = norm(said);
-    const hit = mine.filter(w=>a.has(w)).length;
-    const score = a.size ? hit/a.size : 0;
-    r.className = 'result show ' + (score>=.6 ? 'good' : 'close');
-    r.innerHTML = `${score>=.6?'✅ 거의 정확해요!':'🟡 뜻은 통하지만 모범답안과 비교해보세요:'}<br>
+    // 단어 집합 비교는 어순도 군더더기도 못 본다 — 아무 순서로 뱉어도 만점이었다.
+    // 최장 공통 부분수열로 순서를 지키는 일치만 세고, F1 로 빠진 것과 덧붙인 것을 같이 벌한다.
+    // 숫자를 지우지 않는다 (0-9 포함) — "Kafka 4.2" 같은 게 비교에서 빠져 있었다.
+    // 문장부호는 버리되 숫자 안의 소수점은 살린다 — "Kafka 4.1" 이 "4","1" 로 쪼개지면
+    // 4.2 와 4.1 이 절반 일치로 잡혀 필요 이상으로 관대해진다.
+    const norm = s => s.toLowerCase().replace(/[^a-z0-9'. ]/g,' ').split(/\s+/)
+      .map(w => w.replace(/^\.+|\.+$/g,'')).filter(Boolean);
+    const A = norm(c.answer_en), M = norm(said);
+    let lcs = 0;
+    if (A.length && M.length){
+      const dp = Array.from({length:A.length+1}, () => new Array(M.length+1).fill(0));
+      for (let i=1;i<=A.length;i++) for (let j=1;j<=M.length;j++)
+        dp[i][j] = A[i-1]===M[j-1] ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j], dp[i][j-1]);
+      lcs = dp[A.length][M.length];
+    }
+    const score = (A.length + M.length) ? 2*lcs/(A.length + M.length) : 0;
+    const extra = Math.max(0, M.length - lcs);
+    const tone = score>=.7 ? 'good' : score>=.45 ? 'close' : 'close';
+    r.className = 'result show ' + tone;
+    const verdict = score>=.7 ? '✅ 거의 그대로예요!'
+                  : score>=.45 ? '🟡 뜻은 통해요 — 모범답안과 견줘보세요:'
+                  : '🔴 많이 달라요 — 듣고 한 번 더 말해보세요:';
+    r.innerHTML = `${verdict}<br>
       <span class="model">“${esc(c.answer_en)}”</span>
       ${c.note ? `<br><span class="sub2">${esc(c.note)}</span>` : ''}
-      <br><span class="sub2">일치 단어 ${hit}/${a.size} — 스스로 채점해주세요 ↓</span>`;
+      <br><span class="sub2">순서 맞는 일치 ${lcs}/${A.length}${extra?` · 군더더기 ${extra}단어`:''} — 스스로 채점해주세요 ↓</span>`;
     $('sgrades').hidden = false;
     playCard(c);
   };
@@ -868,10 +940,21 @@ async function loadInbox(){
   const el = $('inb-list');
   el.innerHTML = (data?.length) ? '' : '<div class="empty">아직 비어 있어요 — 오늘 주운 표현을 던져보세요.</div>';
   for (const r of (data||[])){
-    el.insertAdjacentHTML('beforeend', `<div class="initem">
-      <div class="itx"><div class="ie">${esc(r.text)}</div>${r.source?`<div class="isrc">${esc(r.source)}</div>`:''}</div>
+    const d = document.createElement('div');
+    d.className = 'initem';
+    // 변환 대기 중인 것만 지울 수 있다 — 이미 카드가 된 건 카드 쪽에서 빼야 한다
+    d.innerHTML = `<div class="itx"><div class="ie">${esc(r.text)}</div>${r.source?`<div class="isrc">${esc(r.source)}</div>`:''}</div>
       <span class="ipill ${r.status==='converted'?'done':'wait'}">${r.status==='converted'?'카드됨':'변환 대기'}</span>
-    </div>`);
+      ${r.status==='converted' ? '' : '<button class="indel" aria-label="삭제">✕</button>'}`;
+    const del = d.querySelector('.indel');
+    if (del) del.onclick = async () => {
+      del.disabled = true;
+      const { error } = await sb.from('eng_inbox').delete().eq('id', r.id);
+      if (error){ del.disabled = false; return toast('삭제 실패 — 네트워크를 확인하세요'); }
+      d.remove(); toast('지웠어요');
+      if (!el.querySelector('.initem')) el.innerHTML = '<div class="empty">아직 비어 있어요 — 오늘 주운 표현을 던져보세요.</div>';
+    };
+    el.appendChild(d);
   }
 }
 async function inbAdd(){
@@ -933,6 +1016,10 @@ async function init(){
     console.warn(e);
   }
   if ('speechSynthesis' in window) speechSynthesis.getVoices();
+
+  // 이미 허용해둔 사람은 조용히 재구독한다. 푸시 구독은 브라우저가 주기적으로
+  // 만료·교체하므로 갱신 경로가 없으면 어느 날부터 조용히 끊긴다 (버튼은 계속 "켜짐"이고).
+  if (typeof Notification !== 'undefined' && Notification.permission === 'granted') subscribePush(false);
 }
 
 init();
