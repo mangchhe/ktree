@@ -214,6 +214,71 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .initem .indel:hover:not(:disabled){color:var(--danger);background:var(--danger-bg)}
 .initem .indel:disabled{opacity:.4}
 
+/* ═══ 오늘 판 (개편) ═══ */
+/* 앱에 없던 범용 버튼·상황줄. hd-btn 의 톤을 따른다 */
+.btn{font-size:12.5px;font-weight:600;padding:7px 12px;border-radius:9px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer}
+.btn:hover:not(:disabled){border-color:var(--border-hl)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{font-size:11.5px;padding:6px 10px}
+.btn.primary-btn{width:auto;background:var(--eng);border-color:var(--eng);color:#fff}
+.sit{background:var(--eng-bg);border:1px solid var(--eng-bd);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px}
+.sit b{color:var(--eng)}
+.xpbar{border:1px solid var(--border);border-radius:12px;background:var(--card);padding:12px 14px;margin-bottom:12px}
+.xpbar .top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.xpbar .rk{font-size:14.5px;font-weight:700}
+.xpbar .rk em{font-style:normal;font-size:11.5px;color:var(--eng);margin-left:5px;font-weight:600}
+.xpbar .n{font-size:11.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.xpbar .track{height:6px;border-radius:4px;background:var(--card-el);margin-top:9px;overflow:hidden}
+.xpbar .track i{display:block;height:100%;background:var(--eng);transition:width .3s}
+.xpbar .gain{font-size:11.5px;color:var(--ok);margin-top:7px;font-weight:600;min-height:1.2em}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px}
+.bcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:12px 13px;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.bcard:disabled{opacity:.5;cursor:not-allowed}
+.bcard .bt{font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px}
+.bcard .chk{flex:none;width:16px;height:16px;border-radius:5px;border:1.5px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-size:9px;color:transparent}
+.bcard .bs{font-size:11.5px;color:var(--sub);margin-top:4px;line-height:1.45}
+.bcard .bar{height:3px;border-radius:2px;background:var(--card-el);margin-top:8px;overflow:hidden}
+.bcard .bar i{display:block;height:100%;background:var(--warn)}
+.bcard.done{border-color:var(--ok)}
+.bcard.done .chk{background:var(--ok);border-color:var(--ok);color:#06210f}
+.bcard.done .bar i{background:var(--ok)}
+.bcard.part{border-color:var(--warn)}
+.bcard.part .chk{border-color:var(--warn)}
+.tstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px;margin-top:12px}
+.tstat{border:1px solid var(--border);border-radius:10px;background:var(--card);padding:10px 11px}
+.tstat .v{font-size:18px;font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums}
+.tstat .v small{font-size:10.5px;color:var(--dim);font-weight:400}
+.tstat .l{font-size:10.5px;color:var(--sub);margin-top:3px;line-height:1.35}
+
+/* 막 안쪽 */
+.actbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.actbar .back{margin-right:auto}
+.rate2{display:flex;gap:2px}
+.rate2 button{border:1px solid var(--border);background:var(--card);color:var(--sub);font:inherit;font-size:11px;padding:5px 7px;cursor:pointer}
+.rate2 button:first-child{border-radius:7px 0 0 7px}.rate2 button:last-child{border-radius:0 7px 7px 0}
+.rate2 button[aria-pressed="true"]{background:var(--eng);border-color:var(--eng);color:#06210f}
+.dturn{display:flex;gap:8px;align-items:flex-start;margin-bottom:9px}
+.dturn .who{flex:0 0 30px;font-size:9.5px;color:var(--dim);padding-top:8px}
+.dturn .line{flex:1 1 auto;min-width:0;border-radius:10px;padding:9px 12px;background:var(--card-el);font-size:16px;line-height:1.55;cursor:pointer}
+.dturn.mine .line{background:var(--eng-bg);border:1px solid var(--eng-bd)}
+.dturn.on .line{box-shadow:0 0 0 2px var(--warn)}
+.dturn .intent{display:block;font-size:12px;color:var(--eng);font-weight:600;margin-bottom:5px}
+.dturn .hid{color:var(--dim);font-style:italic;font-size:13.5px}
+.kw{border-radius:3px;padding:0 .06em}
+.kw.on{background:var(--warn);color:#241a05;font-weight:700}
+.kw.red{opacity:.5;border-bottom:1px dotted currentColor}
+.kw.red.on{opacity:1}
+.asbox{border:1px solid var(--border);border-radius:9px;padding:10px 12px;background:var(--card);font-size:16px;line-height:1.6;cursor:pointer}
+.asbox+.asbox{margin-top:6px}
+.asbox.on{border-color:var(--warn);box-shadow:0 0 0 2px var(--warn-bg)}
+.leg{font-size:11px;color:var(--dim);margin-top:10px;line-height:1.55}
+.leg .sw{opacity:.5;border-bottom:1px dotted currentColor}
+.vcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:14px 15px}
+.vcard .vt{font-size:17px;font-weight:700;line-height:1.4}
+.vcard .vm{font-size:13px;color:var(--sub);margin-top:7px;line-height:1.6}
+.vcard .vsrc{font-size:10.5px;color:var(--dim);margin-top:9px}
+.vprog{font-size:11.5px;color:var(--sub);margin-bottom:10px;font-variant-numeric:tabular-nums}
+
 /* --- tab bar --- */
 .tabbar{
   position:fixed;left:0;right:0;bottom:0;z-index:40;
@@ -253,7 +318,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     </div>
 
     <!-- ============ HOME ============ -->
-    <section class="screen on" id="s-home">
+    <!-- ============ 오늘 (개편) ============ -->
+    <section class="screen on" id="s-today">
+      <div id="t-board"></div>
+      <div id="t-act" hidden></div>
+    </section>
+
+    <section class="screen" id="s-home">
       <div class="stats">
         <div class="stat due"><div class="n" id="st-due">—</div><div class="t">오늘 복습</div></div>
         <div class="stat"><div class="n" id="st-total">—</div><div class="t">전체 카드</div></div>
@@ -347,7 +418,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </div>
 
 <nav class="tabbar" id="tabbar" style="display:none">
-  <button class="tab on" data-s="home"><span class="ti">🏠</span>홈</button>
+  <button class="tab on" data-s="today"><span class="ti">📋</span>오늘</button>
+  <button class="tab" data-s="home"><span class="ti">🏠</span>홈</button>
   <button class="tab" data-s="review"><span class="ti">🃏</span>Review</button>
   <button class="tab" data-s="listen"><span class="ti">🎧</span>Listen</button>
   <button class="tab" data-s="speak"><span class="ti">🎙️</span>Speak</button>
@@ -365,7 +437,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.2';
+const BUILD = '2026-09-30.3';
 
 const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크'];
@@ -403,13 +475,14 @@ async function login(){
 async function logout(){ await sb.auth.signOut(); location.reload(); }
 
 /* ================= 화면 전환 ================= */
-const SCREENS = ['home','review','listen','speak','journal','inbox'];
+const SCREENS = ['today','home','review','listen','speak','journal','inbox'];
 function show(s){
   SCREENS.forEach(k => $('s-'+k).classList.toggle('on', k===s));
   document.querySelectorAll('#tabbar .tab').forEach(b => b.classList.toggle('on', b.dataset.s===s));
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   if (briefAudio) briefAudio.pause();
   if (cardAudio) cardAudio.pause();
+  if (s==='today') renderToday();
   if (s==='home') renderHome();
   if (s==='review') renderQ();
   if (s==='listen') renderListen();
@@ -505,7 +578,10 @@ async function renderHome(){
   const { count: inb } = await sb.from('eng_inbox').select('*',{count:'exact',head:true}).eq('status','pending');
   $('md-inbox').textContent = inb ? `주운 표현 던져놓기 · 변환 대기 ${inb}` : '주운 표현 던져놓기';
 
-  if (Notification?.permission === 'granted') $('push-btn').textContent = '🔔 아침 푸시 켜짐';
+  // typeof 로 봐야 한다 — 선언 안 된 전역에는 ?. 이 안 먹고 ReferenceError 가 난다.
+  // iOS Safari 는 홈 화면 설치 전에는 Notification 이 아예 없다.
+  if (typeof Notification !== 'undefined' && Notification.permission === 'granted')
+    $('push-btn').textContent = '🔔 아침 푸시 켜짐';
 }
 
 function renderLevel(){
@@ -982,7 +1058,7 @@ function urlBase64ToUint8Array(s){
   return Uint8Array.from([...atob(b64)].map(c=>c.charCodeAt(0)));
 }
 async function subscribePush(interactive){
-  if (!('serviceWorker' in navigator) || !('PushManager' in window)){
+  if (!('serviceWorker' in navigator) || !('PushManager' in window) || typeof Notification === 'undefined'){
     if (interactive) toast('이 브라우저는 푸시를 지원하지 않아요 (iOS는 홈 화면에 추가 후 가능)');
     return;
   }
@@ -1024,6 +1100,428 @@ async function paintBuild(){
   } catch(_) { /* 캐시를 못 읽는 브라우저면 버전만 보여준다 */ }
 }
 
+/* ═══════════════════════════════════════════════════════
+   오늘 판 (개편) — 순서를 강제하지 않는다.
+   그래서 "무엇을 했고 뭐가 남았나"를 판이 직접 숫자로 말해야 한다.
+   ═══════════════════════════════════════════════════════ */
+
+// XP 는 **정답률이 아니라 입을 연 횟수**에 붙는다. 정답에만 주면 「맞음」을 거짓으로
+// 누르게 되고, 그러면 복습 간격이 가짜로 벌어져 SRS 전체가 무의미해진다.
+const XP = { turn:15, prodGood:10, prodMiss:4, article:8, recog:1, complete:30, cap:250 };
+const RANKS = [
+  [0,'Starter'], [400,'Everyday'], [1000,'Conversational'], [1800,'Fluent-ish'],
+  [2800,'Confident'], [4000,'Sharp'], [5400,'Native-ish'],
+];
+function rankOf(xp){
+  let i = 0;
+  for (let k = 0; k < RANKS.length; k++) if (xp >= RANKS[k][0]) i = k;
+  const next = RANKS[i+1] ? RANKS[i+1][0] : RANKS[i][0] + 1800;
+  return { n:i+1, name:RANKS[i][1], from:RANKS[i][0], to:next };
+}
+
+let tScenes = [], tArticle = null, tSession = null, tProg = null, tVocab = { today:[], past:[] };
+let tLoaded = false, tMissing = false, tRate = 1, tAudio = null, tRaf = 0, tGain = 0;
+
+function tStopAudio(){
+  if (tAudio) { tAudio.pause(); tAudio = null; }
+  cancelAnimationFrame(tRaf);
+  document.querySelectorAll('.kw.on').forEach(e => e.classList.remove('on'));
+  document.querySelectorAll('.dturn.on,.asbox.on').forEach(e => e.classList.remove('on'));
+}
+
+/* 프레임마다 현재 이벤트를 찾는다. timeupdate 는 초당 4회라 하이라이트가 뚝뚝 끊긴다. */
+function tFollow(a, ev, paint){
+  let last = -1;
+  const step = () => {
+    if (!a || a.paused) return;
+    const ms = a.currentTime * 1000;
+    let lo = 0, hi = ev.length - 1, hit = -1;
+    while (lo <= hi) { const mid = (lo+hi)>>1; if (ms < ev[mid].t) hi = mid-1; else { hit = mid; lo = mid+1; } }
+    if (hit !== last) { last = hit; paint(hit); }
+    tRaf = requestAnimationFrame(step);
+  };
+  tRaf = requestAnimationFrame(step);
+}
+
+const segHtml = (segs, ev) => segs.map(([tx, n]) => n == null ? esc(tx)
+  : `<span class="kw${(ev[n]?.d ?? 999) < 150 ? ' red' : ''}" data-e="${n}">${esc(tx)}</span>`).join('');
+
+/* ── 적재 ───────────────────────────────────────────── */
+
+async function loadToday(){
+  if (!currentUser) return;
+  const d = today();
+  try {
+    const [sc, ar, se, pr] = await Promise.all([
+      sb.from('eng_scenes').select('*').eq('status','ready').order('created_at',{ascending:false}).limit(5),
+      sb.from('eng_articles').select('*').order('created_at',{ascending:false}).limit(1),
+      sb.from('eng_sessions').select('*').eq('session_date', d).maybeSingle(),
+      sb.from('eng_progress').select('*').maybeSingle(),
+    ]);
+    // 테이블이 아직 없으면 화면이 그 사실을 말해야 한다 — 조용히 비면 버그로 보인다
+    const missing = [sc,ar,se,pr].some(r => r.error && /schema cache|does not exist/i.test(r.error.message));
+    if (missing) { tMissing = true; tLoaded = true; return; }
+    tScenes = sc.data || [];
+    tArticle = (ar.data || [])[0] || null;
+    tSession = se.data || null;
+    tProg = pr.data || { xp_total:0, xp_today:0, xp_date:d, listened_ms:0, turns_spoken:0, articles_read:0 };
+    if (tProg.xp_date !== d) { tProg.xp_today = 0; tProg.xp_date = d; }   // 날짜가 바뀌면 상한 리셋
+    await loadTodayVocab();
+  } catch (_) { tMissing = true; }
+  tLoaded = true;
+}
+
+async function loadTodayVocab(){
+  const d = today();
+  // 오늘 것 = 오늘 만들어진 어휘(인지). 지난 것 = 날짜가 돌아온 것(산출, SRS 채점)
+  const { data: fresh } = await sb.from('eng_cards').select('*')
+    .in('source',['scene','article']).gte('created_at', d + 'T00:00:00').limit(20);
+  const { data: due } = await sb.from('eng_cards').select('*')
+    .neq('status','new').neq('status','suspended').lte('next_review', d)
+    .order('next_review').limit(8);
+  tVocab = { today: fresh || [], past: due || [] };
+}
+
+async function bumpXp(n, why){
+  if (!tProg) return;
+  const room = Math.max(0, XP.cap - tProg.xp_today);
+  const add = Math.min(n, room);
+  if (!add) { tGain = -1; paintXp(why + ' (하루 상한)'); return; }
+  tProg.xp_total += add; tProg.xp_today += add; tGain += add;
+  paintXp(why);
+  try {
+    await sb.from('eng_progress').upsert({
+      user_id: currentUser.id, xp_total: tProg.xp_total, xp_today: tProg.xp_today,
+      xp_date: tProg.xp_date, listened_ms: tProg.listened_ms, turns_spoken: tProg.turns_spoken,
+      articles_read: tProg.articles_read, updated_at: new Date().toISOString(),
+    }, { onConflict:'user_id' });
+  } catch(_) { /* 오프라인이면 화면만 올라간다 — 다음 로드에서 맞춰진다 */ }
+}
+
+async function saveProgress(patch){
+  const p = Object.assign({}, tSession?.progress || {}, patch);
+  const row = { user_id: currentUser.id, session_date: today(), progress: p,
+                scene_ids: tSession?.scene_ids || [], vocab_ids: tSession?.vocab_ids || [],
+                xp_earned: (tSession?.xp_earned || 0) + tGain };
+  if (tArticle) row.article_id = tArticle.id;
+  try {
+    const { data } = await sb.from('eng_sessions').upsert(row, { onConflict:'user_id,session_date' }).select().maybeSingle();
+    if (data) tSession = data; else tSession = Object.assign({}, tSession, row);
+  } catch(_) { tSession = Object.assign({}, tSession, row); }
+}
+
+function paintXp(why){
+  const el = $('t-gain'); if (!el) return;
+  el.textContent = tGain > 0 ? `오늘 +${tGain} XP${why ? ' · ' + why : ''}` : (why || '');
+  const r = rankOf(tProg?.xp_total || 0);
+  const pct = Math.min(100, ((tProg?.xp_total || 0) - r.from) / (r.to - r.from) * 100);
+  const b = $('t-track'); if (b) b.style.width = Math.max(pct, 2) + '%';
+  const t = $('t-rank'); if (t) t.innerHTML = `${r.n}단계 <em>${esc(r.name)}</em>`;
+  const n = $('t-xpnum'); if (n) n.textContent = `${tProg?.xp_total || 0} / ${r.to} XP`;
+}
+
+/* ── 판 ─────────────────────────────────────────────── */
+
+async function renderToday(){
+  tStopAudio();
+  $('t-act').hidden = true; $('t-act').textContent = '';
+  const box = $('t-board');
+  if (!tLoaded) { box.innerHTML = '<div class="empty">불러오는 중…</div>'; await loadToday(); }
+  if (tMissing) {
+    box.innerHTML = `<div class="empty"><b>개편 테이블이 아직 없어요.</b><br>
+      Supabase SQL Editor 에서 <code>supabase/english-v2-schema.sql</code> 을 실행하면 여기가 채워집니다.<br>
+      그 전까지는 기존 탭(홈·Review·Listen)을 그대로 쓰면 됩니다.</div>`;
+    return;
+  }
+
+  const pg = tSession?.progress || {};
+  const sDone = pg.scenes?.done || 0, sTot = tScenes.length;
+  const aSent = pg.article?.sent || 0, aTot = tArticle ? (tArticle.sentences || []).length : 0;
+  const vDone = pg.vocab?.done || 0, vTot = tVocab.today.length + tVocab.past.length;
+  const r = rankOf(tProg?.xp_total || 0);
+  const cls = (d, t) => !t ? '' : d >= t ? ' done' : d > 0 ? ' part' : '';
+  const pct = (d, t) => t ? Math.round(d / t * 100) : 0;
+
+  box.innerHTML = `
+    <div class="xpbar">
+      <div class="top"><span class="rk" id="t-rank">${r.n}단계 <em>${esc(r.name)}</em></span>
+        <span class="n" id="t-xpnum">${tProg?.xp_total || 0} / ${r.to} XP</span></div>
+      <div class="track"><i id="t-track" style="width:${Math.max(((tProg?.xp_total||0)-r.from)/(r.to-r.from)*100,2)}%"></i></div>
+      <div class="gain" id="t-gain"></div>
+    </div>
+    <div class="board">
+      <button class="bcard${cls(sDone,sTot)}" data-a="scene" ${sTot?'':'disabled'}>
+        <div class="bt"><span class="chk">✓</span>상황 대화</div>
+        <div class="bs">${sTot ? `${sDone}/${sTot}개` : '오늘 장면이 없어요'}</div>
+        <div class="bar"><i style="width:${pct(sDone,sTot)}%"></i></div></button>
+      <button class="bcard${cls(aSent,aTot)}" data-a="article" ${aTot?'':'disabled'}>
+        <div class="bt"><span class="chk">✓</span>뉴스 읽기</div>
+        <div class="bs">${aTot ? `문장 ${aSent}/${aTot}` : '오늘 기사가 없어요'}</div>
+        <div class="bar"><i style="width:${pct(aSent,aTot)}%"></i></div></button>
+      <button class="bcard${cls(vDone,vTot)}" data-a="vocab" ${vTot?'':'disabled'}>
+        <div class="bt"><span class="chk">✓</span>어휘 마무리</div>
+        <div class="bs">${vTot ? `오늘 ${tVocab.today.length} · 지난 것 ${tVocab.past.length}` : '쌓인 어휘가 없어요'}</div>
+        <div class="bar"><i style="width:${pct(vDone,vTot)}%"></i></div></button>
+    </div>
+    <div class="tstats">
+      <div class="tstat"><div class="v">${tProg?.turns_spoken || 0}</div><div class="l">말한 턴</div></div>
+      <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>분</small></div><div class="l">들은 시간</div></div>
+      <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">읽은 기사</div></div>
+    </div>
+    <p class="leg">순서는 아무거나 먼저 해도 됩니다. 각 칸이 <b>어디까지 했는지 숫자로</b> 말해줍니다.</p>`;
+  box.querySelectorAll('.bcard').forEach(b => b.onclick = () => openAct(b.dataset.a));
+  paintXp('');
+}
+
+function actBar(title){
+  return `<div class="actbar"><button class="btn sm back" id="t-back">‹ 오늘 판</button>
+    <b style="font-size:14px">${esc(title)}</b>
+    <div class="rate2" id="t-rate"><button data-r="0.75">0.75×</button><button data-r="1" aria-pressed="true">1×</button><button data-r="1.25">1.25×</button></div></div>`;
+}
+function wireBar(){
+  $('t-back').onclick = () => { tStopAudio(); renderToday(); };
+  $('t-rate').onclick = e => {
+    const b = e.target.closest('[data-r]'); if (!b) return;
+    tRate = +b.dataset.r;
+    document.querySelectorAll('#t-rate button').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.r === tRate)));
+    if (tAudio) tAudio.playbackRate = tRate;
+  };
+  document.querySelectorAll('#t-rate button').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.r === tRate)));
+}
+function openAct(a){
+  $('t-board').textContent = '';
+  const el = $('t-act'); el.hidden = false;
+  if (a === 'scene') actScene(el);
+  else if (a === 'article') actArticle(el);
+  else actVocab(el);
+}
+
+/* ── 막 1 · 상황 대화 ───────────────────────────────── */
+
+let scIdx = 0, scMode = 'listen';
+
+function actScene(el){
+  const done = tSession?.progress?.scenes?.done || 0;
+  scIdx = Math.min(done, tScenes.length - 1);
+  drawScene(el);
+}
+
+function drawScene(el){
+  const sc = tScenes[scIdx];
+  if (!sc) { renderToday(); return; }
+  const turns = sc.turns || [];
+  el.innerHTML = actBar(`상황 대화 ${scIdx+1}/${tScenes.length}`) + `
+    <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
+      <b style="color:var(--eng)">상황</b> · ${esc(sc.situation_ko)}</div>
+    <div class="actbar">
+      <button class="btn sm" id="sc-listen">▶ 전체 듣기 (0.75×)</button>
+      <button class="btn sm" id="sc-fill">역할 채우기</button>
+      <button class="btn sm" id="sc-stop">■ 정지</button>
+    </div>
+    <div id="sc-turns"></div>
+    <p class="leg"><span class="sw">점선</span> = 150ms 미만으로 흘려 읽는 자리. 원어민이 거의 발음하지 않는다.</p>
+    <div class="actbar" style="margin-top:14px">
+      <button class="btn sm primary-btn" id="sc-next" style="padding:8px 14px">${scIdx+1 < tScenes.length ? '다음 장면 →' : '오늘 판으로 →'}</button>
+    </div>`;
+  wireBar();
+  paintTurns(sc);
+  $('sc-listen').onclick = () => { scMode='listen'; tRate=0.75; wireBar(); turns.forEach(t=>t.open=true); paintTurns(sc); chainTurn(sc,0); };
+  $('sc-fill').onclick   = () => { scMode='fill';   tRate=1;    wireBar(); turns.forEach(t=>t.open=false); paintTurns(sc); chainTurn(sc,0); };
+  $('sc-stop').onclick   = tStopAudio;
+  $('sc-next').onclick = async () => {
+    tStopAudio();
+    const n = Math.max(tSession?.progress?.scenes?.done || 0, scIdx + 1);
+    await saveProgress({ scenes: { done: n, total: tScenes.length } });
+    if (n >= tScenes.length) { await maybeComplete(); renderToday(); }
+    else { scIdx = Math.min(n, tScenes.length - 1); drawScene(el); }
+  };
+}
+
+function paintTurns(sc){
+  const box = $('sc-turns'); box.textContent = '';
+  (sc.turns || []).forEach((t, i) => {
+    const d = document.createElement('div');
+    d.className = 'dturn' + (t.is_me ? ' mine' : '');
+    d.dataset.i = i;
+    const hide = t.is_me && scMode === 'fill' && !t.open;
+    d.innerHTML = `<span class="who">${esc(t.role_ko || t.who)}</span><span class="line">
+      ${t.is_me && t.intent_ko ? `<span class="intent">↳ ${esc(t.intent_ko)}</span>` : ''}
+      ${hide ? '<span class="hid">여기서 내가 말한다 — 눌러서 모범 대사 보기</span>' : segHtml(t.segs || [], t.ev || [])}</span>`;
+    d.querySelector('.line').onclick = async () => {
+      if (hide) {
+        t.open = true; paintTurns(sc); playTurnA(sc, i);
+        // 내 턴을 메운 것이 이 세션에서 가장 값나가는 행동이다
+        tProg.turns_spoken = (tProg.turns_spoken || 0) + 1;
+        await bumpXp(XP.turn, '대화 턴');
+        return;
+      }
+      playTurnA(sc, i);
+    };
+    box.appendChild(d);
+  });
+}
+
+function playTurnA(sc, i, then){
+  tStopAudio();
+  const t = (sc.turns || [])[i];
+  if (!t?.audio_url) { then && then(); return; }
+  const el = document.querySelector(`.dturn[data-i="${i}"]`);
+  el?.classList.add('on');
+  el?.scrollIntoView({ block:'nearest', behavior:'smooth' });
+  tAudio = new Audio(t.audio_url);
+  tAudio.playbackRate = tRate;
+  tFollow(tAudio, t.ev || [], hit => {
+    el?.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
+    if (hit >= 0) el?.querySelector(`.kw[data-e="${hit}"]`)?.classList.add('on');
+  });
+  tAudio.onended = () => {
+    cancelAnimationFrame(tRaf);
+    el?.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
+    el?.classList.remove('on');
+    tProg.listened_ms = (tProg.listened_ms || 0) + (t.ms || 0);
+    then && then();
+  };
+  tAudio.play().catch(() => { then && then(); });
+}
+
+function chainTurn(sc, i){
+  const turns = sc.turns || [];
+  if (i >= turns.length) { tStopAudio(); return; }
+  const t = turns[i];
+  if (scMode === 'fill' && t.is_me && !t.open) {        // 내 턴에서 멈춘다
+    tStopAudio();
+    const el = document.querySelector(`.dturn[data-i="${i}"]`);
+    el?.classList.add('on'); el?.scrollIntoView({ block:'center', behavior:'smooth' });
+    return;
+  }
+  playTurnA(sc, i, () => chainTurn(sc, i + 1));
+}
+
+/* ── 막 2 · 뉴스 읽기 ───────────────────────────────── */
+
+function actArticle(el){
+  const a = tArticle;
+  if (!a) { renderToday(); return; }
+  el.innerHTML = actBar('뉴스 읽기') + `
+    <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13.5px;font-weight:600;margin-bottom:12px">${esc(a.title)}</div>
+    <div class="actbar"><button class="btn sm" id="ar-play">▶ 재생</button><button class="btn sm" id="ar-stop">■ 정지</button>
+      <span class="vprog" id="ar-prog" style="margin:0 0 0 auto"></span></div>
+    <div id="ar-sents">${(a.segs||[]).map((sg,i)=>`<div class="asbox" data-s="${i}">${segHtml(sg, a.ev||[])}</div>`).join('')}</div>
+    <p class="leg"><span class="sw">점선</span> = 흘려 읽는 자리 · 문장을 누르면 거기부터 다시 읽습니다.</p>
+    ${(a.summary_ko||[]).length ? `<div class="vcard" style="margin-top:16px"><div class="vt" style="font-size:14px">3줄 요약</div>
+      <div class="vm">${a.summary_ko.map(x=>`• ${esc(x)}`).join('<br>')}</div></div>` : ''}`;
+  wireBar();
+  const boxes = [...el.querySelectorAll('.asbox')];
+  let maxSent = tSession?.progress?.article?.sent || 0;
+  const showProg = () => { $('ar-prog').textContent = `문장 ${maxSent}/${boxes.length}`; };
+  showProg();
+
+  const run = fromMs => {
+    tStopAudio();
+    tAudio = new Audio(a.audio_url);
+    tAudio.playbackRate = tRate;
+    tAudio.currentTime = (fromMs || 0) / 1000;
+    tFollow(tAudio, a.ev || [], hit => {
+      el.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
+      boxes.forEach(b => b.classList.remove('on'));
+      if (hit < 0) return;
+      const span = el.querySelector(`.kw[data-e="${hit}"]`); if (!span) return;
+      span.classList.add('on');
+      const box = span.closest('.asbox');
+      box?.classList.add('on'); box?.scrollIntoView({ block:'nearest' });
+      const si = +(box?.dataset.s ?? -1);
+      if (si + 1 > maxSent) { maxSent = si + 1; showProg(); }
+    });
+    tAudio.onended = async () => {
+      tStopAudio();
+      tProg.listened_ms = (tProg.listened_ms || 0) + (a.ms || 0);
+      tProg.articles_read = (tProg.articles_read || 0) + 1;
+      maxSent = boxes.length; showProg();
+      await saveProgress({ article: { sent: maxSent, total: boxes.length } });
+      await bumpXp(XP.article, '기사 완독');
+      await maybeComplete();
+    };
+    tAudio.play().catch(()=>{});
+  };
+  $('ar-play').onclick = () => run(0);
+  $('ar-stop').onclick = async () => { tStopAudio(); await saveProgress({ article:{ sent:maxSent, total:boxes.length } }); };
+  boxes.forEach(b => b.onclick = () => run(a.starts?.[+b.dataset.s] ?? 0));
+}
+
+/* ── 막 3 · 어휘 마무리 ─────────────────────────────── */
+
+function actVocab(el){
+  // 오늘 것은 인지(채점 없음), 지난 것은 산출(SRS 채점). 방금 본 표현을 채점하면
+  // 전부 "맞음"이 나와서 복습 간격이 가짜로 벌어진다.
+  const list = [...tVocab.today.map(c=>({c,kind:'recog'})), ...tVocab.past.map(c=>({c,kind:'prod'}))];
+  let i = tSession?.progress?.vocab?.done || 0;
+  el.innerHTML = actBar('어휘 마무리') + `<div class="vprog" id="v-prog"></div><div id="v-body"></div>`;
+  wireBar();
+  draw();
+
+  function draw(){
+    const prog = $('v-prog'), body = $('v-body');
+    if (i >= list.length) {
+      prog.textContent = '';
+      body.innerHTML = `<div class="donebox"><div class="big">🎉</div><h3>어휘 마무리 끝</h3>
+        <p>오늘 나온 것 ${tVocab.today.length}개 · 지난 것 ${tVocab.past.length}개.</p>
+        <button onclick="renderToday()">오늘 판으로</button></div>`;
+      return;
+    }
+    const { c, kind } = list[i];
+    prog.textContent = `${i+1} / ${list.length} · ${kind === 'recog' ? '오늘 나온 것 (확인만)' : '지난 것 — 말해보기'}`;
+    if (kind === 'recog') {
+      body.innerHTML = `<div class="vcard"><div class="vt">${esc(c.answer_en)}</div>
+        <div class="vm">${esc(c.note || c.prompt_ko || '')}</div>
+        ${c.source_ref ? `<div class="vsrc">출처 · ${esc(c.source_ref)}</div>` : ''}
+        <button class="check" id="v-ok" style="margin-top:12px">들었다 — 다음</button></div>`;
+      $('v-ok').onclick = async () => {
+        playVocab(c);
+        await bumpXp(XP.recog, '어휘 확인');
+        i++; await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
+      };
+    } else {
+      body.innerHTML = `<div class="vcard"><div class="vm" style="margin:0 0 8px">이 상황, 영어로</div>
+        <div class="vt" style="font-size:16px">${esc(c.prompt_ko)}</div>
+        <button class="check" id="v-reveal" style="margin-top:12px">정답 보기</button>
+        <div id="v-ans" hidden style="margin-top:12px">
+          <div class="vt">${esc(c.answer_en)}</div>
+          ${c.note ? `<div class="vm">${esc(c.note)}</div>` : ''}
+          <div class="grades" style="margin-top:12px">
+            <button class="grade miss">틀림</button><button class="grade soso">애매</button><button class="grade good">맞음</button>
+          </div></div></div>`;
+      $('v-reveal').onclick = function(){ $('v-ans').hidden = false; this.remove(); playVocab(c); };
+      body.querySelector('.grades').onclick = async e => {
+        const g = e.target.closest('.grade'); if (!g) return;
+        const grade = g.classList.contains('miss') ? 'miss' : g.classList.contains('soso') ? 'soso' : 'good';
+        applyGrade(c, grade);
+        await saveGrade(c, grade, 'vocab');
+        tProg.turns_spoken = (tProg.turns_spoken || 0) + 1;
+        // **오답에도 XP 를 준다.** 0 이면 「맞음」을 거짓으로 누르게 되고 SRS 가 망가진다.
+        await bumpXp(grade === 'miss' ? XP.prodMiss : XP.prodGood, grade === 'miss' ? '산출 (틀려도 XP)' : '산출 정답');
+        i++; await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
+      };
+    }
+  }
+}
+function playVocab(c){ tStopAudio(); playCard(c); }
+
+/* 세 칸을 다 채웠으면 완주 보너스. 한 번만 준다 */
+async function maybeComplete(){
+  if (!tSession || tSession.completed_at) return;
+  const p = tSession.progress || {};
+  const ok = (p.scenes?.total && p.scenes.done >= p.scenes.total)
+          && (p.article?.total ? p.article.sent >= p.article.total : true)
+          && (p.vocab?.total ? p.vocab.done >= p.vocab.total : true);
+  if (!ok) return;
+  try {
+    await sb.from('eng_sessions').update({ completed_at: new Date().toISOString() })
+      .eq('user_id', currentUser.id).eq('session_date', today());
+    tSession.completed_at = new Date().toISOString();
+  } catch(_) {}
+  await bumpXp(XP.complete, '하루 판 완주 🎉');
+}
+
 /* ================= init ================= */
 async function init(){
   paintBuild();
@@ -1043,6 +1541,11 @@ async function init(){
     toast('오프라인 모드 — 마지막 큐로 복습합니다');
     console.warn(e);
   }
+  // 「오늘」이 기본 화면이다. show() 를 안 거치고 뜨므로 여기서 직접 그려야 한다 —
+  // 안 부르면 앱을 열었을 때 첫 화면이 그냥 빈 채로 있다.
+  // try 밖에 둔다: 오늘 판이 실패했다고 "오프라인 모드" 토스트가 뜨면 원인을 잘못 가리킨다.
+  try { await renderToday(); } catch (e) { console.warn('오늘 판', e); }
+
   if ('speechSynthesis' in window) speechSynthesis.getVoices();
 
   // 이미 허용해둔 사람은 조용히 재구독한다. 푸시 구독은 브라우저가 주기적으로
