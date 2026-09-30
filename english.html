@@ -296,11 +296,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 
   <div id="login-view" class="login-card" style="display:none">
     <h2>k<b style="color:var(--eng)">tree</b> English</h2>
-    <p>ktree 계정으로 로그인하세요. 한 번 로그인하면 유지됩니다.</p>
+    <p>Sign in with your ktree account. You'll stay signed in.</p>
     <form onsubmit="event.preventDefault();login()">
-      <div class="field"><label>이메일</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com"></div>
-      <div class="field"><label>비밀번호</label><input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></div>
-      <button class="primary-btn" type="submit">로그인</button>
+      <div class="field"><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+      <button class="primary-btn" type="submit">Sign in</button>
     </form>
     <div id="login-error" class="msg err"></div>
     <div class="buildline">build <b>—</b></div>
@@ -311,7 +311,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       <div class="hd-logo">k<b>tree</b> · English</div>
       <div class="hd-right">
         <span class="streakpill" id="streak">🔥 —</span>
-        <button class="hd-btn" onclick="logout()">로그아웃</button>
+        <button class="hd-btn" onclick="logout()">Sign out</button>
       </div>
     </div>
 
@@ -337,11 +337,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 
 <nav class="tabbar" id="tabbar" style="display:none">
   <button class="tab on" data-s="today">
-    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="2.5"/><path d="M9 3v3M15 3v3M8.5 12.5l2 2 4-4"/></svg>오늘</button>
+    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="2.5"/><path d="M9 3v3M15 3v3M8.5 12.5l2 2 4-4"/></svg>Today</button>
   <button class="tab" data-s="vocab">
-    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7.5 4h11A2.5 2.5 0 0 1 21 6.5v11"/></svg>어휘</button>
+    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7.5 4h11A2.5 2.5 0 0 1 21 6.5v11"/></svg>Vocab</button>
   <button class="tab" data-s="archive">
-    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="4.5" rx="1.5"/><path d="M5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10M10 12h4"/></svg>보관함</button>
+    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="4.5" rx="1.5"/><path d="M5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10M10 12h4"/></svg>Archive</button>
 </nav>
 
 <div class="toast" id="toast"></div>
@@ -357,7 +357,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
 const BUILD = '2026-09-30.10';
 
-const LEVELS = { 1:'L1 기초', 2:'L2 구어·관용', 3:'L3 뉘앙스', 4:'L4 고급 담화' };
+const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
 // 토픽은 사람마다 켜고 끌 수 있으니 서로 방해되지 않는다.
 const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크','마케팅'];
@@ -498,8 +498,8 @@ async function flushPending(){
   }
   localStorage.setItem(LS.pending, JSON.stringify(rest));
   const synced = pend.length - rest.length;
-  if (rest.length) toast(`동기화 ${synced}건 · ${rest.length}건 실패 — 다음에 다시 시도해요`);
-  else if (synced)  toast(`오프라인 복습 ${synced}건 동기화됨`);
+  if (rest.length) toast(`Synced ${synced} · ${rest.length} failed — will retry later`);
+  else if (synced)  toast(`Synced ${synced} offline reviews`);
 }
 window.addEventListener('online', flushPending);
 
@@ -556,13 +556,13 @@ function urlBase64ToUint8Array(s){
 }
 async function subscribePush(interactive){
   if (!('serviceWorker' in navigator) || !('PushManager' in window) || typeof Notification === 'undefined'){
-    if (interactive) toast('이 브라우저는 푸시를 지원하지 않아요 (iOS는 홈 화면에 추가 후 가능)');
+    if (interactive) toast("Push isn't supported here (on iOS, add to Home Screen first)");
     return;
   }
   try {
     const reg = await navigator.serviceWorker.ready;
     const permission = await Notification.requestPermission();
-    if (permission !== 'granted'){ if (interactive) toast('알림 권한이 거부됐어요'); return; }
+    if (permission !== 'granted'){ if (interactive) toast('Notification permission denied'); return; }
     const sub = await reg.pushManager.subscribe({ userVisibleOnly:true, applicationServerKey:urlBase64ToUint8Array(VAPID_PUBLIC_KEY) });
     const { endpoint, keys } = sub.toJSON();
     const row = { user_id: currentUser.id, endpoint, p256dh: keys.p256dh, auth: keys.auth };
@@ -571,11 +571,11 @@ async function subscribePush(interactive){
     if (member) row.member_id = member.id;
     const { error } = await sb.from('push_subscriptions').upsert(row, { onConflict:'user_id,endpoint' });
     if (error) throw error;
-    const pb = $('t-push'); if (pb) pb.textContent = '🔔 아침 푸시 켜짐';
-    if (interactive) toast('내일 아침부터 복습 푸시가 와요');
+    const pb = $('t-push'); if (pb) pb.textContent = '🔔 Morning push on';
+    if (interactive) toast('Review push starts tomorrow morning');
   } catch (e) {
     console.warn('push subscribe failed', e);
-    if (interactive) toast('푸시 등록 실패 — 콘솔을 확인하세요');
+    if (interactive) toast('Push registration failed — check the console');
   }
 }
 
@@ -592,7 +592,7 @@ async function paintBuild(){
     const stale = mine.filter(k => k !== `ktree-${BUILD}`);
     if (!stale.length) return;
     els.forEach(el => {
-      el.innerHTML = `build <b>${esc(BUILD)}</b> · <span class="stale">캐시 ${esc(stale.join(', '))} — 앱을 완전히 닫고 다시 열어주세요</span>`;
+      el.innerHTML = `build <b>${esc(BUILD)}</b> · <span class="stale">cache ${esc(stale.join(', '))} — fully close and reopen the app</span>`;
     });
   } catch(_) { /* 캐시를 못 읽는 브라우저면 버전만 보여준다 */ }
 }
@@ -734,7 +734,7 @@ async function bumpXp(n, why){
   if (!tProg) return;
   const room = Math.max(0, XP.cap - tProg.xp_today);
   const add = Math.min(n, room);
-  if (!add) { tGain = -1; paintXp(why + ' (하루 상한)'); return; }
+  if (!add) { tGain = -1; paintXp(why + ' (daily cap)'); return; }
   tProg.xp_total += add; tProg.xp_today += add; tGain += add;
   paintXp(why);
   try {
@@ -760,11 +760,11 @@ async function saveProgress(patch){
 
 function paintXp(why){
   const el = $('t-gain'); if (!el) return;
-  el.textContent = tGain > 0 ? `오늘 +${tGain} XP${why ? ' · ' + why : ''}` : (why || '');
+  el.textContent = tGain > 0 ? `+${tGain} XP today${why ? ' · ' + why : ''}` : (why || '');
   const r = rankOf(tProg?.xp_total || 0);
   const pct = Math.min(100, ((tProg?.xp_total || 0) - r.from) / (r.to - r.from) * 100);
   const b = $('t-track'); if (b) b.style.width = Math.max(pct, 2) + '%';
-  const t = $('t-rank'); if (t) t.innerHTML = `${r.n}단계 <em>${esc(r.name)}</em>`;
+  const t = $('t-rank'); if (t) t.innerHTML = `Lv ${r.n} <em>${esc(r.name)}</em>`;
   const n = $('t-xpnum'); if (n) n.textContent = `${tProg?.xp_total || 0} / ${r.to} XP`;
 }
 
@@ -774,11 +774,11 @@ async function renderToday(){
   tStopAudio();
   $('t-act').hidden = true; $('t-act').textContent = '';
   const box = $('t-board');
-  if (!tLoaded) { box.innerHTML = '<div class="empty">불러오는 중…</div>'; await loadToday(); }
+  if (!tLoaded) { box.innerHTML = '<div class="empty">Loading…</div>'; await loadToday(); }
   if (tMissing) {
-    box.innerHTML = `<div class="empty"><b>개편 테이블이 아직 없어요.</b><br>
-      Supabase SQL Editor 에서 <code>supabase/english-v2-schema.sql</code> 을 실행하면 여기가 채워집니다.<br>
-      그 전까지는 기존 탭(홈·Review·Listen)을 그대로 쓰면 됩니다.</div>`;
+    box.innerHTML = `<div class="empty"><b>The new tables aren't set up yet.</b><br>
+      Run <code>supabase/english-v2-schema.sql</code> in the Supabase SQL Editor and this fills in.<br>
+      Until then the old tabs (Home · Review · Listen) still work.</div>`;
     return;
   }
 
@@ -792,46 +792,46 @@ async function renderToday(){
 
   box.innerHTML = `
     <div class="xpbar">
-      <div class="top"><span class="rk" id="t-rank">${r.n}단계 <em>${esc(r.name)}</em></span>
+      <div class="top"><span class="rk" id="t-rank">Lv ${r.n} <em>${esc(r.name)}</em></span>
         <span class="n" id="t-xpnum">${tProg?.xp_total || 0} / ${r.to} XP</span></div>
       <div class="xtrack"><i id="t-track" style="width:${Math.max(((tProg?.xp_total||0)-r.from)/(r.to-r.from)*100,2)}%"></i></div>
       <div class="gain" id="t-gain"></div>
     </div>
     <div class="board">
       <button class="bcard${cls(sDone,sTot)}" data-a="scene" ${sTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">상황 대화</span>
-        <span class="bs">${sTot ? `${sDone}/${sTot}` : '없음'}</span>
+        <span class="chk">✓</span><span class="bt">Scenes</span>
+        <span class="bs">${sTot ? `${sDone}/${sTot}` : 'none'}</span>
         <span class="bar"><i style="width:${pct(sDone,sTot)}%"></i></span></button>
       <button class="bcard${cls(aSent,aTot)}" data-a="article" ${aTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">뉴스 읽기</span>
-        <span class="bs">${aTot ? `${aSent}/${aTot}문장` : '없음'}</span>
+        <span class="chk">✓</span><span class="bt">News</span>
+        <span class="bs">${aTot ? `${aSent}/${aTot} sent.` : 'none'}</span>
         <span class="bar"><i style="width:${pct(aSent,aTot)}%"></i></span></button>
       <button class="bcard${cls(vDone,vTot)}" data-a="vocab" ${vTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">어휘 마무리</span>
-        <span class="bs">${vTot ? `${vDone}/${vTot}` : '없음'}</span>
+        <span class="chk">✓</span><span class="bt">Vocab drill</span>
+        <span class="bs">${vTot ? `${vDone}/${vTot}` : 'none'}</span>
         <span class="bar"><i style="width:${pct(vDone,vTot)}%"></i></span></button>
     </div>
     <div class="tstats">
-      <div class="tstat"><div class="v">${tProg?.turns_spoken || 0}</div><div class="l">말한 턴</div></div>
-      <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>분</small></div><div class="l">들은 시간</div></div>
-      <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">읽은 기사</div></div>
+      <div class="tstat"><div class="v">${tProg?.turns_spoken || 0}</div><div class="l">Turns spoken</div></div>
+      <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>m</small></div><div class="l">Listened</div></div>
+      <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">Articles read</div></div>
     </div>
-    <p class="leg">순서는 아무거나 먼저 해도 됩니다. 각 칸이 <b>어디까지 했는지 숫자로</b> 말해줍니다.</p>
+    <p class="leg">Do them in any order. Each row tells you <b>how far you got, as a number</b>.</p>
 
     <!-- 옛 Inbox·일기·홈 탭이 하던 일. 탭을 따로 두면 안 쓰니 판 아래로 내렸다 -->
     <div class="strip">
       <div class="srow">
-        <input id="t-inb" placeholder="주운 표현 한 줄 — 밤에 카드가 됩니다" aria-label="표현 추가">
+        <input id="t-inb" placeholder="Drop a phrase you picked up — it becomes a card tonight" aria-label="Add phrase">
         <button class="btn sm" id="t-inb-add">＋</button>
       </div>
-      <details class="sdet"><summary>오늘 일기 — 3~5문장 (밤사이 교정됩니다)</summary>
+      <details class="sdet"><summary>Today's journal — 3–5 sentences (corrected overnight)</summary>
         <textarea id="t-jr" rows="4" placeholder="Today I..."></textarea>
-        <div class="srow" style="margin-top:8px"><button class="btn sm" id="t-jr-send">제출</button>
+        <div class="srow" style="margin-top:8px"><button class="btn sm" id="t-jr-send">Submit</button>
           <span class="leg" id="t-jr-msg" style="margin:0"></span></div>
       </details>
       <div class="srow" style="margin-top:10px">
-        <button class="btn sm" id="t-push">🔔 아침 푸시 켜기</button>
-        <span class="leg" style="margin:0">토픽</span>
+        <button class="btn sm" id="t-push">🔔 Turn on morning push</button>
+        <span class="leg" style="margin:0">Topics</span>
         <span id="t-topics" class="srow" style="gap:4px"></span>
       </div>
     </div>`;
@@ -842,7 +842,7 @@ async function renderToday(){
 }
 
 function actBar(title){
-  return `<div class="actbar"><button class="btn sm back" id="t-back">‹ 오늘 판</button>
+  return `<div class="actbar"><button class="btn sm back" id="t-back">‹ Today</button>
     <b style="font-size:14px">${esc(title)}</b>
     <div class="rate2" id="t-rate"><button data-r="0.75">0.75×</button><button data-r="1" aria-pressed="true">1×</button><button data-r="1.25">1.25×</button></div></div>`;
 }
@@ -878,18 +878,18 @@ function drawScene(el){
   const sc = tScenes[scIdx];
   if (!sc) { renderToday(); return; }
   const turns = sc.turns || [];
-  el.innerHTML = actBar(`상황 대화 ${scIdx+1}/${tScenes.length}`) + `
+  el.innerHTML = actBar(`Scene ${scIdx+1}/${tScenes.length}`) + `
     <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
-      <b style="color:var(--eng)">상황</b> · ${esc(sc.situation_ko)}</div>
+      <b style="color:var(--eng)">Context</b> · ${esc(sc.situation_ko)}</div>
     <div class="actbar">
-      <button class="btn sm" id="sc-listen">▶ 전체 듣기</button>
-      <button class="btn sm" id="sc-fill">역할 채우기</button>
-      <button class="btn sm" id="sc-stop">■ 정지</button>
+      <button class="btn sm" id="sc-listen">▶ Play all</button>
+      <button class="btn sm" id="sc-fill">Fill my turns</button>
+      <button class="btn sm" id="sc-stop">■ Stop</button>
     </div>
     <div id="sc-turns"></div>
-    <p class="leg"><span class="sw">점선</span> = 150ms 미만으로 흘려 읽는 자리. 원어민이 거의 발음하지 않는다.</p>
+    <p class="leg"><span class="sw">Dotted</span> = swallowed under 150ms. Natives barely pronounce it.</p>
     <div class="actbar" style="margin-top:14px">
-      <button class="btn sm primary-btn" id="sc-next" style="padding:8px 14px">${scIdx+1 < tScenes.length ? '다음 장면 →' : '오늘 판으로 →'}</button>
+      <button class="btn sm primary-btn" id="sc-next" style="padding:8px 14px">${scIdx+1 < tScenes.length ? 'Next scene →' : 'Back to Today →'}</button>
     </div>`;
   wireBar();
   paintTurns(sc);
@@ -918,8 +918,8 @@ function paintTurns(sc){
     const mean = !hide && t.meaning_ko;
     d.innerHTML = `<span class="who">${esc(t.role_ko || t.who)}</span><span class="line">
       ${t.is_me && t.intent_ko ? `<span class="intent">↳ ${esc(t.intent_ko)}</span>` : ''}
-      ${hide ? '<span class="hid">여기서 내가 말한다 — 눌러서 모범 대사 보기</span>' : segHtml(t.segs || [], t.ev || [])}
-      ${mean ? `<button class="tchev${t.showMean ? ' open' : ''}" aria-label="뜻 보기" aria-expanded="${!!t.showMean}">›</button>` : ''}
+      ${hide ? '<span class="hid">Your turn — tap to see the model line</span>' : segHtml(t.segs || [], t.ev || [])}
+      ${mean ? `<button class="tchev${t.showMean ? ' open' : ''}" aria-label="Show meaning" aria-expanded="${!!t.showMean}">›</button>` : ''}
       ${mean && t.showMean ? `<span class="mean">${esc(t.meaning_ko)}</span>` : ''}</span>`;
     const mb = d.querySelector('.tchev');
     if (mb) mb.onclick = e => { e.stopPropagation(); t.showMean = !t.showMean; paintTurns(sc); };
@@ -928,7 +928,7 @@ function paintTurns(sc){
         t.open = true; paintTurns(sc); playTurnA(sc, i);
         // 내 턴을 메운 것이 이 세션에서 가장 값나가는 행동이다
         tProg.turns_spoken = (tProg.turns_spoken || 0) + 1;
-        await bumpXp(XP.turn, '대화 턴');
+        await bumpXp(XP.turn, 'Dialogue turn');
         return;
       }
       playTurnA(sc, i);
@@ -978,18 +978,18 @@ function chainTurn(sc, i){
 function actArticle(el){
   const a = tArticle;
   if (!a) { renderToday(); return; }
-  el.innerHTML = actBar('뉴스 읽기') + `
+  el.innerHTML = actBar('News') + `
     <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13.5px;font-weight:600;margin-bottom:12px">${esc(a.title)}</div>
-    <div class="actbar"><button class="btn sm" id="ar-play">▶ 재생</button><button class="btn sm" id="ar-stop">■ 정지</button>
+    <div class="actbar"><button class="btn sm" id="ar-play">▶ Play</button><button class="btn sm" id="ar-stop">■ Stop</button>
       <span class="vprog" id="ar-prog" style="margin:0 0 0 auto"></span></div>
     <div id="ar-sents">${(a.segs||[]).map((sg,i)=>`<div class="asbox" data-s="${i}">${segHtml(sg, a.ev||[])}</div>`).join('')}</div>
-    <p class="leg"><span class="sw">점선</span> = 흘려 읽는 자리 · 문장을 누르면 거기부터 다시 읽습니다.</p>
-    ${(a.summary_ko||[]).length ? `<div class="vcard" style="margin-top:16px"><div class="vt" style="font-size:14px">3줄 요약</div>
+    <p class="leg"><span class="sw">Dotted</span> = swallowed · tap a sentence to replay from there.</p>
+    ${(a.summary_ko||[]).length ? `<div class="vcard" style="margin-top:16px"><div class="vt" style="font-size:14px">Summary</div>
       <div class="vm">${a.summary_ko.map(x=>`• ${esc(x)}`).join('<br>')}</div></div>` : ''}`;
   wireBar();
   const boxes = [...el.querySelectorAll('.asbox')];
   let maxSent = tSession?.progress?.article?.sent || 0;
-  const showProg = () => { $('ar-prog').textContent = `문장 ${maxSent}/${boxes.length}`; };
+  const showProg = () => { $('ar-prog').textContent = `Sentence ${maxSent}/${boxes.length}`; };
   showProg();
 
   const run = fromMs => {
@@ -1014,7 +1014,7 @@ function actArticle(el){
       tProg.articles_read = (tProg.articles_read || 0) + 1;
       maxSent = boxes.length; showProg();
       await saveProgress({ article: { sent: maxSent, total: boxes.length } });
-      await bumpXp(XP.article, '기사 완독');
+      await bumpXp(XP.article, 'Article finished');
       await maybeComplete();
     };
     tAudio.play().catch(()=>{});
@@ -1031,7 +1031,7 @@ function actVocab(el){
   // 전부 "맞음"이 나와서 복습 간격이 가짜로 벌어진다.
   const list = [...tVocab.today.map(c=>({c,kind:'recog'})), ...tVocab.past.map(c=>({c,kind:'prod'}))];
   let i = tSession?.progress?.vocab?.done || 0;
-  el.innerHTML = actBar('어휘 마무리') + `<div class="vprog" id="v-prog"></div><div id="v-body"></div>`;
+  el.innerHTML = actBar('Vocab drill') + `<div class="vprog" id="v-prog"></div><div id="v-body"></div>`;
   wireBar();
   draw();
 
@@ -1039,69 +1039,69 @@ function actVocab(el){
     const prog = $('v-prog'), body = $('v-body');
     if (i >= list.length) {
       prog.textContent = '';
-      body.innerHTML = `<div class="donebox"><div class="big">🎉</div><h3>어휘 마무리 끝</h3>
-        <p>오늘 나온 것 ${tVocab.today.length}개 · 지난 것 ${tVocab.past.length}개.</p>
-        <button onclick="renderToday()">오늘 판으로</button></div>`;
+      body.innerHTML = `<div class="donebox"><div class="big">🎉</div><h3>Vocab drill done</h3>
+        <p>${tVocab.today.length} from today · ${tVocab.past.length} from before.</p>
+        <button onclick="renderToday()">Back to Today</button></div>`;
       return;
     }
     const { c, kind } = list[i];
     const isWord = c.kind === 'word';
     prog.textContent = `${i+1} / ${list.length} · ` + (kind === 'recog'
-      ? `오늘 나온 ${isWord ? '단어' : '표현'} (확인만)`
-      : isWord ? '지난 단어 — 뜻은?' : '지난 표현 — 말해보기');
+      ? `New ${isWord ? 'word' : 'phrase'} today (just check)`
+      : isWord ? 'Earlier word — meaning?' : 'Earlier phrase — say it');
     if (kind === 'recog') {
-      body.innerHTML = `<div class="vcard"><span class="klabel">${isWord ? '단어' : '표현'}</span>
+      body.innerHTML = `<div class="vcard"><span class="klabel">${isWord ? 'Word' : 'Phrase'}</span>
         <div class="vt">${esc(c.answer_en)}</div>
         <div class="vm">${esc(isWord ? c.prompt_ko : (c.note || c.prompt_ko || ''))}</div>
         ${isWord && c.note ? `<div class="vex">${esc(c.note)}</div>` : ''}
-        ${c.source_ref ? `<div class="vsrc">출처 · ${esc(c.source_ref)}</div>` : ''}
+        ${c.source_ref ? `<div class="vsrc">Source · ${esc(c.source_ref)}</div>` : ''}
         <div class="srow" style="margin-top:12px">
-          <button class="check" id="v-ok" style="margin-top:0;flex:1 1 auto">들었다 — 다음</button>
-          <button class="btn sm" id="v-kill" title="이 표현 다시 안 보기">✕</button></div></div>`;
+          <button class="check" id="v-ok" style="margin-top:0;flex:1 1 auto">Got it — next</button>
+          <button class="btn sm" id="v-kill" title="Never show this again">✕</button></div></div>`;
       $('v-kill').onclick = async () => {
         // 어색한 카드는 알아챈 자리에서 바로 뺄 수 있어야 한다. 참고 넘기면 계속 돌아온다.
         // 되돌리기를 붙인 이유: 주 버튼 바로 옆이라 오탭이 잦은데, 한 번 죽이면 장부에서도
         // 걸러져 앱 어디에서도 다시 못 본다. status 플래그 하나라 복구는 공짜다.
         const prev = c.status || 'new', at = i;
         const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', c.id);
-        if (error) return toast('실패 — 네트워크를 확인하세요');
+        if (error) return toast('Failed — check your connection');
         const [removed] = list.splice(at, 1);
         await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
-        toast('이 표현은 다시 안 나와요', { label:'되돌리기', onClick: async () => {
+        toast("You won't see this again", { label:'Undo', onClick: async () => {
           const { error } = await sb.from('eng_cards').update({ status:prev }).eq('id', c.id);
-          if (error) return toast('되돌리기 실패 — 네트워크를 확인하세요');
+          if (error) return toast('Undo failed — check your connection');
           list.splice(at, 0, removed);
           await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
-          toast('되돌렸어요');
+          toast('Restored');
         }});
       };
       $('v-ok').onclick = async () => {
         playVocab(c);
-        await bumpXp(XP.recog, '어휘 확인');
+        await bumpXp(XP.recog, 'Vocab check');
         i++; await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
       };
     } else if (isWord) {
       // 단어는 **영어를 보고 뜻을 떠올리는** 시험이다. 상황을 주고 말하게 하면 층이 어긋난다.
-      body.innerHTML = `<div class="vcard"><span class="klabel">단어</span>
-        <div class="vm" style="margin:0 0 8px">이 단어의 뜻은?</div>
+      body.innerHTML = `<div class="vcard"><span class="klabel">Word</span>
+        <div class="vm" style="margin:0 0 8px">What does this mean?</div>
         <div class="vt">${esc(c.answer_en)}</div>
-        <button class="check" id="v-reveal" style="margin-top:12px">뜻 보기</button>
+        <button class="check" id="v-reveal" style="margin-top:12px">Show meaning</button>
         <div id="v-ans" hidden style="margin-top:12px">
           <div class="vt" style="font-size:16px">${esc(c.prompt_ko)}</div>
           ${c.note ? `<div class="vex">${esc(c.note)}</div>` : ''}
           <div class="grades" style="margin-top:12px">
-            <button class="grade miss">몰랐음</button><button class="grade soso">가물</button><button class="grade good">알았음</button>
+            <button class="grade miss">Again</button><button class="grade soso">Hard</button><button class="grade good">Good</button>
           </div></div></div>`;
     } else {
-      body.innerHTML = `<div class="vcard"><span class="klabel">표현</span>
-        <div class="vm" style="margin:0 0 8px">이 상황, 영어로</div>
+      body.innerHTML = `<div class="vcard"><span class="klabel">Phrase</span>
+        <div class="vm" style="margin:0 0 8px">Say this in English</div>
         <div class="vt" style="font-size:16px">${esc(c.prompt_ko)}</div>
-        <button class="check" id="v-reveal" style="margin-top:12px">정답 보기</button>
+        <button class="check" id="v-reveal" style="margin-top:12px">Show answer</button>
         <div id="v-ans" hidden style="margin-top:12px">
           <div class="vt">${esc(c.answer_en)}</div>
           ${c.note ? `<div class="vm">${esc(c.note)}</div>` : ''}
           <div class="grades" style="margin-top:12px">
-            <button class="grade miss">틀림</button><button class="grade soso">애매</button><button class="grade good">맞음</button>
+            <button class="grade miss">Again</button><button class="grade soso">Hard</button><button class="grade good">Good</button>
           </div></div></div>`;
     }
     // 배선은 분기 밖에 둔다 — 단어·표현 두 갈래가 같은 reveal/채점을 쓴다.
@@ -1117,7 +1117,7 @@ function actVocab(el){
         // **오답에도 XP 를 준다.** 0 이면 「맞음」을 거짓으로 누르게 되고 SRS 가 망가진다.
         const good = grade !== 'miss';
         const pts = isWord ? (good ? XP.wordGood : XP.wordMiss) : (good ? XP.prodGood : XP.prodMiss);
-        await bumpXp(pts, (isWord ? '단어' : '산출') + (good ? ' 정답' : ' (틀려도 XP)'));
+        await bumpXp(pts, (isWord ? 'Word' : 'Production') + (good ? ' correct' : ' (XP anyway)'));
         i++; await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
       };
     }
@@ -1136,7 +1136,7 @@ async function paintStreak(){
     let n = 0, cur = Date.now();
     if (!days.has(kstDate(cur))) cur -= 864e5;
     while (days.has(kstDate(cur))) { n++; cur -= 864e5; }
-    el.textContent = n ? `🔥 ${n}일` : '🔥 시작 전';
+    el.textContent = n ? `🔥 ${n}d` : '🔥 not started';
   } catch (_) { el.textContent = '🔥 —'; }
 }
 
@@ -1146,8 +1146,8 @@ function wireStrip(){
     const el = $('t-inb'), v = el.value.trim();
     if (!v) return;
     const { error } = await sb.from('eng_inbox').insert({ user_id: currentUser.id, text: v });
-    if (error) return toast('추가 실패 — 네트워크를 확인하세요');
-    el.value = ''; toast('인박스에 던져둠 — 밤에 카드로 변환돼요');
+    if (error) return toast('Could not add — check your connection');
+    el.value = ''; toast('Saved to inbox — becomes a card tonight');
   };
   $('t-inb-add').onclick = add;
   $('t-inb').addEventListener('keydown', e => { if (e.key === 'Enter') add(); });
@@ -1158,18 +1158,18 @@ function wireStrip(){
     const { error } = await sb.from('eng_journal').upsert(
       { user_id: currentUser.id, entry_date: today(), raw, status: 'pending', corrected: null },
       { onConflict: 'user_id,entry_date' });
-    $('t-jr-msg').textContent = error ? '제출 실패' : '✅ 제출됨 — 밤사이 교정됩니다';
-    if (!error) toast('일기 제출됨 📓');
+    $('t-jr-msg').textContent = error ? 'Submit failed' : '✅ Submitted — corrected overnight';
+    if (!error) toast('Journal submitted 📓');
   };
   sb.from('eng_journal').select('raw,status').eq('entry_date', today()).maybeSingle()
     .then(({ data }) => {
       if (!data) return;
       $('t-jr').value = data.raw || '';
-      $('t-jr-msg').textContent = data.status === 'corrected' ? '✅ 교정까지 끝났어요' : '✅ 제출됨 — 밤사이 교정됩니다';
+      $('t-jr-msg').textContent = data.status === 'corrected' ? '✅ Corrected' : '✅ Submitted — corrected overnight';
     }).catch(() => {});
 
   const pb = $('t-push');
-  if (typeof Notification !== 'undefined' && Notification.permission === 'granted') pb.textContent = '🔔 아침 푸시 켜짐';
+  if (typeof Notification !== 'undefined' && Notification.permission === 'granted') pb.textContent = '🔔 Morning push on';
   pb.onclick = () => subscribePush(true);
 
   // 토픽 on/off — 어떤 토픽의 어휘를 큐에 넣을지 가른다
@@ -1199,23 +1199,23 @@ async function renderVocab(){
   let q = sb.from('eng_cards').select('*').neq('status','suspended');
   if (names.length) q = q.in('topic', names);
   const { data, error } = await q.order('next_review').limit(500);
-  if (error) { head.innerHTML = '<div class="empty">어휘를 못 불러왔어요.</div>'; list.textContent=''; return; }
+  if (error) { head.innerHTML = '<div class="empty">Could not load vocabulary.</div>'; list.textContent=''; return; }
   const all = data || [];
   const n = k => all.filter(c => c.status === k).length;
   const due = all.filter(c => c.status !== 'new' && c.next_review <= d);
   head.innerHTML = `
     <div class="tstats">
-      <div class="tstat"><div class="v">${n('mature')}</div><div class="l">익힌 표현<br><small>간격 21일↑</small></div></div>
-      <div class="tstat"><div class="v">${all.length}</div><div class="l">쌓인 표현</div></div>
-      <div class="tstat"><div class="v">${due.length}</div><div class="l">오늘 돌아온 것</div></div>
+      <div class="tstat"><div class="v">${n('mature')}</div><div class="l">Mature<br><small>21d+ interval</small></div></div>
+      <div class="tstat"><div class="v">${all.length}</div><div class="l">Total</div></div>
+      <div class="tstat"><div class="v">${due.length}</div><div class="l">Due today</div></div>
     </div>
     <div class="srow" style="margin:12px 0 7px">
-      ${[['all','전체 층'],['word','단어'],['phrase','표현']]
+      ${[['all','All'],['word','Word'],['phrase','Phrase']]
         .map(([k,l]) => `<button class="tchip${vbKind===k?' on':''}" data-k="${k}">${l}${
           k==='all'?'':` ${all.filter(c => (c.kind||'phrase')===k).length}`}</button>`).join('')}
     </div>
     <div class="srow" style="margin:0 0 12px">
-      ${[['all','전체'],['new','신규'],['learning','학습중'],['mature','익힘']]
+      ${[['all','All'],['new','New'],['learning','Learning'],['mature','Mature']]
         .map(([k,l]) => `<button class="tchip${vbFilter===k?' on':''}" data-f="${k}">${l}</button>`).join('')}
     </div>`;
   head.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { vbFilter = b.dataset.f; renderVocab(); });
@@ -1223,10 +1223,10 @@ async function renderVocab(){
 
   let rows = vbFilter === 'all' ? all : all.filter(c => c.status === vbFilter);
   if (vbKind !== 'all') rows = rows.filter(c => (c.kind || 'phrase') === vbKind);
-  if (!rows.length) { list.innerHTML = '<div class="empty">아직 없어요. 오늘 판을 한 번 돌리면 쌓입니다.</div>'; return; }
-  const badge = c => c.status === 'mature' ? '<span class="ipill done">익힘</span>'
-    : c.status === 'new' ? '<span class="ipill wait">신규</span>'
-    : `<span class="ipill wait">${c.interval_days}일</span>`;
+  if (!rows.length) { list.innerHTML = '<div class="empty">Nothing yet. Run today\'s board once and they pile up.</div>'; return; }
+  const badge = c => c.status === 'mature' ? '<span class="ipill done">Mature</span>'
+    : c.status === 'new' ? '<span class="ipill wait">New</span>'
+    : `<span class="ipill wait">${c.interval_days}d</span>`;
   // 줄은 **누르면 펼쳐진다.** 뜻·발음·출처·빼기가 그 안에 있다 —
   // ✕ 를 모든 줄에 상시 노출하면 파괴적 동작이 목록의 기본 상태가 되고, 잘못 누르기도 쉽다.
   // **한글은 요약 줄에 두지 않는다.** 영어 옆에 답이 나란히 있으면 훑을 때마다 답을 먼저 읽게 되고,
@@ -1234,16 +1234,16 @@ async function renderVocab(){
   list.innerHTML = rows.map(c => `<div class="vrow" data-id="${esc(c.id)}">
       <button class="vsum">
         <span class="itx"><span class="ie">${esc(c.answer_en)}
-          ${(c.kind||'phrase')==='word' ? '<em class="kdot">단어</em>' : ''}</span></span>
+          ${(c.kind||'phrase')==='word' ? '<em class="kdot">Word</em>' : ''}</span></span>
         ${badge(c)}<span class="vchev">›</span>
       </button>
       <div class="vmore" hidden>
-        <div class="vmean"><span class="vmk">${(c.kind||'phrase')==='word' ? '뜻' : '상황'}</span>${esc(c.prompt_ko)}</div>
+        <div class="vmean"><span class="vmk">${(c.kind||'phrase')==='word' ? 'Meaning' : 'Context'}</span>${esc(c.prompt_ko)}</div>
         ${c.note ? `<div class="vnote">${esc(c.note)}</div>` : ''}
-        <div class="vmeta">${c.next_review ? '다음 복습 ' + esc(c.next_review) : ''}${c.source_ref ? ' · ' + esc(c.source_ref) : ''}</div>
+        <div class="vmeta">${c.next_review ? 'Next review ' + esc(c.next_review) : ''}${c.source_ref ? ' · ' + esc(c.source_ref) : ''}</div>
         <div class="srow" style="margin-top:9px">
-          <button class="btn sm" data-play="${esc(c.id)}">🔊 들어보기</button>
-          <button class="btn sm vkill" data-kill="${esc(c.id)}">다시 안 보기</button>
+          <button class="btn sm" data-play="${esc(c.id)}">🔊 Listen</button>
+          <button class="btn sm vkill" data-kill="${esc(c.id)}">Never again</button>
         </div>
       </div></div>`).join('');
 
@@ -1262,12 +1262,12 @@ async function renderVocab(){
     b.disabled = true;
     const id = b.dataset.kill, prev = byId[id]?.status || 'new';
     const { error } = await sb.from('eng_cards').update({ status:'suspended' }).eq('id', id);
-    if (error) { b.disabled = false; return toast('실패 — 네트워크를 확인하세요'); }
+    if (error) { b.disabled = false; return toast('Failed — check your connection'); }
     renderVocab();
-    toast('이 표현은 다시 안 나와요', { label:'되돌리기', onClick: async () => {
+    toast("You won't see this again", { label:'Undo', onClick: async () => {
       const { error } = await sb.from('eng_cards').update({ status:prev }).eq('id', id);
-      if (error) return toast('되돌리기 실패 — 네트워크를 확인하세요');
-      toast('되돌렸어요'); renderVocab();
+      if (error) return toast('Undo failed — check your connection');
+      toast('Restored'); renderVocab();
     }});
   });
 }
@@ -1279,20 +1279,20 @@ async function renderArchive(){
     sb.from('eng_scenes').select('*').order('created_at',{ascending:false}).limit(40),
     sb.from('eng_articles').select('*').order('created_at',{ascending:false}).limit(40),
   ]);
-  if (sc.error || ar.error) { box.innerHTML = '<div class="empty">보관함을 못 불러왔어요.</div>'; return; }
+  if (sc.error || ar.error) { box.innerHTML = '<div class="empty">Could not load the archive.</div>'; return; }
   const scenes = sc.data || [], arts = ar.data || [];
   if (!scenes.length && !arts.length) {
-    box.innerHTML = '<div class="empty">아직 비어 있어요 — 밤 보급이 돌면 여기에 쌓입니다.</div>'; return;
+    box.innerHTML = '<div class="empty">Empty for now — it fills up after the nightly run.</div>'; return;
   }
-  box.innerHTML = `<p class="leg" style="margin:0 0 12px">지난 것을 다시 하고 싶을 때. 주말에 더 하고 싶으면 여기서 고르면 됩니다.</p>
-    ${scenes.length ? `<div class="vprog">상황 대화 ${scenes.length}개</div>` + scenes.map(x =>
+  box.innerHTML = `<p class="leg" style="margin:0 0 12px">For redoing past material. Want more on the weekend? Pick from here.</p>
+    ${scenes.length ? `<div class="vprog">${scenes.length} scenes</div>` + scenes.map(x =>
       `<div class="initem"><div class="itx"><div class="ie">${esc(x.situation_ko)}</div>
-        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${esc(x.topic)} L${x.level} · ${Math.round(x.ms/1000)}초</div></div>
-        <button class="btn sm" data-sc="${x.id}">열기</button></div>`).join('') : ''}
-    ${arts.length ? `<div class="vprog" style="margin-top:14px">뉴스 ${arts.length}건</div>` + arts.map(x =>
+        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${esc(x.topic)} L${x.level} · ${Math.round(x.ms/1000)}s</div></div>
+        <button class="btn sm" data-sc="${x.id}">Open</button></div>`).join('') : ''}
+    ${arts.length ? `<div class="vprog" style="margin-top:14px">${arts.length} articles</div>` + arts.map(x =>
       `<div class="initem"><div class="itx"><div class="ie">${esc(x.title)}</div>
-        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${(x.sentences||[]).length}문장 · ${Math.round(x.ms/1000)}초</div></div>
-        <button class="btn sm" data-ar="${x.id}">열기</button></div>`).join('') : ''}`;
+        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${(x.sentences||[]).length} sentences · ${Math.round(x.ms/1000)}s</div></div>
+        <button class="btn sm" data-ar="${x.id}">Open</button></div>`).join('') : ''}`;
   box.querySelectorAll('[data-sc]').forEach(b => b.onclick = () => {
     // 보관함에서 고른 장면을 오늘 판의 장면 자리에 끼워 연다 (진행은 안 건드린다)
     const one = scenes.find(x => x.id === b.dataset.sc);
@@ -1321,7 +1321,7 @@ async function maybeComplete(){
       .eq('user_id', currentUser.id).eq('session_date', today());
     tSession.completed_at = new Date().toISOString();
   } catch(_) {}
-  await bumpXp(XP.complete, '하루 판 완주 🎉');
+  await bumpXp(XP.complete, 'Board complete 🎉');
 }
 
 /* ================= init ================= */
@@ -1337,7 +1337,7 @@ async function init(){
     await loadTodayVocab();
   } catch (e) {
     // 오프라인 폴백: 마지막 큐 스냅샷으로 복습은 가능하게
-    toast('오프라인 — 채점은 쌓아두고 복귀하면 동기화합니다');
+    toast('Offline — grades are queued and sync when you are back');
     console.warn(e);
   }
   // 「오늘」이 기본 화면이다. show() 를 안 거치고 뜨므로 여기서 직접 그려야 한다 —
