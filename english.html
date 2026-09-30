@@ -91,9 +91,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tgrow .dw{font-size:9.5px;color:var(--dim);text-align:center;font-family:var(--num)}
 .tgrow i{width:18px;height:18px;border-radius:5px;background:var(--border-hl);
   display:block;margin:0 auto;border:1px solid transparent}
-.tgrow i.part{background:var(--eng-bg);border-color:var(--eng)}
-.tgrow i.full{background:var(--eng);border-color:var(--eng)}
-.tgrow i.fut{background:none;border:1px dashed var(--border-hl)}
+.tgrow i.part{background:var(--ok-bg);border-color:var(--ok-bd)}
+.tgrow i.full{background:var(--ok);border-color:var(--ok)}
+.tgrow i.fut{background:none;border:1px solid var(--border)}
 
 /* 주/월 토글 머리 */
 .tghead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:4px 0 8px}
@@ -107,20 +107,24 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   background:var(--card);color:var(--sub);font-size:17px;line-height:1;cursor:pointer;flex:none}
 .tgarrow:hover:not(:disabled){border-color:var(--eng);color:var(--eng)}
 .tgarrow:disabled{opacity:.3;cursor:default}
-.tgcal{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:11px 12px}
+.tgcal{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:10px 12px 12px}
 .tgcal+.tgcal{margin-top:7px}
 .tgcal.me{background:var(--eng-bg);border-color:var(--eng-bd)}
 .tgcalh{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap}
 .tgcalh .nm{font-size:12.5px;font-weight:650;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tgcalh .cnt{margin-left:auto;font-size:10.5px;color:var(--dim);font-family:var(--num);flex:none}
-.tgcalh .cnt b{color:var(--eng);font-size:12px}
-.tgdow,.tggrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.tgdow span{font-size:9px;color:var(--dim);text-align:center;font-family:var(--num);padding-bottom:2px}
-.tggrid i{aspect-ratio:1;border-radius:4px;background:var(--border-hl);border:1px solid transparent;display:block}
-.tggrid i.part{background:var(--eng-bg);border-color:var(--eng)}
-.tggrid i.full{background:var(--eng);border-color:var(--eng)}
-.tggrid i.fut{background:none;border:1px dashed var(--border-hl)}
+.tgcalh .cnt b{color:var(--ok);font-size:12px}
+.tgdow,.tggrid{display:grid;grid-template-columns:repeat(7,30px);gap:5px;justify-content:center}
+.tgdow span{font-size:9px;color:var(--dim);text-align:center;font-family:var(--num);padding-bottom:3px}
+/* 칸을 1fr 로 두면 폭에 맞춰 44px 까지 늘어나 한 달이 화면을 통째로 먹는다. 고정 30px. */
+.tggrid i{width:30px;height:30px;border-radius:7px;background:var(--card2);
+  border:1px solid transparent;display:grid;place-items:center;
+  font-style:normal;font-size:10px;font-family:var(--num);color:var(--dim);line-height:1}
+.tggrid i.part{background:var(--ok-bg);border-color:var(--ok-bd);color:var(--ok)}
+.tggrid i.full{background:var(--ok);border-color:var(--ok);color:#06231a;font-weight:700}
+.tggrid i.fut{background:none;border-color:var(--border);color:#2b2e39}
 .tggrid i.pad{background:none;border:0}
+.tggrid i.now{box-shadow:0 0 0 2px var(--warn)}
 
 .tgtot{display:flex;flex-direction:column;gap:7px}
 .tgcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:11px 13px}
@@ -423,7 +427,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.15';
+const BUILD = '2026-09-30.16';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1489,9 +1493,11 @@ function tgMonthGrid(t, d){
         <div class="tgcalh"><span class="nm">${esc(t.nameOf(m))}</span>
           <span class="cnt"><b>${c.done}</b> finished · ${c.any} active</span></div>
         <div class="tgdow">${TG_DOW.map(x=>`<span>${x}</span>`).join('')}</div>
-        <div class="tggrid">${cells.map(day =>
-          day ? `<i class="${tgCellClass(t, m.user_id, day, d)}" title="${day}"></i>` : '<i class="pad"></i>'
-        ).join('')}</div></div>`;
+        <div class="tggrid">${cells.map(day => {
+          if (!day) return '<i class="pad"></i>';
+          const k = tgCellClass(t, m.user_id, day, d);
+          return `<i class="${k}${day === d ? ' now' : ''}">${+day.slice(8)}</i>`;
+        }).join('')}</div></div>`;
     }).join('')}`;
 }
 
