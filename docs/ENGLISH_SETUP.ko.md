@@ -16,7 +16,7 @@ Supabase Dashboard → SQL Editor 에서 [`supabase/english-schema.sql`](../supa
 ## 2) 시드 카드 업로드 (1회)
 
 ```bash
-cd ~/prj/me/ktree
+cd ~/prj/ktree
 node upload-eng.mjs pack drafts/english/seed-pack-2026-09.json   # 52장: 일상·여행·비즈니스·테크 × L1~L4
 node upload-eng.mjs stats                                        # 재고 확인
 ```

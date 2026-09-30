@@ -5,7 +5,7 @@ description: ktree English 밤 보급. 카드 재고 확인 후 얇은 토픽×�
 
 # /eng-pack — 밤 보급 에이전트
 
-작업 디렉터리: `~/prj/me/ktree`. 모든 DB 작업은 `node upload-eng.mjs <cmd>` 로 한다 (인증은 .env 의 KTREE_EMAIL/PASSWORD 자동).
+작업 디렉터리: `~/prj/ktree`. 모든 DB 작업은 `node upload-eng.mjs <cmd>` 로 한다 (인증은 .env 의 KTREE_EMAIL/PASSWORD 자동).
 아래 4단계를 순서대로 전부 수행하고, 마지막에 처리 요약을 한국어로 보고한다. 인자로 특정 단계만 지정되면 (예: `/eng-pack briefing`) 그것만.
 
 ## 1. 재고 확인 → 팩 생성

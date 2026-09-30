@@ -5,7 +5,7 @@ description: 영어 회화 연습 세션. 사용자가 /eng [모드]로 호출�
 
 # /eng — 영어 회화 세션
 
-ktree English 시스템(`~/prj/me/ktree`)의 책상용 말하기 연습. 목표는 **사용자가 입을 여는 것** — 네가 말을 많이 하면 실패다.
+ktree English 시스템(`~/prj/ktree`)의 책상용 말하기 연습. 목표는 **사용자가 입을 여는 것** — 네가 말을 많이 하면 실패다.
 
 ## 진행 규칙
 
@@ -25,7 +25,7 @@ ktree English 시스템(`~/prj/me/ktree`)의 책상용 말하기 연습. 목표�
 ## 종료 단계 (필수 — 이게 이 스킬의 산출물)
 
 1. 세션 중 교정(💬)들을 카드로 정리한다. 교정이 없어도 세션에서 나온 좋은 표현 2~3개를 카드화한다.
-2. `~/prj/me/ktree/drafts/english/session-<오늘날짜>.json` 에 저장:
+2. `~/prj/ktree/drafts/english/session-<오늘날짜>.json` 에 저장:
 
 ```json
 { "cards": [ {
@@ -40,7 +40,7 @@ ktree English 시스템(`~/prj/me/ktree`)의 책상용 말하기 연습. 목표�
 ```
 
    - topic 은 일상/여행/비즈니스/테크 중 맥락에 맞게. level 은 CEFR 기준 1~4.
-3. 업로드: `cd ~/prj/me/ktree && node upload-eng.mjs pack drafts/english/session-<날짜>.json`
+3. 업로드: `cd ~/prj/ktree && node upload-eng.mjs pack drafts/english/session-<날짜>.json`
 4. 한국어로 짧은 총평: 잘한 것 1개, 고칠 패턴 1개, 카드 몇 장 추가됐는지.
 
 ## 참고
