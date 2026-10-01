@@ -1,16 +1,24 @@
 #!/usr/bin/env node
 /**
- * 오픽 대비 독백 프롬프트 시드.
+ * 독백 프롬프트 업로드 (오픽 대비).
  *
- *   node seed-prompts.mjs [--dry]
+ *   node seed-prompts.mjs                  내장 시드 9개를 넣는다 (최초 1회)
+ *   node seed-prompts.mjs <file.json>      밤 보급이 만든 묶음을 넣는다
+ *   node seed-prompts.mjs <file.json> --dry  넣지 않고 검증만
  *
- * 유형은 오픽 문항 구성을 따른다 — describe · habit · past · compare · ask · solve.
- * `ask`(질문 만들기)가 특히 중요하다: 오픽은 "나에게 X에 대해 세 가지 물어봐"가
- * 반드시 나오는데, 답하는 훈련만 하면 그 자리에서 말문이 막힌다.
+ * JSON 은 배열이다:
+ *   [{ kind, topic, level, seconds, question_en, hint_ko, model_en, model_note_ko,
+ *      phrases:[{term, meaning_ko}] }]
  *
- * model_en 은 **문단 구조가 보이게** 쓴다. 등급을 가르는 것이 text type 이라,
- * 좋은 내용을 문장 단위로 늘어놓으면 IM 천장에 걸린다.
- * topic 은 eng_topics.name 과 같은 한국어 값이어야 필터가 맞는다.
+ * kind 는 오픽 문항 유형 — describe · habit · past · compare · ask · solve.
+ * 🔴 ask(질문 만들기)를 빠뜨리지 말 것. "나에게 X에 대해 세 가지 물어봐"는 반드시
+ *    나오는데, 답하는 훈련만 하면 그 자리에서 말문이 막힌다.
+ *
+ * 🔴 topic 은 eng_topics.name 과 **같은 한국어 값**이어야 한다. 어긋나면 에러 없이
+ *    필터에서 조용히 빠져 영영 안 뽑힌다 (실제로 '운동' 으로 넣었다가 고아가 됐다).
+ *
+ * model_en 은 **문단 구조가 보이게** 쓴다 (빈 줄로 문단 구분). 등급을 가르는 것이
+ * text type 이라, 좋은 내용을 문장 단위로 늘어놓으면 IM 천장에 걸린다.
  */
 import { readFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
@@ -121,16 +129,39 @@ const { data: auth, error: e0 } = await sb.auth.signInWithPassword({
   email: process.env.KTREE_EMAIL, password: process.env.KTREE_PASSWORD });
 if (e0) { console.error('✗ 로그인 실패:', e0.message); process.exit(1); }
 
-const DRY = process.argv.includes('--dry');
+const argv = process.argv.slice(2);
+const DRY = argv.includes('--dry');
+const FILE = argv.find(a => !a.startsWith('--'));
+
+let items = P;
+if (FILE) {
+  try { items = JSON.parse(readFileSync(FILE, 'utf8')); }
+  catch (e) { console.error(`✗ ${FILE} 을 읽지 못했습니다: ${e.message}`); process.exit(1); }
+  if (!Array.isArray(items)) { console.error('✗ JSON 최상위는 배열이어야 합니다'); process.exit(1); }
+}
+
+// topic 이 eng_topics 에 없으면 영영 안 뽑힌다 — 넣기 전에 막는다
+const { data: tops } = await sb.from('eng_topics').select('name').eq('user_id', auth.user.id);
+const known = new Set((tops || []).map(t => t.name));
+const KINDS = new Set(['describe','habit','past','compare','ask','solve']);
+const bad = [];
+for (const [i, it] of items.entries()) {
+  if (!KINDS.has(it.kind))          bad.push(`#${i} kind='${it.kind}' (describe·habit·past·compare·ask·solve 중 하나)`);
+  else if (!it.question_en)         bad.push(`#${i} question_en 없음`);
+  else if (known.size && !known.has(it.topic)) bad.push(`#${i} topic='${it.topic}' 가 eng_topics 에 없음 — 넣어도 안 뽑힙니다`);
+}
+if (bad.length) { console.error('✗ 넣지 않았습니다:\n  ' + bad.join('\n  ')); process.exit(1); }
+
 const { data: have, error: e1 } = await sb.from('eng_prompts').select('question_en');
 if (e1) { console.error('✗ eng_prompts 조회 실패 — english-v6-speaking.sql 을 먼저 실행하세요\n ', e1.message); process.exit(1); }
 const seen = new Set((have || []).map(r => r.question_en));
-const rows = P.filter(p => !seen.has(p.question_en)).map(p => ({ ...p, user_id: auth.user.id }));
+const rows = items.filter(p => !seen.has(p.question_en)).map(p => ({ ...p, user_id: auth.user.id }));
 
 const by = {};
-P.forEach(p => by[p.kind] = (by[p.kind] || 0) + 1);
+items.forEach(p => by[p.kind] = (by[p.kind] || 0) + 1);
+console.log(`${FILE || '(내장 시드)'}`);
 console.log('유형 분포:', Object.entries(by).map(([k,v]) => `${k} ${v}`).join(' · '));
-console.log(`전체 ${P.length}개 · 이미 있음 ${P.length - rows.length} · 넣을 것 ${rows.length}`);
+console.log(`전체 ${items.length}개 · 이미 있음 ${items.length - rows.length} · 넣을 것 ${rows.length}`);
 if (DRY || !rows.length) { await sb.auth.signOut(); process.exit(0); }
 
 const { error } = await sb.from('eng_prompts').insert(rows);

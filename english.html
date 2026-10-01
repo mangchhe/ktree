@@ -509,7 +509,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-01.1';
+const BUILD = '2026-10-02.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -517,8 +517,11 @@ const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Adv
 // 🔴 토픽 이름은 **데이터다.** eng_topics.name 으로 저장되고 eng_cards.topic ·
 // eng_scenes.topic 필터(.in('topic', names))에 쓰인다. 번역하면 기존 행이 전부 고아가 되고
 // 밤 보급이 만드는 토픽 값과도 어긋난다. 화면 이름만 따로 입힌다.
-const DEFAULT_TOPICS = ['일상','여행','비즈니스','테크','마케팅'];
-const TOPIC_LABEL = { '일상':'Daily', '여행':'Travel', '비즈니스':'Business', '테크':'Tech', '마케팅':'Marketing' };
+// 오픽 배경 설문(집·동네·영화·카페·공원·운동·휴가)을 덮으려고 여가·운동을 더했다.
+// 기존 값은 그대로 둔다 — 이름을 바꾸면 기존 카드·장면·프롬프트가 전부 고아가 된다.
+const DEFAULT_TOPICS = ['일상','여가','운동','여행','비즈니스','테크','마케팅'];
+const TOPIC_LABEL = { '일상':'Daily', '여가':'Leisure', '운동':'Exercise', '여행':'Travel',
+                      '비즈니스':'Business', '테크':'Tech', '마케팅':'Marketing' };
 // 모르는 토픽은 원래 이름을 그대로 — 밤 보급이 새 토픽을 만들어도 빈칸이 되지 않게.
 const topicLabel = n => TOPIC_LABEL[n] || n;
 const LS = { pending:'eng.pendingOps' };   // queue 캐시는 옛 Review 화면과 함께 사라졌다

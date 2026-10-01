@@ -125,7 +125,53 @@ node eng-gen.mjs drafts/english/scene-<날짜>-<슬러그>.json
 node eng-gen.mjs drafts/english/article-<날짜>.json
 ```
 
-## 3. 인박스 변환 (있을 때만)
+## 3. 독백 프롬프트 2~3개 (오픽)
+
+**사용자는 오픽 점수를 목표로 한다.** 장면은 한 문장짜리 턴을 훈련하는데,
+오픽은 **혼자 60~90초를 말하는 시험**이고 ACTFL 등급을 가르는 것은 text type 이다 —
+문장 단위면 IM, 문단으로 조직하면 IH, 문단을 엮으면 AL. 그래서 분량과 구조를
+버티는 훈련이 따로 필요하다.
+
+먼저 재고를 본다 — 유형이 한쪽으로 쏠리면 쏠린 쪽만 는다:
+
+```bash
+node run-sql.sh --query "select kind, count(*) from public.eng_prompts group by kind order by kind"
+```
+
+**유형 6개** (오픽 문항 구성 그대로):
+
+| kind | 무엇 | 비고 |
+|---|---|---|
+| `describe` | 사람·장소·사물 묘사 | 가장 자주 나온다 |
+| `habit` | 습관·루틴 | "보통 ~한다" |
+| `past` | 과거 경험 서술 | 시간 순 + 전환점 |
+| `compare` | 예전 vs 지금 | 대칭 구조로 |
+| `ask` | **질문 3~4개 만들기** | 🔴 반드시 나온다. 답하는 훈련만 하면 그 자리에서 막힌다 |
+| `solve` | 문제 상황 해결 | 문제 → 근거 → 요청 → 차선 |
+
+규칙:
+
+- **`model_en` 은 문단 구조가 보이게** 쓴다 (빈 줄로 문단 구분, 3~4문단).
+  좋은 내용을 문장 단위로 늘어놓으면 IM 천장에 걸린다. 문단마다 한 가지만 다룬다.
+- `model_note_ko` 에 **왜 그렇게 구성했는지**를 적는다. 모범답안은 내용이 아니라
+  구조를 보라고 주는 것이다.
+- `hint_ko` 는 영어를 번역해주는 게 아니라 **무엇을 말해야 하는지** 순서를 준다.
+- `seconds` 는 60(ask) / 75(describe·habit·solve) / 90(past·compare) 쯤.
+- `phrases` 에는 **담화 표지**를 우선 담는다 — `the thing is`, `what I usually do is`,
+  `looking back` 처럼 문단을 엮는 접착제. text type 점수에 직접 걸린다.
+- 🔴 `topic` 은 `eng_topics.name` 과 **같은 한국어 값**이어야 한다. 어긋나면 에러 없이
+  필터에서 조용히 빠져 영영 안 뽑힌다 (실제로 `운동` 으로 넣었다가 고아가 됐다).
+
+오픽 배경 설문을 덮는 토픽: `일상`(집·동네) · `여가`(영화·카페·공원) · `운동` ·
+`여행`(휴가) · `비즈니스`(직장). `테크`·`마케팅` 은 오픽에 거의 안 나오므로 여기선 쓰지 않는다.
+
+```bash
+node seed-prompts.mjs drafts/english/prompts-<날짜>.json
+```
+
+JSON 은 배열이다. 넣기 전에 kind·topic 을 검증하고, 하나라도 어긋나면 아무것도 넣지 않는다.
+
+## 4. 인박스 변환 (있을 때만)
 
 ```bash
 node upload-eng.mjs inbox-pending
@@ -135,7 +181,7 @@ node upload-eng.mjs inbox-pending
 `[{ "id": "...", "card": { "topic","scenario","level","prompt_ko","answer_en","note" } }]` 로 저장하고
 `node upload-eng.mjs inbox-convert <파일>`. 표현이 아닌 입력은 `{ "id": "...", "discard": true }`.
 
-## 4. 일기 교정 (있을 때만)
+## 5. 일기 교정 (있을 때만)
 
 ```bash
 node upload-eng.mjs journal-pending
@@ -148,7 +194,7 @@ node upload-eng.mjs journal-pending
 ## 보고
 
 ```
-✓ 장면 4개(일상·여행·비즈니스·테크) · 기사 1건 · 어휘 19개 · 인박스 0 · 일기 0 — 오디오 2.5분
+✓ 장면 4개(일상·여행·비즈니스·테크) · 기사 1건 · 어휘 19개 · 독백 3개(describe·ask·past) · 인박스 0 · 일기 0 — 오디오 2.5분
 ```
 
 한 줄 + 특이사항. **실패한 단계는 반드시 적는다** — 무인 실행이라 이 로그가 유일한 단서다.
