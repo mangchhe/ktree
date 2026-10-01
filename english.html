@@ -159,6 +159,33 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tgfig{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:11.5px;color:var(--dim)}
 .tgfig b{font-family:var(--num);font-size:14px;color:var(--text);font-weight:700;
   font-variant-numeric:tabular-nums;margin-right:3px}
+/* 독백 — 분량과 구조를 버티는 화면이라, 읽을 것을 최소로 두고 타이머를 크게 둔다 */
+.spq{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.spkind{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ok);background:var(--ok-bg);border-radius:99px;padding:2px 9px;margin-bottom:8px}
+.spen{font-size:17px;line-height:1.5;font-weight:600;margin:0}
+.sphint{font-size:12.5px;color:var(--sub);line-height:1.6;margin:8px 0 0}
+.sptimer{text-align:center;margin:18px 0 12px}
+.sptime{font-family:var(--num);font-size:40px;font-weight:700;line-height:1;
+  font-variant-numeric:tabular-nums;color:var(--text);transition:color .2s}
+.sptime.hit{color:var(--ok)}
+.sptrack{height:6px;border-radius:99px;background:var(--card2);overflow:hidden;margin:10px auto 6px;max-width:300px}
+.sptrack i{display:block;height:100%;background:var(--sub);border-radius:99px;transition:width .25s linear}
+.sptrack i.hit{background:var(--ok)}
+.sptarget{font-family:var(--num);font-size:10.5px;color:var(--dim)}
+.spmodel{background:var(--card);border-left:3px solid var(--ok);border-radius:0 10px 10px 0;
+  padding:13px 16px;margin-top:14px}
+.spmodel p{font-size:15px;line-height:1.65;margin:0}
+.spmodel p+p{margin-top:11px}
+.spnote{font-size:12px;color:var(--sub);line-height:1.6;margin-top:10px;padding:10px 13px;
+  background:var(--card2);border-radius:10px}
+.spnote .l{display:block;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--dim);font-weight:700;margin-bottom:3px}
+.spph{margin-top:10px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.sprow{display:flex;gap:12px;align-items:baseline;padding:8px 13px;font-size:12.5px}
+.sprow+.sprow{border-top:1px solid var(--border)}
+.sprow b{flex:0 0 auto;max-width:55%;color:var(--text);font-weight:650}
+.sprow span{color:var(--dim);min-width:0;flex:1 1 auto}
 .toast{
   position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);
   background:var(--card-el);border:1px solid var(--border-hl);border-radius:99px;
@@ -482,7 +509,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-09-30.20';
+const BUILD = '2026-10-01.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -742,7 +769,8 @@ async function paintBuild(){
 
 // XP 는 **정답률이 아니라 입을 연 횟수**에 붙는다. 정답에만 주면 「맞음」을 거짓으로
 // 누르게 되고, 그러면 복습 간격이 가짜로 벌어져 SRS 전체가 무의미해진다.
-const XP = { turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
+const SPEAK_N = 2;            // 하루 독백 개수
+const XP = { speak:20, turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
              article:8, recog:1, quizOk:5, quizMiss:2, complete:30, cap:250 };
 const RANKS = [
   [0,'Starter'], [400,'Everyday'], [1000,'Conversational'], [1800,'Fluent-ish'],
@@ -756,6 +784,7 @@ function rankOf(xp){
 }
 
 let tScenes = [], tArticle = null, tSession = null, tProg = null, tVocab = { today:[], past:[] };
+let tPrompts = [];            // 오늘의 독백 프롬프트 (오픽 대비)
 let tLoaded = false, tMissing = false, tRate = 1, tAudio = null, tRaf = 0, tGain = 0;
 
 function tStopAudio(){
@@ -849,6 +878,46 @@ async function materializeVocab(){
   } catch (_) { /* 실패해도 화면은 돈다 — 다음 로드에서 다시 시도한다 */ }
 }
 
+/* 오픽 문항은 유형이 정해져 있다. 같은 유형만 돌면 익숙한 것만 늘고 시험에서 막힌다.
+   **안 해본 유형을 먼저**, 그 안에서 오래된 것부터 고른다. */
+async function loadPrompts(){
+  tPrompts = [];
+  const [pool, log] = await Promise.all([
+    sb.from('eng_prompts').select('*'),
+    sb.from('eng_prompt_log').select('prompt_id, done_on, self_grade')
+      .eq('user_id', currentUser.id).order('done_on', { ascending:false }).limit(400),
+  ]);
+  if (pool.error || !pool.data?.length) return;        // v6 미실행이면 조용히 비운다
+  const names = activeTopicNames();
+  const all = names.length ? pool.data.filter(p => names.includes(p.topic)) : pool.data;
+  if (!all.length) return;
+
+  const lastOf = {}, gradeOf = {};
+  for (const r of (log.data || [])) {
+    if (!lastOf[r.prompt_id]) { lastOf[r.prompt_id] = r.done_on; gradeOf[r.prompt_id] = r.self_grade; }
+  }
+  const kindSeen = {};
+  for (const p of all) if (lastOf[p.id]) kindSeen[p.kind] = Math.max(kindSeen[p.kind] || 0, 1);
+
+  const score = p => {
+    if (!lastOf[p.id]) return 0;                        // 아직 안 해본 것이 1순위
+    if (gradeOf[p.id] === 'again') return 1;             // 다시 해야 한다고 스스로 찍은 것
+    return 2;
+  };
+  const sorted = all.slice().sort((a,b) =>
+    score(a) - score(b) || (lastOf[a.id] || '').localeCompare(lastOf[b.id] || ''));
+
+  // 유형이 겹치지 않게 두 개
+  const pick = [];
+  for (const p of sorted) {
+    if (pick.length >= SPEAK_N) break;
+    if (pick.some(x => x.kind === p.kind)) continue;
+    pick.push(p);
+  }
+  for (const p of sorted) { if (pick.length >= SPEAK_N) break; if (!pick.includes(p)) pick.push(p); }
+  tPrompts = pick;
+}
+
 async function loadTodayVocab(){
   const d = today();
   // **"오늘 것"은 날짜가 아니라 '아직 안 만난 것'이다.**
@@ -932,9 +1001,11 @@ async function renderToday(){
   const sDone = pg.scenes?.done || 0, sTot = tScenes.length;
   const aSent = pg.article?.sent || 0, aTot = tArticle ? (tArticle.sentences || []).length : 0;
   const vDone = pg.vocab?.done || 0, vTot = tVocab.today.length + tVocab.past.length;
+  const kDone = pg.speak?.done || 0, kTot = tPrompts.length;
   // 퀴즈는 세 칸의 재료로 만든다 — 그래서 셋을 끝내기 전에는 열 수 없다.
   // 문항 수는 날짜로 씨를 고정해 뽑으므로 다시 그려도 같은 수가 나온다.
-  const three = (!sTot || sDone >= sTot) && (!aTot || aSent >= aTot) && (!vTot || vDone >= vTot);
+  const three = (!sTot || sDone >= sTot) && (!aTot || aSent >= aTot) && (!vTot || vDone >= vTot)
+             && (!kTot || kDone >= kTot);
   const qTot = three ? (pg.quiz?.total ?? buildQuiz().length) : 0;
   const qDone = pg.quiz?.done || 0;
   const r = rankOf(tProg?.xp_total || 0);
@@ -957,6 +1028,10 @@ async function renderToday(){
         <span class="chk">✓</span><span class="bt">News</span>
         <span class="bs">${aTot ? `${aSent}/${aTot} sent.` : 'none'}</span>
         <span class="bar"><i style="width:${pct(aSent,aTot)}%"></i></span></button>
+      <button class="bcard${cls(kDone,kTot)}" data-a="speak" ${kTot?'':'disabled'}>
+        <span class="chk">✓</span><span class="bt">Speaking</span>
+        <span class="bs">${kTot ? `${kDone}/${kTot}` : 'none'}</span>
+        <span class="bar"><i style="width:${pct(kDone,kTot)}%"></i></span></button>
       <button class="bcard${cls(vDone,vTot)}" data-a="vocab" ${vTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Vocab drill</span>
         <span class="bs">${vTot ? `${vDone}/${vTot}` : 'none'}</span>
@@ -1011,6 +1086,7 @@ function openAct(a){
   $('t-board').textContent = '';
   const el = $('t-act'); el.hidden = false;
   if (a === 'scene') actScene(el);
+  else if (a === 'speak') actSpeak(el);
   else if (a === 'article') actArticle(el);
   else if (a === 'quiz') actQuiz(el);
   else actVocab(el);
@@ -1123,6 +1199,129 @@ function chainTurn(sc, i){
     return;
   }
   playTurnA(sc, i, () => chainTurn(sc, i + 1));
+}
+
+/* ── 막 1.5 · 독백 (오픽) ───────────────────────────────
+ *
+ * 장면은 한 문장짜리 턴을 훈련한다. 오픽은 **혼자 60~90초**다.
+ * 등급을 가르는 것은 text type — 문장 단위면 IM, 문단으로 조직하면 IH.
+ * 그래서 이 화면의 목적은 "맞게 말하기"가 아니라 **분량과 구조를 버티는 것**이다.
+ *
+ * 녹음은 있으면 쓰고 없으면 넘어간다. iOS 홈 화면 PWA 에서 마이크가 열리는지는
+ * 기기마다 다르고, 안 되더라도 타이머·모범답안만으로 훈련은 돌아가야 한다.
+ */
+const KIND_LABEL = { describe:'Describe', habit:'Routine', past:'Past experience',
+                     compare:'Compare', ask:'Ask questions', solve:'Solve a problem' };
+let spIdx = 0, spTimer = null, spStart = 0, spRec = null, spChunks = [], spUrl = null;
+
+function spStop(){
+  if (spTimer) { clearInterval(spTimer); spTimer = null; }
+  try { if (spRec && spRec.state === 'recording') spRec.stop(); } catch(_) {}
+}
+
+function actSpeak(el){
+  const done = tSession?.progress?.speak?.done || 0;
+  spIdx = Math.min(done, Math.max(tPrompts.length - 1, 0));
+  drawSpeak(el);
+}
+
+function drawSpeak(el){
+  spStop();
+  const p = tPrompts[spIdx];
+  if (!p) { renderToday(); return; }
+  const target = p.seconds || 75;
+
+  el.innerHTML = actBar(`Speaking ${spIdx+1}/${tPrompts.length}`) + `
+    <div class="spq">
+      <span class="spkind">${esc(KIND_LABEL[p.kind] || p.kind)}</span>
+      <p class="spen">${esc(p.question_en)}</p>
+      ${p.hint_ko ? `<p class="sphint">${esc(p.hint_ko)}</p>` : ''}
+    </div>
+    <div class="sptimer">
+      <div class="sptime" id="sp-time">0:00</div>
+      <div class="sptrack"><i id="sp-bar" style="width:0%"></i></div>
+      <div class="sptarget">target ${Math.floor(target/60)}:${String(target%60).padStart(2,'0')}</div>
+    </div>
+    <div class="actbar">
+      <button class="btn sm primary-btn" id="sp-go">▶ Start speaking</button>
+      <button class="btn sm" id="sp-end" disabled>■ Done</button>
+    </div>
+    <audio id="sp-play" controls hidden style="width:100%;margin-top:10px"></audio>
+    <div id="sp-after" hidden>
+      <button class="check" id="sp-reveal" style="margin-top:14px">Show a model answer</button>
+      <div id="sp-model" hidden></div>
+    </div>`;
+  wireBar();
+
+  const timeEl = $('sp-time'), barEl = $('sp-bar');
+  const tick = () => {
+    const sec = Math.floor((Date.now() - spStart) / 1000);
+    timeEl.textContent = `${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}`;
+    barEl.style.width = Math.min(sec / target * 100, 100) + '%';
+    timeEl.classList.toggle('hit', sec >= target);
+    barEl.classList.toggle('hit', sec >= target);
+  };
+
+  $('sp-go').onclick = async () => {
+    spStart = Date.now(); spChunks = [];
+    $('sp-go').disabled = true; $('sp-end').disabled = false;
+    spTimer = setInterval(tick, 250); tick();
+    // 녹음은 **덤**이다. 거부되거나 지원이 없으면 조용히 타이머만 돈다.
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+      spRec = new MediaRecorder(stream);
+      spRec.ondataavailable = e => e.data.size && spChunks.push(e.data);
+      spRec.onstop = () => {
+        stream.getTracks().forEach(t => t.stop());
+        if (!spChunks.length) return;
+        if (spUrl) URL.revokeObjectURL(spUrl);
+        spUrl = URL.createObjectURL(new Blob(spChunks, { type: spRec.mimeType || 'audio/webm' }));
+        const a = $('sp-play'); if (a) { a.src = spUrl; a.hidden = false; }
+      };
+      spRec.start();
+    } catch (_) { spRec = null; }
+  };
+
+  $('sp-end').onclick = async () => {
+    const ms = Date.now() - spStart;
+    spStop();
+    $('sp-end').disabled = true;
+    $('sp-after').hidden = false;
+    tProg.turns_spoken = (tProg.turns_spoken || 0) + 1;
+    await bumpXp(XP.speak, 'Monologue');
+    try {
+      await sb.from('eng_prompt_log').upsert({
+        user_id: currentUser.id, prompt_id: p.id, done_on: today(), spoke_ms: ms,
+      }, { onConflict:'user_id,prompt_id,done_on' });
+    } catch(_) {}
+    $('sp-reveal').onclick = function(){
+      this.remove();
+      const box = $('sp-model'); box.hidden = false;
+      box.innerHTML = `
+        <div class="spmodel">${esc(p.model_en).replace(/\n\n/g,'</p><p>').replace(/^/,'<p>')+'</p>'}</div>
+        ${p.model_note_ko ? `<div class="spnote"><span class="l">why it\'s built this way</span>${esc(p.model_note_ko)}</div>` : ''}
+        ${(p.phrases||[]).length ? `<div class="spph">${(p.phrases||[]).map(x =>
+          `<div class="sprow"><b>${esc(x.term)}</b><span>${esc(x.meaning_ko)}</span></div>`).join('')}</div>` : ''}
+        <div class="grades" style="margin-top:14px">
+          <button class="grade miss" data-g="again">Again</button>
+          <button class="grade soso" data-g="ok">OK</button>
+          <button class="grade good" data-g="good">Good</button>
+        </div>`;
+      box.querySelector('.grades').onclick = async e => {
+        const g = e.target.closest('.grade'); if (!g) return;
+        try {
+          await sb.from('eng_prompt_log').upsert({
+            user_id: currentUser.id, prompt_id: p.id, done_on: today(),
+            spoke_ms: ms, self_grade: g.dataset.g,
+          }, { onConflict:'user_id,prompt_id,done_on' });
+        } catch(_) {}
+        const n = Math.max(tSession?.progress?.speak?.done || 0, spIdx + 1);
+        await saveProgress({ speak: { done:n, total:tPrompts.length } });
+        if (n >= tPrompts.length) { await maybeComplete(); renderToday(); }
+        else { spIdx = n; drawSpeak(el); }
+      };
+    };
+  };
 }
 
 /* ── 막 2 · 뉴스 읽기 ───────────────────────────────── */
@@ -1969,6 +2168,7 @@ async function maybeComplete(){
   const ok = (p.scenes?.total && p.scenes.done >= p.scenes.total)
           && (p.article?.total ? p.article.sent >= p.article.total : true)
           && (p.vocab?.total ? p.vocab.done >= p.vocab.total : true)
+          && (p.speak?.total ? p.speak.done >= p.speak.total : true)
           && (p.quiz?.total ? p.quiz.done >= p.quiz.total : true);
   if (!ok) return;
   try {
@@ -1990,6 +2190,7 @@ async function init(){
     await flushPending();
     await loadTopics();
     await loadTodayVocab();
+    await loadPrompts();
   } catch (e) {
     // 오프라인 폴백: 마지막 큐 스냅샷으로 복습은 가능하게
     toast('Offline — grades are queued and sync when you are back');

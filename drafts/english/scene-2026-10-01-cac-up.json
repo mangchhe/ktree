@@ -1,0 +1,1569 @@
+{
+  "id": "2026-10-01-cac-up",
+  "situation_ko": "투자자에게 지난달 성과를 보고한다. CAC 가 올랐고, 상대는 예산 증액 대신 그 채널을 접자고 역제안한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "투자자",
+      "meaning_ko": "자, 지난달 얘기부터 해보죠. 숫자 먼저요.",
+      "en": "So — walk me through last month. Numbers first.",
+      "ms": 4128,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "walk",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Numbers",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 363
+        },
+        {
+          "t": 1050,
+          "d": 263
+        },
+        {
+          "t": 1325,
+          "d": 138
+        },
+        {
+          "t": 1463,
+          "d": 213
+        },
+        {
+          "t": 1688,
+          "d": 338
+        },
+        {
+          "t": 2025,
+          "d": 338
+        },
+        {
+          "t": 2750,
+          "d": 488
+        },
+        {
+          "t": 3238,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-cac-up/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "쓴 돈, 신규 고객 수, 그래서 나온 CAC 를 숫자로 읽어봐",
+      "en": "We spent two hundred forty thousand and brought in thirteen hundred new customers, so CAC landed at about one eighty-five.",
+      "ms": 7392,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spent",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "brought",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirteen",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customers",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "CAC",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "landed",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eighty-five",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 188,
+          "d": 263
+        },
+        {
+          "t": 463,
+          "d": 200
+        },
+        {
+          "t": 663,
+          "d": 175
+        },
+        {
+          "t": 850,
+          "d": 250
+        },
+        {
+          "t": 1100,
+          "d": 538
+        },
+        {
+          "t": 1700,
+          "d": 100
+        },
+        {
+          "t": 1800,
+          "d": 363
+        },
+        {
+          "t": 2163,
+          "d": 188
+        },
+        {
+          "t": 2413,
+          "d": 500
+        },
+        {
+          "t": 2913,
+          "d": 225
+        },
+        {
+          "t": 3138,
+          "d": 175
+        },
+        {
+          "t": 3313,
+          "d": 650
+        },
+        {
+          "t": 4350,
+          "d": 225
+        },
+        {
+          "t": 4588,
+          "d": 313
+        },
+        {
+          "t": 4913,
+          "d": 388
+        },
+        {
+          "t": 5313,
+          "d": 138
+        },
+        {
+          "t": 5463,
+          "d": 313
+        },
+        {
+          "t": 5775,
+          "d": 363
+        },
+        {
+          "t": 6300,
+          "d": 725
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-cac-up/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "투자자",
+      "meaning_ko": "1분기에는 140 이었잖아요. 30퍼센트 넘게 오른 건데, 무슨 일이 있었나요?",
+      "en": "It was one forty in Q1. That's up more than thirty percent — what happened?",
+      "ms": 4824,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "It",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Q1",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          11
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "what",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happened",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 63
+        },
+        {
+          "t": 150,
+          "d": 125
+        },
+        {
+          "t": 288,
+          "d": 288
+        },
+        {
+          "t": 588,
+          "d": 525
+        },
+        {
+          "t": 1125,
+          "d": 138
+        },
+        {
+          "t": 1275,
+          "d": 525
+        },
+        {
+          "t": 2200,
+          "d": 225
+        },
+        {
+          "t": 2438,
+          "d": 138
+        },
+        {
+          "t": 2588,
+          "d": 300
+        },
+        {
+          "t": 2900,
+          "d": 175
+        },
+        {
+          "t": 3088,
+          "d": 225
+        },
+        {
+          "t": 3325,
+          "d": 500
+        },
+        {
+          "t": 3825,
+          "d": 138
+        },
+        {
+          "t": 3975,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-cac-up/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "페이드 소셜 경쟁이 심해져서 ROAS 가 3.1에서 2.2로 떨어졌다고 설명해봐",
+      "en": "Paid social got a lot more crowded. Our ROAS there slipped from three point one to about two point two.",
+      "ms": 6576,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Paid",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "social",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lot",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "crowded",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Our",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ROAS",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slipped",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 188
+        },
+        {
+          "t": 288,
+          "d": 388
+        },
+        {
+          "t": 675,
+          "d": 100
+        },
+        {
+          "t": 788,
+          "d": 38
+        },
+        {
+          "t": 838,
+          "d": 350
+        },
+        {
+          "t": 1200,
+          "d": 163
+        },
+        {
+          "t": 1375,
+          "d": 488
+        },
+        {
+          "t": 2238,
+          "d": 175
+        },
+        {
+          "t": 2425,
+          "d": 750
+        },
+        {
+          "t": 3225,
+          "d": 138
+        },
+        {
+          "t": 3363,
+          "d": 325
+        },
+        {
+          "t": 3688,
+          "d": 200
+        },
+        {
+          "t": 3900,
+          "d": 313
+        },
+        {
+          "t": 4225,
+          "d": 300
+        },
+        {
+          "t": 4525,
+          "d": 325
+        },
+        {
+          "t": 5000,
+          "d": 113
+        },
+        {
+          "t": 5113,
+          "d": 263
+        },
+        {
+          "t": 5388,
+          "d": 213
+        },
+        {
+          "t": 5600,
+          "d": 263
+        },
+        {
+          "t": 5863,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-cac-up/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "투자자",
+      "meaning_ko": "예산을 더 달라고 할 줄 알았는데요. 저는 오히려 그 채널을 아예 접어야 한다고 봅니다.",
+      "en": "I was expecting you to ask for more budget. Honestly, I'd argue we should pull out of that channel altogether.",
+      "ms": 6456,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expecting",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ask",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Honestly",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "argue",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pull",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "channel",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "altogether",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 163
+        },
+        {
+          "t": 413,
+          "d": 475
+        },
+        {
+          "t": 888,
+          "d": 100
+        },
+        {
+          "t": 1000,
+          "d": 88
+        },
+        {
+          "t": 1100,
+          "d": 300
+        },
+        {
+          "t": 1400,
+          "d": 100
+        },
+        {
+          "t": 1513,
+          "d": 188
+        },
+        {
+          "t": 1713,
+          "d": 400
+        },
+        {
+          "t": 2525,
+          "d": 550
+        },
+        {
+          "t": 3538,
+          "d": 225
+        },
+        {
+          "t": 3775,
+          "d": 263
+        },
+        {
+          "t": 4050,
+          "d": 113
+        },
+        {
+          "t": 4175,
+          "d": 225
+        },
+        {
+          "t": 4413,
+          "d": 238
+        },
+        {
+          "t": 4663,
+          "d": 138
+        },
+        {
+          "t": 4813,
+          "d": 75
+        },
+        {
+          "t": 4888,
+          "d": 175
+        },
+        {
+          "t": 5075,
+          "d": 388
+        },
+        {
+          "t": 5463,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-cac-up/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "아예 접는 건 반대하고, 예산 일부를 검색으로 옮겨 한 분기만 더 보자고 설득해봐",
+      "en": "I'd rather not kill it outright. Let me shift forty percent of it into search and give it one more quarter.",
+      "ms": 6192,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "kill",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "outright",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shift",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "search",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 200
+        },
+        {
+          "t": 413,
+          "d": 238
+        },
+        {
+          "t": 663,
+          "d": 250
+        },
+        {
+          "t": 913,
+          "d": 50
+        },
+        {
+          "t": 963,
+          "d": 600
+        },
+        {
+          "t": 1963,
+          "d": 75
+        },
+        {
+          "t": 2038,
+          "d": 100
+        },
+        {
+          "t": 2138,
+          "d": 413
+        },
+        {
+          "t": 2563,
+          "d": 375
+        },
+        {
+          "t": 2950,
+          "d": 363
+        },
+        {
+          "t": 3313,
+          "d": 63
+        },
+        {
+          "t": 3388,
+          "d": 63
+        },
+        {
+          "t": 3463,
+          "d": 138
+        },
+        {
+          "t": 3600,
+          "d": 575
+        },
+        {
+          "t": 4500,
+          "d": 113
+        },
+        {
+          "t": 4613,
+          "d": 188
+        },
+        {
+          "t": 4800,
+          "d": 75
+        },
+        {
+          "t": 4875,
+          "d": 188
+        },
+        {
+          "t": 5063,
+          "d": 213
+        },
+        {
+          "t": 5275,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-cac-up/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "투자자",
+      "meaning_ko": "한 분기요. 대신 이번엔 지표를 월 단위로 보고해 주세요 — 끝나고 몰아서 말고요.",
+      "en": "One quarter. But I want those numbers monthly this time, not all at the end.",
+      "ms": 4968,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "One",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "those",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "monthly",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "not",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 325
+        },
+        {
+          "t": 425,
+          "d": 438
+        },
+        {
+          "t": 1238,
+          "d": 175
+        },
+        {
+          "t": 1425,
+          "d": 75
+        },
+        {
+          "t": 1513,
+          "d": 238
+        },
+        {
+          "t": 1750,
+          "d": 175
+        },
+        {
+          "t": 1925,
+          "d": 375
+        },
+        {
+          "t": 2313,
+          "d": 450
+        },
+        {
+          "t": 2775,
+          "d": 200
+        },
+        {
+          "t": 2975,
+          "d": 388
+        },
+        {
+          "t": 3550,
+          "d": 213
+        },
+        {
+          "t": 3775,
+          "d": 213
+        },
+        {
+          "t": 4000,
+          "d": 88
+        },
+        {
+          "t": 4100,
+          "d": 63
+        },
+        {
+          "t": 4175,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-cac-up/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "phrase",
+      "term": "CAC landed at about one eighty-five",
+      "meaning_ko": "CAC 가 185 정도로 나왔다. 결과 수치는 was 보다 landed at 이 훨씬 자연스럽다",
+      "prompt_ko": "지난달 고객 획득 비용이 185 정도로 나왔다고 보고해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "slipped from three point one to two point two",
+      "meaning_ko": "3.1에서 2.2로 떨어졌다. 소수점은 point 로 읽고, 완만한 하락은 slip",
+      "prompt_ko": "ROAS 가 3.1에서 2.2로 떨어졌다고 소리 내어 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "pull out of that channel",
+      "meaning_ko": "그 채널에서 철수하다. 사업·시장에서 손 떼는 것도 pull out of",
+      "prompt_ko": "성과가 안 나는 채널에서 아예 철수하자고 주장해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "I'd rather not kill it outright",
+      "meaning_ko": "아예 없애는 건 좀 그렇다. 반대를 부드럽게 꺼내는 I'd rather not",
+      "prompt_ko": "상대가 완전히 접자고 할 때, 그건 좀 반대라고 완곡하게 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "shift forty percent of it into search",
+      "meaning_ko": "그중 40퍼센트를 검색 광고로 옮기다. 예산 재배분은 shift A into B",
+      "prompt_ko": "예산의 40퍼센트를 다른 채널로 옮기겠다고 제안해봐"
+    },
+    {
+      "kind": "word",
+      "term": "outright",
+      "meaning_ko": "아예, 완전히, 단번에",
+      "example": "I'd rather not kill it outright.",
+      "level": 3
+    },
+    {
+      "kind": "word",
+      "term": "crowded",
+      "meaning_ko": "(시장·채널이) 경쟁자로 붐비는, 포화된",
+      "example": "Paid social got a lot more crowded.",
+      "level": 2
+    }
+  ],
+  "generated_at": "2026-09-30T20:35:41.137Z"
+}

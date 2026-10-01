@@ -1,0 +1,1251 @@
+{
+  "id": "2026-10-01-laundry-broken",
+  "situation_ko": "집 세탁기가 고장나 관리실에 신고한다. 수리기사가 다음 주에나 온다며 공용 세탁기를 안내한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "관리실 직원",
+      "meaning_ko": "관리실입니다. 로사예요. 무엇을 도와드릴까요?",
+      "en": "Building management, this is Rosa. How can I help?",
+      "ms": 3600,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Building",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "management",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "this",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Rosa",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 325
+        },
+        {
+          "t": 413,
+          "d": 550
+        },
+        {
+          "t": 988,
+          "d": 200
+        },
+        {
+          "t": 1200,
+          "d": 150
+        },
+        {
+          "t": 1363,
+          "d": 563
+        },
+        {
+          "t": 2325,
+          "d": 138
+        },
+        {
+          "t": 2475,
+          "d": 175
+        },
+        {
+          "t": 2663,
+          "d": 100
+        },
+        {
+          "t": 2775,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-laundry-broken/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "우리 집 세탁기가 어젯밤부터 안 돈다고 말해봐",
+      "en": "Hi — the washer in my unit stopped working last night.",
+      "ms": 3432,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "washer",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "unit",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stopped",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "working",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "night",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 263
+        },
+        {
+          "t": 825,
+          "d": 88
+        },
+        {
+          "t": 925,
+          "d": 350
+        },
+        {
+          "t": 1275,
+          "d": 38
+        },
+        {
+          "t": 1313,
+          "d": 88
+        },
+        {
+          "t": 1400,
+          "d": 313
+        },
+        {
+          "t": 1725,
+          "d": 400
+        },
+        {
+          "t": 2138,
+          "d": 363
+        },
+        {
+          "t": 2500,
+          "d": 288
+        },
+        {
+          "t": 2788,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-laundry-broken/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "관리실 직원",
+      "meaning_ko": "몇 가지만 여쭐게요. 전원이 아예 안 들어오나요, 아니면 돌다가 중간에 멈추나요?",
+      "en": "Let me get a few details. Is it dead completely, or does it stop partway through?",
+      "ms": 5424,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "few",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "details",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dead",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "completely",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "or",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stop",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "partway",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          15
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 113
+        },
+        {
+          "t": 188,
+          "d": 100
+        },
+        {
+          "t": 300,
+          "d": 163
+        },
+        {
+          "t": 475,
+          "d": 50
+        },
+        {
+          "t": 538,
+          "d": 213
+        },
+        {
+          "t": 763,
+          "d": 725
+        },
+        {
+          "t": 1850,
+          "d": 163
+        },
+        {
+          "t": 2025,
+          "d": 125
+        },
+        {
+          "t": 2163,
+          "d": 238
+        },
+        {
+          "t": 2413,
+          "d": 750
+        },
+        {
+          "t": 3463,
+          "d": 150
+        },
+        {
+          "t": 3625,
+          "d": 188
+        },
+        {
+          "t": 3825,
+          "d": 88
+        },
+        {
+          "t": 3925,
+          "d": 300
+        },
+        {
+          "t": 4238,
+          "d": 438
+        },
+        {
+          "t": 4688,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-laundry-broken/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "물은 차는데 통이 돌지를 않는다고 설명해봐",
+      "en": "It fills up with water, but the drum never starts spinning.",
+      "ms": 3336,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "It",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fills",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "water",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drum",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "never",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "starts",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spinning",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 375
+        },
+        {
+          "t": 563,
+          "d": 100
+        },
+        {
+          "t": 675,
+          "d": 125
+        },
+        {
+          "t": 813,
+          "d": 488
+        },
+        {
+          "t": 1513,
+          "d": 113
+        },
+        {
+          "t": 1638,
+          "d": 75
+        },
+        {
+          "t": 1713,
+          "d": 300
+        },
+        {
+          "t": 2013,
+          "d": 250
+        },
+        {
+          "t": 2263,
+          "d": 313
+        },
+        {
+          "t": 2575,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-laundry-broken/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "관리실 직원",
+      "meaning_ko": "모터 문제 같네요. 그런데 솔직히 말씀드리면 저희 수리기사가 다음 주 화요일까지 일정이 꽉 차 있어요.",
+      "en": "Sounds like the motor. But I'll be honest — our repair guy is booked solid until next Tuesday.",
+      "ms": 5904,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Sounds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "motor",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "honest",
+          7
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "our",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "repair",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "guy",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "solid",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "until",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Tuesday",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 313
+        },
+        {
+          "t": 388,
+          "d": 200
+        },
+        {
+          "t": 600,
+          "d": 88
+        },
+        {
+          "t": 700,
+          "d": 513
+        },
+        {
+          "t": 1613,
+          "d": 113
+        },
+        {
+          "t": 1738,
+          "d": 150
+        },
+        {
+          "t": 1900,
+          "d": 163
+        },
+        {
+          "t": 2075,
+          "d": 488
+        },
+        {
+          "t": 2850,
+          "d": 125
+        },
+        {
+          "t": 2988,
+          "d": 375
+        },
+        {
+          "t": 3375,
+          "d": 213
+        },
+        {
+          "t": 3600,
+          "d": 150
+        },
+        {
+          "t": 3763,
+          "d": 238
+        },
+        {
+          "t": 4013,
+          "d": 375
+        },
+        {
+          "t": 4400,
+          "d": 275
+        },
+        {
+          "t": 4688,
+          "d": 275
+        },
+        {
+          "t": 4975,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-laundry-broken/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "일주일 가까이 남았는데 그동안은 어떻게 하냐고 물어봐",
+      "en": "That's almost a week. Is there anything I can do in the meantime?",
+      "ms": 3360,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "almost",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meantime",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 250
+        },
+        {
+          "t": 475,
+          "d": 50
+        },
+        {
+          "t": 525,
+          "d": 413
+        },
+        {
+          "t": 1350,
+          "d": 63
+        },
+        {
+          "t": 1413,
+          "d": 100
+        },
+        {
+          "t": 1513,
+          "d": 300
+        },
+        {
+          "t": 1813,
+          "d": 100
+        },
+        {
+          "t": 1913,
+          "d": 125
+        },
+        {
+          "t": 2038,
+          "d": 213
+        },
+        {
+          "t": 2263,
+          "d": 63
+        },
+        {
+          "t": 2338,
+          "d": 38
+        },
+        {
+          "t": 2375,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-laundry-broken/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "관리실 직원",
+      "meaning_ko": "지하에 공용 세탁기가 있어요. 오늘 중으로 호수를 열쇠 명단에 올려둘게요.",
+      "en": "There's a shared machine in the basement. I'll add your unit to the key list today.",
+      "ms": 4824,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "There's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shared",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "machine",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "basement",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "add",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "unit",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "key",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "list",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 50
+        },
+        {
+          "t": 338,
+          "d": 338
+        },
+        {
+          "t": 688,
+          "d": 400
+        },
+        {
+          "t": 1100,
+          "d": 88
+        },
+        {
+          "t": 1200,
+          "d": 100
+        },
+        {
+          "t": 1313,
+          "d": 625
+        },
+        {
+          "t": 2350,
+          "d": 175
+        },
+        {
+          "t": 2538,
+          "d": 188
+        },
+        {
+          "t": 2738,
+          "d": 150
+        },
+        {
+          "t": 2900,
+          "d": 325
+        },
+        {
+          "t": 3238,
+          "d": 113
+        },
+        {
+          "t": 3363,
+          "d": 100
+        },
+        {
+          "t": 3475,
+          "d": 238
+        },
+        {
+          "t": 3725,
+          "d": 288
+        },
+        {
+          "t": 4025,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-laundry-broken/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "phrase",
+      "term": "It stops partway through",
+      "meaning_ko": "돌다가 중간에 멈춘다. 기계·프로세스가 끝까지 못 가고 도중에 서는 것",
+      "prompt_ko": "기계가 처음엔 도는데 끝까지 못 가고 중간에 멈춘다고 설명해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "booked solid until next Tuesday",
+      "meaning_ko": "다음 주 화요일까지 일정이 꽉 찼다. busy 보다 구체적이고 자연스럽다",
+      "prompt_ko": "수리기사 일정이 다음 주 화요일까지 꽉 차 있다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "Is there anything I can do in the meantime?",
+      "meaning_ko": "그동안 제가 할 수 있는 게 있을까요? 기다려야 할 때 대안을 묻는 정석 문장",
+      "prompt_ko": "며칠 기다려야 한다는 말을 듣고, 그 사이에 할 수 있는 게 있냐고 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "I'll be honest",
+      "meaning_ko": "솔직히 말씀드리면. 듣기 싫은 소식을 꺼내기 전에 까는 쿠션",
+      "prompt_ko": "상대가 반기지 않을 소식을 꺼내기 전에 솔직히 말하겠다고 운을 떼봐"
+    },
+    {
+      "kind": "word",
+      "term": "drum",
+      "meaning_ko": "세탁기 안의 통",
+      "example": "The drum never starts spinning.",
+      "level": 2
+    },
+    {
+      "kind": "word",
+      "term": "booked",
+      "meaning_ko": "예약이 차 있는, 일정이 잡힌",
+      "example": "Our repair guy is booked solid until next Tuesday.",
+      "level": 2
+    }
+  ],
+  "generated_at": "2026-09-30T20:34:18.704Z"
+}

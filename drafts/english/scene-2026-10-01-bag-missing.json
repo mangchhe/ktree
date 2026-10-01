@@ -1,0 +1,1311 @@
+{
+  "id": "2026-10-01-bag-missing",
+  "situation_ko": "공항에서 수하물이 안 나와 신고한다. 호텔 배송을 제안받지만 내일 아침 다른 도시로 떠나야 한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "수하물 담당 직원",
+      "meaning_ko": "수하물 서비스입니다. 수하물 표 가지고 계세요?",
+      "en": "Baggage services. Do you have your claim tag with you?",
+      "ms": 4608,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Baggage",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "services",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "claim",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tag",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 475
+        },
+        {
+          "t": 588,
+          "d": 725
+        },
+        {
+          "t": 2175,
+          "d": 138
+        },
+        {
+          "t": 2325,
+          "d": 100
+        },
+        {
+          "t": 2438,
+          "d": 138
+        },
+        {
+          "t": 2588,
+          "d": 113
+        },
+        {
+          "t": 2713,
+          "d": 325
+        },
+        {
+          "t": 3050,
+          "d": 288
+        },
+        {
+          "t": 3350,
+          "d": 150
+        },
+        {
+          "t": 3513,
+          "d": 213
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-bag-missing/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "표를 건네면서 짐이 벨트에 안 나왔다고 말해봐",
+      "en": "Yes, here it is. My bag never came out on the belt.",
+      "ms": 3576,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "here",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "My",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bag",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "never",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "came",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "belt",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 275
+        },
+        {
+          "t": 438,
+          "d": 188
+        },
+        {
+          "t": 625,
+          "d": 63
+        },
+        {
+          "t": 700,
+          "d": 288
+        },
+        {
+          "t": 1400,
+          "d": 125
+        },
+        {
+          "t": 1525,
+          "d": 400
+        },
+        {
+          "t": 2113,
+          "d": 275
+        },
+        {
+          "t": 2400,
+          "d": 188
+        },
+        {
+          "t": 2600,
+          "d": 100
+        },
+        {
+          "t": 2713,
+          "d": 63
+        },
+        {
+          "t": 2775,
+          "d": 63
+        },
+        {
+          "t": 2838,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-bag-missing/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "수하물 담당 직원",
+      "meaning_ko": "조회해볼게요… 네, 아직 프랑크푸르트에 있네요. 오늘 저녁 8시 40분 비행기로 들어옵니다.",
+      "en": "Let me look it up… right, it's still in Frankfurt. It's coming in on the eight forty flight tonight.",
+      "ms": 6984,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          4
+        ],
+        [
+          "… ",
+          null
+        ],
+        [
+          "right",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "it's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Frankfurt",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "coming",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tonight",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 238
+        },
+        {
+          "t": 350,
+          "d": 88
+        },
+        {
+          "t": 450,
+          "d": 188
+        },
+        {
+          "t": 650,
+          "d": 100
+        },
+        {
+          "t": 763,
+          "d": 200
+        },
+        {
+          "t": 1188,
+          "d": 325
+        },
+        {
+          "t": 1725,
+          "d": 138
+        },
+        {
+          "t": 1875,
+          "d": 225
+        },
+        {
+          "t": 2113,
+          "d": 100
+        },
+        {
+          "t": 2225,
+          "d": 688
+        },
+        {
+          "t": 3775,
+          "d": 225
+        },
+        {
+          "t": 4013,
+          "d": 300
+        },
+        {
+          "t": 4325,
+          "d": 88
+        },
+        {
+          "t": 4425,
+          "d": 88
+        },
+        {
+          "t": 4525,
+          "d": 113
+        },
+        {
+          "t": 4650,
+          "d": 175
+        },
+        {
+          "t": 4838,
+          "d": 363
+        },
+        {
+          "t": 5213,
+          "d": 325
+        },
+        {
+          "t": 5550,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-bag-missing/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 호텔로 보내줄 수 있냐고 물어봐",
+      "en": "Could you have it delivered to my hotel, then?",
+      "ms": 2568,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Could",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "delivered",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotel",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "then",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 63
+        },
+        {
+          "t": 263,
+          "d": 188
+        },
+        {
+          "t": 450,
+          "d": 63
+        },
+        {
+          "t": 513,
+          "d": 388
+        },
+        {
+          "t": 900,
+          "d": 50
+        },
+        {
+          "t": 950,
+          "d": 138
+        },
+        {
+          "t": 1100,
+          "d": 563
+        },
+        {
+          "t": 1950,
+          "d": 250
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-bag-missing/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "수하물 담당 직원",
+      "meaning_ko": "가능하긴 한데, 내일 오전은 되어야 받으실 수 있어요. 여기에 주소를 적어주세요.",
+      "en": "We can, but it won't reach you until tomorrow morning. Write the address down here.",
+      "ms": 6072,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reach",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "until",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Write",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "address",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 188
+        },
+        {
+          "t": 300,
+          "d": 288
+        },
+        {
+          "t": 700,
+          "d": 113
+        },
+        {
+          "t": 825,
+          "d": 88
+        },
+        {
+          "t": 925,
+          "d": 238
+        },
+        {
+          "t": 1175,
+          "d": 200
+        },
+        {
+          "t": 1388,
+          "d": 100
+        },
+        {
+          "t": 1500,
+          "d": 275
+        },
+        {
+          "t": 1788,
+          "d": 413
+        },
+        {
+          "t": 2213,
+          "d": 550
+        },
+        {
+          "t": 3625,
+          "d": 325
+        },
+        {
+          "t": 3963,
+          "d": 113
+        },
+        {
+          "t": 4088,
+          "d": 350
+        },
+        {
+          "t": 4450,
+          "d": 288
+        },
+        {
+          "t": 4750,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-bag-missing/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "내일 아침 일찍 리스본으로 떠나서 곤란하다고 말해봐",
+      "en": "That's a problem — I check out early and I'm flying to Lisbon at nine.",
+      "ms": 4152,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          2
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flying",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Lisbon",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nine",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 113
+        },
+        {
+          "t": 238,
+          "d": 50
+        },
+        {
+          "t": 288,
+          "d": 538
+        },
+        {
+          "t": 1288,
+          "d": 38
+        },
+        {
+          "t": 1325,
+          "d": 238
+        },
+        {
+          "t": 1575,
+          "d": 138
+        },
+        {
+          "t": 1713,
+          "d": 475
+        },
+        {
+          "t": 2300,
+          "d": 238
+        },
+        {
+          "t": 2550,
+          "d": 113
+        },
+        {
+          "t": 2663,
+          "d": 325
+        },
+        {
+          "t": 2988,
+          "d": 50
+        },
+        {
+          "t": 3038,
+          "d": 350
+        },
+        {
+          "t": 3388,
+          "d": 88
+        },
+        {
+          "t": 3475,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-bag-missing/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "수하물 담당 직원",
+      "meaning_ko": "아, 그러면 공항 수령으로 잡아둘게요. 출국장 옆 저희 데스크에서 찾으시면 됩니다.",
+      "en": "Ah — then I'll hold it for airport pickup instead. You can collect it at our desk near departures.",
+      "ms": 7080,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Ah",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "then",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hold",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "airport",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pickup",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "collect",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "desk",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "near",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "departures",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 325
+        },
+        {
+          "t": 725,
+          "d": 150
+        },
+        {
+          "t": 888,
+          "d": 113
+        },
+        {
+          "t": 1013,
+          "d": 200
+        },
+        {
+          "t": 1225,
+          "d": 113
+        },
+        {
+          "t": 1350,
+          "d": 163
+        },
+        {
+          "t": 1525,
+          "d": 438
+        },
+        {
+          "t": 1975,
+          "d": 325
+        },
+        {
+          "t": 2313,
+          "d": 563
+        },
+        {
+          "t": 3738,
+          "d": 163
+        },
+        {
+          "t": 3913,
+          "d": 150
+        },
+        {
+          "t": 4075,
+          "d": 375
+        },
+        {
+          "t": 4463,
+          "d": 113
+        },
+        {
+          "t": 4588,
+          "d": 100
+        },
+        {
+          "t": 4700,
+          "d": 175
+        },
+        {
+          "t": 4888,
+          "d": 363
+        },
+        {
+          "t": 5263,
+          "d": 188
+        },
+        {
+          "t": 5463,
+          "d": 738
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-bag-missing/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "phrase",
+      "term": "My bag never came out on the belt",
+      "meaning_ko": "짐이 수하물 벨트에 끝내 안 나왔다. lost 라고만 하지 말고 이렇게 상황으로 말한다",
+      "prompt_ko": "공항에서 기다렸는데 짐이 벨트에 안 나왔다고 신고해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "have it delivered to my hotel",
+      "meaning_ko": "호텔로 배송시키다. 남을 시켜서 하는 일은 have + 목적어 + 과거분사",
+      "prompt_ko": "물건을 호텔까지 보내달라고 사역 표현으로 부탁해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "It won't reach you until tomorrow morning",
+      "meaning_ko": "내일 아침이나 되어야 도착한다. not ... until 로 '그때나 되어야'를 만든다",
+      "prompt_ko": "물건이 내일 아침은 되어야 도착한다고 알려줘봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "hold it for airport pickup",
+      "meaning_ko": "공항에서 찾아갈 수 있게 보관해두다",
+      "prompt_ko": "배송 대신 공항에서 직접 찾아가게 보관해달라고 해봐"
+    },
+    {
+      "kind": "word",
+      "term": "claim tag",
+      "meaning_ko": "수하물 인환증, 짐 표",
+      "example": "Do you have your claim tag with you?",
+      "level": 2
+    },
+    {
+      "kind": "word",
+      "term": "departures",
+      "meaning_ko": "(공항의) 출국장, 출발층",
+      "example": "You can collect it at our desk near departures.",
+      "level": 1
+    }
+  ],
+  "generated_at": "2026-09-30T20:34:47.901Z"
+}

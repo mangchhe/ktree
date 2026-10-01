@@ -1,0 +1,1508 @@
+{
+  "id": "2026-10-01-deadline-push",
+  "situation_ko": "금요일 납기를 못 맞출 것 같다고 미리 알린다. 상대는 날짜는 못 옮긴다며 범위를 줄이자고 한다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "상대 팀 매니저",
+      "meaning_ko": "운영 회의 전에 따로 얘기하자고 하셨죠. 무슨 일이에요?",
+      "en": "You said you wanted to talk before the steering call. What's going on?",
+      "ms": 4392,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "You",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "said",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "steering",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 250
+        },
+        {
+          "t": 463,
+          "d": 113
+        },
+        {
+          "t": 588,
+          "d": 275
+        },
+        {
+          "t": 875,
+          "d": 113
+        },
+        {
+          "t": 1000,
+          "d": 350
+        },
+        {
+          "t": 1363,
+          "d": 325
+        },
+        {
+          "t": 1700,
+          "d": 100
+        },
+        {
+          "t": 1813,
+          "d": 438
+        },
+        {
+          "t": 2263,
+          "d": 425
+        },
+        {
+          "t": 3075,
+          "d": 213
+        },
+        {
+          "t": 3300,
+          "d": 313
+        },
+        {
+          "t": 3625,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-deadline-push/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "금요일 납기를 못 맞출 것 같다고, 남한테 듣기 전에 직접 알린다고 말해봐",
+      "en": "I wanted you to hear it from me first — we're not going to make Friday.",
+      "ms": 3936,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hear",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          8
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "we're",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 38
+        },
+        {
+          "t": 138,
+          "d": 225
+        },
+        {
+          "t": 375,
+          "d": 100
+        },
+        {
+          "t": 475,
+          "d": 63
+        },
+        {
+          "t": 538,
+          "d": 238
+        },
+        {
+          "t": 775,
+          "d": 75
+        },
+        {
+          "t": 863,
+          "d": 150
+        },
+        {
+          "t": 1013,
+          "d": 213
+        },
+        {
+          "t": 1325,
+          "d": 613
+        },
+        {
+          "t": 2400,
+          "d": 88
+        },
+        {
+          "t": 2488,
+          "d": 150
+        },
+        {
+          "t": 2650,
+          "d": 100
+        },
+        {
+          "t": 2750,
+          "d": 38
+        },
+        {
+          "t": 2788,
+          "d": 163
+        },
+        {
+          "t": 2950,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-deadline-push/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "상대 팀 매니저",
+      "meaning_ko": "미리 알려준 건 고맙지만, 듣고 싶던 말은 아니네요. 얼마나 늦어지나요?",
+      "en": "I appreciate the heads-up, but that's not what I wanted to hear. How far off are we?",
+      "ms": 5184,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "appreciate",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heads-up",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hear",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "far",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 588
+        },
+        {
+          "t": 775,
+          "d": 88
+        },
+        {
+          "t": 875,
+          "d": 538
+        },
+        {
+          "t": 1438,
+          "d": 138
+        },
+        {
+          "t": 1588,
+          "d": 275
+        },
+        {
+          "t": 1875,
+          "d": 213
+        },
+        {
+          "t": 2100,
+          "d": 125
+        },
+        {
+          "t": 2238,
+          "d": 75
+        },
+        {
+          "t": 2325,
+          "d": 313
+        },
+        {
+          "t": 2650,
+          "d": 100
+        },
+        {
+          "t": 2763,
+          "d": 513
+        },
+        {
+          "t": 3663,
+          "d": 138
+        },
+        {
+          "t": 3813,
+          "d": 250
+        },
+        {
+          "t": 4075,
+          "d": 238
+        },
+        {
+          "t": 4325,
+          "d": 138
+        },
+        {
+          "t": 4475,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-deadline-push/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "열흘 정도라고 하고, 왜 늦는지 한 문장으로 설명해봐",
+      "en": "Ten days, give or take. The piece we were promised in August only landed last week.",
+      "ms": 5928,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Ten",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "give",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "or",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "piece",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "were",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "promised",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "August",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "landed",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 513
+        },
+        {
+          "t": 975,
+          "d": 238
+        },
+        {
+          "t": 1213,
+          "d": 63
+        },
+        {
+          "t": 1275,
+          "d": 400
+        },
+        {
+          "t": 2088,
+          "d": 63
+        },
+        {
+          "t": 2150,
+          "d": 275
+        },
+        {
+          "t": 2425,
+          "d": 75
+        },
+        {
+          "t": 2500,
+          "d": 100
+        },
+        {
+          "t": 2613,
+          "d": 475
+        },
+        {
+          "t": 3100,
+          "d": 113
+        },
+        {
+          "t": 3325,
+          "d": 588
+        },
+        {
+          "t": 4050,
+          "d": 275
+        },
+        {
+          "t": 4325,
+          "d": 463
+        },
+        {
+          "t": 4788,
+          "d": 388
+        },
+        {
+          "t": 5175,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-deadline-push/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "상대 팀 매니저",
+      "meaning_ko": "날짜는 못 옮겨요 — 고객 쪽에 이미 발표했거든요. 대신 범위를 줄이는 건 어때요?",
+      "en": "I can't move the date — we've already announced it to the client. What if we cut scope instead?",
+      "ms": 6096,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "date",
+          4
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "we've",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "announced",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "client",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cut",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scope",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 288
+        },
+        {
+          "t": 500,
+          "d": 213
+        },
+        {
+          "t": 725,
+          "d": 113
+        },
+        {
+          "t": 850,
+          "d": 363
+        },
+        {
+          "t": 1700,
+          "d": 213
+        },
+        {
+          "t": 1925,
+          "d": 375
+        },
+        {
+          "t": 2313,
+          "d": 450
+        },
+        {
+          "t": 2775,
+          "d": 88
+        },
+        {
+          "t": 2875,
+          "d": 113
+        },
+        {
+          "t": 3000,
+          "d": 100
+        },
+        {
+          "t": 3113,
+          "d": 575
+        },
+        {
+          "t": 4075,
+          "d": 125
+        },
+        {
+          "t": 4213,
+          "d": 138
+        },
+        {
+          "t": 4363,
+          "d": 125
+        },
+        {
+          "t": 4500,
+          "d": 225
+        },
+        {
+          "t": 4738,
+          "d": 375
+        },
+        {
+          "t": 5125,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-deadline-push/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "무엇은 뺄 수 있고 무엇은 절대 못 빼는지 잘라 말해봐",
+      "en": "We could ship without the reporting screens. But the export has to go in — that's what they actually bought.",
+      "ms": 6096,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ship",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "without",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reporting",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "screens",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "export",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          13
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "that's",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "they",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bought",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 188,
+          "d": 125
+        },
+        {
+          "t": 313,
+          "d": 325
+        },
+        {
+          "t": 650,
+          "d": 388
+        },
+        {
+          "t": 1050,
+          "d": 75
+        },
+        {
+          "t": 1125,
+          "d": 413
+        },
+        {
+          "t": 1550,
+          "d": 638
+        },
+        {
+          "t": 2613,
+          "d": 75
+        },
+        {
+          "t": 2700,
+          "d": 75
+        },
+        {
+          "t": 2788,
+          "d": 475
+        },
+        {
+          "t": 3263,
+          "d": 250
+        },
+        {
+          "t": 3513,
+          "d": 88
+        },
+        {
+          "t": 3600,
+          "d": 250
+        },
+        {
+          "t": 3850,
+          "d": 200
+        },
+        {
+          "t": 4538,
+          "d": 163
+        },
+        {
+          "t": 4700,
+          "d": 100
+        },
+        {
+          "t": 4800,
+          "d": 125
+        },
+        {
+          "t": 4925,
+          "d": 325
+        },
+        {
+          "t": 5263,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-deadline-push/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "상대 팀 매니저",
+      "meaning_ko": "그럼 그렇게 갑시다. 오늘 중으로 한 장짜리 문서로 정리해서 보내주세요.",
+      "en": "Then let's go with that. Put it in writing today — one page, before the call.",
+      "ms": 4848,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Put",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "writing",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          9
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "one",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "page",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "before",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 238
+        },
+        {
+          "t": 500,
+          "d": 175
+        },
+        {
+          "t": 688,
+          "d": 150
+        },
+        {
+          "t": 850,
+          "d": 413
+        },
+        {
+          "t": 1663,
+          "d": 125
+        },
+        {
+          "t": 1800,
+          "d": 113
+        },
+        {
+          "t": 1925,
+          "d": 138
+        },
+        {
+          "t": 2075,
+          "d": 350
+        },
+        {
+          "t": 2438,
+          "d": 400
+        },
+        {
+          "t": 2863,
+          "d": 263
+        },
+        {
+          "t": 3138,
+          "d": 388
+        },
+        {
+          "t": 3550,
+          "d": 350
+        },
+        {
+          "t": 3913,
+          "d": 88
+        },
+        {
+          "t": 4013,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-deadline-push/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "phrase",
+      "term": "I wanted you to hear it from me first",
+      "meaning_ko": "다른 데서 듣기 전에 제가 직접 말씀드리고 싶었어요. 나쁜 소식을 여는 정석",
+      "prompt_ko": "나쁜 소식을 다른 사람 입으로 듣기 전에 직접 알리고 싶었다고 운을 떼봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "we're not going to make Friday",
+      "meaning_ko": "금요일 납기를 못 맞춘다. 기한을 '맞추다'는 meet 말고 make 도 아주 흔하다",
+      "prompt_ko": "금요일 마감을 못 맞출 것 같다고 단도직입으로 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "I appreciate the heads-up",
+      "meaning_ko": "미리 알려줘서 고맙다. heads-up = 사전 귀띔",
+      "prompt_ko": "상대가 문제를 미리 귀띔해줬을 때 고맙다고 받아봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "give or take",
+      "meaning_ko": "대략, 얼추 그 정도. 숫자 뒤에 붙여 오차를 인정한다",
+      "prompt_ko": "열흘 정도 걸린다고, 딱 떨어지는 건 아니라는 뉘앙스로 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "cut scope",
+      "meaning_ko": "범위를 줄이다. 일정이 안 되면 날짜 대신 범위를 깎는다",
+      "prompt_ko": "날짜를 못 옮기니 대신 범위를 줄이자고 제안해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "Put it in writing",
+      "meaning_ko": "문서로 남겨주세요. 구두 합의를 글로 확정시킬 때",
+      "prompt_ko": "구두로 합의한 것을 오늘 중으로 문서로 남겨달라고 요구해봐"
+    },
+    {
+      "kind": "word",
+      "term": "heads-up",
+      "meaning_ko": "사전 경고, 미리 알려주는 귀띔",
+      "example": "I appreciate the heads-up.",
+      "level": 2
+    }
+  ],
+  "generated_at": "2026-09-30T20:36:02.647Z"
+}

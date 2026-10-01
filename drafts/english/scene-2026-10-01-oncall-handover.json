@@ -1,0 +1,1425 @@
+{
+  "id": "2026-10-01-oncall-handover",
+  "situation_ko": "온콜을 넘겨받으며 미해결 장애를 인계받는다. 롤백이 막혀 있어 앞으로 가는 수밖에 없다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "인계하는 동료",
+      "meaning_ko": "자, 이제 온콜 넘길게요. 아직 안 끝난 게 하나 있어요.",
+      "en": "Alright, I'm handing the pager over to you. One thing is still open.",
+      "ms": 5688,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Alright",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "handing",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pager",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "One",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "open",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 563
+        },
+        {
+          "t": 838,
+          "d": 100
+        },
+        {
+          "t": 950,
+          "d": 350
+        },
+        {
+          "t": 1313,
+          "d": 75
+        },
+        {
+          "t": 1400,
+          "d": 438
+        },
+        {
+          "t": 1850,
+          "d": 213
+        },
+        {
+          "t": 2075,
+          "d": 125
+        },
+        {
+          "t": 2213,
+          "d": 288
+        },
+        {
+          "t": 3363,
+          "d": 313
+        },
+        {
+          "t": 3688,
+          "d": 225
+        },
+        {
+          "t": 3925,
+          "d": 113
+        },
+        {
+          "t": 4050,
+          "d": 313
+        },
+        {
+          "t": 4375,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-oncall-handover/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "지금 내가 어떤 상황에 들어가는 건지 물어봐",
+      "en": "Go ahead — what am I walking into?",
+      "ms": 2136,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Go",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ahead",
+          1
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "am",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "walking",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          6
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 125
+        },
+        {
+          "t": 225,
+          "d": 325
+        },
+        {
+          "t": 550,
+          "d": 88
+        },
+        {
+          "t": 638,
+          "d": 63
+        },
+        {
+          "t": 713,
+          "d": 88
+        },
+        {
+          "t": 800,
+          "d": 525
+        },
+        {
+          "t": 1325,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-oncall-handover/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "인계하는 동료",
+      "meaning_ko": "결제 컨슈머가 두 시간째 계속 재시작 중이에요. 메모리 초과로 죽고 있고, 랙은 4만 건 근처까지 올라갔어요.",
+      "en": "The payments consumer has been restarting for two hours. It keeps getting OOM-killed, and the lag is up around forty thousand.",
+      "ms": 8832,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payments",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "consumer",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "restarting",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keeps",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "getting",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "OOM-killed",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lag",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 150
+        },
+        {
+          "t": 263,
+          "d": 400
+        },
+        {
+          "t": 675,
+          "d": 450
+        },
+        {
+          "t": 1138,
+          "d": 175
+        },
+        {
+          "t": 1325,
+          "d": 138
+        },
+        {
+          "t": 1475,
+          "d": 588
+        },
+        {
+          "t": 2075,
+          "d": 113
+        },
+        {
+          "t": 2200,
+          "d": 275
+        },
+        {
+          "t": 2488,
+          "d": 475
+        },
+        {
+          "t": 3825,
+          "d": 200
+        },
+        {
+          "t": 4038,
+          "d": 275
+        },
+        {
+          "t": 4325,
+          "d": 350
+        },
+        {
+          "t": 4688,
+          "d": 838
+        },
+        {
+          "t": 5738,
+          "d": 125
+        },
+        {
+          "t": 5875,
+          "d": 75
+        },
+        {
+          "t": 5963,
+          "d": 325
+        },
+        {
+          "t": 6300,
+          "d": 100
+        },
+        {
+          "t": 6413,
+          "d": 138
+        },
+        {
+          "t": 6563,
+          "d": 350
+        },
+        {
+          "t": 6925,
+          "d": 338
+        },
+        {
+          "t": 7275,
+          "d": 675
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-oncall-handover/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그냥 이전 빌드로 롤백하면 안 되냐고 물어봐",
+      "en": "Can't we just roll it back to the previous build?",
+      "ms": 2520,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Can't",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "roll",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "previous",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "build",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 75
+        },
+        {
+          "t": 288,
+          "d": 238
+        },
+        {
+          "t": 538,
+          "d": 250
+        },
+        {
+          "t": 788,
+          "d": 88
+        },
+        {
+          "t": 875,
+          "d": 263
+        },
+        {
+          "t": 1150,
+          "d": 75
+        },
+        {
+          "t": 1225,
+          "d": 75
+        },
+        {
+          "t": 1300,
+          "d": 450
+        },
+        {
+          "t": 1763,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-oncall-handover/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "인계하는 동료",
+      "meaning_ko": "안 돼요 — 그 릴리스에 되돌릴 수 없는 스키마 마이그레이션이 같이 나갔어요. 앞으로 가는 수밖에 없습니다.",
+      "en": "No — that release shipped a schema migration that isn't reversible. We can only go forward.",
+      "ms": 6576,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shipped",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "schema",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "migration",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "isn't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reversible",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forward",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 425
+        },
+        {
+          "t": 725,
+          "d": 138
+        },
+        {
+          "t": 875,
+          "d": 288
+        },
+        {
+          "t": 1175,
+          "d": 250
+        },
+        {
+          "t": 1438,
+          "d": 50
+        },
+        {
+          "t": 1500,
+          "d": 388
+        },
+        {
+          "t": 1900,
+          "d": 563
+        },
+        {
+          "t": 2475,
+          "d": 175
+        },
+        {
+          "t": 2663,
+          "d": 213
+        },
+        {
+          "t": 2888,
+          "d": 650
+        },
+        {
+          "t": 4400,
+          "d": 188
+        },
+        {
+          "t": 4600,
+          "d": 150
+        },
+        {
+          "t": 4763,
+          "d": 213
+        },
+        {
+          "t": 4988,
+          "d": 200
+        },
+        {
+          "t": 5200,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-oncall-handover/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 메모리 한도를 올려 일단 시간을 벌고 아침에 고치자고 제안해봐",
+      "en": "Then let's bump the memory limit to buy ourselves some time and fix the leak in the morning.",
+      "ms": 4800,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bump",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "memory",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "limit",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "buy",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ourselves",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "some",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "leak",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 225,
+          "d": 138
+        },
+        {
+          "t": 363,
+          "d": 238
+        },
+        {
+          "t": 613,
+          "d": 75
+        },
+        {
+          "t": 688,
+          "d": 400
+        },
+        {
+          "t": 1088,
+          "d": 350
+        },
+        {
+          "t": 1450,
+          "d": 100
+        },
+        {
+          "t": 1563,
+          "d": 225
+        },
+        {
+          "t": 1788,
+          "d": 388
+        },
+        {
+          "t": 2175,
+          "d": 163
+        },
+        {
+          "t": 2350,
+          "d": 413
+        },
+        {
+          "t": 3063,
+          "d": 100
+        },
+        {
+          "t": 3175,
+          "d": 300
+        },
+        {
+          "t": 3475,
+          "d": 100
+        },
+        {
+          "t": 3588,
+          "d": 338
+        },
+        {
+          "t": 3938,
+          "d": 50
+        },
+        {
+          "t": 3988,
+          "d": 50
+        },
+        {
+          "t": 4038,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-oncall-handover/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "인계하는 동료",
+      "meaning_ko": "저라도 그렇게 하겠어요. 인시던트 채널에 적어둘게요 — 세 시간 뒤에도 랙이 안 줄면 저 깨우세요.",
+      "en": "That's what I'd do. I'll note it in the incident channel — if the lag isn't dropping in three hours, wake me up.",
+      "ms": 7464,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "note",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "incident",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "channel",
+          10
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "if",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lag",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "isn't",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dropping",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          18
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "wake",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 288
+        },
+        {
+          "t": 400,
+          "d": 188
+        },
+        {
+          "t": 600,
+          "d": 188
+        },
+        {
+          "t": 800,
+          "d": 350
+        },
+        {
+          "t": 2013,
+          "d": 238
+        },
+        {
+          "t": 2263,
+          "d": 263
+        },
+        {
+          "t": 2538,
+          "d": 113
+        },
+        {
+          "t": 2663,
+          "d": 75
+        },
+        {
+          "t": 2750,
+          "d": 75
+        },
+        {
+          "t": 2838,
+          "d": 425
+        },
+        {
+          "t": 3275,
+          "d": 350
+        },
+        {
+          "t": 3850,
+          "d": 75
+        },
+        {
+          "t": 3938,
+          "d": 88
+        },
+        {
+          "t": 4038,
+          "d": 313
+        },
+        {
+          "t": 4363,
+          "d": 200
+        },
+        {
+          "t": 4575,
+          "d": 375
+        },
+        {
+          "t": 4963,
+          "d": 113
+        },
+        {
+          "t": 5088,
+          "d": 288
+        },
+        {
+          "t": 5388,
+          "d": 388
+        },
+        {
+          "t": 5913,
+          "d": 288
+        },
+        {
+          "t": 6213,
+          "d": 125
+        },
+        {
+          "t": 6350,
+          "d": 250
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-01-oncall-handover/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "phrase",
+      "term": "What am I walking into?",
+      "meaning_ko": "제가 지금 어떤 상황에 들어가는 건가요? 인수인계·회의 직전에 쓰는 한 방",
+      "prompt_ko": "온콜을 넘겨받으며 지금 어떤 상황인지 한 문장으로 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "It keeps getting OOM-killed",
+      "meaning_ko": "메모리 초과로 계속 죽는다. keep -ing 으로 반복을 표현한다",
+      "prompt_ko": "서비스가 메모리 초과로 계속 죽고 있다고 설명해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "roll it back to the previous build",
+      "meaning_ko": "이전 빌드로 되돌리다. 배포를 되돌리는 표준 동사구",
+      "prompt_ko": "일단 이전 빌드로 되돌리면 안 되냐고 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "bump the memory limit",
+      "meaning_ko": "메모리 한도를 올리다. 설정값을 한 단계 올릴 때 increase 대신 bump",
+      "prompt_ko": "임시로 메모리 한도를 올려서 버티자고 제안해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "buy ourselves some time",
+      "meaning_ko": "시간을 벌다. 근본 해결 전에 임시로 버티는 것",
+      "prompt_ko": "근본 원인은 아침에 보고 일단 시간을 벌자고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "reversible",
+      "meaning_ko": "되돌릴 수 있는",
+      "example": "That release shipped a schema migration that isn't reversible.",
+      "level": 3
+    },
+    {
+      "kind": "word",
+      "term": "lag",
+      "meaning_ko": "(큐·컨슈머의) 밀린 처리량, 지연",
+      "example": "The lag is up around forty thousand.",
+      "level": 2
+    }
+  ],
+  "generated_at": "2026-09-30T20:36:17.750Z"
+}
