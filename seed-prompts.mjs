@@ -48,7 +48,7 @@ const P = [
              {term:'more scattered',meaning_ko:'더 산만한'},
              {term:'that slips more often than I’d like',meaning_ko:'생각보다 자주 어긋난다'}] },
 
-  { kind:'habit', topic:'운동', level:2, seconds:75,
+  { kind:'habit', topic:'일상', level:2, seconds:75,
     question_en:"You said you like staying active. What do you usually do, and how often?",
     hint_ko:'운동 습관 — 뭘 하는지 → 얼마나 자주 → 왜 그걸 고르게 됐는지',
     model_en:"I'm not someone who's at the gym every day, but I try to move three or four times a week.\n\nMostly I run. There's a river path near my place, and I'll do maybe five kilometers — slow, nothing impressive. On weekends I go a bit longer if the weather's decent.\n\nI picked running because it's the lowest-friction thing I could find. No booking, no equipment, no one to coordinate with. I just put my shoes on and go. Anything more complicated than that and I know I'd stop doing it.",
