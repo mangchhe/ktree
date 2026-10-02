@@ -17,7 +17,8 @@
  *
  * 입력(장면):  { "id","situation_ko","voices":{"a","b"},
  *                "turns":[{"who","en","is_me","intent_ko","meaning_ko"}],
- *                "vocab":[{"kind","term","meaning_ko","prompt_ko","example"}] }
+ *                "vocab":[{"kind","term","meaning_ko","prompt_ko","example",
+ *                          "keywords":[{"word","meaning_ko"}]}] }
  *
  *   kind="phrase" (기본) — 목적은 **뱉기**. prompt_ko(그 표현이 나올 수밖에 없는 상황)가
  *     **반드시** 있어야 한다. 없으면 산출 복습을 만들 수 없어 올리지 않는다.
@@ -247,6 +248,9 @@ function vocabRows(doc) {
     meaning_ko: v.meaning_ko || '',
     prompt_ko: v.prompt_ko || '',
     example: v.example || '',
+    // 구(phrase) 안의 모르는 단어. 구의 뜻만 알면 그 구에서만 쓸 수 있다 —
+    // "that's where the headroom is" 를 외워도 headroom 을 모르면 다른 데서 못 쓴다.
+    keywords: Array.isArray(v.keywords) ? v.keywords.filter(k => k && k.word && k.meaning_ko) : [],
     level: v.level || doc.level || 2,
   }));
   const dropped = items.length - keep.length;

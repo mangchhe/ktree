@@ -194,6 +194,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .prow2 .pt{font-size:15px;font-weight:650;line-height:1.4}
 .prow2 .pk2{font-size:12.5px;color:var(--sub);margin-top:3px;line-height:1.5}
 .prow2 .pex{font-size:12px;color:var(--dim);margin-top:4px;font-style:italic}
+/* 구(phrase) 안의 모르는 단어를 따로 짚는다. 구의 뜻만 알면 그 구에서만 쓸 수 있다. */
+.prow2 .pkw{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:6px;padding-top:6px;
+  border-top:1px dashed var(--border)}
+.prow2 .pkw span{font-size:11.5px;color:var(--dim)}
+.prow2 .pkw b{color:var(--ok);font-weight:650;margin-right:3px}
 .btn.sm.on{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
 .toast{
   position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);
@@ -518,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-02.2';
+const BUILD = '2026-10-03.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -782,6 +787,7 @@ async function paintBuild(){
 
 // XP 는 **정답률이 아니라 입을 연 횟수**에 붙는다. 정답에만 주면 「맞음」을 거짓으로
 // 누르게 되고, 그러면 복습 간격이 가짜로 벌어져 SRS 전체가 무의미해진다.
+const SCENE_N = 4;            // 하루 장면 개수
 const SPEAK_N = 2;            // 하루 독백 개수
 const XP = { speak:20, turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
              article:8, recog:1, quizOk:5, quizMiss:2, complete:30, cap:250 };
@@ -836,19 +842,40 @@ async function loadToday(){
     const tn = activeTopicNames();
     const scQ = sb.from('eng_scenes').select('*').eq('status','ready');
     const arQ = sb.from('eng_articles').select('*');
-    const [sc, ar, se, pr] = await Promise.all([
-      (tn.length ? scQ.in('topic', tn) : scQ).order('created_at',{ascending:false}).limit(5),
-      (tn.length ? arQ.in('topic', tn) : arQ).order('created_at',{ascending:false}).limit(1),
+    const [sc, ar, se, pr, past] = await Promise.all([
+      (tn.length ? scQ.in('topic', tn) : scQ).order('created_at',{ascending:false}).limit(30),
+      (tn.length ? arQ.in('topic', tn) : arQ).order('created_at',{ascending:false}).limit(10),
       // 🔴 user_id 를 **명시한다.** 진도 공유로 읽기가 열려 있어, RLS 에 기대면
       // maybeSingle() 이 두 사람 행을 만나 터지거나 남의 진도를 내 것으로 표시한다.
       sb.from('eng_sessions').select('*').eq('user_id', currentUser.id).eq('session_date', d).maybeSingle(),
       sb.from('eng_progress').select('*').eq('user_id', currentUser.id).maybeSingle(),
+      // 🔴 지난 날 무엇을 했는지. 이게 없으면 "오늘 판"이 날짜에 묶이지 않고 그냥
+      // 최신 5개라, 자정이 지나면 진도만 0 이 되고 **같은 장면을 또 한다.**
+      sb.from('eng_sessions').select('session_date, scene_ids, article_id')
+        .eq('user_id', currentUser.id).lt('session_date', d)
+        .order('session_date',{ascending:false}).limit(60),
     ]);
     // 테이블이 아직 없으면 화면이 그 사실을 말해야 한다 — 조용히 비면 버그로 보인다
     const missing = [sc,ar,se,pr].some(r => r.error && /schema cache|does not exist/i.test(r.error.message));
     if (missing) { tMissing = true; tLoaded = true; return; }
-    tScenes = sc.data || [];
-    tArticle = (ar.data || [])[0] || null;
+    // 오늘 판이 이미 정해져 있으면 그걸 쓴다 (하루 안에서는 내용이 안 바뀌어야 한다).
+    // 없으면 **지난 날 했던 것을 빼고** 새로 고른다.
+    const allSc = sc.data || [], allAr = ar.data || [];
+    const pinned = se.data?.scene_ids || [];
+    if (pinned.length) {
+      tScenes = pinned.map(id => allSc.find(x => x.id === id)).filter(Boolean);
+    } else {
+      const usedSc = new Set((past.data || []).flatMap(r => r.scene_ids || []));
+      const fresh = allSc.filter(x => !usedSc.has(x.id));
+      // 다 소진했으면 최신 것으로라도 채운다 — 빈 날을 만들지 않는다
+      tScenes = (fresh.length ? fresh : allSc).slice(0, SCENE_N);
+    }
+    const pinnedAr = se.data?.article_id;
+    if (pinnedAr) tArticle = allAr.find(x => x.id === pinnedAr) || null;
+    else {
+      const usedAr = new Set((past.data || []).map(r => r.article_id).filter(Boolean));
+      tArticle = allAr.find(x => !usedAr.has(x.id)) || allAr[0] || null;
+    }
     tSession = se.data || null;
     tProg = pr.data || { xp_total:0, xp_today:0, xp_date:d, listened_ms:0, turns_spoken:0, articles_read:0 };
     if (tProg.xp_date !== d) { tProg.xp_today = 0; tProg.xp_date = d; }   // 날짜가 바뀌면 상한 리셋
@@ -982,8 +1009,13 @@ async function bumpXp(n, why){
 
 async function saveProgress(patch){
   const p = Object.assign({}, tSession?.progress || {}, patch);
+  // 🔴 오늘 고른 것을 **실제로 박아둔다.** 전에는 tSession 에 없으면 빈 배열을 저장해
+  // scene_ids 가 영영 null 이었고, 그래서 "오늘 판"이 날짜에 묶이지 않았다 —
+  // 자정이 지나면 진도만 0 이 되고 같은 장면을 또 했다.
   const row = { user_id: currentUser.id, session_date: today(), progress: p,
-                scene_ids: tSession?.scene_ids || [], vocab_ids: tSession?.vocab_ids || [],
+                scene_ids: (tSession?.scene_ids?.length ? tSession.scene_ids : tScenes.map(x => x.id)),
+                vocab_ids: (tSession?.vocab_ids?.length ? tSession.vocab_ids
+                            : [...tVocab.today, ...tVocab.past].map(x => x.id)),
                 xp_earned: (tSession?.xp_earned || 0) + tGain };
   if (tArticle) row.article_id = tArticle.id;
   try {
@@ -1140,6 +1172,8 @@ function drawPre(el, sc){
         <div class="pt">${esc(x.term)}${x.kind === 'word' ? '<em class="kdot">Word</em>' : ''}</div>
         <div class="pk2">${esc(x.kind === 'word' ? (x.meaning_ko || '') : (x.meaning_ko || x.prompt_ko || ''))}</div>
         ${x.example ? `<div class="pex">${esc(x.example)}</div>` : ''}
+        ${(x.keywords || []).length ? `<div class="pkw">${(x.keywords||[]).map(k =>
+          `<span><b>${esc(k.word)}</b> ${esc(k.meaning_ko)}</span>`).join('')}</div>` : ''}
       </div>`).join('')}
     </div>
     <div class="actbar" style="margin-top:14px">
@@ -1208,12 +1242,15 @@ function paintTurns(sc){
     d.dataset.i = i;
     const hide = t.is_me && scMode === 'fill' && !t.open;
     // 역할 채우기로 가린 자리에는 뜻도 내주지 않는다 — 뜻이 보이면 답이 새어나간다.
-    const mean = !hide && t.meaning_ko;
+    // 내 턴은 meaning_ko 가 없을 수 있으므로 intent_ko 로 대신한다 — 대화를 다
+    // 이해하려면 **모든 줄**에 기댈 것이 있어야 한다. 모르는 줄이 하나라도 있으면
+    // 거기서 흐름이 끊긴다.
+    const mean = !hide && (t.meaning_ko || (t.is_me ? t.intent_ko : ''));
     d.innerHTML = `<span class="who">${esc(t.role_ko || t.who)}</span><span class="line">
       ${t.is_me && t.intent_ko ? `<span class="intent">↳ ${esc(t.intent_ko)}</span>` : ''}
       ${hide ? '<span class="hid">Your turn — tap to see the model line</span>' : segHtml(t.segs || [], t.ev || [])}
       ${mean ? `<button class="tchev${t.showMean ? ' open' : ''}" aria-label="Show meaning" aria-expanded="${!!t.showMean}">›</button>` : ''}
-      ${mean && t.showMean ? `<span class="mean">${esc(t.meaning_ko)}</span>` : ''}</span>`;
+      ${mean && t.showMean ? `<span class="mean">${esc(mean)}</span>` : ''}</span>`;
     const mb = d.querySelector('.tchev');
     if (mb) mb.onclick = e => { e.stopPropagation(); t.showMean = !t.showMean; paintTurns(sc); };
     d.querySelector('.line').onclick = async () => {

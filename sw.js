@@ -1,6 +1,6 @@
 // ⚠️ english.html 의 BUILD 와 **같은 값**이어야 한다 — bump-version.sh 가 둘을 같이 갱신한다.
 // 이 이름이 바뀌면 activate 훅이 옛 캐시를 지우므로, 배포마다 바꿔야 오프라인 캐시가 안 굳는다.
-const CACHE = 'ktree-2026-10-02.2';
+const CACHE = 'ktree-2026-10-03.1';
 const STATIC = [
   'challenge',
   'challenge-history',
