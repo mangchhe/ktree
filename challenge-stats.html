@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="auth-log.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -233,6 +234,7 @@ body{
 const SUPABASE_URL = 'https://mfzlrmwjwwpykjbsafud.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_L9tV1otxzn8yoC7fvwD6fw_qqiN5iyp';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기록 — auth-log.js
 
 let currentRule = { required_count_per_week: 4, penalty_per_miss: 10000, week_start: 'mon', start_date: '2026-04-27' };
 let currentMember = null;
