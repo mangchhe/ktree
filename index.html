@@ -440,6 +440,50 @@ body {
   .note-row-title { white-space: normal; }
   .note-row-desc { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 }
+/* 칩 줄 오른쪽에 보기 방식 */
+.note-bar { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin: -6px 0 22px; }
+.note-bar .note-filter { margin: 0; flex: 1; }
+.note-view { display: inline-flex; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; }
+.note-view button {
+  background: transparent; border: 0; border-left: 1px solid var(--border);
+  color: var(--muted); font: inherit; font-size: 11px; padding: 4px 10px; cursor: pointer;
+}
+.note-view button:first-child { border-left: 0; }
+.note-view button:hover { color: var(--text); }
+.note-view button.on { color: var(--text); background: rgba(255,255,255,0.06); }
+.note-more {
+  margin: 6px 0 0; padding: 7px 16px; font-size: 11.5px; color: var(--muted);
+  cursor: pointer; text-align: right;
+}
+.note-more:hover { color: var(--accent); }
+.note-more .dn { text-transform: uppercase; letter-spacing: .06em; }
+.note-badge {
+  display: inline-block; margin-right: 8px; padding: 1px 6px; border-radius: 4px;
+  border: 1px solid var(--border2); font-size: 9.5px; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); vertical-align: 1px;
+}
+/* 도메인 카드 — 도메인이 스무 개여도 첫 화면이 한 장이다 */
+.note-dgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.note-dcard {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px 12px; cursor: pointer; display: flex; flex-direction: column;
+  transition: border-color .15s, transform .15s;
+}
+.note-dcard:hover, .note-dcard.kb-focus { border-color: var(--border2); transform: translateY(-1px); }
+.note-dcard-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.note-dcard-head .name { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.note-dcard-head .n { font-size: 11px; color: var(--muted); }
+.note-dcard ul { list-style: none; margin: 0; padding: 0; }
+.note-dcard li {
+  display: flex; gap: 10px; padding: 4px 0; font-size: 12.5px; color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+.note-dcard li:first-child { border-top: 0; }
+.note-dcard li:hover { color: var(--text); }
+.note-dcard li .t { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.note-dcard li .d { font-family: monospace; font-size: 10.5px; opacity: .6; }
+.note-dcard-foot { margin-top: auto; padding-top: 8px; font-size: 11px; color: var(--muted); opacity: .7; text-align: right; }
+.note-dcard:hover .note-dcard-foot { color: var(--accent); opacity: 1; }
 /* 사이드바 쪽 — 훨씬 조용하게. 여기는 목록이 주인공이다.
    머리줄을 누르면 접힌다 — 안 보는 도메인 15줄이 지금 보는 노트를 밀어내지 않게 */
 .sb-domain {
@@ -2933,7 +2977,7 @@ function getFocusableItems() {
     return document.querySelectorAll('.landing-card');
   }
   if (S.selectedTopicId === NOTES_TID && !S.selectedSectionId) {
-    return document.querySelectorAll('.note-row');
+    return document.querySelectorAll('.note-row, .note-dcard');
   }
   if (S.selectedTopicId && !S.selectedSectionId) {
     return document.querySelectorAll('.sc-card');
@@ -3272,7 +3316,8 @@ async function loadNoteHtml(slug) {
 }
 
 // 도메인별로 묶는다. **미분류는 항상 맨 뒤** — 분류된 것이 주인공이다.
-// 순서는 이름순으로 고정한다(Map 삽입 순서에 기대면 데이터 순서가 바뀔 때 화면이 흔들린다).
+// 순서는 **최근에 노트가 올라온 도메인이 위**. 이름순은 지금 손대는 도메인이 알파벳에 따라
+// 맨 아래로 밀렸다. 같은 날짜면 이름순으로 끊어 Map 삽입 순서에 기대지 않는다.
 // 딸린 노트(원문 등)를 부모 slug 로 찾는다. **한 단까지만** 본다 —
 // 업로드 쪽이 2단 중첩을 막고 있어서 여기서 재귀를 돌 이유가 없다
 // 🔴 **세는 것과 보여주는 것이 같아야 한다.** 배지가 13인데 목록이 9줄이면
@@ -3295,8 +3340,12 @@ function notesByDomain() {
     if (!groups.has(d)) groups.set(d, []);
     groups.get(d).push(n);
   }
+  // 목록이 date desc 로 와도 여기서 다시 정렬한다 — 들어오는 순서에 기대지 않는다
+  const latest = l => l.reduce((m, n) => (n.date || '') > m ? (n.date || '') : m, '');
+  for (const l of groups.values()) l.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   return [...groups.entries()].sort((a, b) =>
-    a[0] === '' ? 1 : b[0] === '' ? -1 : a[0].localeCompare(b[0]));
+    a[0] === '' ? 1 : b[0] === '' ? -1 :
+    latest(b[1]).localeCompare(latest(a[1])) || a[0].localeCompare(b[0]));
 }
 
 const DOMAIN_LABEL = { '': '미분류' };
@@ -3371,6 +3420,55 @@ function setNoteFilter(d) {
   openNotesTopic();
 }
 
+// 전체 화면의 보기 방식. 도메인이 늘면 전부 펼친 목록은 끝없이 길어진다 —
+// 기본은 도메인 카드(한 장에 다 보이고 들어가서 목록), 나머지는 고를 수 있게 둔다
+const NOTE_VIEWS = [['cards', '도메인'], ['peek', '요약'], ['recent', '최근순'], ['full', '전부']];
+const NOTE_PEEK_N = 4;
+const NOTE_RECENT_N = 15;
+let noteRecentAll = false;
+function noteView() {
+  let v = null;
+  try { v = localStorage.getItem('ktree.notes.view'); } catch (_) {}
+  return NOTE_VIEWS.some(([k]) => k === v) ? v : 'cards';
+}
+function setNoteView(v) {
+  try { localStorage.setItem('ktree.notes.view', v); } catch (_) {}
+  noteRecentAll = false;
+  openNotesTopic();
+}
+
+function noteRows(list, { badge = false } = {}) {
+  return `<div class="note-list">` + list.map(n => {
+    const kids = childrenOf(n.slug);
+    // 칩을 누르면 **카드 열기와 동시에 짝까지 띄운다** — 전에는 노트를 연 뒤
+    // 전체 노트가 든 드롭다운에서 짝을 직접 찾아야 했다
+    const chips = kids.map(k =>
+      `<span class="note-chip" title="${escapeHtml(k.title)}"
+             onclick="event.stopPropagation();openNote('${n.slug}','${k.slug}')">원문 ↔</span>`).join('');
+    const [head, sub] = noteTitleParts(n.title);
+    const tag = badge ? `<span class="note-badge">${domainLabel(n.domain || '')}</span>` : '';
+    return `
+    <div class="note-row" onclick="openNote('${n.slug}')">
+      <div class="note-row-title">${tag}${escapeHtml(head)}${sub ? `<span class="sub"> — ${escapeHtml(sub)}</span>` : ''}</div>
+      <div class="note-row-meta">${chips}<span class="note-row-date">${n.date || ''}</span></div>
+      ${n.summary ? `<div class="note-row-desc" title="${escapeHtml(n.summary)}">${escapeHtml(n.summary)}</div>` : ''}
+    </div>`;
+  }).join('') + `</div>`;
+}
+
+// 카드 안 제목은 바로 열리게 한다 — 최근 것 하나 보려고 도메인 목록을 거치게 하지 않는다
+function noteDomainCard(d, list) {
+  const top = list.slice(0, 3).map(n =>
+    `<li onclick="event.stopPropagation();openNote('${n.slug}')" title="${escapeHtml(n.title)}">
+       <span class="t">${escapeHtml(noteTitleParts(n.title)[0])}</span><span class="d">${(n.date || '').slice(5)}</span></li>`).join('');
+  return `
+    <div class="note-dcard" onclick="setNoteFilter('${escapeHtml(d)}')">
+      <div class="note-dcard-head"><span class="name">${domainLabel(d)}</span><span class="n">${list.length}</span></div>
+      <ul>${top}</ul>
+      ${list.length > 3 ? `<div class="note-dcard-foot">전체 ${list.length}개 보기 →</div>` : ''}
+    </div>`;
+}
+
 // Tech Notes 개요 — 일반 토픽 오버뷰와 같은 톤(topic-header + landing-grid)
 function openNotesTopic() {
   kbClearFocus();
@@ -3389,38 +3487,46 @@ function openNotesTopic() {
   // 없어진 도메인을 기억하고 있으면 빈 화면이 된다 — 그땐 전체로
   let filter = noteFilter();
   if (filter != null && !groups.some(([d]) => d === filter)) filter = null;
-  const shown = filter == null ? groups : groups.filter(([d]) => d === filter);
+  const view = noteView();
   const total = groups.reduce((a, [, l]) => a + l.length, 0);
-  const filterBar = showHeads ? `<div class="note-filter">
+  const filterBar = showHeads ? `<div class="note-bar">
+    <div class="note-filter">
       <button class="${filter == null ? 'on' : ''}" onclick="setNoteFilter(null)">전체<span class="n">${total}</span></button>
       ${groups.map(([d, l]) => `<button class="${filter === d ? 'on' : ''}" onclick="setNoteFilter('${escapeHtml(d)}')">${domainLabel(d)}<span class="n">${l.length}</span></button>`).join('')}
-    </div>` : '';
-  const sections = shown.map(([d, list]) =>
-    (showHeads && filter == null ? `<div class="note-domain">${domainLabel(d)}<span class="n">${list.length}</span></div>` : '') +
-    `<div class="note-list">` +
-    list.map(n => {
-      const kids = childrenOf(n.slug);
-      // 칩을 누르면 **카드 열기와 동시에 짝까지 띄운다** — 전에는 노트를 연 뒤
-      // 전체 노트가 든 드롭다운에서 짝을 직접 찾아야 했다
-      const chips = kids.map(k =>
-        `<span class="note-chip" title="${escapeHtml(k.title)}"
-               onclick="event.stopPropagation();openNote('${n.slug}','${k.slug}')">원문 ↔</span>`).join('');
-      const [head, sub] = noteTitleParts(n.title);
-      return `
-    <div class="note-row" onclick="openNote('${n.slug}')">
-      <div class="note-row-title">${escapeHtml(head)}${sub ? `<span class="sub"> — ${escapeHtml(sub)}</span>` : ''}</div>
-      <div class="note-row-meta">${chips}<span class="note-row-date">${n.date || ''}</span></div>
-      ${n.summary ? `<div class="note-row-desc" title="${escapeHtml(n.summary)}">${escapeHtml(n.summary)}</div>` : ''}
-    </div>`;
-    }).join('') + `</div>`
-  ).join('');
+    </div>
+    ${filter == null ? `<div class="note-view" title="전체 보기 방식">
+      ${NOTE_VIEWS.map(([k, label]) => `<button class="${view === k ? 'on' : ''}" onclick="setNoteView('${k}')">${label}</button>`).join('')}
+    </div>` : ''}
+  </div>` : '';
+
+  let body;
+  if (!showHeads || filter != null) {
+    // 도메인 하나만 볼 때는 보기 방식과 상관없이 전부 줄로 — 고른 이상 다 봐야 한다
+    const list = (groups.find(([d]) => d === filter) || groups[0] || [, []])[1];
+    body = noteRows(list);
+  } else if (view === 'cards') {
+    body = `<div class="note-dgrid">${groups.map(([d, list]) => noteDomainCard(d, list)).join('')}</div>`;
+  } else if (view === 'recent') {
+    const all = groups.flatMap(([, l]) => l).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    const cut = noteRecentAll ? all.length : NOTE_RECENT_N;
+    body = noteRows(all.slice(0, cut), { badge: true }) +
+      (all.length > cut ? `<div class="note-more" onclick="noteRecentAll=true;openNotesTopic()">나머지 ${all.length - cut}개 더 보기</div>` : '');
+  } else {
+    const peek = view === 'peek';
+    body = groups.map(([d, list]) => {
+      const cut = peek ? NOTE_PEEK_N : list.length;
+      return `<div class="note-domain">${domainLabel(d)}<span class="n">${list.length}</span></div>` +
+        noteRows(list.slice(0, cut)) +
+        (list.length > cut ? `<div class="note-more" onclick="setNoteFilter('${escapeHtml(d)}')"><span class="dn">${domainLabel(d)}</span> ${list.length - cut}개 더 보기 →</div>` : '');
+    }).join('');
+  }
   inner.innerHTML = `
     <div class="topic-header">
       <div class="topic-header-top"><h1>Tech Notes</h1></div>
       <p>주제별로 정리한 기술 학습노트. 각 노트는 self-contained 문서로 열립니다.</p>
     </div>
     ${filterBar}
-    <div class="note-sections">${sections}</div>`;
+    <div class="note-sections">${body}</div>`;
   document.getElementById('content').scrollTop = 0;
   requestAnimationFrame(() => kbSetFocus(0));
 }
