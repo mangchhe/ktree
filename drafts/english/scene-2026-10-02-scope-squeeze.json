@@ -1,0 +1,1931 @@
+{
+  "id": "2026-10-02-scope-squeeze",
+  "situation_ko": "이미 일정이 꽉 찬 상태에서 새 프로젝트를 맡아달라는 요청을 받는다. 거절 대신 범위를 좁히려 협상한다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "새로 들어온 일이 있어요. 당신이 맡아주면 좋겠는데, 다음 주에 시작해야 해요.",
+      "en": "Something new came in, and I'd like you to own it. The catch is it needs to start next week.",
+      "ms": 5784,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Something",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "came",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "own",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "catch",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "needs",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 450
+        },
+        {
+          "t": 550,
+          "d": 200
+        },
+        {
+          "t": 763,
+          "d": 288
+        },
+        {
+          "t": 1063,
+          "d": 350
+        },
+        {
+          "t": 1450,
+          "d": 200
+        },
+        {
+          "t": 1663,
+          "d": 175
+        },
+        {
+          "t": 1850,
+          "d": 225
+        },
+        {
+          "t": 2088,
+          "d": 125
+        },
+        {
+          "t": 2225,
+          "d": 188
+        },
+        {
+          "t": 2425,
+          "d": 225
+        },
+        {
+          "t": 2663,
+          "d": 263
+        },
+        {
+          "t": 3300,
+          "d": 50
+        },
+        {
+          "t": 3363,
+          "d": 313
+        },
+        {
+          "t": 3688,
+          "d": 125
+        },
+        {
+          "t": 3825,
+          "d": 100
+        },
+        {
+          "t": 3938,
+          "d": 275
+        },
+        {
+          "t": 4225,
+          "d": 100
+        },
+        {
+          "t": 4338,
+          "d": 325
+        },
+        {
+          "t": 4675,
+          "d": 325
+        },
+        {
+          "t": 5013,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-scope-squeeze/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "관심 있다고 먼저 말하고, 지금 들고 있는 두 가지를 짚으며 무엇을 미뤄야 하는지 물어봐",
+      "en": "I'm interested, honestly. But I'm already on the migration and the reporting work — which of those should slip?",
+      "ms": 6024,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "interested",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "honestly",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "migration",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reporting",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          12
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "which",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "those",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slip",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 450
+        },
+        {
+          "t": 675,
+          "d": 638
+        },
+        {
+          "t": 1738,
+          "d": 75
+        },
+        {
+          "t": 1813,
+          "d": 88
+        },
+        {
+          "t": 1900,
+          "d": 350
+        },
+        {
+          "t": 2250,
+          "d": 75
+        },
+        {
+          "t": 2338,
+          "d": 38
+        },
+        {
+          "t": 2388,
+          "d": 738
+        },
+        {
+          "t": 3188,
+          "d": 100
+        },
+        {
+          "t": 3288,
+          "d": 75
+        },
+        {
+          "t": 3375,
+          "d": 463
+        },
+        {
+          "t": 3838,
+          "d": 313
+        },
+        {
+          "t": 4650,
+          "d": 188
+        },
+        {
+          "t": 4838,
+          "d": 50
+        },
+        {
+          "t": 4888,
+          "d": 188
+        },
+        {
+          "t": 5075,
+          "d": 175
+        },
+        {
+          "t": 5250,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-scope-squeeze/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "둘 다 그대로 가야 해요. 그래서 당신한테 부탁하는 거예요 — 이미 맥락을 알고 있으니까.",
+      "en": "Ideally neither. That's partly why I'm asking you — you already have the context.",
+      "ms": 5472,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Ideally",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "neither",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "partly",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "asking",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "context",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 488
+        },
+        {
+          "t": 588,
+          "d": 550
+        },
+        {
+          "t": 1538,
+          "d": 225
+        },
+        {
+          "t": 1775,
+          "d": 400
+        },
+        {
+          "t": 2188,
+          "d": 200
+        },
+        {
+          "t": 2400,
+          "d": 138
+        },
+        {
+          "t": 2550,
+          "d": 425
+        },
+        {
+          "t": 2988,
+          "d": 288
+        },
+        {
+          "t": 3463,
+          "d": 188
+        },
+        {
+          "t": 3663,
+          "d": 325
+        },
+        {
+          "t": 4000,
+          "d": 200
+        },
+        {
+          "t": 4213,
+          "d": 88
+        },
+        {
+          "t": 4313,
+          "d": 788
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-scope-squeeze/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "셋 다 하면 다 어설퍼진다고 말해봐. 대신 첫 2주만 설계를 잡아주는 걸로 범위를 좁혀 제안해봐",
+      "en": "If I take all three, all three come out half-finished. What if I scope it down — I set the design up for the first two weeks, then hand it off?",
+      "ms": 8568,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "If",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "all",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half-finished",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scope",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          15
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "design",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          25
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "then",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hand",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          29
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 63
+        },
+        {
+          "t": 238,
+          "d": 213
+        },
+        {
+          "t": 450,
+          "d": 175
+        },
+        {
+          "t": 625,
+          "d": 438
+        },
+        {
+          "t": 1500,
+          "d": 288
+        },
+        {
+          "t": 1800,
+          "d": 538
+        },
+        {
+          "t": 2425,
+          "d": 175
+        },
+        {
+          "t": 2600,
+          "d": 150
+        },
+        {
+          "t": 2750,
+          "d": 750
+        },
+        {
+          "t": 3900,
+          "d": 75
+        },
+        {
+          "t": 3975,
+          "d": 88
+        },
+        {
+          "t": 4063,
+          "d": 113
+        },
+        {
+          "t": 4188,
+          "d": 263
+        },
+        {
+          "t": 4450,
+          "d": 88
+        },
+        {
+          "t": 4538,
+          "d": 363
+        },
+        {
+          "t": 5425,
+          "d": 88
+        },
+        {
+          "t": 5525,
+          "d": 213
+        },
+        {
+          "t": 5738,
+          "d": 75
+        },
+        {
+          "t": 5813,
+          "d": 363
+        },
+        {
+          "t": 6175,
+          "d": 88
+        },
+        {
+          "t": 6275,
+          "d": 50
+        },
+        {
+          "t": 6338,
+          "d": 63
+        },
+        {
+          "t": 6400,
+          "d": 300
+        },
+        {
+          "t": 6700,
+          "d": 163
+        },
+        {
+          "t": 6863,
+          "d": 475
+        },
+        {
+          "t": 7400,
+          "d": 113
+        },
+        {
+          "t": 7513,
+          "d": 225
+        },
+        {
+          "t": 7738,
+          "d": 50
+        },
+        {
+          "t": 7788,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-scope-squeeze/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "넘겨줄 사람이 없다는 게 문제예요. 팀에 여유 있는 사람이 없어요.",
+      "en": "The problem is there's no one to hand it off to. Nobody on the team has any room right now.",
+      "ms": 5232,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hand",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Nobody",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 50
+        },
+        {
+          "t": 125,
+          "d": 388
+        },
+        {
+          "t": 525,
+          "d": 113
+        },
+        {
+          "t": 650,
+          "d": 225
+        },
+        {
+          "t": 888,
+          "d": 188
+        },
+        {
+          "t": 1088,
+          "d": 150
+        },
+        {
+          "t": 1250,
+          "d": 100
+        },
+        {
+          "t": 1363,
+          "d": 275
+        },
+        {
+          "t": 1650,
+          "d": 100
+        },
+        {
+          "t": 1763,
+          "d": 225
+        },
+        {
+          "t": 2000,
+          "d": 325
+        },
+        {
+          "t": 2725,
+          "d": 350
+        },
+        {
+          "t": 3088,
+          "d": 113
+        },
+        {
+          "t": 3213,
+          "d": 88
+        },
+        {
+          "t": 3313,
+          "d": 275
+        },
+        {
+          "t": 3600,
+          "d": 188
+        },
+        {
+          "t": 3800,
+          "d": 200
+        },
+        {
+          "t": 4013,
+          "d": 263
+        },
+        {
+          "t": 4288,
+          "d": 200
+        },
+        {
+          "t": 4500,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-scope-squeeze/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그러면 사람을 붙여야 한다고 말하고, 리포팅 일을 누군가에게 넘기는 걸 조건으로 걸어봐",
+      "en": "Then that's the thing we need to solve first. I can take it on if the reporting work goes to someone else — otherwise we're just moving the bottleneck around.",
+      "ms": 8832,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "solve",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reporting",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "goes",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "someone",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          21
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "otherwise",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bottleneck",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          28
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 188
+        },
+        {
+          "t": 463,
+          "d": 88
+        },
+        {
+          "t": 550,
+          "d": 238
+        },
+        {
+          "t": 788,
+          "d": 75
+        },
+        {
+          "t": 863,
+          "d": 138
+        },
+        {
+          "t": 1000,
+          "d": 38
+        },
+        {
+          "t": 1038,
+          "d": 325
+        },
+        {
+          "t": 1363,
+          "d": 625
+        },
+        {
+          "t": 2388,
+          "d": 63
+        },
+        {
+          "t": 2450,
+          "d": 88
+        },
+        {
+          "t": 2538,
+          "d": 213
+        },
+        {
+          "t": 2750,
+          "d": 50
+        },
+        {
+          "t": 2800,
+          "d": 288
+        },
+        {
+          "t": 3163,
+          "d": 88
+        },
+        {
+          "t": 3250,
+          "d": 63
+        },
+        {
+          "t": 3325,
+          "d": 463
+        },
+        {
+          "t": 3788,
+          "d": 288
+        },
+        {
+          "t": 4175,
+          "d": 413
+        },
+        {
+          "t": 4600,
+          "d": 100
+        },
+        {
+          "t": 4713,
+          "d": 375
+        },
+        {
+          "t": 5088,
+          "d": 438
+        },
+        {
+          "t": 5938,
+          "d": 538
+        },
+        {
+          "t": 6488,
+          "d": 125
+        },
+        {
+          "t": 6613,
+          "d": 225
+        },
+        {
+          "t": 6838,
+          "d": 500
+        },
+        {
+          "t": 7338,
+          "d": 75
+        },
+        {
+          "t": 7413,
+          "d": 525
+        },
+        {
+          "t": 7938,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-scope-squeeze/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞는 말이네요. 목요일에 인력 회의가 있으니 그때 올려볼게요. 그때까지는 확정으로 보지 마세요.",
+      "en": "That's a fair point. Let me take it to the staffing meeting Thursday — don't treat it as confirmed until then.",
+      "ms": 6576,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "staffing",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meeting",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Thursday",
+          12
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "don't",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "treat",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "confirmed",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "until",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "then",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 200
+        },
+        {
+          "t": 288,
+          "d": 63
+        },
+        {
+          "t": 363,
+          "d": 288
+        },
+        {
+          "t": 663,
+          "d": 450
+        },
+        {
+          "t": 1513,
+          "d": 138
+        },
+        {
+          "t": 1663,
+          "d": 113
+        },
+        {
+          "t": 1788,
+          "d": 263
+        },
+        {
+          "t": 2063,
+          "d": 75
+        },
+        {
+          "t": 2150,
+          "d": 113
+        },
+        {
+          "t": 2275,
+          "d": 88
+        },
+        {
+          "t": 2375,
+          "d": 500
+        },
+        {
+          "t": 2888,
+          "d": 313
+        },
+        {
+          "t": 3213,
+          "d": 625
+        },
+        {
+          "t": 4163,
+          "d": 250
+        },
+        {
+          "t": 4425,
+          "d": 250
+        },
+        {
+          "t": 4688,
+          "d": 113
+        },
+        {
+          "t": 4813,
+          "d": 138
+        },
+        {
+          "t": 4963,
+          "d": 500
+        },
+        {
+          "t": 5475,
+          "d": 313
+        },
+        {
+          "t": 5800,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-scope-squeeze/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "I'd like you to own it",
+      "meaning_ko": "당신이 책임지고 맡아주면 좋겠다 (own = 주인으로 책임지다)",
+      "prompt_ko": "이 일을 네가 책임지고 맡아주면 좋겠다고 말해봐"
+    },
+    {
+      "term": "which of those should slip?",
+      "meaning_ko": "그중 어느 걸 미뤄야 하나요? (slip = 일정이 밀리다)",
+      "prompt_ko": "일이 더 들어오면 기존 일 중 뭘 미뤄야 하는지 되물어봐"
+    },
+    {
+      "term": "scope it down",
+      "meaning_ko": "범위를 좁히다",
+      "prompt_ko": "전부 말고 범위를 좁혀서 앞부분만 맡겠다고 제안해봐"
+    },
+    {
+      "term": "hand it off",
+      "meaning_ko": "다른 사람에게 넘기다, 인계하다",
+      "prompt_ko": "2주 뒤에 다른 사람에게 넘기는 조건이라고 말해봐"
+    },
+    {
+      "term": "moving the bottleneck around",
+      "meaning_ko": "병목을 옮기기만 하는 것 (해결이 아니라)",
+      "prompt_ko": "이건 문제를 푸는 게 아니라 병목을 옮기기만 하는 거라고 짚어봐"
+    }
+  ],
+  "generated_at": "2026-10-02T01:10:13.641Z"
+}

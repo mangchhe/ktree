@@ -1,0 +1,2188 @@
+{
+  "id": "2026-10-02-agency-brief",
+  "situation_ko": "에이전시에 4분기 캠페인 브리프를 전달하며 ROAS 목표와 예산을 조율한다. 에이전시는 목표가 비현실적이라고 맞선다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "에이전시 담당자",
+      "meaning_ko": "브리프 받았습니다. 4분기 목표부터 짚어주시겠어요?",
+      "en": "Thanks for the brief. Could you walk me through the Q4 targets first?",
+      "ms": 5376,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "brief",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "walk",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Q4",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "targets",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 363
+        },
+        {
+          "t": 475,
+          "d": 88
+        },
+        {
+          "t": 575,
+          "d": 100
+        },
+        {
+          "t": 688,
+          "d": 500
+        },
+        {
+          "t": 2050,
+          "d": 200
+        },
+        {
+          "t": 2263,
+          "d": 75
+        },
+        {
+          "t": 2350,
+          "d": 288
+        },
+        {
+          "t": 2650,
+          "d": 125
+        },
+        {
+          "t": 2788,
+          "d": 225
+        },
+        {
+          "t": 3025,
+          "d": 88
+        },
+        {
+          "t": 3125,
+          "d": 400
+        },
+        {
+          "t": 3538,
+          "d": 438
+        },
+        {
+          "t": 3988,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-agency-brief/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "예산은 월 1억 2천만 원이고 ROAS 목표는 3.5 라고 말해봐. 지난 분기는 2.8 이었다고 덧붙여",
+      "en": "We're putting up a hundred and twenty million won a month, and we need a blended ROAS of three point five. Last quarter we landed at two point eight.",
+      "ms": 9144,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "We're",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "putting",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "million",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "blended",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ROAS",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          20
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Last",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "landed",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          28
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 125
+        },
+        {
+          "t": 188,
+          "d": 238
+        },
+        {
+          "t": 425,
+          "d": 88
+        },
+        {
+          "t": 525,
+          "d": 38
+        },
+        {
+          "t": 575,
+          "d": 425
+        },
+        {
+          "t": 1013,
+          "d": 163
+        },
+        {
+          "t": 1188,
+          "d": 288
+        },
+        {
+          "t": 1475,
+          "d": 338
+        },
+        {
+          "t": 1825,
+          "d": 113
+        },
+        {
+          "t": 1950,
+          "d": 38
+        },
+        {
+          "t": 1988,
+          "d": 400
+        },
+        {
+          "t": 2613,
+          "d": 213
+        },
+        {
+          "t": 2838,
+          "d": 138
+        },
+        {
+          "t": 2988,
+          "d": 200
+        },
+        {
+          "t": 3250,
+          "d": 100
+        },
+        {
+          "t": 3350,
+          "d": 463
+        },
+        {
+          "t": 3825,
+          "d": 613
+        },
+        {
+          "t": 4450,
+          "d": 275
+        },
+        {
+          "t": 4900,
+          "d": 263
+        },
+        {
+          "t": 5163,
+          "d": 288
+        },
+        {
+          "t": 5463,
+          "d": 438
+        },
+        {
+          "t": 6250,
+          "d": 375
+        },
+        {
+          "t": 6625,
+          "d": 313
+        },
+        {
+          "t": 6950,
+          "d": 113
+        },
+        {
+          "t": 7063,
+          "d": 513
+        },
+        {
+          "t": 7763,
+          "d": 150
+        },
+        {
+          "t": 7925,
+          "d": 200
+        },
+        {
+          "t": 8138,
+          "d": 313
+        },
+        {
+          "t": 8463,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-agency-brief/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "예산을 40퍼센트 늘리면서 ROAS 도 올리겠다는 건데, 보통은 반대로 움직입니다.",
+      "en": "So you're scaling spend forty percent and expecting efficiency to improve at the same time. Those usually move in opposite directions.",
+      "ms": 8712,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you're",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scaling",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spend",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expecting",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "efficiency",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "improve",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Those",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "usually",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "opposite",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "directions",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 225
+        },
+        {
+          "t": 338,
+          "d": 175
+        },
+        {
+          "t": 525,
+          "d": 425
+        },
+        {
+          "t": 963,
+          "d": 300
+        },
+        {
+          "t": 1275,
+          "d": 363
+        },
+        {
+          "t": 1650,
+          "d": 413
+        },
+        {
+          "t": 2075,
+          "d": 75
+        },
+        {
+          "t": 2163,
+          "d": 475
+        },
+        {
+          "t": 2650,
+          "d": 513
+        },
+        {
+          "t": 3175,
+          "d": 113
+        },
+        {
+          "t": 3300,
+          "d": 475
+        },
+        {
+          "t": 3788,
+          "d": 50
+        },
+        {
+          "t": 3850,
+          "d": 75
+        },
+        {
+          "t": 3938,
+          "d": 288
+        },
+        {
+          "t": 4238,
+          "d": 463
+        },
+        {
+          "t": 5563,
+          "d": 275
+        },
+        {
+          "t": 5850,
+          "d": 350
+        },
+        {
+          "t": 6213,
+          "d": 325
+        },
+        {
+          "t": 6550,
+          "d": 100
+        },
+        {
+          "t": 6663,
+          "d": 400
+        },
+        {
+          "t": 7075,
+          "d": 775
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-agency-brief/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "맞다고 인정하고, 그래서 신규가 아니라 재구매 쪽에서 가져올 계획이라고 설명해봐",
+      "en": "You're right, and I'm not expecting it from new customers. The lift has to come from repeat purchase — our thirty-day return rate is sitting at eighteen percent, and that's where the headroom is.",
+      "ms": 11304,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "You're",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expecting",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customers",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lift",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "repeat",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "purchase",
+          17
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "our",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty-day",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "return",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rate",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sitting",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eighteen",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          26
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that's",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "where",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "headroom",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          32
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 175
+        },
+        {
+          "t": 238,
+          "d": 400
+        },
+        {
+          "t": 713,
+          "d": 288
+        },
+        {
+          "t": 1163,
+          "d": 125
+        },
+        {
+          "t": 1288,
+          "d": 188
+        },
+        {
+          "t": 1475,
+          "d": 450
+        },
+        {
+          "t": 1938,
+          "d": 100
+        },
+        {
+          "t": 2050,
+          "d": 138
+        },
+        {
+          "t": 2188,
+          "d": 150
+        },
+        {
+          "t": 2350,
+          "d": 713
+        },
+        {
+          "t": 3450,
+          "d": 88
+        },
+        {
+          "t": 3550,
+          "d": 263
+        },
+        {
+          "t": 3825,
+          "d": 150
+        },
+        {
+          "t": 3988,
+          "d": 75
+        },
+        {
+          "t": 4075,
+          "d": 238
+        },
+        {
+          "t": 4325,
+          "d": 150
+        },
+        {
+          "t": 4488,
+          "d": 338
+        },
+        {
+          "t": 4838,
+          "d": 550
+        },
+        {
+          "t": 6000,
+          "d": 225
+        },
+        {
+          "t": 6238,
+          "d": 563
+        },
+        {
+          "t": 6813,
+          "d": 375
+        },
+        {
+          "t": 7200,
+          "d": 263
+        },
+        {
+          "t": 7563,
+          "d": 113
+        },
+        {
+          "t": 7688,
+          "d": 288
+        },
+        {
+          "t": 7988,
+          "d": 125
+        },
+        {
+          "t": 8213,
+          "d": 375
+        },
+        {
+          "t": 8600,
+          "d": 463
+        },
+        {
+          "t": 9513,
+          "d": 163
+        },
+        {
+          "t": 9688,
+          "d": 250
+        },
+        {
+          "t": 9950,
+          "d": 113
+        },
+        {
+          "t": 10075,
+          "d": 50
+        },
+        {
+          "t": 10138,
+          "d": 363
+        },
+        {
+          "t": 10513,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-agency-brief/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그러면 프로스펙팅 예산을 깎고 리타게팅으로 옮겨야 하는데, 그러면 신규 유입이 말라요.",
+      "en": "Then we'd pull budget out of prospecting and into retention, but that dries up the top of the funnel. You'd feel it in January.",
+      "ms": 8040,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pull",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prospecting",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retention",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dries",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "top",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "funnel",
+          18
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You'd",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "feel",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "January",
+          23
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 375,
+          "d": 138
+        },
+        {
+          "t": 525,
+          "d": 238
+        },
+        {
+          "t": 775,
+          "d": 350
+        },
+        {
+          "t": 1138,
+          "d": 163
+        },
+        {
+          "t": 1313,
+          "d": 75
+        },
+        {
+          "t": 1400,
+          "d": 575
+        },
+        {
+          "t": 1988,
+          "d": 113
+        },
+        {
+          "t": 2113,
+          "d": 238
+        },
+        {
+          "t": 2363,
+          "d": 600
+        },
+        {
+          "t": 3188,
+          "d": 138
+        },
+        {
+          "t": 3338,
+          "d": 188
+        },
+        {
+          "t": 3538,
+          "d": 338
+        },
+        {
+          "t": 3888,
+          "d": 125
+        },
+        {
+          "t": 4025,
+          "d": 88
+        },
+        {
+          "t": 4125,
+          "d": 263
+        },
+        {
+          "t": 4400,
+          "d": 75
+        },
+        {
+          "t": 4488,
+          "d": 75
+        },
+        {
+          "t": 4575,
+          "d": 400
+        },
+        {
+          "t": 5838,
+          "d": 263
+        },
+        {
+          "t": 6113,
+          "d": 250
+        },
+        {
+          "t": 6375,
+          "d": 100
+        },
+        {
+          "t": 6488,
+          "d": 175
+        },
+        {
+          "t": 6675,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-agency-brief/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그 위험을 안다고 말하고, 70대 30으로 나눠 한 달 돌려보고 결정하자고 제안해봐",
+      "en": "That's the trade-off I'm willing to make for one quarter. Let's split it seventy-thirty, run it for a month, and I'll look at the cohort numbers before we commit any further.",
+      "ms": 9744,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trade-off",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "willing",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "split",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seventy-thirty",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "run",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          18
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cohort",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "commit",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "further",
+          30
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 238
+        },
+        {
+          "t": 363,
+          "d": 88
+        },
+        {
+          "t": 463,
+          "d": 600
+        },
+        {
+          "t": 1075,
+          "d": 125
+        },
+        {
+          "t": 1213,
+          "d": 238
+        },
+        {
+          "t": 1463,
+          "d": 88
+        },
+        {
+          "t": 1563,
+          "d": 238
+        },
+        {
+          "t": 1813,
+          "d": 125
+        },
+        {
+          "t": 1938,
+          "d": 188
+        },
+        {
+          "t": 2138,
+          "d": 525
+        },
+        {
+          "t": 3025,
+          "d": 213
+        },
+        {
+          "t": 3238,
+          "d": 325
+        },
+        {
+          "t": 3613,
+          "d": 138
+        },
+        {
+          "t": 3763,
+          "d": 800
+        },
+        {
+          "t": 5013,
+          "d": 163
+        },
+        {
+          "t": 5188,
+          "d": 88
+        },
+        {
+          "t": 5288,
+          "d": 125
+        },
+        {
+          "t": 5425,
+          "d": 38
+        },
+        {
+          "t": 5475,
+          "d": 400
+        },
+        {
+          "t": 6238,
+          "d": 175
+        },
+        {
+          "t": 6425,
+          "d": 100
+        },
+        {
+          "t": 6538,
+          "d": 138
+        },
+        {
+          "t": 6688,
+          "d": 75
+        },
+        {
+          "t": 6763,
+          "d": 88
+        },
+        {
+          "t": 6863,
+          "d": 438
+        },
+        {
+          "t": 7300,
+          "d": 400
+        },
+        {
+          "t": 7713,
+          "d": 388
+        },
+        {
+          "t": 8100,
+          "d": 100
+        },
+        {
+          "t": 8213,
+          "d": 400
+        },
+        {
+          "t": 8738,
+          "d": 175
+        },
+        {
+          "t": 8913,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-agency-brief/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그 정도면 해볼 만하네요. 대신 첫 2주 성과를 기준으로 삼지 말아주세요 — 학습 기간이 필요합니다.",
+      "en": "That I can work with. Just don't judge us on the first two weeks — the algorithm needs time to learn.",
+      "ms": 6912,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "judge",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          13
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "algorithm",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "needs",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "learn",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 363,
+          "d": 88
+        },
+        {
+          "t": 463,
+          "d": 150
+        },
+        {
+          "t": 625,
+          "d": 263
+        },
+        {
+          "t": 900,
+          "d": 288
+        },
+        {
+          "t": 2050,
+          "d": 288
+        },
+        {
+          "t": 2350,
+          "d": 175
+        },
+        {
+          "t": 2538,
+          "d": 238
+        },
+        {
+          "t": 2788,
+          "d": 113
+        },
+        {
+          "t": 2913,
+          "d": 88
+        },
+        {
+          "t": 3013,
+          "d": 63
+        },
+        {
+          "t": 3088,
+          "d": 325
+        },
+        {
+          "t": 3425,
+          "d": 150
+        },
+        {
+          "t": 3588,
+          "d": 475
+        },
+        {
+          "t": 4250,
+          "d": 113
+        },
+        {
+          "t": 4375,
+          "d": 538
+        },
+        {
+          "t": 4925,
+          "d": 275
+        },
+        {
+          "t": 5213,
+          "d": 275
+        },
+        {
+          "t": 5500,
+          "d": 100
+        },
+        {
+          "t": 5613,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-agency-brief/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "blended ROAS",
+      "meaning_ko": "전체 채널을 합친 ROAS (채널별이 아니라 통합 기준)",
+      "prompt_ko": "채널 통합 기준 ROAS 목표가 3.5 라고 말해봐"
+    },
+    {
+      "term": "we landed at two point eight",
+      "meaning_ko": "결과적으로 2.8 이 나왔다 (land at = 최종 수치가 ~로 떨어지다)",
+      "prompt_ko": "지난 분기 ROAS 가 결과적으로 2.8 이었다고 말해봐"
+    },
+    {
+      "term": "scaling spend forty percent",
+      "meaning_ko": "예산을 40퍼센트 늘리는 것",
+      "prompt_ko": "예산을 40퍼센트 늘리면서 효율도 올리겠다는 거냐고 되물어봐"
+    },
+    {
+      "term": "that's where the headroom is",
+      "meaning_ko": "거기에 아직 올릴 여지가 있다",
+      "prompt_ko": "재구매율이 18퍼센트니까 거기에 올릴 여지가 있다고 짚어봐"
+    },
+    {
+      "term": "dries up the top of the funnel",
+      "meaning_ko": "퍼널 상단(신규 유입)이 말라버린다",
+      "prompt_ko": "리타게팅으로 다 옮기면 신규 유입이 말라버린다고 경고해봐"
+    },
+    {
+      "term": "that's the trade-off I'm willing to make",
+      "meaning_ko": "그 정도 대가는 감수하겠다",
+      "prompt_ko": "한 분기만은 그 대가를 감수하겠다고 말해봐"
+    }
+  ],
+  "generated_at": "2026-10-02T01:10:50.205Z"
+}

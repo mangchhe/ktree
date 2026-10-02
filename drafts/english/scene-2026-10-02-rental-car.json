@@ -1,0 +1,1787 @@
+{
+  "id": "2026-10-02-rental-car",
+  "situation_ko": "렌터카 카운터. 예약한 차종이 없어 업그레이드를 제안받는데 추가 요금이 붙는다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "렌터카 직원",
+      "meaning_ko": "예약 확인했습니다. 그런데 예약하신 소형차가 지금 한 대도 없네요.",
+      "en": "I've got your booking here. Unfortunately we're out of the compact you reserved.",
+      "ms": 5736,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "I've",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booking",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Unfortunately",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compact",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reserved",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 200
+        },
+        {
+          "t": 313,
+          "d": 188
+        },
+        {
+          "t": 513,
+          "d": 125
+        },
+        {
+          "t": 650,
+          "d": 375
+        },
+        {
+          "t": 1038,
+          "d": 375
+        },
+        {
+          "t": 2275,
+          "d": 750
+        },
+        {
+          "t": 3038,
+          "d": 188
+        },
+        {
+          "t": 3238,
+          "d": 188
+        },
+        {
+          "t": 3438,
+          "d": 75
+        },
+        {
+          "t": 3525,
+          "d": 88
+        },
+        {
+          "t": 3625,
+          "d": 425
+        },
+        {
+          "t": 4063,
+          "d": 100
+        },
+        {
+          "t": 4175,
+          "d": 688
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-rental-car/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "두 달 전에 예약했는데 어떻게 된 거냐고 묻고, 어떤 선택이 있는지 물어봐",
+      "en": "I booked this two months ago — how did that happen? What are my options?",
+      "ms": 4848,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ago",
+          5
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "how",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happen",
+          9
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "What",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "options",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 150
+        },
+        {
+          "t": 250,
+          "d": 388
+        },
+        {
+          "t": 650,
+          "d": 175
+        },
+        {
+          "t": 838,
+          "d": 213
+        },
+        {
+          "t": 1063,
+          "d": 238
+        },
+        {
+          "t": 1300,
+          "d": 313
+        },
+        {
+          "t": 2163,
+          "d": 88
+        },
+        {
+          "t": 2263,
+          "d": 125
+        },
+        {
+          "t": 2400,
+          "d": 113
+        },
+        {
+          "t": 2513,
+          "d": 463
+        },
+        {
+          "t": 3338,
+          "d": 113
+        },
+        {
+          "t": 3450,
+          "d": 75
+        },
+        {
+          "t": 3538,
+          "d": 225
+        },
+        {
+          "t": 3775,
+          "d": 713
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-rental-car/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "앞 손님이 차를 늦게 반납해서요. SUV 는 바로 드릴 수 있는데 하루 35달러가 더 붙습니다.",
+      "en": "The previous renter brought it back late. I can put you in an SUV right now, but it's thirty-five dollars a day more.",
+      "ms": 8112,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "previous",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "renter",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "brought",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty-five",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 425
+        },
+        {
+          "t": 713,
+          "d": 350
+        },
+        {
+          "t": 1075,
+          "d": 238
+        },
+        {
+          "t": 1325,
+          "d": 113
+        },
+        {
+          "t": 1450,
+          "d": 250
+        },
+        {
+          "t": 1713,
+          "d": 413
+        },
+        {
+          "t": 2988,
+          "d": 125
+        },
+        {
+          "t": 3125,
+          "d": 150
+        },
+        {
+          "t": 3288,
+          "d": 188
+        },
+        {
+          "t": 3488,
+          "d": 113
+        },
+        {
+          "t": 3613,
+          "d": 100
+        },
+        {
+          "t": 3725,
+          "d": 113
+        },
+        {
+          "t": 3850,
+          "d": 500
+        },
+        {
+          "t": 4363,
+          "d": 350
+        },
+        {
+          "t": 4725,
+          "d": 325
+        },
+        {
+          "t": 5263,
+          "d": 113
+        },
+        {
+          "t": 5388,
+          "d": 163
+        },
+        {
+          "t": 5563,
+          "d": 625
+        },
+        {
+          "t": 6200,
+          "d": 300
+        },
+        {
+          "t": 6513,
+          "d": 63
+        },
+        {
+          "t": 6588,
+          "d": 225
+        },
+        {
+          "t": 6825,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-rental-car/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그건 내 잘못이 아니니 추가 요금은 못 내겠다고 말해봐. 예약한 가격으로 업그레이드해달라고 해봐",
+      "en": "That's not really on me, though. I'd rather not pay extra for a car I didn't ask for — can you upgrade me at the rate I booked?",
+      "ms": 7416,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pay",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "extra",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "car",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "didn't",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ask",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          17
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "can",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "upgrade",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rate",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          26
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 213
+        },
+        {
+          "t": 313,
+          "d": 275
+        },
+        {
+          "t": 600,
+          "d": 288
+        },
+        {
+          "t": 900,
+          "d": 113
+        },
+        {
+          "t": 1013,
+          "d": 125
+        },
+        {
+          "t": 1150,
+          "d": 350
+        },
+        {
+          "t": 1900,
+          "d": 313
+        },
+        {
+          "t": 2375,
+          "d": 300
+        },
+        {
+          "t": 2688,
+          "d": 213
+        },
+        {
+          "t": 2913,
+          "d": 163
+        },
+        {
+          "t": 3075,
+          "d": 450
+        },
+        {
+          "t": 3525,
+          "d": 125
+        },
+        {
+          "t": 3650,
+          "d": 50
+        },
+        {
+          "t": 3713,
+          "d": 275
+        },
+        {
+          "t": 4000,
+          "d": 75
+        },
+        {
+          "t": 4075,
+          "d": 188
+        },
+        {
+          "t": 4275,
+          "d": 288
+        },
+        {
+          "t": 4563,
+          "d": 300
+        },
+        {
+          "t": 5300,
+          "d": 113
+        },
+        {
+          "t": 5425,
+          "d": 150
+        },
+        {
+          "t": 5588,
+          "d": 450
+        },
+        {
+          "t": 6050,
+          "d": 125
+        },
+        {
+          "t": 6188,
+          "d": 75
+        },
+        {
+          "t": 6275,
+          "d": 75
+        },
+        {
+          "t": 6363,
+          "d": 163
+        },
+        {
+          "t": 6538,
+          "d": 100
+        },
+        {
+          "t": 6650,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-rental-car/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "제 권한으로는 20달러까지만 깎을 수 있어요. 아니면 두 시간쯤 기다리셔도 되고요.",
+      "en": "The most I can knock off is twenty. Or you could wait around two hours and I'll have a compact for you.",
+      "ms": 6576,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "most",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "knock",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Or",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wait",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compact",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 138
+        },
+        {
+          "t": 250,
+          "d": 288
+        },
+        {
+          "t": 550,
+          "d": 88
+        },
+        {
+          "t": 650,
+          "d": 163
+        },
+        {
+          "t": 825,
+          "d": 250
+        },
+        {
+          "t": 1088,
+          "d": 150
+        },
+        {
+          "t": 1250,
+          "d": 150
+        },
+        {
+          "t": 1413,
+          "d": 450
+        },
+        {
+          "t": 2725,
+          "d": 138
+        },
+        {
+          "t": 2875,
+          "d": 113
+        },
+        {
+          "t": 3000,
+          "d": 163
+        },
+        {
+          "t": 3175,
+          "d": 225
+        },
+        {
+          "t": 3413,
+          "d": 363
+        },
+        {
+          "t": 3788,
+          "d": 238
+        },
+        {
+          "t": 4038,
+          "d": 325
+        },
+        {
+          "t": 4375,
+          "d": 100
+        },
+        {
+          "t": 4488,
+          "d": 150
+        },
+        {
+          "t": 4650,
+          "d": 125
+        },
+        {
+          "t": 4788,
+          "d": 50
+        },
+        {
+          "t": 4850,
+          "d": 413
+        },
+        {
+          "t": 5275,
+          "d": 138
+        },
+        {
+          "t": 5425,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-rental-car/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "기다릴 시간이 없다고 하고, 차액을 없애주면 지금 가져가겠다고 밀어봐",
+      "en": "I can't really sit here for two hours — I've got a check-in tonight. Waive the difference and I'll take the SUV as is.",
+      "ms": 7080,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sit",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          7
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I've",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check-in",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tonight",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Waive",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "difference",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 325
+        },
+        {
+          "t": 538,
+          "d": 225
+        },
+        {
+          "t": 775,
+          "d": 163
+        },
+        {
+          "t": 950,
+          "d": 213
+        },
+        {
+          "t": 1175,
+          "d": 100
+        },
+        {
+          "t": 1288,
+          "d": 225
+        },
+        {
+          "t": 1525,
+          "d": 513
+        },
+        {
+          "t": 2213,
+          "d": 113
+        },
+        {
+          "t": 2325,
+          "d": 138
+        },
+        {
+          "t": 2463,
+          "d": 38
+        },
+        {
+          "t": 2513,
+          "d": 338
+        },
+        {
+          "t": 2863,
+          "d": 375
+        },
+        {
+          "t": 3625,
+          "d": 275
+        },
+        {
+          "t": 3900,
+          "d": 88
+        },
+        {
+          "t": 4000,
+          "d": 563
+        },
+        {
+          "t": 4775,
+          "d": 263
+        },
+        {
+          "t": 5050,
+          "d": 138
+        },
+        {
+          "t": 5200,
+          "d": 225
+        },
+        {
+          "t": 5425,
+          "d": 50
+        },
+        {
+          "t": 5488,
+          "d": 563
+        },
+        {
+          "t": 6050,
+          "d": 213
+        },
+        {
+          "t": 6263,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-rental-car/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠습니다, 이번은 그렇게 처리해 드리죠. 대신 연료는 가득 채워서 반납해 주세요.",
+      "en": "All right, I'll make an exception this time. Just bring it back with a full tank.",
+      "ms": 6048,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "All",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exception",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tank",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 375,
+          "d": 350
+        },
+        {
+          "t": 925,
+          "d": 150
+        },
+        {
+          "t": 1088,
+          "d": 175
+        },
+        {
+          "t": 1275,
+          "d": 75
+        },
+        {
+          "t": 1363,
+          "d": 525
+        },
+        {
+          "t": 1900,
+          "d": 175
+        },
+        {
+          "t": 2088,
+          "d": 500
+        },
+        {
+          "t": 3450,
+          "d": 263
+        },
+        {
+          "t": 3725,
+          "d": 188
+        },
+        {
+          "t": 3925,
+          "d": 100
+        },
+        {
+          "t": 4038,
+          "d": 213
+        },
+        {
+          "t": 4263,
+          "d": 100
+        },
+        {
+          "t": 4375,
+          "d": 38
+        },
+        {
+          "t": 4425,
+          "d": 275
+        },
+        {
+          "t": 4713,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-rental-car/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "we're out of",
+      "meaning_ko": "~이 다 나갔다, 재고가 없다",
+      "prompt_ko": "예약한 소형차가 지금 다 나갔다고 전해봐"
+    },
+    {
+      "term": "that's not really on me",
+      "meaning_ko": "그건 제 탓이 아니다",
+      "prompt_ko": "이건 내 잘못이 아니라고 부드럽게 짚어봐"
+    },
+    {
+      "term": "knock off",
+      "meaning_ko": "(값을) 깎아주다",
+      "prompt_ko": "20달러까지만 깎아줄 수 있다고 말해봐"
+    },
+    {
+      "term": "waive the difference",
+      "meaning_ko": "차액을 면제해주다",
+      "prompt_ko": "차액을 없애주면 지금 바로 가져가겠다고 제안해봐"
+    },
+    {
+      "term": "I'll make an exception",
+      "meaning_ko": "이번만 예외로 해드리겠다",
+      "prompt_ko": "원래는 안 되지만 이번만 예외로 해주겠다고 말해봐"
+    }
+  ],
+  "generated_at": "2026-10-02T01:09:53.986Z"
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "kind": "past",
+    "topic": "여가",
+    "level": 3,
+    "seconds": 90,
+    "question_en": "Tell me about a movie or a concert you went to that really stayed with you. What was the day like, and why do you still remember it?",
+    "hint_ko": "기억에 남는 영화·공연 한 번 — 언제·누구와 갔는지 설정 → 그날의 흐름 → 특별했던 한 순간 → 지금도 기억하는 이유. 줄거리를 요약하지 말고 '그날'을 이야기해라",
+    "model_en": "The one that comes to mind is a concert I went to maybe three years ago. A band I'd listened to since university was finally playing in Seoul, and I bought the ticket the morning they went on sale.\n\nThe day itself was kind of a mess, honestly. It rained all afternoon, I got there soaked, and the line outside the venue wrapped around the whole block. I remember standing there thinking I should have just stayed home.\n\nBut then they opened with the song I'd wanted to hear for ten years, and the entire room sang the first line before the singer did. That's the part I still get a little emotional about. Not the music exactly — the fact that two thousand strangers all knew the same thing.\n\nLooking back, I think that's why it stuck. I've seen better-sounding shows since then, but that was the only one where I felt like I was part of something rather than watching it.",
+    "model_note_ko": "시간 순 + 전환점 구조다. 1문단 설정 · 2문단 '망할 뻔한' 흐름 · 3문단 전환되는 한 순간 · 4문단 지금의 해석. 핵심은 **구체적인 한 순간**을 하나 깊게 파는 것 — 좋았던 점을 여러 개 나열하면 문장 단위 말하기가 되어 IM 에 걸린다. 마지막 문단의 'looking back' 이 과거를 현재로 엮어 AL 쪽으로 민다.",
+    "phrases": [
+      { "term": "the one that comes to mind is", "meaning_ko": "떠오르는 건 ~이다 (답을 고르며 여는 말)" },
+      { "term": "the day itself was kind of a mess", "meaning_ko": "그날 자체는 좀 엉망이었다" },
+      { "term": "I should have just stayed home", "meaning_ko": "그냥 집에 있을 걸 그랬다" },
+      { "term": "that's the part I still", "meaning_ko": "지금도 ~한 부분이 바로 그거다" },
+      { "term": "looking back, I think that's why it stuck", "meaning_ko": "돌이켜보면 그래서 기억에 남은 것 같다" }
+    ]
+  },
+  {
+    "kind": "compare",
+    "topic": "운동",
+    "level": 3,
+    "seconds": 90,
+    "question_en": "How is the way you exercise now different from when you first started? What changed, and why?",
+    "hint_ko": "예전 한 문단 · 지금 한 문단 · 왜 바뀌었는지 한 문단. 대칭으로 짜라. 마지막에 '표면적 이유 → 진짜 이유' 로 한 겹 더 들어가면 점수가 올라간다",
+    "model_en": "When I first started, it was all about numbers. I went five or six times a week, I tracked every set, and if I missed a day I'd feel bad about it for the rest of the week.\n\nNow it's much looser. I move three times a week, usually running, and I don't write any of it down. If it rains, I skip it and that's the end of it. The funny thing is I'm probably in better shape than I was back then.\n\nTwo things changed. The obvious one is that I got injured — I pushed through a knee problem for about two months and ended up losing half a year. That taught me something no training plan did.\n\nBut the bigger shift was realizing that the only workout that counts is the one you'll still be doing in ten years. Once I started asking whether something was sustainable instead of whether it was optimal, almost everything about how I train changed.",
+    "model_note_ko": "비교는 **대칭**으로 — 예전/지금/왜. 각 문단의 길이를 비슷하게 맞추면 듣는 쪽에 구조가 그대로 들린다. 그리고 4문단에서 'the obvious one → the bigger shift' 로 이유를 두 겹으로 쌓는다. 이유를 하나만 대고 끝내면 90초가 안 차고, 여러 개를 얕게 나열하면 문단이 안 생긴다.",
+    "phrases": [
+      { "term": "it was all about numbers", "meaning_ko": "오로지 숫자가 전부였다" },
+      { "term": "now it's much looser", "meaning_ko": "지금은 훨씬 느슨하다" },
+      { "term": "that's the end of it", "meaning_ko": "그걸로 끝이다, 더 신경 안 쓴다" },
+      { "term": "I pushed through", "meaning_ko": "참고 밀어붙였다" },
+      { "term": "the bigger shift was realizing that", "meaning_ko": "더 큰 변화는 ~을 깨달은 것이었다" },
+      { "term": "whether it was sustainable instead of optimal", "meaning_ko": "최적인지가 아니라 계속할 수 있는지" }
+    ]
+  },
+  {
+    "kind": "solve",
+    "topic": "여가",
+    "level": 3,
+    "seconds": 75,
+    "question_en": "You booked concert tickets online, but your card was charged twice and only one booking shows up. Call the ticket office, explain the problem, and work out a solution.",
+    "hint_ko": "문제 → 근거(날짜·금액·예약번호) → 요청 → 차선. 화내지 말고 단계를 밟아라. 상대가 바로 못 해줄 걸 전제하고 차선을 미리 준비해 가는 게 이 유형의 핵심이다",
+    "model_en": "Hi, I'm calling about a booking I made on your site last night, and I think I've been charged twice.\n\nHere's what happened. I booked two tickets for the Saturday show, the page timed out, and I hit confirm again. Now my card shows two charges of ninety thousand won each, but only one booking came through — the reference number is 4-4-2-1-7. So I've paid for four tickets and I have two.\n\nWhat I'd like is for the second charge to be refunded, and I'd rather not wait the usual two weeks for it if there's any way to speed that up.\n\nIf you can't process the refund over the phone, could you at least email me something in writing confirming you've seen the duplicate? That way I have something to show my card company. And if it turns out the second booking does exist somewhere in your system, I'm happy to take the extra two seats instead — I can probably find someone to come with me.",
+    "model_note_ko": "단계가 들리게 쓴다: 문제 한 줄 → 'here's what happened' 로 경위 → 'what I'd like is' 로 요청 → 'if you can't… could you at least' 로 차선. 숫자(금액·예약번호)를 **소리 내어 말하는 연습**이 이 문항의 숨은 과제다. 마지막에 양보선을 하나 더 얹으면 분량도 차고 협상처럼 들린다.",
+    "phrases": [
+      { "term": "here's what happened", "meaning_ko": "경위를 말씀드리면 (설명으로 넘어가는 표지)" },
+      { "term": "the page timed out", "meaning_ko": "페이지가 시간 초과로 끊겼다" },
+      { "term": "only one booking came through", "meaning_ko": "예약은 하나만 처리됐다" },
+      { "term": "what I'd like is", "meaning_ko": "제가 원하는 건" },
+      { "term": "if there's any way to speed that up", "meaning_ko": "조금이라도 빠르게 할 방법이 있다면" },
+      { "term": "could you at least", "meaning_ko": "그게 안 되면 최소한 ~라도 해주실 수 있나요" }
+    ]
+  }
+]

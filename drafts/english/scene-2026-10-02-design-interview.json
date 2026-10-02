@@ -1,0 +1,1979 @@
+{
+  "id": "2026-10-02-design-interview",
+  "situation_ko": "해외 기술 면접. 시스템 설계 질문을 받고, 바로 답하지 않고 조건을 되묻은 뒤 트레이드오프를 설명한다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "면접관",
+      "meaning_ko": "알림 시스템을 설계해 보세요. 하루 수백만 건을 보내야 합니다.",
+      "en": "Let's design a notification system. Say it has to push a few million messages a day.",
+      "ms": 5592,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Let's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "design",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "notification",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "system",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Say",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "push",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "few",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "million",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "messages",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 250
+        },
+        {
+          "t": 338,
+          "d": 463
+        },
+        {
+          "t": 863,
+          "d": 25
+        },
+        {
+          "t": 888,
+          "d": 763
+        },
+        {
+          "t": 1663,
+          "d": 513
+        },
+        {
+          "t": 2538,
+          "d": 350
+        },
+        {
+          "t": 2988,
+          "d": 50
+        },
+        {
+          "t": 3050,
+          "d": 263
+        },
+        {
+          "t": 3325,
+          "d": 75
+        },
+        {
+          "t": 3413,
+          "d": 238
+        },
+        {
+          "t": 3663,
+          "d": 50
+        },
+        {
+          "t": 3725,
+          "d": 313
+        },
+        {
+          "t": 4050,
+          "d": 338
+        },
+        {
+          "t": 4400,
+          "d": 400
+        },
+        {
+          "t": 4813,
+          "d": 50
+        },
+        {
+          "t": 4863,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-design-interview/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "바로 답하지 말고 조건을 먼저 되물어봐 — 지연을 얼마나 허용하는지, 중복 발송이 괜찮은지",
+      "en": "Before I jump in, let me check two things. How much delay is acceptable, and is sending the same message twice a problem?",
+      "ms": 7536,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Before",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jump",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "let",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "things",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "much",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "delay",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "acceptable",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sending",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "message",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twice",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          22
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 263
+        },
+        {
+          "t": 375,
+          "d": 75
+        },
+        {
+          "t": 450,
+          "d": 288
+        },
+        {
+          "t": 738,
+          "d": 225
+        },
+        {
+          "t": 1238,
+          "d": 75
+        },
+        {
+          "t": 1313,
+          "d": 75
+        },
+        {
+          "t": 1400,
+          "d": 225
+        },
+        {
+          "t": 1638,
+          "d": 213
+        },
+        {
+          "t": 1850,
+          "d": 575
+        },
+        {
+          "t": 2825,
+          "d": 138
+        },
+        {
+          "t": 2963,
+          "d": 250
+        },
+        {
+          "t": 3213,
+          "d": 588
+        },
+        {
+          "t": 3925,
+          "d": 125
+        },
+        {
+          "t": 4050,
+          "d": 638
+        },
+        {
+          "t": 5150,
+          "d": 50
+        },
+        {
+          "t": 5200,
+          "d": 88
+        },
+        {
+          "t": 5300,
+          "d": 238
+        },
+        {
+          "t": 5538,
+          "d": 75
+        },
+        {
+          "t": 5613,
+          "d": 363
+        },
+        {
+          "t": 5975,
+          "d": 363
+        },
+        {
+          "t": 6338,
+          "d": 338
+        },
+        {
+          "t": 6688,
+          "d": 50
+        },
+        {
+          "t": 6738,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-design-interview/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "지연은 1분까지 괜찮습니다. 중복은 안 됩니다 — 결제 알림이라서요.",
+      "en": "Up to a minute of delay is fine. Duplicates are not — these are payment alerts.",
+      "ms": 5544,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Up",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minute",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "delay",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Duplicates",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          10
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "these",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alerts",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 163
+        },
+        {
+          "t": 263,
+          "d": 150
+        },
+        {
+          "t": 413,
+          "d": 63
+        },
+        {
+          "t": 488,
+          "d": 338
+        },
+        {
+          "t": 838,
+          "d": 88
+        },
+        {
+          "t": 938,
+          "d": 363
+        },
+        {
+          "t": 1313,
+          "d": 175
+        },
+        {
+          "t": 1488,
+          "d": 425
+        },
+        {
+          "t": 2300,
+          "d": 525
+        },
+        {
+          "t": 2838,
+          "d": 175
+        },
+        {
+          "t": 3025,
+          "d": 450
+        },
+        {
+          "t": 3950,
+          "d": 188
+        },
+        {
+          "t": 4150,
+          "d": 100
+        },
+        {
+          "t": 4263,
+          "d": 338
+        },
+        {
+          "t": 4613,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-design-interview/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그 조건이면 큐를 쓰고, 중복을 막기 위해 멱등 키를 쓰겠다고 설명해봐. 왜 그게 비용이 싼지도 덧붙여",
+      "en": "Then I'd put a queue in front and make the sender idempotent — each message carries a key, and we drop anything we've already seen. That's cheaper than trying to guarantee exactly-once delivery end to end.",
+      "ms": 12816,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "queue",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "front",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sender",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "idempotent",
+          11
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "each",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "message",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "carries",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "key",
+          16
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drop",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we've",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seen",
+          23
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cheaper",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trying",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "guarantee",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exactly-once",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "delivery",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          32
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          33
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          34
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 113
+        },
+        {
+          "t": 325,
+          "d": 138
+        },
+        {
+          "t": 463,
+          "d": 50
+        },
+        {
+          "t": 525,
+          "d": 300
+        },
+        {
+          "t": 825,
+          "d": 88
+        },
+        {
+          "t": 925,
+          "d": 488
+        },
+        {
+          "t": 1763,
+          "d": 88
+        },
+        {
+          "t": 1863,
+          "d": 200
+        },
+        {
+          "t": 2063,
+          "d": 75
+        },
+        {
+          "t": 2138,
+          "d": 400
+        },
+        {
+          "t": 2625,
+          "d": 663
+        },
+        {
+          "t": 3875,
+          "d": 200
+        },
+        {
+          "t": 4088,
+          "d": 400
+        },
+        {
+          "t": 4500,
+          "d": 313
+        },
+        {
+          "t": 4813,
+          "d": 50
+        },
+        {
+          "t": 4863,
+          "d": 413
+        },
+        {
+          "t": 5713,
+          "d": 113
+        },
+        {
+          "t": 5825,
+          "d": 125
+        },
+        {
+          "t": 5950,
+          "d": 325
+        },
+        {
+          "t": 6400,
+          "d": 363
+        },
+        {
+          "t": 6775,
+          "d": 150
+        },
+        {
+          "t": 6925,
+          "d": 263
+        },
+        {
+          "t": 7188,
+          "d": 388
+        },
+        {
+          "t": 7988,
+          "d": 225
+        },
+        {
+          "t": 8213,
+          "d": 413
+        },
+        {
+          "t": 8625,
+          "d": 100
+        },
+        {
+          "t": 8725,
+          "d": 300
+        },
+        {
+          "t": 9038,
+          "d": 50
+        },
+        {
+          "t": 9088,
+          "d": 738
+        },
+        {
+          "t": 10063,
+          "d": 888
+        },
+        {
+          "t": 10950,
+          "d": 513
+        },
+        {
+          "t": 11738,
+          "d": 188
+        },
+        {
+          "t": 11925,
+          "d": 63
+        },
+        {
+          "t": 11988,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-design-interview/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그 키는 어디에 저장하죠? 수백만 건이면 그것도 만만치 않은데요.",
+      "en": "And where do those keys live? At a few million a day, that store isn't free either.",
+      "ms": 4920,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "And",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "where",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "those",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keys",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "live",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "At",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "few",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "million",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "store",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "isn't",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "free",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "either",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 125
+        },
+        {
+          "t": 200,
+          "d": 163
+        },
+        {
+          "t": 375,
+          "d": 138
+        },
+        {
+          "t": 525,
+          "d": 238
+        },
+        {
+          "t": 763,
+          "d": 300
+        },
+        {
+          "t": 1075,
+          "d": 400
+        },
+        {
+          "t": 1863,
+          "d": 100
+        },
+        {
+          "t": 1963,
+          "d": 38
+        },
+        {
+          "t": 2013,
+          "d": 288
+        },
+        {
+          "t": 2300,
+          "d": 300
+        },
+        {
+          "t": 2600,
+          "d": 75
+        },
+        {
+          "t": 2688,
+          "d": 300
+        },
+        {
+          "t": 3013,
+          "d": 213
+        },
+        {
+          "t": 3225,
+          "d": 425
+        },
+        {
+          "t": 3663,
+          "d": 238
+        },
+        {
+          "t": 3900,
+          "d": 275
+        },
+        {
+          "t": 4175,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-design-interview/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "키를 영구히 들고 있을 필요는 없다고 짚어봐 — 재시도 기간만 버티면 된다고 설명해",
+      "en": "We don't need to keep them forever — just long enough to cover the retry window, so maybe a day with a TTL. After that the risk of a stale retry is basically zero.",
+      "ms": 10344,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forever",
+          6
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "just",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "long",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cover",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retry",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "window",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "maybe",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "TTL",
+          21
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "After",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "risk",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stale",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retry",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "basically",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "zero",
+          32
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 100
+        },
+        {
+          "t": 250,
+          "d": 88
+        },
+        {
+          "t": 338,
+          "d": 50
+        },
+        {
+          "t": 400,
+          "d": 225
+        },
+        {
+          "t": 625,
+          "d": 138
+        },
+        {
+          "t": 763,
+          "d": 513
+        },
+        {
+          "t": 1538,
+          "d": 213
+        },
+        {
+          "t": 1750,
+          "d": 275
+        },
+        {
+          "t": 2038,
+          "d": 313
+        },
+        {
+          "t": 2350,
+          "d": 88
+        },
+        {
+          "t": 2438,
+          "d": 238
+        },
+        {
+          "t": 2675,
+          "d": 75
+        },
+        {
+          "t": 2750,
+          "d": 450
+        },
+        {
+          "t": 3200,
+          "d": 500
+        },
+        {
+          "t": 4075,
+          "d": 150
+        },
+        {
+          "t": 4225,
+          "d": 313
+        },
+        {
+          "t": 4538,
+          "d": 88
+        },
+        {
+          "t": 4625,
+          "d": 413
+        },
+        {
+          "t": 5175,
+          "d": 150
+        },
+        {
+          "t": 5325,
+          "d": 38
+        },
+        {
+          "t": 5375,
+          "d": 675
+        },
+        {
+          "t": 6463,
+          "d": 213
+        },
+        {
+          "t": 6675,
+          "d": 100
+        },
+        {
+          "t": 6775,
+          "d": 88
+        },
+        {
+          "t": 6863,
+          "d": 375
+        },
+        {
+          "t": 7250,
+          "d": 50
+        },
+        {
+          "t": 7300,
+          "d": 50
+        },
+        {
+          "t": 7363,
+          "d": 400
+        },
+        {
+          "t": 7763,
+          "d": 688
+        },
+        {
+          "t": 8700,
+          "d": 175
+        },
+        {
+          "t": 8938,
+          "d": 488
+        },
+        {
+          "t": 9438,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-design-interview/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋네요. 그럼 그 저장소가 죽으면 어떻게 되는지로 넘어가 봅시다.",
+      "en": "Good. Let's push on that — walk me through what happens when that store goes down.",
+      "ms": 5136,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "push",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "walk",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happens",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "store",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "goes",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 288
+        },
+        {
+          "t": 725,
+          "d": 200
+        },
+        {
+          "t": 938,
+          "d": 275
+        },
+        {
+          "t": 1213,
+          "d": 125
+        },
+        {
+          "t": 1350,
+          "d": 288
+        },
+        {
+          "t": 2113,
+          "d": 300
+        },
+        {
+          "t": 2425,
+          "d": 200
+        },
+        {
+          "t": 2638,
+          "d": 275
+        },
+        {
+          "t": 2925,
+          "d": 113
+        },
+        {
+          "t": 3050,
+          "d": 488
+        },
+        {
+          "t": 3550,
+          "d": 113
+        },
+        {
+          "t": 3675,
+          "d": 175
+        },
+        {
+          "t": 3863,
+          "d": 250
+        },
+        {
+          "t": 4113,
+          "d": 238
+        },
+        {
+          "t": 4363,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-design-interview/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "before I jump in",
+      "meaning_ko": "바로 시작하기 전에 (면접에서 조건을 되물을 때 여는 말)",
+      "prompt_ko": "답을 바로 하기 전에 두 가지만 확인하고 싶다고 말해봐"
+    },
+    {
+      "term": "how much delay is acceptable",
+      "meaning_ko": "지연을 얼마까지 허용하나요",
+      "prompt_ko": "지연이 얼마까지 괜찮은지 조건을 물어봐"
+    },
+    {
+      "term": "put a queue in front",
+      "meaning_ko": "앞단에 큐를 둔다",
+      "prompt_ko": "앞단에 큐를 두는 구조로 가겠다고 설명해봐"
+    },
+    {
+      "term": "cover the retry window",
+      "meaning_ko": "재시도 기간을 버티다, 그 구간을 커버하다",
+      "prompt_ko": "키를 영구 보관할 필요 없이 재시도 기간만 버티면 된다고 설명해봐"
+    },
+    {
+      "term": "walk me through what happens when",
+      "meaning_ko": "~할 때 어떻게 되는지 설명해 보세요",
+      "prompt_ko": "그 저장소가 죽으면 어떻게 되는지 설명해 보라고 요청해봐"
+    }
+  ],
+  "generated_at": "2026-10-02T01:10:33.987Z"
+}

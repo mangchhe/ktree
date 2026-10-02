@@ -1,0 +1,1607 @@
+{
+  "id": "2026-10-02-secondhand-haggle",
+  "situation_ko": "중고로 올린 모니터를 팔러 만났다. 상대가 흠집을 짚으며 값을 깎으려 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "구매자",
+      "meaning_ko": "안녕하세요, 모니터 보러 온 사람이에요. 켜볼 수 있을까요?",
+      "en": "Hey — I'm here about the monitor. Mind if I plug it in?",
+      "ms": 3744,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Hey",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "monitor",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Mind",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "plug",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 213
+        },
+        {
+          "t": 325,
+          "d": 150
+        },
+        {
+          "t": 488,
+          "d": 213
+        },
+        {
+          "t": 713,
+          "d": 263
+        },
+        {
+          "t": 988,
+          "d": 75
+        },
+        {
+          "t": 1075,
+          "d": 625
+        },
+        {
+          "t": 2100,
+          "d": 250
+        },
+        {
+          "t": 2363,
+          "d": 138
+        },
+        {
+          "t": 2513,
+          "d": 88
+        },
+        {
+          "t": 2613,
+          "d": 325
+        },
+        {
+          "t": 2950,
+          "d": 113
+        },
+        {
+          "t": 3075,
+          "d": 288
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-secondhand-haggle/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "케이블 가져왔으니 바로 켜보라고 하고, 2년 썼지만 멀쩡하다고 말해봐",
+      "en": "Go ahead, I brought the cable. I've had it about two years, but it's been running fine.",
+      "ms": 4752,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Go",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ahead",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "brought",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cable",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I've",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "years",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "running",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 125
+        },
+        {
+          "t": 213,
+          "d": 375
+        },
+        {
+          "t": 613,
+          "d": 50
+        },
+        {
+          "t": 675,
+          "d": 350
+        },
+        {
+          "t": 1025,
+          "d": 63
+        },
+        {
+          "t": 1100,
+          "d": 450
+        },
+        {
+          "t": 1950,
+          "d": 88
+        },
+        {
+          "t": 2050,
+          "d": 138
+        },
+        {
+          "t": 2200,
+          "d": 50
+        },
+        {
+          "t": 2250,
+          "d": 250
+        },
+        {
+          "t": 2513,
+          "d": 250
+        },
+        {
+          "t": 2763,
+          "d": 563
+        },
+        {
+          "t": 3350,
+          "d": 125
+        },
+        {
+          "t": 3475,
+          "d": 88
+        },
+        {
+          "t": 3575,
+          "d": 175
+        },
+        {
+          "t": 3750,
+          "d": 200
+        },
+        {
+          "t": 3950,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-secondhand-haggle/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "화면은 좋아 보이네요. 근데 아래쪽 모서리에 흠집이 있어요.",
+      "en": "Screen looks good. There's a scratch down here on the corner, though.",
+      "ms": 3936,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Screen",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looks",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scratch",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "corner",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 375
+        },
+        {
+          "t": 438,
+          "d": 275
+        },
+        {
+          "t": 725,
+          "d": 375
+        },
+        {
+          "t": 1488,
+          "d": 163
+        },
+        {
+          "t": 1663,
+          "d": 63
+        },
+        {
+          "t": 1738,
+          "d": 438
+        },
+        {
+          "t": 2188,
+          "d": 225
+        },
+        {
+          "t": 2425,
+          "d": 188
+        },
+        {
+          "t": 2625,
+          "d": 113
+        },
+        {
+          "t": 2750,
+          "d": 88
+        },
+        {
+          "t": 2850,
+          "d": 400
+        },
+        {
+          "t": 3275,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-secondhand-haggle/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그건 베젤이고 화면에는 안 보인다고 짚어봐. 사진에도 올려뒀다고 덧붙여",
+      "en": "That's on the bezel, not the panel — you won't see it when it's on. I did put it in the photos.",
+      "ms": 5712,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bezel",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "not",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "panel",
+          6
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "photos",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 88
+        },
+        {
+          "t": 300,
+          "d": 63
+        },
+        {
+          "t": 363,
+          "d": 450
+        },
+        {
+          "t": 1288,
+          "d": 200
+        },
+        {
+          "t": 1500,
+          "d": 88
+        },
+        {
+          "t": 1588,
+          "d": 413
+        },
+        {
+          "t": 2550,
+          "d": 100
+        },
+        {
+          "t": 2650,
+          "d": 188
+        },
+        {
+          "t": 2850,
+          "d": 238
+        },
+        {
+          "t": 3088,
+          "d": 75
+        },
+        {
+          "t": 3163,
+          "d": 100
+        },
+        {
+          "t": 3275,
+          "d": 138
+        },
+        {
+          "t": 3413,
+          "d": 288
+        },
+        {
+          "t": 4100,
+          "d": 50
+        },
+        {
+          "t": 4163,
+          "d": 138
+        },
+        {
+          "t": 4313,
+          "d": 138
+        },
+        {
+          "t": 4450,
+          "d": 38
+        },
+        {
+          "t": 4488,
+          "d": 50
+        },
+        {
+          "t": 4550,
+          "d": 63
+        },
+        {
+          "t": 4613,
+          "d": 750
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-secondhand-haggle/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그렇네요. 그래도 흠이 있으니까 12만 대신 9만에 주시면 바로 가져갈게요.",
+      "en": "Fair enough. Still, it's not mint — would you do ninety instead of a hundred and twenty? I'd take it right now.",
+      "ms": 6864,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Still",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "it's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mint",
+          5
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "would",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ninety",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          15
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I'd",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 225
+        },
+        {
+          "t": 313,
+          "d": 450
+        },
+        {
+          "t": 1163,
+          "d": 350
+        },
+        {
+          "t": 1538,
+          "d": 188
+        },
+        {
+          "t": 1738,
+          "d": 250
+        },
+        {
+          "t": 2000,
+          "d": 400
+        },
+        {
+          "t": 2688,
+          "d": 188
+        },
+        {
+          "t": 2888,
+          "d": 113
+        },
+        {
+          "t": 3013,
+          "d": 163
+        },
+        {
+          "t": 3188,
+          "d": 375
+        },
+        {
+          "t": 3575,
+          "d": 350
+        },
+        {
+          "t": 3938,
+          "d": 75
+        },
+        {
+          "t": 4025,
+          "d": 50
+        },
+        {
+          "t": 4088,
+          "d": 350
+        },
+        {
+          "t": 4450,
+          "d": 75
+        },
+        {
+          "t": 4538,
+          "d": 550
+        },
+        {
+          "t": 5463,
+          "d": 63
+        },
+        {
+          "t": 5538,
+          "d": 225
+        },
+        {
+          "t": 5775,
+          "d": 113
+        },
+        {
+          "t": 5900,
+          "d": 200
+        },
+        {
+          "t": 6113,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-secondhand-haggle/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "9만은 너무 낮다고 하고, 11만에 스탠드까지 얹어주겠다고 역제안해봐",
+      "en": "Ninety's a bit low for me. I could do a hundred and ten, and I'll throw in the stand and the cable.",
+      "ms": 5400,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Ninety's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "low",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "throw",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stand",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cable",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 275
+        },
+        {
+          "t": 375,
+          "d": 38
+        },
+        {
+          "t": 425,
+          "d": 175
+        },
+        {
+          "t": 600,
+          "d": 225
+        },
+        {
+          "t": 825,
+          "d": 150
+        },
+        {
+          "t": 975,
+          "d": 225
+        },
+        {
+          "t": 1613,
+          "d": 75
+        },
+        {
+          "t": 1688,
+          "d": 88
+        },
+        {
+          "t": 1775,
+          "d": 125
+        },
+        {
+          "t": 1900,
+          "d": 25
+        },
+        {
+          "t": 1938,
+          "d": 238
+        },
+        {
+          "t": 2175,
+          "d": 50
+        },
+        {
+          "t": 2238,
+          "d": 388
+        },
+        {
+          "t": 2900,
+          "d": 100
+        },
+        {
+          "t": 3000,
+          "d": 125
+        },
+        {
+          "t": 3138,
+          "d": 325
+        },
+        {
+          "t": 3463,
+          "d": 63
+        },
+        {
+          "t": 3525,
+          "d": 63
+        },
+        {
+          "t": 3588,
+          "d": 600
+        },
+        {
+          "t": 4363,
+          "d": 113
+        },
+        {
+          "t": 4475,
+          "d": 63
+        },
+        {
+          "t": 4550,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-secondhand-haggle/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "10만 5천이면 지금 송금할게요. 이게 제 마지막 제안이에요.",
+      "en": "Let's say a hundred and five and I'll transfer it now. That's as far as I can go.",
+      "ms": 5064,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Let's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "say",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "transfer",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "far",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 200
+        },
+        {
+          "t": 300,
+          "d": 188
+        },
+        {
+          "t": 500,
+          "d": 38
+        },
+        {
+          "t": 550,
+          "d": 350
+        },
+        {
+          "t": 913,
+          "d": 113
+        },
+        {
+          "t": 1038,
+          "d": 338
+        },
+        {
+          "t": 1388,
+          "d": 100
+        },
+        {
+          "t": 1500,
+          "d": 113
+        },
+        {
+          "t": 1625,
+          "d": 563
+        },
+        {
+          "t": 2200,
+          "d": 100
+        },
+        {
+          "t": 2313,
+          "d": 388
+        },
+        {
+          "t": 3113,
+          "d": 250
+        },
+        {
+          "t": 3375,
+          "d": 163
+        },
+        {
+          "t": 3550,
+          "d": 238
+        },
+        {
+          "t": 3800,
+          "d": 138
+        },
+        {
+          "t": 3950,
+          "d": 100
+        },
+        {
+          "t": 4063,
+          "d": 225
+        },
+        {
+          "t": 4300,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-02-secondhand-haggle/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "Mind if I plug it in?",
+      "meaning_ko": "켜봐도 될까요? (plug in = 전원을 꽂다)",
+      "prompt_ko": "물건을 사기 전에 켜봐도 되냐고 물어봐"
+    },
+    {
+      "term": "it's been running fine",
+      "meaning_ko": "지금까지 잘 돌아갔다, 멀쩡하다",
+      "prompt_ko": "2년 썼지만 지금까지 아무 문제 없이 잘 돌아갔다고 말해봐"
+    },
+    {
+      "term": "it's not mint",
+      "meaning_ko": "새것 같지는 않다 (mint = 흠 없는 상태)",
+      "prompt_ko": "완전 새것 상태는 아니니까 좀 깎아달라고 말해봐"
+    },
+    {
+      "term": "throw in",
+      "meaning_ko": "덤으로 얹어주다",
+      "prompt_ko": "값은 그대로 두고 케이블을 덤으로 얹어주겠다고 제안해봐"
+    },
+    {
+      "term": "that's as far as I can go",
+      "meaning_ko": "그게 제가 할 수 있는 최대치다, 더는 못 간다",
+      "prompt_ko": "10만 5천이 내가 낼 수 있는 최대라고 못 박아봐"
+    }
+  ],
+  "generated_at": "2026-10-02T01:09:29.351Z"
+}

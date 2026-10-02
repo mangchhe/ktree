@@ -186,6 +186,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .sprow+.sprow{border-top:1px solid var(--border)}
 .sprow b{flex:0 0 auto;max-width:55%;color:var(--text);font-weight:650}
 .sprow span{color:var(--dim);min-width:0;flex:1 1 auto}
+/* 장면 전 어휘 훑기 — 읽고 넘어가는 자리라 카드보다 목록에 가깝게 */
+.prelist{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--card)}
+.prow2{padding:11px 14px;cursor:pointer;transition:background .12s}
+.prow2+.prow2{border-top:1px solid var(--border)}
+.prow2:active,.prow2.on{background:var(--eng-bg)}
+.prow2 .pt{font-size:15px;font-weight:650;line-height:1.4}
+.prow2 .pk2{font-size:12.5px;color:var(--sub);margin-top:3px;line-height:1.5}
+.prow2 .pex{font-size:12px;color:var(--dim);margin-top:4px;font-style:italic}
+.btn.sm.on{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
 .toast{
   position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);
   background:var(--card-el);border:1px solid var(--border-hl);border-radius:99px;
@@ -509,7 +518,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-02.1';
+const BUILD = '2026-10-02.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -576,6 +585,7 @@ function show(s){
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   // 화면을 떠날 때 소리를 다 끈다. cardAudio 는 어휘 발음, tStopAudio 는 장면·기사.
   if (cardAudio) cardAudio.pause();
+  scLoop = false;
   tStopAudio();
   if (s==='today') renderToday();
   if (s==='vocab') renderVocab();
@@ -820,9 +830,15 @@ async function loadToday(){
   if (!currentUser) return;
   const d = today();
   try {
+    // 🔴 장면·기사에도 토픽 필터를 건다. 어휘에만 걸려 있어서, 마케팅을 꺼도
+    // 마케팅 장면이 그대로 나왔고 거기서 뽑힌 어휘가 다시 큐로 들어왔다 —
+    // 같이 쓰는 사람의 도메인 용어를 영어로 외우게 되는 상태였다.
+    const tn = activeTopicNames();
+    const scQ = sb.from('eng_scenes').select('*').eq('status','ready');
+    const arQ = sb.from('eng_articles').select('*');
     const [sc, ar, se, pr] = await Promise.all([
-      sb.from('eng_scenes').select('*').eq('status','ready').order('created_at',{ascending:false}).limit(5),
-      sb.from('eng_articles').select('*').order('created_at',{ascending:false}).limit(1),
+      (tn.length ? scQ.in('topic', tn) : scQ).order('created_at',{ascending:false}).limit(5),
+      (tn.length ? arQ.in('topic', tn) : arQ).order('created_at',{ascending:false}).limit(1),
       // 🔴 user_id 를 **명시한다.** 진도 공유로 읽기가 열려 있어, RLS 에 기대면
       // maybeSingle() 이 두 사람 행을 만나 터지거나 남의 진도를 내 것으로 표시한다.
       sb.from('eng_sessions').select('*').eq('user_id', currentUser.id).eq('session_date', d).maybeSingle(),
@@ -1098,16 +1114,53 @@ function openAct(a){
 /* ── 막 1 · 상황 대화 ───────────────────────────────── */
 
 let scIdx = 0, scMode = 'listen';
+let scPhase = 'pre';      // 'pre' = 어휘 먼저, 'dialog' = 대화
+let scLoop = false;       // 장면 반복 재생
 
 function actScene(el){
   const done = tSession?.progress?.scenes?.done || 0;
   scIdx = Math.min(done, tScenes.length - 1);
+  scPhase = 'pre';
   drawScene(el);
+}
+
+/* 🔴 어휘를 **대화 앞에** 둔다.
+ * 전에는 장면 → 기사 → 어휘 순이라, 모르는 표현을 모른 채로 대화를 다 지나간 뒤에야
+ * 어휘를 만났다. 들어도 안 들리고, 뒤늦게 외워도 그 대화는 이미 끝나 있었다.
+ * 먼저 2~5개를 훑고 들어가면 같은 오디오가 "들리는" 경험이 된다. */
+function drawPre(el, sc){
+  const v = (sc.vocab || []).filter(x => x.term);
+  if (!v.length) { scPhase = 'dialog'; drawScene(el); return; }
+  el.innerHTML = actBar(`Scene ${scIdx+1}/${tScenes.length} · warm-up`) + `
+    <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
+      <b style="color:var(--eng)">Context</b> · ${esc(sc.situation_ko)}</div>
+    <p class="leg" style="margin:0 0 10px">You'll hear these in a moment. Tap one to hear it.</p>
+    <div class="prelist">
+      ${v.map((x,i) => `<div class="prow2" data-i="${i}">
+        <div class="pt">${esc(x.term)}${x.kind === 'word' ? '<em class="kdot">Word</em>' : ''}</div>
+        <div class="pk2">${esc(x.kind === 'word' ? (x.meaning_ko || '') : (x.meaning_ko || x.prompt_ko || ''))}</div>
+        ${x.example ? `<div class="pex">${esc(x.example)}</div>` : ''}
+      </div>`).join('')}
+    </div>
+    <div class="actbar" style="margin-top:14px">
+      <button class="btn sm primary-btn" id="pre-go" style="padding:9px 16px">Got it — start the scene →</button>
+    </div>`;
+  wireBar();
+  // 탭하면 그 표현을 읽어준다 — 장면 오디오에서 그 자리를 찾아 쓰는 게 아니라 TTS 로 간단히.
+  el.querySelectorAll('.prow2').forEach(r => r.onclick = () => {
+    const t = v[+r.dataset.i]?.term; if (!t || !('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; u.rate = .9;
+    speechSynthesis.speak(u);
+    r.classList.add('on'); setTimeout(() => r.classList.remove('on'), 700);
+  });
+  $('pre-go').onclick = () => { scPhase = 'dialog'; drawScene(el); };
 }
 
 function drawScene(el){
   const sc = tScenes[scIdx];
   if (!sc) { renderToday(); return; }
+  if (scPhase === 'pre') { drawPre(el, sc); return; }
   const turns = sc.turns || [];
   el.innerHTML = actBar(`Scene ${scIdx+1}/${tScenes.length}`) + `
     <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
@@ -1116,6 +1169,8 @@ function drawScene(el){
       <button class="btn sm" id="sc-listen">▶ Play all</button>
       <button class="btn sm" id="sc-fill">Fill my turns</button>
       <button class="btn sm" id="sc-stop">■ Stop</button>
+      <button class="btn sm${scLoop ? ' on' : ''}" id="sc-loop" title="Play the scene over and over">🔁 Repeat</button>
+      <button class="btn sm" id="sc-words">Words</button>
     </div>
     <div id="sc-turns"></div>
     <p class="leg"><span class="sw">Dotted</span> = swallowed under 150ms. Natives barely pronounce it.</p>
@@ -1128,13 +1183,20 @@ function drawScene(el){
   // 알아듣는 게 목적이다. 느리게 듣고 싶으면 배율을 직접 누른다.
   $('sc-listen').onclick = () => { scMode='listen'; turns.forEach(t=>t.open=true); paintTurns(sc); chainTurn(sc,0); };
   $('sc-fill').onclick   = () => { scMode='fill';   turns.forEach(t=>t.open=false); paintTurns(sc); chainTurn(sc,0); };
-  $('sc-stop').onclick   = tStopAudio;
+  $('sc-stop').onclick   = () => { scLoop = false; $('sc-loop')?.classList.remove('on'); tStopAudio(); };
+  // 듣기는 반복이 전부다 — 한 번 듣고 넘어가면 귀에 안 남는다.
+  $('sc-loop').onclick = function(){
+    scLoop = !scLoop; this.classList.toggle('on', scLoop);
+    if (scLoop) { scMode='listen'; turns.forEach(t=>t.open=true); paintTurns(sc); chainTurn(sc,0); }
+  };
+  // 대화 중에 모르는 표현이 나오면 되돌아갈 수 있어야 한다
+  $('sc-words').onclick = () => { tStopAudio(); scPhase='pre'; drawScene(el); };
   $('sc-next').onclick = async () => {
     tStopAudio();
     const n = Math.max(tSession?.progress?.scenes?.done || 0, scIdx + 1);
     await saveProgress({ scenes: { done: n, total: tScenes.length } });
     if (n >= tScenes.length) { await maybeComplete(); renderToday(); }
-    else { scIdx = Math.min(n, tScenes.length - 1); drawScene(el); }
+    else { scIdx = Math.min(n, tScenes.length - 1); scPhase = 'pre'; drawScene(el); }
   };
 }
 
@@ -1193,7 +1255,11 @@ function playTurnA(sc, i, then){
 
 function chainTurn(sc, i){
   const turns = sc.turns || [];
-  if (i >= turns.length) { tStopAudio(); return; }
+  if (i >= turns.length) {
+    tStopAudio();
+    if (scLoop) setTimeout(() => { if (scLoop) chainTurn(sc, 0); }, 900);   // 한 박자 쉬고 다시
+    return;
+  }
   const t = turns[i];
   if (scMode === 'fill' && t.is_me && !t.open) {        // 내 턴에서 멈춘다
     tStopAudio();
