@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-03.1';
+const BUILD = '2026-10-03.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1884,7 +1884,9 @@ function renderSettings(){
 /* ═══ 어휘 탭 — 쌓인 표현 전부와 SRS 상태 ═══════════════
    오늘 판의 「어휘 마무리」는 하루치만 본다. 여기는 **전체 장부**다 —
    무엇이 익었고 무엇이 아직인지, 그리고 앞당겨 복습할 자리. */
-let vbFilter = 'all', vbKind = 'all';
+// 기본을 'studied' 로 둔다 — 쌓인 전부(수백 장)를 먼저 보여주면 "내가 뭘 공부했지"가
+// 묻히고, 아직 만난 적 없는 카드까지 섞여 복습하는 자리로 안 읽힌다.
+let vbFilter = 'studied', vbKind = 'all';
 async function renderVocab(){
   const head = $('vb-head'), list = $('vb-list');
   const d = today();
@@ -1908,8 +1910,8 @@ async function renderVocab(){
   const due = all.filter(c => c.status !== 'new' && c.next_review <= d);
   head.innerHTML = `
     <div class="tstats">
-      <div class="tstat"><div class="v">${n('mature')}</div><div class="l">Mature<br><small>21d+ interval</small></div></div>
-      <div class="tstat"><div class="v">${all.length}</div><div class="l">Total</div></div>
+      <div class="tstat"><div class="v">${n('learning')+n('mature')}</div><div class="l">Studied<br><small>graded at least once</small></div></div>
+      <div class="tstat"><div class="v">${all.length}</div><div class="l">Collected</div></div>
       <div class="tstat"><div class="v">${due.length}</div><div class="l">Due today</div></div>
     </div>
     <div class="srow" style="margin:12px 0 7px">
@@ -1918,15 +1920,28 @@ async function renderVocab(){
           k==='all'?'':` ${all.filter(c => (c.kind||'phrase')===k).length}`}</button>`).join('')}
     </div>
     <div class="srow" style="margin:0 0 12px">
-      ${[['all','All'],['new','New'],['learning','Learning'],['mature','Mature']]
-        .map(([k,l]) => `<button class="tchip${vbFilter===k?' on':''}" data-f="${k}">${l}</button>`).join('')}
+      ${[['studied','Studied'],['new','Not yet'],['mature','Mature'],['all','All']]
+        .map(([k,l]) => {
+          const n = k==='all' ? all.length
+                  : k==='studied' ? all.filter(isStudied).length
+                  : all.filter(c => c.status===k).length;
+          return `<button class="tchip${vbFilter===k?' on':''}" data-f="${k}">${l} ${n}</button>`;
+        }).join('')}
     </div>`;
   head.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { vbFilter = b.dataset.f; renderVocab(); });
   head.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { vbKind = b.dataset.k; renderVocab(); });
 
-  let rows = vbFilter === 'all' ? all : all.filter(c => c.status === vbFilter);
+  const isStudied = c => c.status === 'learning' || c.status === 'mature';
+  let rows = vbFilter === 'all' ? all
+           : vbFilter === 'studied' ? all.filter(isStudied)
+           : all.filter(c => c.status === vbFilter);
   if (vbKind !== 'all') rows = rows.filter(c => (c.kind || 'phrase') === vbKind);
-  if (!rows.length) { list.innerHTML = '<div class="empty">Nothing yet. Run today\'s board once and they pile up.</div>'; return; }
+  if (!rows.length) {
+    list.innerHTML = vbFilter === 'studied'
+      ? '<div class="empty">Nothing studied yet.<br>Finish a <b>Vocab drill</b> on the Today board — graded cards land here.</div>'
+      : '<div class="empty">Nothing here. Run today\'s board once and they pile up.</div>';
+    return;
+  }
   const badge = c => c.status === 'mature' ? '<span class="ipill done">Mature</span>'
     : c.status === 'new' ? '<span class="ipill wait">New</span>'
     : `<span class="ipill wait">${c.interval_days}d</span>`;
