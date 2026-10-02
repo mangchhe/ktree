@@ -1,0 +1,437 @@
+<!--ktree
+title: 셰이더 — GPU가 픽셀을 칠하는 작은 프로그램
+date: 2026-10-03
+summary: 셰이더는 엔진 기술이 아니라 GPU 프로그램이다 — CPU/GPU·렌더링 파이프라인·정점/프래그먼트·언어와 엔진·값을 넘기는 세 통로·드로우콜과 배칭·투명과 clip·노이즈·디졸브 해부·빌드에서 빠지는 셰이더·분홍색 디버깅·모바일 주의·셰이더가 못 고치는 대비 — 14개 개념.
+domain: tech
+-->
+<meta charset="utf-8">
+<title>셰이더 — 기술 노트</title>
+<style>
+  :root{
+    --bg:#f6f5f9; --surface:#ffffff; --ink:#1c1b23; --muted:#5c5a68; --faint:#8d8a99;
+    --line:#e5e3ec; --line2:#efedf4; --accent:#5646c4; --accent-soft:#5646c418;
+    --amber:#b4690e; --good:#1f7a4d; --bad:#b23a48; --code-bg:#f1eff7;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,"Apple SD Gothic Neo",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#131218; --surface:#1b1a23; --ink:#e8e7ee; --muted:#a5a2b2; --faint:#6e6b7c;
+      --line:#2b2937; --line2:#232130; --accent:#978af0; --accent-soft:#978af01f;
+      --amber:#e0a35a; --good:#5fcf95; --bad:#e8737f; --code-bg:#201e2b; }
+  }
+  :root[data-theme="light"]{ --bg:#f6f5f9; --surface:#ffffff; --ink:#1c1b23; --muted:#5c5a68; --faint:#8d8a99;
+    --line:#e5e3ec; --line2:#efedf4; --accent:#5646c4; --accent-soft:#5646c418;
+    --amber:#b4690e; --good:#1f7a4d; --bad:#b23a48; --code-bg:#f1eff7; }
+  :root[data-theme="dark"]{ --bg:#131218; --surface:#1b1a23; --ink:#e8e7ee; --muted:#a5a2b2; --faint:#6e6b7c;
+    --line:#2b2937; --line2:#232130; --accent:#978af0; --accent-soft:#978af01f;
+    --amber:#e0a35a; --good:#5fcf95; --bad:#e8737f; --code-bg:#201e2b; }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;
+    margin:0;padding:0;-webkit-font-smoothing:antialiased;font-size:16px}
+  .wrap{max-width:820px;margin:0 auto;padding:64px 24px 120px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  header .eyebrow{color:var(--faint)}
+  h1{font-size:2.15rem;line-height:1.12;letter-spacing:-.02em;margin:.35em 0 .3em;text-wrap:balance;font-weight:750}
+  .lede{color:var(--muted);font-size:1.06rem;max-width:60ch}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:18px;display:flex;gap:14px;flex-wrap:wrap}
+
+  nav.toc{margin:40px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
+  nav.toc .eyebrow{display:block;margin-bottom:12px}
+  nav.toc ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+  @media(max-width:620px){nav.toc ol{grid-template-columns:1fr}}
+  nav.toc li{display:flex;gap:10px;align-items:baseline;padding:3px 0}
+  nav.toc .n{font-family:var(--mono);font-size:11px;color:var(--faint);min-width:18px}
+  nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+  nav.toc a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+
+  section.card{margin:52px 0;scroll-margin-top:24px}
+  .card > .head{display:flex;gap:16px;align-items:baseline;border-bottom:2px solid var(--accent-soft);padding-bottom:10px}
+  .card .num{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;padding-top:2px}
+  .card h2{font-size:1.4rem;letter-spacing:-.01em;margin:0;font-weight:700;flex:1}
+  .card .cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);align-self:flex-start;border:1px solid var(--line);border-radius:100px;padding:3px 9px;white-space:nowrap}
+  .card .body{margin-top:18px}
+  .block{margin:15px 0}
+  .block .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+  .block.why .lbl{color:var(--amber)} .block.trade .lbl{color:var(--accent)}
+  p{margin:.4em 0}
+  ul,ol.list{margin:.4em 0;padding-left:1.2em} li{margin:.22em 0}
+  code{font-family:var(--mono);font-size:.86em;background:var(--code-bg);padding:.12em .38em;border-radius:5px}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:14px 0}
+  pre code{background:none;padding:0;font-size:12.5px;line-height:1.6}
+  .fig{margin:20px 0;overflow-x:auto}
+  svg.dgm{display:block;margin:0 auto;height:auto;font-family:var(--mono)}
+  svg.dgm text{fill:var(--ink);font-size:12.5px}
+  svg.dgm text.sm{font-size:11px}
+  svg.dgm text.b{font-weight:600}
+  svg.dgm .mut{fill:var(--muted)}
+  svg.dgm .acc{fill:var(--accent);font-weight:600}
+  svg.dgm .amb{fill:var(--amber);font-weight:600}
+  svg.dgm .grn{fill:var(--good);font-weight:600}
+  svg.dgm .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5;filter:url(#soft)}
+  svg.dgm .boxa{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5;filter:url(#soft)}
+  svg.dgm .boxg{fill:var(--surface);stroke:var(--good);stroke-width:1.5;filter:url(#soft)}
+  svg.dgm .pill{fill:var(--code-bg);stroke:var(--line);stroke-width:1}
+  svg.dgm .note{fill:var(--line2);stroke:var(--line);stroke-width:1}
+  svg.dgm .frame{fill:none;stroke:var(--line);stroke-width:1.3;stroke-dasharray:2 4}
+  svg.dgm .life{stroke:var(--line);stroke-width:1.3;stroke-dasharray:3 4}
+  svg.dgm .act{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1}
+  svg.dgm .e{stroke-width:1.7;fill:none}
+  svg.dgm .e-mut{stroke:var(--muted)}
+  svg.dgm .e-acc{stroke:var(--accent)}
+  svg.dgm .e-amb{stroke:var(--amber)}
+  svg.dgm .e-grn{stroke:var(--good)}
+  svg.dgm .dash{stroke-dasharray:5 4}
+  svg.dgm .chip{fill:var(--bg)}
+  svg.dgm .step text{fill:#fff;font-weight:700;font-size:11px}
+
+  .tldr{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:11px 15px;margin:16px 0;font-size:.95rem}
+  .tldr b{color:var(--accent)}
+  .myth{border:1px dashed var(--line);border-radius:8px;padding:11px 15px;margin:14px 0;font-size:.94rem;background:var(--line2)}
+  .myth .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bad);font-weight:700}
+
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.92rem;display:block;overflow-x:auto}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+  th{background:var(--line2);font-weight:600;font-size:.82rem;letter-spacing:.02em}
+  td code{font-size:.82em}
+  .tag-good{color:var(--good);font-weight:600} .tag-bad{color:var(--bad);font-weight:600}
+  footer{margin-top:80px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-family:var(--mono);font-size:11.5px}
+  a.up{color:var(--faint);text-decoration:none;font-family:var(--mono);font-size:11px;float:right}
+  a.up:hover{color:var(--accent)}
+  a{color:var(--accent)}
+</style>
+
+<div class="wrap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <marker id="arM" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--muted)"/></marker>
+  <marker id="arA" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--accent)"/></marker>
+  <marker id="arB" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--amber)"/></marker>
+  <marker id="arG" markerWidth="9" markerHeight="8" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" style="fill:var(--good)"/></marker>
+  <filter id="soft" x="-20%" y="-30%" width="140%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000" flood-opacity="0.10"/></filter>
+</defs></svg>
+<header>
+  <div class="eyebrow">TECH NOTE · 그래픽스 · 게임 클라이언트</div>
+  <h1>셰이더 — GPU가 픽셀을 칠하는 작은 프로그램</h1>
+  <p class="lede">"셰이더는 유니티 기술인가?"에서 출발해, GPU가 화면을 그리는 방식·값을 넘기는 통로·드로우콜·투명·노이즈를 거쳐 <b>녹아 사라지는(dissolve) 효과</b>를 해부하고, 실제로 부딪히는 <b>빌드·모바일 함정</b>까지. 2D 모바일 게임에서 적이 죽는 연출을 만들며 겪은 것을 개념 단위로 정리했다.</p>
+  <div class="meta"><span>2026-10-03</span><span>14 concepts</span><span>GPU · pipeline · vertex/fragment · uniform · batching · alpha · noise · dissolve · stripping · mobile</span></div>
+</header>
+
+<nav class="toc">
+  <span class="eyebrow">학습 순서</span>
+  <ol>
+    <li><span class="n">00</span><a href="#c0">셰이더는 유니티 기술인가? — 정의</a></li>
+    <li><span class="n">01</span><a href="#c1">CPU와 GPU — 왜 따로 계산하나</a></li>
+    <li><span class="n">02</span><a href="#c2">렌더링 파이프라인 — 꼭짓점에서 픽셀까지</a></li>
+    <li><span class="n">03</span><a href="#c3">정점 셰이더 vs 프래그먼트 셰이더</a></li>
+    <li><span class="n">04</span><a href="#c4">언어와 엔진 — HLSL·GLSL·ShaderLab·Shader Graph</a></li>
+    <li><span class="n">05</span><a href="#c5">값을 넘기는 세 통로 — 정점 데이터·유니폼·텍스처</a></li>
+    <li><span class="n">06</span><a href="#c6">드로우콜과 배칭 — 왜 "재질이 같아야" 묶이나</a></li>
+    <li><span class="n">07</span><a href="#c7">투명과 블렌딩 — 알파·premultiplied·clip</a></li>
+    <li><span class="n">08</span><a href="#c8">노이즈 — 텍스처 없이 수학으로 무늬 만들기</a></li>
+    <li><span class="n">09</span><a href="#c9">디졸브 해부 — 몸이 녹아 사라지는 효과</a></li>
+    <li><span class="n">10</span><a href="#c10">빌드 함정 — 에디터에선 되는데 폰에선 사라진다</a></li>
+    <li><span class="n">11</span><a href="#c11">분홍색의 의미 — 셰이더 디버깅</a></li>
+    <li><span class="n">12</span><a href="#c12">모바일에서 조심할 것 — 정밀도·분기·overdraw</a></li>
+    <li><span class="n">13</span><a href="#c13">셰이더가 못 고치는 것 — 대비는 그림의 몫</a></li>
+  </ol>
+</nav>
+
+<!-- ============ 00 ============ -->
+<section class="card" id="c0">
+  <div class="head"><span class="num">00</span><h2>셰이더는 유니티 기술인가? — 정의</h2><span class="cat">definition</span></div>
+  <div class="body">
+    <div class="myth"><span class="t">흔한 오해</span> — 셰이더는 유니티(또는 특정 엔진)의 기능이다? 아니다. 셰이더는 <b>GPU 위에서 도는 작은 프로그램</b>이고, 그래픽 API(DirectX·OpenGL·Vulkan·Metal·WebGL)가 정한 규격이다. 유니티·언리얼·Godot·브라우저(WebGL)는 모두 그 위에 <b>셰이더를 쓰기 쉽게 감싸는 틀</b>을 얹었을 뿐이다.</div>
+    <div class="block"><div class="lbl">정의</div>
+      <p>화면에 무언가를 그릴 때 GPU가 <b>"이 꼭짓점은 화면 어디로 가나"</b>, <b>"이 픽셀은 무슨 색인가"</b>를 계산하는데, 그 계산식을 사람이 직접 쓴 것이 셰이더다. 이름은 원래 명암(shade)을 계산하는 데서 왔지만 지금은 색·투명·변형·왜곡·녹임 등 <b>픽셀에 대한 거의 모든 계산</b>을 맡는다.</p></div>
+    <div class="block"><div class="lbl">왜 신기해 보이나</div>
+      <p>보통 연출은 <b>그림(스프라이트)을 갈아 끼워서</b> 만든다. 셰이더는 그림은 그대로 두고 <b>그림을 칠하는 방법</b>을 바꾼다. 그래서 그림 한 장 없이도 "몸이 녹는다", "빛난다", "흑백이 된다" 같은 효과를 어떤 캐릭터에든 똑같이 입힐 수 있다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 셰이더는 엔진 기능이 아니라 GPU 프로그램이다. 엔진은 그걸 쓰기 쉽게 해줄 뿐.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 01 ============ -->
+<section class="card" id="c1">
+  <div class="head"><span class="num">01</span><h2>CPU와 GPU — 왜 따로 계산하나</h2><span class="cat">hardware</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p><b>CPU</b>는 소수의 강한 코어로 복잡하고 갈래 많은 일을 순서대로 빨리 한다. <b>GPU</b>는 수천 개의 약한 코어로 <b>같은 계산을 수많은 데이터에 동시에</b> 한다.</p></div>
+    <div class="block"><div class="lbl">어떻게</div>
+      <p>1080p 화면은 약 200만 픽셀이고, 초당 60번 그리면 1억 2천만 번 "이 픽셀 색은?"을 물어야 한다. 픽셀끼리는 서로 상관이 없으므로(옆 픽셀 계산을 기다릴 필요가 없음) <b>같은 셰이더를 픽셀마다 따로 돌리면</b> 된다. GPU는 바로 이 "같은 코드 × 엄청난 수의 데이터"에 맞춰 만들어졌다.</p></div>
+    <div class="block trade"><div class="lbl">그래서 생기는 규칙</div>
+      <ul>
+        <li>셰이더 한 번은 <b>자기 픽셀 하나만</b> 안다. 옆 픽셀이 무슨 색인지 물어볼 수 없다(필요하면 텍스처를 한 번 더 읽는다).</li>
+        <li>상태를 기억하지 못한다. "지난 프레임에 얼마나 녹았나"는 <b>밖(CPU)에서 값으로 넣어줘야</b> 한다 → 05.</li>
+        <li>갈래(if)가 많으면 손해다 — 같은 묶음의 픽셀들이 다른 길로 가면 GPU는 두 길을 다 걷는다 → 12.</li>
+      </ul></div>
+    <div class="tldr"><b>한 줄</b> — GPU는 "같은 계산을 픽셀마다 동시에" 하는 기계이고, 셰이더는 그 "같은 계산"이다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 02 ============ -->
+<section class="card" id="c2">
+  <div class="head"><span class="num">02</span><h2>렌더링 파이프라인 — 꼭짓점에서 픽셀까지</h2><span class="cat">pipeline</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>CPU가 "이 그림을 여기 그려라"를 GPU에 넘기면(<b>드로우콜</b>), GPU는 정해진 단계를 순서대로 거쳐 화면 픽셀을 만든다. 이 중 <b>두 단계를 사람이 프로그램할 수 있다</b> — 그게 정점 셰이더와 프래그먼트 셰이더다.</p></div>
+    <div class="fig">
+      <svg class="dgm" width="680" viewBox="0 0 680 190" role="img" aria-label="렌더링 파이프라인: 꼭짓점 데이터가 정점 셰이더, 래스터화, 프래그먼트 셰이더, 블렌딩을 거쳐 화면이 된다. 정점과 프래그먼트 셰이더 단계만 프로그램할 수 있다">
+        <rect class="pill" x="10" y="60" width="96" height="48" rx="9"/>
+        <text x="58" y="80" text-anchor="middle">꼭짓점</text>
+        <text x="58" y="97" text-anchor="middle" class="sm mut">위치·UV·색</text>
+        <rect class="boxa" x="136" y="52" width="118" height="64" rx="9"/>
+        <text x="195" y="80" text-anchor="middle" class="b">정점 셰이더</text>
+        <text x="195" y="98" text-anchor="middle" class="sm mut">어디에 그리나</text>
+        <rect class="box" x="284" y="52" width="108" height="64" rx="9"/>
+        <text x="338" y="80" text-anchor="middle">래스터화</text>
+        <text x="338" y="98" text-anchor="middle" class="sm mut">덮는 픽셀 찾기</text>
+        <rect class="boxa" x="422" y="52" width="130" height="64" rx="9"/>
+        <text x="487" y="80" text-anchor="middle" class="b">프래그먼트 셰이더</text>
+        <text x="487" y="98" text-anchor="middle" class="sm mut">무슨 색인가</text>
+        <rect class="box" x="582" y="52" width="88" height="64" rx="9"/>
+        <text x="626" y="80" text-anchor="middle">블렌딩</text>
+        <text x="626" y="98" text-anchor="middle" class="sm mut">뒤와 섞기</text>
+        <line class="e e-mut" x1="106" y1="84" x2="132" y2="84" marker-end="url(#arM)"/>
+        <line class="e e-mut" x1="254" y1="84" x2="280" y2="84" marker-end="url(#arM)"/>
+        <line class="e e-mut" x1="392" y1="84" x2="418" y2="84" marker-end="url(#arM)"/>
+        <line class="e e-mut" x1="552" y1="84" x2="578" y2="84" marker-end="url(#arM)"/>
+        <text x="195" y="140" text-anchor="middle" class="sm acc">꼭짓점마다 1번</text>
+        <text x="487" y="140" text-anchor="middle" class="sm acc">픽셀마다 1번</text>
+        <text x="340" y="172" text-anchor="middle" class="sm mut">진한 테두리 = 사람이 프로그램하는 단계 · 나머지는 GPU 고정 기능(설정만 바꾼다)</text>
+      </svg>
+    </div>
+    <div class="block"><div class="lbl">2D 스프라이트에서는</div>
+      <p>스프라이트 한 장은 보통 <b>꼭짓점 4개짜리 사각형</b>이다. 그래서 정점 셰이더는 4번 돌고, 프래그먼트 셰이더는 그 사각형이 덮는 <b>수천 개 픽셀마다</b> 돈다. 2D 연출의 거의 모든 재미는 프래그먼트 쪽에서 나온다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 꼭짓점 → (정점 셰이더) → 픽셀 찾기 → (프래그먼트 셰이더) → 섞기. 괄호 둘이 셰이더다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 03 ============ -->
+<section class="card" id="c3">
+  <div class="head"><span class="num">03</span><h2>정점 셰이더 vs 프래그먼트 셰이더</h2><span class="cat">stages</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정점 셰이더 (vertex)</div>
+      <p>꼭짓점 하나를 받아 <b>화면의 어디에 놓일지</b>를 계산한다. 위치를 흔들면 깃발이 펄럭이고, 부풀리면 외곽선용으로 커진다. 여기서 계산한 값(색·UV 등)은 다음 단계로 넘어가면서 <b>꼭짓점 사이에서 자동으로 보간</b>된다.</p></div>
+    <div class="block"><div class="lbl">프래그먼트 셰이더 (fragment / pixel)</div>
+      <p>픽셀 하나를 받아 <b>최종 색과 투명도</b>를 돌려준다. 텍스처에서 색을 읽고, 곱하고, 섞고, 아예 그리지 않겠다고 버릴 수도 있다(<code>clip</code>/<code>discard</code> → 07). 녹임·빛남·흑백·외곽선 같은 2D 효과는 대부분 여기서 만든다.</p></div>
+    <pre><code>// 아주 단순한 형태 (HLSL)
+v2f vert(appdata v) {            // 꼭짓점마다
+    v2f o;
+    o.pos   = UnityObjectToClipPos(v.vertex);   // 화면 위치
+    o.uv    = v.uv;                              // 텍스처 좌표는 그대로 넘김
+    o.color = v.color;                           // 스프라이트 색(알파 포함)
+    return o;
+}
+fixed4 frag(v2f i) : SV_Target { // 픽셀마다
+    fixed4 c = tex2D(_MainTex, i.uv) * i.color; // 그림 색 × 틴트
+    return c;
+}</code></pre>
+    <div class="tldr"><b>한 줄</b> — 정점 셰이더는 "어디에", 프래그먼트 셰이더는 "무슨 색으로".</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 04 ============ -->
+<section class="card" id="c4">
+  <div class="head"><span class="num">04</span><h2>언어와 엔진 — HLSL·GLSL·ShaderLab·Shader Graph</h2><span class="cat">tooling</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">층위</div>
+      <ul>
+        <li><b>셰이더 언어</b> — HLSL(DirectX 계열), GLSL(OpenGL·WebGL), MSL(Metal). 문법은 C와 비슷하고 <code>float4</code>·<code>lerp</code>·<code>saturate</code> 같은 벡터·수학 함수가 기본이다.</li>
+        <li><b>엔진의 껍데기</b> — 유니티의 <b>ShaderLab</b>은 "속성 목록·블렌딩 설정·패스"를 적는 틀이고, 그 안에 HLSL 코드를 넣는다. 유니티가 그 HLSL을 <b>기기마다 다른 언어로 번역</b>해 준다(PC는 DirectX, 아이폰은 Metal, 안드로이드는 OpenGL ES/Vulkan).</li>
+        <li><b>노드 편집기</b> — Shader Graph(유니티)·Material Editor(언리얼)는 코드 대신 <b>상자를 선으로 이어</b> 같은 것을 만든다. 결과물은 결국 셰이더 코드다.</li>
+      </ul></div>
+    <div class="block trade"><div class="lbl">코드 vs 노드</div>
+      <p>노드는 결과를 바로 보며 만들 수 있어 실험에 좋다. 코드는 <b>짧고, 비교·리뷰·버전 관리가 쉽고</b>, 노드가 못 하는 세밀한 최적화가 된다. 작은 2D 효과 몇 개면 코드 한 파일이 더 다루기 쉽다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 언어는 GPU 표준, ShaderLab/Shader Graph는 엔진이 얹은 편의 층, 기기별 번역은 엔진이 해준다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 05 ============ -->
+<section class="card" id="c5">
+  <div class="head"><span class="num">05</span><h2>값을 넘기는 세 통로 — 정점 데이터·유니폼·텍스처</h2><span class="cat">inputs</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>셰이더는 기억이 없으므로(01) 필요한 값을 <b>매번 밖에서 받아야</b> 한다. 통로는 셋이다.</p></div>
+    <div class="block"><div class="lbl">셋의 차이</div>
+      <ul>
+        <li><b>정점 데이터</b> — 꼭짓점마다 붙은 값: 위치·UV·<b>색(RGBA)</b>. 스프라이트의 "색" 설정은 여기로 들어간다. <b>그림마다 다른 값</b>을 줄 수 있다.</li>
+        <li><b>유니폼(uniform) = 재질 속성</b> — 한 번 그리는 동안 <b>모든 픽셀이 같은 값</b>: "불씨 색", "노이즈 크기", "시간". 재질(Material)에 붙어 있다.</li>
+        <li><b>텍스처</b> — 그림 자체. 픽셀마다 좌표(UV)로 읽는다. 무늬·마스크·노이즈 이미지도 텍스처로 줄 수 있다.</li>
+      </ul></div>
+    <div class="block trade"><div class="lbl">어느 통로를 쓰나 — 이게 성능을 가른다</div>
+      <p>"적마다 녹는 정도가 다르다" 같은 <b>개체별 값</b>을 재질 속성으로 넣으면, 개체마다 <b>다른 재질 상태</b>가 생긴다. 그러면 GPU에 "묶어서 한 번에 그려라"를 못 한다 → 06. 같은 값을 <b>정점 색의 한 칸(예: 알파)</b>에 실으면 재질은 하나로 남는다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 모두 같은 값이면 재질 속성, 개체마다 다른 값이면 정점 데이터. 이 선택이 드로우콜 수를 정한다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 06 ============ -->
+<section class="card" id="c6">
+  <div class="head"><span class="num">06</span><h2>드로우콜과 배칭 — 왜 "재질이 같아야" 묶이나</h2><span class="cat">performance</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p><b>드로우콜</b>은 CPU가 GPU에 "이 설정으로 이것을 그려라"를 한 번 지시하는 것이다. 그리는 일 자체보다 <b>지시를 준비하는 비용</b>이 크다 — 재질·텍스처·설정을 바꿔 끼우는 것이 비싸다. 모바일에서는 드로우콜 수가 프레임을 좌우하므로 보통 <b>예산</b>(예: 50 이하)을 정해둔다.</p></div>
+    <div class="block"><div class="lbl">배칭</div>
+      <p>같은 재질·같은 텍스처를 쓰는 그림 여럿을 엔진이 <b>하나로 합쳐 한 번에</b> 그리는 것. 스프라이트를 아틀라스(큰 한 장)에 모으는 이유도 텍스처를 같게 만들어 묶이게 하려는 것이다. 단, <b>재질 값이 하나라도 다르면 묶이지 않는다</b>(파이프라인마다 규칙은 조금씩 다르다 — URP의 SRP Batcher는 "같은 셰이더"면 준비 비용을 줄여준다).</p></div>
+    <div class="block trade"><div class="lbl">실전 사례 — 적 24마리가 동시에 녹을 때</div>
+      <p>녹는 진행도를 재질 속성으로 주면 24마리가 <b>24개의 다른 상태</b>가 되어 드로우콜이 24개 는다(예산의 절반). 진행도를 <b>스프라이트 색의 알파</b>로 넘기고 셰이더가 "알파 = 1 − 진행도"로 읽게 하면, 재질은 하나로 남아 <b>한 번에 그려진다</b>. 대신 알파를 더 이상 "투명도"로 못 쓰지만, 녹는 효과에서는 어차피 투명도 대신 "갉아먹힘"이 사라짐을 표현하므로 잃는 게 없다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 개체마다 다른 값은 재질에 넣지 말고 정점 데이터에 실어라. 그래야 묶인다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 07 ============ -->
+<section class="card" id="c7">
+  <div class="head"><span class="num">07</span><h2>투명과 블렌딩 — 알파·premultiplied·clip</h2><span class="cat">transparency</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>픽셀의 <b>알파(A)</b>는 불투명도다. 블렌딩은 프래그먼트 셰이더가 낸 색을 <b>이미 화면에 있는 색과 섞는</b> 고정 단계이고, 섞는 공식을 설정으로 고른다.</p></div>
+    <div class="block"><div class="lbl">두 가지 투명 처리</div>
+      <ul>
+        <li><b>섞기(blend)</b> — 반투명. 일반 공식은 <code>결과 = 새색×α + 뒤색×(1−α)</code>. 2D 스프라이트는 흔히 <b>premultiplied alpha</b>를 쓴다: 색을 미리 α로 곱해두고 <code>Blend One OneMinusSrcAlpha</code>로 섞는다. 가장자리에 하얀/검은 테두리가 생기는 문제를 막아준다.</li>
+        <li><b>버리기(clip / discard)</b> — 이 픽셀은 <b>아예 그리지 않는다</b>. 반투명이 아니라 "있거나 없거나". <code>clip(x)</code>는 x가 0보다 작으면 픽셀을 버린다. 녹는 효과의 "갉아먹힌 구멍"이 이것이다.</li>
+      </ul></div>
+    <div class="block trade"><div class="lbl">트레이드오프</div>
+      <p>반투명은 <b>뒤에 그려진 것을 다시 읽어 섞는</b> 비용이 있고, 그리는 순서가 중요해진다(뒤부터 그려야 맞게 섞인다). 버리기는 순서 문제가 없지만 경계가 딱딱하다 — 그래서 녹는 경계에 <b>빛나는 띠</b>를 둘러 딱딱함을 감춘다(09).</p></div>
+    <div class="tldr"><b>한 줄</b> — 반투명은 "섞는다", clip은 "안 그린다". 녹는 효과는 clip으로 구멍을 내고 경계를 빛으로 덮는다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 08 ============ -->
+<section class="card" id="c8">
+  <div class="head"><span class="num">08</span><h2>노이즈 — 텍스처 없이 수학으로 무늬 만들기</h2><span class="cat">procedural</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p><b>노이즈</b>는 "무작위처럼 보이지만 같은 입력엔 늘 같은 값을 내는" 부드러운 얼룩 무늬다. 구름·불·연기·녹는 경계처럼 자연스러운 불규칙함이 필요할 때 쓴다.</p></div>
+    <div class="block"><div class="lbl">어떻게 — 값 노이즈(value noise)</div>
+      <ol>
+        <li>좌표를 격자로 나눈다(<code>floor</code>).</li>
+        <li>격자 꼭짓점마다 <b>해시 함수</b>로 0~1 난수를 만든다 — <code>frac(sin(...)*큰수)</code> 류의 계산. 같은 좌표엔 늘 같은 값.</li>
+        <li>칸 안의 점은 네 꼭짓점 값을 <b>부드럽게 보간</b>한다(<code>smoothstep</code> 곡선).</li>
+        <li>크기가 다른 노이즈 두세 겹을 더하면 굵은 덩어리 + 잔 부스러기가 섞인 자연스러운 얼룩이 된다.</li>
+      </ol></div>
+    <div class="block trade"><div class="lbl">텍스처 vs 수학</div>
+      <p>노이즈 이미지를 텍스처로 줘도 된다. 수학으로 만들면 <b>읽을 파일이 없어 빌드에서 빠질 일도 없고</b>, 해상도 걱정도 없다. 대신 계산 비용이 든다. 좌표를 무엇으로 잡느냐도 중요하다 — 텍스처 좌표(UV)는 그림이 아틀라스의 어디에 얼마 크기로 있느냐에 따라 범위가 달라져, 같은 그림이라도 <b>결이 달라질 수 있다</b>. 텍스처 <b>픽셀 단위</b>로 환산하면 그림 크기와 무관하게 결이 일정하다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 노이즈 = 해시 난수 + 부드러운 보간. 자연스러운 불규칙함의 재료다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 09 ============ -->
+<section class="card" id="c9">
+  <div class="head"><span class="num">09</span><h2>디졸브 해부 — 몸이 녹아 사라지는 효과</h2><span class="cat">effect</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p><b>디졸브(dissolve)</b>는 그림이 불규칙한 구멍들로 갉아먹히듯 사라지는 효과다. 많은 게임에서 유닛이 죽거나 순간이동할 때 쓴다. 핵심은 "흐려진다"가 아니라 <b>"구멍이 퍼진다"</b>는 점 — 그래서 반투명 페이드보다 훨씬 물질적으로 보인다.</p></div>
+    <div class="fig">
+      <svg class="dgm" width="660" viewBox="0 0 660 180" role="img" aria-label="디졸브의 원리: 픽셀마다 노이즈 값을 진행도와 비교해, 진행도보다 작으면 버리고, 진행도 바로 위 띠는 불씨색으로 칠하고, 나머지는 원래 그림을 그린다">
+        <text x="330" y="22" text-anchor="middle" class="b">픽셀마다: 노이즈 값 n 과 진행도 p 를 비교</text>
+        <rect class="box" x="20" y="44" width="190" height="78" rx="9"/>
+        <text x="115" y="72" text-anchor="middle" class="b">n &lt; p</text>
+        <text x="115" y="94" text-anchor="middle">버린다 (clip)</text>
+        <text x="115" y="112" text-anchor="middle" class="sm mut">= 구멍</text>
+        <rect class="boxa" x="235" y="44" width="190" height="78" rx="9"/>
+        <text x="330" y="72" text-anchor="middle" class="b">p ≤ n &lt; p + 띠</text>
+        <text x="330" y="94" text-anchor="middle">불씨색으로 칠한다</text>
+        <text x="330" y="112" text-anchor="middle" class="sm mut">= 타는 경계</text>
+        <rect class="box" x="450" y="44" width="190" height="78" rx="9"/>
+        <text x="545" y="72" text-anchor="middle" class="b">n ≥ p + 띠</text>
+        <text x="545" y="94" text-anchor="middle">원래 그림</text>
+        <text x="545" y="112" text-anchor="middle" class="sm mut">= 아직 남은 몸</text>
+        <text x="330" y="158" text-anchor="middle" class="sm mut">p 를 0 → 1 로 올리면 노이즈가 낮은 곳부터 차례로 구멍이 나고, 구멍 가장자리가 늘 타고 있다</text>
+      </svg>
+    </div>
+    <pre><code>fixed4 frag(v2f i) : SV_Target {
+    fixed4 c = tex2D(_MainTex, i.uv);
+    float p = 1 - i.color.a;               // 진행도는 정점 알파로 받는다 (06)
+    float n = Noise(i.uv * 크기);           // 0~1 얼룩 (08)
+    float d = n - p;
+    clip(d);                               // n &lt; p 이면 이 픽셀은 없다
+    float edge = 1 - saturate(d / 띠두께);  // 경계에 가까울수록 1
+    c.rgb = lerp(c.rgb, _EdgeColor.rgb, edge);
+    return c;
+}</code></pre>
+    <div class="block"><div class="lbl">세계관에 맞추기</div>
+      <p>레퍼런스(예: SF 게임의 유닛이 푸른 에너지로 흩어지는 연출)에서 가져올 것은 <b>구조</b>다 — "몸 자체가 풀린다". 경계 색과 재료는 우리 세계가 정한다. 적이 "재와 불씨가 뭉친 존재"라면 경계는 <b>불씨색</b>으로 타고, 그 위로 <b>재가 피어오르는 그림</b>을 얹는다. 셰이더(몸이 녹음)와 그림(재가 오름)이 <b>두 겹</b>으로 한 장면을 만든다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 디졸브 = 노이즈 &lt; 진행도면 버리고, 그 경계를 빛으로 칠한다. 진행도 하나로 0%에서 100%까지 녹인다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="card" id="c10">
+  <div class="head"><span class="num">10</span><h2>빌드 함정 — 에디터에선 되는데 폰에선 사라진다</h2><span class="cat">build</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">무슨 일이 일어나나</div>
+      <p>엔진은 빌드 용량을 줄이려고 <b>"쓰이지 않는 셰이더"를 빌드에서 뺀다</b>(셰이더 스트리핑). 그런데 엔진이 "쓰인다"고 판단하는 근거는 <b>재질이 그 셰이더를 가리키느냐</b>다. 코드에서 이름으로만 찾는(<code>Shader.Find("이름")</code>) 셰이더는 엔진이 쓰임을 모른다 → 에디터에선 모든 셰이더가 있으니 잘 되고, <b>폰 빌드에선 null이 되어 조용히 빠진다</b>.</p></div>
+    <div class="block"><div class="lbl">확실히 넣는 법 (유니티)</div>
+      <ul>
+        <li>셰이더를 <b>Resources 폴더</b>에 두고 <code>Resources.Load&lt;Shader&gt;</code>로 읽는다 — Resources 안의 것은 전부 빌드에 들어간다.</li>
+        <li>그 셰이더를 쓰는 <b>재질(Material) 에셋</b>을 만들어 씬이나 Resources에서 참조한다.</li>
+        <li>프로젝트 설정의 <b>Always Included Shaders</b> 목록에 넣는다.</li>
+      </ul></div>
+    <div class="block trade"><div class="lbl">그래도 대비책은 둔다</div>
+      <p>기기가 그 셰이더를 못 돌릴 수도 있다(<code>shader.isSupported</code>가 거짓). 그때 효과가 통째로 사라지는 것보다 <b>예전 방식(그냥 흐려짐)으로 물러나는</b> 편이 낫다. 셰이더 파일에 <code>Fallback</code>을 적어두는 것도 같은 생각이다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 이름으로만 부르는 셰이더는 빌드에서 빠질 수 있다. Resources·재질 참조로 "쓰인다"를 엔진에 알려라.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="card" id="c11">
+  <div class="head"><span class="num">11</span><h2>분홍색의 의미 — 셰이더 디버깅</h2><span class="cat">debugging</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정의</div>
+      <p>유니티에서 물체가 <b>새빨간 분홍(마젠타)</b>으로 보이면 "이 셰이더를 쓸 수 없다"는 뜻이다 — 컴파일 실패, 기기 미지원, 혹은 빌드에서 빠짐. 일부러 눈에 띄는 색을 쓰는 것이다.</p></div>
+    <div class="block"><div class="lbl">왜 미리 확인하기 어렵나</div>
+      <p>셰이더는 일반 코드처럼 한 번 컴파일하고 끝이 아니다. 엔진이 HLSL을 <b>기기별 언어로 번역</b>하고(04), 실제 GPU 드라이버가 마지막으로 다시 컴파일한다. 그래서 C# 코드는 터미널에서 컴파일 검사를 할 수 있어도, 셰이더는 <b>엔진을 띄워봐야</b> 오류가 보인다. 어떤 기기에서만 깨지는 경우도 있다.</p></div>
+    <div class="block trade"><div class="lbl">실무 습관</div>
+      <ul>
+        <li>새 셰이더를 넣으면 <b>"분홍인지부터 본다"</b>를 확인 목록 맨 위에 둔다.</li>
+        <li>셰이더를 못 쓰면 <b>예전 방식으로 물러나는 코드</b>를 같이 둔다(10).</li>
+        <li>복잡한 효과는 <b>한 단계씩</b> 켠다 — 색 그대로 → 구멍만 → 경계 빛까지.</li>
+      </ul></div>
+    <div class="tldr"><b>한 줄</b> — 분홍 = 셰이더를 못 씀. 셰이더는 엔진을 띄워봐야 오류가 보이므로, 확인 1순위로 둔다.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 12 ============ -->
+<section class="card" id="c12">
+  <div class="head"><span class="num">12</span><h2>모바일에서 조심할 것 — 정밀도·분기·overdraw</h2><span class="cat">mobile</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">정밀도</div>
+      <p>모바일 GPU는 계산 정밀도를 낮춰(<code>half</code>, 16비트) 빠르게 돌리는 경우가 많다. 해시 노이즈처럼 <b>큰 수를 곱했다가 소수부만 쓰는</b> 계산은 정밀도가 낮으면 무늬가 줄무늬·덩어리로 깨진다 → 그런 계산은 <code>float</code>로 둔다.</p></div>
+    <div class="block"><div class="lbl">분기</div>
+      <p>GPU는 이웃 픽셀 여럿을 한 묶음으로 같이 돌린다. 묶음 안에서 <code>if</code>가 갈리면 <b>양쪽 길을 다 걷는다</b>. <code>step</code>·<code>lerp</code>·<code>saturate</code>로 "계산은 다 하고 결과만 고르는" 식이 보통 더 싸다.</p></div>
+    <div class="block"><div class="lbl">overdraw</div>
+      <p>반투명한 것이 여러 겹 겹치면 같은 픽셀을 <b>여러 번 칠한다</b>. 연기·불꽃·파티클이 화면을 덮으면 모바일이 가장 먼저 버거워하는 지점이다. 그래서 자주 나오는 연출(예: 판당 수백 번 나오는 처치 효과)은 <b>작고 짧게</b> 만든다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 모바일에선 정밀도는 필요한 곳만 높이고, 분기 대신 수식, 반투명은 작고 짧게.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<!-- ============ 13 ============ -->
+<section class="card" id="c13">
+  <div class="head"><span class="num">13</span><h2>셰이더가 못 고치는 것 — 대비는 그림의 몫</h2><span class="cat">limits</span></div>
+  <div class="body">
+    <div class="block"><div class="lbl">겪은 일</div>
+      <p>몸이 녹는 셰이더 위에 <b>재가 피어오르는 그림</b>을 얹었는데 Play에서 "재가 안 보인다"가 나왔다. 재봤더니 재의 평균 밝기 <b>0.50</b>, 바닥 두 종류가 <b>0.34</b>와 <b>0.61</b> — 재가 정확히 두 바닥 사이에 끼어 어느 맵에서도 묻혔다. 유일하게 튀는 색인 주황 불씨는 픽셀의 1~2%뿐이었다.</p></div>
+    <div class="block trade"><div class="lbl">왜 셰이더로 못 고치나</div>
+      <p>색을 곱해 <b>어둡게</b> 하면 어두운 바닥에서 묻히고, 밝게 하면 밝은 바닥에서 묻힌다. 배경이 둘 이상이면 <b>한 방향의 보정은 답이 없다</b>. 어떤 배경에서든 읽히려면 그림 자체가 <b>한 덩어리 안에 명암 폭</b>(어두운 속 + 밝은 가장자리)과 <b>배경에 없는 색</b>(불씨)을 가져야 한다. 셰이더는 그림을 "어떻게 칠할지"를 바꾸지, 그림에 없는 대비를 만들어주진 못한다.</p></div>
+    <div class="block"><div class="lbl">습관</div>
+      <p>효과 그림을 검수할 때 흰/검은 판이 아니라 <b>실제 바닥 위에, 실제 크기로</b> 얹어 본다. 밝기를 숫자로 재면 "내 눈이 이상한가?"를 바로 끝낼 수 있다.</p></div>
+    <div class="tldr"><b>한 줄</b> — 셰이더는 칠하는 법을 바꿀 뿐, 대비는 그림이 가져와야 한다. 검수는 실제 배경 위에서.</div>
+  </div>
+  <a class="up" href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false">↑ 목차</a>
+</section>
+
+<footer>
+  distilled from a live session · 2026-10-03 · 프로젝트 고유 맥락 제거됨 · 더 볼 것: The Book of Shaders · Shadertoy · Unity Shader Graph 문서 · 관련: 게임 서버 아키텍처 노트
+</footer>
+</div>
