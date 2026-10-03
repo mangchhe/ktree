@@ -46,6 +46,14 @@
   })();
   const MODE = standalone ? 'pwa' : 'web';
 
+  /* 🔴 저장은 ISO(UTC)로, 표시는 KST 로. 전에는 toISOString 을 그대로 잘라 보여줘서
+     로그가 9시간 어긋나 보였고, "조치 전에 난 실패"를 "조치 후에도 난다"로 읽었다.
+     앱의 다른 곳도 KST 고정이라(kstDate) 같은 규칙으로 맞춘다. */
+  const kst = iso => {
+    try { return new Date(new Date(iso).getTime() + 9 * 3600e3)
+      .toISOString().slice(5, 19).replace('T', ' '); } catch { return iso; }
+  };
+
   const read = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } };
   const write = rows => { try { localStorage.setItem(KEY, JSON.stringify(rows.slice(-MAX))); } catch {} };
   const log = e => {
@@ -103,10 +111,10 @@
       const ctxs = [...new Set(r.map(x => x.c).filter(Boolean))];
       // 🔴 비어 있어도 머리말은 낸다. **그때가 제일 중요하다** —
       //    로그아웃됐는데 기록이 없다면 다른 저장소(PWA↔Safari)를 보고 있다는 뜻이다.
-      const head = `지금 이 창: ${CTX}/${MODE} · 이 기록에 담긴 컨텍스트 ${ctxs.length}개` +
+      const head = `지금 이 창: ${CTX}/${MODE} · 컨텍스트 ${ctxs.length}개 · 시각은 KST` +
         (standalone ? '' : '\n⚠️ 홈 화면 앱(PWA)은 저장소가 따로라 여기 안 보인다 — 거기서도 따로 떠야 한다');
       const body = r.map(x => {
-        const bits = [x.t.slice(5, 19).replace('T', ' ')];
+        const bits = [kst(x.t)];
         bits.push(((x.c || '----') + '/' + (x.m || '?')));
         bits.push((x.p || '').replace(/^\//, '') || '/');
         bits.push(x.e);
