@@ -299,6 +299,7 @@ console.log(`${kind === 'scene' ? '장면' : '기사'} "${doc.id}" 생성${DRY ?
 let allOk = true, totalMs = 0, totalBytes = 0;
 
 const missingMean = [];
+const fullParts = [];        // 통짜 파일 재료 — 턴별 mp3 버퍼를 순서대로 모은다
 if (kind === 'scene') {
   const va = doc.voices?.a || 'en-US-AndrewMultilingualNeural';
   const vb = doc.voices?.b || 'en-US-AvaMultilingualNeural';
@@ -320,10 +321,24 @@ if (kind === 'scene') {
     t.segs = toSegs(t.en, rg.map((x, n) => [n, x]));
     t.ev = rg.map(x => ({ t: x.t, d: x.d }));
     delete t.words;                       // segs/ev 가 대체한다 — 남기면 파일만 커지고 헷갈린다
+    // 🔴 통짜 파일용으로 모아둔다. 턴별 파일은 그대로 남긴다 —
+    // 역할 채우기는 내 턴에서 멈춰야 하므로 쪼갠 파일이 계속 필요하다.
+    fullParts.push({ buf: r.buf, ms: r.ms });
     totalMs += r.ms; totalBytes += r.buf.length;
     if (SAVE) writeFileSync(`${SAVE}/scene-${doc.id}-${i}.mp3`, r.buf);
     if (!DRY) t.audio_url = await put(`scenes/${doc.id}/${i}.mp3`, r.buf);
     await new Promise(r2 => setTimeout(r2, 150));
+  }
+  // 같은 포맷(24kHz 모노 MP3)이라 바이트로 이어 붙여도 재생된다 — ffmpeg 가 필요 없다.
+  // 백그라운드에서 끊기는 지점이 "다음 트랙 시작"이므로, 트랙을 하나로 만들면 그 지점이 사라진다.
+  if (!DRY && fullParts.length) {
+    const starts = [];
+    let at = 0;
+    for (const f of fullParts) { starts.push(Math.round(at)); at += f.ms; }
+    const full = Buffer.concat(fullParts.map(f => f.buf));
+    doc.full_url = await put(`scenes/${doc.id}/full.mp3`, full);
+    doc.full_starts = starts;
+    console.log(`  ✓ 통짜 ${(full.length/1024).toFixed(0)}KB · ${(at/1000).toFixed(1)}초 (백그라운드 재생용)`);
   }
   console.log(missingMean.length
     ? `  ⚠ 상대 턴 ${missingMean.length}개에 meaning_ko 가 없다 (턴 ${missingMean.join(', ')}) — 앱에서 「뜻」 버튼이 안 뜬다`
@@ -376,6 +391,7 @@ if (!DRY) {
     await pushRow('eng_scenes', 'user_id,scene_id', {
       scene_id: doc.id, situation_ko: doc.situation_ko || '', topic: doc.topic || '일상',
       level: doc.level || 2, turns: doc.turns, ms: totalMs, vocab: vocabRows(doc),
+      full_url: doc.full_url || null, full_starts: doc.full_starts || [],
     });
   } else {
     await pushRow('eng_articles', 'user_id,article_id', {

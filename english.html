@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-03.6';
+const BUILD = '2026-10-03.7';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1259,7 +1259,13 @@ function drawScene(el){
   paintTurns(sc);
   // 기본은 1배. 자동으로 0.75× 로 내리면 원속에 귀가 안 익는다 — 실전 속도로
   // 알아듣는 게 목적이다. 느리게 듣고 싶으면 배율을 직접 누른다.
-  $('sc-listen').onclick = () => { scMode='listen'; turns.forEach(t=>t.open=true); paintTurns(sc); chainTurn(sc,0); };
+  // 🔴 전체 듣기는 **통짜 파일 한 개**로 돌린다. 백그라운드에서 끊기는 지점이
+  // "다음 트랙 시작"이라, 트랙을 하나로 만들면 그 지점이 사라진다.
+  // 역할 채우기는 내 턴에서 멈춰야 하므로 그대로 턴별 파일을 쓴다.
+  $('sc-listen').onclick = () => {
+    scMode='listen'; turns.forEach(t=>t.open=true); paintTurns(sc);
+    if (sc.full_url) playFull(sc); else chainTurn(sc,0);
+  };
   $('sc-fill').onclick   = () => { scMode='fill';   turns.forEach(t=>t.open=false); paintTurns(sc); chainTurn(sc,0); };
   $('sc-stop').onclick   = () => { scLoop = false; $('sc-loop')?.classList.remove('on'); tStopAudio(); };
   // 듣기는 반복이 전부다 — 한 번 듣고 넘어가면 귀에 안 남는다.
@@ -1333,6 +1339,45 @@ function playTurnA(sc, i, then){
     then && then();
   };
   tAudio.play().catch(() => { then && then(); });
+}
+
+/* 통짜 파일 재생 — 턴 경계는 full_starts 로 짚어 하이라이트를 유지한다. */
+function playFull(sc){
+  tStopAudio();
+  const turns = sc.turns || [], starts = sc.full_starts || [];
+  const a = new Audio(sc.full_url);
+  tAudio = a; a.playbackRate = tRate;
+  setMedia(sc.situation_ko || 'Scene', `Scene ${scIdx+1} · ${turns.length} turns`);
+
+  let cur = -1;
+  const step = () => {
+    if (!tAudio || tAudio !== a || a.paused) return;
+    const ms = a.currentTime * 1000;
+    // 지금 어느 턴인지
+    let i = 0; for (let k = 0; k < starts.length; k++) if (ms >= starts[k]) i = k;
+    if (i !== cur) {
+      document.querySelectorAll('.dturn.on').forEach(x => x.classList.remove('on'));
+      const el = document.querySelector(`.dturn[data-i="${i}"]`);
+      el?.classList.add('on');
+      el?.scrollIntoView({ block:'nearest', behavior:'smooth' });
+      cur = i;
+    }
+    // 턴 안에서의 단어 하이라이트
+    const el = document.querySelector(`.dturn[data-i="${i}"]`);
+    const ev = turns[i]?.ev || [], rel = ms - (starts[i] || 0);
+    let hit = -1; for (let k = 0; k < ev.length; k++) if (rel >= ev[k].t) hit = k;
+    el?.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
+    if (hit >= 0) el?.querySelector(`.kw[data-e="${hit}"]`)?.classList.add('on');
+    tRaf = requestAnimationFrame(step);
+  };
+  a.onended = () => {
+    cancelAnimationFrame(tRaf);
+    document.querySelectorAll('.dturn.on,.kw.on').forEach(x => x.classList.remove('on'));
+    tProg.listened_ms = (tProg.listened_ms || 0) + (sc.ms || 0);
+    if (scLoop) setTimeout(() => { if (scLoop) playFull(sc); }, 900);
+  };
+  a.play().then(() => { tRaf = requestAnimationFrame(step); })
+          .catch(() => chainTurn(sc, 0));   // 통짜가 안 되면 기존 방식으로
 }
 
 function chainTurn(sc, i){
