@@ -135,6 +135,19 @@
     const had = stored();
     log({ e: 'open', has: !!had, vis: document.visibilityState });
 
+    /* 🔴 로그아웃을 **부른 순간** 을 남긴다. SIGNED_OUT 만으로는 누가 눌러서 나간 건지
+       토큰이 거절돼 쫓겨난 건지 구분이 안 된다. scope 도 같이 적는다 —
+       인자를 빼고 부르면 supabase 기본이 'global' 이라 **다른 기기 세션까지 서버에서 지워진다.** */
+    // 계측이 앱을 깨뜨리면 안 된다 — 감쌀 게 없으면 조용히 건너뛴다
+    if (typeof sb.auth.signOut === 'function') {
+      const origSignOut = sb.auth.signOut.bind(sb.auth);
+      sb.auth.signOut = (opts) => {
+        try { log({ e: 'signOut-호출',
+          err: 'scope=' + (opts && opts.scope ? opts.scope : 'global(인자없음!)') }); } catch {}
+        return origSignOut(opts);
+      };
+    }
+
     sb.auth.onAuthStateChange((event, session) => {
       const exp = session?.expires_at;
       log({ e: event, has: !!session,

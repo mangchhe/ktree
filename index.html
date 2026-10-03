@@ -1747,9 +1747,16 @@ function renderAccessDenied(mode, queryError) {
       <div style="font-size:13px;color:var(--muted);margin-bottom:20px">${queryError
         ? `권한 조회가 실패했습니다 — 로그인이 풀린 게 아닙니다.<br><span style="opacity:.7;font-size:11px">${queryError.message || ''}</span><br><br>새로고침하면 대개 해결됩니다.`
         : `'${mode.toUpperCase()}' 모드에 대한 접근 권한이 없습니다.`}</div>
-      <div style="display:flex;gap:8px;justify-content:center">
+      <!-- 🔴 로그아웃을 주 버튼으로 두지 않는다. 이 화면은 대개 **권한 조회가 잠깐 실패한 것**이고
+           본문도 "로그인이 풀린 게 아닙니다"라고 말하는데, 강조색 버튼이 로그아웃이면 그걸 누르게 된다.
+           그 한 번이 서버의 세션을 지워 **폰 앱까지 같이 로그아웃**시켰다. 새로고침을 주 버튼으로. -->
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <button style="padding:9px 16px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:700;cursor:pointer" onclick="location.reload()">새로고침</button>
         <button style="padding:9px 16px;border:1px solid var(--border2);border-radius:6px;background:transparent;color:var(--text);cursor:pointer" onclick="switchAppMode('public')">← 돌아가기</button>
-        <button style="padding:9px 16px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:700;cursor:pointer" onclick="logoutPrivate()">로그아웃</button>
+      </div>
+      <div style="margin-top:14px">
+        <button style="padding:6px 12px;border:none;background:none;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer"
+          onclick="if(confirm('이 기기에서만 로그아웃합니다. 계속할까요?')) logoutPrivate()">로그아웃</button>
       </div>
     </div>
   `;
