@@ -1731,7 +1731,8 @@ function goPrivateLogin() {
 
 async function logoutPrivate() {
   if (!sb) return;
-  await sb.auth.signOut();
+  // scope:'local' — 기본값 'global' 은 다른 기기 세션까지 서버에서 지운다
+  await sb.auth.signOut({ scope: 'local' });
   window.location.reload();
 }
 

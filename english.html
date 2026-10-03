@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-03.3';
+const BUILD = '2026-10-03.4';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -580,7 +580,12 @@ async function login(){
   el.classList.remove('show');
   init();
 }
-async function logout(){ await sb.auth.signOut(); location.reload(); }
+/* 🔴 scope:'local' 을 **반드시** 준다. supabase-js 의 기본값은 'global' 이라
+   한 기기에서 로그아웃하면 **모든 기기의 세션 행이 서버에서 지워진다.**
+   그러면 다른 기기는 다음 갱신 때 400 "Refresh Token Not Found" 를 받고
+   튕기며, 저장소까지 비워져 새로고침해도 안 돌아온다. 폰 앱과 Safari 를 같이
+   쓰는 우리 쓰임에서 이게 "자꾸 풀린다" 의 가장 그럴듯한 원인이다. */
+async function logout(){ await sb.auth.signOut({ scope: 'local' }); location.reload(); }
 
 /* ================= 화면 전환 ================= */
 const SCREENS = ['today','vocab','archive','together','settings'];   // settings 는 탭이 아니다 — 톱니바퀴로만
@@ -1919,6 +1924,9 @@ async function renderVocab(){
   const all = data || [];
   const n = k => all.filter(c => c.status === k).length;
   const due = all.filter(c => c.status !== 'new' && c.next_review <= d);
+  // 🔴 칩 개수 템플릿에서 먼저 쓴다 — 아래쪽에 두면 TDZ 로 어휘 탭이 통째로 터진다
+  //    (ReferenceError: Cannot access 'isStudied' before initialization)
+  const isStudied = c => c.status === 'learning' || c.status === 'mature';
   head.innerHTML = `
     <div class="tstats">
       <div class="tstat"><div class="v">${n('learning')+n('mature')}</div><div class="l">Studied<br><small>graded at least once</small></div></div>
@@ -1942,7 +1950,6 @@ async function renderVocab(){
   head.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { vbFilter = b.dataset.f; renderVocab(); });
   head.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { vbKind = b.dataset.k; renderVocab(); });
 
-  const isStudied = c => c.status === 'learning' || c.status === 'mature';
   let rows = vbFilter === 'all' ? all
            : vbFilter === 'studied' ? all.filter(isStudied)
            : all.filter(c => c.status === vbFilter);
