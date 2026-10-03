@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-03.5';
+const BUILD = '2026-10-03.6';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -715,6 +715,26 @@ function speak(text, onend){
 // 카드 오디오: tts-cards.mjs 가 구워둔 네이티브 mp3 를 먼저 시도, 없으면 기기 TTS 폴백
 const noAudio = new Set();
 let cardAudio = null;
+/* 잠금화면·제어센터에 뭘 틀고 있는지 띄운다.
+ *
+ * iOS 는 **홈 화면 PWA 에서 백그라운드 오디오를 막아둔다** (WebKit 알려진 제약).
+ * MediaSession 이 그걸 뚫어주지는 못하지만, 재생 중임을 시스템에 알려 잠금화면
+ * 컨트롤이 생기고 중단 빈도가 줄어든다. Safari 탭에서는 백그라운드 재생이 되므로
+ * 거기서는 확실히 이득이다. */
+function setMedia(title, artist){
+  if (!('mediaSession' in navigator)) return;
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title, artist: artist || 'ktree English', album: 'ktree English',
+    });
+    navigator.mediaSession.playbackState = 'playing';
+  } catch (_) {}
+}
+function clearMedia(){
+  if (!('mediaSession' in navigator)) return;
+  try { navigator.mediaSession.playbackState = 'paused'; } catch (_) {}
+}
+
 function playCard(card, onend){
   if (!card?.id || noAudio.has(card.id)) return speak(card.answer_en, onend);
   if (cardAudio) cardAudio.pause();
@@ -812,6 +832,7 @@ let tPrompts = [];            // 오늘의 독백 프롬프트 (오픽 대비)
 let tLoaded = false, tMissing = false, tRate = 1, tAudio = null, tRaf = 0, tGain = 0;
 
 function tStopAudio(){
+  clearMedia();
   if (tAudio) { tAudio.pause(); tAudio = null; }
   cancelAnimationFrame(tRaf);
   document.querySelectorAll('.kw.on').forEach(e => e.classList.remove('on'));
@@ -1299,6 +1320,7 @@ function playTurnA(sc, i, then){
   el?.scrollIntoView({ block:'nearest', behavior:'smooth' });
   tAudio = new Audio(t.audio_url);
   tAudio.playbackRate = tRate;
+  setMedia(sc.situation_ko || 'Scene', `Scene ${scIdx+1} · turn ${i+1}`);
   tFollow(tAudio, t.ev || [], hit => {
     el?.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
     if (hit >= 0) el?.querySelector(`.kw[data-e="${hit}"]`)?.classList.add('on');
@@ -1476,6 +1498,7 @@ function actArticle(el){
     tStopAudio();
     tAudio = new Audio(a.audio_url);
     tAudio.playbackRate = tRate;
+    setMedia(a.title || 'News', 'ktree English · News');
     tAudio.currentTime = (fromMs || 0) / 1000;
     tFollow(tAudio, a.ev || [], hit => {
       el.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
