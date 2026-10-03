@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-03.8';
+const BUILD = '2026-10-03.9';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1189,26 +1189,62 @@ function actScene(el){
  * 먼저 훑고 들어가면 같은 오디오가 "들리는" 경험이 된다.
  *
  * 장면과 기사가 같은 화면을 쓴다 — 기사도 vocab 을 7~9개씩 갖고 있는데 화면이 없었다. */
-let preAudio = null, preStop = false;
+let preAudio = null, preStop = false, preUrl = null;
+let preMode = 'en';        // 'en' = 영어만, 'ko' = 영어+해석
+let preLoop = false;
 
 function stopPre(){
   preStop = true;
   if (preAudio) { try { preAudio.pause(); } catch(_) {} preAudio = null; }
+  if (preUrl) { URL.revokeObjectURL(preUrl); preUrl = null; }
   if ('speechSynthesis' in window) speechSynthesis.cancel();
+  cancelAnimationFrame(tRaf);
   document.querySelectorAll('.prow2.on').forEach(x => x.classList.remove('on'));
+}
+
+/* 🔴 훑기 전체 듣기도 **한 트랙**으로 묶는다.
+ * 카드 mp3 를 하나씩 이어 붙이면 장면이 겪던 그대로 — 백그라운드에서 "다음 트랙 시작"이
+ * 막혀 끊긴다. 카드 오디오가 장면과 같은 24kHz 모노 MP3 라 브라우저에서 바이트로
+ * 이어 붙여 Blob 하나로 만들 수 있다. 그러면 백그라운드에서도 끝까지 간다.
+ * 한국어 뜻도 같은 포맷으로 구워두었기에 "해석 같이" 모드도 한 트랙이 된다. */
+async function buildPreTrack(cards, withKo){
+  const parts = [], marks = [];
+  let at = 0;
+  for (const c of cards) {
+    const urls = withKo && c.koUrl ? [c.url, c.koUrl] : [c.url];
+    const bufs = [];
+    for (const u of urls) {
+      if (!u) continue;
+      const r = await fetch(u);
+      if (!r.ok) return null;                       // 하나라도 없으면 통짜를 포기한다
+      bufs.push(new Uint8Array(await r.arrayBuffer()));
+    }
+    if (!bufs.length) return null;
+    marks.push(at);
+    for (const b of bufs) { parts.push(b); at += b.length; }
+  }
+  const total = parts.reduce((n, b) => n + b.length, 0);
+  const all = new Uint8Array(total);
+  let off = 0; for (const b of parts) { all.set(b, off); off += b.length; }
+  return { blob: new Blob([all], { type:'audio/mpeg' }), marks, bytes: total };
 }
 
 function drawWarmup(el, { title, context, items, onDone, backLabel }){
   const v = items.filter(x => x && x.term);
   if (!v.length) { onDone(); return; }
   stopPre();
+  const AUD = `${SUPABASE_URL}/storage/v1/object/public/eng-audio/cards`;
   el.innerHTML = actBar(title) + `
     ${context ? `<div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
       <b style="color:var(--eng)">Context</b> · ${esc(context)}</div>` : ''}
-    <div class="actbar" style="margin-bottom:10px">
+    <div class="actbar" style="margin-bottom:8px">
       <button class="btn sm" id="pre-all">▶ Play all</button>
       <button class="btn sm" id="pre-stop">■ Stop</button>
-      <span class="leg" style="margin:0 0 0 auto">Tap any row to hear it</span>
+      <button class="btn sm${preLoop ? ' on' : ''}" id="pre-loop">🔁 Repeat</button>
+    </div>
+    <div class="srow" style="margin-bottom:10px">
+      ${[['en','English only'],['ko','English + 뜻']].map(([k,l]) =>
+        `<button class="tchip${preMode===k?' on':''}" data-pm="${k}">${l}</button>`).join('')}
     </div>
     <div class="prelist">
       ${v.map((x,i) => `<div class="prow2" data-i="${i}">
@@ -1225,35 +1261,89 @@ function drawWarmup(el, { title, context, items, onDone, backLabel }){
   wireBar();
 
   // 🔴 오늘 큐(tVocab)에서만 찾으면 안 된다 — 어휘가 전부 큐에 드는 게 아니라
-  //    (실측 25개 중 5개가 밖) 그 몇 개만 로봇 음성으로 떨어진다. 없는 것은 DB 에서 채운다.
+  //    (실측 25개 중 5개가 밖) 그 몇 개만 로봇 음성으로 떨어진다.
   const byTerm = new Map([...tVocab.today, ...tVocab.past].map(c => [c.answer_en, c]));
-  const missing = v.map(x => x.term).filter(t => !byTerm.has(t));
-  if (missing.length) {
-    sb.from('eng_cards').select('id, answer_en, kind, prompt_ko, note')
-      .eq('user_id', currentUser.id).in('answer_en', missing)
-      .then(({ data }) => (data || []).forEach(c => byTerm.set(c.answer_en, c)));
-  }
+  const ready = (async () => {
+    const missing = v.map(x => x.term).filter(t => !byTerm.has(t));
+    if (missing.length) {
+      const { data } = await sb.from('eng_cards').select('id, answer_en, kind, prompt_ko, note')
+        .eq('user_id', currentUser.id).in('answer_en', missing);
+      (data || []).forEach(c => byTerm.set(c.answer_en, c));
+    }
+    return v.map(x => {
+      const c = byTerm.get(x.term);
+      return c ? { id:c.id, url:`${AUD}/${c.id}.mp3`, koUrl:`${AUD}/${c.id}.ko.mp3`, card:c }
+               : { id:null, url:null, koUrl:null, card:null };
+    });
+  })();
 
   const rowEl = i => el.querySelector(`.prow2[data-i="${i}"]`);
-  const playOne = (i, then) => {
-    const term = v[i]?.term; if (!term) { then && then(); return; }
+  const mark = i => {
     document.querySelectorAll('.prow2.on').forEach(x => x.classList.remove('on'));
     const r = rowEl(i); r?.classList.add('on'); r?.scrollIntoView({ block:'nearest', behavior:'smooth' });
-    const c = byTerm.get(term);
-    if (c) playCard(c, then); else speak(term, then);
   };
 
-  el.querySelectorAll('.prow2').forEach(r => r.onclick = () => {
-    preStop = true; playOne(+r.dataset.i);
-  });
-  // 훑기도 한 번에 쭉 들을 수 있어야 한다 — 한 줄씩 누르게 하면 안 듣게 된다
-  $('pre-all').onclick = () => {
-    preStop = false;
-    const next = i => { if (preStop || i >= v.length) { document.querySelectorAll('.prow2.on').forEach(x=>x.classList.remove('on')); return; }
-      playOne(i, () => setTimeout(() => next(i+1), 350)); };
+  // 통짜를 못 만들 때의 폴백 — 오디오가 빠진 카드가 있으면 하나씩 잇는다.
+  function chainPre(cards){
+    const next = i => {
+      if (preStop || i >= v.length) {
+        document.querySelectorAll('.prow2.on').forEach(x=>x.classList.remove('on'));
+        if (!preStop && preLoop) setTimeout(() => next(0), 700);
+        return;
+      }
+      mark(i);
+      const after = () => setTimeout(() => next(i+1), 300);
+      const c = cards[i].card;
+      if (c && preMode === 'ko') playCard(c, () => speak(v[i].meaning_ko || v[i].prompt_ko || '', after));
+      else if (c) playCard(c, after);
+      else speak(v[i].term, after);
+    };
     next(0);
+  }
+
+  el.querySelectorAll('.prow2').forEach(r => r.onclick = async () => {
+    stopPre(); preStop = true;
+    const i = +r.dataset.i, cards = await ready;
+    mark(i);
+    if (cards[i].card) playCard(cards[i].card); else speak(v[i].term);
+  });
+
+  el.querySelectorAll('[data-pm]').forEach(b => b.onclick = () => {
+    preMode = b.dataset.pm; stopPre();
+    drawWarmup(el, { title, context, items, onDone, backLabel });
+  });
+
+  $('pre-all').onclick = async () => {
+    stopPre(); preStop = false;
+    const cards = await ready;
+    if (preStop) return;
+    const btn = $('pre-all'); if (btn) btn.textContent = '… loading';
+    const track = cards.every(c => c.url) ? await buildPreTrack(cards, preMode === 'ko') : null;
+    if (btn) btn.textContent = '▶ Play all';
+    if (preStop) return;
+    if (!track) { chainPre(cards); return; }
+
+    preUrl = URL.createObjectURL(track.blob);
+    const a = new Audio(preUrl); preAudio = a; a.playbackRate = tRate; a.loop = preLoop;
+    setMedia(title, preMode === 'ko' ? 'Warm-up · English + 뜻' : 'Warm-up · English');
+    let cur = -1;
+    const step = () => {
+      if (!preAudio || preAudio !== a || a.paused) return;
+      // 바이트 위치로 지금 몇 번째 항목인지 짚는다 (CBR 이라 시간에 비례한다)
+      const pos = (a.currentTime / (a.duration || 1)) * track.bytes;
+      let i = 0; for (let k = 0; k < track.marks.length; k++) if (pos >= track.marks[k]) i = k;
+      if (i !== cur) { cur = i; mark(i); }
+      tRaf = requestAnimationFrame(step);
+    };
+    a.onended = () => { cancelAnimationFrame(tRaf); document.querySelectorAll('.prow2.on').forEach(x=>x.classList.remove('on')); };
+    a.play().then(() => { tRaf = requestAnimationFrame(step); }).catch(() => chainPre(cards));
   };
+
   $('pre-stop').onclick = stopPre;
+  $('pre-loop').onclick = function(){
+    preLoop = !preLoop; this.classList.toggle('on', preLoop);
+    if (preAudio) preAudio.loop = preLoop;
+  };
   $('pre-go').onclick = () => { stopPre(); onDone(); };
 }
 

@@ -17,6 +17,12 @@ import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 const argv = process.argv.slice(2);
 const ALL = argv.includes('--all');
 const VOICE = argv.includes('--voice') ? argv[argv.indexOf('--voice') + 1] : 'en-US-AndrewMultilingualNeural';
+// 한국어 뜻도 굽는다 (cards/<id>.ko.mp3).
+// 왜: 어휘 훑기의 "해석 같이 듣기"가 기기 TTS 로 한국어를 읽으면 음질이 튀고,
+// 무엇보다 **통짜로 이어 붙일 수 없어 백그라운드에서 끊긴다.**
+// 같은 포맷(24kHz 모노 MP3)으로 구워두면 영어와 함께 한 트랙으로 묶인다.
+const KO_VOICE = 'ko-KR-SunHiNeural';
+const KO = !argv.includes('--no-ko');
 
 function die(m) { console.error(`✗ ${m}`); process.exit(1); }
 
@@ -38,7 +44,7 @@ const { error: ae } = await sb.auth.signInWithPassword({
 });
 if (ae) die(`로그인 실패: ${ae.message}`);
 
-const { data: cards, error } = await sb.from('eng_cards').select('id, answer_en').limit(5000);
+const { data: cards, error } = await sb.from('eng_cards').select('id, answer_en, prompt_ko').limit(5000);
 if (error) die(error.message);
 
 // 이미 구운 것 확인 (Storage list 는 1000개 단위 페이지)
@@ -53,11 +59,24 @@ if (!ALL) {
 }
 
 const todo = cards.filter(c => !have.has(c.id));
-if (!todo.length) { console.log('✓ 전부 최신 — 생성할 카드 없음'); await sb.auth.signOut(); process.exit(0); }
-console.log(`카드 ${todo.length}장 오디오 생성 (${VOICE})...`);
+const koTodo = KO ? cards.filter(c => c.prompt_ko && !have.has(c.id + '.ko')) : [];
+if (!todo.length && !koTodo.length) { console.log('✓ 전부 최신 — 생성할 카드 없음'); await sb.auth.signOut(); process.exit(0); }
+console.log(`영어 ${todo.length}장 · 한국어 ${koTodo.length}장 생성...`);
 
 const tts = new MsEdgeTTS();
 await tts.setMetadata(VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+const ktts = new MsEdgeTTS();
+if (koTodo.length) await ktts.setMetadata(KO_VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
+
+async function synthWith(engine, text) {
+  const { audioStream } = await engine.toStream(text);
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    audioStream.on('data', c => chunks.push(c));
+    audioStream.on('end', () => resolve(Buffer.concat(chunks)));
+    audioStream.on('error', reject);
+  });
+}
 
 async function synth(text) {
   const { audioStream } = await tts.toStream(text);
@@ -85,5 +104,23 @@ for (const c of todo) {
     console.error(`\n  ✗ "${c.answer_en.slice(0, 40)}...": ${e.message}`);
   }
 }
-console.log(`\n✓ 완료: ${ok}장 생성${fail ? `, ${fail}장 실패 (기기 TTS 폴백으로 동작)` : ''}`);
+console.log(`\n✓ 영어 ${ok}장 생성${fail ? `, ${fail}장 실패 (기기 TTS 폴백으로 동작)` : ''}`);
+
+let kok = 0, kofail = 0;
+for (const c of koTodo) {
+  try {
+    const buf = await synthWith(ktts, c.prompt_ko);
+    if (buf.length < 500) throw new Error('오디오가 비정상적으로 작음');
+    const { error: se } = await sb.storage.from('eng-audio')
+      .upload(`cards/${c.id}.ko.mp3`, buf, { contentType: 'audio/mpeg', upsert: true });
+    if (se) throw se;
+    kok++;
+    process.stdout.write(`\r  한국어 ${kok}/${koTodo.length}`);
+    await new Promise(r => setTimeout(r, 150));
+  } catch (e) {
+    kofail++;
+    console.error(`\n  ✗ ko "${String(c.prompt_ko).slice(0, 30)}...": ${e.message}`);
+  }
+}
+if (koTodo.length) console.log(`\n✓ 한국어 ${kok}장 생성${kofail ? `, ${kofail}장 실패` : ''}`);
 await sb.auth.signOut();
