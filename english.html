@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-03.7';
+const BUILD = '2026-10-03.8';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -596,6 +596,7 @@ function show(s){
   // 화면을 떠날 때 소리를 다 끈다. cardAudio 는 어휘 발음, tStopAudio 는 장면·기사.
   if (cardAudio) cardAudio.pause();
   scLoop = false;
+  stopPre();
   tStopAudio();
   if (s==='today') renderToday();
   if (s==='vocab') renderVocab();
@@ -1163,8 +1164,8 @@ function openAct(a){
   $('t-board').textContent = '';
   const el = $('t-act'); el.hidden = false;
   if (a === 'scene') actScene(el);
+  else if (a === 'article') { arPhase = 'pre'; actArticle(el); }
   else if (a === 'speak') actSpeak(el);
-  else if (a === 'article') actArticle(el);
   else if (a === 'quiz') actQuiz(el);
   else actVocab(el);
 }
@@ -1182,26 +1183,33 @@ function actScene(el){
   drawScene(el);
 }
 
-/* 🔴 어휘를 **대화 앞에** 둔다.
- * 전에는 장면 → 기사 → 어휘 순이라, 모르는 표현을 모른 채로 대화를 다 지나간 뒤에야
+/* 🔴 어휘를 **본문 앞에** 둔다.
+ * 전에는 장면 → 기사 → 어휘 순이라, 모르는 표현을 모른 채로 다 지나간 뒤에야
  * 어휘를 만났다. 들어도 안 들리고, 뒤늦게 외워도 그 대화는 이미 끝나 있었다.
- * 먼저 2~5개를 훑고 들어가면 같은 오디오가 "들리는" 경험이 된다. */
-function drawPre(el, sc){
-  const own = (sc.vocab || []).filter(x => x.term);
-  // 🔴 장면의 vocab 은 표현에 심하게 쏠려 있다(실측 표현 228 · 단어 49).
-  // 그러면 훑기 화면에 **구만 나오고 단어는 안 나온다** — "영단어도 알려주고 가야지"가
-  // 그 얘기다. 오늘 큐의 단어 카드를 앞에 붙여, 단어를 먼저 보고 구로 넘어가게 한다.
-  const haveTerm = new Set(own.map(x => x.term));
-  const words = [...tVocab.today, ...tVocab.past]
-    .filter(c => (c.kind || 'phrase') === 'word' && !haveTerm.has(c.answer_en))
-    .slice(0, 5)
-    .map(c => ({ kind:'word', term:c.answer_en, meaning_ko:c.prompt_ko, example:c.note || '' }));
-  const v = [...words, ...own];
-  if (!v.length) { scPhase = 'dialog'; drawScene(el); return; }
-  el.innerHTML = actBar(`Scene ${scIdx+1}/${tScenes.length} · warm-up`) + `
-    <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
-      <b style="color:var(--eng)">Context</b> · ${esc(sc.situation_ko)}</div>
-    <p class="leg" style="margin:0 0 10px">Words first, then the phrases you'll hear. Tap one to listen.</p>
+ * 먼저 훑고 들어가면 같은 오디오가 "들리는" 경험이 된다.
+ *
+ * 장면과 기사가 같은 화면을 쓴다 — 기사도 vocab 을 7~9개씩 갖고 있는데 화면이 없었다. */
+let preAudio = null, preStop = false;
+
+function stopPre(){
+  preStop = true;
+  if (preAudio) { try { preAudio.pause(); } catch(_) {} preAudio = null; }
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  document.querySelectorAll('.prow2.on').forEach(x => x.classList.remove('on'));
+}
+
+function drawWarmup(el, { title, context, items, onDone, backLabel }){
+  const v = items.filter(x => x && x.term);
+  if (!v.length) { onDone(); return; }
+  stopPre();
+  el.innerHTML = actBar(title) + `
+    ${context ? `<div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
+      <b style="color:var(--eng)">Context</b> · ${esc(context)}</div>` : ''}
+    <div class="actbar" style="margin-bottom:10px">
+      <button class="btn sm" id="pre-all">▶ Play all</button>
+      <button class="btn sm" id="pre-stop">■ Stop</button>
+      <span class="leg" style="margin:0 0 0 auto">Tap any row to hear it</span>
+    </div>
     <div class="prelist">
       ${v.map((x,i) => `<div class="prow2" data-i="${i}">
         <div class="pt">${esc(x.term)}${x.kind === 'word' ? '<em class="kdot">Word</em>' : ''}</div>
@@ -1212,27 +1220,59 @@ function drawPre(el, sc){
       </div>`).join('')}
     </div>
     <div class="actbar" style="margin-top:14px">
-      <button class="btn sm primary-btn" id="pre-go" style="padding:9px 16px">Got it — start the scene →</button>
+      <button class="btn sm primary-btn" id="pre-go" style="padding:9px 16px">${esc(backLabel)}</button>
     </div>`;
   wireBar();
-  // 탭하면 읽어준다. 🔴 기기 TTS 를 직접 부르지 않는다 — 다른 화면은 Edge 뉴럴
-  // 음성을 쓰는데 여기만 로봇 소리가 나서 티가 난다.
-  // 🔴 오늘 큐(tVocab)에서만 찾으면 안 된다 — 장면 어휘가 전부 큐에 드는 게 아니라
-  //    (실측 25개 중 5개가 밖) 그 몇 개만 로봇으로 떨어진다. DB 에서 한 번에 찾아둔다.
-  const idOf = new Map([...tVocab.today, ...tVocab.past].map(c => [c.answer_en, c]));
-  const missing = v.map(x => x.term).filter(t => !idOf.has(t));
+
+  // 🔴 오늘 큐(tVocab)에서만 찾으면 안 된다 — 어휘가 전부 큐에 드는 게 아니라
+  //    (실측 25개 중 5개가 밖) 그 몇 개만 로봇 음성으로 떨어진다. 없는 것은 DB 에서 채운다.
+  const byTerm = new Map([...tVocab.today, ...tVocab.past].map(c => [c.answer_en, c]));
+  const missing = v.map(x => x.term).filter(t => !byTerm.has(t));
   if (missing.length) {
     sb.from('eng_cards').select('id, answer_en, kind, prompt_ko, note')
       .eq('user_id', currentUser.id).in('answer_en', missing)
-      .then(({ data }) => (data || []).forEach(c => idOf.set(c.answer_en, c)));
+      .then(({ data }) => (data || []).forEach(c => byTerm.set(c.answer_en, c)));
   }
+
+  const rowEl = i => el.querySelector(`.prow2[data-i="${i}"]`);
+  const playOne = (i, then) => {
+    const term = v[i]?.term; if (!term) { then && then(); return; }
+    document.querySelectorAll('.prow2.on').forEach(x => x.classList.remove('on'));
+    const r = rowEl(i); r?.classList.add('on'); r?.scrollIntoView({ block:'nearest', behavior:'smooth' });
+    const c = byTerm.get(term);
+    if (c) playCard(c, then); else speak(term, then);
+  };
+
   el.querySelectorAll('.prow2').forEach(r => r.onclick = () => {
-    const term = v[+r.dataset.i]?.term; if (!term) return;
-    const c = idOf.get(term);
-    if (c) playCard(c); else speak(term);
-    r.classList.add('on'); setTimeout(() => r.classList.remove('on'), 700);
+    preStop = true; playOne(+r.dataset.i);
   });
-  $('pre-go').onclick = () => { scPhase = 'dialog'; drawScene(el); };
+  // 훑기도 한 번에 쭉 들을 수 있어야 한다 — 한 줄씩 누르게 하면 안 듣게 된다
+  $('pre-all').onclick = () => {
+    preStop = false;
+    const next = i => { if (preStop || i >= v.length) { document.querySelectorAll('.prow2.on').forEach(x=>x.classList.remove('on')); return; }
+      playOne(i, () => setTimeout(() => next(i+1), 350)); };
+    next(0);
+  };
+  $('pre-stop').onclick = stopPre;
+  $('pre-go').onclick = () => { stopPre(); onDone(); };
+}
+
+function drawPre(el, sc){
+  const own = (sc.vocab || []).filter(x => x.term);
+  // 장면의 vocab 은 표현에 쏠려 있다(실측 표현 228 · 단어 49). 그러면 훑기에 구만 나오고
+  // 단어는 안 나온다 — 오늘 큐의 단어 카드를 앞에 붙여 단어 → 구 순서로 만든다.
+  const haveTerm = new Set(own.map(x => x.term));
+  const words = [...tVocab.today, ...tVocab.past]
+    .filter(c => (c.kind || 'phrase') === 'word' && !haveTerm.has(c.answer_en))
+    .slice(0, 5)
+    .map(c => ({ kind:'word', term:c.answer_en, meaning_ko:c.prompt_ko, example:c.note || '' }));
+  drawWarmup(el, {
+    title: `Scene ${scIdx+1}/${tScenes.length} · warm-up`,
+    context: sc.situation_ko,
+    items: [...words, ...own],
+    backLabel: 'Got it — start the scene →',
+    onDone: () => { scPhase = 'dialog'; drawScene(el); },
+  });
 }
 
 function drawScene(el){
@@ -1522,18 +1562,33 @@ function drawSpeak(el){
 
 /* ── 막 2 · 뉴스 읽기 ───────────────────────────────── */
 
+let arPhase = 'pre';
+
 function actArticle(el){
   const a = tArticle;
   if (!a) { renderToday(); return; }
+  // 기사도 vocab 을 7~9개씩 갖고 있는데 화면이 없어 그냥 지나갔다. 장면과 같게 둔다.
+  if (arPhase === 'pre') {
+    drawWarmup(el, {
+      title: 'News · warm-up',
+      context: a.title,
+      items: (a.vocab || []),
+      backLabel: 'Got it — read the news →',
+      onDone: () => { arPhase = 'read'; actArticle(el); },
+    });
+    return;
+  }
   el.innerHTML = actBar('News') + `
     <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13.5px;font-weight:600;margin-bottom:12px">${esc(a.title)}</div>
     <div class="actbar"><button class="btn sm" id="ar-play">▶ Play</button><button class="btn sm" id="ar-stop">■ Stop</button>
+      <button class="btn sm" id="ar-words">Words</button>
       <span class="vprog" id="ar-prog" style="margin:0 0 0 auto"></span></div>
     <div id="ar-sents">${(a.segs||[]).map((sg,i)=>`<div class="asbox" data-s="${i}">${segHtml(sg, a.ev||[])}</div>`).join('')}</div>
     <p class="leg"><span class="sw">Dotted</span> = swallowed · tap a sentence to replay from there.</p>
     ${(a.summary_ko||[]).length ? `<div class="vcard" style="margin-top:16px"><div class="vt" style="font-size:14px">Summary</div>
       <div class="vm">${a.summary_ko.map(x=>`• ${esc(x)}`).join('<br>')}</div></div>` : ''}`;
   wireBar();
+  $('ar-words').onclick = () => { tStopAudio(); arPhase = 'pre'; actArticle(el); };
   const boxes = [...el.querySelectorAll('.asbox')];
   let maxSent = tSession?.progress?.article?.sent || 0;
   const showProg = () => { $('ar-prog').textContent = `Sentence ${maxSent}/${boxes.length}`; };
