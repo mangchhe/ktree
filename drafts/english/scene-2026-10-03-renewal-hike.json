@@ -1,0 +1,1966 @@
+{
+  "id": "2026-10-03-renewal-hike",
+  "situation_ko": "쓰고 있는 업무 툴 업체 담당자가 다음 달 갱신 때 가격을 18퍼센트 올린다고 알린다. 2년 약정이면 10퍼센트로 깎아준다는데, 1년 5퍼센트로 역제안하자 승인에 시간이 걸린다고 미룬다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "업체 담당자",
+      "meaning_ko": "시간 내주셔서 감사해요. 아시다시피 다음 달에 계약이 갱신되는데, 가격이 18퍼센트 오른다는 점을 미리 말씀드려야 할 것 같아요.",
+      "en": "Thanks for making time. As you know, your contract renews next month, and I should flag that the price is going up eighteen percent.",
+      "ms": 7440,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "making",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "As",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "your",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "contract",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "renews",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flag",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eighteen",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          23
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 250
+        },
+        {
+          "t": 338,
+          "d": 125
+        },
+        {
+          "t": 475,
+          "d": 350
+        },
+        {
+          "t": 838,
+          "d": 500
+        },
+        {
+          "t": 1750,
+          "d": 163
+        },
+        {
+          "t": 1925,
+          "d": 88
+        },
+        {
+          "t": 2025,
+          "d": 150
+        },
+        {
+          "t": 2200,
+          "d": 188
+        },
+        {
+          "t": 2400,
+          "d": 575
+        },
+        {
+          "t": 2988,
+          "d": 338
+        },
+        {
+          "t": 3338,
+          "d": 300
+        },
+        {
+          "t": 3650,
+          "d": 375
+        },
+        {
+          "t": 4200,
+          "d": 175
+        },
+        {
+          "t": 4388,
+          "d": 75
+        },
+        {
+          "t": 4475,
+          "d": 213
+        },
+        {
+          "t": 4700,
+          "d": 300
+        },
+        {
+          "t": 5013,
+          "d": 125
+        },
+        {
+          "t": 5150,
+          "d": 100
+        },
+        {
+          "t": 5263,
+          "d": 325
+        },
+        {
+          "t": 5600,
+          "d": 113
+        },
+        {
+          "t": 5725,
+          "d": 275
+        },
+        {
+          "t": 6013,
+          "d": 125
+        },
+        {
+          "t": 6150,
+          "d": 338
+        },
+        {
+          "t": 6500,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-renewal-hike/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "18퍼센트는 우리가 예산 잡은 것보다 훨씬 크다고 하고, 왜 그렇게 오르는지 설명해달라고 해봐",
+      "en": "Eighteen percent is a lot more than we budgeted for. Can you walk me through what's driving that?",
+      "ms": 5832,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Eighteen",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lot",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budgeted",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "walk",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what's",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "driving",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 388
+        },
+        {
+          "t": 450,
+          "d": 500
+        },
+        {
+          "t": 975,
+          "d": 150
+        },
+        {
+          "t": 1138,
+          "d": 75
+        },
+        {
+          "t": 1225,
+          "d": 275
+        },
+        {
+          "t": 1513,
+          "d": 313
+        },
+        {
+          "t": 1838,
+          "d": 150
+        },
+        {
+          "t": 2000,
+          "d": 150
+        },
+        {
+          "t": 2163,
+          "d": 450
+        },
+        {
+          "t": 2625,
+          "d": 400
+        },
+        {
+          "t": 3388,
+          "d": 125
+        },
+        {
+          "t": 3525,
+          "d": 113
+        },
+        {
+          "t": 3650,
+          "d": 300
+        },
+        {
+          "t": 3963,
+          "d": 200
+        },
+        {
+          "t": 4175,
+          "d": 275
+        },
+        {
+          "t": 4463,
+          "d": 213
+        },
+        {
+          "t": 4688,
+          "d": 438
+        },
+        {
+          "t": 5138,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-renewal-hike/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "주로 올해 추가된 새 기능들 때문이에요. 그런데 2년 약정을 해주시면 10퍼센트까지 낮춰드릴 수 있어요.",
+      "en": "Mostly the new features we've added this year. But if you commit to two years, I can bring it down to ten.",
+      "ms": 6216,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Mostly",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "features",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we've",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "added",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "commit",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "years",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 425
+        },
+        {
+          "t": 525,
+          "d": 100
+        },
+        {
+          "t": 638,
+          "d": 200
+        },
+        {
+          "t": 850,
+          "d": 475
+        },
+        {
+          "t": 1338,
+          "d": 175
+        },
+        {
+          "t": 1525,
+          "d": 325
+        },
+        {
+          "t": 1863,
+          "d": 225
+        },
+        {
+          "t": 2100,
+          "d": 350
+        },
+        {
+          "t": 2838,
+          "d": 88
+        },
+        {
+          "t": 2938,
+          "d": 125
+        },
+        {
+          "t": 3075,
+          "d": 125
+        },
+        {
+          "t": 3213,
+          "d": 325
+        },
+        {
+          "t": 3550,
+          "d": 125
+        },
+        {
+          "t": 3688,
+          "d": 213
+        },
+        {
+          "t": 3913,
+          "d": 388
+        },
+        {
+          "t": 4325,
+          "d": 125
+        },
+        {
+          "t": 4463,
+          "d": 175
+        },
+        {
+          "t": 4650,
+          "d": 200
+        },
+        {
+          "t": 4863,
+          "d": 113
+        },
+        {
+          "t": 4988,
+          "d": 225
+        },
+        {
+          "t": 5225,
+          "d": 138
+        },
+        {
+          "t": 5375,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-renewal-hike/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "지금 2년 약정은 부담이 크다고 하고, 1년에 5퍼센트 인상으로 해주면 이번 주에 바로 서명하겠다고 역제안해봐",
+      "en": "Two years is a big commitment for us right now. If you can do one year at five percent, I'm ready to sign this week.",
+      "ms": 7512,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Two",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "years",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "big",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "commitment",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          18
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ready",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sign",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          24
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 388
+        },
+        {
+          "t": 638,
+          "d": 163
+        },
+        {
+          "t": 813,
+          "d": 100
+        },
+        {
+          "t": 925,
+          "d": 250
+        },
+        {
+          "t": 1188,
+          "d": 500
+        },
+        {
+          "t": 1700,
+          "d": 188
+        },
+        {
+          "t": 1900,
+          "d": 200
+        },
+        {
+          "t": 2113,
+          "d": 188
+        },
+        {
+          "t": 2313,
+          "d": 375
+        },
+        {
+          "t": 3050,
+          "d": 125
+        },
+        {
+          "t": 3188,
+          "d": 88
+        },
+        {
+          "t": 3288,
+          "d": 138
+        },
+        {
+          "t": 3438,
+          "d": 225
+        },
+        {
+          "t": 3675,
+          "d": 250
+        },
+        {
+          "t": 3938,
+          "d": 288
+        },
+        {
+          "t": 4238,
+          "d": 125
+        },
+        {
+          "t": 4375,
+          "d": 288
+        },
+        {
+          "t": 4675,
+          "d": 500
+        },
+        {
+          "t": 5663,
+          "d": 200
+        },
+        {
+          "t": 5875,
+          "d": 200
+        },
+        {
+          "t": 6088,
+          "d": 88
+        },
+        {
+          "t": 6188,
+          "d": 325
+        },
+        {
+          "t": 6525,
+          "d": 188
+        },
+        {
+          "t": 6725,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-renewal-hike/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "5퍼센트는 제가 승인할 수 있는 선 아래라서요. 매니저에게 올려야 하는데 2주쯤 걸릴 수도 있어요.",
+      "en": "Five is below what I'm allowed to approve. I'd have to take it to my manager, and that could take a couple of weeks.",
+      "ms": 6408,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Five",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "below",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "allowed",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approve",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "manager",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "couple",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          23
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 300
+        },
+        {
+          "t": 388,
+          "d": 150
+        },
+        {
+          "t": 550,
+          "d": 338
+        },
+        {
+          "t": 900,
+          "d": 138
+        },
+        {
+          "t": 1050,
+          "d": 138
+        },
+        {
+          "t": 1200,
+          "d": 325
+        },
+        {
+          "t": 1538,
+          "d": 150
+        },
+        {
+          "t": 1700,
+          "d": 600
+        },
+        {
+          "t": 2688,
+          "d": 75
+        },
+        {
+          "t": 2775,
+          "d": 150
+        },
+        {
+          "t": 2938,
+          "d": 113
+        },
+        {
+          "t": 3063,
+          "d": 238
+        },
+        {
+          "t": 3313,
+          "d": 63
+        },
+        {
+          "t": 3388,
+          "d": 100
+        },
+        {
+          "t": 3500,
+          "d": 163
+        },
+        {
+          "t": 3675,
+          "d": 650
+        },
+        {
+          "t": 4350,
+          "d": 138
+        },
+        {
+          "t": 4500,
+          "d": 200
+        },
+        {
+          "t": 4713,
+          "d": 113
+        },
+        {
+          "t": 4838,
+          "d": 200
+        },
+        {
+          "t": 5050,
+          "d": 50
+        },
+        {
+          "t": 5113,
+          "d": 300
+        },
+        {
+          "t": 5425,
+          "d": 113
+        },
+        {
+          "t": 5550,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-renewal-hike/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "기다릴 수 있다고 하고, 참고로 그 사이 다른 업체 두어 곳에서도 견적을 받는 중이라고 슬쩍 알려봐",
+      "en": "That's fine, we can wait. Just so you know, we're also getting quotes from a couple of other vendors in the meantime.",
+      "ms": 6456,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wait",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we're",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "getting",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quotes",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "couple",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "vendors",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meantime",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 213
+        },
+        {
+          "t": 288,
+          "d": 400
+        },
+        {
+          "t": 713,
+          "d": 138
+        },
+        {
+          "t": 863,
+          "d": 188
+        },
+        {
+          "t": 1063,
+          "d": 375
+        },
+        {
+          "t": 1813,
+          "d": 200
+        },
+        {
+          "t": 2025,
+          "d": 163
+        },
+        {
+          "t": 2200,
+          "d": 100
+        },
+        {
+          "t": 2313,
+          "d": 225
+        },
+        {
+          "t": 2563,
+          "d": 175
+        },
+        {
+          "t": 2750,
+          "d": 300
+        },
+        {
+          "t": 3063,
+          "d": 238
+        },
+        {
+          "t": 3313,
+          "d": 463
+        },
+        {
+          "t": 3788,
+          "d": 238
+        },
+        {
+          "t": 4038,
+          "d": 63
+        },
+        {
+          "t": 4113,
+          "d": 263
+        },
+        {
+          "t": 4388,
+          "d": 113
+        },
+        {
+          "t": 4513,
+          "d": 200
+        },
+        {
+          "t": 4725,
+          "d": 463
+        },
+        {
+          "t": 5200,
+          "d": 125
+        },
+        {
+          "t": 5338,
+          "d": 75
+        },
+        {
+          "t": 5425,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-renewal-hike/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠습니다. 제가 할 수 있는 걸 알아볼게요. 금요일까지 연락드릴게요.",
+      "en": "Understood. Let me see what I can do, and I'll get back to you by Friday.",
+      "ms": 4608,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Understood",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 750
+        },
+        {
+          "t": 1238,
+          "d": 125
+        },
+        {
+          "t": 1375,
+          "d": 100
+        },
+        {
+          "t": 1488,
+          "d": 213
+        },
+        {
+          "t": 1713,
+          "d": 138
+        },
+        {
+          "t": 1863,
+          "d": 88
+        },
+        {
+          "t": 1963,
+          "d": 175
+        },
+        {
+          "t": 2150,
+          "d": 313
+        },
+        {
+          "t": 2488,
+          "d": 150
+        },
+        {
+          "t": 2650,
+          "d": 125
+        },
+        {
+          "t": 2788,
+          "d": 175
+        },
+        {
+          "t": 2975,
+          "d": 213
+        },
+        {
+          "t": 3200,
+          "d": 125
+        },
+        {
+          "t": 3338,
+          "d": 100
+        },
+        {
+          "t": 3450,
+          "d": 175
+        },
+        {
+          "t": 3638,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-renewal-hike/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "renew",
+      "meaning_ko": "(계약을) 갱신하다",
+      "example": "Your contract renews next month."
+    },
+    {
+      "kind": "word",
+      "term": "flag",
+      "meaning_ko": "(문제·변경을) 미리 짚어 알리다",
+      "example": "I should flag that the price is going up eighteen percent."
+    },
+    {
+      "kind": "word",
+      "term": "commit",
+      "meaning_ko": "(기간·조건을) 확실히 약정하다, 묶이기로 하다",
+      "example": "If you commit to two years, I can bring it down to ten."
+    },
+    {
+      "kind": "word",
+      "term": "quote",
+      "meaning_ko": "견적, 견적가",
+      "example": "We're also getting quotes from a couple of other vendors."
+    },
+    {
+      "kind": "phrase",
+      "term": "a lot more than we budgeted for",
+      "meaning_ko": "우리가 예산 잡은 것보다 훨씬 많다",
+      "prompt_ko": "가격 인상폭이 우리가 예산 잡은 것보다 훨씬 크다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "what's driving that",
+      "meaning_ko": "무엇 때문에 그런 건지, 그 원인이 뭔지",
+      "prompt_ko": "가격이 왜 이렇게 오르는지 원인을 짚어달라고 해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "just so you know",
+      "meaning_ko": "참고로 말씀드리면 (슬쩍 압박을 줄 때도 쓴다)",
+      "prompt_ko": "참고로 다른 업체 견적도 받아보고 있다고 슬쩍 알려봐",
+      "keywords": [
+        {
+          "word": "vendor",
+          "meaning_ko": "공급업체, 판매업체"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-10-02T20:35:35.519Z"
+}

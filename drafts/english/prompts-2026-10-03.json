@@ -1,0 +1,43 @@
+[
+  {
+    "kind": "describe", "topic": "여가", "level": 2, "seconds": 75,
+    "question_en": "Tell me about a café or a restaurant you like to go to. What does it look like, and why do you keep going back?",
+    "hint_ko": "자주 가는 카페·식당 하나 — 어디 있고 어떤 곳인지 큰 그림 → 안에 들어가면 보이는 것 하나를 구체적으로 → 계속 가게 되는 이유 하나를 깊게",
+    "model_en": "There's a small café about ten minutes from my place that I end up at almost every weekend. It's on a quiet side street, so you'd probably walk right past it if you didn't know it was there.\n\nInside, it's tiny — maybe six tables. The thing you notice first is the big wooden counter in the middle, where the owner makes every drink by hand. There's always some old jazz playing, quietly enough that you can still think.\n\nWhat keeps me going back, though, isn't really the coffee. It's that nobody rushes you. I can sit there for two hours with one cup and a book, and the owner just nods when I leave. In a city where everything feels fast, that's surprisingly hard to find.",
+    "model_note_ko": "묘사는 **큰 그림 → 한 장면 확대 → 왜** 세 문단이다. 2문단에서 '보이는 것 하나(카운터)'와 '들리는 것 하나(재즈)'만 고른 게 핵심 — 의자·조명·메뉴를 다 나열하면 문장 단위가 된다. 3문단은 'though' 로 예상(커피)을 뒤집어 진짜 이유로 들어간다. 이 뒤집기가 문단에 깊이를 준다.",
+    "phrases": [
+      { "term": "I end up at almost every weekend", "meaning_ko": "주말마다 거의 결국 거기로 가게 된다" },
+      { "term": "the thing you notice first is", "meaning_ko": "제일 먼저 눈에 들어오는 건 ~이다" },
+      { "term": "what keeps me going back, though, is", "meaning_ko": "그래도 내가 계속 가게 되는 이유는 ~이다" },
+      { "term": "that's surprisingly hard to find", "meaning_ko": "그런 건 의외로 찾기 어렵다" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "여행", "level": 2, "seconds": 60,
+    "question_en": "I'm going on a trip next month. Ask me three or four questions about it.",
+    "hint_ko": "여행 가는 사람에게 질문 3~4개 — 반응 한마디로 열기 → 어디·왜 → 일정·계획 → 걱정·준비. 의문문으로, 질문 사이에 짧은 코멘트를 끼워라",
+    "model_en": "Oh, that sounds exciting. I'd love to hear more, so let me ask you a few things.\n\nFirst of all, where are you headed? And is it somewhere you've been before, or is this your first time?\n\nI'm also curious about how you're planning it. Do you have every day mapped out, or are you the type who just figures it out when you get there?\n\nAnd one last thing — is there anything you're worried about? Like the weather, or the language? I always end up forgetting something, so I'm wondering how you deal with that.",
+    "model_note_ko": "질문을 **덩어리**로 묶었다 — 어디(목적지) · 어떻게(계획 스타일) · 걱정. 각 덩어리 앞에 'first of all / I'm also curious about / one last thing' 같은 표지를 붙여 순서가 들린다. 'or' 로 선택지를 주는 질문은 yes/no 로 끝나지 않아 자연스럽게 길어진다. 마지막에 내 얘기 한 줄을 끼우면 질문만 던지는 느낌이 사라진다.",
+    "phrases": [
+      { "term": "let me ask you a few things", "meaning_ko": "몇 가지 물어볼게" },
+      { "term": "where are you headed?", "meaning_ko": "어디로 가?" },
+      { "term": "I'm also curious about", "meaning_ko": "~도 궁금해" },
+      { "term": "are you the type who", "meaning_ko": "너는 ~하는 타입이야?" },
+      { "term": "one last thing", "meaning_ko": "마지막으로 하나만" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "비즈니스", "level": 3, "seconds": 75,
+    "question_en": "When work gets really busy, how do you usually handle it? Tell me about what you typically do.",
+    "hint_ko": "바쁠 때 일하는 습관 — 바쁜 시기가 어떤 모습인지 → 보통 제일 먼저 하는 것 → 버티는 나만의 방법 하나 → 솔직한 한계 한 줄",
+    "model_en": "Busy periods at my job usually come in waves. Everything's calm for a few weeks, and then suddenly three deadlines land in the same week.\n\nWhat I usually do first is write everything down. I make one list, put it in order, and figure out what can actually wait. Most of the time, once it's on paper, it looks a lot less scary than it did in my head.\n\nThe other thing is that I protect my mornings. I block off the first two hours, turn off notifications, and do the hardest task before anyone can pull me into a meeting.\n\nI'll be honest, though, it doesn't always work. Some weeks I'm still answering messages at eleven at night. But the list at least keeps me from panicking.",
+    "model_note_ko": "습관형은 '보통 ~한다'를 **방법 두 개로 나눠** 문단을 세운다 — 1문단 바쁜 시기의 모습 · 2문단 방법①(목록) · 3문단 방법②(아침 지키기) · 4문단 솔직한 한계. 'what I usually do first is / the other thing is' 가 문단을 엮는 접착제다. 마지막 'I'll be honest, though' 처럼 완벽하지 않다고 인정하면 말이 자연스러워지고 한 문단이 더 생긴다.",
+    "phrases": [
+      { "term": "come in waves", "meaning_ko": "파도처럼 몰려왔다 빠졌다 한다" },
+      { "term": "what I usually do first is", "meaning_ko": "보통 제일 먼저 하는 건 ~이다" },
+      { "term": "the other thing is that", "meaning_ko": "또 하나는 ~라는 거다" },
+      { "term": "I'll be honest, though", "meaning_ko": "솔직히 말하면 말이야" },
+      { "term": "keeps me from panicking", "meaning_ko": "당황하지 않게 붙잡아 준다" }
+    ]
+  }
+]

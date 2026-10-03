@@ -1,0 +1,2110 @@
+{
+  "id": "2026-10-03-missed-connection",
+  "situation_ko": "프랑크푸르트 공항. 서울발 비행기가 늦게 도착해 리스본행 연결편을 놓쳤다. 직원은 내일 아침 직항과 오늘 밤 취리히 경유편을 내미는데, 경유편은 짐이 못 따라올 수도 있다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "항공사 직원",
+      "meaning_ko": "다음 분이요. 아, 서울에서 오신 편이에요? 그 비행기가 두 시간쯤 늦게 도착했죠.",
+      "en": "Next, please. Oh, were you on the flight from Seoul? That one landed about two hours late.",
+      "ms": 7992,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Next",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Oh",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "were",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Seoul",
+          9
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "That",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "landed",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 525
+        },
+        {
+          "t": 838,
+          "d": 475
+        },
+        {
+          "t": 2175,
+          "d": 238
+        },
+        {
+          "t": 2650,
+          "d": 100
+        },
+        {
+          "t": 2763,
+          "d": 163
+        },
+        {
+          "t": 2938,
+          "d": 125
+        },
+        {
+          "t": 3075,
+          "d": 63
+        },
+        {
+          "t": 3150,
+          "d": 325
+        },
+        {
+          "t": 3488,
+          "d": 188
+        },
+        {
+          "t": 3688,
+          "d": 500
+        },
+        {
+          "t": 5050,
+          "d": 238
+        },
+        {
+          "t": 5300,
+          "d": 213
+        },
+        {
+          "t": 5525,
+          "d": 288
+        },
+        {
+          "t": 5825,
+          "d": 313
+        },
+        {
+          "t": 6150,
+          "d": 250
+        },
+        {
+          "t": 6413,
+          "d": 313
+        },
+        {
+          "t": 6738,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-missed-connection/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그래서 리스본행 연결편을 놓쳤다고 말하고, 다음 비행기가 언제인지 물어봐",
+      "en": "Yes, and because of that I missed my connection to Lisbon. When's the next flight?",
+      "ms": 5208,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "because",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "missed",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "connection",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Lisbon",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "When's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 463
+        },
+        {
+          "t": 575,
+          "d": 325
+        },
+        {
+          "t": 1075,
+          "d": 375
+        },
+        {
+          "t": 1450,
+          "d": 50
+        },
+        {
+          "t": 1513,
+          "d": 163
+        },
+        {
+          "t": 1675,
+          "d": 63
+        },
+        {
+          "t": 1750,
+          "d": 313
+        },
+        {
+          "t": 2075,
+          "d": 113
+        },
+        {
+          "t": 2200,
+          "d": 450
+        },
+        {
+          "t": 2663,
+          "d": 88
+        },
+        {
+          "t": 2750,
+          "d": 500
+        },
+        {
+          "t": 3613,
+          "d": 350
+        },
+        {
+          "t": 3975,
+          "d": 100
+        },
+        {
+          "t": 4088,
+          "d": 325
+        },
+        {
+          "t": 4413,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-missed-connection/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "다음 직항은 내일 아침 9시예요. 오늘 밤 호텔은 저희가 부담합니다. 오늘 밤 취리히 경유편도 있는데, 환승 시간이 40분뿐이라 짐이 못 따라갈 수도 있어요.",
+      "en": "The next direct one is tomorrow at nine a.m., and we'll cover your hotel tonight. There's also a flight tonight through Zurich, but the transfer is only forty minutes, so your bag might not make it.",
+      "ms": 12288,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "direct",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nine",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a.m.",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we'll",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cover",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotel",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tonight",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There's",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tonight",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Zurich",
+          21
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "transfer",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          28
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bag",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "might",
+          32
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          33
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          34
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          35
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 288,
+          "d": 288
+        },
+        {
+          "t": 588,
+          "d": 338
+        },
+        {
+          "t": 938,
+          "d": 263
+        },
+        {
+          "t": 1213,
+          "d": 125
+        },
+        {
+          "t": 1350,
+          "d": 413
+        },
+        {
+          "t": 1775,
+          "d": 125
+        },
+        {
+          "t": 1913,
+          "d": 338
+        },
+        {
+          "t": 2263,
+          "d": 438
+        },
+        {
+          "t": 2888,
+          "d": 88
+        },
+        {
+          "t": 2988,
+          "d": 188
+        },
+        {
+          "t": 3188,
+          "d": 275
+        },
+        {
+          "t": 3475,
+          "d": 150
+        },
+        {
+          "t": 3638,
+          "d": 475
+        },
+        {
+          "t": 4125,
+          "d": 538
+        },
+        {
+          "t": 5525,
+          "d": 225
+        },
+        {
+          "t": 5763,
+          "d": 275
+        },
+        {
+          "t": 6050,
+          "d": 50
+        },
+        {
+          "t": 6113,
+          "d": 313
+        },
+        {
+          "t": 6438,
+          "d": 313
+        },
+        {
+          "t": 6763,
+          "d": 225
+        },
+        {
+          "t": 7000,
+          "d": 475
+        },
+        {
+          "t": 7638,
+          "d": 113
+        },
+        {
+          "t": 7763,
+          "d": 88
+        },
+        {
+          "t": 7863,
+          "d": 525
+        },
+        {
+          "t": 8400,
+          "d": 150
+        },
+        {
+          "t": 8563,
+          "d": 238
+        },
+        {
+          "t": 8813,
+          "d": 363
+        },
+        {
+          "t": 9188,
+          "d": 388
+        },
+        {
+          "t": 9788,
+          "d": 88
+        },
+        {
+          "t": 9888,
+          "d": 150
+        },
+        {
+          "t": 10050,
+          "d": 338
+        },
+        {
+          "t": 10400,
+          "d": 250
+        },
+        {
+          "t": 10663,
+          "d": 225
+        },
+        {
+          "t": 10900,
+          "d": 250
+        },
+        {
+          "t": 11163,
+          "d": 250
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-missed-connection/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "내일 아침 일찍 회의가 있어서 취리히 경유편을 타겠다고 하고, 짐이 못 따라오면 어떻게 되는지 물어봐",
+      "en": "I have a meeting early tomorrow, so I'll take the one through Zurich. What happens if my bag doesn't make it?",
+      "ms": 6000,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meeting",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Zurich",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happens",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bag",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          20
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 188
+        },
+        {
+          "t": 413,
+          "d": 50
+        },
+        {
+          "t": 475,
+          "d": 350
+        },
+        {
+          "t": 825,
+          "d": 238
+        },
+        {
+          "t": 1075,
+          "d": 500
+        },
+        {
+          "t": 1775,
+          "d": 200
+        },
+        {
+          "t": 1975,
+          "d": 88
+        },
+        {
+          "t": 2075,
+          "d": 200
+        },
+        {
+          "t": 2288,
+          "d": 100
+        },
+        {
+          "t": 2400,
+          "d": 263
+        },
+        {
+          "t": 2675,
+          "d": 150
+        },
+        {
+          "t": 2838,
+          "d": 563
+        },
+        {
+          "t": 3763,
+          "d": 150
+        },
+        {
+          "t": 3913,
+          "d": 363
+        },
+        {
+          "t": 4288,
+          "d": 100
+        },
+        {
+          "t": 4388,
+          "d": 150
+        },
+        {
+          "t": 4550,
+          "d": 388
+        },
+        {
+          "t": 4938,
+          "d": 225
+        },
+        {
+          "t": 5163,
+          "d": 213
+        },
+        {
+          "t": 5388,
+          "d": 263
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-missed-connection/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "다음 비행기로 실어서 호텔로 보내드려요. 보통 하루 안에 갑니다. 도착 데스크에서 신고하시면 돼요.",
+      "en": "It'll come on the next flight, and we'll deliver it to your hotel, usually within a day. You can file a claim at the arrivals desk.",
+      "ms": 8352,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "It'll",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we'll",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deliver",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotel",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "usually",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "within",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          16
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "file",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "claim",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "arrivals",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "desk",
+          25
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 375,
+          "d": 175
+        },
+        {
+          "t": 563,
+          "d": 88
+        },
+        {
+          "t": 663,
+          "d": 63
+        },
+        {
+          "t": 738,
+          "d": 288
+        },
+        {
+          "t": 1038,
+          "d": 363
+        },
+        {
+          "t": 1588,
+          "d": 88
+        },
+        {
+          "t": 1688,
+          "d": 163
+        },
+        {
+          "t": 1863,
+          "d": 338
+        },
+        {
+          "t": 2213,
+          "d": 100
+        },
+        {
+          "t": 2325,
+          "d": 63
+        },
+        {
+          "t": 2400,
+          "d": 125
+        },
+        {
+          "t": 2538,
+          "d": 513
+        },
+        {
+          "t": 3263,
+          "d": 338
+        },
+        {
+          "t": 3613,
+          "d": 288
+        },
+        {
+          "t": 3913,
+          "d": 50
+        },
+        {
+          "t": 3975,
+          "d": 400
+        },
+        {
+          "t": 5238,
+          "d": 175
+        },
+        {
+          "t": 5425,
+          "d": 163
+        },
+        {
+          "t": 5600,
+          "d": 275
+        },
+        {
+          "t": 5888,
+          "d": 50
+        },
+        {
+          "t": 5950,
+          "d": 350
+        },
+        {
+          "t": 6313,
+          "d": 63
+        },
+        {
+          "t": 6388,
+          "d": 125
+        },
+        {
+          "t": 6525,
+          "d": 500
+        },
+        {
+          "t": 7038,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-missed-connection/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "알겠다고 하고, 짐이 안 오면 칫솔이나 갈아입을 옷 같은 기본적인 것 비용을 돌려받을 수 있는지 물어봐",
+      "en": "Okay. And if it doesn't show up, can I get reimbursed for basic things like a toothbrush and a change of clothes?",
+      "ms": 6984,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "show",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "can",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reimbursed",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "basic",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "things",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "toothbrush",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clothes",
+          21
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 413
+        },
+        {
+          "t": 900,
+          "d": 300
+        },
+        {
+          "t": 1325,
+          "d": 100
+        },
+        {
+          "t": 1438,
+          "d": 88
+        },
+        {
+          "t": 1525,
+          "d": 263
+        },
+        {
+          "t": 1800,
+          "d": 288
+        },
+        {
+          "t": 2088,
+          "d": 225
+        },
+        {
+          "t": 2550,
+          "d": 150
+        },
+        {
+          "t": 2713,
+          "d": 113
+        },
+        {
+          "t": 2825,
+          "d": 213
+        },
+        {
+          "t": 3050,
+          "d": 538
+        },
+        {
+          "t": 3600,
+          "d": 150
+        },
+        {
+          "t": 3763,
+          "d": 338
+        },
+        {
+          "t": 4100,
+          "d": 275
+        },
+        {
+          "t": 4375,
+          "d": 125
+        },
+        {
+          "t": 4500,
+          "d": 75
+        },
+        {
+          "t": 4588,
+          "d": 750
+        },
+        {
+          "t": 5413,
+          "d": 138
+        },
+        {
+          "t": 5563,
+          "d": 50
+        },
+        {
+          "t": 5625,
+          "d": 338
+        },
+        {
+          "t": 5975,
+          "d": 63
+        },
+        {
+          "t": 6050,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-missed-connection/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 영수증을 챙겨두시면 100유로까지 청구하실 수 있어요. 새 탑승권입니다. B42 게이트고, 서두르셔야 해요.",
+      "en": "Yes, keep your receipts and you can claim up to a hundred euros. Here's your new boarding pass. It's gate B forty-two, and you'll want to hurry.",
+      "ms": 10680,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "keep",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "receipts",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "claim",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "euros",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Here's",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "boarding",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pass",
+          17
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gate",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "B",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty-two",
+          21
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you'll",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hurry",
+          26
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 475
+        },
+        {
+          "t": 800,
+          "d": 225
+        },
+        {
+          "t": 1038,
+          "d": 100
+        },
+        {
+          "t": 1150,
+          "d": 500
+        },
+        {
+          "t": 1663,
+          "d": 100
+        },
+        {
+          "t": 1775,
+          "d": 88
+        },
+        {
+          "t": 1875,
+          "d": 150
+        },
+        {
+          "t": 2038,
+          "d": 313
+        },
+        {
+          "t": 2363,
+          "d": 150
+        },
+        {
+          "t": 2525,
+          "d": 125
+        },
+        {
+          "t": 2663,
+          "d": 25
+        },
+        {
+          "t": 2700,
+          "d": 363
+        },
+        {
+          "t": 3075,
+          "d": 625
+        },
+        {
+          "t": 4563,
+          "d": 288
+        },
+        {
+          "t": 4863,
+          "d": 125
+        },
+        {
+          "t": 5000,
+          "d": 275
+        },
+        {
+          "t": 5288,
+          "d": 413
+        },
+        {
+          "t": 5713,
+          "d": 525
+        },
+        {
+          "t": 7100,
+          "d": 238
+        },
+        {
+          "t": 7350,
+          "d": 275
+        },
+        {
+          "t": 7638,
+          "d": 188
+        },
+        {
+          "t": 7838,
+          "d": 713
+        },
+        {
+          "t": 8825,
+          "d": 113
+        },
+        {
+          "t": 8950,
+          "d": 188
+        },
+        {
+          "t": 9150,
+          "d": 188
+        },
+        {
+          "t": 9350,
+          "d": 75
+        },
+        {
+          "t": 9438,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-missed-connection/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "reimburse",
+      "meaning_ko": "(쓴 비용을) 돌려주다, 환급하다",
+      "example": "Can I get reimbursed for basic things like a toothbrush?"
+    },
+    {
+      "kind": "word",
+      "term": "transfer",
+      "meaning_ko": "환승, 갈아타기",
+      "example": "The transfer is only forty minutes, so your bag might not make it."
+    },
+    {
+      "kind": "word",
+      "term": "receipt",
+      "meaning_ko": "영수증",
+      "example": "Keep your receipts and you can claim up to a hundred euros."
+    },
+    {
+      "kind": "phrase",
+      "term": "I missed my connection",
+      "meaning_ko": "연결편을 놓쳤다",
+      "prompt_ko": "앞 비행기가 늦어서 갈아탈 비행기를 놓쳤다고 말해봐",
+      "keywords": [
+        {
+          "word": "connection",
+          "meaning_ko": "연결편, 갈아탈 비행기"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "my bag might not make it",
+      "meaning_ko": "짐이 제때 못 따라올 수도 있다 (make it = 제시간에 도착하다)",
+      "prompt_ko": "환승 시간이 짧아서 짐이 제때 못 따라올 수도 있냐고 물어봐"
+    }
+  ],
+  "generated_at": "2026-10-02T20:34:46.996Z"
+}

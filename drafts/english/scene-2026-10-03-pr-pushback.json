@@ -1,0 +1,2332 @@
+{
+  "id": "2026-10-03-pr-pushback",
+  "situation_ko": "시니어 리뷰어가 내 PR 에 재시도 로직을 공용 패키지로 빼기 전엔 머지하지 말자고 한다. 후속 티켓으로 미루자고 하자, 리뷰어가 재시도에 지터가 없다는 진짜 버그를 짚는다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-BrianMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "시니어 리뷰어",
+      "meaning_ko": "PR 에 코멘트 몇 개 남겼어요. 핵심은 재시도 로직인데, 서비스마다 벌써 세 벌이나 있어요. 머지 전에 공용 패키지로 빼줬으면 해요.",
+      "en": "I left a few comments on your PR. The main one is the retry logic. We already have three copies of it across services, and I'd rather you pull it into the shared package before this merges.",
+      "ms": 11928,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "few",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "comments",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "PR",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "main",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retry",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "logic",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "copies",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "across",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "services",
+          23
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pull",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shared",
+          32
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "package",
+          33
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          34
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          35
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "merges",
+          36
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 75
+        },
+        {
+          "t": 150,
+          "d": 275
+        },
+        {
+          "t": 438,
+          "d": 50
+        },
+        {
+          "t": 500,
+          "d": 225
+        },
+        {
+          "t": 738,
+          "d": 538
+        },
+        {
+          "t": 1288,
+          "d": 138
+        },
+        {
+          "t": 1438,
+          "d": 150
+        },
+        {
+          "t": 1600,
+          "d": 550
+        },
+        {
+          "t": 2538,
+          "d": 75
+        },
+        {
+          "t": 2625,
+          "d": 288
+        },
+        {
+          "t": 2925,
+          "d": 313
+        },
+        {
+          "t": 3250,
+          "d": 238
+        },
+        {
+          "t": 3500,
+          "d": 100
+        },
+        {
+          "t": 3613,
+          "d": 438
+        },
+        {
+          "t": 4063,
+          "d": 638
+        },
+        {
+          "t": 5075,
+          "d": 138
+        },
+        {
+          "t": 5225,
+          "d": 325
+        },
+        {
+          "t": 5563,
+          "d": 213
+        },
+        {
+          "t": 5788,
+          "d": 275
+        },
+        {
+          "t": 6075,
+          "d": 425
+        },
+        {
+          "t": 6513,
+          "d": 100
+        },
+        {
+          "t": 6625,
+          "d": 88
+        },
+        {
+          "t": 6725,
+          "d": 338
+        },
+        {
+          "t": 7075,
+          "d": 663
+        },
+        {
+          "t": 8050,
+          "d": 213
+        },
+        {
+          "t": 8275,
+          "d": 188
+        },
+        {
+          "t": 8475,
+          "d": 263
+        },
+        {
+          "t": 8750,
+          "d": 125
+        },
+        {
+          "t": 8888,
+          "d": 250
+        },
+        {
+          "t": 9150,
+          "d": 113
+        },
+        {
+          "t": 9275,
+          "d": 263
+        },
+        {
+          "t": 9550,
+          "d": 88
+        },
+        {
+          "t": 9650,
+          "d": 363
+        },
+        {
+          "t": 10025,
+          "d": 475
+        },
+        {
+          "t": 10513,
+          "d": 313
+        },
+        {
+          "t": 10838,
+          "d": 175
+        },
+        {
+          "t": 11025,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-pr-pushback/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "취지에는 동의하지만 이건 금요일 릴리스에 묶여 있다고 하고, 일단 그대로 머지하고 리팩터링은 후속 티켓으로 관리하자고 제안해봐",
+      "en": "I agree with the idea, but this is tied to Friday's release. Can we merge it as is and track the refactor in a follow-up ticket?",
+      "ms": 8520,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "agree",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "idea",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tied",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "merge",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "track",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "refactor",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "follow-up",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ticket",
+          25
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 238
+        },
+        {
+          "t": 450,
+          "d": 113
+        },
+        {
+          "t": 575,
+          "d": 113
+        },
+        {
+          "t": 688,
+          "d": 588
+        },
+        {
+          "t": 1575,
+          "d": 163
+        },
+        {
+          "t": 1738,
+          "d": 175
+        },
+        {
+          "t": 1913,
+          "d": 125
+        },
+        {
+          "t": 2038,
+          "d": 413
+        },
+        {
+          "t": 2450,
+          "d": 88
+        },
+        {
+          "t": 2538,
+          "d": 500
+        },
+        {
+          "t": 3038,
+          "d": 600
+        },
+        {
+          "t": 4038,
+          "d": 88
+        },
+        {
+          "t": 4125,
+          "d": 75
+        },
+        {
+          "t": 4200,
+          "d": 350
+        },
+        {
+          "t": 4550,
+          "d": 100
+        },
+        {
+          "t": 4700,
+          "d": 300
+        },
+        {
+          "t": 5100,
+          "d": 500
+        },
+        {
+          "t": 5725,
+          "d": 125
+        },
+        {
+          "t": 5850,
+          "d": 388
+        },
+        {
+          "t": 6238,
+          "d": 75
+        },
+        {
+          "t": 6313,
+          "d": 750
+        },
+        {
+          "t": 7175,
+          "d": 88
+        },
+        {
+          "t": 7263,
+          "d": 38
+        },
+        {
+          "t": 7300,
+          "d": 475
+        },
+        {
+          "t": 7788,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-pr-pushback/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "후속 티켓은 꼭 안 하게 되더라고요. 그리고 더 큰 문제가 있어요. 재시도에 지터가 없어요. 브로커가 죽었다 살아나면 모든 컨슈머가 정확히 같은 순간에 몰려들 거예요.",
+      "en": "Follow-up tickets have a way of never getting done. And there's a bigger problem: your retries have no jitter. If the broker goes down, every consumer will hit it at exactly the same moment when it comes back.",
+      "ms": 12864,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Follow-up",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tickets",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "way",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "never",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "getting",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "done",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bigger",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          13
+        ],
+        [
+          ": ",
+          null
+        ],
+        [
+          "your",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retries",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jitter",
+          18
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "broker",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "goes",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          23
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "every",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "consumer",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "will",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hit",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exactly",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          32
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moment",
+          33
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          34
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          35
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "comes",
+          36
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          37
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 513
+        },
+        {
+          "t": 613,
+          "d": 425
+        },
+        {
+          "t": 1050,
+          "d": 250
+        },
+        {
+          "t": 1313,
+          "d": 88
+        },
+        {
+          "t": 1413,
+          "d": 313
+        },
+        {
+          "t": 1738,
+          "d": 138
+        },
+        {
+          "t": 1888,
+          "d": 275
+        },
+        {
+          "t": 2175,
+          "d": 300
+        },
+        {
+          "t": 2488,
+          "d": 388
+        },
+        {
+          "t": 3263,
+          "d": 88
+        },
+        {
+          "t": 3363,
+          "d": 175
+        },
+        {
+          "t": 3550,
+          "d": 88
+        },
+        {
+          "t": 3650,
+          "d": 275
+        },
+        {
+          "t": 3938,
+          "d": 588
+        },
+        {
+          "t": 4775,
+          "d": 238
+        },
+        {
+          "t": 5025,
+          "d": 550
+        },
+        {
+          "t": 5588,
+          "d": 225
+        },
+        {
+          "t": 5825,
+          "d": 200
+        },
+        {
+          "t": 6038,
+          "d": 463
+        },
+        {
+          "t": 6863,
+          "d": 163
+        },
+        {
+          "t": 7038,
+          "d": 88
+        },
+        {
+          "t": 7138,
+          "d": 338
+        },
+        {
+          "t": 7488,
+          "d": 238
+        },
+        {
+          "t": 7738,
+          "d": 475
+        },
+        {
+          "t": 8488,
+          "d": 313
+        },
+        {
+          "t": 8813,
+          "d": 538
+        },
+        {
+          "t": 9363,
+          "d": 163
+        },
+        {
+          "t": 9538,
+          "d": 213
+        },
+        {
+          "t": 9763,
+          "d": 200
+        },
+        {
+          "t": 9988,
+          "d": 138
+        },
+        {
+          "t": 10138,
+          "d": 550
+        },
+        {
+          "t": 10700,
+          "d": 88
+        },
+        {
+          "t": 10800,
+          "d": 300
+        },
+        {
+          "t": 11113,
+          "d": 400
+        },
+        {
+          "t": 11525,
+          "d": 125
+        },
+        {
+          "t": 11663,
+          "d": 88
+        },
+        {
+          "t": 11763,
+          "d": 263
+        },
+        {
+          "t": 12038,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-pr-pushback/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그건 맞는 지적이고 진짜 버그라고 인정한 뒤 오늘 고치겠다고 해봐. 리팩터링은 다음 스프린트에 내가 직접 맡아서 백로그에 묵히지 않겠다고 덧붙여",
+      "en": "That's a fair point. That one's a real bug, and I'll fix it today. The refactor I'll own myself next sprint, so it doesn't just sit in the backlog.",
+      "ms": 9264,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "real",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bug",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "refactor",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "own",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "myself",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sprint",
+          20
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sit",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "backlog",
+          28
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 125
+        },
+        {
+          "t": 250,
+          "d": 50
+        },
+        {
+          "t": 313,
+          "d": 325
+        },
+        {
+          "t": 650,
+          "d": 363
+        },
+        {
+          "t": 1425,
+          "d": 88
+        },
+        {
+          "t": 1513,
+          "d": 125
+        },
+        {
+          "t": 1638,
+          "d": 50
+        },
+        {
+          "t": 1688,
+          "d": 325
+        },
+        {
+          "t": 2025,
+          "d": 363
+        },
+        {
+          "t": 2625,
+          "d": 88
+        },
+        {
+          "t": 2725,
+          "d": 138
+        },
+        {
+          "t": 2863,
+          "d": 325
+        },
+        {
+          "t": 3200,
+          "d": 75
+        },
+        {
+          "t": 3288,
+          "d": 425
+        },
+        {
+          "t": 4113,
+          "d": 50
+        },
+        {
+          "t": 4175,
+          "d": 588
+        },
+        {
+          "t": 4763,
+          "d": 100
+        },
+        {
+          "t": 4963,
+          "d": 163
+        },
+        {
+          "t": 5125,
+          "d": 513
+        },
+        {
+          "t": 5650,
+          "d": 275
+        },
+        {
+          "t": 5938,
+          "d": 388
+        },
+        {
+          "t": 6725,
+          "d": 175
+        },
+        {
+          "t": 6900,
+          "d": 88
+        },
+        {
+          "t": 7000,
+          "d": 300
+        },
+        {
+          "t": 7300,
+          "d": 238
+        },
+        {
+          "t": 7550,
+          "d": 475
+        },
+        {
+          "t": 8088,
+          "d": 75
+        },
+        {
+          "t": 8175,
+          "d": 63
+        },
+        {
+          "t": 8238,
+          "d": 663
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-pr-pushback/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요, 그 정도면 받아들일게요. 티켓에 이름 넣고 PR 설명에 링크 걸어주세요.",
+      "en": "Okay, I can live with that. Put your name on the ticket and link it in the PR description.",
+      "ms": 5520,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "live",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Put",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "name",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ticket",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "link",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "PR",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "description",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 225
+        },
+        {
+          "t": 300,
+          "d": 125
+        },
+        {
+          "t": 438,
+          "d": 200
+        },
+        {
+          "t": 650,
+          "d": 238
+        },
+        {
+          "t": 900,
+          "d": 138
+        },
+        {
+          "t": 1050,
+          "d": 375
+        },
+        {
+          "t": 1813,
+          "d": 163
+        },
+        {
+          "t": 1988,
+          "d": 125
+        },
+        {
+          "t": 2125,
+          "d": 350
+        },
+        {
+          "t": 2500,
+          "d": 150
+        },
+        {
+          "t": 2663,
+          "d": 88
+        },
+        {
+          "t": 2763,
+          "d": 463
+        },
+        {
+          "t": 3238,
+          "d": 175
+        },
+        {
+          "t": 3425,
+          "d": 250
+        },
+        {
+          "t": 3688,
+          "d": 175
+        },
+        {
+          "t": 3875,
+          "d": 138
+        },
+        {
+          "t": 4025,
+          "d": 88
+        },
+        {
+          "t": 4125,
+          "d": 338
+        },
+        {
+          "t": 4475,
+          "d": 675
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-pr-pushback/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "알겠다고 하고, 지터 수정이 들어가면 재연결 급증이 평평해지는 걸 볼 수 있게 부하 테스트 결과도 붙이겠다고 말해봐",
+      "en": "Will do. I'll also attach the load test results once the fix is in, so you can see the reconnect spike flatten out.",
+      "ms": 6864,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Will",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "attach",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "load",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "results",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "once",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reconnect",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spike",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flatten",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 288
+        },
+        {
+          "t": 863,
+          "d": 100
+        },
+        {
+          "t": 975,
+          "d": 338
+        },
+        {
+          "t": 1313,
+          "d": 413
+        },
+        {
+          "t": 1725,
+          "d": 100
+        },
+        {
+          "t": 1825,
+          "d": 275
+        },
+        {
+          "t": 2113,
+          "d": 275
+        },
+        {
+          "t": 2400,
+          "d": 463
+        },
+        {
+          "t": 2875,
+          "d": 288
+        },
+        {
+          "t": 3163,
+          "d": 88
+        },
+        {
+          "t": 3250,
+          "d": 350
+        },
+        {
+          "t": 3600,
+          "d": 125
+        },
+        {
+          "t": 3725,
+          "d": 300
+        },
+        {
+          "t": 4425,
+          "d": 88
+        },
+        {
+          "t": 4513,
+          "d": 75
+        },
+        {
+          "t": 4588,
+          "d": 100
+        },
+        {
+          "t": 4688,
+          "d": 175
+        },
+        {
+          "t": 4863,
+          "d": 75
+        },
+        {
+          "t": 4950,
+          "d": 513
+        },
+        {
+          "t": 5463,
+          "d": 388
+        },
+        {
+          "t": 5850,
+          "d": 375
+        },
+        {
+          "t": 6225,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-pr-pushback/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "완벽해요. 준비되면 알려줘요, 바로 승인할게요.",
+      "en": "Perfect. Ping me when it's ready and I'll approve it.",
+      "ms": 3600,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Perfect",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Ping",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ready",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approve",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 575
+        },
+        {
+          "t": 1000,
+          "d": 188
+        },
+        {
+          "t": 1200,
+          "d": 213
+        },
+        {
+          "t": 1425,
+          "d": 163
+        },
+        {
+          "t": 1600,
+          "d": 188
+        },
+        {
+          "t": 1800,
+          "d": 450
+        },
+        {
+          "t": 2263,
+          "d": 150
+        },
+        {
+          "t": 2425,
+          "d": 163
+        },
+        {
+          "t": 2600,
+          "d": 375
+        },
+        {
+          "t": 2988,
+          "d": 250
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-pr-pushback/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "jitter",
+      "meaning_ko": "지터 — 재시도 간격에 일부러 섞는 무작위 지연 (몰림 방지)",
+      "example": "Your retries have no jitter, so every consumer hits the broker at the same moment."
+    },
+    {
+      "kind": "word",
+      "term": "spike",
+      "meaning_ko": "급증, 순간적으로 치솟음",
+      "example": "You can see the reconnect spike flatten out."
+    },
+    {
+      "kind": "word",
+      "term": "track",
+      "meaning_ko": "(일을) 기록해 두고 관리하다, 추적하다",
+      "example": "Can we track the refactor in a follow-up ticket?"
+    },
+    {
+      "kind": "phrase",
+      "term": "merge it as is",
+      "meaning_ko": "있는 그대로 머지하다 (as is = 손대지 않은 지금 상태로)",
+      "prompt_ko": "일정이 급하니 이번엔 지금 상태 그대로 머지하자고 제안해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "I'll own it myself",
+      "meaning_ko": "내가 직접 책임지고 맡겠다",
+      "prompt_ko": "리팩터링은 다음 스프린트에 내가 직접 책임지고 맡겠다고 말해봐",
+      "keywords": [
+        {
+          "word": "backlog",
+          "meaning_ko": "밀린 작업 목록, 아직 손 안 댄 일감"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "I can live with that",
+      "meaning_ko": "완벽하진 않지만 그 정도면 받아들일 수 있다",
+      "prompt_ko": "상대 제안이 마음에 쏙 들진 않지만 받아들일 수 있다고 말해봐"
+    }
+  ],
+  "generated_at": "2026-10-02T20:35:04.527Z"
+}

@@ -1,0 +1,2332 @@
+{
+  "id": "2026-10-03-attribution-gap",
+  "situation_ko": "CFO 가 메타 광고 성과가 메타 대시보드와 구글 애널리틱스에서 크게 다르다며 메타 예산을 30퍼센트 깎자고 한다. 일괄 삭감 대신 지역 홀드아웃 테스트를 숫자로 설득한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "CFO",
+      "meaning_ko": "지난달 걸 보고 있는데요. 메타는 구매 420건을 만들었다는데 구글 애널리틱스는 260건만 쳐줘요. 뭘 믿어야 하죠?",
+      "en": "I'm looking at last month. Meta says it drove four hundred and twenty purchases, but Google Analytics only gives it two hundred and sixty. Which one am I supposed to believe?",
+      "ms": 11688,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looking",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Meta",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "says",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drove",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "purchases",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Google",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Analytics",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gives",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sixty",
+          23
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Which",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "am",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "supposed",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "believe",
+          30
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 200
+        },
+        {
+          "t": 313,
+          "d": 288
+        },
+        {
+          "t": 613,
+          "d": 75
+        },
+        {
+          "t": 700,
+          "d": 288
+        },
+        {
+          "t": 1000,
+          "d": 450
+        },
+        {
+          "t": 2313,
+          "d": 338
+        },
+        {
+          "t": 2663,
+          "d": 225
+        },
+        {
+          "t": 2900,
+          "d": 125
+        },
+        {
+          "t": 3038,
+          "d": 325
+        },
+        {
+          "t": 3375,
+          "d": 175
+        },
+        {
+          "t": 3563,
+          "d": 313
+        },
+        {
+          "t": 3888,
+          "d": 75
+        },
+        {
+          "t": 3975,
+          "d": 313
+        },
+        {
+          "t": 4300,
+          "d": 663
+        },
+        {
+          "t": 5213,
+          "d": 138
+        },
+        {
+          "t": 5363,
+          "d": 375
+        },
+        {
+          "t": 5750,
+          "d": 513
+        },
+        {
+          "t": 6275,
+          "d": 300
+        },
+        {
+          "t": 6588,
+          "d": 250
+        },
+        {
+          "t": 6850,
+          "d": 150
+        },
+        {
+          "t": 7013,
+          "d": 225
+        },
+        {
+          "t": 7250,
+          "d": 300
+        },
+        {
+          "t": 7563,
+          "d": 75
+        },
+        {
+          "t": 7650,
+          "d": 475
+        },
+        {
+          "t": 8988,
+          "d": 263
+        },
+        {
+          "t": 9263,
+          "d": 175
+        },
+        {
+          "t": 9450,
+          "d": 88
+        },
+        {
+          "t": 9550,
+          "d": 88
+        },
+        {
+          "t": 9650,
+          "d": 438
+        },
+        {
+          "t": 10100,
+          "d": 50
+        },
+        {
+          "t": 10163,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-attribution-gap/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "둘 다 딱히 틀린 건 아니라고 하고, 메타는 광고를 보기만 하고 나중에 산 사람까지 세고 애널리틱스는 마지막 클릭에만 공을 준다고 설명해봐",
+      "en": "Neither one is wrong, exactly. Meta counts people who saw an ad and bought later, even without clicking. Analytics only gives credit to the last click.",
+      "ms": 9888,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Neither",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wrong",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "exactly",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Meta",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "counts",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "people",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "who",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "saw",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ad",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bought",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "later",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "even",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "without",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clicking",
+          17
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Analytics",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gives",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "credit",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "click",
+          25
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 338
+        },
+        {
+          "t": 400,
+          "d": 175
+        },
+        {
+          "t": 588,
+          "d": 150
+        },
+        {
+          "t": 750,
+          "d": 438
+        },
+        {
+          "t": 1438,
+          "d": 638
+        },
+        {
+          "t": 2438,
+          "d": 263
+        },
+        {
+          "t": 2713,
+          "d": 425
+        },
+        {
+          "t": 3138,
+          "d": 313
+        },
+        {
+          "t": 3463,
+          "d": 88
+        },
+        {
+          "t": 3563,
+          "d": 313
+        },
+        {
+          "t": 3888,
+          "d": 113
+        },
+        {
+          "t": 4013,
+          "d": 338
+        },
+        {
+          "t": 4363,
+          "d": 175
+        },
+        {
+          "t": 4550,
+          "d": 238
+        },
+        {
+          "t": 4788,
+          "d": 325
+        },
+        {
+          "t": 5650,
+          "d": 200
+        },
+        {
+          "t": 5863,
+          "d": 300
+        },
+        {
+          "t": 6163,
+          "d": 475
+        },
+        {
+          "t": 7038,
+          "d": 538
+        },
+        {
+          "t": 7675,
+          "d": 225
+        },
+        {
+          "t": 7913,
+          "d": 238
+        },
+        {
+          "t": 8163,
+          "d": 388
+        },
+        {
+          "t": 8550,
+          "d": 75
+        },
+        {
+          "t": 8638,
+          "d": 88
+        },
+        {
+          "t": 8725,
+          "d": 388
+        },
+        {
+          "t": 9125,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-attribution-gap/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 진실은 그 중간 어딘가인데 우리는 큰 숫자 기준으로 돈을 내고 있네요. 메타를 30퍼센트 깎고 어떻게 되는지 보죠.",
+      "en": "Then the truth is somewhere in between, and we're paying for the bigger number. I'd cut Meta by thirty percent and see what happens.",
+      "ms": 8328,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "truth",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "somewhere",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "between",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paying",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bigger",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cut",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Meta",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happens",
+          23
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 238
+        },
+        {
+          "t": 350,
+          "d": 75
+        },
+        {
+          "t": 438,
+          "d": 338
+        },
+        {
+          "t": 788,
+          "d": 138
+        },
+        {
+          "t": 938,
+          "d": 350
+        },
+        {
+          "t": 1300,
+          "d": 125
+        },
+        {
+          "t": 1438,
+          "d": 500
+        },
+        {
+          "t": 2100,
+          "d": 125
+        },
+        {
+          "t": 2238,
+          "d": 163
+        },
+        {
+          "t": 2413,
+          "d": 325
+        },
+        {
+          "t": 2750,
+          "d": 75
+        },
+        {
+          "t": 2838,
+          "d": 100
+        },
+        {
+          "t": 2950,
+          "d": 238
+        },
+        {
+          "t": 3200,
+          "d": 413
+        },
+        {
+          "t": 4475,
+          "d": 238
+        },
+        {
+          "t": 4725,
+          "d": 225
+        },
+        {
+          "t": 4963,
+          "d": 263
+        },
+        {
+          "t": 5238,
+          "d": 150
+        },
+        {
+          "t": 5400,
+          "d": 413
+        },
+        {
+          "t": 5825,
+          "d": 438
+        },
+        {
+          "t": 6275,
+          "d": 125
+        },
+        {
+          "t": 6413,
+          "d": 225
+        },
+        {
+          "t": 6650,
+          "d": 175
+        },
+        {
+          "t": 6838,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-attribution-gap/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "일괄로 깎으면 매출이 빠져도 원인을 알 수 없다고 반박하고, 대신 한 지역만 2주간 메타를 끄고 나머지와 비교하는 홀드아웃을 제안해봐",
+      "en": "If we cut it across the board, we won't know what actually caused any drop. I'd rather run a two-week holdout: switch Meta off in one region and compare it against the rest.",
+      "ms": 10656,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "If",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cut",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "across",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "board",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "caused",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drop",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two-week",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "holdout",
+          20
+        ],
+        [
+          ": ",
+          null
+        ],
+        [
+          "switch",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Meta",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "region",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compare",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "against",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rest",
+          32
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 113
+        },
+        {
+          "t": 188,
+          "d": 100
+        },
+        {
+          "t": 300,
+          "d": 263
+        },
+        {
+          "t": 575,
+          "d": 75
+        },
+        {
+          "t": 663,
+          "d": 350
+        },
+        {
+          "t": 1025,
+          "d": 88
+        },
+        {
+          "t": 1125,
+          "d": 425
+        },
+        {
+          "t": 2013,
+          "d": 125
+        },
+        {
+          "t": 2150,
+          "d": 150
+        },
+        {
+          "t": 2313,
+          "d": 125
+        },
+        {
+          "t": 2450,
+          "d": 125
+        },
+        {
+          "t": 2588,
+          "d": 338
+        },
+        {
+          "t": 2938,
+          "d": 488
+        },
+        {
+          "t": 3488,
+          "d": 175
+        },
+        {
+          "t": 3663,
+          "d": 475
+        },
+        {
+          "t": 4513,
+          "d": 263
+        },
+        {
+          "t": 4788,
+          "d": 313
+        },
+        {
+          "t": 5113,
+          "d": 225
+        },
+        {
+          "t": 5350,
+          "d": 50
+        },
+        {
+          "t": 5413,
+          "d": 413
+        },
+        {
+          "t": 5838,
+          "d": 475
+        },
+        {
+          "t": 6813,
+          "d": 325
+        },
+        {
+          "t": 7150,
+          "d": 275
+        },
+        {
+          "t": 7438,
+          "d": 263
+        },
+        {
+          "t": 7713,
+          "d": 125
+        },
+        {
+          "t": 7838,
+          "d": 225
+        },
+        {
+          "t": 8075,
+          "d": 538
+        },
+        {
+          "t": 8625,
+          "d": 225
+        },
+        {
+          "t": 8850,
+          "d": 450
+        },
+        {
+          "t": 9300,
+          "d": 113
+        },
+        {
+          "t": 9463,
+          "d": 263
+        },
+        {
+          "t": 9738,
+          "d": 63
+        },
+        {
+          "t": 9813,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-attribution-gap/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그 지역에서 2주치 매출을 날리자고요? 비용이 얼마나 되는데요?",
+      "en": "Two weeks of lost sales in that region? What does that cost us?",
+      "ms": 5040,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Two",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lost",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sales",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "region",
+          7
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "What",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cost",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 213
+        },
+        {
+          "t": 325,
+          "d": 288
+        },
+        {
+          "t": 625,
+          "d": 75
+        },
+        {
+          "t": 713,
+          "d": 313
+        },
+        {
+          "t": 1038,
+          "d": 313
+        },
+        {
+          "t": 1363,
+          "d": 88
+        },
+        {
+          "t": 1463,
+          "d": 188
+        },
+        {
+          "t": 1663,
+          "d": 475
+        },
+        {
+          "t": 3000,
+          "d": 200
+        },
+        {
+          "t": 3213,
+          "d": 138
+        },
+        {
+          "t": 3363,
+          "d": 150
+        },
+        {
+          "t": 3525,
+          "d": 313
+        },
+        {
+          "t": 3850,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-attribution-gap/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그 지역은 매출의 약 8퍼센트라서 최악이어도 한 달 매출의 1퍼센트 미만을 거는 거라고 숫자로 말하고, 믿을 수 있는 숫자를 얻는 값치고 싸다고 덧붙여",
+      "en": "That region is about eight percent of revenue, so even in the worst case we're risking less than one percent of the month. That's a cheap price for a number we can actually trust.",
+      "ms": 10224,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "region",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "revenue",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "even",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worst",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "risking",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "less",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          22
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cheap",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          29
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          30
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          31
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          32
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trust",
+          33
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 225
+        },
+        {
+          "t": 325,
+          "d": 488
+        },
+        {
+          "t": 925,
+          "d": 138
+        },
+        {
+          "t": 1075,
+          "d": 300
+        },
+        {
+          "t": 1438,
+          "d": 150
+        },
+        {
+          "t": 1600,
+          "d": 375
+        },
+        {
+          "t": 1975,
+          "d": 75
+        },
+        {
+          "t": 2063,
+          "d": 400
+        },
+        {
+          "t": 2925,
+          "d": 263
+        },
+        {
+          "t": 3313,
+          "d": 225
+        },
+        {
+          "t": 3550,
+          "d": 75
+        },
+        {
+          "t": 3638,
+          "d": 88
+        },
+        {
+          "t": 3738,
+          "d": 288
+        },
+        {
+          "t": 4038,
+          "d": 338
+        },
+        {
+          "t": 4388,
+          "d": 200
+        },
+        {
+          "t": 4600,
+          "d": 463
+        },
+        {
+          "t": 5075,
+          "d": 238
+        },
+        {
+          "t": 5325,
+          "d": 175
+        },
+        {
+          "t": 5513,
+          "d": 213
+        },
+        {
+          "t": 5738,
+          "d": 400
+        },
+        {
+          "t": 6150,
+          "d": 50
+        },
+        {
+          "t": 6213,
+          "d": 63
+        },
+        {
+          "t": 6275,
+          "d": 413
+        },
+        {
+          "t": 7063,
+          "d": 250
+        },
+        {
+          "t": 7325,
+          "d": 75
+        },
+        {
+          "t": 7413,
+          "d": 338
+        },
+        {
+          "t": 7763,
+          "d": 388
+        },
+        {
+          "t": 8163,
+          "d": 113
+        },
+        {
+          "t": 8288,
+          "d": 25
+        },
+        {
+          "t": 8313,
+          "d": 338
+        },
+        {
+          "t": 8663,
+          "d": 100
+        },
+        {
+          "t": 8763,
+          "d": 163
+        },
+        {
+          "t": 8938,
+          "d": 413
+        },
+        {
+          "t": 9363,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-attribution-gap/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 대신 차이가 진짜로 드러나면 월말까지 예산 옮겨주세요.",
+      "en": "Fine. But if the gap turns out to be real, I want the budget moved by the end of the month.",
+      "ms": 6624,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Fine",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gap",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "turns",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "real",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moved",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 613
+        },
+        {
+          "t": 1575,
+          "d": 175
+        },
+        {
+          "t": 1763,
+          "d": 100
+        },
+        {
+          "t": 1875,
+          "d": 75
+        },
+        {
+          "t": 1963,
+          "d": 250
+        },
+        {
+          "t": 2225,
+          "d": 300
+        },
+        {
+          "t": 2538,
+          "d": 150
+        },
+        {
+          "t": 2700,
+          "d": 50
+        },
+        {
+          "t": 2763,
+          "d": 88
+        },
+        {
+          "t": 2863,
+          "d": 400
+        },
+        {
+          "t": 3488,
+          "d": 63
+        },
+        {
+          "t": 3563,
+          "d": 200
+        },
+        {
+          "t": 3775,
+          "d": 88
+        },
+        {
+          "t": 3875,
+          "d": 350
+        },
+        {
+          "t": 4238,
+          "d": 363
+        },
+        {
+          "t": 4613,
+          "d": 125
+        },
+        {
+          "t": 4750,
+          "d": 175
+        },
+        {
+          "t": 4938,
+          "d": 163
+        },
+        {
+          "t": 5113,
+          "d": 63
+        },
+        {
+          "t": 5188,
+          "d": 63
+        },
+        {
+          "t": 5263,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-attribution-gap/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "credit",
+      "meaning_ko": "(성과에 대한) 공, 기여로 인정함",
+      "example": "Analytics only gives credit to the last click."
+    },
+    {
+      "kind": "word",
+      "term": "holdout",
+      "meaning_ko": "홀드아웃 — 효과를 재려고 일부러 광고에서 빼두는 대조 그룹",
+      "example": "I'd rather run a two-week holdout in one region."
+    },
+    {
+      "kind": "word",
+      "term": "revenue",
+      "meaning_ko": "매출, 수익",
+      "example": "That region is about eight percent of revenue."
+    },
+    {
+      "kind": "word",
+      "term": "gap",
+      "meaning_ko": "차이, 격차",
+      "example": "If the gap turns out to be real, I want the budget moved."
+    },
+    {
+      "kind": "phrase",
+      "term": "neither one is wrong, exactly",
+      "meaning_ko": "둘 다 딱히 틀린 건 아니다",
+      "prompt_ko": "숫자가 다른 두 리포트 둘 다 딱히 틀린 건 아니라고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "across the board",
+      "meaning_ko": "일괄적으로, 전반에 걸쳐",
+      "prompt_ko": "예산을 일괄적으로 깎으면 무엇 때문에 매출이 빠졌는지 모른다고 반박해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "we're risking less than one percent of the month",
+      "meaning_ko": "한 달 매출의 1퍼센트 미만을 거는 셈이다",
+      "prompt_ko": "테스트가 최악으로 가도 한 달 매출의 1퍼센트 미만을 거는 거라고 말해봐"
+    }
+  ],
+  "generated_at": "2026-10-02T20:35:19.245Z"
+}

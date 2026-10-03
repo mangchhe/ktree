@@ -1,0 +1,1660 @@
+{
+  "id": "2026-10-03-gym-cancel",
+  "situation_ko": "이사를 앞두고 헬스장 회원권을 해지하러 왔다. 직원은 해지 대신 일시정지를 권하고, 위약금 면제에는 새 주소 증빙이 필요하다고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "헬스장 직원",
+      "meaning_ko": "안녕하세요, 오늘 뭘 도와드릴까요?",
+      "en": "Hi there, what can I do for you today?",
+      "ms": 2376,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 188
+        },
+        {
+          "t": 275,
+          "d": 275
+        },
+        {
+          "t": 575,
+          "d": 163
+        },
+        {
+          "t": 750,
+          "d": 138
+        },
+        {
+          "t": 900,
+          "d": 88
+        },
+        {
+          "t": 1000,
+          "d": 213
+        },
+        {
+          "t": 1225,
+          "d": 150
+        },
+        {
+          "t": 1388,
+          "d": 125
+        },
+        {
+          "t": 1525,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-gym-cancel/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "회원권을 해지하고 싶다고 말해봐",
+      "en": "Hi, I'd like to cancel my membership, please.",
+      "ms": 3336,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancel",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "membership",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 250
+        },
+        {
+          "t": 813,
+          "d": 138
+        },
+        {
+          "t": 950,
+          "d": 138
+        },
+        {
+          "t": 1088,
+          "d": 63
+        },
+        {
+          "t": 1163,
+          "d": 338
+        },
+        {
+          "t": 1500,
+          "d": 63
+        },
+        {
+          "t": 1563,
+          "d": 563
+        },
+        {
+          "t": 2288,
+          "d": 688
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-gym-cancel/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 이유를 여쭤봐도 될까요? 바쁜 시기라면 해지 대신 최대 3개월까지 무료로 일시정지해 드릴 수 있어요.",
+      "en": "Sure, can I ask why? If it's just a busy season, we can freeze it for up to three months instead, at no charge.",
+      "ms": 6792,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ask",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          4
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "If",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "busy",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "season",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "freeze",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          20
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "at",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          23
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 313
+        },
+        {
+          "t": 413,
+          "d": 175
+        },
+        {
+          "t": 600,
+          "d": 100
+        },
+        {
+          "t": 713,
+          "d": 300
+        },
+        {
+          "t": 1025,
+          "d": 363
+        },
+        {
+          "t": 1775,
+          "d": 113
+        },
+        {
+          "t": 1900,
+          "d": 150
+        },
+        {
+          "t": 2063,
+          "d": 250
+        },
+        {
+          "t": 2325,
+          "d": 63
+        },
+        {
+          "t": 2400,
+          "d": 300
+        },
+        {
+          "t": 2713,
+          "d": 450
+        },
+        {
+          "t": 3188,
+          "d": 125
+        },
+        {
+          "t": 3325,
+          "d": 163
+        },
+        {
+          "t": 3500,
+          "d": 325
+        },
+        {
+          "t": 3838,
+          "d": 113
+        },
+        {
+          "t": 3963,
+          "d": 163
+        },
+        {
+          "t": 4138,
+          "d": 113
+        },
+        {
+          "t": 4263,
+          "d": 125
+        },
+        {
+          "t": 4400,
+          "d": 238
+        },
+        {
+          "t": 4650,
+          "d": 313
+        },
+        {
+          "t": 4975,
+          "d": 475
+        },
+        {
+          "t": 5475,
+          "d": 138
+        },
+        {
+          "t": 5625,
+          "d": 175
+        },
+        {
+          "t": 5813,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-gym-cancel/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "고맙지만 일시정지는 소용없다고 하고, 다음 달에 다른 도시로 이사 간다고 설명해봐",
+      "en": "Thanks, but a freeze won't help. I'm moving to another city next month, so I won't be able to come at all.",
+      "ms": 5808,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "freeze",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'm",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "another",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "city",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "able",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 488
+        },
+        {
+          "t": 850,
+          "d": 125
+        },
+        {
+          "t": 988,
+          "d": 38
+        },
+        {
+          "t": 1038,
+          "d": 500
+        },
+        {
+          "t": 1538,
+          "d": 213
+        },
+        {
+          "t": 1763,
+          "d": 338
+        },
+        {
+          "t": 2513,
+          "d": 75
+        },
+        {
+          "t": 2600,
+          "d": 250
+        },
+        {
+          "t": 2850,
+          "d": 75
+        },
+        {
+          "t": 2925,
+          "d": 275
+        },
+        {
+          "t": 3200,
+          "d": 250
+        },
+        {
+          "t": 3450,
+          "d": 263
+        },
+        {
+          "t": 3713,
+          "d": 350
+        },
+        {
+          "t": 4300,
+          "d": 150
+        },
+        {
+          "t": 4450,
+          "d": 63
+        },
+        {
+          "t": 4525,
+          "d": 163
+        },
+        {
+          "t": 4688,
+          "d": 113
+        },
+        {
+          "t": 4800,
+          "d": 125
+        },
+        {
+          "t": 4938,
+          "d": 50
+        },
+        {
+          "t": 4988,
+          "d": 138
+        },
+        {
+          "t": 5125,
+          "d": 63
+        },
+        {
+          "t": 5188,
+          "d": 263
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-gym-cancel/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그렇군요. 원래 해지 위약금이 50달러인데, 다른 지역으로 이사하시는 경우엔 면제해 드려요. 새 주소 증빙만 보여주시면 됩니다.",
+      "en": "I see. There's normally a fifty-dollar cancellation fee, but we waive it if you're relocating. You'd just need to show proof of your new address.",
+      "ms": 8688,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "normally",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifty-dollar",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancellation",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fee",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "waive",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you're",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "relocating",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You'd",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "show",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "proof",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "address",
+          24
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 200,
+          "d": 413
+        },
+        {
+          "t": 1000,
+          "d": 188
+        },
+        {
+          "t": 1200,
+          "d": 413
+        },
+        {
+          "t": 1625,
+          "d": 63
+        },
+        {
+          "t": 1700,
+          "d": 638
+        },
+        {
+          "t": 2350,
+          "d": 750
+        },
+        {
+          "t": 3113,
+          "d": 338
+        },
+        {
+          "t": 3763,
+          "d": 150
+        },
+        {
+          "t": 3925,
+          "d": 138
+        },
+        {
+          "t": 4075,
+          "d": 263
+        },
+        {
+          "t": 4350,
+          "d": 88
+        },
+        {
+          "t": 4450,
+          "d": 138
+        },
+        {
+          "t": 4600,
+          "d": 150
+        },
+        {
+          "t": 4763,
+          "d": 813
+        },
+        {
+          "t": 5975,
+          "d": 150
+        },
+        {
+          "t": 6138,
+          "d": 250
+        },
+        {
+          "t": 6400,
+          "d": 163
+        },
+        {
+          "t": 6575,
+          "d": 88
+        },
+        {
+          "t": 6675,
+          "d": 238
+        },
+        {
+          "t": 6925,
+          "d": 325
+        },
+        {
+          "t": 7263,
+          "d": 88
+        },
+        {
+          "t": 7363,
+          "d": 138
+        },
+        {
+          "t": 7513,
+          "d": 175
+        },
+        {
+          "t": 7700,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-gym-cancel/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "새 주소가 적힌 서류는 아직 없다고 하고, 이삿짐 업체 예약 확인서로 대신해도 되냐고 물어봐",
+      "en": "I don't have anything with the new address yet. Would the booking confirmation from the moving company work?",
+      "ms": 5568,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "address",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "yet",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Would",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booking",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "confirmation",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "company",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 50
+        },
+        {
+          "t": 138,
+          "d": 163
+        },
+        {
+          "t": 300,
+          "d": 225
+        },
+        {
+          "t": 625,
+          "d": 313
+        },
+        {
+          "t": 938,
+          "d": 100
+        },
+        {
+          "t": 1038,
+          "d": 63
+        },
+        {
+          "t": 1100,
+          "d": 288
+        },
+        {
+          "t": 1388,
+          "d": 413
+        },
+        {
+          "t": 1800,
+          "d": 288
+        },
+        {
+          "t": 2488,
+          "d": 75
+        },
+        {
+          "t": 2563,
+          "d": 88
+        },
+        {
+          "t": 2663,
+          "d": 400
+        },
+        {
+          "t": 3075,
+          "d": 763
+        },
+        {
+          "t": 3975,
+          "d": 125
+        },
+        {
+          "t": 4113,
+          "d": 63
+        },
+        {
+          "t": 4175,
+          "d": 288
+        },
+        {
+          "t": 4463,
+          "d": 338
+        },
+        {
+          "t": 4800,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-gym-cancel/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그거면 될 거예요. 이메일로 보내주시면 이번 주 안에 해지 처리해 드릴게요.",
+      "en": "That should be fine. Just email it to us, and I'll process the cancellation by the end of the week.",
+      "ms": 6096,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "process",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancellation",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 150
+        },
+        {
+          "t": 238,
+          "d": 188
+        },
+        {
+          "t": 438,
+          "d": 150
+        },
+        {
+          "t": 600,
+          "d": 538
+        },
+        {
+          "t": 1525,
+          "d": 275
+        },
+        {
+          "t": 1813,
+          "d": 350
+        },
+        {
+          "t": 2175,
+          "d": 100
+        },
+        {
+          "t": 2288,
+          "d": 175
+        },
+        {
+          "t": 2475,
+          "d": 300
+        },
+        {
+          "t": 2988,
+          "d": 138
+        },
+        {
+          "t": 3138,
+          "d": 125
+        },
+        {
+          "t": 3275,
+          "d": 475
+        },
+        {
+          "t": 3763,
+          "d": 88
+        },
+        {
+          "t": 3863,
+          "d": 725
+        },
+        {
+          "t": 4600,
+          "d": 125
+        },
+        {
+          "t": 4738,
+          "d": 100
+        },
+        {
+          "t": 4850,
+          "d": 200
+        },
+        {
+          "t": 5063,
+          "d": 100
+        },
+        {
+          "t": 5175,
+          "d": 100
+        },
+        {
+          "t": 5288,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-03-gym-cancel/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "waive",
+      "meaning_ko": "(요금·규칙을) 면제하다, 받지 않기로 하다",
+      "example": "There's normally a cancellation fee, but we waive it if you're relocating."
+    },
+    {
+      "kind": "word",
+      "term": "relocate",
+      "meaning_ko": "(다른 지역으로) 이사하다, 옮기다",
+      "example": "We waive the fee if you're relocating."
+    },
+    {
+      "kind": "word",
+      "term": "proof",
+      "meaning_ko": "증빙, 증거",
+      "example": "You'd just need to show proof of your new address."
+    },
+    {
+      "kind": "phrase",
+      "term": "a freeze won't help",
+      "meaning_ko": "일시정지는 소용없다",
+      "prompt_ko": "회원권 일시정지로는 해결이 안 된다고 말해봐",
+      "keywords": [
+        {
+          "word": "freeze",
+          "meaning_ko": "(회원권·계좌 등의) 일시정지, 동결"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "Would the booking confirmation work?",
+      "meaning_ko": "예약 확인서로 될까요? (work = 그걸로 통하다, 대신 되다)",
+      "prompt_ko": "원하는 서류는 없으니 예약 확인서로 대신해도 되냐고 물어봐",
+      "keywords": [
+        {
+          "word": "confirmation",
+          "meaning_ko": "확인서, 확정 (예약 확인 메일 등)"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-10-02T20:34:24.093Z"
+}
