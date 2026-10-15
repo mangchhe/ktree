@@ -441,6 +441,23 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tab .ti{width:21px;height:21px;opacity:.75;transition:opacity .15s}
 .tab.on{color:var(--eng)}
 .tab.on .ti{opacity:1}
+
+/* --- 하루 모드 · 학습 순서 --- */
+.daymode{display:flex;align-items:center;gap:5px;margin:0 0 9px;flex-wrap:wrap}
+.daymode .dmh{font-size:10.5px;color:var(--dim);font-weight:600}
+.cmtrow{display:flex;align-items:center;gap:6px;margin:0 0 11px;flex-wrap:wrap}
+.pstep{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
+.pstep:last-child{border-bottom:none}
+.pstep .pn{flex:none;width:20px;height:20px;border-radius:99px;background:var(--eng-bg);
+  color:var(--eng);font-size:10.5px;font-weight:800;display:grid;place-items:center;margin-top:1px;font-family:var(--num)}
+.pstep.off .pn{background:var(--card-el);color:var(--dim)}
+.pstep .pw{font-size:10.5px;color:var(--eng);font-weight:800;letter-spacing:.02em}
+.pstep .pb{font-size:12.5px;line-height:1.6;color:var(--sub);margin-top:2px}
+.pstep .pb b{color:var(--text)}
+.wkrow{display:flex;gap:5px;margin-top:9px}
+.wkrow .tchip{flex:1;text-align:center;padding:6px 0}
+.wkrow .tchip.nowd{box-shadow:0 0 0 2px var(--warn-bg);border-color:var(--warn)}
+.sh{font-size:17px;font-weight:800;margin:2px 0 8px}
 </style>
 </head>
 <body>
@@ -486,6 +503,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
       <div id="av-list"></div>
     </section>
 
+    <!-- ============ 학습 순서 ============ -->
+    <section class="screen" id="s-plan">
+      <div id="pl-body"></div>
+    </section>
+
     <!-- ============ 같이 ============ -->
     <section class="screen" id="s-together">
       <div id="tg-body"></div>
@@ -508,6 +530,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7.5 4h11A2.5 2.5 0 0 1 21 6.5v11"/></svg>Vocab</button>
   <button class="tab" data-s="archive">
     <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="4.5" rx="1.5"/><path d="M5 8.5v10A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-10M10 12h4"/></svg>Archive</button>
+  <button class="tab" data-s="plan">
+    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/><circle cx="19.5" cy="18" r="2"/></svg>Plan</button>
   <button class="tab" data-s="together">
     <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.2 15.6a4.6 4.6 0 0 1 5.3 3.9"/></svg>Together</button>
 </nav>
@@ -523,7 +547,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-16.3';
+const BUILD = '2026-10-16.4';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -588,7 +612,60 @@ async function login(){
 async function logout(){ await sb.auth.signOut({ scope: 'local' }); location.reload(); }
 
 /* ================= 화면 전환 ================= */
-const SCREENS = ['today','vocab','archive','together','settings'];   // settings 는 탭이 아니다 — 톱니바퀴로만
+/* ── 하루 모드 ────────────────────────────────────────────────────────
+   출근하는 날은 **입을 못 여는 시간이 60~100분, 입 여는 시간이 20분**이다. 재택·주말은
+   한 자리에 앉아 다 한다. 그래서 순서가 갈린다 — 보드 순서를 모드에 따라 바꾼다.
+   재택 요일은 매주 되풀이되니 요일별로 기억한다. localStorage 면 충분하다 —
+   기기마다 출퇴근이 다를 일이 없고, 서버에 둘 만한 값도 아니다. */
+const DAY_KEY = 'ktree.eng.daymode';
+function dayModes(){ try { return JSON.parse(localStorage.getItem(DAY_KEY)) || {}; } catch(_) { return {}; } }
+function dayMode(d = new Date().getDay()){
+  return dayModes()[d] || (d === 0 || d === 6 ? 'home' : 'office');   // 주말은 기본 재택 쪽
+}
+function setDayMode(d, m){
+  const o = dayModes(); o[d] = m;
+  try { localStorage.setItem(DAY_KEY, JSON.stringify(o)); } catch(_) {}
+}
+const WEEK = ['일','월','화','수','목','금','토'];
+
+/* ── 출퇴근 통짜 트랙 ────────────────────────────────────────────────
+   지하철에서 장면마다 들어가 Play all 을 누르는 건 폰을 열 번 넘게 만지는 일이라
+   습관이 안 붙는다. 버튼 하나로 오늘 재료가 한 트랙으로 흐르고 화면을 끄면 끝이어야 한다. */
+let cmtLoop = false;
+const PROMPT_AUD = id => `${SUPABASE_URL}/storage/v1/object/public/eng-audio/prompts/${id}.mp3`;
+
+function commuteUrls(only){
+  const qs = tPrompts.map(p => [PROMPT_AUD(p.id)]);
+  if (only === 'q') return qs;
+  return [
+    ...tScenes.filter(x => x.full_url).map(x => [x.full_url]),
+    ...(tArticle?.audio_url ? [[tArticle.audio_url]] : []),
+    ...qs,
+  ];
+}
+
+async function playCommute(btn, only){
+  const urls = commuteUrls(only);
+  if (!urls.length) { toast(only === 'q' ? '오늘 질문이 아직 없어' : '오늘 오디오가 아직 없어'); return; }
+  tStopAudio();
+  const label = btn.textContent;
+  btn.textContent = '… loading'; btn.disabled = true;
+  const track = await concatMp3(urls);
+  btn.textContent = label; btn.disabled = false;
+  if (!track) { toast('오디오 일부가 아직 안 올라왔어'); return; }
+  const a = new Audio(URL.createObjectURL(track.blob));
+  tAudio = a; a.playbackRate = tRate; a.loop = cmtLoop;
+  setMedia(only === 'q' ? 'Questions · today' : 'Commute · today',
+           `ktree English · ${urls.length} tracks`);
+  // 수동 듣기도 누적에 넣는다 — Together 의 "Listened" 가 이걸로 돈다.
+  a.onended = async () => {
+    tProg.listened_ms = (tProg.listened_ms || 0) + Math.round((a.duration || 0) * 1000);
+    await bumpXp(XP.commute, 'Commute listened');
+  };
+  a.play().catch(() => toast('재생이 막혔어 — 한 번 더 눌러줘'));
+}
+
+const SCREENS = ['today','vocab','archive','plan','together','settings'];   // settings 는 탭이 아니다 — 톱니바퀴로만
 function show(s){
   SCREENS.forEach(k => $('s-'+k).classList.toggle('on', k===s));
   document.querySelectorAll('#tabbar .tab').forEach(b => b.classList.toggle('on', b.dataset.s===s));
@@ -601,6 +678,7 @@ function show(s){
   if (s==='today') renderToday();
   if (s==='vocab') renderVocab();
   if (s==='archive') renderArchive();
+  if (s==='plan') renderPlan();
   if (s==='together') renderTogether();
   if (s==='settings') renderSettings();
   window.scrollTo(0,0);
@@ -824,7 +902,7 @@ const COMBOS = [
   ['describe', 'ask', 'solve'],       // 롤플레이 묶음
   ['describe', 'habit', 'compare'],   // 변화·비교 묶음
 ];
-const XP = { speak:20, turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
+const XP = { commute:10, speak:20, turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
              article:8, recog:1, quizOk:5, quizMiss:2, complete:30, cap:250 };
 const RANKS = [
   [0,'Starter'], [400,'Everyday'], [1000,'Conversational'], [1800,'Fluent-ish'],
@@ -1116,6 +1194,23 @@ async function renderToday(){
   const cls = (d, t) => !t ? '' : d >= t ? ' done' : d > 0 ? ' part' : '';
   const pct = (d, t) => t ? Math.round(d / t * 100) : 0;
 
+  // 출근하는 날은 **듣기부터**다 — 아침 지하철에서 재료를 귀에 넣고, 집에 와서 입을 연다.
+  // 입력과 출력 사이에 몇 시간이 비면 따라 말하기가 아니라 꺼내 쓰기가 된다.
+  // 재택·주말은 한 자리에 앉아 하니 제일 중요한 Speaking 이 맨 앞이다.
+  const home = dayMode() === 'home';
+  const defs = {
+    speak:   { t:'Speaking',    s: kTot ? `${kDone}/${kTot}` : 'none',       d:kDone, n:kTot },
+    scene:   { t:'Scenes',      s: sTot ? `${sDone}/${sTot}` : 'none',       d:sDone, n:sTot },
+    article: { t:'News',        s: aTot ? `${aSent}/${aTot} sent.` : 'none', d:aSent, n:aTot },
+    vocab:   { t:'Vocab drill', s: vTot ? `${vDone}/${vTot}` : 'none',       d:vDone, n:vTot },
+  };
+  const order = home ? ['speak','scene','article','vocab'] : ['scene','article','vocab','speak'];
+  const bcard = k => { const c = defs[k]; return `
+      <button class="bcard${cls(c.d,c.n)}" data-a="${k}" ${c.n ? '' : 'disabled'}>
+        <span class="chk">✓</span><span class="bt">${c.t}</span>
+        <span class="bs">${c.s}</span>
+        <span class="bar"><i style="width:${pct(c.d,c.n)}%"></i></span></button>`; };
+
   box.innerHTML = `
     <div class="xpbar">
       <div class="top"><span class="rk" id="t-rank">Lv ${r.n} <em>${esc(r.name)}</em></span>
@@ -1123,23 +1218,21 @@ async function renderToday(){
       <div class="xtrack"><i id="t-track" style="width:${Math.max(((tProg?.xp_total||0)-r.from)/(r.to-r.from)*100,2)}%"></i></div>
       <div class="gain" id="t-gain"></div>
     </div>
+    <div class="daymode">
+      <button class="tchip${home ? '' : ' on'}" data-dm="office">출근</button>
+      <button class="tchip${home ? ' on' : ''}" data-dm="home">재택</button>
+      <span class="dmh">${home ? '한 자리에서 Speaking 부터' : '지하철에서 듣고 · 집에서 말한다'}</span>
+      <button class="btn sm" data-go="plan" style="margin-left:auto;padding:4px 10px;font-size:10.5px">순서 ›</button>
+    </div>
+    <div class="cmtrow">
+      <button class="btn sm${home ? '' : ' primary-btn'}" id="t-cmt">▶ Commute</button>
+      <button class="btn sm" id="t-cmtq">▶ Questions</button>
+      <button class="btn sm" id="t-cmt-stop">■</button>
+      <button class="btn sm${cmtLoop ? ' on' : ''}" id="t-cmt-loop">🔁</button>
+      <span class="dmh">한 트랙으로 이어 틀고 화면 꺼도 돼</span>
+    </div>
     <div class="board">
-      <button class="bcard${cls(kDone,kTot)}" data-a="speak" ${kTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">Speaking</span>
-        <span class="bs">${kTot ? `${kDone}/${kTot}` : 'none'}</span>
-        <span class="bar"><i style="width:${pct(kDone,kTot)}%"></i></span></button>
-      <button class="bcard${cls(sDone,sTot)}" data-a="scene" ${sTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">Scenes</span>
-        <span class="bs">${sTot ? `${sDone}/${sTot}` : 'none'}</span>
-        <span class="bar"><i style="width:${pct(sDone,sTot)}%"></i></span></button>
-      <button class="bcard${cls(aSent,aTot)}" data-a="article" ${aTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">News</span>
-        <span class="bs">${aTot ? `${aSent}/${aTot} sent.` : 'none'}</span>
-        <span class="bar"><i style="width:${pct(aSent,aTot)}%"></i></span></button>
-      <button class="bcard${cls(vDone,vTot)}" data-a="vocab" ${vTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">Vocab drill</span>
-        <span class="bs">${vTot ? `${vDone}/${vTot}` : 'none'}</span>
-        <span class="bar"><i style="width:${pct(vDone,vTot)}%"></i></span></button>
+      ${order.map(bcard).join('')}
       <button class="bcard${cls(qDone,qTot)}${three && qTot ? '' : ' locked'}" data-a="quiz" ${three && qTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Quiz</span>
         <span class="bs">${!three ? 'after the four' : qTot ? `${qDone}/${qTot}` : 'none'}</span>
@@ -1150,8 +1243,10 @@ async function renderToday(){
       <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>m</small></div><div class="l">Listened</div></div>
       <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">Articles read</div></div>
     </div>
-    <p class="leg"><b>Speaking first</b> — hearing the question is the part the test grades.
-      Quiz opens once the four above are done; it pulls from them, so it can't come first.</p>
+    <p class="leg">${home
+      ? '<b>Speaking 부터.</b> 하나만 할 수 있는 날도 Speaking 이다 — 나머지는 재료다.'
+      : '<b>듣기부터.</b> 아침엔 ▶ Commute, 퇴근길엔 ▶ Questions, 집에서 Speaking.'}
+      Quiz 는 앞의 넷을 끝내면 열려.</p>
 
     <!-- 옛 Inbox·일기·홈 탭이 하던 일. 탭을 따로 두면 안 쓰니 판 아래로 내렸다 -->
     <div class="strip">
@@ -1165,6 +1260,17 @@ async function renderToday(){
           <span class="leg" id="t-jr-msg" style="margin:0"></span></div>
       </details>
     </div>`;
+  box.querySelectorAll('[data-dm]').forEach(b => b.onclick = () => {
+    setDayMode(new Date().getDay(), b.dataset.dm);
+    renderToday();
+  });
+  $('t-cmt').onclick  = e => playCommute(e.currentTarget, 'all');
+  $('t-cmtq').onclick = e => playCommute(e.currentTarget, 'q');
+  $('t-cmt-stop').onclick = () => tStopAudio();
+  $('t-cmt-loop').onclick = function(){
+    cmtLoop = !cmtLoop; this.classList.toggle('on', cmtLoop);
+    if (tAudio) tAudio.loop = cmtLoop;
+  };
   box.querySelectorAll('.bcard').forEach(b => b.onclick = () => openAct(b.dataset.a));
   paintXp('');
   wireStrip();
@@ -1233,14 +1339,17 @@ function stopPre(){
  * 막혀 끊긴다. 카드 오디오가 장면과 같은 24kHz 모노 MP3 라 브라우저에서 바이트로
  * 이어 붙여 Blob 하나로 만들 수 있다. 그러면 백그라운드에서도 끝까지 간다.
  * 한국어 뜻도 같은 포맷으로 구워두었기에 "해석 같이" 모드도 한 트랙이 된다. */
-async function buildPreTrack(cards, withKo){
+/** mp3 여러 개를 **바이트로 이어** 한 트랙으로 만든다.
+ *  턴별·카드별 파일을 하나씩 체인으로 재생하면 iOS 홈화면 PWA 가 "한 트랙은 끝나는데
+ *  다음이 시작되지 않는" WebKit 버그에 걸린다. 통짜 한 파일이면 그 함정이 없다.
+ *  msedge-tts 산출물이 24kHz 모노 CBR 로 고정이라 ffmpeg 없이 이어붙여도 맞는다.
+ *  groups 는 url 묶음의 배열 — 묶음 하나가 marks 한 칸이 된다. 하나라도 없으면 null. */
+async function concatMp3(groups){
   const parts = [], marks = [];
   let at = 0;
-  for (const c of cards) {
-    const urls = withKo && c.koUrl ? [c.url, c.koUrl] : [c.url];
+  for (const g of groups) {
     const bufs = [];
-    for (const u of urls) {
-      if (!u) continue;
+    for (const u of g.filter(Boolean)) {
       const r = await fetch(u);
       if (!r.ok) return null;                       // 하나라도 없으면 통짜를 포기한다
       bufs.push(new Uint8Array(await r.arrayBuffer()));
@@ -1249,11 +1358,13 @@ async function buildPreTrack(cards, withKo){
     marks.push(at);
     for (const b of bufs) { parts.push(b); at += b.length; }
   }
-  const total = parts.reduce((n, b) => n + b.length, 0);
-  const all = new Uint8Array(total);
+  const all = new Uint8Array(at);
   let off = 0; for (const b of parts) { all.set(b, off); off += b.length; }
-  return { blob: new Blob([all], { type:'audio/mpeg' }), marks, bytes: total };
+  return { blob: new Blob([all], { type:'audio/mpeg' }), marks, bytes: at };
 }
+
+const buildPreTrack = (cards, withKo) =>
+  concatMp3(cards.map(c => withKo && c.koUrl ? [c.url, c.koUrl] : [c.url]));
 
 function drawWarmup(el, { title, context, items, onDone, backLabel }){
   const v = items.filter(x => x && x.term);
@@ -2456,6 +2567,93 @@ function tgMonthGrid(t, d){
           return `<i class="${k}${day === d ? ' now' : ''}">${+day.slice(8)}</i>`;
         }).join('')}</div></div>`;
     }).join('')}`;
+}
+
+/* ── 학습 순서 ───────────────────────────────────────────────────────
+   읽고 나면 아는 내용이라 탭을 줄 만한 화면이 아니지만, 계획은 **적혀 있어야 지킨다**.
+   하루 모드도 여기서 요일별로 미리 박아둔다. */
+const PLAN = {
+  office: {
+    title: '출근하는 날',
+    sub: '입 못 여는 60~100분과 입 여는 20분으로 쪼개진다',
+    steps: [
+      { w:'아침 지하철 · 30~50분', b:'<b>▶ Commute</b> 한 번. 오늘 장면·기사·질문이 한 트랙으로 흐른다. 화면 꺼도 되고 백그라운드로 돈다. <b>처음 듣는 재료라 이해 안 되는 게 정상이다</b> — 흘려 들어도 된다.' },
+      { w:'점심 틈 · 2분',         b:'<b>Vocab drill</b>. 앉아서 폰만 보면 되고, 아침에 들은 단어가 그대로 나온다. 채점해야 복습 큐가 돈다.' },
+      { w:'퇴근 지하철 · 30~50분', b:'<b>▶ Questions</b>. 오늘 질문 세 개만 돈다. 입 안 열어도 되고, 머릿속으로만 답을 짜면 된다. <b>질문 이해는 리스닝 과제다</b> — 네가 시험에서 넘어진 지점이 정확히 여기다.' },
+      { w:'집 · 20분',             b:'<b>Speaking</b> 세 문항을 입으로. 질문을 이미 두 번 들었으니 이번엔 내용에 집중한다. 남으면 <b>Scenes·News</b> 를 화면으로 다시, 그리고 <b>Quiz</b>.' },
+    ],
+  },
+  home: {
+    title: '재택 · 주말',
+    sub: '한 자리에서 보드 순서대로',
+    steps: [
+      { w:'1', b:'<b>Speaking</b> 3문항 — 제일 중요한 걸 머리 맑을 때.' },
+      { w:'2', b:'<b>Scenes</b> 4장면 — 어휘 훑기 먼저, 그다음 대화.' },
+      { w:'3', b:'<b>News</b> — 같은 구조. 훑기 먼저.' },
+      { w:'4', b:'<b>Vocab drill</b> — 신규 12 + 복습 8.' },
+      { w:'5', b:'<b>Quiz</b> — 앞 넷의 재료로 만들어진다.' },
+      { w:'여유 있으면', b:'양을 늘리지 말고 <b>밀린 복습을 턴다</b>. 평일에 놓친 Vocab 기한이 여기 쌓인다.' },
+    ],
+  },
+};
+
+function renderPlan(){
+  const today_ = new Date().getDay();
+  const mode = dayMode();
+  const modes = dayModes();
+  const block = k => {
+    const p = PLAN[k], live = mode === k;
+    return `<div class="vcard" style="margin-bottom:14px${live ? ';border-color:var(--eng-bd)' : ''}">
+      <div class="vt" style="font-size:14px">${p.title}
+        ${live ? '<em class="kdot" style="color:var(--eng)">오늘</em>' : ''}</div>
+      <div class="vm" style="margin-bottom:4px">${esc(p.sub)}</div>
+      ${p.steps.map((st,i) => `<div class="pstep${live ? '' : ' off'}">
+        <span class="pn">${i+1}</span>
+        <div><div class="pw">${esc(st.w)}</div><div class="pb">${st.b}</div></div>
+      </div>`).join('')}
+    </div>`;
+  };
+
+  $('pl-body').innerHTML = `
+    <h2 class="sh">학습 순서</h2>
+    <p class="leg" style="margin-top:0">순서는 하나가 아니다 — <b>입을 열 수 있는 시간</b>에 따라 갈린다.
+      원리 하나만 기억하면 돼: <b>입력하고 몇 시간 뒤에 출력한다.</b>
+      듣고 바로 말하면 따라 말하기고, 간격을 두면 꺼내 쓰기다. 기억에 박히는 건 후자고,
+      네 출퇴근이 그 간격을 공짜로 만들어준다.</p>
+
+    <div class="vcard" style="margin-bottom:14px">
+      <div class="vt" style="font-size:14px">재택 요일</div>
+      <div class="vm">탭하면 그 요일이 매주 재택으로 바뀐다. 보드 순서가 따라 바뀐다.</div>
+      <div class="wkrow">${WEEK.map((w,i) => {
+        const m = modes[i] || (i===0||i===6 ? 'home' : 'office');
+        return `<button class="tchip${m==='home' ? ' on' : ''}${i===today_ ? ' nowd' : ''}" data-wd="${i}">${w}</button>`;
+      }).join('')}</div>
+      <p class="leg" style="margin:8px 0 0">초록 = 재택(한 자리) · 회색 = 출근(쪼개짐). 주말은 기본 재택.</p>
+    </div>
+
+    ${block('office')}
+    ${block('home')}
+
+    <div class="vcard" style="margin-bottom:14px">
+      <div class="vt" style="font-size:14px">20분 없는 날</div>
+      <div class="vm"><b style="color:var(--text)">Speaking 만 해.</b> Scenes·News·Vocab 은 재료고
+        Speaking 이 시험이다. 하나만 할 수 있으면 무조건 Speaking.</div>
+    </div>
+
+    <div class="vcard">
+      <div class="vt" style="font-size:14px">1월초 재시험까지</div>
+      <div class="vm">매일 3문항. <b style="color:var(--text)">그게 전부다.</b><br><br>
+        12월에 두 가지를 더 한다 — <b style="color:var(--text)">배경설문 정렬</b>(접수할 때 드릴한 주제만 고른다.
+        오픽은 설문에서 질문을 뽑으니 출제 범위를 네가 고르는 시험이다)과
+        <b style="color:var(--text)">15문항 모의</b>(첫 문항에서 막히면 끝까지 흔들리는 걸 미리 겪어둔다).</div>
+    </div>`;
+
+  $('pl-body').querySelectorAll('[data-wd]').forEach(b => b.onclick = () => {
+    const i = +b.dataset.wd;
+    const m = (modes[i] || (i===0||i===6 ? 'home' : 'office')) === 'home' ? 'office' : 'home';
+    setDayMode(i, m);
+    renderPlan();
+  });
 }
 
 async function renderTogether(){
