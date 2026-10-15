@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-16.1';
+const BUILD = '2026-10-16.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1098,6 +1098,10 @@ async function renderToday(){
       <div class="gain" id="t-gain"></div>
     </div>
     <div class="board">
+      <button class="bcard${cls(kDone,kTot)}" data-a="speak" ${kTot?'':'disabled'}>
+        <span class="chk">✓</span><span class="bt">Speaking</span>
+        <span class="bs">${kTot ? `${kDone}/${kTot}` : 'none'}</span>
+        <span class="bar"><i style="width:${pct(kDone,kTot)}%"></i></span></button>
       <button class="bcard${cls(sDone,sTot)}" data-a="scene" ${sTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Scenes</span>
         <span class="bs">${sTot ? `${sDone}/${sTot}` : 'none'}</span>
@@ -1106,17 +1110,13 @@ async function renderToday(){
         <span class="chk">✓</span><span class="bt">News</span>
         <span class="bs">${aTot ? `${aSent}/${aTot} sent.` : 'none'}</span>
         <span class="bar"><i style="width:${pct(aSent,aTot)}%"></i></span></button>
-      <button class="bcard${cls(kDone,kTot)}" data-a="speak" ${kTot?'':'disabled'}>
-        <span class="chk">✓</span><span class="bt">Speaking</span>
-        <span class="bs">${kTot ? `${kDone}/${kTot}` : 'none'}</span>
-        <span class="bar"><i style="width:${pct(kDone,kTot)}%"></i></span></button>
       <button class="bcard${cls(vDone,vTot)}" data-a="vocab" ${vTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Vocab drill</span>
         <span class="bs">${vTot ? `${vDone}/${vTot}` : 'none'}</span>
         <span class="bar"><i style="width:${pct(vDone,vTot)}%"></i></span></button>
       <button class="bcard${cls(qDone,qTot)}${three && qTot ? '' : ' locked'}" data-a="quiz" ${three && qTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Quiz</span>
-        <span class="bs">${!three ? 'after the three' : qTot ? `${qDone}/${qTot}` : 'none'}</span>
+        <span class="bs">${!three ? 'after the four' : qTot ? `${qDone}/${qTot}` : 'none'}</span>
         <span class="bar"><i style="width:${pct(qDone,qTot)}%"></i></span></button>
     </div>
     <div class="tstats">
@@ -1124,8 +1124,8 @@ async function renderToday(){
       <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>m</small></div><div class="l">Listened</div></div>
       <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">Articles read</div></div>
     </div>
-    <p class="leg">Do the first three in any order. <b>Quiz opens when they're done</b> — it pulls
-      from all three, so it can't come first.</p>
+    <p class="leg"><b>Speaking first</b> — hearing the question is the part the test grades.
+      Quiz opens once the four above are done; it pulls from them, so it can't come first.</p>
 
     <!-- 옛 Inbox·일기·홈 탭이 하던 일. 탭을 따로 두면 안 쓰니 판 아래로 내렸다 -->
     <div class="strip">
