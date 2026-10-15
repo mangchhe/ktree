@@ -454,9 +454,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .pstep .pw{font-size:10.5px;color:var(--eng);font-weight:800;letter-spacing:.02em}
 .pstep .pb{font-size:12.5px;line-height:1.6;color:var(--sub);margin-top:2px}
 .pstep .pb b{color:var(--text)}
-.wkrow{display:flex;gap:5px;margin-top:9px}
-.wkrow .tchip{flex:1;text-align:center;padding:6px 0}
-.wkrow .tchip.nowd{box-shadow:0 0 0 2px var(--warn-bg);border-color:var(--warn)}
 .sh{font-size:17px;font-weight:800;margin:2px 0 8px}
 </style>
 </head>
@@ -547,7 +544,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-16.5';
+const BUILD = '2026-10-16.6';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -617,32 +614,20 @@ async function logout(){ await sb.auth.signOut({ scope: 'local' }); location.rel
    한 자리에 앉아 다 한다. 그래서 순서가 갈린다 — 보드 순서를 모드에 따라 바꾼다.
    재택 요일은 매주 되풀이되니 요일별로 기억한다. localStorage 면 충분하다 —
    기기마다 출퇴근이 다를 일이 없고, 서버에 둘 만한 값도 아니다. */
-const DAY_KEY = 'ktree.eng.daymode';        // 요일 → 모드 (매주 되풀이되는 기본값)
-const OVR_KEY = 'ktree.eng.daymode.today';  // {date, mode} — 오늘 하루만 어긋난 경우
+const OVR_KEY = 'ktree.eng.daymode';   // {date, mode} — 그날 하루치. 재택 요일이 매주 달라서
+                                       // 요일→모드 표는 아무것도 벌지 않는다. 주말만 기본값을 둔다.
+const weekendMode = d => (d === 0 || d === 6) ? 'home' : 'office';
 
-function dayModes(){ try { return JSON.parse(localStorage.getItem(DAY_KEY)) || {}; } catch(_) { return {}; } }
-function weekMode(d){ return dayModes()[d] || (d === 0 || d === 6 ? 'home' : 'office'); }  // 주말은 기본 재택 쪽
 function todayOvr(){
   try { const o = JSON.parse(localStorage.getItem(OVR_KEY) || 'null');
         return o && o.date === today() ? o.mode : null; } catch(_) { return null; }
 }
-/** 오늘만 바꾼 것 > 요일 기본값. 갑자기 하루 재택하는 날이 매주 재택으로 굳으면 안 된다. */
-function dayMode(){ return todayOvr() || weekMode(new Date().getDay()); }
-
+function dayMode(){ return todayOvr() || weekendMode(new Date().getDay()); }
 function setTodayMode(m){
-  // 요일 기본값과 같아지면 예외가 아니니 치운다 — 쌓아둘 이유가 없다.
-  try { if (m === weekMode(new Date().getDay())) localStorage.removeItem(OVR_KEY);
+  // 기본값과 같아지면 예외가 아니니 치운다 — 쌓아둘 이유가 없다.
+  try { if (m === weekendMode(new Date().getDay())) localStorage.removeItem(OVR_KEY);
         else localStorage.setItem(OVR_KEY, JSON.stringify({ date: today(), mode: m })); } catch(_) {}
 }
-function setWeekMode(d, m){
-  const o = dayModes(); o[d] = m;
-  try {
-    localStorage.setItem(DAY_KEY, JSON.stringify(o));
-    // 오늘 요일의 기본값을 바꿨으면 오늘치 예외는 의미가 없다
-    if (d === new Date().getDay()) localStorage.removeItem(OVR_KEY);
-  } catch(_) {}
-}
-const WEEK = ['일','월','화','수','목','금','토'];
 
 /* ── 출퇴근 통짜 트랙 ────────────────────────────────────────────────
    지하철에서 장면마다 들어가 Play all 을 누르는 건 폰을 열 번 넘게 만지는 일이라
@@ -2615,7 +2600,6 @@ const PLAN = {
 };
 
 function renderPlan(){
-  const today_ = new Date().getDay();
   const mode = dayMode();
   const ovr = todayOvr();
   const block = k => {
@@ -2639,15 +2623,14 @@ function renderPlan(){
       네 출퇴근이 그 간격을 공짜로 만들어준다.</p>
 
     <div class="vcard" style="margin-bottom:14px">
-      <div class="vt" style="font-size:14px">재택 요일</div>
-      <div class="vm">탭하면 그 요일이 <b style="color:var(--text)">매주</b> 재택으로 바뀐다.
-        하루만 어긋나는 날은 Today 판의 칩으로 바꿔 — 그건 오늘만 간다.</div>
-      <div class="wkrow">${WEEK.map((w,i) =>
-        `<button class="tchip${weekMode(i)==='home' ? ' on' : ''}${i===today_ ? ' nowd' : ''}" data-wd="${i}">${w}</button>`
-      ).join('')}</div>
-      <p class="leg" style="margin:8px 0 0">초록 = 재택(한 자리) · 회색 = 출근(쪼개짐). 주말은 기본 재택.
-        ${ovr ? `<br><b style="color:var(--warn)">오늘은 ${ovr==='home'?'재택':'출근'}으로 하루만 바꿔뒀어.</b>
-          <button class="btn sm" id="pl-clear" style="padding:3px 9px;font-size:10px;margin-left:4px">되돌리기</button>` : ''}</p>
+      <div class="vt" style="font-size:14px">오늘은 어느 쪽</div>
+      <div class="vm">재택 요일이 매주 달라서 요일로 박아두지 않았다. <b style="color:var(--text)">그날 아침에
+        한 번 누르면 된다</b> — Today 판 위에도 같은 칩이 있다. 주말은 기본 재택.</div>
+      <div class="daymode" style="margin:10px 0 0">
+        <button class="tchip${mode==='office' ? ' on' : ''}" data-dm="office">출근</button>
+        <button class="tchip${mode==='home' ? ' on' : ''}" data-dm="home">재택</button>
+        <span class="dmh">${ovr ? '오늘만 바꿔둔 상태' : '기본값'}</span>
+      </div>
     </div>
 
     ${block('office')}
@@ -2667,13 +2650,10 @@ function renderPlan(){
         <b style="color:var(--text)">15문항 모의</b>(첫 문항에서 막히면 끝까지 흔들리는 걸 미리 겪어둔다).</div>
     </div>`;
 
-  $('pl-body').querySelectorAll('[data-wd]').forEach(b => b.onclick = () => {
-    const i = +b.dataset.wd;
-    setWeekMode(i, weekMode(i) === 'home' ? 'office' : 'home');
+  $('pl-body').querySelectorAll('[data-dm]').forEach(b => b.onclick = () => {
+    setTodayMode(b.dataset.dm);
     renderPlan();
   });
-  const cl = $('pl-clear');
-  if (cl) cl.onclick = () => { try { localStorage.removeItem(OVR_KEY); } catch(_) {} renderPlan(); };
 }
 
 async function renderTogether(){
