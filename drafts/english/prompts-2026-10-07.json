@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "describe", "topic": "여행", "level": 3, "seconds": 75,
+    "question_en": "Tell me about a place you visited on a trip that you really liked. Where is it, what does it look like, and why do you remember it?",
+    "hint_ko": "어디인지·언제 갔는지 한 줄 → 눈에 보이는 모습(전체 → 세부) → 그곳의 분위기·소리·사람 → 왜 기억에 남는지",
+    "model_en": "One place I still think about is a small harbor town in Portugal called Porto. I went there about two years ago, at the end of a work trip, and I only had three days.\n\nThe first thing you notice is the river. The old town is built on a steep hill right above it, so you see rows of colorful houses stacked on top of each other. Most of the streets are narrow and covered in stones, and there are little cafes on almost every corner.\n\nWhat I liked most was the atmosphere in the evening. People sit along the river with a glass of wine, there's usually someone playing music, and the whole place feels very relaxed. Nobody seems to be in a hurry.\n\nThe reason it stuck with me is that it was the opposite of my life back home. I'm always rushing, and there I actually slowed down for a few days.",
+    "model_note_ko": "묘사는 **소개 → 겉모습 → 분위기 → 의미** 네 문단이다. 2문단은 'The first thing you notice is' 로 큰 그림에서 시작해 골목·카페로 좁혀 들어간다. 3문단 'What I liked most was' 로 시각에서 분위기로 옮기고, 4문단 'The reason it stuck with me is' 로 장소를 나와 연결해 나열로 끝나지 않게 닫는다.",
+    "phrases": [
+      { "term": "one place I still think about is", "meaning_ko": "지금도 생각나는 곳은 ~이다" },
+      { "term": "the first thing you notice is", "meaning_ko": "가장 먼저 눈에 들어오는 건 ~이다" },
+      { "term": "what I liked most was", "meaning_ko": "가장 좋았던 건 ~였다" },
+      { "term": "nobody seems to be in a hurry", "meaning_ko": "아무도 서두르는 것 같지 않다" },
+      { "term": "the reason it stuck with me is", "meaning_ko": "그게 기억에 남은 이유는 ~이다" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "일상", "level": 2, "seconds": 75,
+    "question_en": "What do you usually do on weekends at home? Walk me through a typical Saturday, from morning to night.",
+    "hint_ko": "주말 전체를 한 줄로 → 아침 루틴 → 낮(집안일·장보기·쉬기) → 저녁 → 그 루틴이 왜 나한테 맞는지",
+    "model_en": "On weekends, I try to keep things pretty slow, because my weekdays are really busy.\n\nOn a typical Saturday, I sleep in until around nine. What I usually do first is make a big breakfast, nothing fancy, just eggs, toast, and a lot of coffee. Then I tidy up the apartment and do the laundry I didn't get to during the week.\n\nIn the afternoon, I go grocery shopping for the week ahead. If the weather is nice, I take a long walk around my neighborhood. Otherwise, I just stay in and watch something.\n\nIn the evening, I cook something a little more special, or I meet a friend for dinner. I'm usually in bed by eleven. It might sound boring, but honestly, that quiet Saturday is what keeps me going for the rest of the week.",
+    "model_note_ko": "습관은 **총평 → 아침 → 오후 → 저녁+의미** 로 시간 순서가 곧 문단 구조다. 현재 시제와 'usually', 'on a typical Saturday' 로 '반복되는 일'이라는 걸 계속 표시한다. 3문단 'If the weather is nice ... Otherwise' 로 조건에 따라 달라지는 변형을 넣으면 단순 나열보다 한 단계 올라간다. 마지막 'what keeps me going' 으로 루틴의 이유를 붙여 닫는다.",
+    "phrases": [
+      { "term": "on a typical Saturday", "meaning_ko": "보통 토요일에는" },
+      { "term": "what I usually do first is", "meaning_ko": "제일 먼저 보통 하는 건 ~이다" },
+      { "term": "sleep in", "meaning_ko": "늦잠을 자다" },
+      { "term": "I didn't get to", "meaning_ko": "(바빠서) 미처 못 했던" },
+      { "term": "it might sound boring, but honestly", "meaning_ko": "지루하게 들릴 수도 있지만, 솔직히" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "비즈니스", "level": 2, "seconds": 60,
+    "question_en": "A new coworker just joined your team. Ask them three or four questions to get to know them and help them settle in.",
+    "hint_ko": "인사와 환영 한마디 → 이전 경력 질문 → 지금 맡은 일 질문 → 적응에 필요한 게 있는지 → 점심 같은 가벼운 제안으로 닫기",
+    "model_en": "Hi, welcome to the team! I'm really glad you're here. I'd love to get to know you a little, if you have a minute.\n\nFirst of all, where were you working before this? And what kind of projects did you work on there?\n\nI'm also curious about your role here. What are you going to be focusing on for the first few months?\n\nAnd how's everything going so far? Is there anything you're still trying to figure out, like the tools or who to ask about what?\n\nAnyway, if you're free, a few of us usually grab lunch around noon. Would you like to join us today?",
+    "model_note_ko": "질문 만들기는 질문만 던지면 IM 에 머문다. **도입(왜 묻는지) → 과거 → 현재 → 도움 → 마무리 제안** 순서로 질문 사이에 흐름을 만든다. 'First of all', 'I'm also curious about', 'And how's everything going' 이 질문을 엮는 표지다. 의문문 형태도 의문사 질문·yes/no·'is there anything' 으로 섞어 단조롭지 않게 한다.",
+    "phrases": [
+      { "term": "I'd love to get to know you", "meaning_ko": "당신에 대해 좀 알고 싶어요" },
+      { "term": "first of all", "meaning_ko": "우선, 먼저" },
+      { "term": "I'm also curious about", "meaning_ko": "~도 궁금해요" },
+      { "term": "how's everything going so far?", "meaning_ko": "지금까지 어때요?" },
+      { "term": "grab lunch", "meaning_ko": "가볍게 점심 먹다" }
+    ]
+  }
+]

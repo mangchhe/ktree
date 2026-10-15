@@ -1,0 +1,1874 @@
+{
+  "id": "2026-10-04-recruiter-screen",
+  "situation_ko": "해외 회사 리크루터와 첫 스크리닝 콜. 희망 연봉을 먼저 말하라고 하고, 비자 지원은 이 포지션에선 어렵다는 변수가 나온다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "리크루터",
+      "meaning_ko": "경력 얘기 좋았어요. 그럼 바로 본론으로, 희망 연봉 범위가 어떻게 되세요?",
+      "en": "Thanks for walking me through your background. So, to get it out of the way, what salary range are you looking for?",
+      "ms": 6168,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "walking",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "background",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "So",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "way",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "what",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "salary",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "range",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looking",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          21
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 250
+        },
+        {
+          "t": 350,
+          "d": 175
+        },
+        {
+          "t": 538,
+          "d": 363
+        },
+        {
+          "t": 913,
+          "d": 138
+        },
+        {
+          "t": 1063,
+          "d": 175
+        },
+        {
+          "t": 1250,
+          "d": 150
+        },
+        {
+          "t": 1413,
+          "d": 725
+        },
+        {
+          "t": 2500,
+          "d": 288
+        },
+        {
+          "t": 2813,
+          "d": 138
+        },
+        {
+          "t": 2963,
+          "d": 188
+        },
+        {
+          "t": 3163,
+          "d": 100
+        },
+        {
+          "t": 3275,
+          "d": 138
+        },
+        {
+          "t": 3425,
+          "d": 88
+        },
+        {
+          "t": 3525,
+          "d": 88
+        },
+        {
+          "t": 3625,
+          "d": 225
+        },
+        {
+          "t": 3875,
+          "d": 188
+        },
+        {
+          "t": 4075,
+          "d": 463
+        },
+        {
+          "t": 4550,
+          "d": 300
+        },
+        {
+          "t": 4863,
+          "d": 63
+        },
+        {
+          "t": 4938,
+          "d": 125
+        },
+        {
+          "t": 5075,
+          "d": 350
+        },
+        {
+          "t": 5438,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "먼저 숫자를 꺼내지 말고, 역할 범위를 더 알고 싶다며 이 포지션의 예산 범위를 되물어봐",
+      "en": "I'd like to understand the scope of the role a bit better first. Could you share the budgeted range for this position?",
+      "ms": 6984,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scope",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "role",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "better",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "share",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budgeted",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "range",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "position",
+          21
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 125
+        },
+        {
+          "t": 188,
+          "d": 200
+        },
+        {
+          "t": 400,
+          "d": 88
+        },
+        {
+          "t": 500,
+          "d": 650
+        },
+        {
+          "t": 1163,
+          "d": 75
+        },
+        {
+          "t": 1250,
+          "d": 375
+        },
+        {
+          "t": 1638,
+          "d": 75
+        },
+        {
+          "t": 1725,
+          "d": 75
+        },
+        {
+          "t": 1813,
+          "d": 413
+        },
+        {
+          "t": 2250,
+          "d": 100
+        },
+        {
+          "t": 2363,
+          "d": 213
+        },
+        {
+          "t": 2588,
+          "d": 250
+        },
+        {
+          "t": 2850,
+          "d": 563
+        },
+        {
+          "t": 3800,
+          "d": 138
+        },
+        {
+          "t": 3950,
+          "d": 88
+        },
+        {
+          "t": 4050,
+          "d": 488
+        },
+        {
+          "t": 4550,
+          "d": 138
+        },
+        {
+          "t": 4700,
+          "d": 463
+        },
+        {
+          "t": 5175,
+          "d": 438
+        },
+        {
+          "t": 5625,
+          "d": 188
+        },
+        {
+          "t": 5825,
+          "d": 175
+        },
+        {
+          "t": 6013,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "기본급으로 15만에서 17만 5천 달러 사이예요. 다만 하나 미리 말씀드려야 할 게, 이 자리는 비자 스폰서가 안 돼요.",
+      "en": "Sure, it's a hundred and fifty to a hundred and seventy-five thousand base. One thing I should flag, though: this role doesn't offer visa sponsorship.",
+      "ms": 9216,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "it's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifty",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seventy-five",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "base",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "One",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flag",
+          17
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          18
+        ],
+        [
+          ": ",
+          null
+        ],
+        [
+          "this",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "role",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "offer",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "visa",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sponsorship",
+          24
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 550
+        },
+        {
+          "t": 663,
+          "d": 213
+        },
+        {
+          "t": 888,
+          "d": 50
+        },
+        {
+          "t": 950,
+          "d": 350
+        },
+        {
+          "t": 1313,
+          "d": 88
+        },
+        {
+          "t": 1413,
+          "d": 463
+        },
+        {
+          "t": 1888,
+          "d": 188
+        },
+        {
+          "t": 2088,
+          "d": 50
+        },
+        {
+          "t": 2150,
+          "d": 350
+        },
+        {
+          "t": 2513,
+          "d": 63
+        },
+        {
+          "t": 2588,
+          "d": 750
+        },
+        {
+          "t": 3350,
+          "d": 450
+        },
+        {
+          "t": 3813,
+          "d": 475
+        },
+        {
+          "t": 4688,
+          "d": 213
+        },
+        {
+          "t": 4913,
+          "d": 200
+        },
+        {
+          "t": 5125,
+          "d": 63
+        },
+        {
+          "t": 5200,
+          "d": 213
+        },
+        {
+          "t": 5425,
+          "d": 425
+        },
+        {
+          "t": 5875,
+          "d": 288
+        },
+        {
+          "t": 6663,
+          "d": 250
+        },
+        {
+          "t": 6925,
+          "d": 200
+        },
+        {
+          "t": 7138,
+          "d": 313
+        },
+        {
+          "t": 7463,
+          "d": 275
+        },
+        {
+          "t": 7750,
+          "d": 300
+        },
+        {
+          "t": 8063,
+          "d": 775
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "범위는 기대와 맞는다고 하고, 비자 문제는 중요하니 회사 안에 스폰서가 되는 다른 팀이나 지사가 있는지 물어봐",
+      "en": "That range works for me. The visa part is a dealbreaker, though, so is there another team or office that does sponsor?",
+      "ms": 7104,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "range",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "visa",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "part",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dealbreaker",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "another",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "or",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "office",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sponsor",
+          21
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 225
+        },
+        {
+          "t": 313,
+          "d": 338
+        },
+        {
+          "t": 663,
+          "d": 363
+        },
+        {
+          "t": 1038,
+          "d": 138
+        },
+        {
+          "t": 1188,
+          "d": 325
+        },
+        {
+          "t": 1900,
+          "d": 63
+        },
+        {
+          "t": 1975,
+          "d": 313
+        },
+        {
+          "t": 2300,
+          "d": 300
+        },
+        {
+          "t": 2613,
+          "d": 150
+        },
+        {
+          "t": 2775,
+          "d": 88
+        },
+        {
+          "t": 2875,
+          "d": 713
+        },
+        {
+          "t": 3613,
+          "d": 250
+        },
+        {
+          "t": 3888,
+          "d": 225
+        },
+        {
+          "t": 4125,
+          "d": 113
+        },
+        {
+          "t": 4250,
+          "d": 188
+        },
+        {
+          "t": 4450,
+          "d": 338
+        },
+        {
+          "t": 4800,
+          "d": 363
+        },
+        {
+          "t": 5175,
+          "d": 213
+        },
+        {
+          "t": 5400,
+          "d": 388
+        },
+        {
+          "t": 5800,
+          "d": 138
+        },
+        {
+          "t": 5950,
+          "d": 163
+        },
+        {
+          "t": 6125,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "토론토 사무소는 이전 지원을 해줘요. 같은 플랫폼 팀이 거기에도 있어요.",
+      "en": "Our Toronto office does relocation support, and the same platform team has engineers there.",
+      "ms": 5616,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Our",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Toronto",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "office",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "relocation",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "support",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "platform",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "engineers",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 513
+        },
+        {
+          "t": 738,
+          "d": 338
+        },
+        {
+          "t": 1088,
+          "d": 225
+        },
+        {
+          "t": 1325,
+          "d": 625
+        },
+        {
+          "t": 1963,
+          "d": 563
+        },
+        {
+          "t": 2825,
+          "d": 138
+        },
+        {
+          "t": 2975,
+          "d": 75
+        },
+        {
+          "t": 3063,
+          "d": 275
+        },
+        {
+          "t": 3350,
+          "d": 525
+        },
+        {
+          "t": 3888,
+          "d": 238
+        },
+        {
+          "t": 4138,
+          "d": 175
+        },
+        {
+          "t": 4325,
+          "d": 550
+        },
+        {
+          "t": 4888,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "토론토도 충분히 고려하겠다고 하고, 그쪽 포지션으로 프로세스를 진행할 수 있는지, 연봉 범위는 어떻게 달라지는지 물어봐",
+      "en": "I'd be open to Toronto. Could we move forward with that position instead, and how does the range change there?",
+      "ms": 6888,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "open",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Toronto",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forward",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "position",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "how",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "range",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          19
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 113
+        },
+        {
+          "t": 200,
+          "d": 163
+        },
+        {
+          "t": 375,
+          "d": 325
+        },
+        {
+          "t": 713,
+          "d": 125
+        },
+        {
+          "t": 850,
+          "d": 675
+        },
+        {
+          "t": 1925,
+          "d": 150
+        },
+        {
+          "t": 2088,
+          "d": 138
+        },
+        {
+          "t": 2238,
+          "d": 275
+        },
+        {
+          "t": 2525,
+          "d": 475
+        },
+        {
+          "t": 3013,
+          "d": 138
+        },
+        {
+          "t": 3163,
+          "d": 200
+        },
+        {
+          "t": 3375,
+          "d": 475
+        },
+        {
+          "t": 3863,
+          "d": 625
+        },
+        {
+          "t": 4763,
+          "d": 213
+        },
+        {
+          "t": 4988,
+          "d": 163
+        },
+        {
+          "t": 5163,
+          "d": 138
+        },
+        {
+          "t": 5313,
+          "d": 88
+        },
+        {
+          "t": 5413,
+          "d": 375
+        },
+        {
+          "t": 5800,
+          "d": 388
+        },
+        {
+          "t": 6200,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "확인해볼게요. 캐나다 달러로는 조금 다르지만 내일까지 정리해서 이메일 드릴게요.",
+      "en": "Let me check. It's a bit different in Canadian dollars, but I'll email you the details by tomorrow.",
+      "ms": 6000,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "different",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Canadian",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "details",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 125
+        },
+        {
+          "t": 200,
+          "d": 113
+        },
+        {
+          "t": 325,
+          "d": 513
+        },
+        {
+          "t": 1238,
+          "d": 138
+        },
+        {
+          "t": 1388,
+          "d": 63
+        },
+        {
+          "t": 1463,
+          "d": 200
+        },
+        {
+          "t": 1675,
+          "d": 350
+        },
+        {
+          "t": 2038,
+          "d": 100
+        },
+        {
+          "t": 2150,
+          "d": 500
+        },
+        {
+          "t": 2663,
+          "d": 475
+        },
+        {
+          "t": 3425,
+          "d": 138
+        },
+        {
+          "t": 3575,
+          "d": 150
+        },
+        {
+          "t": 3750,
+          "d": 313
+        },
+        {
+          "t": 4075,
+          "d": 138
+        },
+        {
+          "t": 4225,
+          "d": 125
+        },
+        {
+          "t": 4363,
+          "d": 500
+        },
+        {
+          "t": 4875,
+          "d": 138
+        },
+        {
+          "t": 5025,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "scope",
+      "meaning_ko": "범위, (업무가) 다루는 영역",
+      "example": "I'd like to understand the scope of the role a bit better."
+    },
+    {
+      "kind": "word",
+      "term": "sponsorship",
+      "meaning_ko": "(비자) 후원, 스폰서십",
+      "example": "This role doesn't offer visa sponsorship."
+    },
+    {
+      "kind": "word",
+      "term": "relocation",
+      "meaning_ko": "이전, 이주 (회사가 이사·정착을 지원하는 것)",
+      "example": "Our Toronto office does relocation support."
+    },
+    {
+      "kind": "word",
+      "term": "dealbreaker",
+      "meaning_ko": "결정적 걸림돌 — 이것 때문에 거래가 깨지는 조건",
+      "example": "The visa part is a dealbreaker for me."
+    },
+    {
+      "kind": "phrase",
+      "term": "Could you share the budgeted range?",
+      "meaning_ko": "책정된 범위를 알려줄 수 있나요?",
+      "prompt_ko": "희망 연봉을 먼저 말하지 말고 이 포지션의 예산 범위를 되물어봐",
+      "keywords": [
+        {
+          "word": "budgeted",
+          "meaning_ko": "예산으로 책정된"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "move forward with",
+      "meaning_ko": "~로 (절차를) 진행하다",
+      "prompt_ko": "그 다른 포지션으로 진행할 수 있는지 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-recruiter-screen/full.mp3",
+  "full_starts": [
+    0,
+    6168,
+    13152,
+    22368,
+    29472,
+    35088,
+    41976
+  ],
+  "generated_at": "2026-10-03T21:41:27.414Z"
+}

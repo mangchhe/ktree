@@ -1,0 +1,1520 @@
+{
+  "id": "2026-10-05-contract-chase",
+  "situation_ko": "파트너사가 계약서 서명을 2주째 미루고 있어 담당자에게 전화한다. 법무팀 검토 중이라더니, 지급 조건을 30일에서 60일로 바꿔달라는 새 요구를 꺼낸다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-BrianMultilingualNeural",
+    "b": "en-US-EmmaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "파트너사 담당자",
+      "meaning_ko": "안녕하세요! 미안해요, 메일 답장을 못 드렸죠.",
+      "en": "Hey! Sorry, I know I owe you an email.",
+      "ms": 2904,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Hey",
+          0
+        ],
+        [
+          "! ",
+          null
+        ],
+        [
+          "Sorry",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "owe",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 263
+        },
+        {
+          "t": 700,
+          "d": 400
+        },
+        {
+          "t": 1113,
+          "d": 100
+        },
+        {
+          "t": 1225,
+          "d": 225
+        },
+        {
+          "t": 1463,
+          "d": 138
+        },
+        {
+          "t": 1613,
+          "d": 100
+        },
+        {
+          "t": 1725,
+          "d": 175
+        },
+        {
+          "t": 1913,
+          "d": 88
+        },
+        {
+          "t": 2013,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "괜찮다고 하고, 계약서 건으로 확인차 전화했다고, 보낸 지 2주가 됐다고 말해봐",
+      "en": "No worries. I'm just following up on the contract. It's been two weeks since we sent it over.",
+      "ms": 6096,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worries",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'm",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "following",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "contract",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "since",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sent",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 213
+        },
+        {
+          "t": 275,
+          "d": 675
+        },
+        {
+          "t": 1350,
+          "d": 100
+        },
+        {
+          "t": 1463,
+          "d": 225
+        },
+        {
+          "t": 1700,
+          "d": 425
+        },
+        {
+          "t": 2138,
+          "d": 150
+        },
+        {
+          "t": 2300,
+          "d": 100
+        },
+        {
+          "t": 2413,
+          "d": 88
+        },
+        {
+          "t": 2513,
+          "d": 750
+        },
+        {
+          "t": 3638,
+          "d": 150
+        },
+        {
+          "t": 3800,
+          "d": 175
+        },
+        {
+          "t": 3988,
+          "d": 225
+        },
+        {
+          "t": 4225,
+          "d": 300
+        },
+        {
+          "t": 4538,
+          "d": 213
+        },
+        {
+          "t": 4763,
+          "d": 88
+        },
+        {
+          "t": 4863,
+          "d": 275
+        },
+        {
+          "t": 5150,
+          "d": 100
+        },
+        {
+          "t": 5263,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 법무팀이 보고 있어요. 그리고 사실 바꾸고 싶은 게 하나 있어요. 대금 지급을 60일로 할 수 있을까요?",
+      "en": "Right, legal has it. And actually, there's one thing we'd like to change. Could we do sixty-day payment terms?",
+      "ms": 7080,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Right",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "legal",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "there's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we'd",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sixty-day",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "terms",
+          18
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 225
+        },
+        {
+          "t": 325,
+          "d": 388
+        },
+        {
+          "t": 725,
+          "d": 288
+        },
+        {
+          "t": 1025,
+          "d": 263
+        },
+        {
+          "t": 1650,
+          "d": 125
+        },
+        {
+          "t": 1788,
+          "d": 550
+        },
+        {
+          "t": 2350,
+          "d": 213
+        },
+        {
+          "t": 2575,
+          "d": 250
+        },
+        {
+          "t": 2838,
+          "d": 213
+        },
+        {
+          "t": 3063,
+          "d": 163
+        },
+        {
+          "t": 3238,
+          "d": 213
+        },
+        {
+          "t": 3463,
+          "d": 88
+        },
+        {
+          "t": 3563,
+          "d": 588
+        },
+        {
+          "t": 4538,
+          "d": 138
+        },
+        {
+          "t": 4688,
+          "d": 138
+        },
+        {
+          "t": 4838,
+          "d": 250
+        },
+        {
+          "t": 5100,
+          "d": 650
+        },
+        {
+          "t": 5763,
+          "d": 400
+        },
+        {
+          "t": 6175,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "놀랐다고 솔직히 말하고, 지난번 통화에서 30일로 합의했던 걸로 알고 있다고 짚어봐",
+      "en": "Oh, that's news to me. I thought we agreed on thirty days when we last spoke.",
+      "ms": 4728,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "news",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thought",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "agreed",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spoke",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 288
+        },
+        {
+          "t": 513,
+          "d": 288
+        },
+        {
+          "t": 813,
+          "d": 125
+        },
+        {
+          "t": 950,
+          "d": 288
+        },
+        {
+          "t": 1638,
+          "d": 75
+        },
+        {
+          "t": 1725,
+          "d": 200
+        },
+        {
+          "t": 1938,
+          "d": 125
+        },
+        {
+          "t": 2075,
+          "d": 350
+        },
+        {
+          "t": 2438,
+          "d": 150
+        },
+        {
+          "t": 2600,
+          "d": 300
+        },
+        {
+          "t": 2913,
+          "d": 325
+        },
+        {
+          "t": 3250,
+          "d": 125
+        },
+        {
+          "t": 3388,
+          "d": 113
+        },
+        {
+          "t": 3513,
+          "d": 313
+        },
+        {
+          "t": 3838,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞아요. 근데 새 재무 책임자가 모든 업체에 60일을 요구하고 있어서요. 제 선에서 정할 수가 없어요.",
+      "en": "We did. But our new finance director wants sixty days for every vendor. It's out of my hands.",
+      "ms": 6456,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "finance",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "director",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wants",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sixty",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "every",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "vendor",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hands",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 338
+        },
+        {
+          "t": 938,
+          "d": 125
+        },
+        {
+          "t": 1075,
+          "d": 113
+        },
+        {
+          "t": 1200,
+          "d": 238
+        },
+        {
+          "t": 1450,
+          "d": 488
+        },
+        {
+          "t": 1950,
+          "d": 538
+        },
+        {
+          "t": 2500,
+          "d": 275
+        },
+        {
+          "t": 2788,
+          "d": 363
+        },
+        {
+          "t": 3163,
+          "d": 350
+        },
+        {
+          "t": 3525,
+          "d": 225
+        },
+        {
+          "t": 3763,
+          "d": 275
+        },
+        {
+          "t": 4050,
+          "d": 500
+        },
+        {
+          "t": 4913,
+          "d": 175
+        },
+        {
+          "t": 5100,
+          "d": 150
+        },
+        {
+          "t": 5263,
+          "d": 75
+        },
+        {
+          "t": 5350,
+          "d": 175
+        },
+        {
+          "t": 5538,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "60일은 어렵다고 하고, 대신 45일이면 가능한데 이번 주 금요일까지 서명해 준다는 조건이라고 제안해봐",
+      "en": "Sixty would be tough for us. We could meet you at forty-five, as long as we get it signed by this Friday.",
+      "ms": 6264,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Sixty",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tough",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meet",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty-five",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "as",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "long",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "signed",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 413
+        },
+        {
+          "t": 488,
+          "d": 150
+        },
+        {
+          "t": 650,
+          "d": 113
+        },
+        {
+          "t": 775,
+          "d": 275
+        },
+        {
+          "t": 1063,
+          "d": 225
+        },
+        {
+          "t": 1300,
+          "d": 313
+        },
+        {
+          "t": 2013,
+          "d": 113
+        },
+        {
+          "t": 2138,
+          "d": 175
+        },
+        {
+          "t": 2325,
+          "d": 225
+        },
+        {
+          "t": 2563,
+          "d": 138
+        },
+        {
+          "t": 2713,
+          "d": 100
+        },
+        {
+          "t": 2825,
+          "d": 800
+        },
+        {
+          "t": 3650,
+          "d": 200
+        },
+        {
+          "t": 3863,
+          "d": 225
+        },
+        {
+          "t": 4100,
+          "d": 113
+        },
+        {
+          "t": 4225,
+          "d": 113
+        },
+        {
+          "t": 4350,
+          "d": 163
+        },
+        {
+          "t": 4525,
+          "d": 100
+        },
+        {
+          "t": 4638,
+          "d": 313
+        },
+        {
+          "t": 4963,
+          "d": 138
+        },
+        {
+          "t": 5113,
+          "d": 225
+        },
+        {
+          "t": 5350,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "합리적이네요. 오늘 오후에 재무팀에 가져가 볼게요.",
+      "en": "That sounds reasonable. Let me take it to finance this afternoon.",
+      "ms": 4416,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sounds",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reasonable",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "finance",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afternoon",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 163
+        },
+        {
+          "t": 238,
+          "d": 425
+        },
+        {
+          "t": 675,
+          "d": 725
+        },
+        {
+          "t": 1775,
+          "d": 125
+        },
+        {
+          "t": 1913,
+          "d": 113
+        },
+        {
+          "t": 2038,
+          "d": 250
+        },
+        {
+          "t": 2300,
+          "d": 100
+        },
+        {
+          "t": 2413,
+          "d": 100
+        },
+        {
+          "t": 2525,
+          "d": 600
+        },
+        {
+          "t": 3138,
+          "d": 200
+        },
+        {
+          "t": 3350,
+          "d": 700
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "vendor",
+      "meaning_ko": "공급업체, 거래 업체",
+      "example": "Our finance director wants sixty days for every vendor."
+    },
+    {
+      "kind": "word",
+      "term": "reasonable",
+      "meaning_ko": "합리적인, 적당한",
+      "example": "That sounds reasonable."
+    },
+    {
+      "kind": "word",
+      "term": "terms",
+      "meaning_ko": "(계약) 조건",
+      "example": "Could we do sixty-day payment terms?"
+    },
+    {
+      "kind": "phrase",
+      "term": "I'm just following up on",
+      "meaning_ko": "~ 건으로 확인차 연락드렸어요",
+      "prompt_ko": "보낸 계약서 건으로 확인차 연락했다고 말해봐",
+      "keywords": [
+        {
+          "word": "follow up",
+          "meaning_ko": "후속 확인을 하다, 다시 챙기다"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "that's news to me",
+      "meaning_ko": "처음 듣는 얘기네요",
+      "prompt_ko": "상대가 갑자기 꺼낸 조건이 처음 듣는 얘기라고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "it's out of my hands",
+      "meaning_ko": "제 권한 밖이에요, 제가 어쩔 수 없어요",
+      "prompt_ko": "그건 내가 결정할 수 있는 일이 아니라고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "meet you at",
+      "meaning_ko": "(중간 지점인) ~로 맞춰 드리다",
+      "prompt_ko": "60일은 안 되고 45일로 맞춰 줄 수 있다고 제안해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-contract-chase/full.mp3",
+  "full_starts": [
+    0,
+    2904,
+    9000,
+    16080,
+    20808,
+    27264,
+    33528
+  ],
+  "generated_at": "2026-10-04T20:33:47.516Z"
+}

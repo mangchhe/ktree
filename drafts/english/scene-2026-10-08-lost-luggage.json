@@ -1,0 +1,1404 @@
+{
+  "id": "2026-10-08-lost-luggage",
+  "situation_ko": "도착 공항 수하물 벨트에서 캐리어가 끝내 나오지 않았다. 분실물 카운터에 신고하러 간다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "수하물 분실 담당",
+      "meaning_ko": "어서 오세요. 수하물이 안 나왔나요?",
+      "en": "Hi, how can I help? Your bag didn't come out on the belt?",
+      "ms": 3744,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "how",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          4
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Your",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bag",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "didn't",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "belt",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 213
+        },
+        {
+          "t": 350,
+          "d": 238
+        },
+        {
+          "t": 600,
+          "d": 150
+        },
+        {
+          "t": 763,
+          "d": 75
+        },
+        {
+          "t": 850,
+          "d": 363
+        },
+        {
+          "t": 1575,
+          "d": 125
+        },
+        {
+          "t": 1700,
+          "d": 463
+        },
+        {
+          "t": 2288,
+          "d": 213
+        },
+        {
+          "t": 2500,
+          "d": 150
+        },
+        {
+          "t": 2663,
+          "d": 138
+        },
+        {
+          "t": 2800,
+          "d": 88
+        },
+        {
+          "t": 2900,
+          "d": 75
+        },
+        {
+          "t": 2975,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "짐이 안 나왔다고, 경유지에서 못 실렸을 수도 있다고 말해봐",
+      "en": "Yeah, my suitcase never showed up. It might not have made the connection.",
+      "ms": 5016,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Yeah",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "my",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "suitcase",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "never",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "showed",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "might",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "made",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "connection",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 713,
+          "d": 163
+        },
+        {
+          "t": 875,
+          "d": 550
+        },
+        {
+          "t": 1425,
+          "d": 188
+        },
+        {
+          "t": 1613,
+          "d": 263
+        },
+        {
+          "t": 1875,
+          "d": 213
+        },
+        {
+          "t": 2500,
+          "d": 75
+        },
+        {
+          "t": 2588,
+          "d": 225
+        },
+        {
+          "t": 2825,
+          "d": 225
+        },
+        {
+          "t": 3050,
+          "d": 488
+        },
+        {
+          "t": 3788,
+          "d": 250
+        },
+        {
+          "t": 4050,
+          "d": 75
+        },
+        {
+          "t": 4138,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "수하물표 좀 보여주시겠어요? 시스템에서 지금 위치를 확인해볼게요.",
+      "en": "Could I see your baggage tag? Let me check where it is in the system.",
+      "ms": 3720,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Could",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "baggage",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tag",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Let",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "where",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "system",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 113
+        },
+        {
+          "t": 188,
+          "d": 100
+        },
+        {
+          "t": 300,
+          "d": 188
+        },
+        {
+          "t": 500,
+          "d": 138
+        },
+        {
+          "t": 650,
+          "d": 363
+        },
+        {
+          "t": 1013,
+          "d": 375
+        },
+        {
+          "t": 1763,
+          "d": 100
+        },
+        {
+          "t": 1875,
+          "d": 75
+        },
+        {
+          "t": 1950,
+          "d": 263
+        },
+        {
+          "t": 2213,
+          "d": 163
+        },
+        {
+          "t": 2388,
+          "d": 63
+        },
+        {
+          "t": 2463,
+          "d": 138
+        },
+        {
+          "t": 2613,
+          "d": 75
+        },
+        {
+          "t": 2700,
+          "d": 75
+        },
+        {
+          "t": 2788,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "수하물표를 건네고, 안에 약이 들어 있어서 급하다고 말해봐",
+      "en": "Here it is. There's medication inside, so this is pretty urgent for me.",
+      "ms": 4800,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Here",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "medication",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "inside",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pretty",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "urgent",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 125,
+          "d": 125
+        },
+        {
+          "t": 250,
+          "d": 50
+        },
+        {
+          "t": 313,
+          "d": 288
+        },
+        {
+          "t": 1013,
+          "d": 100
+        },
+        {
+          "t": 1113,
+          "d": 613
+        },
+        {
+          "t": 1725,
+          "d": 650
+        },
+        {
+          "t": 2625,
+          "d": 263
+        },
+        {
+          "t": 3125,
+          "d": 188
+        },
+        {
+          "t": 3313,
+          "d": 113
+        },
+        {
+          "t": 3438,
+          "d": 275
+        },
+        {
+          "t": 3725,
+          "d": 325
+        },
+        {
+          "t": 4050,
+          "d": 138
+        },
+        {
+          "t": 4200,
+          "d": 225
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "확인했어요. 다음 편으로 오고 있고, 내일 오전에 호텔로 배송해드릴 수 있어요.",
+      "en": "Found it. It's coming on the next flight, and we can deliver it to your hotel by tomorrow morning.",
+      "ms": 5688,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Found",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "coming",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deliver",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotel",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 213,
+          "d": 288
+        },
+        {
+          "t": 513,
+          "d": 175
+        },
+        {
+          "t": 1100,
+          "d": 125
+        },
+        {
+          "t": 1238,
+          "d": 238
+        },
+        {
+          "t": 1475,
+          "d": 88
+        },
+        {
+          "t": 1575,
+          "d": 50
+        },
+        {
+          "t": 1638,
+          "d": 288
+        },
+        {
+          "t": 1938,
+          "d": 350
+        },
+        {
+          "t": 2675,
+          "d": 263
+        },
+        {
+          "t": 3025,
+          "d": 113
+        },
+        {
+          "t": 3150,
+          "d": 113
+        },
+        {
+          "t": 3275,
+          "d": 325
+        },
+        {
+          "t": 3600,
+          "d": 75
+        },
+        {
+          "t": 3688,
+          "d": 88
+        },
+        {
+          "t": 3788,
+          "d": 75
+        },
+        {
+          "t": 3875,
+          "d": 413
+        },
+        {
+          "t": 4300,
+          "d": 175
+        },
+        {
+          "t": 4488,
+          "d": 400
+        },
+        {
+          "t": 4888,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그동안 필요한 물건을 사야 하니 영수증을 보관하면 보상받을 수 있는지 물어봐",
+      "en": "I'll need to buy some things in the meantime — if I keep the receipts, can I get reimbursed?",
+      "ms": 5088,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'll",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "buy",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "some",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "things",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meantime",
+          8
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "if",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "receipts",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "can",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reimbursed",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 63
+        },
+        {
+          "t": 138,
+          "d": 125
+        },
+        {
+          "t": 263,
+          "d": 63
+        },
+        {
+          "t": 325,
+          "d": 213
+        },
+        {
+          "t": 538,
+          "d": 225
+        },
+        {
+          "t": 775,
+          "d": 325
+        },
+        {
+          "t": 1100,
+          "d": 50
+        },
+        {
+          "t": 1150,
+          "d": 50
+        },
+        {
+          "t": 1200,
+          "d": 625
+        },
+        {
+          "t": 2275,
+          "d": 100
+        },
+        {
+          "t": 2375,
+          "d": 75
+        },
+        {
+          "t": 2450,
+          "d": 188
+        },
+        {
+          "t": 2638,
+          "d": 75
+        },
+        {
+          "t": 2713,
+          "d": 713
+        },
+        {
+          "t": 3600,
+          "d": 125
+        },
+        {
+          "t": 3725,
+          "d": 100
+        },
+        {
+          "t": 3825,
+          "d": 200
+        },
+        {
+          "t": 4025,
+          "d": 713
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 영수증 모아서 이 신고 번호랑 같이 제출하시면 돼요.",
+      "en": "Yes, just save the receipts and submit them along with this claim number.",
+      "ms": 4392,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "just",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "save",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "receipts",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "submit",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "along",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "claim",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 525
+        },
+        {
+          "t": 838,
+          "d": 250
+        },
+        {
+          "t": 1100,
+          "d": 213
+        },
+        {
+          "t": 1325,
+          "d": 63
+        },
+        {
+          "t": 1400,
+          "d": 525
+        },
+        {
+          "t": 1938,
+          "d": 300
+        },
+        {
+          "t": 2238,
+          "d": 375
+        },
+        {
+          "t": 2625,
+          "d": 113
+        },
+        {
+          "t": 2750,
+          "d": 325
+        },
+        {
+          "t": 3088,
+          "d": 113
+        },
+        {
+          "t": 3200,
+          "d": 150
+        },
+        {
+          "t": 3363,
+          "d": 288
+        },
+        {
+          "t": 3650,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "suitcase",
+      "meaning_ko": "캐리어, 여행 가방",
+      "example": "My suitcase never showed up."
+    },
+    {
+      "kind": "word",
+      "term": "urgent",
+      "meaning_ko": "긴급한",
+      "example": "This is pretty urgent for me."
+    },
+    {
+      "kind": "word",
+      "term": "reimburse",
+      "meaning_ko": "(비용을) 환급해주다",
+      "example": "Can I get reimbursed?"
+    },
+    {
+      "kind": "phrase",
+      "term": "make the connection",
+      "meaning_ko": "환승편에 제시간에 타다",
+      "prompt_ko": "짐이 환승편을 못 탔을 수도 있다고 말해봐",
+      "keywords": [
+        {
+          "word": "connection",
+          "meaning_ko": "환승편, 연결편"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "submit a claim",
+      "meaning_ko": "신고(청구)를 접수하다",
+      "prompt_ko": "영수증을 모아서 신고 번호와 같이 제출하면 되는지 물어봐",
+      "keywords": [
+        {
+          "word": "claim",
+          "meaning_ko": "(보상) 청구, 신고"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-lost-luggage/full.mp3",
+  "full_starts": [
+    0,
+    3744,
+    8760,
+    12480,
+    17280,
+    22968,
+    28056
+  ],
+  "generated_at": "2026-10-07T20:33:03.748Z"
+}

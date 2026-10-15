@@ -1,0 +1,1511 @@
+{
+  "id": "2026-10-13-headcount-request",
+  "situation_ko": "매니저에게 팀 인원을 한 명 늘려달라고 요청한다. 연말까지 채용 동결이라는 답이 돌아오고, 계약직이라는 차선을 근거와 함께 밀어본다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "팀 업무량 얘기하고 싶다고 했죠?",
+      "en": "You wanted to talk about the team's workload?",
+      "ms": 2184,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "You",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "workload",
+          7
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 175,
+          "d": 150
+        },
+        {
+          "t": 325,
+          "d": 38
+        },
+        {
+          "t": 363,
+          "d": 238
+        },
+        {
+          "t": 600,
+          "d": 250
+        },
+        {
+          "t": 850,
+          "d": 63
+        },
+        {
+          "t": 913,
+          "d": 375
+        },
+        {
+          "t": 1300,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "석 달째 계속 야근 중이라 한 명 더 뽑아야 할 것 같다고 말해봐",
+      "en": "Yes. We've been working late for three months straight, and I think we need to hire one more person.",
+      "ms": 5904,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We've",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "working",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "straight",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hire",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "person",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 600
+        },
+        {
+          "t": 1025,
+          "d": 138
+        },
+        {
+          "t": 1163,
+          "d": 125
+        },
+        {
+          "t": 1300,
+          "d": 350
+        },
+        {
+          "t": 1650,
+          "d": 225
+        },
+        {
+          "t": 1888,
+          "d": 163
+        },
+        {
+          "t": 2063,
+          "d": 338
+        },
+        {
+          "t": 2413,
+          "d": 238
+        },
+        {
+          "t": 2663,
+          "d": 388
+        },
+        {
+          "t": 3238,
+          "d": 250
+        },
+        {
+          "t": 3625,
+          "d": 100
+        },
+        {
+          "t": 3738,
+          "d": 188
+        },
+        {
+          "t": 3938,
+          "d": 88
+        },
+        {
+          "t": 4038,
+          "d": 150
+        },
+        {
+          "t": 4200,
+          "d": 63
+        },
+        {
+          "t": 4275,
+          "d": 450
+        },
+        {
+          "t": 4738,
+          "d": 138
+        },
+        {
+          "t": 4875,
+          "d": 175
+        },
+        {
+          "t": 5050,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "무슨 말인지 알아요. 그런데 연말까지 채용 동결이에요. 재무팀이 신규 인원을 승인 안 해줄 거예요.",
+      "en": "I hear you, but there's a hiring freeze until the end of the year. Finance won't approve any new headcount.",
+      "ms": 7104,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hear",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hiring",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "freeze",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "until",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Finance",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approve",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "headcount",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 263
+        },
+        {
+          "t": 463,
+          "d": 238
+        },
+        {
+          "t": 1163,
+          "d": 113
+        },
+        {
+          "t": 1288,
+          "d": 150
+        },
+        {
+          "t": 1450,
+          "d": 38
+        },
+        {
+          "t": 1488,
+          "d": 500
+        },
+        {
+          "t": 1988,
+          "d": 625
+        },
+        {
+          "t": 2738,
+          "d": 250
+        },
+        {
+          "t": 2988,
+          "d": 63
+        },
+        {
+          "t": 3063,
+          "d": 175
+        },
+        {
+          "t": 3238,
+          "d": 50
+        },
+        {
+          "t": 3288,
+          "d": 38
+        },
+        {
+          "t": 3325,
+          "d": 438
+        },
+        {
+          "t": 4238,
+          "d": 400
+        },
+        {
+          "t": 4650,
+          "d": 200
+        },
+        {
+          "t": 4850,
+          "d": 638
+        },
+        {
+          "t": 5750,
+          "d": 150
+        },
+        {
+          "t": 5913,
+          "d": 213
+        },
+        {
+          "t": 6125,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 6개월 계약직은 어떠냐고, 그건 정규 인원으로 안 잡히지 않냐고 제안해봐",
+      "en": "What about a contractor for six months instead? That wouldn't count as permanent headcount.",
+      "ms": 5832,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "What",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "contractor",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          7
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "That",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wouldn't",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "count",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "permanent",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "headcount",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 125
+        },
+        {
+          "t": 188,
+          "d": 238
+        },
+        {
+          "t": 438,
+          "d": 38
+        },
+        {
+          "t": 488,
+          "d": 713
+        },
+        {
+          "t": 1213,
+          "d": 150
+        },
+        {
+          "t": 1375,
+          "d": 388
+        },
+        {
+          "t": 1775,
+          "d": 350
+        },
+        {
+          "t": 2138,
+          "d": 588
+        },
+        {
+          "t": 3113,
+          "d": 213
+        },
+        {
+          "t": 3325,
+          "d": 213
+        },
+        {
+          "t": 3538,
+          "d": 425
+        },
+        {
+          "t": 4038,
+          "d": 313
+        },
+        {
+          "t": 4363,
+          "d": 463
+        },
+        {
+          "t": 4825,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럴 수도 있죠. 근데 근거 자료가 있어야 해요. 그 한 명이 없으면 우리가 뭘 잃게 되나요?",
+      "en": "Maybe. But I'd need to make a business case. What would we lose without that extra person?",
+      "ms": 5304,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Maybe",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "business",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lose",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "without",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "extra",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "person",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 375
+        },
+        {
+          "t": 888,
+          "d": 63
+        },
+        {
+          "t": 950,
+          "d": 75
+        },
+        {
+          "t": 1025,
+          "d": 88
+        },
+        {
+          "t": 1113,
+          "d": 38
+        },
+        {
+          "t": 1150,
+          "d": 125
+        },
+        {
+          "t": 1275,
+          "d": 38
+        },
+        {
+          "t": 1313,
+          "d": 388
+        },
+        {
+          "t": 1700,
+          "d": 550
+        },
+        {
+          "t": 2663,
+          "d": 75
+        },
+        {
+          "t": 2738,
+          "d": 88
+        },
+        {
+          "t": 2838,
+          "d": 88
+        },
+        {
+          "t": 2925,
+          "d": 475
+        },
+        {
+          "t": 3413,
+          "d": 563
+        },
+        {
+          "t": 3988,
+          "d": 225
+        },
+        {
+          "t": 4213,
+          "d": 275
+        },
+        {
+          "t": 4488,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "솔직히 사람이 없으면 이번 분기 출시 두 개 중 하나가 밀린다고 하고, 내일까지 숫자로 정리해 주겠다고 해봐",
+      "en": "Honestly, without the extra help, one of our two launches this quarter will slip. I can put the numbers in writing by tomorrow.",
+      "ms": 8016,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Honestly",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "without",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "extra",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "one",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "launches",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "will",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slip",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "writing",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 538
+        },
+        {
+          "t": 1063,
+          "d": 300
+        },
+        {
+          "t": 1375,
+          "d": 75
+        },
+        {
+          "t": 1463,
+          "d": 438
+        },
+        {
+          "t": 1913,
+          "d": 375
+        },
+        {
+          "t": 2700,
+          "d": 125
+        },
+        {
+          "t": 2825,
+          "d": 75
+        },
+        {
+          "t": 2913,
+          "d": 125
+        },
+        {
+          "t": 3050,
+          "d": 325
+        },
+        {
+          "t": 3375,
+          "d": 525
+        },
+        {
+          "t": 3913,
+          "d": 188
+        },
+        {
+          "t": 4113,
+          "d": 413
+        },
+        {
+          "t": 4525,
+          "d": 100
+        },
+        {
+          "t": 4625,
+          "d": 450
+        },
+        {
+          "t": 5563,
+          "d": 125
+        },
+        {
+          "t": 5700,
+          "d": 138
+        },
+        {
+          "t": 5850,
+          "d": 138
+        },
+        {
+          "t": 6000,
+          "d": 63
+        },
+        {
+          "t": 6063,
+          "d": 363
+        },
+        {
+          "t": 6438,
+          "d": 188
+        },
+        {
+          "t": 6625,
+          "d": 288
+        },
+        {
+          "t": 6925,
+          "d": 113
+        },
+        {
+          "t": 7050,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그렇게 해줘요. 설득력 있으면 다음 주에 재무팀에 가져갈게요.",
+      "en": "Do that. If it's convincing, I'll take it to finance next week.",
+      "ms": 4680,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Do",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "convincing",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "finance",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 313
+        },
+        {
+          "t": 975,
+          "d": 88
+        },
+        {
+          "t": 1075,
+          "d": 88
+        },
+        {
+          "t": 1175,
+          "d": 688
+        },
+        {
+          "t": 2300,
+          "d": 100
+        },
+        {
+          "t": 2413,
+          "d": 175
+        },
+        {
+          "t": 2588,
+          "d": 50
+        },
+        {
+          "t": 2638,
+          "d": 63
+        },
+        {
+          "t": 2700,
+          "d": 800
+        },
+        {
+          "t": 3625,
+          "d": 300
+        },
+        {
+          "t": 3938,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "headcount",
+      "kind": "word",
+      "meaning_ko": "(조직의) 인원 수, 정원",
+      "example": "We got approval for two more headcount next year.",
+      "prompt_ko": "내년에 인원 두 명을 더 승인받았다고 말해봐"
+    },
+    {
+      "term": "contractor",
+      "kind": "word",
+      "meaning_ko": "계약직(외주) 인력",
+      "example": "We brought in a contractor to help with the migration.",
+      "prompt_ko": "그 작업을 도와줄 계약직을 한 명 데려왔다고 말해봐"
+    },
+    {
+      "term": "slip",
+      "kind": "word",
+      "meaning_ko": "(일정이) 밀리다",
+      "example": "If testing takes longer, the deadline might slip.",
+      "prompt_ko": "테스트가 길어지면 마감이 밀릴 수 있다고 말해봐"
+    },
+    {
+      "term": "hiring freeze",
+      "kind": "phrase",
+      "meaning_ko": "채용 동결",
+      "keywords": [
+        {
+          "word": "freeze",
+          "meaning_ko": "동결; 얼리다"
+        }
+      ],
+      "prompt_ko": "지금은 채용 동결이라 사람을 못 뽑는다고 말해봐"
+    },
+    {
+      "term": "make a business case",
+      "kind": "phrase",
+      "meaning_ko": "(투자·지출의) 타당성 근거를 대다",
+      "prompt_ko": "새 툴을 사려면 근거부터 만들어야 한다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-headcount-request/full.mp3",
+  "full_starts": [
+    0,
+    2184,
+    8088,
+    15192,
+    21024,
+    26328,
+    34344
+  ],
+  "generated_at": "2026-10-13T20:31:35.569Z"
+}

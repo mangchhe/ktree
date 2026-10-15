@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "describe", "topic": "일상", "level": 2, "seconds": 75,
+    "question_en": "Tell me about the neighborhood you live in. What is it like, and what do you like or dislike about it?",
+    "hint_ko": "동네 큰 그림(어디·어떤 분위기) → 내가 자주 가는 곳 하나를 구체적으로 → 좋은 점과 아쉬운 점 하나씩",
+    "model_en": "I live in a fairly quiet neighborhood on the edge of the city. It's mostly apartment buildings, but there's a small river running through it, so it feels greener than you'd expect.\n\nThe place I spend the most time is the path along that river. In the evenings it's full of people walking their dogs or jogging, and there are little benches every few hundred meters. When I've had a long day, a twenty-minute walk there is usually enough to clear my head.\n\nIf I had to pick one downside, it would be getting around. The nearest subway station is a fifteen-minute walk, which is fine in spring but pretty miserable in winter. Still, I'd take a quiet street and a river over a short commute any day.",
+    "model_note_ko": "묘사는 **큰 그림 → 한 장소 확대 → 평가** 세 문단이다. 2문단은 동네 전체를 나열하지 않고 '강변 산책로' 하나만 골라 장면(개 산책·벤치)과 내 행동(머리 식히기)을 붙였다. 3문단은 'If I had to pick one downside' 로 단점을 꺼낸 뒤 'Still' 로 다시 뒤집어 결론을 낸다 — 장단점 대조가 문단을 문단답게 만든다.",
+    "phrases": [
+      { "term": "on the edge of the city", "meaning_ko": "도시 외곽에" },
+      { "term": "the place I spend the most time is", "meaning_ko": "내가 제일 많이 시간을 보내는 곳은 ~이다" },
+      { "term": "clear my head", "meaning_ko": "머리를 식히다" },
+      { "term": "if I had to pick one downside", "meaning_ko": "단점을 하나 꼽자면" },
+      { "term": "I'd take A over B any day", "meaning_ko": "B보다는 언제든 A를 택하겠다" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "운동", "level": 2, "seconds": 75,
+    "question_en": "What kind of exercise do you do, and what is your usual routine? Tell me how a typical workout goes.",
+    "hint_ko": "무슨 운동을 얼마나 자주 하는지 → 한 번 할 때 순서(시작·본운동·마무리) → 꾸준히 하게 만드는 나만의 요령 → 솔직한 한계 한 줄",
+    "model_en": "These days, my main exercise is running. I try to go three times a week, usually early in the morning before work, because if I wait until the evening, I always find an excuse.\n\nA typical run goes like this. I start with five minutes of slow walking to warm up, then I run for about thirty minutes at an easy pace. On the way back, I slow down again and do some stretching outside my building.\n\nWhat really keeps me going is that I don't track my speed at all. I just try not to skip two days in a row. That one rule takes the pressure off, so I actually look forward to it.\n\nTo be honest, winter is still a struggle. When it's dark and freezing, I sometimes end up on the treadmill instead, which I find pretty boring.",
+    "model_note_ko": "습관형은 **무엇·얼마나 → 한 번의 순서 → 꾸준함의 비결 → 한계** 로 나눈다. 2문단은 'A typical run goes like this' 로 시간 순서(start with → then → on the way back)를 깔아 루틴이 그려지게 한다. 3문단 'What really keeps me going is' 가 단순 묘사를 '왜'로 끌어올리고, 4문단 'To be honest' 의 한계 인정이 자연스럽게 한 문단을 더 만든다.",
+    "phrases": [
+      { "term": "I always find an excuse", "meaning_ko": "늘 핑계를 찾게 된다" },
+      { "term": "a typical ~ goes like this", "meaning_ko": "보통 ~는 이런 식으로 흘러간다" },
+      { "term": "what really keeps me going is", "meaning_ko": "정말로 나를 계속하게 하는 건 ~이다" },
+      { "term": "two days in a row", "meaning_ko": "이틀 연속" },
+      { "term": "to be honest, ~ is still a struggle", "meaning_ko": "솔직히 ~는 아직도 힘들다" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "여가", "level": 2, "seconds": 60,
+    "question_en": "I just started a new hobby. Ask me three or four questions about it.",
+    "hint_ko": "새 취미를 시작한 사람에게 질문 3~4개 — 반응 한마디로 열기 → 무엇·왜 시작했는지 → 얼마나·어디서 하는지 → 어려운 점이나 앞으로의 목표. 질문 사이에 짧은 코멘트를 끼워라",
+    "model_en": "Oh, nice! I've been meaning to pick up a new hobby myself, so I'm really curious.\n\nFirst of all, what is it, and what got you into it? Was it a friend, or did you just see it somewhere and decide to try?\n\nI'd also love to know how much time you're putting into it. Do you do it every day, or is it more of a weekend thing? And do you do it alone or with other people?\n\nOne more question. What's been the hardest part so far? I usually give up on things after a month, so I'm wondering how you're keeping it going.",
+    "model_note_ko": "질문을 **무엇·계기 → 빈도·방식 → 어려움** 세 덩어리로 묶었다. 'what got you into it?' 처럼 계기를 묻는 질문은 상대가 이야기를 풀게 만든다. 'A, or B?' 로 선택지를 주면 yes/no 로 끝나지 않는다. 마지막에 '나는 한 달이면 포기한다'는 내 얘기를 끼워 질문만 던지는 느낌을 지운다.",
+    "phrases": [
+      { "term": "I've been meaning to", "meaning_ko": "~하려고 마음먹고 있었다" },
+      { "term": "what got you into it?", "meaning_ko": "어떻게 시작하게 됐어?" },
+      { "term": "is it more of a ~ thing?", "meaning_ko": "~쪽에 더 가까운 거야?" },
+      { "term": "what's been the hardest part so far?", "meaning_ko": "지금까지 제일 어려웠던 게 뭐야?" },
+      { "term": "how you're keeping it going", "meaning_ko": "어떻게 계속 이어가고 있는지" }
+    ]
+  }
+]

@@ -1,0 +1,1532 @@
+{
+  "id": "2026-10-04-nut-allergy",
+  "situation_ko": "출장지 레스토랑. 견과류 알레르기가 있어 주문하려던 요리를 물어보는데, 소스에 견과류가 들어가고 빼줄 수도 없다고 한다. 직원이 다른 메뉴를 권한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "웨이터",
+      "meaning_ko": "주문하시겠어요?",
+      "en": "Are you ready to order, or do you need a few more minutes?",
+      "ms": 3720,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Are",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ready",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "order",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "or",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "few",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 138
+        },
+        {
+          "t": 363,
+          "d": 213
+        },
+        {
+          "t": 588,
+          "d": 100
+        },
+        {
+          "t": 700,
+          "d": 425
+        },
+        {
+          "t": 1263,
+          "d": 113
+        },
+        {
+          "t": 1388,
+          "d": 100
+        },
+        {
+          "t": 1500,
+          "d": 100
+        },
+        {
+          "t": 1613,
+          "d": 175
+        },
+        {
+          "t": 1800,
+          "d": 50
+        },
+        {
+          "t": 1863,
+          "d": 225
+        },
+        {
+          "t": 2100,
+          "d": 163
+        },
+        {
+          "t": 2275,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "치킨 요리를 먹고 싶은데, 견과류 알레르기가 심해서 견과류가 들어가는지 먼저 물어봐",
+      "en": "I'd like the chicken, but I have a serious nut allergy. Does it have any nuts in it?",
+      "ms": 5016,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chicken",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "serious",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nut",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "allergy",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Does",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nuts",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 113
+        },
+        {
+          "t": 188,
+          "d": 175
+        },
+        {
+          "t": 375,
+          "d": 75
+        },
+        {
+          "t": 450,
+          "d": 450
+        },
+        {
+          "t": 913,
+          "d": 163
+        },
+        {
+          "t": 1075,
+          "d": 88
+        },
+        {
+          "t": 1175,
+          "d": 163
+        },
+        {
+          "t": 1350,
+          "d": 63
+        },
+        {
+          "t": 1425,
+          "d": 700
+        },
+        {
+          "t": 2138,
+          "d": 225
+        },
+        {
+          "t": 2375,
+          "d": 563
+        },
+        {
+          "t": 3300,
+          "d": 125
+        },
+        {
+          "t": 3438,
+          "d": 63
+        },
+        {
+          "t": 3500,
+          "d": 288
+        },
+        {
+          "t": 3888,
+          "d": 163
+        },
+        {
+          "t": 4063,
+          "d": 250
+        },
+        {
+          "t": 4325,
+          "d": 100
+        },
+        {
+          "t": 4438,
+          "d": 213
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "말씀해주셔서 다행이에요. 그 소스는 캐슈너트로 만들어서 빼드릴 수가 없어요.",
+      "en": "I'm glad you asked. The sauce is made with cashews, so I'm afraid we can't leave them out.",
+      "ms": 6744,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "glad",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "asked",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sauce",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "made",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cashews",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afraid",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "leave",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 188
+        },
+        {
+          "t": 300,
+          "d": 288
+        },
+        {
+          "t": 600,
+          "d": 100
+        },
+        {
+          "t": 713,
+          "d": 488
+        },
+        {
+          "t": 2063,
+          "d": 150
+        },
+        {
+          "t": 2225,
+          "d": 288
+        },
+        {
+          "t": 2525,
+          "d": 138
+        },
+        {
+          "t": 2675,
+          "d": 250
+        },
+        {
+          "t": 2938,
+          "d": 150
+        },
+        {
+          "t": 3100,
+          "d": 638
+        },
+        {
+          "t": 4000,
+          "d": 113
+        },
+        {
+          "t": 4125,
+          "d": 150
+        },
+        {
+          "t": 4288,
+          "d": 388
+        },
+        {
+          "t": 4688,
+          "d": 125
+        },
+        {
+          "t": 4825,
+          "d": 288
+        },
+        {
+          "t": 5125,
+          "d": 200
+        },
+        {
+          "t": 5338,
+          "d": 125
+        },
+        {
+          "t": 5475,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 견과류 없이 안전하게 먹을 수 있는 게 뭐가 있는지 추천해달라고 해봐",
+      "en": "Okay, thanks for checking. What would you recommend that's completely nut-free?",
+      "ms": 5064,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "checking",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "recommend",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "completely",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nut-free",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 350
+        },
+        {
+          "t": 1063,
+          "d": 225
+        },
+        {
+          "t": 1288,
+          "d": 88
+        },
+        {
+          "t": 1375,
+          "d": 475
+        },
+        {
+          "t": 2238,
+          "d": 113
+        },
+        {
+          "t": 2350,
+          "d": 100
+        },
+        {
+          "t": 2463,
+          "d": 113
+        },
+        {
+          "t": 2588,
+          "d": 588
+        },
+        {
+          "t": 3188,
+          "d": 325
+        },
+        {
+          "t": 3525,
+          "d": 588
+        },
+        {
+          "t": 4125,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "구운 생선이 괜찮아요. 다만 같은 주방에서 조리하니까 미량 섞일 가능성은 100퍼센트 배제할 수는 없어요.",
+      "en": "The grilled fish is a good choice. But it's cooked in the same kitchen, so I can't promise there's no trace at all.",
+      "ms": 7464,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "grilled",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fish",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "choice",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cooked",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "kitchen",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "promise",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trace",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 363
+        },
+        {
+          "t": 650,
+          "d": 263
+        },
+        {
+          "t": 925,
+          "d": 113
+        },
+        {
+          "t": 1050,
+          "d": 63
+        },
+        {
+          "t": 1125,
+          "d": 188
+        },
+        {
+          "t": 1325,
+          "d": 538
+        },
+        {
+          "t": 2725,
+          "d": 163
+        },
+        {
+          "t": 2900,
+          "d": 125
+        },
+        {
+          "t": 3038,
+          "d": 225
+        },
+        {
+          "t": 3275,
+          "d": 88
+        },
+        {
+          "t": 3375,
+          "d": 75
+        },
+        {
+          "t": 3463,
+          "d": 250
+        },
+        {
+          "t": 3725,
+          "d": 475
+        },
+        {
+          "t": 4363,
+          "d": 125
+        },
+        {
+          "t": 4500,
+          "d": 88
+        },
+        {
+          "t": 4600,
+          "d": 300
+        },
+        {
+          "t": 4913,
+          "d": 325
+        },
+        {
+          "t": 5250,
+          "d": 225
+        },
+        {
+          "t": 5488,
+          "d": 238
+        },
+        {
+          "t": 5738,
+          "d": 350
+        },
+        {
+          "t": 6100,
+          "d": 125
+        },
+        {
+          "t": 6238,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "솔직하게 말해줘서 고맙다고 하고, 셰프에게 깨끗한 팬을 써달라고 전해줄 수 있는지 물어봐",
+      "en": "I appreciate you being upfront. Could you ask the chef to use a clean pan for mine?",
+      "ms": 4776,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "appreciate",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "being",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "upfront",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ask",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chef",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "use",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clean",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pan",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mine",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 150
+        },
+        {
+          "t": 263,
+          "d": 588
+        },
+        {
+          "t": 850,
+          "d": 75
+        },
+        {
+          "t": 925,
+          "d": 200
+        },
+        {
+          "t": 1125,
+          "d": 475
+        },
+        {
+          "t": 1988,
+          "d": 138
+        },
+        {
+          "t": 2138,
+          "d": 150
+        },
+        {
+          "t": 2300,
+          "d": 263
+        },
+        {
+          "t": 2575,
+          "d": 63
+        },
+        {
+          "t": 2650,
+          "d": 338
+        },
+        {
+          "t": 3000,
+          "d": 100
+        },
+        {
+          "t": 3113,
+          "d": 200
+        },
+        {
+          "t": 3325,
+          "d": 50
+        },
+        {
+          "t": 3388,
+          "d": 300
+        },
+        {
+          "t": 3700,
+          "d": 250
+        },
+        {
+          "t": 3963,
+          "d": 100
+        },
+        {
+          "t": 4075,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼요. 주문서에 알레르기라고 표시하고 제가 직접 말씀드릴게요.",
+      "en": "Absolutely. I'll flag it as an allergy on the order and tell the chef myself.",
+      "ms": 5976,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Absolutely",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flag",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "allergy",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "order",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tell",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chef",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "myself",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 875
+        },
+        {
+          "t": 1838,
+          "d": 238
+        },
+        {
+          "t": 2088,
+          "d": 313
+        },
+        {
+          "t": 2413,
+          "d": 88
+        },
+        {
+          "t": 2513,
+          "d": 63
+        },
+        {
+          "t": 2588,
+          "d": 100
+        },
+        {
+          "t": 2700,
+          "d": 388
+        },
+        {
+          "t": 3100,
+          "d": 125
+        },
+        {
+          "t": 3238,
+          "d": 100
+        },
+        {
+          "t": 3350,
+          "d": 300
+        },
+        {
+          "t": 3663,
+          "d": 125
+        },
+        {
+          "t": 3800,
+          "d": 188
+        },
+        {
+          "t": 4000,
+          "d": 75
+        },
+        {
+          "t": 4088,
+          "d": 313
+        },
+        {
+          "t": 4413,
+          "d": 688
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "allergy",
+      "meaning_ko": "알레르기 (발음: 앨러지)",
+      "example": "I have a serious nut allergy."
+    },
+    {
+      "kind": "word",
+      "term": "trace",
+      "meaning_ko": "미량, 흔적",
+      "example": "I can't promise there's no trace at all."
+    },
+    {
+      "kind": "word",
+      "term": "upfront",
+      "meaning_ko": "솔직한, 숨김없는 (미리 터놓는)",
+      "example": "I appreciate you being upfront."
+    },
+    {
+      "kind": "word",
+      "term": "flag",
+      "meaning_ko": "(주의하라고) 표시하다",
+      "example": "I'll flag it as an allergy on the order."
+    },
+    {
+      "kind": "phrase",
+      "term": "leave them out",
+      "meaning_ko": "그걸 빼다",
+      "prompt_ko": "요리에서 양파를 빼줄 수 있는지 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "What would you recommend that's nut-free?",
+      "meaning_ko": "견과류 없는 것 중 뭘 추천하나요? (-free = ~가 없는)",
+      "prompt_ko": "글루텐 없는 메뉴 중에 뭘 추천하는지 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-nut-allergy/full.mp3",
+  "full_starts": [
+    0,
+    3720,
+    8736,
+    15480,
+    20544,
+    28008,
+    32784
+  ],
+  "generated_at": "2026-10-03T21:41:05.247Z"
+}

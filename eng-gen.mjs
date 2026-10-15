@@ -271,14 +271,16 @@ async function showRecent(n) {
     .select('article_id, title, topic, created_at')
     .order('created_at', { ascending: false }).limit(n);
   const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
-  const mine = (rows, k) => (rows || []).filter(r => (r.created_at || '').slice(0, 10) === today).length;
+  // created_at 은 UTC — KST 로 옮겨서 자른다 (안 그러면 09시 전엔 오늘이 늘 0개)
+  const kst = t => t ? new Date(Date.parse(t) + 9 * 3600e3).toISOString().slice(0, 10) : '';
+  const mine = (rows, k) => (rows || []).filter(r => kst(r.created_at) === today).length;
   console.log(`오늘(${today}) 장면 ${mine(sc)}개 · 기사 ${mine(ar)}개`);
   console.log('── 최근 장면 ──');
   for (const r of sc || [])
-    console.log(`  ${(r.created_at||'').slice(0,10)}  ${r.topic} L${r.level}  ${r.scene_id}  ${(r.situation_ko||'').slice(0,42)}`);
+    console.log(`  ${kst(r.created_at)}  ${r.topic} L${r.level}  ${r.scene_id}  ${(r.situation_ko||'').slice(0,42)}`);
   console.log('── 최근 기사 ──');
   for (const r of ar || [])
-    console.log(`  ${(r.created_at||'').slice(0,10)}  ${r.topic}  ${(r.title||'').slice(0,54)}`);
+    console.log(`  ${kst(r.created_at)}  ${r.topic}  ${(r.title||'').slice(0,54)}`);
   await sb.auth.signOut();
 }
 

@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "past",
+    "topic": "비즈니스",
+    "level": 3,
+    "seconds": 90,
+    "question_en": "Tell me about a time something went wrong at work. What happened, how did you handle it, and what did you learn?",
+    "hint_ko": "언제·무슨 일이었는지 배경 → 일이 터진 순간과 내가 한 대응을 시간 순으로 → 돌아보며 배운 것 하나",
+    "model_en": "A couple of years ago, I was working on a project with a really tight deadline. We were supposed to launch a new feature on a Monday, and everything looked fine on Friday afternoon.\n\nThen, late on Sunday night, I got a message from a teammate saying that the whole thing had stopped working. At first I panicked a little, to be honest. But I called two people on the team, and we went through it step by step. It turned out a small change from earlier that week was causing the problem. We fixed it around three in the morning, and the launch went ahead on time.\n\nLooking back, the bug itself wasn't the real lesson. What I learned was that we'd been checking everything at the last minute. Since then, I always try to finish a day early, so there's room for things to go wrong.",
+    "model_note_ko": "과거 경험은 **배경 → 사건(전환점) → 돌아보기** 세 문단이다. 2문단이 'Then, late on Sunday night' 같은 시간 표지로 이야기를 앞으로 민다 — 시간 순서가 흐트러지면 듣는 사람이 길을 잃는다. 3문단의 'Looking back' 이 사건을 교훈으로 끌어올리고, '버그가 아니라 습관이 문제였다'는 뒤집기가 단순 나열을 문단으로 만든다.",
+    "phrases": [
+      { "term": "we were supposed to", "meaning_ko": "~하기로 되어 있었다" },
+      { "term": "it turned out (that)", "meaning_ko": "알고 보니 ~였다" },
+      { "term": "looking back", "meaning_ko": "돌이켜 보면" },
+      { "term": "since then, I always", "meaning_ko": "그 뒤로 나는 늘 ~한다" }
+    ]
+  },
+  {
+    "kind": "compare",
+    "topic": "여행",
+    "level": 3,
+    "seconds": 90,
+    "question_en": "How is the way you travel now different from the way you traveled when you were younger? What changed, and why?",
+    "hint_ko": "예전 여행 방식 한 문단 → 지금 방식 한 문단 (같은 기준으로 대칭) → 왜 바뀌었는지, 어느 쪽이 더 좋은지",
+    "model_en": "When I was in my twenties, I traveled in a completely different way. I'd book the cheapest flight I could find, stay in hostels, and try to see as many places as possible. I once did four cities in six days, which sounds fun but was honestly exhausting.\n\nThese days, it's pretty much the opposite. I pick one place and stay there for a while. I'd rather pay a bit more for a quiet hotel and spend a whole afternoon in one neighborhood than rush around to tick boxes.\n\nI think the main reason is that my time feels more valuable now. Back then I had more time than money, and now it's the other way around. So I don't see as much, but I actually remember more of what I see.",
+    "model_note_ko": "비교는 **예전 → 지금 → 이유** 로 대칭을 맞춘다. 1·2문단이 같은 기준(항공권·숙소·일정 밀도)으로 짝을 이루어야 비교가 들린다. 3문단의 'more time than money → the other way around' 가 두 문단을 한 문장으로 묶는 핵심이고, 마지막 문장의 '덜 보지만 더 기억한다'가 결론을 대조로 닫는다.",
+    "phrases": [
+      { "term": "these days, it's pretty much the opposite", "meaning_ko": "요즘은 거의 정반대다" },
+      { "term": "I'd rather A than B", "meaning_ko": "B 하느니 A 하겠다" },
+      { "term": "back then", "meaning_ko": "그때는, 예전엔" },
+      { "term": "it's the other way around", "meaning_ko": "그 반대다" }
+    ]
+  },
+  {
+    "kind": "solve",
+    "topic": "일상",
+    "level": 3,
+    "seconds": 75,
+    "question_en": "You ordered a new sofa online, but the one that was delivered is the wrong color, and the delivery team has already left. Call the store, explain the situation, and suggest a solution.",
+    "hint_ko": "무엇을 주문했고 무엇이 왔는지 → 근거(주문번호·사진) → 원하는 해결(교환·수거 일정) → 안 되면 차선(할인·환불)",
+    "model_en": "Hi, I'm calling about an order I received this morning. The order number is 4-5-2-7. I ordered the three-seat sofa in dark grey, but the one that was delivered is beige. Unfortunately, I only noticed after the delivery team had left.\n\nI've taken a few photos of the sofa and the label on the box, and I can email them to you right away, so you can see it's clearly the wrong color.\n\nWhat I'd really like is to have it exchanged for the grey one. Would it be possible to pick this one up and bring the right one at the same time, so I'm not left without a sofa? If the grey one isn't in stock, then I'd like a full refund, including the delivery fee.",
+    "model_note_ko": "문제 해결은 **상황 → 근거 → 요청 → 차선** 순서다. 1문단은 사실만(주문한 것 vs 온 것), 2문단은 사진이라는 근거로 상대가 반박할 여지를 없앤다. 3문단은 'What I'd really like is' 로 원하는 것을 먼저 분명히 말하고, 'If ~ isn't in stock, then' 으로 차선을 미리 깔아 통화가 막히지 않게 한다.",
+    "phrases": [
+      { "term": "I'm calling about", "meaning_ko": "~ 건으로 전화드렸어요" },
+      { "term": "unfortunately, I only noticed after", "meaning_ko": "아쉽게도 ~하고 나서야 알았다" },
+      { "term": "what I'd really like is", "meaning_ko": "제가 정말 원하는 건 ~이다" },
+      { "term": "if that isn't possible, then", "meaning_ko": "그게 안 되면 그때는" }
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "kind": "describe", "topic": "일상", "level": 2, "seconds": 75,
+    "question_en": "Tell me about the neighborhood where you live. What does it look like, and what do you like about it?",
+    "hint_ko": "① 동네를 한마디로 — 조용한지 번화한지 ② 자주 가는 곳 두세 군데와 거기서 뭘 하는지 ③ 가장 마음에 드는 점으로 마무리",
+    "model_en": "I live in a pretty quiet neighborhood on the edge of the city. It's mostly low-rise apartments, with a small park right in the middle where people walk their dogs in the morning.\n\nWhat I like most is that everything I need is within walking distance. There's a grocery store on the corner, a couple of cafes, and a gym I go to a few times a week. On weekends, the little park fills up with families, and there's a farmers' market once a month.\n\nIf I had to pick one thing, it's how calm it feels at night. After a long day, just walking home through those quiet streets is the part I look forward to the most.",
+    "model_note_ko": "문단 셋으로 나눴다 — (1) 전체 인상 (2) 구체적 장소·활동 (3) 가장 좋은 점. 묘사형은 '전체 → 세부 → 감상' 순으로 가면 문단이 저절로 생긴다. 좋은 내용을 문장으로 죽 늘어놓으면 IM 천장에 걸린다.",
+    "phrases": [
+      { "term": "on the edge of", "meaning_ko": "~의 가장자리에" },
+      { "term": "within walking distance", "meaning_ko": "걸어갈 수 있는 거리에" },
+      { "term": "what I like most is", "meaning_ko": "내가 제일 좋아하는 건" },
+      { "term": "if I had to pick one thing", "meaning_ko": "하나만 꼽자면" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "운동", "level": 2, "seconds": 75,
+    "question_en": "You said you like to stay active. What's your exercise routine like, and how often do you do it?",
+    "hint_ko": "① 보통 언제·얼마나 자주 운동하는지 ② 평소 루틴을 순서대로 ③ 빠지는 날엔 어떻게 하는지로 마무리",
+    "model_en": "I usually work out three or four times a week, mostly in the evenings after work. I'm not super intense about it — I just try to stay consistent.\n\nWhat I typically do is start with ten minutes on the treadmill to warm up, then move on to weights. I rotate between upper body and lower body depending on the day. I always finish with some stretching, because otherwise I'm sore the next morning.\n\nOn days when I can't make it to the gym, I'll go for a long walk or do a quick home workout instead. The main thing for me is not skipping two days in a row.",
+    "model_note_ko": "습관형은 빈도 → 전형적 순서 → 예외의 세 문단. 'what I typically do is', 'I always finish with' 같은 담화 표지로 순서를 묶어 문단이 흩어지지 않게 했다. 예외(빠지는 날)를 한 문단 두면 단조로움을 깬다.",
+    "phrases": [
+      { "term": "what I typically do is", "meaning_ko": "내가 보통 하는 건" },
+      { "term": "move on to", "meaning_ko": "~로 넘어가다" },
+      { "term": "I always finish with", "meaning_ko": "항상 ~로 마무리한다" },
+      { "term": "two days in a row", "meaning_ko": "이틀 연속" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "여가", "level": 2, "seconds": 60,
+    "question_en": "A friend just told you they're going to the movies this weekend. Ask them three or four questions about their plans.",
+    "hint_ko": "궁금한 걸 질문 3~4개로 만들어봐 — 무슨 영화인지 / 누구랑 / 어느 극장인지 / 끝나고 뭘 할 건지. 평서문 말고 의문문으로.",
+    "model_en": "Oh nice, you're going to the movies this weekend? I've got a few questions.\n\nFirst, what movie are you planning to see — is it that new one everyone's talking about? And who are you going with, just the two of you or a bigger group?\n\nAlso, which theater are you heading to? I'm asking because the one downtown has way better seats. And one more thing — do you have plans for after, or are you just going to grab dinner nearby?",
+    "model_note_ko": "ask 유형은 질문 3~4개를 '늘어놓기'가 아니라 '묶어서' 내야 점수가 붙는다. 'First', 'Also', 'And one more thing' 으로 질문을 엮고, 중간에 왜 묻는지(극장 좌석) 이유를 한 줄 넣어 단순 나열을 벗어나게 했다.",
+    "phrases": [
+      { "term": "I've got a few questions", "meaning_ko": "몇 가지 궁금한 게 있어" },
+      { "term": "everyone's talking about", "meaning_ko": "다들 얘기하는" },
+      { "term": "I'm asking because", "meaning_ko": "왜 묻냐면" },
+      { "term": "one more thing", "meaning_ko": "하나만 더" }
+    ]
+  }
+]

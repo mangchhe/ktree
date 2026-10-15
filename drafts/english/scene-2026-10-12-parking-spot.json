@@ -1,0 +1,1268 @@
+{
+  "id": "2026-10-12-parking-spot",
+  "situation_ko": "아파트 주차장에서 이웃이 내 지정 자리에 또 차를 댔다. 정중하게 빼달라고 하는데, 이웃은 잠깐이면 된다며 미룬다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "이웃",
+      "meaning_ko": "안녕하세요, 저 찾으셨어요?",
+      "en": "Oh, hi — were you looking for me?",
+      "ms": 2352,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "hi",
+          1
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "were",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looking",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          6
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 313
+        },
+        {
+          "t": 413,
+          "d": 300
+        },
+        {
+          "t": 1213,
+          "d": 150
+        },
+        {
+          "t": 1375,
+          "d": 75
+        },
+        {
+          "t": 1463,
+          "d": 200
+        },
+        {
+          "t": 1663,
+          "d": 113
+        },
+        {
+          "t": 1788,
+          "d": 213
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그 자리가 내 지정 자리인데 차를 좀 빼줄 수 있냐고 정중하게 물어봐",
+      "en": "Hi — that's actually my assigned spot. Do you mind moving your car?",
+      "ms": 3816,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "assigned",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spot",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mind",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "car",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 200
+        },
+        {
+          "t": 763,
+          "d": 163
+        },
+        {
+          "t": 938,
+          "d": 263
+        },
+        {
+          "t": 1200,
+          "d": 125
+        },
+        {
+          "t": 1325,
+          "d": 325
+        },
+        {
+          "t": 1650,
+          "d": 450
+        },
+        {
+          "t": 2500,
+          "d": 25
+        },
+        {
+          "t": 2538,
+          "d": 75
+        },
+        {
+          "t": 2613,
+          "d": 213
+        },
+        {
+          "t": 2825,
+          "d": 200
+        },
+        {
+          "t": 3025,
+          "d": 88
+        },
+        {
+          "t": 3113,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 금방 올라갔다 올 거예요. 딱 5분이면 돼요.",
+      "en": "Oh, I'm just running upstairs for a second — give me like five minutes?",
+      "ms": 4464,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "running",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "upstairs",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "second",
+          7
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "give",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 400
+        },
+        {
+          "t": 750,
+          "d": 188
+        },
+        {
+          "t": 950,
+          "d": 200
+        },
+        {
+          "t": 1163,
+          "d": 250
+        },
+        {
+          "t": 1425,
+          "d": 450
+        },
+        {
+          "t": 1875,
+          "d": 88
+        },
+        {
+          "t": 1975,
+          "d": 50
+        },
+        {
+          "t": 2038,
+          "d": 475
+        },
+        {
+          "t": 2963,
+          "d": 125
+        },
+        {
+          "t": 3088,
+          "d": 113
+        },
+        {
+          "t": 3213,
+          "d": 213
+        },
+        {
+          "t": 3438,
+          "d": 250
+        },
+        {
+          "t": 3688,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "자꾸 이런 일이 반복돼서 곤란하다고, 지금 빼주면 좋겠다고 선을 그어봐",
+      "en": "The thing is, this keeps happening, and I need to get in. I'd really appreciate it if you moved it now.",
+      "ms": 5328,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "this",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keeps",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happening",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "appreciate",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moved",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 288
+        },
+        {
+          "t": 513,
+          "d": 175
+        },
+        {
+          "t": 700,
+          "d": 150
+        },
+        {
+          "t": 850,
+          "d": 288
+        },
+        {
+          "t": 1138,
+          "d": 500
+        },
+        {
+          "t": 1863,
+          "d": 63
+        },
+        {
+          "t": 1938,
+          "d": 25
+        },
+        {
+          "t": 1975,
+          "d": 175
+        },
+        {
+          "t": 2150,
+          "d": 38
+        },
+        {
+          "t": 2200,
+          "d": 150
+        },
+        {
+          "t": 2350,
+          "d": 238
+        },
+        {
+          "t": 3000,
+          "d": 138
+        },
+        {
+          "t": 3150,
+          "d": 225
+        },
+        {
+          "t": 3375,
+          "d": 575
+        },
+        {
+          "t": 3963,
+          "d": 100
+        },
+        {
+          "t": 4138,
+          "d": 88
+        },
+        {
+          "t": 4225,
+          "d": 75
+        },
+        {
+          "t": 4300,
+          "d": 275
+        },
+        {
+          "t": 4575,
+          "d": 63
+        },
+        {
+          "t": 4638,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞는 말씀이에요, 죄송해요. 번호 주고받을까요? 다음엔 연락드릴게요.",
+      "en": "You're right, I'm sorry. Should we swap numbers so I can text you next time?",
+      "ms": 4608,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "You're",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sorry",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Should",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "swap",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "text",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 113
+        },
+        {
+          "t": 175,
+          "d": 250
+        },
+        {
+          "t": 450,
+          "d": 100
+        },
+        {
+          "t": 563,
+          "d": 475
+        },
+        {
+          "t": 1438,
+          "d": 188
+        },
+        {
+          "t": 1638,
+          "d": 100
+        },
+        {
+          "t": 1750,
+          "d": 413
+        },
+        {
+          "t": 2175,
+          "d": 388
+        },
+        {
+          "t": 2800,
+          "d": 263
+        },
+        {
+          "t": 3075,
+          "d": 100
+        },
+        {
+          "t": 3175,
+          "d": 125
+        },
+        {
+          "t": 3313,
+          "d": 300
+        },
+        {
+          "t": 3625,
+          "d": 63
+        },
+        {
+          "t": 3700,
+          "d": 225
+        },
+        {
+          "t": 3925,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "번호는 좋다고 하되, 앞으로는 내 자리에 대지 말아달라고 분명히 해",
+      "en": "Sure, that works — but please don't park in my spot again, even for a minute.",
+      "ms": 4584,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          2
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "but",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "please",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "park",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spot",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "even",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minute",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 300
+        },
+        {
+          "t": 400,
+          "d": 175
+        },
+        {
+          "t": 575,
+          "d": 513
+        },
+        {
+          "t": 1338,
+          "d": 150
+        },
+        {
+          "t": 1488,
+          "d": 288
+        },
+        {
+          "t": 1788,
+          "d": 225
+        },
+        {
+          "t": 2025,
+          "d": 213
+        },
+        {
+          "t": 2238,
+          "d": 38
+        },
+        {
+          "t": 2275,
+          "d": 113
+        },
+        {
+          "t": 2388,
+          "d": 313
+        },
+        {
+          "t": 2700,
+          "d": 325
+        },
+        {
+          "t": 3450,
+          "d": 225
+        },
+        {
+          "t": 3675,
+          "d": 150
+        },
+        {
+          "t": 3825,
+          "d": 25
+        },
+        {
+          "t": 3850,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠습니다. 바로 뺄게요. 다시는 안 그럴게요.",
+      "en": "Understood. I'll move it right now, and it won't happen again.",
+      "ms": 4536,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Understood",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happen",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 688
+        },
+        {
+          "t": 1163,
+          "d": 113
+        },
+        {
+          "t": 1288,
+          "d": 250
+        },
+        {
+          "t": 1550,
+          "d": 138
+        },
+        {
+          "t": 1700,
+          "d": 188
+        },
+        {
+          "t": 1900,
+          "d": 425
+        },
+        {
+          "t": 2625,
+          "d": 375
+        },
+        {
+          "t": 3100,
+          "d": 100
+        },
+        {
+          "t": 3213,
+          "d": 200
+        },
+        {
+          "t": 3425,
+          "d": 288
+        },
+        {
+          "t": 3725,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "spot",
+      "kind": "word",
+      "meaning_ko": "(주차) 자리, 구역",
+      "example": "That's my assigned parking spot.",
+      "prompt_ko": "거기가 내 (주차) 자리라고 말해봐"
+    },
+    {
+      "term": "assigned",
+      "kind": "word",
+      "meaning_ko": "지정된, 배정된",
+      "example": "Each unit has one assigned spot in the garage.",
+      "prompt_ko": "세대마다 지정된 자리가 하나씩 있다고 말해봐"
+    },
+    {
+      "term": "Do you mind moving your car?",
+      "kind": "phrase",
+      "meaning_ko": "차 좀 빼주시겠어요?",
+      "prompt_ko": "상대에게 차 좀 빼줄 수 있냐고 정중하게 물어봐"
+    },
+    {
+      "term": "this keeps happening",
+      "kind": "phrase",
+      "meaning_ko": "이런 일이 자꾸 생겨요",
+      "prompt_ko": "같은 일이 자꾸 반복된다고 불만을 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-parking-spot/full.mp3",
+  "full_starts": [
+    0,
+    2352,
+    6168,
+    10632,
+    15960,
+    20568,
+    25152
+  ],
+  "generated_at": "2026-10-11T20:35:11.587Z"
+}

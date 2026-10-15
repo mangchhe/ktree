@@ -1,0 +1,1776 @@
+{
+  "id": "2026-10-07-price-increase",
+  "situation_ko": "오래 거래한 공급업체가 다음 분기부터 가격을 15% 올린다고 통보한다. 인상 폭을 줄이려는데 상대가 장기 계약을 조건으로 내민다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "공급업체 영업 담당",
+      "meaning_ko": "미리 알려드리려고요. 다음 분기부터 저희 가격이 15퍼센트 오릅니다.",
+      "en": "I wanted to give you a heads-up. Starting next quarter, our prices are going up by fifteen percent.",
+      "ms": 5928,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heads-up",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Starting",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "our",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prices",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifteen",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 38
+        },
+        {
+          "t": 138,
+          "d": 175
+        },
+        {
+          "t": 313,
+          "d": 38
+        },
+        {
+          "t": 350,
+          "d": 100
+        },
+        {
+          "t": 450,
+          "d": 113
+        },
+        {
+          "t": 575,
+          "d": 25
+        },
+        {
+          "t": 613,
+          "d": 475
+        },
+        {
+          "t": 1500,
+          "d": 338
+        },
+        {
+          "t": 1838,
+          "d": 200
+        },
+        {
+          "t": 2038,
+          "d": 425
+        },
+        {
+          "t": 2875,
+          "d": 163
+        },
+        {
+          "t": 3050,
+          "d": 413
+        },
+        {
+          "t": 3463,
+          "d": 63
+        },
+        {
+          "t": 3525,
+          "d": 300
+        },
+        {
+          "t": 3825,
+          "d": 188
+        },
+        {
+          "t": 4025,
+          "d": 263
+        },
+        {
+          "t": 4513,
+          "d": 500
+        },
+        {
+          "t": 5013,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "15퍼센트는 너무 큰 폭이라고, 내년 예산은 이미 짜 놨다고 말해봐",
+      "en": "Fifteen percent is a big jump. We've already set our budget for next year.",
+      "ms": 4968,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Fifteen",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "big",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jump",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We've",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 150,
+          "d": 400
+        },
+        {
+          "t": 563,
+          "d": 500
+        },
+        {
+          "t": 1150,
+          "d": 163
+        },
+        {
+          "t": 1313,
+          "d": 125
+        },
+        {
+          "t": 1513,
+          "d": 238
+        },
+        {
+          "t": 1763,
+          "d": 463
+        },
+        {
+          "t": 2613,
+          "d": 213
+        },
+        {
+          "t": 2838,
+          "d": 313
+        },
+        {
+          "t": 3163,
+          "d": 238
+        },
+        {
+          "t": 3413,
+          "d": 100
+        },
+        {
+          "t": 3525,
+          "d": 363
+        },
+        {
+          "t": 3900,
+          "d": 125
+        },
+        {
+          "t": 4025,
+          "d": 300
+        },
+        {
+          "t": 4338,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "이해해요. 저희 원가도 많이 올라서 저희 쪽도 여유가 별로 없어요.",
+      "en": "I understand. Our costs have gone up a lot, so there's not much room on our side.",
+      "ms": 4920,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Our",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "costs",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gone",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lot",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "much",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "side",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 600
+        },
+        {
+          "t": 1200,
+          "d": 100
+        },
+        {
+          "t": 1313,
+          "d": 375
+        },
+        {
+          "t": 1688,
+          "d": 100
+        },
+        {
+          "t": 1788,
+          "d": 188
+        },
+        {
+          "t": 1975,
+          "d": 88
+        },
+        {
+          "t": 2063,
+          "d": 25
+        },
+        {
+          "t": 2088,
+          "d": 400
+        },
+        {
+          "t": 2850,
+          "d": 88
+        },
+        {
+          "t": 2938,
+          "d": 138
+        },
+        {
+          "t": 3075,
+          "d": 250
+        },
+        {
+          "t": 3325,
+          "d": 250
+        },
+        {
+          "t": 3575,
+          "d": 288
+        },
+        {
+          "t": 3863,
+          "d": 125
+        },
+        {
+          "t": 3988,
+          "d": 100
+        },
+        {
+          "t": 4100,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "3년 넘게 거래했다고, 인상 폭을 낮춰주면 계속 쓰고 아니면 다른 곳도 알아볼 수밖에 없다고 해봐",
+      "en": "We've worked with you for over three years. If you can bring that down, we'd like to stay. Otherwise, we'll have to look at other options.",
+      "ms": 8184,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "We've",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worked",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "years",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we'd",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stay",
+          17
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Otherwise",
+          18
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we'll",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "options",
+          25
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 238
+        },
+        {
+          "t": 500,
+          "d": 138
+        },
+        {
+          "t": 650,
+          "d": 250
+        },
+        {
+          "t": 950,
+          "d": 250
+        },
+        {
+          "t": 1213,
+          "d": 263
+        },
+        {
+          "t": 1488,
+          "d": 325
+        },
+        {
+          "t": 1813,
+          "d": 625
+        },
+        {
+          "t": 2825,
+          "d": 113
+        },
+        {
+          "t": 2950,
+          "d": 100
+        },
+        {
+          "t": 3050,
+          "d": 163
+        },
+        {
+          "t": 3225,
+          "d": 188
+        },
+        {
+          "t": 3425,
+          "d": 175
+        },
+        {
+          "t": 3613,
+          "d": 375
+        },
+        {
+          "t": 4125,
+          "d": 138
+        },
+        {
+          "t": 4275,
+          "d": 188
+        },
+        {
+          "t": 4463,
+          "d": 75
+        },
+        {
+          "t": 4538,
+          "d": 463
+        },
+        {
+          "t": 5375,
+          "d": 625
+        },
+        {
+          "t": 6350,
+          "d": 88
+        },
+        {
+          "t": 6450,
+          "d": 150
+        },
+        {
+          "t": 6613,
+          "d": 88
+        },
+        {
+          "t": 6700,
+          "d": 150
+        },
+        {
+          "t": 6850,
+          "d": 88
+        },
+        {
+          "t": 6950,
+          "d": 200
+        },
+        {
+          "t": 7150,
+          "d": 675
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "제가 뭘 해드릴 수 있는지 볼게요. 2년 계약을 해주시면 8퍼센트로 맞춰드릴 수 있어요.",
+      "en": "Let me see what I can do. If you sign a two-year contract, I could keep it at eight percent.",
+      "ms": 5064,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sign",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two-year",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "contract",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 88
+        },
+        {
+          "t": 263,
+          "d": 213
+        },
+        {
+          "t": 475,
+          "d": 113
+        },
+        {
+          "t": 588,
+          "d": 113
+        },
+        {
+          "t": 700,
+          "d": 125
+        },
+        {
+          "t": 838,
+          "d": 388
+        },
+        {
+          "t": 1638,
+          "d": 75
+        },
+        {
+          "t": 1713,
+          "d": 75
+        },
+        {
+          "t": 1800,
+          "d": 188
+        },
+        {
+          "t": 1988,
+          "d": 38
+        },
+        {
+          "t": 2025,
+          "d": 375
+        },
+        {
+          "t": 2413,
+          "d": 650
+        },
+        {
+          "t": 3463,
+          "d": 50
+        },
+        {
+          "t": 3513,
+          "d": 125
+        },
+        {
+          "t": 3638,
+          "d": 188
+        },
+        {
+          "t": 3838,
+          "d": 63
+        },
+        {
+          "t": 3900,
+          "d": 88
+        },
+        {
+          "t": 4000,
+          "d": 125
+        },
+        {
+          "t": 4125,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "2년은 너무 길다고, 1년에 10퍼센트면 이번 주에 바로 서명하겠다고 역제안해봐",
+      "en": "Two years is a long commitment. How about one year at ten percent? We could sign this week.",
+      "ms": 6720,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Two",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "years",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "long",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "commitment",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          12
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "We",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sign",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 263
+        },
+        {
+          "t": 363,
+          "d": 563
+        },
+        {
+          "t": 1013,
+          "d": 100
+        },
+        {
+          "t": 1125,
+          "d": 75
+        },
+        {
+          "t": 1213,
+          "d": 425
+        },
+        {
+          "t": 1650,
+          "d": 513
+        },
+        {
+          "t": 2575,
+          "d": 138
+        },
+        {
+          "t": 2725,
+          "d": 288
+        },
+        {
+          "t": 3013,
+          "d": 250
+        },
+        {
+          "t": 3263,
+          "d": 363
+        },
+        {
+          "t": 3713,
+          "d": 138
+        },
+        {
+          "t": 3850,
+          "d": 225
+        },
+        {
+          "t": 4088,
+          "d": 538
+        },
+        {
+          "t": 5025,
+          "d": 125
+        },
+        {
+          "t": 5163,
+          "d": 188
+        },
+        {
+          "t": 5363,
+          "d": 388
+        },
+        {
+          "t": 5750,
+          "d": 188
+        },
+        {
+          "t": 5950,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "매니저한테 확인해봐야 하지만, 맞춰드릴 수 있을 것 같아요. 금요일까지 연락드릴게요.",
+      "en": "I'll need to check with my manager, but I think we can make that work. I'll get back to you by Friday.",
+      "ms": 5040,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'll",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "manager",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 113
+        },
+        {
+          "t": 288,
+          "d": 38
+        },
+        {
+          "t": 325,
+          "d": 225
+        },
+        {
+          "t": 563,
+          "d": 88
+        },
+        {
+          "t": 650,
+          "d": 88
+        },
+        {
+          "t": 738,
+          "d": 575
+        },
+        {
+          "t": 1600,
+          "d": 113
+        },
+        {
+          "t": 1713,
+          "d": 50
+        },
+        {
+          "t": 1763,
+          "d": 163
+        },
+        {
+          "t": 1925,
+          "d": 88
+        },
+        {
+          "t": 2013,
+          "d": 88
+        },
+        {
+          "t": 2100,
+          "d": 175
+        },
+        {
+          "t": 2275,
+          "d": 188
+        },
+        {
+          "t": 2463,
+          "d": 388
+        },
+        {
+          "t": 3263,
+          "d": 88
+        },
+        {
+          "t": 3350,
+          "d": 113
+        },
+        {
+          "t": 3463,
+          "d": 225
+        },
+        {
+          "t": 3688,
+          "d": 100
+        },
+        {
+          "t": 3800,
+          "d": 125
+        },
+        {
+          "t": 3925,
+          "d": 163
+        },
+        {
+          "t": 4088,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "jump",
+      "meaning_ko": "급등, 큰 폭의 상승",
+      "example": "Fifteen percent is a big jump."
+    },
+    {
+      "kind": "word",
+      "term": "otherwise",
+      "meaning_ko": "그렇지 않으면",
+      "example": "Otherwise, we'll have to look at other options."
+    },
+    {
+      "kind": "word",
+      "term": "commitment",
+      "meaning_ko": "약정, (장기간) 묶이는 약속",
+      "example": "Two years is a long commitment."
+    },
+    {
+      "kind": "phrase",
+      "term": "give you a heads-up",
+      "meaning_ko": "미리 알려주다, 귀띔하다",
+      "prompt_ko": "다음 주 일정이 바뀔 수 있다고 미리 알려줘봐",
+      "keywords": [
+        {
+          "word": "heads-up",
+          "meaning_ko": "사전 알림, 귀띔"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "bring that down",
+      "meaning_ko": "(가격·수치를) 낮추다",
+      "prompt_ko": "그 가격을 조금 낮춰줄 수 있는지 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "make that work",
+      "meaning_ko": "그 조건으로 맞추다, 되게 하다",
+      "prompt_ko": "일정이 빠듯하지만 어떻게든 맞춰보겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-price-increase/full.mp3",
+  "full_starts": [
+    0,
+    5928,
+    10896,
+    15816,
+    24000,
+    29064,
+    35784
+  ],
+  "generated_at": "2026-10-06T20:37:18.707Z"
+}

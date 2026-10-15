@@ -1,0 +1,1610 @@
+{
+  "id": "2026-10-05-incident-explain",
+  "situation_ko": "어젯밤 알림이 두 시간 늦게 나간 장애가 있었다. 개발자가 아닌 PM에게 원인을 쉽게 설명한다. PM은 이번 주 안에 고쳐달라고 하지만, 나는 재발을 막을 시간이 필요하다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "PM",
+      "meaning_ko": "고객 지원팀 전화가 계속 울려요. 어젯밤에 정확히 무슨 일이 있었던 거예요?",
+      "en": "Support's phone hasn't stopped ringing. What exactly happened last night?",
+      "ms": 4896,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Support's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "phone",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hasn't",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stopped",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ringing",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exactly",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happened",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "night",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 525
+        },
+        {
+          "t": 625,
+          "d": 263
+        },
+        {
+          "t": 900,
+          "d": 375
+        },
+        {
+          "t": 1288,
+          "d": 413
+        },
+        {
+          "t": 1713,
+          "d": 475
+        },
+        {
+          "t": 2575,
+          "d": 125
+        },
+        {
+          "t": 2713,
+          "d": 563
+        },
+        {
+          "t": 3288,
+          "d": 413
+        },
+        {
+          "t": 3713,
+          "d": 338
+        },
+        {
+          "t": 4063,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "알림을 보내는 서비스가 처리 속도를 못 따라가서 메시지가 줄처럼 밀렸고, 그래서 두 시간 늦게 나갔다고 쉽게 설명해봐",
+      "en": "The service that sends notifications couldn't keep up, so messages piled up in a queue. That's why they went out two hours late.",
+      "ms": 8040,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "service",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sends",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "notifications",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "couldn't",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "messages",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "piled",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "queue",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "they",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 63
+        },
+        {
+          "t": 150,
+          "d": 488
+        },
+        {
+          "t": 650,
+          "d": 150
+        },
+        {
+          "t": 813,
+          "d": 363
+        },
+        {
+          "t": 1188,
+          "d": 863
+        },
+        {
+          "t": 2063,
+          "d": 288
+        },
+        {
+          "t": 2363,
+          "d": 225
+        },
+        {
+          "t": 2600,
+          "d": 275
+        },
+        {
+          "t": 3350,
+          "d": 213
+        },
+        {
+          "t": 3575,
+          "d": 500
+        },
+        {
+          "t": 4088,
+          "d": 363
+        },
+        {
+          "t": 4463,
+          "d": 150
+        },
+        {
+          "t": 4625,
+          "d": 88
+        },
+        {
+          "t": 4725,
+          "d": 63
+        },
+        {
+          "t": 4800,
+          "d": 400
+        },
+        {
+          "t": 5588,
+          "d": 225
+        },
+        {
+          "t": 5825,
+          "d": 250
+        },
+        {
+          "t": 6088,
+          "d": 150
+        },
+        {
+          "t": 6250,
+          "d": 238
+        },
+        {
+          "t": 6500,
+          "d": 225
+        },
+        {
+          "t": 6738,
+          "d": 225
+        },
+        {
+          "t": 6975,
+          "d": 313
+        },
+        {
+          "t": 7300,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠어요. 그런데 왜 따라가지 못했죠? 트래픽이 평소랑 비슷했잖아요.",
+      "en": "Okay. But why couldn't it keep up? Traffic was pretty normal.",
+      "ms": 4440,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "couldn't",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Traffic",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pretty",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "normal",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 400
+        },
+        {
+          "t": 838,
+          "d": 113
+        },
+        {
+          "t": 963,
+          "d": 213
+        },
+        {
+          "t": 1188,
+          "d": 288
+        },
+        {
+          "t": 1488,
+          "d": 100
+        },
+        {
+          "t": 1600,
+          "d": 275
+        },
+        {
+          "t": 1888,
+          "d": 350
+        },
+        {
+          "t": 2613,
+          "d": 425
+        },
+        {
+          "t": 3050,
+          "d": 175
+        },
+        {
+          "t": 3238,
+          "d": 263
+        },
+        {
+          "t": 3513,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "근본 원인은 지난주 배포에서 메시지 하나 처리하는 시간이 세 배로 늘어난 거였고, 아무도 알아채지 못했다고 말해봐",
+      "en": "The root cause was a change we shipped last week. It made each message take three times longer to process, and nobody noticed.",
+      "ms": 8040,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "root",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cause",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shipped",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "made",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "each",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "message",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "times",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "longer",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "process",
+          19
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nobody",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "noticed",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 50
+        },
+        {
+          "t": 138,
+          "d": 250
+        },
+        {
+          "t": 400,
+          "d": 388
+        },
+        {
+          "t": 800,
+          "d": 163
+        },
+        {
+          "t": 975,
+          "d": 63
+        },
+        {
+          "t": 1050,
+          "d": 475
+        },
+        {
+          "t": 1538,
+          "d": 88
+        },
+        {
+          "t": 1638,
+          "d": 388
+        },
+        {
+          "t": 2038,
+          "d": 325
+        },
+        {
+          "t": 2375,
+          "d": 388
+        },
+        {
+          "t": 3125,
+          "d": 138
+        },
+        {
+          "t": 3275,
+          "d": 213
+        },
+        {
+          "t": 3500,
+          "d": 238
+        },
+        {
+          "t": 3750,
+          "d": 500
+        },
+        {
+          "t": 4263,
+          "d": 213
+        },
+        {
+          "t": 4488,
+          "d": 250
+        },
+        {
+          "t": 4750,
+          "d": 363
+        },
+        {
+          "t": 5125,
+          "d": 313
+        },
+        {
+          "t": 5450,
+          "d": 88
+        },
+        {
+          "t": 5550,
+          "d": 675
+        },
+        {
+          "t": 6463,
+          "d": 238
+        },
+        {
+          "t": 6713,
+          "d": 350
+        },
+        {
+          "t": 7075,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 금요일까지 되돌려 놓을 수 있죠? 경영진이 날짜를 원해요.",
+      "en": "So you can roll that back by Friday, right? Leadership wants a date.",
+      "ms": 4440,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "roll",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "right",
+          8
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Leadership",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wants",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "date",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 113
+        },
+        {
+          "t": 175,
+          "d": 138
+        },
+        {
+          "t": 325,
+          "d": 175
+        },
+        {
+          "t": 513,
+          "d": 188
+        },
+        {
+          "t": 713,
+          "d": 200
+        },
+        {
+          "t": 925,
+          "d": 238
+        },
+        {
+          "t": 1175,
+          "d": 163
+        },
+        {
+          "t": 1350,
+          "d": 525
+        },
+        {
+          "t": 1900,
+          "d": 388
+        },
+        {
+          "t": 2688,
+          "d": 550
+        },
+        {
+          "t": 3250,
+          "d": 263
+        },
+        {
+          "t": 3525,
+          "d": 75
+        },
+        {
+          "t": 3613,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "되돌리는 건 오늘 이미 했다고 하고, 진짜 문제는 우리가 몰랐다는 거니 다음 주까지 경보를 붙일 시간을 달라고 설득해봐",
+      "en": "Actually, we rolled it back this morning. The real problem is that we were flying blind, so I'd like until next week to add proper alerts.",
+      "ms": 7752,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Actually",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rolled",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "real",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "were",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flying",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "blind",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "until",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "add",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "proper",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alerts",
+          25
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 413
+        },
+        {
+          "t": 488,
+          "d": 163
+        },
+        {
+          "t": 663,
+          "d": 288
+        },
+        {
+          "t": 963,
+          "d": 100
+        },
+        {
+          "t": 1075,
+          "d": 250
+        },
+        {
+          "t": 1338,
+          "d": 175
+        },
+        {
+          "t": 1525,
+          "d": 475
+        },
+        {
+          "t": 2388,
+          "d": 63
+        },
+        {
+          "t": 2463,
+          "d": 225
+        },
+        {
+          "t": 2700,
+          "d": 438
+        },
+        {
+          "t": 3150,
+          "d": 163
+        },
+        {
+          "t": 3325,
+          "d": 188
+        },
+        {
+          "t": 3525,
+          "d": 138
+        },
+        {
+          "t": 3675,
+          "d": 138
+        },
+        {
+          "t": 3825,
+          "d": 413
+        },
+        {
+          "t": 4250,
+          "d": 413
+        },
+        {
+          "t": 4688,
+          "d": 238
+        },
+        {
+          "t": 4938,
+          "d": 113
+        },
+        {
+          "t": 5063,
+          "d": 188
+        },
+        {
+          "t": 5263,
+          "d": 313
+        },
+        {
+          "t": 5588,
+          "d": 313
+        },
+        {
+          "t": 5913,
+          "d": 238
+        },
+        {
+          "t": 6163,
+          "d": 100
+        },
+        {
+          "t": 6275,
+          "d": 250
+        },
+        {
+          "t": 6538,
+          "d": 325
+        },
+        {
+          "t": 6875,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요, 그렇게 전할게요. 다만 다음 주라는 날짜는 꼭 지켜 주세요.",
+      "en": "Fair enough, I'll pass that on. Just make sure next week really means next week.",
+      "ms": 4872,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pass",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sure",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "means",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 200
+        },
+        {
+          "t": 275,
+          "d": 300
+        },
+        {
+          "t": 600,
+          "d": 100
+        },
+        {
+          "t": 713,
+          "d": 338
+        },
+        {
+          "t": 1063,
+          "d": 200
+        },
+        {
+          "t": 1275,
+          "d": 325
+        },
+        {
+          "t": 1975,
+          "d": 200
+        },
+        {
+          "t": 2188,
+          "d": 163
+        },
+        {
+          "t": 2363,
+          "d": 188
+        },
+        {
+          "t": 2563,
+          "d": 325
+        },
+        {
+          "t": 2900,
+          "d": 250
+        },
+        {
+          "t": 3163,
+          "d": 263
+        },
+        {
+          "t": 3438,
+          "d": 313
+        },
+        {
+          "t": 3763,
+          "d": 338
+        },
+        {
+          "t": 4113,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "queue",
+      "meaning_ko": "대기열, (처리를 기다리는) 줄",
+      "example": "Messages piled up in a queue."
+    },
+    {
+      "kind": "word",
+      "term": "ship",
+      "meaning_ko": "(기능·코드를) 내보내다, 배포하다",
+      "example": "It was a change we shipped last week."
+    },
+    {
+      "kind": "word",
+      "term": "leadership",
+      "meaning_ko": "경영진, 리더 그룹",
+      "example": "Leadership wants a date."
+    },
+    {
+      "kind": "phrase",
+      "term": "couldn't keep up",
+      "meaning_ko": "따라가지 못했다, 감당하지 못했다",
+      "prompt_ko": "서비스가 들어오는 양을 감당하지 못했다고 말해봐",
+      "keywords": [
+        {
+          "word": "keep up",
+          "meaning_ko": "(속도를) 따라가다"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "the root cause was",
+      "meaning_ko": "근본 원인은 ~였다",
+      "prompt_ko": "장애의 근본 원인이 지난주 배포였다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "we were flying blind",
+      "meaning_ko": "상황을 모른 채 깜깜이로 돌고 있었다",
+      "prompt_ko": "모니터링이 없어서 우리가 아무것도 모르고 있었다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-incident-explain/full.mp3",
+  "full_starts": [
+    0,
+    4896,
+    12936,
+    17376,
+    25416,
+    29856,
+    37608
+  ],
+  "generated_at": "2026-10-04T20:33:18.590Z"
+}

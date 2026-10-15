@@ -1,0 +1,1526 @@
+{
+  "id": "2026-10-15-q4-budget",
+  "situation_ko": "미디어 바이어가 블랙프라이데이 주간에 메타 예산을 두 배로 늘리자고 한다. 나는 그 주에 CPM 이 치솟아 효율이 떨어질까 걱정한다. 바이어는 작년 데이터를 꺼낸다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-EmmaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "미디어 바이어",
+      "meaning_ko": "블랙프라이데이 주간에 메타 예산을 하루 5천 달러에서 1만 달러로 두 배 늘리자고 제안드려요.",
+      "en": "For Black Friday week, I'd recommend doubling Meta spend from five thousand to ten thousand dollars a day.",
+      "ms": 7080,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "For",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Black",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "recommend",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doubling",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Meta",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spend",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 263
+        },
+        {
+          "t": 413,
+          "d": 250
+        },
+        {
+          "t": 663,
+          "d": 363
+        },
+        {
+          "t": 1025,
+          "d": 350
+        },
+        {
+          "t": 1825,
+          "d": 138
+        },
+        {
+          "t": 1963,
+          "d": 588
+        },
+        {
+          "t": 2763,
+          "d": 438
+        },
+        {
+          "t": 3200,
+          "d": 413
+        },
+        {
+          "t": 3850,
+          "d": 338
+        },
+        {
+          "t": 4188,
+          "d": 150
+        },
+        {
+          "t": 4338,
+          "d": 388
+        },
+        {
+          "t": 4725,
+          "d": 425
+        },
+        {
+          "t": 5163,
+          "d": 63
+        },
+        {
+          "t": 5238,
+          "d": 313
+        },
+        {
+          "t": 5550,
+          "d": 450
+        },
+        {
+          "t": 6000,
+          "d": 275
+        },
+        {
+          "t": 6288,
+          "d": 38
+        },
+        {
+          "t": 6338,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그 주엔 CPM 이 치솟으니 예산만 늘려도 효율이 떨어질까 걱정된다고 말해봐",
+      "en": "My concern is that CPMs spike that week, so more budget might just mean worse efficiency.",
+      "ms": 5136,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "My",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "concern",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "CPMs",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spike",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "might",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mean",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worse",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "efficiency",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 150
+        },
+        {
+          "t": 250,
+          "d": 413
+        },
+        {
+          "t": 675,
+          "d": 113
+        },
+        {
+          "t": 800,
+          "d": 163
+        },
+        {
+          "t": 975,
+          "d": 563
+        },
+        {
+          "t": 1550,
+          "d": 313
+        },
+        {
+          "t": 1875,
+          "d": 200
+        },
+        {
+          "t": 2088,
+          "d": 263
+        },
+        {
+          "t": 2375,
+          "d": 163
+        },
+        {
+          "t": 2550,
+          "d": 238
+        },
+        {
+          "t": 2800,
+          "d": 338
+        },
+        {
+          "t": 3150,
+          "d": 175
+        },
+        {
+          "t": 3338,
+          "d": 225
+        },
+        {
+          "t": 3575,
+          "d": 175
+        },
+        {
+          "t": 3763,
+          "d": 250
+        },
+        {
+          "t": 4025,
+          "d": 738
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞아요, 작년엔 CPM 이 40% 올랐어요. 그런데 전환율도 거의 두 배가 돼서 ROAS 는 3.2에서 3.8로 올랐어요.",
+      "en": "True, CPMs went up forty percent last year. But conversion rates almost doubled, so ROAS actually went from three point two to three point eight.",
+      "ms": 10200,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "True",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "CPMs",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversion",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rates",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "almost",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doubled",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ROAS",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          24
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 388
+        },
+        {
+          "t": 875,
+          "d": 763
+        },
+        {
+          "t": 1650,
+          "d": 138
+        },
+        {
+          "t": 1788,
+          "d": 113
+        },
+        {
+          "t": 1913,
+          "d": 438
+        },
+        {
+          "t": 2363,
+          "d": 450
+        },
+        {
+          "t": 2813,
+          "d": 275
+        },
+        {
+          "t": 3100,
+          "d": 300
+        },
+        {
+          "t": 3800,
+          "d": 113
+        },
+        {
+          "t": 3925,
+          "d": 538
+        },
+        {
+          "t": 4463,
+          "d": 375
+        },
+        {
+          "t": 4963,
+          "d": 500
+        },
+        {
+          "t": 5475,
+          "d": 388
+        },
+        {
+          "t": 6238,
+          "d": 200
+        },
+        {
+          "t": 6450,
+          "d": 575
+        },
+        {
+          "t": 7038,
+          "d": 250
+        },
+        {
+          "t": 7288,
+          "d": 150
+        },
+        {
+          "t": 7438,
+          "d": 163
+        },
+        {
+          "t": 7600,
+          "d": 313
+        },
+        {
+          "t": 7913,
+          "d": 288
+        },
+        {
+          "t": 8200,
+          "d": 363
+        },
+        {
+          "t": 8650,
+          "d": 138
+        },
+        {
+          "t": 8800,
+          "d": 388
+        },
+        {
+          "t": 9188,
+          "d": 313
+        },
+        {
+          "t": 9500,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그건 할인율이 더 컸던 덕일 수도 있다고, 올해는 할인이 15%뿐이라고 말해봐",
+      "en": "That might have been the bigger discount, though. This year we're only doing fifteen percent off.",
+      "ms": 5352,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "might",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bigger",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "discount",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "This",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doing",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifteen",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 188
+        },
+        {
+          "t": 438,
+          "d": 125
+        },
+        {
+          "t": 575,
+          "d": 163
+        },
+        {
+          "t": 750,
+          "d": 100
+        },
+        {
+          "t": 863,
+          "d": 288
+        },
+        {
+          "t": 1163,
+          "d": 600
+        },
+        {
+          "t": 1788,
+          "d": 300
+        },
+        {
+          "t": 2463,
+          "d": 225
+        },
+        {
+          "t": 2700,
+          "d": 225
+        },
+        {
+          "t": 2938,
+          "d": 175
+        },
+        {
+          "t": 3125,
+          "d": 250
+        },
+        {
+          "t": 3388,
+          "d": 275
+        },
+        {
+          "t": 3675,
+          "d": 450
+        },
+        {
+          "t": 4138,
+          "d": 413
+        },
+        {
+          "t": 4563,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋은 지적이에요. 그럼 한 번에 두 배 말고 단계적으로 늘리면 어떨까요?",
+      "en": "Fair point. What if we ramp up gradually instead of doubling on day one?",
+      "ms": 4536,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ramp",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gradually",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doubling",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 150,
+          "d": 163
+        },
+        {
+          "t": 313,
+          "d": 363
+        },
+        {
+          "t": 1075,
+          "d": 50
+        },
+        {
+          "t": 1125,
+          "d": 63
+        },
+        {
+          "t": 1188,
+          "d": 125
+        },
+        {
+          "t": 1313,
+          "d": 388
+        },
+        {
+          "t": 1700,
+          "d": 225
+        },
+        {
+          "t": 2050,
+          "d": 588
+        },
+        {
+          "t": 2638,
+          "d": 400
+        },
+        {
+          "t": 3038,
+          "d": 138
+        },
+        {
+          "t": 3188,
+          "d": 375
+        },
+        {
+          "t": 3575,
+          "d": 113
+        },
+        {
+          "t": 3688,
+          "d": 213
+        },
+        {
+          "t": 3913,
+          "d": 288
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "하루 7천으로 시작하고, ROAS 가 3 이상 유지되면 그때 더 올리자고 해봐",
+      "en": "Let's start at seven thousand a day, and scale up only if ROAS stays above three.",
+      "ms": 5064,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Let's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seven",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scale",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ROAS",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stays",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "above",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 225
+        },
+        {
+          "t": 325,
+          "d": 263
+        },
+        {
+          "t": 600,
+          "d": 100
+        },
+        {
+          "t": 713,
+          "d": 325
+        },
+        {
+          "t": 1050,
+          "d": 388
+        },
+        {
+          "t": 1450,
+          "d": 63
+        },
+        {
+          "t": 1525,
+          "d": 350
+        },
+        {
+          "t": 2200,
+          "d": 138
+        },
+        {
+          "t": 2350,
+          "d": 338
+        },
+        {
+          "t": 2700,
+          "d": 150
+        },
+        {
+          "t": 2913,
+          "d": 263
+        },
+        {
+          "t": 3188,
+          "d": 138
+        },
+        {
+          "t": 3338,
+          "d": 250
+        },
+        {
+          "t": 3600,
+          "d": 325
+        },
+        {
+          "t": 3938,
+          "d": 275
+        },
+        {
+          "t": 4225,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "합리적이네요. 매일 아침 수치 공유드릴게요.",
+      "en": "That sounds reasonable. I'll send you the numbers every morning.",
+      "ms": 3816,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sounds",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reasonable",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "every",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 300
+        },
+        {
+          "t": 513,
+          "d": 650
+        },
+        {
+          "t": 1563,
+          "d": 113
+        },
+        {
+          "t": 1688,
+          "d": 238
+        },
+        {
+          "t": 1925,
+          "d": 75
+        },
+        {
+          "t": 2013,
+          "d": 63
+        },
+        {
+          "t": 2075,
+          "d": 563
+        },
+        {
+          "t": 2775,
+          "d": 225
+        },
+        {
+          "t": 3000,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "spike",
+      "kind": "word",
+      "meaning_ko": "급등하다; 급등",
+      "example": "Traffic spiked right after the email went out.",
+      "prompt_ko": "이메일이 나가자마자 트래픽이 확 뛰었다고 말해봐"
+    },
+    {
+      "term": "gradually",
+      "kind": "word",
+      "meaning_ko": "점차, 서서히",
+      "example": "We'll gradually move users to the new version.",
+      "prompt_ko": "사용자들을 새 버전으로 서서히 옮기겠다고 말해봐"
+    },
+    {
+      "term": "ramp up",
+      "kind": "phrase",
+      "meaning_ko": "(규모·양을) 점점 늘리다",
+      "keywords": [
+        {
+          "word": "ramp",
+          "meaning_ko": "경사로; 점차 늘리다"
+        }
+      ],
+      "prompt_ko": "다음 달부터 채용을 점점 늘리겠다고 말해봐"
+    },
+    {
+      "term": "My concern is that",
+      "kind": "phrase",
+      "meaning_ko": "제가 걱정하는 건 ~라는 점이에요",
+      "prompt_ko": "일정이 너무 빠듯해서 품질이 떨어질까 걱정된다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-q4-budget/full.mp3",
+  "full_starts": [
+    0,
+    7080,
+    12216,
+    22416,
+    27768,
+    32304,
+    37368
+  ],
+  "generated_at": "2026-10-14T20:32:34.382Z"
+}

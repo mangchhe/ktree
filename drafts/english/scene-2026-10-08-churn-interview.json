@@ -1,0 +1,1627 @@
+{
+  "id": "2026-10-08-churn-interview",
+  "situation_ko": "지난달 해지한 고객에게 전화해서 이탈 이유를 묻는다. 가격 때문이라고 하는데, 알고 보니 본인이 아니라 팀장이 혼자 해지를 결정한 것이었다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "5분만 시간 내줄 수 있는지, 왜 해지했는지 물어도 되는지 물어봐",
+      "en": "Do you have five minutes? I'd love to ask why you canceled last month.",
+      "ms": 3816,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Do",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          4
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I'd",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "love",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ask",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "canceled",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 38
+        },
+        {
+          "t": 138,
+          "d": 75
+        },
+        {
+          "t": 213,
+          "d": 163
+        },
+        {
+          "t": 375,
+          "d": 250
+        },
+        {
+          "t": 625,
+          "d": 513
+        },
+        {
+          "t": 1538,
+          "d": 100
+        },
+        {
+          "t": 1638,
+          "d": 175
+        },
+        {
+          "t": 1813,
+          "d": 75
+        },
+        {
+          "t": 1900,
+          "d": 275
+        },
+        {
+          "t": 2175,
+          "d": 100
+        },
+        {
+          "t": 2288,
+          "d": 113
+        },
+        {
+          "t": 2400,
+          "d": 413
+        },
+        {
+          "t": 2813,
+          "d": 300
+        },
+        {
+          "t": 3113,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/0.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 괜찮아요. 가격이 49달러에서 79달러로 뛰어서, 솔직히 좀 뼈아팠어요.",
+      "en": "Sure, that's fine. The price jumped from forty-nine dollars to seventy-nine, and honestly, that stung.",
+      "ms": 6888,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jumped",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty-nine",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seventy-nine",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "honestly",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stung",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 525
+        },
+        {
+          "t": 800,
+          "d": 275
+        },
+        {
+          "t": 1075,
+          "d": 463
+        },
+        {
+          "t": 1938,
+          "d": 63
+        },
+        {
+          "t": 2013,
+          "d": 350
+        },
+        {
+          "t": 2375,
+          "d": 275
+        },
+        {
+          "t": 2663,
+          "d": 188
+        },
+        {
+          "t": 2863,
+          "d": 513
+        },
+        {
+          "t": 3388,
+          "d": 425
+        },
+        {
+          "t": 3825,
+          "d": 88
+        },
+        {
+          "t": 3925,
+          "d": 788
+        },
+        {
+          "t": 4738,
+          "d": 163
+        },
+        {
+          "t": 4963,
+          "d": 525
+        },
+        {
+          "t": 5838,
+          "d": 188
+        },
+        {
+          "t": 6038,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/1.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그 인상폭이 꽤 크다고 공감하고, 그 외에 다른 이유도 있었는지 물어봐",
+      "en": "Yeah, that's a pretty big jump. Was there anything else going on besides the price?",
+      "ms": 4752,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Yeah",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pretty",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "big",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jump",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Was",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "besides",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 188
+        },
+        {
+          "t": 600,
+          "d": 138
+        },
+        {
+          "t": 738,
+          "d": 50
+        },
+        {
+          "t": 788,
+          "d": 200
+        },
+        {
+          "t": 1000,
+          "d": 200
+        },
+        {
+          "t": 1200,
+          "d": 388
+        },
+        {
+          "t": 2013,
+          "d": 100
+        },
+        {
+          "t": 2113,
+          "d": 113
+        },
+        {
+          "t": 2238,
+          "d": 288
+        },
+        {
+          "t": 2525,
+          "d": 225
+        },
+        {
+          "t": 2750,
+          "d": 288
+        },
+        {
+          "t": 3038,
+          "d": 250
+        },
+        {
+          "t": 3288,
+          "d": 475
+        },
+        {
+          "t": 3763,
+          "d": 63
+        },
+        {
+          "t": 3825,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/2.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "사실 그 결정은 제가 아니라 팀장님이 혼자 내렸어요. 전 그냥 통보만 받았어요.",
+      "en": "Honestly, that decision wasn't even mine — my team lead made the call alone. I just got told after the fact.",
+      "ms": 7272,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Honestly",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "decision",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wasn't",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "even",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mine",
+          5
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "my",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lead",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "made",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alone",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "told",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fact",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 550
+        },
+        {
+          "t": 1063,
+          "d": 150
+        },
+        {
+          "t": 1213,
+          "d": 475
+        },
+        {
+          "t": 1700,
+          "d": 238
+        },
+        {
+          "t": 1950,
+          "d": 200
+        },
+        {
+          "t": 2163,
+          "d": 413
+        },
+        {
+          "t": 3075,
+          "d": 113
+        },
+        {
+          "t": 3200,
+          "d": 363
+        },
+        {
+          "t": 3575,
+          "d": 325
+        },
+        {
+          "t": 3913,
+          "d": 175
+        },
+        {
+          "t": 4100,
+          "d": 63
+        },
+        {
+          "t": 4175,
+          "d": 263
+        },
+        {
+          "t": 4450,
+          "d": 475
+        },
+        {
+          "t": 5313,
+          "d": 75
+        },
+        {
+          "t": 5400,
+          "d": 238
+        },
+        {
+          "t": 5650,
+          "d": 175
+        },
+        {
+          "t": 5838,
+          "d": 338
+        },
+        {
+          "t": 6188,
+          "d": 200
+        },
+        {
+          "t": 6400,
+          "d": 75
+        },
+        {
+          "t": 6488,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/3.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 본인은 계속 쓰고 싶었다는 뜻인지 물어봐",
+      "en": "So does that mean you personally still wanted to keep using it?",
+      "ms": 3408,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mean",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "personally",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "using",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 125
+        },
+        {
+          "t": 438,
+          "d": 125
+        },
+        {
+          "t": 563,
+          "d": 138
+        },
+        {
+          "t": 713,
+          "d": 225
+        },
+        {
+          "t": 950,
+          "d": 200
+        },
+        {
+          "t": 1163,
+          "d": 550
+        },
+        {
+          "t": 1725,
+          "d": 313
+        },
+        {
+          "t": 2038,
+          "d": 188
+        },
+        {
+          "t": 2225,
+          "d": 50
+        },
+        {
+          "t": 2275,
+          "d": 250
+        },
+        {
+          "t": 2538,
+          "d": 313
+        },
+        {
+          "t": 2863,
+          "d": 163
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/4.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 거의 매일 썼거든요. 팀장님한테는 가격이 36% 오른 걸로 보였겠지만, 저한텐 그게 제일 좋은 도구였어요.",
+      "en": "Yeah, I used it almost every day. To my team lead it looked like a thirty-six percent price hike, but for me, it was the best tool I had.",
+      "ms": 8256,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yeah",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "used",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "almost",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "every",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "To",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lead",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looked",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty-six",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hike",
+          18
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          21
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "it",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "best",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tool",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          28
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 313
+        },
+        {
+          "t": 425,
+          "d": 100
+        },
+        {
+          "t": 525,
+          "d": 350
+        },
+        {
+          "t": 888,
+          "d": 63
+        },
+        {
+          "t": 963,
+          "d": 350
+        },
+        {
+          "t": 1363,
+          "d": 225
+        },
+        {
+          "t": 1588,
+          "d": 375
+        },
+        {
+          "t": 2338,
+          "d": 88
+        },
+        {
+          "t": 2438,
+          "d": 175
+        },
+        {
+          "t": 2613,
+          "d": 350
+        },
+        {
+          "t": 2975,
+          "d": 213
+        },
+        {
+          "t": 3200,
+          "d": 125
+        },
+        {
+          "t": 3338,
+          "d": 213
+        },
+        {
+          "t": 3563,
+          "d": 200
+        },
+        {
+          "t": 3838,
+          "d": 63
+        },
+        {
+          "t": 3913,
+          "d": 650
+        },
+        {
+          "t": 4575,
+          "d": 375
+        },
+        {
+          "t": 4963,
+          "d": 300
+        },
+        {
+          "t": 5263,
+          "d": 300
+        },
+        {
+          "t": 5575,
+          "d": 175
+        },
+        {
+          "t": 5763,
+          "d": 138
+        },
+        {
+          "t": 5900,
+          "d": 325
+        },
+        {
+          "t": 6438,
+          "d": 88
+        },
+        {
+          "t": 6525,
+          "d": 138
+        },
+        {
+          "t": 6675,
+          "d": 138
+        },
+        {
+          "t": 6825,
+          "d": 350
+        },
+        {
+          "t": 7188,
+          "d": 213
+        },
+        {
+          "t": 7400,
+          "d": 100
+        },
+        {
+          "t": 7513,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/5.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그 얘기를 들으니 팀장님과 직접 따로 연락해봐도 되는지 물어봐",
+      "en": "That's really helpful to hear — would it be okay if I reached out to your team lead directly?",
+      "ms": 4992,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "helpful",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hear",
+          4
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "would",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "okay",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reached",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lead",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "directly",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 150
+        },
+        {
+          "t": 250,
+          "d": 200
+        },
+        {
+          "t": 450,
+          "d": 325
+        },
+        {
+          "t": 788,
+          "d": 50
+        },
+        {
+          "t": 850,
+          "d": 313
+        },
+        {
+          "t": 1638,
+          "d": 88
+        },
+        {
+          "t": 1738,
+          "d": 63
+        },
+        {
+          "t": 1800,
+          "d": 138
+        },
+        {
+          "t": 1938,
+          "d": 425
+        },
+        {
+          "t": 2375,
+          "d": 100
+        },
+        {
+          "t": 2475,
+          "d": 75
+        },
+        {
+          "t": 2563,
+          "d": 400
+        },
+        {
+          "t": 2963,
+          "d": 125
+        },
+        {
+          "t": 3088,
+          "d": 63
+        },
+        {
+          "t": 3150,
+          "d": 113
+        },
+        {
+          "t": 3263,
+          "d": 363
+        },
+        {
+          "t": 3938,
+          "d": 175
+        },
+        {
+          "t": 4125,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "sting",
+      "meaning_ko": "따갑다, 뼈아프다",
+      "example": "That price jump really stung."
+    },
+    {
+      "kind": "word",
+      "term": "hike",
+      "meaning_ko": "(가격) 인상",
+      "example": "It looked like a thirty-six percent price hike."
+    },
+    {
+      "kind": "word",
+      "term": "alone",
+      "meaning_ko": "혼자서",
+      "example": "My team lead made the call alone."
+    },
+    {
+      "kind": "phrase",
+      "term": "after the fact",
+      "meaning_ko": "일이 벌어진 후에, 뒤늦게",
+      "prompt_ko": "본인은 결정 후에 통보만 받았다고 말해봐",
+      "keywords": []
+    },
+    {
+      "kind": "phrase",
+      "term": "make the call",
+      "meaning_ko": "결정을 내리다",
+      "prompt_ko": "그 결정은 팀장님이 혼자 내린 거라고 말해봐",
+      "keywords": [
+        {
+          "word": "call",
+          "meaning_ko": "(여기서는) 판단, 결정"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-churn-interview/full.mp3",
+  "full_starts": [
+    0,
+    3816,
+    10704,
+    15456,
+    22728,
+    26136,
+    34392
+  ],
+  "generated_at": "2026-10-07T20:34:11.375Z"
+}

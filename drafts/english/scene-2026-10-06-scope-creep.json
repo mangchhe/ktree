@@ -1,0 +1,1518 @@
+{
+  "id": "2026-10-06-scope-creep",
+  "situation_ko": "프로젝트 중간에 고객사가 기능 하나를 '작은 거'라며 추가해 달라고 한다. 일정과 비용이 바뀐다는 걸 알리고 선택지를 주려는데, 고객은 출시일은 못 바꾼다고 한다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "고객사 담당자",
+      "meaning_ko": "한 가지만 더요. 내보내기 버튼 하나 추가해 줄 수 있죠? 금방 되는 거잖아요.",
+      "en": "One more thing. Could you add an export button? It should be a quick one, right?",
+      "ms": 4800,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "One",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "add",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "export",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "button",
+          8
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "It",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quick",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "right",
+          15
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 163
+        },
+        {
+          "t": 225,
+          "d": 225
+        },
+        {
+          "t": 463,
+          "d": 463
+        },
+        {
+          "t": 1300,
+          "d": 125
+        },
+        {
+          "t": 1438,
+          "d": 163
+        },
+        {
+          "t": 1613,
+          "d": 250
+        },
+        {
+          "t": 1875,
+          "d": 100
+        },
+        {
+          "t": 1988,
+          "d": 438
+        },
+        {
+          "t": 2438,
+          "d": 300
+        },
+        {
+          "t": 3125,
+          "d": 75
+        },
+        {
+          "t": 3213,
+          "d": 225
+        },
+        {
+          "t": 3450,
+          "d": 100
+        },
+        {
+          "t": 3563,
+          "d": 63
+        },
+        {
+          "t": 3638,
+          "d": 238
+        },
+        {
+          "t": 3888,
+          "d": 213
+        },
+        {
+          "t": 4113,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "좋은 아이디어지만 원래 합의한 범위에 없던 거라고 부드럽게 말해봐",
+      "en": "It's a good idea, but it wasn't part of the scope we agreed on.",
+      "ms": 3672,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "It's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "idea",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wasn't",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "part",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scope",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "agreed",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 88
+        },
+        {
+          "t": 163,
+          "d": 50
+        },
+        {
+          "t": 213,
+          "d": 150
+        },
+        {
+          "t": 363,
+          "d": 625
+        },
+        {
+          "t": 1438,
+          "d": 138
+        },
+        {
+          "t": 1588,
+          "d": 88
+        },
+        {
+          "t": 1675,
+          "d": 300
+        },
+        {
+          "t": 1975,
+          "d": 188
+        },
+        {
+          "t": 2163,
+          "d": 38
+        },
+        {
+          "t": 2200,
+          "d": 63
+        },
+        {
+          "t": 2275,
+          "d": 313
+        },
+        {
+          "t": 2600,
+          "d": 125
+        },
+        {
+          "t": 2738,
+          "d": 300
+        },
+        {
+          "t": 3050,
+          "d": 263
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알아요. 그래도 버튼 하나인데요. 그렇게 큰일이에요?",
+      "en": "I know, but it's just one button. Is it really that big?",
+      "ms": 3528,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "button",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "big",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 75
+        },
+        {
+          "t": 163,
+          "d": 363
+        },
+        {
+          "t": 538,
+          "d": 150
+        },
+        {
+          "t": 700,
+          "d": 163
+        },
+        {
+          "t": 875,
+          "d": 213
+        },
+        {
+          "t": 1100,
+          "d": 188
+        },
+        {
+          "t": 1300,
+          "d": 388
+        },
+        {
+          "t": 2063,
+          "d": 100
+        },
+        {
+          "t": 2175,
+          "d": 113
+        },
+        {
+          "t": 2288,
+          "d": 263
+        },
+        {
+          "t": 2563,
+          "d": 263
+        },
+        {
+          "t": 2838,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "버튼은 작지만 뒤에서 파일 형식과 권한 처리가 필요해서 일주일 정도 걸린다고 설명해봐",
+      "en": "The button is small, but behind it we need to handle file formats and permissions. That's about a week of work.",
+      "ms": 6528,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "button",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "small",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "behind",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "handle",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "file",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "formats",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "permissions",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 363
+        },
+        {
+          "t": 525,
+          "d": 125
+        },
+        {
+          "t": 663,
+          "d": 425
+        },
+        {
+          "t": 1638,
+          "d": 163
+        },
+        {
+          "t": 1813,
+          "d": 300
+        },
+        {
+          "t": 2113,
+          "d": 63
+        },
+        {
+          "t": 2175,
+          "d": 88
+        },
+        {
+          "t": 2275,
+          "d": 200
+        },
+        {
+          "t": 2475,
+          "d": 38
+        },
+        {
+          "t": 2513,
+          "d": 350
+        },
+        {
+          "t": 2863,
+          "d": 263
+        },
+        {
+          "t": 3138,
+          "d": 613
+        },
+        {
+          "t": 3750,
+          "d": 63
+        },
+        {
+          "t": 3825,
+          "d": 738
+        },
+        {
+          "t": 4975,
+          "d": 113
+        },
+        {
+          "t": 5088,
+          "d": 175
+        },
+        {
+          "t": 5275,
+          "d": 63
+        },
+        {
+          "t": 5338,
+          "d": 300
+        },
+        {
+          "t": 5638,
+          "d": 88
+        },
+        {
+          "t": 5725,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "음, 출시일은 절대 못 미뤄요. 이미 발표했거든요.",
+      "en": "Hmm. We can't move the launch date, though. We've already announced it.",
+      "ms": 4608,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hmm.",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "We",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "launch",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "date",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We've",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "announced",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 225
+        },
+        {
+          "t": 650,
+          "d": 113
+        },
+        {
+          "t": 775,
+          "d": 288
+        },
+        {
+          "t": 1075,
+          "d": 250
+        },
+        {
+          "t": 1338,
+          "d": 88
+        },
+        {
+          "t": 1425,
+          "d": 350
+        },
+        {
+          "t": 1788,
+          "d": 325
+        },
+        {
+          "t": 2325,
+          "d": 350
+        },
+        {
+          "t": 3038,
+          "d": 213
+        },
+        {
+          "t": 3263,
+          "d": 363
+        },
+        {
+          "t": 3625,
+          "d": 438
+        },
+        {
+          "t": 4075,
+          "d": 188
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 출시 때는 빼고 2주 뒤 업데이트에 넣거나, 다른 기능 하나와 맞바꾸는 두 가지 방법이 있다고 제안해봐",
+      "en": "Then we have two options. We can add it in an update two weeks after launch, or swap it for another feature.",
+      "ms": 6384,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "options",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "add",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "update",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "launch",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "or",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "swap",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "another",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "feature",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 88
+        },
+        {
+          "t": 250,
+          "d": 163
+        },
+        {
+          "t": 413,
+          "d": 213
+        },
+        {
+          "t": 638,
+          "d": 625
+        },
+        {
+          "t": 1675,
+          "d": 75
+        },
+        {
+          "t": 1750,
+          "d": 113
+        },
+        {
+          "t": 1863,
+          "d": 188
+        },
+        {
+          "t": 2050,
+          "d": 88
+        },
+        {
+          "t": 2150,
+          "d": 113
+        },
+        {
+          "t": 2263,
+          "d": 88
+        },
+        {
+          "t": 2363,
+          "d": 463
+        },
+        {
+          "t": 2838,
+          "d": 238
+        },
+        {
+          "t": 3075,
+          "d": 375
+        },
+        {
+          "t": 3463,
+          "d": 238
+        },
+        {
+          "t": 3713,
+          "d": 550
+        },
+        {
+          "t": 4475,
+          "d": 125
+        },
+        {
+          "t": 4613,
+          "d": 338
+        },
+        {
+          "t": 4950,
+          "d": 100
+        },
+        {
+          "t": 5125,
+          "d": 150
+        },
+        {
+          "t": 5275,
+          "d": 225
+        },
+        {
+          "t": 5513,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "출시 후 업데이트가 낫겠네요. 그 내용으로 견적 다시 보내주세요.",
+      "en": "The update after launch works better for us. Can you send me a revised quote for that?",
+      "ms": 5016,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "update",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "launch",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "better",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "revised",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quote",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 100
+        },
+        {
+          "t": 188,
+          "d": 413
+        },
+        {
+          "t": 700,
+          "d": 238
+        },
+        {
+          "t": 950,
+          "d": 350
+        },
+        {
+          "t": 1313,
+          "d": 250
+        },
+        {
+          "t": 1575,
+          "d": 250
+        },
+        {
+          "t": 1838,
+          "d": 125
+        },
+        {
+          "t": 1975,
+          "d": 388
+        },
+        {
+          "t": 2763,
+          "d": 150
+        },
+        {
+          "t": 2925,
+          "d": 88
+        },
+        {
+          "t": 3013,
+          "d": 238
+        },
+        {
+          "t": 3250,
+          "d": 100
+        },
+        {
+          "t": 3363,
+          "d": 75
+        },
+        {
+          "t": 3450,
+          "d": 525
+        },
+        {
+          "t": 3975,
+          "d": 250
+        },
+        {
+          "t": 4238,
+          "d": 100
+        },
+        {
+          "t": 4338,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "scope",
+      "meaning_ko": "(작업) 범위",
+      "example": "It wasn't part of the scope we agreed on."
+    },
+    {
+      "kind": "word",
+      "term": "swap",
+      "meaning_ko": "맞바꾸다, 교체하다",
+      "example": "We could swap it for another feature."
+    },
+    {
+      "kind": "word",
+      "term": "revised",
+      "meaning_ko": "수정된, 개정된",
+      "example": "Can you send me a revised quote?"
+    },
+    {
+      "kind": "word",
+      "term": "quote",
+      "meaning_ko": "견적(서)",
+      "example": "I'll send you a quote by Friday."
+    },
+    {
+      "kind": "phrase",
+      "term": "it wasn't part of what we agreed on",
+      "meaning_ko": "합의한 내용에 없던 거예요",
+      "prompt_ko": "요청한 일이 처음 합의한 범위 밖이라고 부드럽게 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "we have two options",
+      "meaning_ko": "두 가지 방법이 있어요",
+      "prompt_ko": "안 된다고 하는 대신 선택지 두 개를 내밀어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-scope-creep/full.mp3",
+  "full_starts": [
+    0,
+    4800,
+    8472,
+    12000,
+    18528,
+    23136,
+    29520
+  ],
+  "generated_at": "2026-10-05T22:00:39.310Z"
+}

@@ -1,0 +1,1482 @@
+{
+  "id": "2026-10-06-gym-cancel",
+  "situation_ko": "이사 때문에 헬스장 회원권을 해지하러 왔다. 직원이 해지 대신 석 달 일시정지를 권하고, 해지하면 위약금이 있다고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "헬스장 직원",
+      "meaning_ko": "안녕하세요! 오늘 뭘 도와드릴까요?",
+      "en": "Hi there! What can I do for you today?",
+      "ms": 2808,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          "! ",
+          null
+        ],
+        [
+          "What",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 363,
+          "d": 413
+        },
+        {
+          "t": 1125,
+          "d": 113
+        },
+        {
+          "t": 1238,
+          "d": 113
+        },
+        {
+          "t": 1363,
+          "d": 100
+        },
+        {
+          "t": 1475,
+          "d": 188
+        },
+        {
+          "t": 1675,
+          "d": 150
+        },
+        {
+          "t": 1838,
+          "d": 138
+        },
+        {
+          "t": 1988,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "다음 달에 이사 가서 회원권을 해지하고 싶다고 말해봐",
+      "en": "I'd like to cancel my membership. I'm moving to another city next month.",
+      "ms": 4080,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancel",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "membership",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'm",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "another",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "city",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 150
+        },
+        {
+          "t": 350,
+          "d": 88
+        },
+        {
+          "t": 450,
+          "d": 425
+        },
+        {
+          "t": 888,
+          "d": 88
+        },
+        {
+          "t": 975,
+          "d": 600
+        },
+        {
+          "t": 1988,
+          "d": 100
+        },
+        {
+          "t": 2088,
+          "d": 275
+        },
+        {
+          "t": 2375,
+          "d": 100
+        },
+        {
+          "t": 2475,
+          "d": 275
+        },
+        {
+          "t": 2750,
+          "d": 263
+        },
+        {
+          "t": 3013,
+          "d": 275
+        },
+        {
+          "t": 3288,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 아쉽네요. 그런데 해지 대신 석 달 동안 일시정지하실 수도 있어요. 무료예요.",
+      "en": "Oh, sorry to hear that. But instead of canceling, you could freeze it for three months. It's free.",
+      "ms": 6792,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "sorry",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hear",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "canceling",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "freeze",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          15
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "free",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 338
+        },
+        {
+          "t": 688,
+          "d": 313
+        },
+        {
+          "t": 1013,
+          "d": 63
+        },
+        {
+          "t": 1088,
+          "d": 200
+        },
+        {
+          "t": 1288,
+          "d": 338
+        },
+        {
+          "t": 2013,
+          "d": 138
+        },
+        {
+          "t": 2163,
+          "d": 350
+        },
+        {
+          "t": 2525,
+          "d": 75
+        },
+        {
+          "t": 2613,
+          "d": 575
+        },
+        {
+          "t": 3638,
+          "d": 75
+        },
+        {
+          "t": 3725,
+          "d": 150
+        },
+        {
+          "t": 3888,
+          "d": 300
+        },
+        {
+          "t": 4188,
+          "d": 113
+        },
+        {
+          "t": 4313,
+          "d": 163
+        },
+        {
+          "t": 4488,
+          "d": 363
+        },
+        {
+          "t": 4850,
+          "d": 525
+        },
+        {
+          "t": 5763,
+          "d": 213
+        },
+        {
+          "t": 5988,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "고맙지만 돌아올 계획이 없어서 그건 의미가 없다고 말해봐",
+      "en": "Thanks, but I'm not planning to come back, so that doesn't really make sense for me.",
+      "ms": 4224,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "planning",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sense",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 438
+        },
+        {
+          "t": 588,
+          "d": 125
+        },
+        {
+          "t": 713,
+          "d": 63
+        },
+        {
+          "t": 775,
+          "d": 175
+        },
+        {
+          "t": 950,
+          "d": 313
+        },
+        {
+          "t": 1263,
+          "d": 50
+        },
+        {
+          "t": 1313,
+          "d": 200
+        },
+        {
+          "t": 1513,
+          "d": 388
+        },
+        {
+          "t": 2288,
+          "d": 113
+        },
+        {
+          "t": 2400,
+          "d": 175
+        },
+        {
+          "t": 2588,
+          "d": 275
+        },
+        {
+          "t": 2863,
+          "d": 188
+        },
+        {
+          "t": 3063,
+          "d": 175
+        },
+        {
+          "t": 3250,
+          "d": 263
+        },
+        {
+          "t": 3513,
+          "d": 113
+        },
+        {
+          "t": 3638,
+          "d": 225
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠어요. 다만 계약이 아직 넉 달 남아서 해지 수수료 오십 달러가 있어요.",
+      "en": "I understand. Just so you know, there are four months left on your contract, so there's a fifty-dollar cancellation fee.",
+      "ms": 6696,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "there",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "contract",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifty-dollar",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancellation",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fee",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 150
+        },
+        {
+          "t": 238,
+          "d": 650
+        },
+        {
+          "t": 1275,
+          "d": 250
+        },
+        {
+          "t": 1538,
+          "d": 163
+        },
+        {
+          "t": 1713,
+          "d": 125
+        },
+        {
+          "t": 1850,
+          "d": 263
+        },
+        {
+          "t": 2125,
+          "d": 125
+        },
+        {
+          "t": 2263,
+          "d": 100
+        },
+        {
+          "t": 2375,
+          "d": 350
+        },
+        {
+          "t": 2725,
+          "d": 325
+        },
+        {
+          "t": 3063,
+          "d": 275
+        },
+        {
+          "t": 3350,
+          "d": 75
+        },
+        {
+          "t": 3438,
+          "d": 100
+        },
+        {
+          "t": 3550,
+          "d": 625
+        },
+        {
+          "t": 4325,
+          "d": 150
+        },
+        {
+          "t": 4488,
+          "d": 188
+        },
+        {
+          "t": 4688,
+          "d": 63
+        },
+        {
+          "t": 4763,
+          "d": 613
+        },
+        {
+          "t": 5388,
+          "d": 613
+        },
+        {
+          "t": 6013,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "이사 증명서를 보여주면 수수료를 면제받을 수 있는지 물어봐",
+      "en": "Is there any way to waive the fee if I show proof that I'm moving?",
+      "ms": 3648,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Is",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "way",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "waive",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fee",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "show",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "proof",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 138
+        },
+        {
+          "t": 338,
+          "d": 163
+        },
+        {
+          "t": 500,
+          "d": 125
+        },
+        {
+          "t": 638,
+          "d": 63
+        },
+        {
+          "t": 700,
+          "d": 288
+        },
+        {
+          "t": 988,
+          "d": 50
+        },
+        {
+          "t": 1038,
+          "d": 600
+        },
+        {
+          "t": 1775,
+          "d": 150
+        },
+        {
+          "t": 1925,
+          "d": 50
+        },
+        {
+          "t": 1988,
+          "d": 250
+        },
+        {
+          "t": 2250,
+          "d": 450
+        },
+        {
+          "t": 2713,
+          "d": 100
+        },
+        {
+          "t": 2813,
+          "d": 125
+        },
+        {
+          "t": 2938,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 새 임대 계약서가 있으면 수수료를 빼드릴 수 있어요. 이메일로 보내주세요.",
+      "en": "Yes, if you have a copy of your new lease, we can drop the fee. Just email it to us.",
+      "ms": 5376,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "if",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "copy",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lease",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drop",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fee",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 425
+        },
+        {
+          "t": 588,
+          "d": 88
+        },
+        {
+          "t": 688,
+          "d": 75
+        },
+        {
+          "t": 775,
+          "d": 113
+        },
+        {
+          "t": 888,
+          "d": 63
+        },
+        {
+          "t": 963,
+          "d": 388
+        },
+        {
+          "t": 1363,
+          "d": 50
+        },
+        {
+          "t": 1425,
+          "d": 100
+        },
+        {
+          "t": 1538,
+          "d": 188
+        },
+        {
+          "t": 1738,
+          "d": 450
+        },
+        {
+          "t": 2388,
+          "d": 113
+        },
+        {
+          "t": 2513,
+          "d": 125
+        },
+        {
+          "t": 2650,
+          "d": 250
+        },
+        {
+          "t": 2913,
+          "d": 75
+        },
+        {
+          "t": 3000,
+          "d": 363
+        },
+        {
+          "t": 3750,
+          "d": 300
+        },
+        {
+          "t": 4125,
+          "d": 275
+        },
+        {
+          "t": 4413,
+          "d": 75
+        },
+        {
+          "t": 4500,
+          "d": 125
+        },
+        {
+          "t": 4638,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "membership",
+      "meaning_ko": "회원권, 회원 자격",
+      "example": "I'd like to cancel my membership."
+    },
+    {
+      "kind": "word",
+      "term": "freeze",
+      "meaning_ko": "(회원권 등을) 일시정지하다, 동결하다",
+      "example": "You could freeze it for three months."
+    },
+    {
+      "kind": "word",
+      "term": "waive",
+      "meaning_ko": "(요금·규칙을) 면제하다, 포기하다",
+      "example": "Can you waive the fee?"
+    },
+    {
+      "kind": "word",
+      "term": "lease",
+      "meaning_ko": "임대 계약(서)",
+      "example": "We need a copy of your new lease."
+    },
+    {
+      "kind": "phrase",
+      "term": "that doesn't really make sense for me",
+      "meaning_ko": "저한테는 별 의미가 없어요",
+      "prompt_ko": "권해준 선택지가 내 상황에는 맞지 않는다고 정중히 거절해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "Is there any way to ~?",
+      "meaning_ko": "~할 방법이 혹시 있나요?",
+      "prompt_ko": "수수료를 안 낼 방법이 혹시 있는지 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-gym-cancel/full.mp3",
+  "full_starts": [
+    0,
+    2808,
+    6888,
+    13680,
+    17904,
+    24600,
+    28248
+  ],
+  "generated_at": "2026-10-05T21:59:38.006Z"
+}

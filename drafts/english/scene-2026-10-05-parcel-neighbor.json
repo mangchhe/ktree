@@ -1,0 +1,1430 @@
+{
+  "id": "2026-10-05-parcel-neighbor",
+  "situation_ko": "택배가 '배송 완료'로 떴는데 문 앞에 없다. 택배사에 전화하니 옆집에 맡겼다는데, 그 집은 주말까지 집을 비웠다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "택배사 상담원",
+      "meaning_ko": "안녕하세요, 무엇을 도와드릴까요?",
+      "en": "Hi, thanks for calling. What can I do for you today?",
+      "ms": 3504,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "calling",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 150
+        },
+        {
+          "t": 263,
+          "d": 313
+        },
+        {
+          "t": 588,
+          "d": 138
+        },
+        {
+          "t": 738,
+          "d": 513
+        },
+        {
+          "t": 1638,
+          "d": 125
+        },
+        {
+          "t": 1775,
+          "d": 150
+        },
+        {
+          "t": 1938,
+          "d": 100
+        },
+        {
+          "t": 2050,
+          "d": 213
+        },
+        {
+          "t": 2275,
+          "d": 163
+        },
+        {
+          "t": 2450,
+          "d": 150
+        },
+        {
+          "t": 2613,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "앱에는 배송 완료라고 나오는데 문 앞에 택배가 없다고 말해봐",
+      "en": "Hi. The app says my package was delivered this morning, but it's not at my door.",
+      "ms": 5040,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "app",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "says",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "package",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "delivered",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "door",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 288
+        },
+        {
+          "t": 800,
+          "d": 88
+        },
+        {
+          "t": 888,
+          "d": 200
+        },
+        {
+          "t": 1100,
+          "d": 225
+        },
+        {
+          "t": 1338,
+          "d": 163
+        },
+        {
+          "t": 1500,
+          "d": 550
+        },
+        {
+          "t": 2050,
+          "d": 188
+        },
+        {
+          "t": 2250,
+          "d": 463
+        },
+        {
+          "t": 2713,
+          "d": 163
+        },
+        {
+          "t": 2888,
+          "d": 388
+        },
+        {
+          "t": 3550,
+          "d": 100
+        },
+        {
+          "t": 3663,
+          "d": 100
+        },
+        {
+          "t": 3763,
+          "d": 263
+        },
+        {
+          "t": 4025,
+          "d": 38
+        },
+        {
+          "t": 4075,
+          "d": 138
+        },
+        {
+          "t": 4213,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "확인해 볼게요. 기사님이 402호 이웃분께 맡겼다고 기록돼 있네요.",
+      "en": "Let me check. It looks like the driver left it with your neighbor in four-oh-two.",
+      "ms": 4656,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looks",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "driver",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "neighbor",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four-oh-two",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 125
+        },
+        {
+          "t": 200,
+          "d": 113
+        },
+        {
+          "t": 325,
+          "d": 513
+        },
+        {
+          "t": 1238,
+          "d": 100
+        },
+        {
+          "t": 1350,
+          "d": 238
+        },
+        {
+          "t": 1600,
+          "d": 188
+        },
+        {
+          "t": 1800,
+          "d": 88
+        },
+        {
+          "t": 1900,
+          "d": 438
+        },
+        {
+          "t": 2350,
+          "d": 300
+        },
+        {
+          "t": 2663,
+          "d": 88
+        },
+        {
+          "t": 2763,
+          "d": 150
+        },
+        {
+          "t": 2925,
+          "d": 125
+        },
+        {
+          "t": 3063,
+          "d": 350
+        },
+        {
+          "t": 3425,
+          "d": 100
+        },
+        {
+          "t": 3538,
+          "d": 750
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "벌써 그 집 문을 두드려 봤는데, 일요일까지 집에 없다는 쪽지가 붙어 있었다고 말해봐",
+      "en": "I already knocked on their door. There's a note saying they're away until Sunday.",
+      "ms": 4704,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "knocked",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "their",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "door",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "note",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "saying",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "they're",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "away",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "until",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Sunday",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 75
+        },
+        {
+          "t": 188,
+          "d": 225
+        },
+        {
+          "t": 413,
+          "d": 363
+        },
+        {
+          "t": 788,
+          "d": 75
+        },
+        {
+          "t": 875,
+          "d": 125
+        },
+        {
+          "t": 1013,
+          "d": 388
+        },
+        {
+          "t": 1788,
+          "d": 113
+        },
+        {
+          "t": 1913,
+          "d": 38
+        },
+        {
+          "t": 1950,
+          "d": 338
+        },
+        {
+          "t": 2300,
+          "d": 375
+        },
+        {
+          "t": 2675,
+          "d": 163
+        },
+        {
+          "t": 2838,
+          "d": 475
+        },
+        {
+          "t": 3450,
+          "d": 288
+        },
+        {
+          "t": 3738,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 곤란하시겠네요. 아쉽게도 저희가 그 집에서 다시 가져올 수는 없어요.",
+      "en": "Oh, that's annoying. Unfortunately, we can't collect it from them ourselves.",
+      "ms": 4656,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "annoying",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Unfortunately",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "collect",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ourselves",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 88
+        },
+        {
+          "t": 200,
+          "d": 275
+        },
+        {
+          "t": 488,
+          "d": 525
+        },
+        {
+          "t": 1413,
+          "d": 838
+        },
+        {
+          "t": 2275,
+          "d": 125
+        },
+        {
+          "t": 2413,
+          "d": 288
+        },
+        {
+          "t": 2713,
+          "d": 388
+        },
+        {
+          "t": 3113,
+          "d": 88
+        },
+        {
+          "t": 3213,
+          "d": 200
+        },
+        {
+          "t": 3425,
+          "d": 150
+        },
+        {
+          "t": 3588,
+          "d": 700
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "안에 금요일에 필요한 약이 들어 있다고 하고, 다른 방법이 정말 없는지 물어봐",
+      "en": "The thing is, there's medicine in it that I need by Friday. Is there really nothing else you can do?",
+      "ms": 5208,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "there's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "medicine",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nothing",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          19
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 263
+        },
+        {
+          "t": 425,
+          "d": 150
+        },
+        {
+          "t": 588,
+          "d": 188
+        },
+        {
+          "t": 788,
+          "d": 488
+        },
+        {
+          "t": 1275,
+          "d": 88
+        },
+        {
+          "t": 1375,
+          "d": 88
+        },
+        {
+          "t": 1463,
+          "d": 125
+        },
+        {
+          "t": 1600,
+          "d": 63
+        },
+        {
+          "t": 1663,
+          "d": 363
+        },
+        {
+          "t": 2025,
+          "d": 175
+        },
+        {
+          "t": 2200,
+          "d": 663
+        },
+        {
+          "t": 3263,
+          "d": 100
+        },
+        {
+          "t": 3375,
+          "d": 213
+        },
+        {
+          "t": 3588,
+          "d": 263
+        },
+        {
+          "t": 3850,
+          "d": 325
+        },
+        {
+          "t": 4175,
+          "d": 200
+        },
+        {
+          "t": 4375,
+          "d": 75
+        },
+        {
+          "t": 4450,
+          "d": 138
+        },
+        {
+          "t": 4588,
+          "d": 250
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그런 경우라면 새로 발송해 드릴 수 있어요. 내일 오후까지 도착하고, 원래 택배는 나중에 돌려주시면 돼요.",
+      "en": "In that case, I can send a replacement. It'll arrive by tomorrow afternoon, and you can return the original later.",
+      "ms": 7176,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "In",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "replacement",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It'll",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "arrive",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afternoon",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "return",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "original",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "later",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 225
+        },
+        {
+          "t": 425,
+          "d": 350
+        },
+        {
+          "t": 800,
+          "d": 113
+        },
+        {
+          "t": 925,
+          "d": 138
+        },
+        {
+          "t": 1075,
+          "d": 263
+        },
+        {
+          "t": 1350,
+          "d": 38
+        },
+        {
+          "t": 1400,
+          "d": 838
+        },
+        {
+          "t": 2625,
+          "d": 200
+        },
+        {
+          "t": 2838,
+          "d": 388
+        },
+        {
+          "t": 3238,
+          "d": 138
+        },
+        {
+          "t": 3388,
+          "d": 463
+        },
+        {
+          "t": 3863,
+          "d": 713
+        },
+        {
+          "t": 4875,
+          "d": 163
+        },
+        {
+          "t": 5050,
+          "d": 125
+        },
+        {
+          "t": 5188,
+          "d": 163
+        },
+        {
+          "t": 5363,
+          "d": 388
+        },
+        {
+          "t": 5763,
+          "d": 75
+        },
+        {
+          "t": 5850,
+          "d": 513
+        },
+        {
+          "t": 6375,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "package",
+      "meaning_ko": "택배, 소포",
+      "example": "The app says my package was delivered this morning."
+    },
+    {
+      "kind": "word",
+      "term": "neighbor",
+      "meaning_ko": "이웃",
+      "example": "The driver left it with your neighbor."
+    },
+    {
+      "kind": "word",
+      "term": "replacement",
+      "meaning_ko": "대체품, 교체해 주는 물건",
+      "example": "I can send a replacement by tomorrow."
+    },
+    {
+      "kind": "phrase",
+      "term": "they're away until Sunday",
+      "meaning_ko": "일요일까지 집을 비웠다",
+      "prompt_ko": "옆집이 일요일까지 집에 없다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "Is there really nothing else you can do?",
+      "meaning_ko": "정말 다른 방법이 없나요?",
+      "prompt_ko": "상담원에게 정말 다른 방법이 없는지 다시 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-parcel-neighbor/full.mp3",
+  "full_starts": [
+    0,
+    3504,
+    8544,
+    13200,
+    17904,
+    22560,
+    27768
+  ],
+  "generated_at": "2026-10-04T20:32:43.763Z"
+}

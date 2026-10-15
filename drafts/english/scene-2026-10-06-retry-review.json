@@ -1,0 +1,1566 @@
+{
+  "id": "2026-10-06-retry-review",
+  "situation_ko": "동료의 PR 을 리뷰한다. 결제 이벤트 컨슈머에 재시도를 넣었는데 중복 처리를 막는 장치가 없다. 동료는 금요일 마감이라 다음에 고치자고 한다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "동료 개발자",
+      "meaning_ko": "제 PR 봐주셨어요? 금요일 전에 머지하고 싶어서요.",
+      "en": "Hey, did you get a chance to look at my PR? I'd like to merge it before Friday.",
+      "ms": 4944,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hey",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "did",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chance",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "PR",
+          10
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I'd",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "merge",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 163
+        },
+        {
+          "t": 713,
+          "d": 125
+        },
+        {
+          "t": 838,
+          "d": 63
+        },
+        {
+          "t": 913,
+          "d": 100
+        },
+        {
+          "t": 1013,
+          "d": 38
+        },
+        {
+          "t": 1050,
+          "d": 338
+        },
+        {
+          "t": 1388,
+          "d": 75
+        },
+        {
+          "t": 1475,
+          "d": 150
+        },
+        {
+          "t": 1625,
+          "d": 38
+        },
+        {
+          "t": 1675,
+          "d": 125
+        },
+        {
+          "t": 1813,
+          "d": 450
+        },
+        {
+          "t": 2675,
+          "d": 100
+        },
+        {
+          "t": 2775,
+          "d": 150
+        },
+        {
+          "t": 2925,
+          "d": 75
+        },
+        {
+          "t": 3013,
+          "d": 338
+        },
+        {
+          "t": 3350,
+          "d": 163
+        },
+        {
+          "t": 3525,
+          "d": 438
+        },
+        {
+          "t": 3963,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "봤고 대체로 좋은데, 재시도 로직이 걱정된다고 말해봐",
+      "en": "I did. Overall it looks good, but I'm a little worried about the retry logic.",
+      "ms": 5232,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Overall",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looks",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "little",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worried",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retry",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "logic",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 400
+        },
+        {
+          "t": 988,
+          "d": 463
+        },
+        {
+          "t": 1463,
+          "d": 100
+        },
+        {
+          "t": 1575,
+          "d": 200
+        },
+        {
+          "t": 1788,
+          "d": 400
+        },
+        {
+          "t": 2375,
+          "d": 288
+        },
+        {
+          "t": 2675,
+          "d": 113
+        },
+        {
+          "t": 2800,
+          "d": 38
+        },
+        {
+          "t": 2850,
+          "d": 350
+        },
+        {
+          "t": 3200,
+          "d": 325
+        },
+        {
+          "t": 3538,
+          "d": 200
+        },
+        {
+          "t": 3750,
+          "d": 63
+        },
+        {
+          "t": 3825,
+          "d": 425
+        },
+        {
+          "t": 4263,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그래요? 처리가 실패하면 그냥 세 번까지 다시 시도하는 건데요.",
+      "en": "Really? It just tries again up to three times if processing fails.",
+      "ms": 4728,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Really",
+          0
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "It",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tries",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "times",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "processing",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fails",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 288
+        },
+        {
+          "t": 788,
+          "d": 50
+        },
+        {
+          "t": 838,
+          "d": 163
+        },
+        {
+          "t": 1000,
+          "d": 288
+        },
+        {
+          "t": 1288,
+          "d": 350
+        },
+        {
+          "t": 1738,
+          "d": 100
+        },
+        {
+          "t": 1850,
+          "d": 100
+        },
+        {
+          "t": 1950,
+          "d": 550
+        },
+        {
+          "t": 2500,
+          "d": 513
+        },
+        {
+          "t": 3013,
+          "d": 100
+        },
+        {
+          "t": 3113,
+          "d": 625
+        },
+        {
+          "t": 3738,
+          "d": 638
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "결제가 실제로는 성공했는데 응답만 늦은 경우, 같은 결제가 두 번 처리될 수 있다고 설명해봐",
+      "en": "Right, but if the payment actually went through and only the response timed out, we could charge the customer twice.",
+      "ms": 6840,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Right",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "response",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "timed",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customer",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twice",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 238
+        },
+        {
+          "t": 313,
+          "d": 138
+        },
+        {
+          "t": 463,
+          "d": 100
+        },
+        {
+          "t": 563,
+          "d": 75
+        },
+        {
+          "t": 650,
+          "d": 425
+        },
+        {
+          "t": 1138,
+          "d": 338
+        },
+        {
+          "t": 1488,
+          "d": 213
+        },
+        {
+          "t": 1713,
+          "d": 388
+        },
+        {
+          "t": 2438,
+          "d": 188
+        },
+        {
+          "t": 2700,
+          "d": 238
+        },
+        {
+          "t": 2950,
+          "d": 88
+        },
+        {
+          "t": 3050,
+          "d": 525
+        },
+        {
+          "t": 3575,
+          "d": 300
+        },
+        {
+          "t": 3888,
+          "d": 300
+        },
+        {
+          "t": 4600,
+          "d": 113
+        },
+        {
+          "t": 4725,
+          "d": 175
+        },
+        {
+          "t": 4913,
+          "d": 475
+        },
+        {
+          "t": 5400,
+          "d": 88
+        },
+        {
+          "t": 5500,
+          "d": 425
+        },
+        {
+          "t": 5938,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 그럴 수 있겠네요. 그런데 마감이 빠듯해서요. 다음 스프린트에 고치면 안 될까요?",
+      "en": "Oh, that's a good point. But the deadline is tight. Can we fix it in the next sprint?",
+      "ms": 4416,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deadline",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tight",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sprint",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 225,
+          "d": 150
+        },
+        {
+          "t": 375,
+          "d": 38
+        },
+        {
+          "t": 413,
+          "d": 150
+        },
+        {
+          "t": 563,
+          "d": 325
+        },
+        {
+          "t": 1288,
+          "d": 63
+        },
+        {
+          "t": 1350,
+          "d": 88
+        },
+        {
+          "t": 1438,
+          "d": 438
+        },
+        {
+          "t": 1875,
+          "d": 113
+        },
+        {
+          "t": 1988,
+          "d": 425
+        },
+        {
+          "t": 2813,
+          "d": 88
+        },
+        {
+          "t": 2900,
+          "d": 100
+        },
+        {
+          "t": 3013,
+          "d": 300
+        },
+        {
+          "t": 3325,
+          "d": 50
+        },
+        {
+          "t": 3388,
+          "d": 38
+        },
+        {
+          "t": 3425,
+          "d": 50
+        },
+        {
+          "t": 3475,
+          "d": 200
+        },
+        {
+          "t": 3688,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "결제라서 미루기 어렵다며, 이벤트 아이디로 중복을 거르는 건 한 시간이면 된다고 제안해봐",
+      "en": "Since this is payments, I'd rather not wait. Checking the event ID for duplicates should only take about an hour.",
+      "ms": 7032,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Since",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payments",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wait",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Checking",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "event",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ID",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "duplicates",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hour",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 313
+        },
+        {
+          "t": 425,
+          "d": 150
+        },
+        {
+          "t": 588,
+          "d": 113
+        },
+        {
+          "t": 700,
+          "d": 588
+        },
+        {
+          "t": 1363,
+          "d": 288
+        },
+        {
+          "t": 1663,
+          "d": 350
+        },
+        {
+          "t": 2025,
+          "d": 225
+        },
+        {
+          "t": 2263,
+          "d": 350
+        },
+        {
+          "t": 3025,
+          "d": 400
+        },
+        {
+          "t": 3438,
+          "d": 50
+        },
+        {
+          "t": 3500,
+          "d": 325
+        },
+        {
+          "t": 3838,
+          "d": 438
+        },
+        {
+          "t": 4288,
+          "d": 150
+        },
+        {
+          "t": 4450,
+          "d": 563
+        },
+        {
+          "t": 5025,
+          "d": 275
+        },
+        {
+          "t": 5375,
+          "d": 263
+        },
+        {
+          "t": 5650,
+          "d": 250
+        },
+        {
+          "t": 5900,
+          "d": 213
+        },
+        {
+          "t": 6125,
+          "d": 88
+        },
+        {
+          "t": 6225,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요, 그 정도면 할 만하네요. 오늘 오후에 추가하고 다시 리뷰 요청할게요.",
+      "en": "Fair enough, that's doable. I'll add it this afternoon and ping you for another review.",
+      "ms": 5256,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doable",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "add",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afternoon",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ping",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "another",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "review",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 175,
+          "d": 163
+        },
+        {
+          "t": 338,
+          "d": 388
+        },
+        {
+          "t": 975,
+          "d": 225
+        },
+        {
+          "t": 1213,
+          "d": 488
+        },
+        {
+          "t": 2113,
+          "d": 125
+        },
+        {
+          "t": 2238,
+          "d": 138
+        },
+        {
+          "t": 2375,
+          "d": 75
+        },
+        {
+          "t": 2450,
+          "d": 175
+        },
+        {
+          "t": 2638,
+          "d": 600
+        },
+        {
+          "t": 3450,
+          "d": 150
+        },
+        {
+          "t": 3613,
+          "d": 300
+        },
+        {
+          "t": 3913,
+          "d": 213
+        },
+        {
+          "t": 4138,
+          "d": 150
+        },
+        {
+          "t": 4288,
+          "d": 250
+        },
+        {
+          "t": 4538,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "merge",
+      "meaning_ko": "(코드를) 병합하다, 합치다",
+      "example": "I'd like to merge it before Friday."
+    },
+    {
+      "kind": "word",
+      "term": "duplicate",
+      "meaning_ko": "중복(된 것), 사본",
+      "example": "We should check the event ID for duplicates."
+    },
+    {
+      "kind": "word",
+      "term": "tight",
+      "meaning_ko": "(일정·예산이) 빠듯한",
+      "example": "The deadline is tight."
+    },
+    {
+      "kind": "word",
+      "term": "doable",
+      "meaning_ko": "할 만한, 해낼 수 있는",
+      "example": "An hour of work? That's doable."
+    },
+    {
+      "kind": "phrase",
+      "term": "go through",
+      "meaning_ko": "(결제·신청이) 처리되다, 통과되다",
+      "prompt_ko": "결제가 실제로는 처리됐을 수도 있다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "I'd rather not wait",
+      "meaning_ko": "미루지 않는 게 좋겠어요",
+      "prompt_ko": "중요한 문제라 다음으로 미루지 않는 편이 낫겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-retry-review/full.mp3",
+  "full_starts": [
+    0,
+    4944,
+    10176,
+    14904,
+    21744,
+    26160,
+    33192
+  ],
+  "generated_at": "2026-10-05T22:00:10.693Z"
+}

@@ -1,0 +1,1574 @@
+{
+  "id": "2026-10-04-investor-update",
+  "situation_ko": "투자자와 분기 업데이트 통화. 매출 성장을 보고하는데 투자자가 이탈률이 오른 걸 짚는다. 숫자로 원인과 대책을 설명한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "투자자",
+      "meaning_ko": "자, 이번 분기 어땠는지 간단히 들어볼까요?",
+      "en": "Alright, give me the quick version. How did the quarter go?",
+      "ms": 4968,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Alright",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "give",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quick",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "version",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 563
+        },
+        {
+          "t": 863,
+          "d": 138
+        },
+        {
+          "t": 1013,
+          "d": 88
+        },
+        {
+          "t": 1113,
+          "d": 88
+        },
+        {
+          "t": 1213,
+          "d": 263
+        },
+        {
+          "t": 1488,
+          "d": 525
+        },
+        {
+          "t": 2875,
+          "d": 250
+        },
+        {
+          "t": 3138,
+          "d": 113
+        },
+        {
+          "t": 3263,
+          "d": 63
+        },
+        {
+          "t": 3338,
+          "d": 338
+        },
+        {
+          "t": 3688,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "매출이 전 분기 대비 22퍼센트 올라서 340만 달러가 됐고, 대부분은 기존 고객이 지출을 늘린 덕이라고 말해봐",
+      "en": "Revenue grew twenty-two percent quarter over quarter, to three point four million. Most of that came from existing clients spending more.",
+      "ms": 8568,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Revenue",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "grew",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-two",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "million",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Most",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "came",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "existing",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clients",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spending",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 475
+        },
+        {
+          "t": 575,
+          "d": 288
+        },
+        {
+          "t": 875,
+          "d": 513
+        },
+        {
+          "t": 1400,
+          "d": 413
+        },
+        {
+          "t": 1825,
+          "d": 438
+        },
+        {
+          "t": 2275,
+          "d": 213
+        },
+        {
+          "t": 2488,
+          "d": 450
+        },
+        {
+          "t": 3350,
+          "d": 88
+        },
+        {
+          "t": 3450,
+          "d": 350
+        },
+        {
+          "t": 3813,
+          "d": 400
+        },
+        {
+          "t": 4225,
+          "d": 263
+        },
+        {
+          "t": 4500,
+          "d": 488
+        },
+        {
+          "t": 5375,
+          "d": 350
+        },
+        {
+          "t": 5738,
+          "d": 63
+        },
+        {
+          "t": 5813,
+          "d": 200
+        },
+        {
+          "t": 6013,
+          "d": 325
+        },
+        {
+          "t": 6350,
+          "d": 175
+        },
+        {
+          "t": 6538,
+          "d": 475
+        },
+        {
+          "t": 7013,
+          "d": 438
+        },
+        {
+          "t": 7463,
+          "d": 338
+        },
+        {
+          "t": 7800,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋네요. 근데 이탈률이 3퍼센트에서 5퍼센트로 올랐던데요. 걱정해야 하나요?",
+      "en": "Nice. But I noticed churn went up from three percent to five. Should I be worried?",
+      "ms": 7224,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Nice",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "noticed",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "churn",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Should",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worried",
+          15
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 663
+        },
+        {
+          "t": 1625,
+          "d": 163
+        },
+        {
+          "t": 1800,
+          "d": 63
+        },
+        {
+          "t": 1875,
+          "d": 438
+        },
+        {
+          "t": 2325,
+          "d": 275
+        },
+        {
+          "t": 2613,
+          "d": 250
+        },
+        {
+          "t": 2875,
+          "d": 138
+        },
+        {
+          "t": 3025,
+          "d": 175
+        },
+        {
+          "t": 3213,
+          "d": 250
+        },
+        {
+          "t": 3475,
+          "d": 363
+        },
+        {
+          "t": 3850,
+          "d": 75
+        },
+        {
+          "t": 3938,
+          "d": 588
+        },
+        {
+          "t": 5388,
+          "d": 225
+        },
+        {
+          "t": 5625,
+          "d": 63
+        },
+        {
+          "t": 5700,
+          "d": 113
+        },
+        {
+          "t": 5825,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "숨기지 않고 인정하고, 이탈한 고객 대부분이 계약 금액이 월 2천 달러 미만인 소규모 고객이었다고 설명해봐",
+      "en": "Fair question. Almost all of it came from small accounts paying under two thousand dollars a month.",
+      "ms": 5928,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "question",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Almost",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "came",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "small",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "accounts",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paying",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "under",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 150,
+          "d": 163
+        },
+        {
+          "t": 325,
+          "d": 563
+        },
+        {
+          "t": 1263,
+          "d": 350
+        },
+        {
+          "t": 1625,
+          "d": 200
+        },
+        {
+          "t": 1838,
+          "d": 75
+        },
+        {
+          "t": 1925,
+          "d": 113
+        },
+        {
+          "t": 2038,
+          "d": 325
+        },
+        {
+          "t": 2363,
+          "d": 200
+        },
+        {
+          "t": 2575,
+          "d": 400
+        },
+        {
+          "t": 2988,
+          "d": 463
+        },
+        {
+          "t": 3463,
+          "d": 425
+        },
+        {
+          "t": 3950,
+          "d": 238
+        },
+        {
+          "t": 4200,
+          "d": 200
+        },
+        {
+          "t": 4413,
+          "d": 363
+        },
+        {
+          "t": 4788,
+          "d": 313
+        },
+        {
+          "t": 5113,
+          "d": 38
+        },
+        {
+          "t": 5150,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "작은 고객이라도 이탈은 이탈이죠. 그 사람들이 왜 떠났는데요?",
+      "en": "Small or not, churn is churn. Why are they leaving?",
+      "ms": 5136,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Small",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "or",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "churn",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "churn",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Why",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "they",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "leaving",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 463
+        },
+        {
+          "t": 575,
+          "d": 88
+        },
+        {
+          "t": 675,
+          "d": 375
+        },
+        {
+          "t": 1300,
+          "d": 313
+        },
+        {
+          "t": 1625,
+          "d": 150
+        },
+        {
+          "t": 1788,
+          "d": 488
+        },
+        {
+          "t": 3138,
+          "d": 313
+        },
+        {
+          "t": 3463,
+          "d": 100
+        },
+        {
+          "t": 3575,
+          "d": 150
+        },
+        {
+          "t": 3738,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그 고객들은 지원 비용이 너무 들어서 수익이 거의 안 났다고 하고, 다음 분기부터 셀프서비스 요금제로 옮겨서 이탈을 3퍼센트로 되돌리겠다고 말해봐",
+      "en": "Honestly, they cost us more to support than they brought in. We're moving them to a self-serve plan next quarter, and we expect churn to get back to three percent.",
+      "ms": 9384,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Honestly",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "they",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cost",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "support",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "they",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "brought",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We're",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "self-serve",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "plan",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          19
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expect",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "churn",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          29
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 563
+        },
+        {
+          "t": 875,
+          "d": 113
+        },
+        {
+          "t": 988,
+          "d": 350
+        },
+        {
+          "t": 1350,
+          "d": 138
+        },
+        {
+          "t": 1500,
+          "d": 263
+        },
+        {
+          "t": 1775,
+          "d": 75
+        },
+        {
+          "t": 1863,
+          "d": 475
+        },
+        {
+          "t": 2350,
+          "d": 125
+        },
+        {
+          "t": 2475,
+          "d": 125
+        },
+        {
+          "t": 2613,
+          "d": 300
+        },
+        {
+          "t": 2913,
+          "d": 325
+        },
+        {
+          "t": 3613,
+          "d": 138
+        },
+        {
+          "t": 3763,
+          "d": 288
+        },
+        {
+          "t": 4063,
+          "d": 238
+        },
+        {
+          "t": 4313,
+          "d": 138
+        },
+        {
+          "t": 4463,
+          "d": 75
+        },
+        {
+          "t": 4550,
+          "d": 575
+        },
+        {
+          "t": 5138,
+          "d": 313
+        },
+        {
+          "t": 5463,
+          "d": 225
+        },
+        {
+          "t": 5688,
+          "d": 375
+        },
+        {
+          "t": 6338,
+          "d": 225
+        },
+        {
+          "t": 6713,
+          "d": 138
+        },
+        {
+          "t": 6863,
+          "d": 475
+        },
+        {
+          "t": 7350,
+          "d": 225
+        },
+        {
+          "t": 7588,
+          "d": 63
+        },
+        {
+          "t": 7650,
+          "d": 163
+        },
+        {
+          "t": 7825,
+          "d": 263
+        },
+        {
+          "t": 8088,
+          "d": 88
+        },
+        {
+          "t": 8188,
+          "d": 250
+        },
+        {
+          "t": 8450,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 그 숫자는 다음 통화 때 꼭 다시 확인할게요.",
+      "en": "Okay. I'm going to hold you to that number on our next call.",
+      "ms": 4968,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hold",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 600
+        },
+        {
+          "t": 1563,
+          "d": 175
+        },
+        {
+          "t": 1750,
+          "d": 225
+        },
+        {
+          "t": 1988,
+          "d": 75
+        },
+        {
+          "t": 2075,
+          "d": 275
+        },
+        {
+          "t": 2363,
+          "d": 88
+        },
+        {
+          "t": 2463,
+          "d": 88
+        },
+        {
+          "t": 2563,
+          "d": 188
+        },
+        {
+          "t": 2763,
+          "d": 263
+        },
+        {
+          "t": 3038,
+          "d": 113
+        },
+        {
+          "t": 3163,
+          "d": 200
+        },
+        {
+          "t": 3375,
+          "d": 288
+        },
+        {
+          "t": 3675,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "churn",
+      "meaning_ko": "이탈(률) — 고객이 떠나는 것",
+      "example": "I noticed churn went up from three percent to five."
+    },
+    {
+      "kind": "word",
+      "term": "existing",
+      "meaning_ko": "기존의, 이미 있는",
+      "example": "Most of that came from existing clients."
+    },
+    {
+      "kind": "word",
+      "term": "account",
+      "meaning_ko": "(비즈니스에서) 고객사, 거래처",
+      "example": "Almost all of it came from small accounts."
+    },
+    {
+      "kind": "phrase",
+      "term": "quarter over quarter",
+      "meaning_ko": "전 분기 대비",
+      "prompt_ko": "매출이 전 분기 대비 22퍼센트 올랐다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "they cost us more than they brought in",
+      "meaning_ko": "벌어다 주는 것보다 비용이 더 들었다",
+      "prompt_ko": "그 고객들은 버는 것보다 지원 비용이 더 들었다고 말해봐",
+      "keywords": [
+        {
+          "word": "bring in",
+          "meaning_ko": "(돈을) 벌어들이다"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "hold you to that",
+      "meaning_ko": "그 말 꼭 지키게 할 거다 (약속을 따지겠다)",
+      "prompt_ko": "다음 회의 때 그 숫자 지켰는지 꼭 확인하겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-investor-update/full.mp3",
+  "full_starts": [
+    0,
+    4968,
+    13536,
+    20760,
+    26688,
+    31824,
+    41208
+  ],
+  "generated_at": "2026-10-03T21:41:40.265Z"
+}

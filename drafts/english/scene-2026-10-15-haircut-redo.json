@@ -1,0 +1,1136 @@
+{
+  "id": "2026-10-15-haircut-redo",
+  "situation_ko": "어제 자른 머리가 생각보다 너무 짧고 한쪽이 삐뚤다. 미용실에 다시 가서 손봐달라고 한다. 원래 디자이너는 오늘 쉬는 날이라 다른 사람이 해주겠다고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "미용실 직원",
+      "meaning_ko": "안녕하세요, 다시 오셨네요. 무엇을 도와드릴까요?",
+      "en": "Hi, welcome back. What can I do for you today?",
+      "ms": 3336,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "welcome",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 413
+        },
+        {
+          "t": 663,
+          "d": 438
+        },
+        {
+          "t": 1488,
+          "d": 125
+        },
+        {
+          "t": 1625,
+          "d": 150
+        },
+        {
+          "t": 1788,
+          "d": 100
+        },
+        {
+          "t": 1900,
+          "d": 213
+        },
+        {
+          "t": 2125,
+          "d": 163
+        },
+        {
+          "t": 2300,
+          "d": 150
+        },
+        {
+          "t": 2463,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "어제 잘랐는데 한쪽이 다른 쪽보다 길다고 말해봐",
+      "en": "I got a haircut here yesterday, but one side is longer than the other.",
+      "ms": 4248,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "haircut",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "yesterday",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "side",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "longer",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 75
+        },
+        {
+          "t": 150,
+          "d": 150
+        },
+        {
+          "t": 313,
+          "d": 38
+        },
+        {
+          "t": 363,
+          "d": 375
+        },
+        {
+          "t": 750,
+          "d": 213
+        },
+        {
+          "t": 975,
+          "d": 625
+        },
+        {
+          "t": 1838,
+          "d": 238
+        },
+        {
+          "t": 2088,
+          "d": 213
+        },
+        {
+          "t": 2313,
+          "d": 338
+        },
+        {
+          "t": 2663,
+          "d": 163
+        },
+        {
+          "t": 2838,
+          "d": 363
+        },
+        {
+          "t": 3213,
+          "d": 150
+        },
+        {
+          "t": 3375,
+          "d": 88
+        },
+        {
+          "t": 3475,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 죄송해요. 그런데 담당하셨던 마크가 오늘 쉬는 날이에요. 다른 분이 다듬어드려도 괜찮으세요?",
+      "en": "Oh, I'm sorry about that. Mark is off today, though. Would you mind if someone else fixed it?",
+      "ms": 5856,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sorry",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Mark",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Would",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mind",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "someone",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fixed",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 288,
+          "d": 138
+        },
+        {
+          "t": 438,
+          "d": 338
+        },
+        {
+          "t": 788,
+          "d": 275
+        },
+        {
+          "t": 1075,
+          "d": 338
+        },
+        {
+          "t": 1813,
+          "d": 238
+        },
+        {
+          "t": 2063,
+          "d": 138
+        },
+        {
+          "t": 2213,
+          "d": 188
+        },
+        {
+          "t": 2413,
+          "d": 375
+        },
+        {
+          "t": 2813,
+          "d": 300
+        },
+        {
+          "t": 3513,
+          "d": 138
+        },
+        {
+          "t": 3663,
+          "d": 113
+        },
+        {
+          "t": 3788,
+          "d": 300
+        },
+        {
+          "t": 4100,
+          "d": 88
+        },
+        {
+          "t": 4200,
+          "d": 350
+        },
+        {
+          "t": 4563,
+          "d": 250
+        },
+        {
+          "t": 4825,
+          "d": 388
+        },
+        {
+          "t": 5225,
+          "d": 250
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "괜찮다고, 대신 더 짧게는 하지 말아달라고 해봐",
+      "en": "That's fine. Just please don't take off any more length.",
+      "ms": 3648,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "please",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "length",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 213
+        },
+        {
+          "t": 288,
+          "d": 413
+        },
+        {
+          "t": 1063,
+          "d": 225
+        },
+        {
+          "t": 1300,
+          "d": 313
+        },
+        {
+          "t": 1625,
+          "d": 225
+        },
+        {
+          "t": 1863,
+          "d": 213
+        },
+        {
+          "t": 2088,
+          "d": 263
+        },
+        {
+          "t": 2375,
+          "d": 188
+        },
+        {
+          "t": 2575,
+          "d": 225
+        },
+        {
+          "t": 2813,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼요. 끝만 정리해서 양쪽을 맞출게요. 물론 무료예요.",
+      "en": "Of course. We'll just even out the sides. And there's no charge, obviously.",
+      "ms": 5040,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "even",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sides",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "obviously",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 88
+        },
+        {
+          "t": 150,
+          "d": 450
+        },
+        {
+          "t": 963,
+          "d": 125
+        },
+        {
+          "t": 1100,
+          "d": 275
+        },
+        {
+          "t": 1388,
+          "d": 238
+        },
+        {
+          "t": 1638,
+          "d": 163
+        },
+        {
+          "t": 1813,
+          "d": 88
+        },
+        {
+          "t": 1913,
+          "d": 663
+        },
+        {
+          "t": 2963,
+          "d": 75
+        },
+        {
+          "t": 3050,
+          "d": 200
+        },
+        {
+          "t": 3263,
+          "d": 200
+        },
+        {
+          "t": 3475,
+          "d": 463
+        },
+        {
+          "t": 3963,
+          "d": 713
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "고맙다고, 지금 바로 해줄 수 있는지 물어봐",
+      "en": "Thanks, I appreciate it. Can someone do it right now?",
+      "ms": 3600,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "appreciate",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "someone",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 363
+        },
+        {
+          "t": 463,
+          "d": 100
+        },
+        {
+          "t": 575,
+          "d": 563
+        },
+        {
+          "t": 1150,
+          "d": 238
+        },
+        {
+          "t": 1763,
+          "d": 125
+        },
+        {
+          "t": 1900,
+          "d": 338
+        },
+        {
+          "t": 2250,
+          "d": 163
+        },
+        {
+          "t": 2425,
+          "d": 175
+        },
+        {
+          "t": 2613,
+          "d": 200
+        },
+        {
+          "t": 2825,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "십 분 정도 기다리시면 돼요. 앉아 계세요.",
+      "en": "There's about a ten-minute wait. Have a seat.",
+      "ms": 3192,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "There's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten-minute",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wait",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Have",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seat",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 188
+        },
+        {
+          "t": 275,
+          "d": 263
+        },
+        {
+          "t": 550,
+          "d": 75
+        },
+        {
+          "t": 638,
+          "d": 588
+        },
+        {
+          "t": 1238,
+          "d": 425
+        },
+        {
+          "t": 2063,
+          "d": 163
+        },
+        {
+          "t": 2238,
+          "d": 63
+        },
+        {
+          "t": 2313,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "even out",
+      "kind": "phrase",
+      "meaning_ko": "고르게 맞추다, 균형을 맞추다",
+      "prompt_ko": "머리 양쪽 길이를 맞춰달라고 말해봐"
+    },
+    {
+      "term": "length",
+      "kind": "word",
+      "meaning_ko": "길이",
+      "example": "I like the length, but it's a bit too thick.",
+      "prompt_ko": "길이는 마음에 드는데 숱이 좀 많다고 말해봐"
+    },
+    {
+      "term": "charge",
+      "kind": "word",
+      "meaning_ko": "요금, 청구 금액; 청구하다",
+      "example": "Is there an extra charge for that?",
+      "prompt_ko": "그건 추가 요금이 있는지 물어봐"
+    },
+    {
+      "term": "Would you mind if",
+      "kind": "phrase",
+      "meaning_ko": "~해도 괜찮을까요?",
+      "prompt_ko": "창문을 좀 열어도 괜찮은지 정중하게 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-haircut-redo/full.mp3",
+  "full_starts": [
+    0,
+    3336,
+    7584,
+    13440,
+    17088,
+    22128,
+    25728
+  ],
+  "generated_at": "2026-10-14T20:31:52.230Z"
+}

@@ -1,0 +1,1473 @@
+{
+  "id": "2026-10-12-schema-migration",
+  "situation_ko": "스탠드업에서 테이블 스키마 마이그레이션을 제안한다. 무중단으로 하겠다는데, 동료가 다운타임과 롤백을 걱정하며 다음 스프린트로 미루자고 한다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "동료",
+      "meaning_ko": "주문 테이블 마이그레이션 말인데, 어떻게 돌릴 생각이에요?",
+      "en": "So about the orders table migration — how are you planning to run it?",
+      "ms": 3912,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "orders",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "table",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "migration",
+          5
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "how",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "planning",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 238
+        },
+        {
+          "t": 475,
+          "d": 63
+        },
+        {
+          "t": 550,
+          "d": 463
+        },
+        {
+          "t": 1025,
+          "d": 300
+        },
+        {
+          "t": 1325,
+          "d": 625
+        },
+        {
+          "t": 2463,
+          "d": 75
+        },
+        {
+          "t": 2538,
+          "d": 88
+        },
+        {
+          "t": 2638,
+          "d": 125
+        },
+        {
+          "t": 2775,
+          "d": 313
+        },
+        {
+          "t": 3100,
+          "d": 38
+        },
+        {
+          "t": 3138,
+          "d": 225
+        },
+        {
+          "t": 3375,
+          "d": 175
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "무중단으로 할 거라고, 새 컬럼을 추가하고 과거 데이터를 배치로 채워 넣겠다고 설명해",
+      "en": "I'd do it online — add the new column first, then backfill the old rows in batches so there's no lock.",
+      "ms": 6792,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "online",
+          3
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "add",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "column",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "then",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "backfill",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "old",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rows",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "batches",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lock",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 125
+        },
+        {
+          "t": 225,
+          "d": 125
+        },
+        {
+          "t": 363,
+          "d": 100
+        },
+        {
+          "t": 475,
+          "d": 575
+        },
+        {
+          "t": 1700,
+          "d": 213
+        },
+        {
+          "t": 1925,
+          "d": 63
+        },
+        {
+          "t": 2000,
+          "d": 175
+        },
+        {
+          "t": 2188,
+          "d": 338
+        },
+        {
+          "t": 2538,
+          "d": 488
+        },
+        {
+          "t": 3513,
+          "d": 175
+        },
+        {
+          "t": 3700,
+          "d": 463
+        },
+        {
+          "t": 4175,
+          "d": 75
+        },
+        {
+          "t": 4263,
+          "d": 263
+        },
+        {
+          "t": 4538,
+          "d": 300
+        },
+        {
+          "t": 4850,
+          "d": 113
+        },
+        {
+          "t": 4975,
+          "d": 488
+        },
+        {
+          "t": 5475,
+          "d": 163
+        },
+        {
+          "t": 5650,
+          "d": 188
+        },
+        {
+          "t": 5850,
+          "d": 150
+        },
+        {
+          "t": 6013,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "다운타임이 걱정돼요. 트래픽이 몰릴 때 테이블이 잠기면 어쩌죠? 다음 스프린트로 미루면 안 될까요?",
+      "en": "I'm worried about downtime — what if the table locks during peak traffic? Can't we push this to next sprint?",
+      "ms": 5976,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worried",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "downtime",
+          3
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "what",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "table",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "locks",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "during",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "peak",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "traffic",
+          11
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Can't",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "push",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sprint",
+          18
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 238
+        },
+        {
+          "t": 438,
+          "d": 288
+        },
+        {
+          "t": 725,
+          "d": 663
+        },
+        {
+          "t": 1925,
+          "d": 88
+        },
+        {
+          "t": 2013,
+          "d": 63
+        },
+        {
+          "t": 2075,
+          "d": 75
+        },
+        {
+          "t": 2163,
+          "d": 338
+        },
+        {
+          "t": 2513,
+          "d": 325
+        },
+        {
+          "t": 2838,
+          "d": 238
+        },
+        {
+          "t": 3075,
+          "d": 225
+        },
+        {
+          "t": 3313,
+          "d": 575
+        },
+        {
+          "t": 4275,
+          "d": 100
+        },
+        {
+          "t": 4375,
+          "d": 88
+        },
+        {
+          "t": 4463,
+          "d": 300
+        },
+        {
+          "t": 4763,
+          "d": 163
+        },
+        {
+          "t": 4938,
+          "d": 88
+        },
+        {
+          "t": 5025,
+          "d": 213
+        },
+        {
+          "t": 5250,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "테이블 잠금은 없고, 양쪽에 동시에 쓰다가 조용히 전환할 거라고 안심시켜봐",
+      "en": "There's no table lock with this approach — we dual-write to both columns, then quietly cut over once the backfill is done.",
+      "ms": 6888,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "There's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "table",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lock",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approach",
+          6
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dual-write",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "both",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "columns",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "then",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quietly",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cut",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "once",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "backfill",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "done",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 188
+        },
+        {
+          "t": 450,
+          "d": 350
+        },
+        {
+          "t": 813,
+          "d": 288
+        },
+        {
+          "t": 1113,
+          "d": 100
+        },
+        {
+          "t": 1225,
+          "d": 163
+        },
+        {
+          "t": 1400,
+          "d": 513
+        },
+        {
+          "t": 1938,
+          "d": 150
+        },
+        {
+          "t": 2100,
+          "d": 425
+        },
+        {
+          "t": 2538,
+          "d": 88
+        },
+        {
+          "t": 2638,
+          "d": 225
+        },
+        {
+          "t": 2875,
+          "d": 575
+        },
+        {
+          "t": 3938,
+          "d": 225
+        },
+        {
+          "t": 4175,
+          "d": 438
+        },
+        {
+          "t": 4625,
+          "d": 238
+        },
+        {
+          "t": 4875,
+          "d": 263
+        },
+        {
+          "t": 5150,
+          "d": 288
+        },
+        {
+          "t": 5450,
+          "d": 75
+        },
+        {
+          "t": 5538,
+          "d": 450
+        },
+        {
+          "t": 6000,
+          "d": 125
+        },
+        {
+          "t": 6138,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "만약 잘못되면 되돌릴 방법은요?",
+      "en": "And if something goes wrong, how do we roll it back?",
+      "ms": 2904,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "And",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "something",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "goes",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wrong",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "how",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "roll",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 63
+        },
+        {
+          "t": 213,
+          "d": 238
+        },
+        {
+          "t": 450,
+          "d": 263
+        },
+        {
+          "t": 713,
+          "d": 388
+        },
+        {
+          "t": 1563,
+          "d": 88
+        },
+        {
+          "t": 1650,
+          "d": 50
+        },
+        {
+          "t": 1713,
+          "d": 113
+        },
+        {
+          "t": 1825,
+          "d": 225
+        },
+        {
+          "t": 2050,
+          "d": 75
+        },
+        {
+          "t": 2125,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "기존 컬럼을 그대로 둘 거라 언제든 되돌릴 수 있다고 설명해",
+      "en": "We keep the old column untouched, so we can revert instantly if anything looks off.",
+      "ms": 5424,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "old",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "column",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "untouched",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "revert",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instantly",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looks",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 63
+        },
+        {
+          "t": 150,
+          "d": 238
+        },
+        {
+          "t": 400,
+          "d": 63
+        },
+        {
+          "t": 475,
+          "d": 250
+        },
+        {
+          "t": 738,
+          "d": 388
+        },
+        {
+          "t": 1150,
+          "d": 688
+        },
+        {
+          "t": 2288,
+          "d": 213
+        },
+        {
+          "t": 2513,
+          "d": 125
+        },
+        {
+          "t": 2650,
+          "d": 163
+        },
+        {
+          "t": 2825,
+          "d": 425
+        },
+        {
+          "t": 3275,
+          "d": 588
+        },
+        {
+          "t": 3875,
+          "d": 150
+        },
+        {
+          "t": 4038,
+          "d": 388
+        },
+        {
+          "t": 4438,
+          "d": 238
+        },
+        {
+          "t": 4688,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 그럼 먼저 스테이징에서 리허설 한 번 돌려봅시다.",
+      "en": "Okay, that works — let's do a dry run on staging first.",
+      "ms": 4248,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          2
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "let's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dry",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "staging",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 313
+        },
+        {
+          "t": 663,
+          "d": 150
+        },
+        {
+          "t": 813,
+          "d": 450
+        },
+        {
+          "t": 1688,
+          "d": 113
+        },
+        {
+          "t": 1800,
+          "d": 125
+        },
+        {
+          "t": 1925,
+          "d": 38
+        },
+        {
+          "t": 1963,
+          "d": 363
+        },
+        {
+          "t": 2325,
+          "d": 388
+        },
+        {
+          "t": 2713,
+          "d": 138
+        },
+        {
+          "t": 2850,
+          "d": 413
+        },
+        {
+          "t": 3275,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "roll it back",
+      "kind": "phrase",
+      "meaning_ko": "되돌리다, 이전 상태로 복구하다",
+      "keywords": [
+        {
+          "word": "rollback",
+          "meaning_ko": "롤백, 되돌리기"
+        }
+      ],
+      "prompt_ko": "문제가 생기면 이전 상태로 되돌릴 수 있다고 말해봐"
+    },
+    {
+      "term": "downtime",
+      "kind": "word",
+      "meaning_ko": "(서비스) 중단 시간",
+      "example": "The upgrade should finish with zero downtime.",
+      "prompt_ko": "이번 업그레이드는 중단 시간 없이 끝난다고 말해봐"
+    },
+    {
+      "term": "backfill",
+      "kind": "word",
+      "meaning_ko": "(과거) 데이터를 뒤늦게 채워 넣기",
+      "example": "We'll backfill the missing rows overnight.",
+      "prompt_ko": "빠진 과거 데이터를 밤사이 채워 넣겠다고 말해봐"
+    },
+    {
+      "term": "cut over",
+      "kind": "phrase",
+      "meaning_ko": "(새 방식으로) 전환하다",
+      "prompt_ko": "준비가 끝나면 새 방식으로 전환하겠다고 말해봐"
+    },
+    {
+      "term": "dry run",
+      "kind": "word",
+      "meaning_ko": "실전 전 예행연습, 리허설",
+      "example": "Let's do a dry run on staging before touching production.",
+      "prompt_ko": "운영 반영 전에 스테이징에서 리허설을 돌리자고 제안해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-schema-migration/full.mp3",
+  "full_starts": [
+    0,
+    3912,
+    10704,
+    16680,
+    23568,
+    26472,
+    31896
+  ],
+  "generated_at": "2026-10-11T20:35:56.705Z"
+}

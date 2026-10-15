@@ -1,0 +1,1428 @@
+{
+  "id": "2026-10-07-rental-car",
+  "situation_ko": "공항 렌터카 카운터. 예약한 소형차가 없다며 직원이 돈을 더 내고 SUV 로 바꾸라고 한다. 보험도 권한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "렌터카 직원",
+      "meaning_ko": "안녕하세요. 소형차로 예약하셨는데, 지금 소형차가 다 나갔어요.",
+      "en": "Good morning. I have your reservation for a compact car, but we're actually out of compacts right now.",
+      "ms": 5736,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reservation",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compact",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "car",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compacts",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 125
+        },
+        {
+          "t": 213,
+          "d": 500
+        },
+        {
+          "t": 1113,
+          "d": 113
+        },
+        {
+          "t": 1238,
+          "d": 200
+        },
+        {
+          "t": 1438,
+          "d": 100
+        },
+        {
+          "t": 1538,
+          "d": 550
+        },
+        {
+          "t": 2100,
+          "d": 100
+        },
+        {
+          "t": 2213,
+          "d": 38
+        },
+        {
+          "t": 2263,
+          "d": 475
+        },
+        {
+          "t": 2738,
+          "d": 363
+        },
+        {
+          "t": 3263,
+          "d": 163
+        },
+        {
+          "t": 3438,
+          "d": 188
+        },
+        {
+          "t": 3638,
+          "d": 413
+        },
+        {
+          "t": 4063,
+          "d": 88
+        },
+        {
+          "t": 4163,
+          "d": 63
+        },
+        {
+          "t": 4238,
+          "d": 550
+        },
+        {
+          "t": 4788,
+          "d": 175
+        },
+        {
+          "t": 4975,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 어떻게 할 수 있는지, 다른 차는 남아 있는지 물어봐",
+      "en": "Oh. So what are my options? Do you have anything else available?",
+      "ms": 3888,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "So",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "options",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "available",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 763,
+          "d": 113
+        },
+        {
+          "t": 875,
+          "d": 88
+        },
+        {
+          "t": 963,
+          "d": 38
+        },
+        {
+          "t": 1013,
+          "d": 188
+        },
+        {
+          "t": 1200,
+          "d": 663
+        },
+        {
+          "t": 2275,
+          "d": 38
+        },
+        {
+          "t": 2313,
+          "d": 88
+        },
+        {
+          "t": 2413,
+          "d": 175
+        },
+        {
+          "t": 2588,
+          "d": 263
+        },
+        {
+          "t": 2850,
+          "d": 188
+        },
+        {
+          "t": 3050,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "SUV 로 드릴 수 있어요. 조금 더 크고, 하루에 25달러만 더 내시면 돼요.",
+      "en": "I can put you in an SUV. It's a bit bigger, and it's only twenty-five dollars more per day.",
+      "ms": 6240,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bigger",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-five",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "per",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 125
+        },
+        {
+          "t": 238,
+          "d": 188
+        },
+        {
+          "t": 438,
+          "d": 225
+        },
+        {
+          "t": 663,
+          "d": 225
+        },
+        {
+          "t": 963,
+          "d": 213
+        },
+        {
+          "t": 1188,
+          "d": 138
+        },
+        {
+          "t": 1338,
+          "d": 600
+        },
+        {
+          "t": 2325,
+          "d": 125
+        },
+        {
+          "t": 2463,
+          "d": 100
+        },
+        {
+          "t": 2563,
+          "d": 200
+        },
+        {
+          "t": 2775,
+          "d": 400
+        },
+        {
+          "t": 3388,
+          "d": 225
+        },
+        {
+          "t": 3688,
+          "d": 125
+        },
+        {
+          "t": 3963,
+          "d": 275
+        },
+        {
+          "t": 4250,
+          "d": 563
+        },
+        {
+          "t": 4825,
+          "d": 350
+        },
+        {
+          "t": 5188,
+          "d": 188
+        },
+        {
+          "t": 5375,
+          "d": 125
+        },
+        {
+          "t": 5513,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "예약한 차가 없는 건 그쪽 사정이니 업그레이드는 무료여야 하지 않냐고 해봐",
+      "en": "But I booked a compact. Since you don't have one, shouldn't the upgrade be free?",
+      "ms": 4536,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "But",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compact",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Since",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "shouldn't",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "upgrade",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "free",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 163,
+          "d": 50
+        },
+        {
+          "t": 213,
+          "d": 225
+        },
+        {
+          "t": 438,
+          "d": 38
+        },
+        {
+          "t": 488,
+          "d": 725
+        },
+        {
+          "t": 1613,
+          "d": 163
+        },
+        {
+          "t": 1775,
+          "d": 50
+        },
+        {
+          "t": 1825,
+          "d": 188
+        },
+        {
+          "t": 2013,
+          "d": 288
+        },
+        {
+          "t": 2300,
+          "d": 275
+        },
+        {
+          "t": 2975,
+          "d": 250
+        },
+        {
+          "t": 3225,
+          "d": 75
+        },
+        {
+          "t": 3300,
+          "d": 338
+        },
+        {
+          "t": 3638,
+          "d": 125
+        },
+        {
+          "t": 3775,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞는 말씀이에요. 추가 요금 없이 업그레이드해 드릴게요. 완전 보장 보험도 추가하시겠어요?",
+      "en": "You're right. I'll upgrade you at no extra charge. Would you like to add full insurance?",
+      "ms": 5640,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "You're",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "upgrade",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "extra",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Would",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "add",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "insurance",
+          15
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 125
+        },
+        {
+          "t": 188,
+          "d": 325
+        },
+        {
+          "t": 913,
+          "d": 250
+        },
+        {
+          "t": 1225,
+          "d": 438
+        },
+        {
+          "t": 1675,
+          "d": 175
+        },
+        {
+          "t": 1863,
+          "d": 150
+        },
+        {
+          "t": 2025,
+          "d": 338
+        },
+        {
+          "t": 2375,
+          "d": 300
+        },
+        {
+          "t": 2688,
+          "d": 500
+        },
+        {
+          "t": 3550,
+          "d": 113
+        },
+        {
+          "t": 3663,
+          "d": 100
+        },
+        {
+          "t": 3763,
+          "d": 238
+        },
+        {
+          "t": 4013,
+          "d": 125
+        },
+        {
+          "t": 4150,
+          "d": 275
+        },
+        {
+          "t": 4438,
+          "d": 200
+        },
+        {
+          "t": 4650,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "괜찮다고, 내 신용카드가 이미 렌터카를 보장해준다고 말해봐",
+      "en": "No, thanks. My credit card already covers rental cars.",
+      "ms": 4032,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "My",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "credit",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "card",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "covers",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rental",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cars",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 538
+        },
+        {
+          "t": 1213,
+          "d": 113
+        },
+        {
+          "t": 1338,
+          "d": 300
+        },
+        {
+          "t": 1638,
+          "d": 350
+        },
+        {
+          "t": 2100,
+          "d": 363
+        },
+        {
+          "t": 2463,
+          "d": 375
+        },
+        {
+          "t": 2838,
+          "d": 263
+        },
+        {
+          "t": 3113,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠습니다. 연료는 가득 받아서 가득 반납하는 조건이니, 꼭 기름을 채워서 반납해 주세요.",
+      "en": "No problem. Just note that it's full to full, so please return it with a full tank.",
+      "ms": 5736,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "note",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "please",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "return",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tank",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 250
+        },
+        {
+          "t": 350,
+          "d": 550
+        },
+        {
+          "t": 1288,
+          "d": 250
+        },
+        {
+          "t": 1538,
+          "d": 325
+        },
+        {
+          "t": 1863,
+          "d": 100
+        },
+        {
+          "t": 1975,
+          "d": 150
+        },
+        {
+          "t": 2125,
+          "d": 238
+        },
+        {
+          "t": 2375,
+          "d": 75
+        },
+        {
+          "t": 2463,
+          "d": 413
+        },
+        {
+          "t": 3400,
+          "d": 238
+        },
+        {
+          "t": 3650,
+          "d": 338
+        },
+        {
+          "t": 4000,
+          "d": 313
+        },
+        {
+          "t": 4325,
+          "d": 113
+        },
+        {
+          "t": 4450,
+          "d": 125
+        },
+        {
+          "t": 4588,
+          "d": 63
+        },
+        {
+          "t": 4663,
+          "d": 263
+        },
+        {
+          "t": 4938,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "available",
+      "meaning_ko": "이용 가능한, 남아 있는",
+      "example": "Do you have anything else available?"
+    },
+    {
+      "kind": "word",
+      "term": "upgrade",
+      "meaning_ko": "더 좋은 등급으로 바꿔주다",
+      "example": "I'll upgrade you at no extra charge."
+    },
+    {
+      "kind": "word",
+      "term": "cover",
+      "meaning_ko": "(보험이) 보장하다, (비용을) 부담하다",
+      "example": "My credit card already covers rental cars."
+    },
+    {
+      "kind": "phrase",
+      "term": "at no extra charge",
+      "meaning_ko": "추가 요금 없이",
+      "prompt_ko": "추가 요금 없이 해줄 수 있는지 물어봐",
+      "keywords": [
+        {
+          "word": "charge",
+          "meaning_ko": "요금, 청구 금액"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "return it with a full tank",
+      "meaning_ko": "기름을 가득 채워 반납하다",
+      "prompt_ko": "차는 기름을 가득 채워서 돌려드리겠다고 말해봐",
+      "keywords": [
+        {
+          "word": "tank",
+          "meaning_ko": "(연료) 탱크"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-rental-car/full.mp3",
+  "full_starts": [
+    0,
+    5736,
+    9624,
+    15864,
+    20400,
+    26040,
+    30072
+  ],
+  "generated_at": "2026-10-06T20:36:15.396Z"
+}

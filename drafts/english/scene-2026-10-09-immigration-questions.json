@@ -1,0 +1,1478 @@
+{
+  "id": "2026-10-09-immigration-questions",
+  "situation_ko": "입국 심사대. 출장 목적으로 왔는데 심사관이 체류 기간과 숙소를 캐묻는다. 초청장이 종이로 없어서 2차 심사로 보내려 한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "입국 심사관",
+      "meaning_ko": "입국 목적이 무엇입니까?",
+      "en": "What's the purpose of your visit?",
+      "ms": 2520,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "What's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "purpose",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "visit",
+          5
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 375,
+          "d": 100
+        },
+        {
+          "t": 488,
+          "d": 400
+        },
+        {
+          "t": 900,
+          "d": 75
+        },
+        {
+          "t": 988,
+          "d": 188
+        },
+        {
+          "t": 1188,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "일 때문에 왔고 회사 콘퍼런스에 참석한다고 말해봐",
+      "en": "I'm here for work — I'm attending a conference my company is sending me to.",
+      "ms": 4560,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          3
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I'm",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "attending",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conference",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "company",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sending",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 288,
+          "d": 250
+        },
+        {
+          "t": 538,
+          "d": 150
+        },
+        {
+          "t": 700,
+          "d": 313
+        },
+        {
+          "t": 1575,
+          "d": 113
+        },
+        {
+          "t": 1700,
+          "d": 350
+        },
+        {
+          "t": 2063,
+          "d": 50
+        },
+        {
+          "t": 2113,
+          "d": 463
+        },
+        {
+          "t": 2588,
+          "d": 138
+        },
+        {
+          "t": 2738,
+          "d": 538
+        },
+        {
+          "t": 3288,
+          "d": 138
+        },
+        {
+          "t": 3425,
+          "d": 325
+        },
+        {
+          "t": 3750,
+          "d": 113
+        },
+        {
+          "t": 3875,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "입국 심사관",
+      "meaning_ko": "얼마나 머무르시고, 어디에 숙박하십니까?",
+      "en": "How long are you staying, and where will you be staying?",
+      "ms": 3624,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "How",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "long",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "staying",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "where",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "will",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "staying",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 238
+        },
+        {
+          "t": 350,
+          "d": 238
+        },
+        {
+          "t": 600,
+          "d": 25
+        },
+        {
+          "t": 638,
+          "d": 163
+        },
+        {
+          "t": 813,
+          "d": 450
+        },
+        {
+          "t": 1475,
+          "d": 113
+        },
+        {
+          "t": 1600,
+          "d": 163
+        },
+        {
+          "t": 1775,
+          "d": 163
+        },
+        {
+          "t": 1950,
+          "d": 100
+        },
+        {
+          "t": 2063,
+          "d": 125
+        },
+        {
+          "t": 2200,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "엿새 머물고 호텔은 행사장 근처라고 말해봐 — 예약 확인서는 휴대폰에 있다고 덧붙여",
+      "en": "Six nights. The hotel is near the venue — I have the booking confirmation on my phone.",
+      "ms": 5880,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Six",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nights",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotel",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "near",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "venue",
+          7
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booking",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "confirmation",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "phone",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 338
+        },
+        {
+          "t": 438,
+          "d": 550
+        },
+        {
+          "t": 1363,
+          "d": 50
+        },
+        {
+          "t": 1413,
+          "d": 625
+        },
+        {
+          "t": 2100,
+          "d": 275
+        },
+        {
+          "t": 2388,
+          "d": 200
+        },
+        {
+          "t": 2600,
+          "d": 63
+        },
+        {
+          "t": 2663,
+          "d": 450
+        },
+        {
+          "t": 3613,
+          "d": 125
+        },
+        {
+          "t": 3738,
+          "d": 138
+        },
+        {
+          "t": 3888,
+          "d": 75
+        },
+        {
+          "t": 3975,
+          "d": 275
+        },
+        {
+          "t": 4250,
+          "d": 575
+        },
+        {
+          "t": 4838,
+          "d": 75
+        },
+        {
+          "t": 4913,
+          "d": 150
+        },
+        {
+          "t": 5075,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "입국 심사관",
+      "meaning_ko": "초청장은 가지고 계십니까? 종이 사본이 없으면 2차 심사로 보내야 할 수도 있습니다.",
+      "en": "Do you have your invitation letter? If you don't have a paper copy, I may have to send you to secondary.",
+      "ms": 6648,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Do",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "invitation",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "letter",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "If",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paper",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "copy",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "may",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "secondary",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 125
+        },
+        {
+          "t": 238,
+          "d": 100
+        },
+        {
+          "t": 350,
+          "d": 138
+        },
+        {
+          "t": 500,
+          "d": 150
+        },
+        {
+          "t": 663,
+          "d": 525
+        },
+        {
+          "t": 1200,
+          "d": 400
+        },
+        {
+          "t": 2463,
+          "d": 200
+        },
+        {
+          "t": 2675,
+          "d": 113
+        },
+        {
+          "t": 2800,
+          "d": 188
+        },
+        {
+          "t": 3000,
+          "d": 138
+        },
+        {
+          "t": 3150,
+          "d": 63
+        },
+        {
+          "t": 3225,
+          "d": 300
+        },
+        {
+          "t": 3538,
+          "d": 338
+        },
+        {
+          "t": 4063,
+          "d": 63
+        },
+        {
+          "t": 4138,
+          "d": 175
+        },
+        {
+          "t": 4325,
+          "d": 200
+        },
+        {
+          "t": 4538,
+          "d": 75
+        },
+        {
+          "t": 4625,
+          "d": 250
+        },
+        {
+          "t": 4888,
+          "d": 113
+        },
+        {
+          "t": 5013,
+          "d": 100
+        },
+        {
+          "t": 5125,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "종이는 없지만 이메일로 받아뒀다고 말하고, 지금 열어 보여줘도 되는지 물어봐",
+      "en": "I don't have it printed, but it's in my email. Would it help if I pulled it up for you?",
+      "ms": 4752,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "printed",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Would",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pulled",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          19
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 188
+        },
+        {
+          "t": 388,
+          "d": 175
+        },
+        {
+          "t": 575,
+          "d": 88
+        },
+        {
+          "t": 675,
+          "d": 538
+        },
+        {
+          "t": 1375,
+          "d": 113
+        },
+        {
+          "t": 1488,
+          "d": 125
+        },
+        {
+          "t": 1625,
+          "d": 88
+        },
+        {
+          "t": 1725,
+          "d": 138
+        },
+        {
+          "t": 1875,
+          "d": 575
+        },
+        {
+          "t": 2825,
+          "d": 125
+        },
+        {
+          "t": 2963,
+          "d": 63
+        },
+        {
+          "t": 3038,
+          "d": 238
+        },
+        {
+          "t": 3288,
+          "d": 113
+        },
+        {
+          "t": 3413,
+          "d": 113
+        },
+        {
+          "t": 3538,
+          "d": 275
+        },
+        {
+          "t": 3825,
+          "d": 50
+        },
+        {
+          "t": 3888,
+          "d": 125
+        },
+        {
+          "t": 4025,
+          "d": 150
+        },
+        {
+          "t": 4188,
+          "d": 200
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "입국 심사관",
+      "meaning_ko": "네, 보여주세요. 그걸로 확인되면 통과시켜 드리겠습니다. 다음부터는 출장 때 종이로 한 장 챙기세요.",
+      "en": "Go ahead. If it checks out, I'll let you through. Next time, bring a printed copy when you travel on business.",
+      "ms": 8664,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Go",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ahead",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "checks",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Next",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "bring",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "printed",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "copy",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "travel",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "business",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 225
+        },
+        {
+          "t": 338,
+          "d": 500
+        },
+        {
+          "t": 1700,
+          "d": 175
+        },
+        {
+          "t": 1888,
+          "d": 125
+        },
+        {
+          "t": 2025,
+          "d": 313
+        },
+        {
+          "t": 2350,
+          "d": 275
+        },
+        {
+          "t": 2763,
+          "d": 113
+        },
+        {
+          "t": 2888,
+          "d": 188
+        },
+        {
+          "t": 3088,
+          "d": 100
+        },
+        {
+          "t": 3200,
+          "d": 413
+        },
+        {
+          "t": 4475,
+          "d": 363
+        },
+        {
+          "t": 4850,
+          "d": 325
+        },
+        {
+          "t": 5325,
+          "d": 188
+        },
+        {
+          "t": 5525,
+          "d": 75
+        },
+        {
+          "t": 5613,
+          "d": 363
+        },
+        {
+          "t": 5988,
+          "d": 313
+        },
+        {
+          "t": 6313,
+          "d": 175
+        },
+        {
+          "t": 6500,
+          "d": 100
+        },
+        {
+          "t": 6613,
+          "d": 413
+        },
+        {
+          "t": 7038,
+          "d": 125
+        },
+        {
+          "t": 7175,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "venue",
+      "meaning_ko": "행사장, 개최 장소",
+      "example": "The hotel is near the venue.",
+      "prompt_ko": "호텔이 행사장 근처라고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "secondary",
+      "meaning_ko": "(입국 심사의) 2차 심사실",
+      "example": "I may have to send you to secondary.",
+      "prompt_ko": "서류가 없으면 2차 심사로 보낼 수도 있다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "printed",
+      "meaning_ko": "인쇄된, 종이로 뽑은",
+      "example": "I don't have it printed, but it's in my email.",
+      "prompt_ko": "종이로 뽑아오진 않았지만 이메일에 있다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "the purpose of your visit",
+      "meaning_ko": "방문 목적",
+      "prompt_ko": "입국 목적이 무엇인지 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "pull it up",
+      "meaning_ko": "(화면에) 띄워서 보여주다, 불러오다",
+      "prompt_ko": "지금 휴대폰에서 열어 보여줘도 되는지 물어봐",
+      "keywords": [
+        {
+          "word": "pull up",
+          "meaning_ko": "자료·화면을 불러오다 (차를 세우다는 뜻도 된다)"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "if it checks out",
+      "meaning_ko": "확인해서 문제가 없으면",
+      "prompt_ko": "확인되면 통과시켜 주겠다고 말해봐",
+      "keywords": [
+        {
+          "word": "check out",
+          "meaning_ko": "확인해보니 사실로 맞아떨어지다"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-immigration-questions/full.mp3",
+  "full_starts": [
+    0,
+    2520,
+    7080,
+    10704,
+    16584,
+    23232,
+    27984
+  ],
+  "generated_at": "2026-10-08T20:35:32.530Z"
+}

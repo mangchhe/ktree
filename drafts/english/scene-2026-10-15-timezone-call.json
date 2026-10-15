@@ -1,0 +1,1220 @@
+{
+  "id": "2026-10-15-timezone-call",
+  "situation_ko": "런던에 있는 파트너사와 주간 회의 시간을 다시 잡는다. 지금 시간은 서울 밤 11시라 힘들다. 상대는 자기 쪽 아침 시간은 이미 꽉 찼다고 한다.",
+  "topic": "비즈니스",
+  "level": 2,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "런던 파트너",
+      "meaning_ko": "주간 회의 시간 다시 잡자고 하셨죠? 무슨 일이에요?",
+      "en": "You wanted to talk about moving our weekly call. What's up?",
+      "ms": 4896,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "You",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "moving",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weekly",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 175
+        },
+        {
+          "t": 238,
+          "d": 313
+        },
+        {
+          "t": 563,
+          "d": 63
+        },
+        {
+          "t": 638,
+          "d": 225
+        },
+        {
+          "t": 875,
+          "d": 263
+        },
+        {
+          "t": 1150,
+          "d": 363
+        },
+        {
+          "t": 1525,
+          "d": 188
+        },
+        {
+          "t": 1725,
+          "d": 388
+        },
+        {
+          "t": 2125,
+          "d": 425
+        },
+        {
+          "t": 3413,
+          "d": 288
+        },
+        {
+          "t": 3713,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "지금 시간이 서울로 밤 11시라 집중하기 힘들다고 말해봐",
+      "en": "Right now it's eleven p.m. in Seoul, and it's hard for me to stay focused that late.",
+      "ms": 5040,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Right",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eleven",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "p.m.",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Seoul",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hard",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stay",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "focused",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 213
+        },
+        {
+          "t": 300,
+          "d": 300
+        },
+        {
+          "t": 613,
+          "d": 100
+        },
+        {
+          "t": 725,
+          "d": 388
+        },
+        {
+          "t": 1125,
+          "d": 338
+        },
+        {
+          "t": 1463,
+          "d": 100
+        },
+        {
+          "t": 1575,
+          "d": 438
+        },
+        {
+          "t": 2413,
+          "d": 213
+        },
+        {
+          "t": 2700,
+          "d": 113
+        },
+        {
+          "t": 2825,
+          "d": 288
+        },
+        {
+          "t": 3125,
+          "d": 100
+        },
+        {
+          "t": 3238,
+          "d": 150
+        },
+        {
+          "t": 3400,
+          "d": 88
+        },
+        {
+          "t": 3500,
+          "d": 263
+        },
+        {
+          "t": 3775,
+          "d": 425
+        },
+        {
+          "t": 4213,
+          "d": 163
+        },
+        {
+          "t": 4388,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그렇겠네요. 근데 제 아침 시간대는 이미 다른 회의로 꽉 차 있어요.",
+      "en": "That makes sense. The problem is, my mornings are already packed with other meetings.",
+      "ms": 6360,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "makes",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sense",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "my",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mornings",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "packed",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meetings",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 225
+        },
+        {
+          "t": 288,
+          "d": 288
+        },
+        {
+          "t": 588,
+          "d": 488
+        },
+        {
+          "t": 1938,
+          "d": 150
+        },
+        {
+          "t": 2100,
+          "d": 363
+        },
+        {
+          "t": 2475,
+          "d": 325
+        },
+        {
+          "t": 2963,
+          "d": 175
+        },
+        {
+          "t": 3150,
+          "d": 463
+        },
+        {
+          "t": 3625,
+          "d": 138
+        },
+        {
+          "t": 3775,
+          "d": 438
+        },
+        {
+          "t": 4225,
+          "d": 313
+        },
+        {
+          "t": 4550,
+          "d": 113
+        },
+        {
+          "t": 4675,
+          "d": 150
+        },
+        {
+          "t": 4838,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 런던 아침 여덟 시는 어떤지, 서울은 오후 네 시라고 물어봐",
+      "en": "How about eight a.m. your time? That would be four p.m. for me.",
+      "ms": 3936,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "How",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a.m.",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "That",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "p.m.",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 288
+        },
+        {
+          "t": 638,
+          "d": 200
+        },
+        {
+          "t": 900,
+          "d": 200
+        },
+        {
+          "t": 1113,
+          "d": 88
+        },
+        {
+          "t": 1200,
+          "d": 438
+        },
+        {
+          "t": 2025,
+          "d": 213
+        },
+        {
+          "t": 2238,
+          "d": 138
+        },
+        {
+          "t": 2388,
+          "d": 138
+        },
+        {
+          "t": 2538,
+          "d": 275
+        },
+        {
+          "t": 2825,
+          "d": 313
+        },
+        {
+          "t": 3150,
+          "d": 125
+        },
+        {
+          "t": 3288,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "여덟 시는 좀 이른데… 격주로 번갈아 하면 어때요? 한 주는 제 쪽, 한 주는 그쪽에 맞추고요.",
+      "en": "Eight is a bit early for me. What if we alternate every other week? One week suits me, the next suits you.",
+      "ms": 8088,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Eight",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alternate",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "every",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          13
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "One",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "suits",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          17
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "suits",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 238
+        },
+        {
+          "t": 300,
+          "d": 100
+        },
+        {
+          "t": 413,
+          "d": 75
+        },
+        {
+          "t": 500,
+          "d": 175
+        },
+        {
+          "t": 688,
+          "d": 238
+        },
+        {
+          "t": 938,
+          "d": 113
+        },
+        {
+          "t": 1063,
+          "d": 275
+        },
+        {
+          "t": 2200,
+          "d": 238
+        },
+        {
+          "t": 2450,
+          "d": 100
+        },
+        {
+          "t": 2563,
+          "d": 125
+        },
+        {
+          "t": 2700,
+          "d": 513
+        },
+        {
+          "t": 3225,
+          "d": 250
+        },
+        {
+          "t": 3488,
+          "d": 163
+        },
+        {
+          "t": 3663,
+          "d": 425
+        },
+        {
+          "t": 4950,
+          "d": 300
+        },
+        {
+          "t": 5263,
+          "d": 225
+        },
+        {
+          "t": 5500,
+          "d": 325
+        },
+        {
+          "t": 5838,
+          "d": 200
+        },
+        {
+          "t": 6200,
+          "d": 88
+        },
+        {
+          "t": 6300,
+          "d": 300
+        },
+        {
+          "t": 6613,
+          "d": 325
+        },
+        {
+          "t": 6950,
+          "d": 263
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "공평하다고, 다음 주부터 시작하자고 해봐",
+      "en": "That sounds fair. Let's start next week.",
+      "ms": 3192,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sounds",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          6
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 238
+        },
+        {
+          "t": 300,
+          "d": 475
+        },
+        {
+          "t": 788,
+          "d": 475
+        },
+        {
+          "t": 1625,
+          "d": 213
+        },
+        {
+          "t": 1850,
+          "d": 288
+        },
+        {
+          "t": 2150,
+          "d": 313
+        },
+        {
+          "t": 2475,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 캘린더 초대 업데이트해서 보낼게요.",
+      "en": "Great. I'll update the calendar invite.",
+      "ms": 4056,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Great",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "update",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "calendar",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "invite",
+          5
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 575
+        },
+        {
+          "t": 1488,
+          "d": 238
+        },
+        {
+          "t": 1738,
+          "d": 325
+        },
+        {
+          "t": 2075,
+          "d": 75
+        },
+        {
+          "t": 2163,
+          "d": 425
+        },
+        {
+          "t": 2600,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "alternate",
+      "kind": "word",
+      "meaning_ko": "번갈아 하다, 교대로 하다",
+      "example": "We alternate who takes notes in each meeting.",
+      "prompt_ko": "회의마다 회의록 쓰는 사람을 번갈아 정한다고 말해봐"
+    },
+    {
+      "term": "packed",
+      "kind": "word",
+      "meaning_ko": "꽉 찬, 빽빽한",
+      "example": "My schedule is packed until Thursday.",
+      "prompt_ko": "목요일까지 일정이 꽉 찼다고 말해봐"
+    },
+    {
+      "term": "every other week",
+      "kind": "phrase",
+      "meaning_ko": "격주로",
+      "prompt_ko": "그 회의는 격주로 한다고 말해봐"
+    },
+    {
+      "term": "your time",
+      "kind": "phrase",
+      "meaning_ko": "(상대 시간대) 그쪽 시간으로",
+      "prompt_ko": "그쪽 시간으로 오후 세 시면 괜찮은지 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-timezone-call/full.mp3",
+  "full_starts": [
+    0,
+    4896,
+    9936,
+    16296,
+    20232,
+    28320,
+    31512
+  ],
+  "generated_at": "2026-10-14T20:32:45.686Z"
+}

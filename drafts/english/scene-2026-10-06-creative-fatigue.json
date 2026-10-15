@@ -1,0 +1,1734 @@
+{
+  "id": "2026-10-06-creative-fatigue",
+  "situation_ko": "광고 에이전시와 주간 콜. 메타 광고 클릭률이 3주 만에 절반으로 떨어졌다. 에이전시는 예산을 올리자고 하지만 나는 소재가 지친 것이라고 본다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "에이전시 담당자",
+      "meaning_ko": "이번 주 수치 보셨죠. 노출을 되찾으려면 일 예산을 이천 달러 올리는 걸 추천드려요.",
+      "en": "So you've seen this week's numbers. To win back reach, we'd recommend raising the daily budget by two thousand dollars.",
+      "ms": 7080,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you've",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seen",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "To",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "win",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reach",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we'd",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "recommend",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "raising",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "daily",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 125
+        },
+        {
+          "t": 338,
+          "d": 250
+        },
+        {
+          "t": 588,
+          "d": 163
+        },
+        {
+          "t": 750,
+          "d": 275
+        },
+        {
+          "t": 1025,
+          "d": 500
+        },
+        {
+          "t": 1925,
+          "d": 75
+        },
+        {
+          "t": 2000,
+          "d": 275
+        },
+        {
+          "t": 2275,
+          "d": 325
+        },
+        {
+          "t": 2600,
+          "d": 450
+        },
+        {
+          "t": 3288,
+          "d": 238
+        },
+        {
+          "t": 3538,
+          "d": 525
+        },
+        {
+          "t": 4075,
+          "d": 413
+        },
+        {
+          "t": 4488,
+          "d": 88
+        },
+        {
+          "t": 4575,
+          "d": 300
+        },
+        {
+          "t": 4888,
+          "d": 388
+        },
+        {
+          "t": 5288,
+          "d": 138
+        },
+        {
+          "t": 5525,
+          "d": 225
+        },
+        {
+          "t": 5763,
+          "d": 388
+        },
+        {
+          "t": 6150,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "클릭률이 3주 만에 1.8퍼센트에서 0.9퍼센트로 떨어졌다고 짚어봐",
+      "en": "Before we talk budget, look at the click-through rate. It dropped from one point eight to zero point nine percent in three weeks.",
+      "ms": 7608,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Before",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "look",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "click-through",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rate",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dropped",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "zero",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nine",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 300
+        },
+        {
+          "t": 388,
+          "d": 100
+        },
+        {
+          "t": 500,
+          "d": 350
+        },
+        {
+          "t": 863,
+          "d": 413
+        },
+        {
+          "t": 1475,
+          "d": 225
+        },
+        {
+          "t": 1713,
+          "d": 88
+        },
+        {
+          "t": 1813,
+          "d": 88
+        },
+        {
+          "t": 1900,
+          "d": 513
+        },
+        {
+          "t": 2413,
+          "d": 388
+        },
+        {
+          "t": 3200,
+          "d": 100
+        },
+        {
+          "t": 3313,
+          "d": 338
+        },
+        {
+          "t": 3650,
+          "d": 238
+        },
+        {
+          "t": 3900,
+          "d": 213
+        },
+        {
+          "t": 4125,
+          "d": 300
+        },
+        {
+          "t": 4438,
+          "d": 275
+        },
+        {
+          "t": 4725,
+          "d": 100
+        },
+        {
+          "t": 4838,
+          "d": 388
+        },
+        {
+          "t": 5238,
+          "d": 313
+        },
+        {
+          "t": 5550,
+          "d": 263
+        },
+        {
+          "t": 5825,
+          "d": 475
+        },
+        {
+          "t": 6313,
+          "d": 213
+        },
+        {
+          "t": 6538,
+          "d": 225
+        },
+        {
+          "t": 6763,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞아요. 그래도 경쟁이 심해진 시즌이라 입찰을 더 세게 해야 해요.",
+      "en": "True, but it's a competitive season, so we need to bid more aggressively.",
+      "ms": 4440,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "True",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "competitive",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "season",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bid",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "aggressively",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 375
+        },
+        {
+          "t": 750,
+          "d": 125
+        },
+        {
+          "t": 875,
+          "d": 88
+        },
+        {
+          "t": 963,
+          "d": 50
+        },
+        {
+          "t": 1025,
+          "d": 625
+        },
+        {
+          "t": 1663,
+          "d": 488
+        },
+        {
+          "t": 2513,
+          "d": 125
+        },
+        {
+          "t": 2638,
+          "d": 63
+        },
+        {
+          "t": 2700,
+          "d": 138
+        },
+        {
+          "t": 2850,
+          "d": 50
+        },
+        {
+          "t": 2913,
+          "d": 238
+        },
+        {
+          "t": 3163,
+          "d": 250
+        },
+        {
+          "t": 3413,
+          "d": 675
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "같은 광고 세 개를 한 달 내내 돌려서 사람들이 질린 거라고 말해봐",
+      "en": "I don't think it's the season. We've been running the same three ads for a month, and people are tired of them.",
+      "ms": 5976,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "season",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We've",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "running",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ads",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "people",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tired",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 213
+        },
+        {
+          "t": 425,
+          "d": 150
+        },
+        {
+          "t": 588,
+          "d": 125
+        },
+        {
+          "t": 725,
+          "d": 88
+        },
+        {
+          "t": 825,
+          "d": 488
+        },
+        {
+          "t": 1700,
+          "d": 200
+        },
+        {
+          "t": 1900,
+          "d": 188
+        },
+        {
+          "t": 2100,
+          "d": 275
+        },
+        {
+          "t": 2388,
+          "d": 88
+        },
+        {
+          "t": 2488,
+          "d": 438
+        },
+        {
+          "t": 2925,
+          "d": 263
+        },
+        {
+          "t": 3200,
+          "d": 338
+        },
+        {
+          "t": 3550,
+          "d": 125
+        },
+        {
+          "t": 3688,
+          "d": 38
+        },
+        {
+          "t": 3738,
+          "d": 400
+        },
+        {
+          "t": 4300,
+          "d": 238
+        },
+        {
+          "t": 4550,
+          "d": 275
+        },
+        {
+          "t": 4825,
+          "d": 75
+        },
+        {
+          "t": 4913,
+          "d": 363
+        },
+        {
+          "t": 5288,
+          "d": 75
+        },
+        {
+          "t": 5363,
+          "d": 263
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "새 소재는 만드는 데 2주는 걸려요. 그동안 성과가 더 떨어질 텐데요.",
+      "en": "New creative would take at least two weeks to produce. Performance could slide even further in the meantime.",
+      "ms": 6720,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "New",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "creative",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "least",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "produce",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Performance",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slide",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "even",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "further",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meantime",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 150
+        },
+        {
+          "t": 250,
+          "d": 475
+        },
+        {
+          "t": 738,
+          "d": 113
+        },
+        {
+          "t": 850,
+          "d": 263
+        },
+        {
+          "t": 1125,
+          "d": 88
+        },
+        {
+          "t": 1213,
+          "d": 275
+        },
+        {
+          "t": 1488,
+          "d": 275
+        },
+        {
+          "t": 1763,
+          "d": 475
+        },
+        {
+          "t": 2238,
+          "d": 88
+        },
+        {
+          "t": 2338,
+          "d": 625
+        },
+        {
+          "t": 3375,
+          "d": 513
+        },
+        {
+          "t": 3888,
+          "d": 138
+        },
+        {
+          "t": 4025,
+          "d": 575
+        },
+        {
+          "t": 4963,
+          "d": 225
+        },
+        {
+          "t": 5188,
+          "d": 475
+        },
+        {
+          "t": 5663,
+          "d": 63
+        },
+        {
+          "t": 5738,
+          "d": 38
+        },
+        {
+          "t": 5775,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "예산은 그대로 두고, 이번 주 안에 고객 후기 영상으로 빠르게 두 개만 만들어 시험해보자고 해봐",
+      "en": "Then let's keep the budget flat and test two quick versions using customer review videos this week.",
+      "ms": 5688,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flat",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quick",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "versions",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "using",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customer",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "review",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "videos",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 213
+        },
+        {
+          "t": 300,
+          "d": 175
+        },
+        {
+          "t": 488,
+          "d": 188
+        },
+        {
+          "t": 688,
+          "d": 63
+        },
+        {
+          "t": 763,
+          "d": 288
+        },
+        {
+          "t": 1050,
+          "d": 425
+        },
+        {
+          "t": 1800,
+          "d": 175
+        },
+        {
+          "t": 2038,
+          "d": 438
+        },
+        {
+          "t": 2525,
+          "d": 213
+        },
+        {
+          "t": 2750,
+          "d": 225
+        },
+        {
+          "t": 2988,
+          "d": 450
+        },
+        {
+          "t": 3438,
+          "d": 250
+        },
+        {
+          "t": 3700,
+          "d": 438
+        },
+        {
+          "t": 4150,
+          "d": 300
+        },
+        {
+          "t": 4450,
+          "d": 350
+        },
+        {
+          "t": 4813,
+          "d": 163
+        },
+        {
+          "t": 4988,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그건 금방 할 수 있어요. 목요일까지 두 개 올리고 월요일에 클릭률을 비교해 드릴게요.",
+      "en": "We can turn that around fast. We'll launch two by Thursday and compare the click-through rates on Monday.",
+      "ms": 6456,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "turn",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fast",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We'll",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "launch",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Thursday",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compare",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "click-through",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rates",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Monday",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 175,
+          "d": 88
+        },
+        {
+          "t": 263,
+          "d": 200
+        },
+        {
+          "t": 475,
+          "d": 100
+        },
+        {
+          "t": 575,
+          "d": 325
+        },
+        {
+          "t": 900,
+          "d": 625
+        },
+        {
+          "t": 1925,
+          "d": 138
+        },
+        {
+          "t": 2063,
+          "d": 275
+        },
+        {
+          "t": 2338,
+          "d": 275
+        },
+        {
+          "t": 2613,
+          "d": 225
+        },
+        {
+          "t": 2838,
+          "d": 650
+        },
+        {
+          "t": 3738,
+          "d": 100
+        },
+        {
+          "t": 3838,
+          "d": 425
+        },
+        {
+          "t": 4275,
+          "d": 88
+        },
+        {
+          "t": 4375,
+          "d": 463
+        },
+        {
+          "t": 4838,
+          "d": 363
+        },
+        {
+          "t": 5400,
+          "d": 150
+        },
+        {
+          "t": 5550,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "click-through rate",
+      "meaning_ko": "클릭률 (CTR, 노출 대비 클릭 비율)",
+      "example": "The click-through rate dropped to zero point nine percent."
+    },
+    {
+      "kind": "word",
+      "term": "reach",
+      "meaning_ko": "도달(수), 광고를 본 사람 수",
+      "example": "We need to win back reach."
+    },
+    {
+      "kind": "word",
+      "term": "creative",
+      "meaning_ko": "광고 소재 (이미지·영상·문구)",
+      "example": "New creative would take two weeks to produce."
+    },
+    {
+      "kind": "word",
+      "term": "slide",
+      "meaning_ko": "(수치가) 서서히 떨어지다",
+      "example": "Performance could slide even further."
+    },
+    {
+      "kind": "phrase",
+      "term": "keep the budget flat",
+      "meaning_ko": "예산을 그대로 유지하다",
+      "prompt_ko": "예산은 늘리지도 줄이지도 말고 그대로 두자고 말해봐",
+      "keywords": [
+        {
+          "word": "flat",
+          "meaning_ko": "(수치가) 변동 없는, 그대로인"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "turn it around fast",
+      "meaning_ko": "빨리 만들어 내다, 신속히 처리하다",
+      "prompt_ko": "그건 금방 만들어 줄 수 있다고 말해봐",
+      "keywords": [
+        {
+          "word": "turn around",
+          "meaning_ko": "(작업을) 받아서 완성해 넘기다"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-06-creative-fatigue/full.mp3",
+  "full_starts": [
+    0,
+    7080,
+    14688,
+    19128,
+    25104,
+    31824,
+    37512
+  ],
+  "generated_at": "2026-10-05T22:00:25.051Z"
+}

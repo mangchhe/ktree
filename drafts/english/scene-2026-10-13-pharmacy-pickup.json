@@ -1,0 +1,1349 @@
+{
+  "id": "2026-10-13-pharmacy-pickup",
+  "situation_ko": "약국에 처방약을 찾으러 왔다. 보험 처리가 안 돼서 값이 훌쩍 뛰었고, 약사는 더 싼 복제약을 권한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "약사",
+      "meaning_ko": "안녕하세요, 약 찾으러 오셨어요?",
+      "en": "Hi there, are you picking something up?",
+      "ms": 2304,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "are",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "picking",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "something",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 125,
+          "d": 225
+        },
+        {
+          "t": 363,
+          "d": 338
+        },
+        {
+          "t": 863,
+          "d": 113
+        },
+        {
+          "t": 988,
+          "d": 125
+        },
+        {
+          "t": 1113,
+          "d": 288
+        },
+        {
+          "t": 1413,
+          "d": 300
+        },
+        {
+          "t": 1725,
+          "d": 213
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "처방약을 찾으러 왔고 지금쯤 준비됐을 거라고 말해봐",
+      "en": "Yes, I'm here to pick up a prescription. It should be ready by now.",
+      "ms": 4008,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pick",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prescription",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ready",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 388
+        },
+        {
+          "t": 925,
+          "d": 100
+        },
+        {
+          "t": 1025,
+          "d": 138
+        },
+        {
+          "t": 1175,
+          "d": 50
+        },
+        {
+          "t": 1225,
+          "d": 163
+        },
+        {
+          "t": 1388,
+          "d": 100
+        },
+        {
+          "t": 1500,
+          "d": 38
+        },
+        {
+          "t": 1538,
+          "d": 625
+        },
+        {
+          "t": 2550,
+          "d": 50
+        },
+        {
+          "t": 2613,
+          "d": 113
+        },
+        {
+          "t": 2725,
+          "d": 100
+        },
+        {
+          "t": 2825,
+          "d": 188
+        },
+        {
+          "t": 3013,
+          "d": 163
+        },
+        {
+          "t": 3175,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "확인해볼게요… 보험 처리가 안 돼서 오늘은 85달러가 나오네요.",
+      "en": "Let me check. It looks like your insurance didn't go through, so it's eighty-five dollars today.",
+      "ms": 5784,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looks",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "insurance",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "didn't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eighty-five",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 138
+        },
+        {
+          "t": 200,
+          "d": 100
+        },
+        {
+          "t": 300,
+          "d": 475
+        },
+        {
+          "t": 1163,
+          "d": 100
+        },
+        {
+          "t": 1275,
+          "d": 213
+        },
+        {
+          "t": 1488,
+          "d": 175
+        },
+        {
+          "t": 1675,
+          "d": 100
+        },
+        {
+          "t": 1775,
+          "d": 488
+        },
+        {
+          "t": 2275,
+          "d": 188
+        },
+        {
+          "t": 2463,
+          "d": 175
+        },
+        {
+          "t": 2650,
+          "d": 325
+        },
+        {
+          "t": 3413,
+          "d": 338
+        },
+        {
+          "t": 3763,
+          "d": 200
+        },
+        {
+          "t": 4113,
+          "d": 500
+        },
+        {
+          "t": 4625,
+          "d": 375
+        },
+        {
+          "t": 5000,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "놀라서 지난번엔 10달러였다고 하고 무슨 일인지 물어봐",
+      "en": "Eighty-five? Last time it was only ten dollars. Do you know what happened?",
+      "ms": 4272,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Eighty-five",
+          0
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Last",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happened",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 650
+        },
+        {
+          "t": 1138,
+          "d": 213
+        },
+        {
+          "t": 1350,
+          "d": 163
+        },
+        {
+          "t": 1513,
+          "d": 50
+        },
+        {
+          "t": 1563,
+          "d": 188
+        },
+        {
+          "t": 1763,
+          "d": 238
+        },
+        {
+          "t": 2000,
+          "d": 238
+        },
+        {
+          "t": 2238,
+          "d": 613
+        },
+        {
+          "t": 3263,
+          "d": 38
+        },
+        {
+          "t": 3300,
+          "d": 50
+        },
+        {
+          "t": 3350,
+          "d": 100
+        },
+        {
+          "t": 3450,
+          "d": 88
+        },
+        {
+          "t": 3538,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "이번 달에 보험 플랜이 바뀌었을 수도 있어요. 그런데 복제약이 있어요 — 성분은 같고 12달러예요.",
+      "en": "Your plan may have changed this month. But there's a generic version. It's the same ingredient, and it's twelve dollars.",
+      "ms": 7512,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Your",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "plan",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "may",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "changed",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "generic",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "version",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ingredient",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twelve",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 138
+        },
+        {
+          "t": 200,
+          "d": 350
+        },
+        {
+          "t": 563,
+          "d": 125
+        },
+        {
+          "t": 700,
+          "d": 175
+        },
+        {
+          "t": 888,
+          "d": 538
+        },
+        {
+          "t": 1425,
+          "d": 163
+        },
+        {
+          "t": 1600,
+          "d": 350
+        },
+        {
+          "t": 2350,
+          "d": 138
+        },
+        {
+          "t": 2488,
+          "d": 225
+        },
+        {
+          "t": 2725,
+          "d": 63
+        },
+        {
+          "t": 2800,
+          "d": 463
+        },
+        {
+          "t": 3275,
+          "d": 475
+        },
+        {
+          "t": 4125,
+          "d": 188
+        },
+        {
+          "t": 4325,
+          "d": 113
+        },
+        {
+          "t": 4450,
+          "d": 375
+        },
+        {
+          "t": 4838,
+          "d": 600
+        },
+        {
+          "t": 5650,
+          "d": 350
+        },
+        {
+          "t": 6113,
+          "d": 138
+        },
+        {
+          "t": 6250,
+          "d": 313
+        },
+        {
+          "t": 6575,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "효과가 똑같은지 묻고, 그렇다면 복제약으로 하겠다고 해봐",
+      "en": "Does it work exactly the same? If so, I'll go with the generic.",
+      "ms": 4152,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Does",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exactly",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "If",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "generic",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 63
+        },
+        {
+          "t": 275,
+          "d": 188
+        },
+        {
+          "t": 463,
+          "d": 488
+        },
+        {
+          "t": 950,
+          "d": 88
+        },
+        {
+          "t": 1050,
+          "d": 463
+        },
+        {
+          "t": 1913,
+          "d": 100
+        },
+        {
+          "t": 2013,
+          "d": 350
+        },
+        {
+          "t": 2775,
+          "d": 125
+        },
+        {
+          "t": 2913,
+          "d": 138
+        },
+        {
+          "t": 3050,
+          "d": 100
+        },
+        {
+          "t": 3150,
+          "d": 63
+        },
+        {
+          "t": 3225,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "용량도 효과도 같아요. 조제하는 데 15분쯤 걸리니 둘러보고 계세요.",
+      "en": "Same dose, same effect. It'll take about fifteen minutes to fill, so feel free to look around.",
+      "ms": 6336,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Same",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dose",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "same",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "effect",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It'll",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifteen",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fill",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "feel",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "free",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 363
+        },
+        {
+          "t": 450,
+          "d": 413
+        },
+        {
+          "t": 1013,
+          "d": 263
+        },
+        {
+          "t": 1288,
+          "d": 450
+        },
+        {
+          "t": 2138,
+          "d": 150
+        },
+        {
+          "t": 2300,
+          "d": 188
+        },
+        {
+          "t": 2500,
+          "d": 238
+        },
+        {
+          "t": 2750,
+          "d": 488
+        },
+        {
+          "t": 3250,
+          "d": 275
+        },
+        {
+          "t": 3538,
+          "d": 88
+        },
+        {
+          "t": 3638,
+          "d": 388
+        },
+        {
+          "t": 4438,
+          "d": 263
+        },
+        {
+          "t": 4713,
+          "d": 388
+        },
+        {
+          "t": 5100,
+          "d": 163
+        },
+        {
+          "t": 5275,
+          "d": 88
+        },
+        {
+          "t": 5363,
+          "d": 138
+        },
+        {
+          "t": 5513,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "prescription",
+      "kind": "word",
+      "meaning_ko": "처방전, 처방약",
+      "example": "I need to pick up my prescription after work.",
+      "prompt_ko": "퇴근하고 처방약을 찾으러 가야 한다고 말해봐"
+    },
+    {
+      "term": "generic",
+      "kind": "word",
+      "meaning_ko": "복제약(의), 상표 없는 일반 제품",
+      "example": "The generic is much cheaper than the brand name.",
+      "prompt_ko": "복제약이 오리지널보다 훨씬 싸다고 말해봐"
+    },
+    {
+      "term": "fill",
+      "kind": "word",
+      "meaning_ko": "(처방을) 조제하다; 채우다",
+      "example": "Can you fill this prescription today?",
+      "prompt_ko": "이 처방전 오늘 조제해줄 수 있냐고 물어봐"
+    },
+    {
+      "term": "go through",
+      "kind": "phrase",
+      "meaning_ko": "(결제·신청이) 처리되다, 승인되다",
+      "prompt_ko": "카드 결제가 안 된 것 같다고 말해봐"
+    },
+    {
+      "term": "I'll go with",
+      "kind": "phrase",
+      "meaning_ko": "~로 할게요 (선택)",
+      "prompt_ko": "더 싼 걸로 하겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-pharmacy-pickup/full.mp3",
+  "full_starts": [
+    0,
+    2304,
+    6312,
+    12096,
+    16368,
+    23880,
+    28032
+  ],
+  "generated_at": "2026-10-13T20:30:49.619Z"
+}

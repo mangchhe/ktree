@@ -60,7 +60,8 @@ if (!ALL) {
 
 const todo = cards.filter(c => !have.has(c.id));
 const koTodo = KO ? cards.filter(c => c.prompt_ko && !have.has(c.id + '.ko')) : [];
-if (!todo.length && !koTodo.length) { console.log('✓ 전부 최신 — 생성할 카드 없음'); await sb.auth.signOut(); process.exit(0); }
+// 카드가 최신이어도 **끝내지 않는다** — 아래 질문 음성까지 가야 한다 (여기서 끊겨 질문이 0개였다)
+if (!todo.length && !koTodo.length) console.log('· 카드는 전부 최신');
 console.log(`영어 ${todo.length}장 · 한국어 ${koTodo.length}장 생성...`);
 
 const tts = new MsEdgeTTS();
@@ -123,4 +124,33 @@ for (const c of koTodo) {
   }
 }
 if (koTodo.length) console.log(`\n✓ 한국어 ${kok}장 생성${kofail ? `, ${kofail}장 실패` : ''}`);
+
+// ── 오픽 질문 음성 ──────────────────────────────────────
+// 실제 시험은 질문이 **귀로만** 온다. 앱이 질문을 텍스트로 띄워와서
+// "질문을 못 알아듣는" 상태가 그대로 남았다. 경로는 카드와 같은 규칙이라 DB 컬럼이 필요 없다.
+const { data: prompts } = await sb.from('eng_prompts').select('id, question_en');
+const phave = new Set();
+for (let page = 0; ; page++) {
+  const { data: objs } = await sb.storage.from('eng-audio').list('prompts', { limit: 1000, offset: page * 1000 });
+  (objs || []).forEach(o => phave.add(o.name.replace(/\.mp3$/, '')));
+  if (!objs || objs.length < 1000) break;
+}
+const pTodo = (prompts || []).filter(x => ALL || !phave.has(x.id));
+if (pTodo.length) {
+  console.log(`질문 ${pTodo.length}개 생성...`);
+  let pok = 0;
+  for (const x of pTodo) {
+    try {
+      const buf = await synth(x.question_en);
+      if (buf.length < 500) throw new Error('오디오가 비정상적으로 작음');
+      const { error: se } = await sb.storage.from('eng-audio')
+        .upload(`prompts/${x.id}.mp3`, buf, { contentType: 'audio/mpeg', upsert: true });
+      if (se) throw se;
+      pok++; process.stdout.write(`\r  질문 ${pok}/${pTodo.length}`);
+      await new Promise(r => setTimeout(r, 150));
+    } catch (e) { console.error(`\n  ✗ "${x.question_en.slice(0,40)}": ${e.message}`); }
+  }
+  console.log(`\n✓ 질문 ${pok}개 생성`);
+}
+
 await sb.auth.signOut();

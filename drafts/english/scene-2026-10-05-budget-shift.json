@@ -1,0 +1,1430 @@
+{
+  "id": "2026-10-05-budget-shift",
+  "situation_ko": "공동창업자에게 검색 광고 예산 일부를 틱톡으로 옮기자고 설득한다. 틱톡 쪽 가입당 비용이 훨씬 싸다. 그런데 공동창업자가 틱톡 가입자는 유료 전환이 낮다고 반박한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "공동창업자",
+      "meaning_ko": "예산 얘기 하고 싶다고 했죠. 뭘 바꾸고 싶은 건데요?",
+      "en": "You said you wanted to talk about the budget. What are you thinking?",
+      "ms": 3168,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "You",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "said",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thinking",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 175,
+          "d": 188
+        },
+        {
+          "t": 363,
+          "d": 63
+        },
+        {
+          "t": 425,
+          "d": 150
+        },
+        {
+          "t": 588,
+          "d": 38
+        },
+        {
+          "t": 625,
+          "d": 275
+        },
+        {
+          "t": 900,
+          "d": 225
+        },
+        {
+          "t": 1125,
+          "d": 75
+        },
+        {
+          "t": 1213,
+          "d": 425
+        },
+        {
+          "t": 2013,
+          "d": 63
+        },
+        {
+          "t": 2075,
+          "d": 38
+        },
+        {
+          "t": 2113,
+          "d": 113
+        },
+        {
+          "t": 2238,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "다음 달에 검색 광고 예산의 30퍼센트, 약 4만 5천 달러를 틱톡으로 옮기고 싶다고 말해봐",
+      "en": "I want to move thirty percent of our search budget, about forty-five thousand dollars, over to TikTok next month.",
+      "ms": 6576,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "search",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "about",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty-five",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "over",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "TikTok",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 113
+        },
+        {
+          "t": 200,
+          "d": 150
+        },
+        {
+          "t": 350,
+          "d": 38
+        },
+        {
+          "t": 400,
+          "d": 225
+        },
+        {
+          "t": 625,
+          "d": 350
+        },
+        {
+          "t": 988,
+          "d": 475
+        },
+        {
+          "t": 1475,
+          "d": 75
+        },
+        {
+          "t": 1563,
+          "d": 138
+        },
+        {
+          "t": 1713,
+          "d": 338
+        },
+        {
+          "t": 2050,
+          "d": 363
+        },
+        {
+          "t": 2638,
+          "d": 275
+        },
+        {
+          "t": 2925,
+          "d": 713
+        },
+        {
+          "t": 3650,
+          "d": 350
+        },
+        {
+          "t": 4000,
+          "d": 500
+        },
+        {
+          "t": 4750,
+          "d": 188
+        },
+        {
+          "t": 4938,
+          "d": 63
+        },
+        {
+          "t": 5013,
+          "d": 525
+        },
+        {
+          "t": 5550,
+          "d": 288
+        },
+        {
+          "t": 5850,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "꽤 큰 금액이네요. 근거가 뭐예요?",
+      "en": "That's a big chunk. What's the case for it?",
+      "ms": 2760,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "big",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chunk",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 125
+        },
+        {
+          "t": 225,
+          "d": 63
+        },
+        {
+          "t": 300,
+          "d": 363
+        },
+        {
+          "t": 675,
+          "d": 475
+        },
+        {
+          "t": 1550,
+          "d": 138
+        },
+        {
+          "t": 1700,
+          "d": 75
+        },
+        {
+          "t": 1775,
+          "d": 275
+        },
+        {
+          "t": 2063,
+          "d": 188
+        },
+        {
+          "t": 2263,
+          "d": 138
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "검색에선 가입 한 건에 38달러가 드는데 틱톡은 14달러밖에 안 든다고, 숫자로 비교해봐",
+      "en": "On search, we're paying thirty-eight dollars per sign-up. On TikTok, it's only fourteen.",
+      "ms": 6168,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "On",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "search",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we're",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paying",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty-eight",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "per",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sign-up",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "On",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "TikTok",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "it's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fourteen",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 188
+        },
+        {
+          "t": 275,
+          "d": 500
+        },
+        {
+          "t": 1188,
+          "d": 138
+        },
+        {
+          "t": 1338,
+          "d": 350
+        },
+        {
+          "t": 1700,
+          "d": 513
+        },
+        {
+          "t": 2225,
+          "d": 413
+        },
+        {
+          "t": 2650,
+          "d": 138
+        },
+        {
+          "t": 2800,
+          "d": 563
+        },
+        {
+          "t": 3750,
+          "d": 188
+        },
+        {
+          "t": 3950,
+          "d": 538
+        },
+        {
+          "t": 4625,
+          "d": 150
+        },
+        {
+          "t": 4850,
+          "d": 263
+        },
+        {
+          "t": 5113,
+          "d": 700
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "가입이 싸긴 하죠. 근데 틱톡 가입자는 돈을 안 내던데요. 유료 전환율이 반도 안 되잖아요.",
+      "en": "Sure, sign-ups are cheap. But TikTok users don't pay. Their conversion rate is less than half.",
+      "ms": 6624,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "sign-ups",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cheap",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "TikTok",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "users",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pay",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Their",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversion",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rate",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "less",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 325
+        },
+        {
+          "t": 688,
+          "d": 425
+        },
+        {
+          "t": 1113,
+          "d": 63
+        },
+        {
+          "t": 1175,
+          "d": 338
+        },
+        {
+          "t": 1925,
+          "d": 88
+        },
+        {
+          "t": 2013,
+          "d": 488
+        },
+        {
+          "t": 2513,
+          "d": 450
+        },
+        {
+          "t": 2963,
+          "d": 275
+        },
+        {
+          "t": 3250,
+          "d": 413
+        },
+        {
+          "t": 4075,
+          "d": 113
+        },
+        {
+          "t": 4188,
+          "d": 525
+        },
+        {
+          "t": 4713,
+          "d": 275
+        },
+        {
+          "t": 5125,
+          "d": 150
+        },
+        {
+          "t": 5288,
+          "d": 350
+        },
+        {
+          "t": 5650,
+          "d": 100
+        },
+        {
+          "t": 5750,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "맞는 지적이라고 인정하고, 전환율을 반영해도 유료 고객 한 명당 비용이 여전히 20퍼센트 싸다고 말해봐",
+      "en": "That's a fair point. But even after you factor that in, each paying customer still costs us about twenty percent less.",
+      "ms": 7848,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "even",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "factor",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "each",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paying",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customer",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "costs",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "less",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 275
+        },
+        {
+          "t": 375,
+          "d": 63
+        },
+        {
+          "t": 438,
+          "d": 288
+        },
+        {
+          "t": 738,
+          "d": 475
+        },
+        {
+          "t": 1588,
+          "d": 150
+        },
+        {
+          "t": 1850,
+          "d": 213
+        },
+        {
+          "t": 2075,
+          "d": 213
+        },
+        {
+          "t": 2288,
+          "d": 88
+        },
+        {
+          "t": 2388,
+          "d": 388
+        },
+        {
+          "t": 2788,
+          "d": 225
+        },
+        {
+          "t": 3013,
+          "d": 250
+        },
+        {
+          "t": 3913,
+          "d": 238
+        },
+        {
+          "t": 4163,
+          "d": 288
+        },
+        {
+          "t": 4463,
+          "d": 463
+        },
+        {
+          "t": 4938,
+          "d": 225
+        },
+        {
+          "t": 5163,
+          "d": 425
+        },
+        {
+          "t": 5663,
+          "d": 225
+        },
+        {
+          "t": 5975,
+          "d": 313
+        },
+        {
+          "t": 6300,
+          "d": 288
+        },
+        {
+          "t": 6600,
+          "d": 438
+        },
+        {
+          "t": 7038,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "음. 그럼 한 번에 다 옮기지 말고 2주 동안 반만 테스트해 봅시다.",
+      "en": "Hmm. Then let's not go all in. Test half of that for two weeks first.",
+      "ms": 4680,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hmm.",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Then",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Test",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 250
+        },
+        {
+          "t": 750,
+          "d": 63
+        },
+        {
+          "t": 813,
+          "d": 138
+        },
+        {
+          "t": 950,
+          "d": 150
+        },
+        {
+          "t": 1113,
+          "d": 188
+        },
+        {
+          "t": 1313,
+          "d": 213
+        },
+        {
+          "t": 1525,
+          "d": 275
+        },
+        {
+          "t": 2200,
+          "d": 213
+        },
+        {
+          "t": 2413,
+          "d": 250
+        },
+        {
+          "t": 2675,
+          "d": 63
+        },
+        {
+          "t": 2738,
+          "d": 275
+        },
+        {
+          "t": 3188,
+          "d": 138
+        },
+        {
+          "t": 3338,
+          "d": 213
+        },
+        {
+          "t": 3550,
+          "d": 250
+        },
+        {
+          "t": 3800,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "chunk",
+      "meaning_ko": "큰 덩어리, 상당한 양",
+      "example": "That's a big chunk of the budget."
+    },
+    {
+      "kind": "word",
+      "term": "sign-up",
+      "meaning_ko": "가입(건)",
+      "example": "We're paying thirty-eight dollars per sign-up."
+    },
+    {
+      "kind": "word",
+      "term": "conversion rate",
+      "meaning_ko": "전환율 (가입자 중 유료로 바뀌는 비율 등)",
+      "example": "Their conversion rate is less than half."
+    },
+    {
+      "kind": "phrase",
+      "term": "What's the case for it?",
+      "meaning_ko": "그렇게 해야 하는 근거가 뭐예요?",
+      "prompt_ko": "그 제안을 해야 하는 근거가 뭔지 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "even after you factor that in",
+      "meaning_ko": "그걸 감안하더라도",
+      "prompt_ko": "전환율을 감안해도 여전히 더 싸다고 말해봐",
+      "keywords": [
+        {
+          "word": "factor in",
+          "meaning_ko": "(계산에) 넣다, 감안하다"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "go all in",
+      "meaning_ko": "전부 걸다, 한 번에 다 투자하다",
+      "prompt_ko": "한 번에 다 걸지 말고 일부만 먼저 시험해 보자고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-budget-shift/full.mp3",
+  "full_starts": [
+    0,
+    3168,
+    9744,
+    12504,
+    18672,
+    25296,
+    33144
+  ],
+  "generated_at": "2026-10-04T20:33:32.667Z"
+}

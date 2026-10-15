@@ -1,0 +1,44 @@
+[
+  {
+    "kind": "past", "topic": "여가", "level": 3, "seconds": 90,
+    "question_en": "Tell me about a memorable movie or show you watched recently. When and where did you watch it, and why does it stick with you?",
+    "hint_ko": "언제·어디서·누구와 봤는지 → 어떤 이야기였는지 짧게 → 보다가 예상 못 한 순간(전환점) → 그 뒤로 내게 남은 것",
+    "model_en": "A couple of months ago, I watched a Korean film called Past Lives at a small theater near my place. I went alone on a Sunday afternoon, mostly because I had nothing else planned.\n\nThe story is pretty simple. Two childhood friends get separated when one of them moves abroad, and they meet again more than twenty years later. Honestly, for the first half hour, I wasn't sure it was for me, because not much happens.\n\nBut then there's a scene where they finally sit together at a bar, and nobody says what they really feel. That was the moment it hit me. I suddenly thought about friends I'd lost touch with, and I just sat there after the credits rolled.\n\nLooking back, I think it stuck with me because it was so quiet. The next day, I actually messaged an old friend I hadn't talked to in years.",
+    "model_note_ko": "과거 경험은 **배경 → 줄거리 → 전환점 → 지금 남은 것** 네 문단이다. 2문단 끝 'I wasn't sure it was for me' 로 기대를 낮춰두고, 3문단 'But then ... That was the moment it hit me' 로 뒤집어 전환점을 만든다. 4문단 'Looking back' 이 과거를 현재로 끌어와 단순 나열이 아닌 이야기로 닫는다.",
+    "phrases": [
+      { "term": "mostly because", "meaning_ko": "주로 ~해서" },
+      { "term": "I wasn't sure it was for me", "meaning_ko": "나랑 맞는지 잘 모르겠었다" },
+      { "term": "that was the moment it hit me", "meaning_ko": "그 순간 확 와닿았다" },
+      { "term": "lose touch with", "meaning_ko": "~와 연락이 끊기다" },
+      { "term": "looking back", "meaning_ko": "돌이켜보면" }
+    ]
+  },
+  {
+    "kind": "compare", "topic": "비즈니스", "level": 3, "seconds": 90,
+    "question_en": "How has the way people work in your industry changed compared to a few years ago? What's different now, and what do you think about it?",
+    "hint_ko": "예전 일하는 방식 한 문단 → 지금 방식 한 문단 (같은 기준으로: 장소·회의·소통) → 좋아진 점과 잃은 점 → 내 결론",
+    "model_en": "When I first started working, about seven years ago, everything happened in the office. We were there from nine to six, and most decisions were made in long meetings or quick chats at someone's desk.\n\nThese days, it's completely different. My team works from home three days a week, and most of our communication happens in writing, on chat or in shared documents. Meetings are shorter, and we only have them when we really need to.\n\nThe biggest upside is focus. I can block out a whole morning to work without being interrupted. On the other hand, it's harder to build relationships with new people, because you never just bump into them in the hallway.\n\nAll in all, I'd say it's a change for the better. But I've learned that I have to make an effort to stay connected, because it doesn't happen on its own anymore.",
+    "model_note_ko": "비교는 **예전 → 지금 → 장단점 → 결론** 이고, 1·2문단을 **같은 기준(장소·의사결정·소통)** 으로 맞춰 대칭을 만든 게 핵심이다. 'When I first started' / 'These days, it's completely different' 가 두 시점을 가르는 표지다. 3문단은 'The biggest upside' 와 'On the other hand' 로 한쪽에 치우치지 않게 하고, 4문단 'All in all' 로 입장을 정한다.",
+    "phrases": [
+      { "term": "when I first started", "meaning_ko": "처음 시작했을 때는" },
+      { "term": "these days, it's completely different", "meaning_ko": "요즘은 완전히 달라요" },
+      { "term": "the biggest upside is", "meaning_ko": "가장 큰 장점은 ~이다" },
+      { "term": "bump into", "meaning_ko": "우연히 마주치다" },
+      { "term": "all in all, it's a change for the better", "meaning_ko": "결국 좋은 쪽으로 바뀐 거다" }
+    ]
+  },
+  {
+    "kind": "solve", "topic": "여행", "level": 2, "seconds": 75,
+    "question_en": "You booked a hotel room online, but when you arrive, they say there's no record of your reservation. Call the booking site, explain the problem, and ask for help.",
+    "hint_ko": "누구고 무슨 일인지 → 근거(예약 번호·확인 메일·결제됨) → 원하는 것(오늘 밤 방) → 안 되면 차선(근처 호텔 + 차액 보상)",
+    "model_en": "Hi, I'm calling about a hotel booking I made through your site. I just got to the hotel, and the front desk says they have no record of my reservation.\n\nI have the confirmation email right here. The booking number is H, four, seven, two, nine, and it's for two nights starting tonight. The payment already went through on my card, so I know it was processed.\n\nWhat I need is a room for tonight. It's already ten p.m., and I don't really have anywhere else to go. Could you contact the hotel directly and sort this out?\n\nIf they really have no rooms left, could you find me something similar nearby? And since this wasn't my fault, I'd expect you to cover any difference in price.",
+    "model_note_ko": "문제 해결은 **상황 → 근거 → 요청 → 차선** 네 문단이다. 2문단에서 예약 번호·확인 메일·결제 내역 세 가지 근거를 쌓아두면 3문단 요청에 힘이 실린다. 4문단 'If they really ...' 로 차선책까지 먼저 내밀어 대화를 내가 끌고 가고, 'since this wasn't my fault' 로 보상 요구의 이유를 붙인다.",
+    "phrases": [
+      { "term": "I'm calling about", "meaning_ko": "~때문에 전화드렸어요" },
+      { "term": "there's no record of", "meaning_ko": "~ 기록이 없다" },
+      { "term": "what I need is", "meaning_ko": "제가 필요한 건 ~예요" },
+      { "term": "sort this out", "meaning_ko": "이 일을 해결하다" },
+      { "term": "since this wasn't my fault", "meaning_ko": "제 잘못이 아니니까" }
+    ]
+  }
+]

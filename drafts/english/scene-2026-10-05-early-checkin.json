@@ -1,0 +1,1340 @@
+{
+  "id": "2026-10-05-early-checkin",
+  "situation_ko": "밤 비행기로 아침 8시에 호텔에 도착했다. 체크인은 오후 3시인데 오전 회의 전에 씻고 싶다. 프런트는 유료 얼리 체크인을 권한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-GB-RyanNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "프런트",
+      "meaning_ko": "좋은 아침입니다. 체크인하시나요?",
+      "en": "Good morning. Are you checking in?",
+      "ms": 3456,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Are",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "checking",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 188
+        },
+        {
+          "t": 300,
+          "d": 475
+        },
+        {
+          "t": 1638,
+          "d": 100
+        },
+        {
+          "t": 1750,
+          "d": 138
+        },
+        {
+          "t": 1900,
+          "d": 375
+        },
+        {
+          "t": 2288,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그렇다고 하고, 일찍 온 건 알지만 혹시 지금 방이 준비돼 있는지 물어봐",
+      "en": "Yes, I know I'm really early. Is there any chance a room is ready now?",
+      "ms": 4392,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chance",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ready",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 400
+        },
+        {
+          "t": 525,
+          "d": 50
+        },
+        {
+          "t": 575,
+          "d": 250
+        },
+        {
+          "t": 838,
+          "d": 138
+        },
+        {
+          "t": 975,
+          "d": 288
+        },
+        {
+          "t": 1275,
+          "d": 475
+        },
+        {
+          "t": 2138,
+          "d": 138
+        },
+        {
+          "t": 2275,
+          "d": 188
+        },
+        {
+          "t": 2463,
+          "d": 150
+        },
+        {
+          "t": 2625,
+          "d": 325
+        },
+        {
+          "t": 2950,
+          "d": 38
+        },
+        {
+          "t": 3000,
+          "d": 288
+        },
+        {
+          "t": 3288,
+          "d": 125
+        },
+        {
+          "t": 3425,
+          "d": 213
+        },
+        {
+          "t": 3650,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "죄송하지만 체크인은 3시예요. 다만 40유로를 내시면 지금 바로 방을 드릴 수 있어요.",
+      "en": "I'm afraid check-in is at three. But for forty euros, I can get you a room right away.",
+      "ms": 6552,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afraid",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check-in",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "euros",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "away",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 200
+        },
+        {
+          "t": 313,
+          "d": 388
+        },
+        {
+          "t": 713,
+          "d": 350
+        },
+        {
+          "t": 1075,
+          "d": 150
+        },
+        {
+          "t": 1238,
+          "d": 88
+        },
+        {
+          "t": 1338,
+          "d": 475
+        },
+        {
+          "t": 2675,
+          "d": 175
+        },
+        {
+          "t": 2863,
+          "d": 100
+        },
+        {
+          "t": 2975,
+          "d": 350
+        },
+        {
+          "t": 3338,
+          "d": 513
+        },
+        {
+          "t": 4063,
+          "d": 63
+        },
+        {
+          "t": 4138,
+          "d": 150
+        },
+        {
+          "t": 4300,
+          "d": 175
+        },
+        {
+          "t": 4488,
+          "d": 113
+        },
+        {
+          "t": 4613,
+          "d": 50
+        },
+        {
+          "t": 4675,
+          "d": 313
+        },
+        {
+          "t": 5000,
+          "d": 225
+        },
+        {
+          "t": 5238,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "좀 비싸다고 하고, 10시에 회의가 있어서 씻고 옷만 갈아입으면 된다고 설명해봐",
+      "en": "Hmm, that's a bit steep. I just need a shower and a change of clothes before a ten o'clock meeting.",
+      "ms": 5904,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hmm",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "steep",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shower",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clothes",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "o'clock",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meeting",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 288
+        },
+        {
+          "t": 550,
+          "d": 263
+        },
+        {
+          "t": 825,
+          "d": 75
+        },
+        {
+          "t": 975,
+          "d": 188
+        },
+        {
+          "t": 1175,
+          "d": 450
+        },
+        {
+          "t": 2025,
+          "d": 100
+        },
+        {
+          "t": 2125,
+          "d": 263
+        },
+        {
+          "t": 2388,
+          "d": 113
+        },
+        {
+          "t": 2513,
+          "d": 38
+        },
+        {
+          "t": 2563,
+          "d": 588
+        },
+        {
+          "t": 3163,
+          "d": 150
+        },
+        {
+          "t": 3325,
+          "d": 38
+        },
+        {
+          "t": 3375,
+          "d": 325
+        },
+        {
+          "t": 3713,
+          "d": 75
+        },
+        {
+          "t": 3788,
+          "d": 413
+        },
+        {
+          "t": 4200,
+          "d": 350
+        },
+        {
+          "t": 4563,
+          "d": 50
+        },
+        {
+          "t": 4625,
+          "d": 238
+        },
+        {
+          "t": 4875,
+          "d": 288
+        },
+        {
+          "t": 5175,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그러시면 지하에 투숙객용 샤워실이 있어요. 무료고, 짐도 저희가 맡아 드릴게요.",
+      "en": "Then you could use the guest showers downstairs. They're free, and we can keep your luggage for you.",
+      "ms": 6720,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "use",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "guest",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "showers",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "downstairs",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "They're",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "free",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "luggage",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 225
+        },
+        {
+          "t": 338,
+          "d": 88
+        },
+        {
+          "t": 438,
+          "d": 175
+        },
+        {
+          "t": 625,
+          "d": 238
+        },
+        {
+          "t": 875,
+          "d": 100
+        },
+        {
+          "t": 988,
+          "d": 288
+        },
+        {
+          "t": 1288,
+          "d": 363
+        },
+        {
+          "t": 1663,
+          "d": 838
+        },
+        {
+          "t": 3363,
+          "d": 250
+        },
+        {
+          "t": 3625,
+          "d": 400
+        },
+        {
+          "t": 4238,
+          "d": 100
+        },
+        {
+          "t": 4350,
+          "d": 125
+        },
+        {
+          "t": 4488,
+          "d": 150
+        },
+        {
+          "t": 4650,
+          "d": 213
+        },
+        {
+          "t": 4875,
+          "d": 113
+        },
+        {
+          "t": 5000,
+          "d": 388
+        },
+        {
+          "t": 5400,
+          "d": 150
+        },
+        {
+          "t": 5563,
+          "d": 288
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그게 딱 좋겠다고 하고, 방이 일찍 나면 문자로 알려줄 수 있는지 물어봐",
+      "en": "That would be perfect. Could you text me if a room frees up earlier?",
+      "ms": 3720,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "perfect",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "text",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "frees",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "earlier",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 113
+        },
+        {
+          "t": 363,
+          "d": 113
+        },
+        {
+          "t": 488,
+          "d": 638
+        },
+        {
+          "t": 1513,
+          "d": 100
+        },
+        {
+          "t": 1613,
+          "d": 88
+        },
+        {
+          "t": 1700,
+          "d": 313
+        },
+        {
+          "t": 2025,
+          "d": 88
+        },
+        {
+          "t": 2125,
+          "d": 88
+        },
+        {
+          "t": 2225,
+          "d": 50
+        },
+        {
+          "t": 2275,
+          "d": 263
+        },
+        {
+          "t": 2538,
+          "d": 263
+        },
+        {
+          "t": 2813,
+          "d": 113
+        },
+        {
+          "t": 2938,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "물론이죠. 여기 번호만 적어 주세요.",
+      "en": "Of course. Just write your number down here.",
+      "ms": 4320,
+      "voice": "en-GB-RyanNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "write",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 200
+        },
+        {
+          "t": 313,
+          "d": 588
+        },
+        {
+          "t": 1763,
+          "d": 263
+        },
+        {
+          "t": 2038,
+          "d": 250
+        },
+        {
+          "t": 2300,
+          "d": 138
+        },
+        {
+          "t": 2450,
+          "d": 300
+        },
+        {
+          "t": 2763,
+          "d": 263
+        },
+        {
+          "t": 3038,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "steep",
+      "meaning_ko": "(가격이) 너무 비싼",
+      "example": "Forty euros? That's a bit steep."
+    },
+    {
+      "kind": "word",
+      "term": "luggage",
+      "meaning_ko": "짐, 수하물",
+      "example": "We can keep your luggage for you."
+    },
+    {
+      "kind": "word",
+      "term": "downstairs",
+      "meaning_ko": "아래층에",
+      "example": "You could use the guest showers downstairs."
+    },
+    {
+      "kind": "phrase",
+      "term": "Is there any chance",
+      "meaning_ko": "혹시 ~할 가능성이 있을까요",
+      "prompt_ko": "혹시 지금 방이 준비돼 있을 가능성이 있는지 공손하게 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "a room frees up",
+      "meaning_ko": "방이 비다, 방이 나다",
+      "prompt_ko": "방이 일찍 나면 알려달라고 부탁해봐",
+      "keywords": [
+        {
+          "word": "free up",
+          "meaning_ko": "(자리·시간이) 비다, 나다"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-05-early-checkin/full.mp3",
+  "full_starts": [
+    0,
+    3456,
+    7848,
+    14400,
+    20304,
+    27024,
+    30744
+  ],
+  "generated_at": "2026-10-04T20:33:02.502Z"
+}

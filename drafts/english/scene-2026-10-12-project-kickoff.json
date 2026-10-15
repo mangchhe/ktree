@@ -1,0 +1,1400 @@
+{
+  "id": "2026-10-12-project-kickoff",
+  "situation_ko": "신규 프로젝트 킥오프 미팅. 범위와 일정을 맞춘다. 상대가 일정을 2주 앞당겨달라고 밀어붙인다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "상대 담당자",
+      "meaning_ko": "자, 시작하죠. 먼저 범위부터 맞춰볼까요?",
+      "en": "Let's get started — can we align on the scope first?",
+      "ms": 3144,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Let's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "started",
+          2
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "align",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scope",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 188
+        },
+        {
+          "t": 275,
+          "d": 163
+        },
+        {
+          "t": 450,
+          "d": 500
+        },
+        {
+          "t": 975,
+          "d": 188
+        },
+        {
+          "t": 1175,
+          "d": 113
+        },
+        {
+          "t": 1300,
+          "d": 350
+        },
+        {
+          "t": 1663,
+          "d": 113
+        },
+        {
+          "t": 1788,
+          "d": 75
+        },
+        {
+          "t": 1875,
+          "d": 363
+        },
+        {
+          "t": 2250,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "범위를 한 문장으로 요약하고, 현실적인 일정으로 8주를 제안해봐",
+      "en": "Sure — the scope is the new onboarding flow end to end, and realistically I'd put the timeline at eight weeks.",
+      "ms": 7080,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scope",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "onboarding",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flow",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "realistically",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "timeline",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 350
+        },
+        {
+          "t": 825,
+          "d": 88
+        },
+        {
+          "t": 925,
+          "d": 363
+        },
+        {
+          "t": 1400,
+          "d": 100
+        },
+        {
+          "t": 1500,
+          "d": 63
+        },
+        {
+          "t": 1563,
+          "d": 375
+        },
+        {
+          "t": 1950,
+          "d": 650
+        },
+        {
+          "t": 2613,
+          "d": 463
+        },
+        {
+          "t": 3088,
+          "d": 175
+        },
+        {
+          "t": 3263,
+          "d": 88
+        },
+        {
+          "t": 3350,
+          "d": 450
+        },
+        {
+          "t": 4213,
+          "d": 125
+        },
+        {
+          "t": 4338,
+          "d": 663
+        },
+        {
+          "t": 5013,
+          "d": 163
+        },
+        {
+          "t": 5175,
+          "d": 150
+        },
+        {
+          "t": 5325,
+          "d": 75
+        },
+        {
+          "t": 5400,
+          "d": 550
+        },
+        {
+          "t": 5950,
+          "d": 75
+        },
+        {
+          "t": 6025,
+          "d": 163
+        },
+        {
+          "t": 6188,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "저희 쪽에선 2주 당겨서 6주 안에 끝나면 좋겠어요. 가능할까요?",
+      "en": "On our side, we'd love to pull it in by two weeks — can we land it in six?",
+      "ms": 4800,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "On",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "side",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we'd",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "love",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pull",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          11
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "can",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "land",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 150
+        },
+        {
+          "t": 250,
+          "d": 138
+        },
+        {
+          "t": 400,
+          "d": 400
+        },
+        {
+          "t": 825,
+          "d": 188
+        },
+        {
+          "t": 1025,
+          "d": 200
+        },
+        {
+          "t": 1238,
+          "d": 125
+        },
+        {
+          "t": 1375,
+          "d": 213
+        },
+        {
+          "t": 1600,
+          "d": 113
+        },
+        {
+          "t": 1725,
+          "d": 163
+        },
+        {
+          "t": 1900,
+          "d": 150
+        },
+        {
+          "t": 2063,
+          "d": 238
+        },
+        {
+          "t": 2313,
+          "d": 463
+        },
+        {
+          "t": 3038,
+          "d": 188
+        },
+        {
+          "t": 3238,
+          "d": 113
+        },
+        {
+          "t": 3363,
+          "d": 263
+        },
+        {
+          "t": 3638,
+          "d": 100
+        },
+        {
+          "t": 3750,
+          "d": 138
+        },
+        {
+          "t": 3900,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그렇게 조이면 품질이 위험하다고 선을 긋되, 단계별로 쪼개서 내보내는 대안을 제시해",
+      "en": "Squeezing it into six would put the quality at risk. Instead, I'd suggest a phased delivery so you get value sooner.",
+      "ms": 7680,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Squeezing",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quality",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "risk",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Instead",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "suggest",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "phased",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "delivery",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "value",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sooner",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 500
+        },
+        {
+          "t": 613,
+          "d": 50
+        },
+        {
+          "t": 663,
+          "d": 150
+        },
+        {
+          "t": 813,
+          "d": 475
+        },
+        {
+          "t": 1300,
+          "d": 163
+        },
+        {
+          "t": 1475,
+          "d": 213
+        },
+        {
+          "t": 1688,
+          "d": 88
+        },
+        {
+          "t": 1775,
+          "d": 513
+        },
+        {
+          "t": 2288,
+          "d": 125
+        },
+        {
+          "t": 2413,
+          "d": 475
+        },
+        {
+          "t": 3288,
+          "d": 550
+        },
+        {
+          "t": 4338,
+          "d": 138
+        },
+        {
+          "t": 4475,
+          "d": 413
+        },
+        {
+          "t": 4900,
+          "d": 38
+        },
+        {
+          "t": 4938,
+          "d": 438
+        },
+        {
+          "t": 5375,
+          "d": 500
+        },
+        {
+          "t": 6175,
+          "d": 125
+        },
+        {
+          "t": 6300,
+          "d": 125
+        },
+        {
+          "t": 6425,
+          "d": 188
+        },
+        {
+          "t": 6613,
+          "d": 288
+        },
+        {
+          "t": 6900,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋네요. 그럼 1단계에는 뭐가 들어가죠?",
+      "en": "I like that. So what would be in phase one?",
+      "ms": 2952,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "So",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "phase",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 50
+        },
+        {
+          "t": 113,
+          "d": 250
+        },
+        {
+          "t": 375,
+          "d": 363
+        },
+        {
+          "t": 1100,
+          "d": 163
+        },
+        {
+          "t": 1275,
+          "d": 150
+        },
+        {
+          "t": 1438,
+          "d": 138
+        },
+        {
+          "t": 1588,
+          "d": 138
+        },
+        {
+          "t": 1738,
+          "d": 125
+        },
+        {
+          "t": 1875,
+          "d": 350
+        },
+        {
+          "t": 2238,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "1단계는 핵심 가입 흐름만 담은 최소 기능이고, 꾸미는 건 나중에 붙인다고 정의해",
+      "en": "Phase one is the core sign-up flow only — a working MVP. The nice-to-haves come in a later phase.",
+      "ms": 6984,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Phase",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "core",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sign-up",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flow",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          7
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "working",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "MVP",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nice-to-haves",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "later",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "phase",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 250
+        },
+        {
+          "t": 388,
+          "d": 225
+        },
+        {
+          "t": 613,
+          "d": 75
+        },
+        {
+          "t": 688,
+          "d": 88
+        },
+        {
+          "t": 788,
+          "d": 300
+        },
+        {
+          "t": 1100,
+          "d": 425
+        },
+        {
+          "t": 1525,
+          "d": 425
+        },
+        {
+          "t": 2050,
+          "d": 475
+        },
+        {
+          "t": 2938,
+          "d": 100
+        },
+        {
+          "t": 3050,
+          "d": 563
+        },
+        {
+          "t": 3700,
+          "d": 675
+        },
+        {
+          "t": 4775,
+          "d": 38
+        },
+        {
+          "t": 4813,
+          "d": 713
+        },
+        {
+          "t": 5525,
+          "d": 150
+        },
+        {
+          "t": 5675,
+          "d": 38
+        },
+        {
+          "t": 5713,
+          "d": 38
+        },
+        {
+          "t": 5750,
+          "d": 238
+        },
+        {
+          "t": 5988,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "합리적이네요. 그럼 그 계획으로 갑시다.",
+      "en": "That's reasonable. Let's go with that plan.",
+      "ms": 3288,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reasonable",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "plan",
+          6
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 338
+        },
+        {
+          "t": 450,
+          "d": 763
+        },
+        {
+          "t": 1600,
+          "d": 225
+        },
+        {
+          "t": 1838,
+          "d": 175
+        },
+        {
+          "t": 2025,
+          "d": 138
+        },
+        {
+          "t": 2175,
+          "d": 225
+        },
+        {
+          "t": 2413,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "scope",
+      "kind": "word",
+      "meaning_ko": "(작업의) 범위",
+      "example": "Let's lock the scope before we estimate the timeline.",
+      "prompt_ko": "일정을 잡기 전에 범위부터 확정하자고 말해봐"
+    },
+    {
+      "term": "timeline",
+      "kind": "word",
+      "meaning_ko": "일정, 추진 일정표",
+      "example": "The timeline is tight, but it's doable.",
+      "prompt_ko": "일정이 빠듯하지만 할 만하다고 말해봐"
+    },
+    {
+      "term": "pull it in by two weeks",
+      "kind": "phrase",
+      "meaning_ko": "일정을 2주 앞당기다",
+      "prompt_ko": "일정을 2주 앞당길 수 있냐고 물어봐"
+    },
+    {
+      "term": "put the quality at risk",
+      "kind": "phrase",
+      "meaning_ko": "품질을 위태롭게 하다",
+      "prompt_ko": "일정을 너무 조이면 품질이 위험해진다고 말해봐"
+    },
+    {
+      "term": "phased delivery",
+      "kind": "phrase",
+      "meaning_ko": "단계별로 나눠 내보내기",
+      "keywords": [
+        {
+          "word": "phased",
+          "meaning_ko": "단계로 나눈"
+        }
+      ],
+      "prompt_ko": "한 번에 말고 단계별로 나눠 내보내자고 제안해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-project-kickoff/full.mp3",
+  "full_starts": [
+    0,
+    3144,
+    10224,
+    15024,
+    22704,
+    25656,
+    32640
+  ],
+  "generated_at": "2026-10-11T20:36:43.027Z"
+}

@@ -523,7 +523,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-03.9';
+const BUILD = '2026-10-16.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1560,8 +1560,12 @@ function drawSpeak(el){
   el.innerHTML = actBar(`Speaking ${spIdx+1}/${tPrompts.length}`) + `
     <div class="spq">
       <span class="spkind">${esc(KIND_LABEL[p.kind] || p.kind)}</span>
-      <p class="spen">${esc(p.question_en)}</p>
-      ${p.hint_ko ? `<p class="sphint">${esc(p.hint_ko)}</p>` : ''}
+      <div class="actbar" style="margin:8px 0 0">
+        <button class="btn sm primary-btn" id="sp-q">🔊 Listen to the question</button>
+        <button class="btn sm" id="sp-show">Show text</button>
+      </div>
+      <p class="spen" id="sp-text" hidden>${esc(p.question_en)}</p>
+      ${p.hint_ko ? `<p class="sphint" id="sp-hint" hidden>${esc(p.hint_ko)}</p>` : ''}
     </div>
     <div class="sptimer">
       <div class="sptime" id="sp-time">0:00</div>
@@ -1578,6 +1582,25 @@ function drawSpeak(el){
       <div id="sp-model" hidden></div>
     </div>`;
   wireBar();
+
+  // 🔴 실제 시험은 질문이 **귀로만** 온다. 텍스트를 띄워두면 읽기 연습이 되고,
+  // "질문을 못 알아듣는" 상태가 그대로 남는다 — 실제로 시험장에서 그 일이 났다.
+  // 시험처럼 두 번까지 들려주고, 텍스트는 본인이 포기할 때만 연다.
+  let qPlays = 0;
+  const qUrl = `${SUPABASE_URL}/storage/v1/object/public/eng-audio/prompts/${p.id}.mp3`;
+  $('sp-q').onclick = function(){
+    tStopAudio();
+    const a = new Audio(qUrl); tAudio = a; a.playbackRate = tRate;
+    setMedia('Question', KIND_LABEL[p.kind] || p.kind);
+    a.onended = () => { qPlays++; this.textContent = qPlays >= 2 ? '🔊 Listen again' : `🔊 Listen again (${2-qPlays} left)`; };
+    a.play().catch(() => speak(p.question_en));   // 음성이 없으면 기기 TTS
+  };
+  $('sp-show').onclick = function(){
+    $('sp-text').hidden = false;
+    const h = $('sp-hint'); if (h) h.hidden = false;
+    this.remove();
+  };
+  $('sp-q').click();                               // 들어오자마자 한 번 들려준다
 
   const timeEl = $('sp-time'), barEl = $('sp-bar');
   const tick = () => {
@@ -2094,6 +2117,7 @@ function renderSettings(){
     <div class="stsec">
       <h3>App</h3>
       <div class="buildline" style="margin:6px 0 0;text-align:left"></div>
+      <div class="buildline" id="t-supply" style="margin:2px 0 0;text-align:left"></div>
     </div>`;
 
   $('st-back').onclick = () => show('today');
@@ -2115,6 +2139,18 @@ function renderSettings(){
     tw.appendChild(b);
   }
   paintBuild();
+  // 밤 보급이 돌았는지 눈으로 확인할 수 있어야 한다 ("되고 있는지 모르겠다").
+  // 이미 받아온 것에서 계산하므로 쿼리가 늘지 않는다.
+  const sup = $('t-supply');
+  if (sup) {
+    const ts = [...tScenes.map(x=>x.created_at), tArticle?.created_at].filter(Boolean).sort().pop();
+    if (!ts) sup.textContent = 'supply — none';
+    else {
+      const days = Math.round((Date.parse(today()+'T00:00:00+09:00') - Date.parse(kstDate(ts)+'T00:00:00+09:00')) / 864e5);
+      sup.innerHTML = `supply <b>${kstDate(ts).slice(5)}</b>` +
+        (days <= 0 ? '' : ` <span class="stale">${days}d old</span>`);
+    }
+  }
 }
 
 /* ═══ 어휘 탭 — 쌓인 표현 전부와 SRS 상태 ═══════════════

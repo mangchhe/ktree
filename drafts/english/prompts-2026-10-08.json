@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "compare",
+    "topic": "여가",
+    "level": 3,
+    "seconds": 90,
+    "question_en": "How has the way you watch movies or shows changed compared to a few years ago?",
+    "hint_ko": "예전 시청 방식 한 문단 → 지금 방식 한 문단 → 뭐가 더 좋아졌고 뭐가 아쉬운지",
+    "model_en": "A few years ago I'd actually go to the theater pretty often, maybe twice a month. And when something new came out, I'd wait for it, almost like an event.\n\nNow it's basically all streaming, at home, whenever I feel like it. I don't really wait for anything anymore — if I hear about a show, it's usually already there to watch.\n\nThe convenience is obviously better. But I do think I enjoy things a little less this way. When you plan a trip to the theater, you're actually paying attention the whole time. At home, I'll have my phone out half the time, so honestly, less of it sticks with me.",
+    "model_note_ko": "비교(대칭 구조) + 마지막 문단에서 \"편한데 아쉬운 점\"으로 단순 비교를 넘어선다. 장단점을 둘 다 인정하는 게 더 성숙한 답으로 들린다.",
+    "phrases": [
+      { "term": "almost like an event", "meaning_ko": "거의 하나의 행사처럼" },
+      { "term": "whenever I feel like it", "meaning_ko": "내키는 아무 때나" },
+      { "term": "I don't really wait for anything anymore", "meaning_ko": "이제 딱히 뭘 기다리지 않는다" },
+      { "term": "less of it sticks with me", "meaning_ko": "기억에 덜 남는다" }
+    ]
+  },
+  {
+    "kind": "solve",
+    "topic": "비즈니스",
+    "level": 3,
+    "seconds": 75,
+    "question_en": "A supplier billed your company twice for the same invoice. Call them and get it resolved.",
+    "hint_ko": "문제 설명 → 증빙 제시 → 요청(환불/크레딧) → 재발 방지 요청",
+    "model_en": "Hi, I'm calling about an invoice — I think we were charged for it twice, and I'd like to get that sorted out.\n\nIt's invoice number four-four-one-two, from last month. We paid it on the fifth, and then it looks like the exact same amount went through again on the twelfth. I have both payment confirmations open in front of me if you need the reference numbers.\n\nWhat I'd like is either a refund for the second charge, or a credit applied to next month's invoice — whichever is easier on your end works for me.\n\nAnd going forward, could someone double-check before invoices go out? This is actually the second time this has happened this year.",
+    "model_note_ko": "문제해결형 구조: 문제 → 근거(송장번호, 날짜) → 요청(두 가지 대안 제시) → 재발 방지. 숫자를 또박또박 말하는 연습이 핵심이다.",
+    "phrases": [
+      { "term": "get that sorted out", "meaning_ko": "그걸 해결하다" },
+      { "term": "went through again", "meaning_ko": "(결제가) 또 처리됐다" },
+      { "term": "whichever is easier on your end", "meaning_ko": "그쪽에서 더 편한 쪽으로" },
+      { "term": "going forward", "meaning_ko": "앞으로는" }
+    ]
+  },
+  {
+    "kind": "past",
+    "topic": "운동",
+    "level": 3,
+    "seconds": 90,
+    "question_en": "Tell me about a time you got injured or had to stop exercising for a while. What happened, and how did you get back into it?",
+    "hint_ko": "다치거나 중단된 상황 → 그동안 어땠는지 → 다시 시작한 계기 → 지금은 어떻게 다른지",
+    "model_en": "A couple of years ago I tweaked my knee pretty badly while running, and the doctor told me to stop for at least two months.\n\nThose two months were honestly rough. I'd gotten used to running almost every day, and suddenly I had all this extra time and no real outlet for it. I think I was just in a worse mood in general.\n\nWhat got me back into it was a friend who was training for a race and asked if I wanted to join, just walking at first. That low pressure made it easy to say yes.\n\nThese days I'm more careful — I actually stretch now, which I never used to bother with, and I don't push through pain the way I used to. So in a way, getting hurt changed how I exercise for the better.",
+    "model_note_ko": "과거 서술 + 전환점(친구의 제안) + 마지막 문단에서 \"그 경험이 지금을 어떻게 바꿨는지\"로 마무리하면 AL 쪽 조직력이 보인다.",
+    "phrases": [
+      { "term": "tweaked my knee", "meaning_ko": "무릎을 삐끗했다" },
+      { "term": "no real outlet for it", "meaning_ko": "딱히 풀 데가 없었다" },
+      { "term": "that low pressure made it easy to say yes", "meaning_ko": "부담이 없어서 쉽게 수락했다" },
+      { "term": "push through pain", "meaning_ko": "아픔을 참고 밀어붙이다" }
+    ]
+  }
+]

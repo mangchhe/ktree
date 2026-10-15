@@ -1,0 +1,1394 @@
+{
+  "id": "2026-10-13-train-strike",
+  "situation_ko": "출장 중 역에 왔더니 파업으로 기차가 취소됐다. 매표소 직원은 대체 버스나 환불을 제시하고, 내일 기차는 거의 매진이다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "매표소 직원",
+      "meaning_ko": "다음 분이요.",
+      "en": "Next, please.",
+      "ms": 1872,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Next",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          1
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 475
+        },
+        {
+          "t": 538,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "전광판에 10시 반 리옹행 기차가 취소라고 뜬다고 하고, 어떤 방법이 있는지 물어봐",
+      "en": "Hi, the board says my ten-thirty train to Lyon is cancelled. What are my options?",
+      "ms": 5688,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "board",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "says",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten-thirty",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "train",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Lyon",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancelled",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "options",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 438
+        },
+        {
+          "t": 700,
+          "d": 150
+        },
+        {
+          "t": 863,
+          "d": 300
+        },
+        {
+          "t": 1175,
+          "d": 313
+        },
+        {
+          "t": 1500,
+          "d": 150
+        },
+        {
+          "t": 1663,
+          "d": 488
+        },
+        {
+          "t": 2163,
+          "d": 338
+        },
+        {
+          "t": 2513,
+          "d": 113
+        },
+        {
+          "t": 2638,
+          "d": 400
+        },
+        {
+          "t": 3050,
+          "d": 175
+        },
+        {
+          "t": 3238,
+          "d": 613
+        },
+        {
+          "t": 4238,
+          "d": 113
+        },
+        {
+          "t": 4363,
+          "d": 75
+        },
+        {
+          "t": 4450,
+          "d": 213
+        },
+        {
+          "t": 4675,
+          "d": 638
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "죄송하지만 오늘 파업이 있어요. 정오에 대체 버스를 타시거나 전액 환불받으실 수 있어요.",
+      "en": "I'm afraid there's a strike today. You can take a replacement bus at noon, or get a full refund.",
+      "ms": 6024,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afraid",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "strike",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "replacement",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bus",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "noon",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "or",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "refund",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 488
+        },
+        {
+          "t": 725,
+          "d": 150
+        },
+        {
+          "t": 888,
+          "d": 50
+        },
+        {
+          "t": 938,
+          "d": 325
+        },
+        {
+          "t": 1263,
+          "d": 438
+        },
+        {
+          "t": 2075,
+          "d": 100
+        },
+        {
+          "t": 2175,
+          "d": 100
+        },
+        {
+          "t": 2288,
+          "d": 175
+        },
+        {
+          "t": 2475,
+          "d": 38
+        },
+        {
+          "t": 2525,
+          "d": 488
+        },
+        {
+          "t": 3025,
+          "d": 188
+        },
+        {
+          "t": 3225,
+          "d": 150
+        },
+        {
+          "t": 3388,
+          "d": 375
+        },
+        {
+          "t": 4138,
+          "d": 300
+        },
+        {
+          "t": 4450,
+          "d": 213
+        },
+        {
+          "t": 4675,
+          "d": 63
+        },
+        {
+          "t": 4750,
+          "d": 363
+        },
+        {
+          "t": 5125,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "버스가 얼마나 걸리는지, 그리고 내일 기차로 바꿀 수 있는지 물어봐",
+      "en": "How long does the bus take? And could I switch to a train tomorrow instead?",
+      "ms": 4824,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "How",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "long",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bus",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "And",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "switch",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "train",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 138
+        },
+        {
+          "t": 225,
+          "d": 350
+        },
+        {
+          "t": 588,
+          "d": 175
+        },
+        {
+          "t": 775,
+          "d": 113
+        },
+        {
+          "t": 900,
+          "d": 275
+        },
+        {
+          "t": 1188,
+          "d": 413
+        },
+        {
+          "t": 1963,
+          "d": 138
+        },
+        {
+          "t": 2113,
+          "d": 163
+        },
+        {
+          "t": 2288,
+          "d": 88
+        },
+        {
+          "t": 2388,
+          "d": 438
+        },
+        {
+          "t": 2838,
+          "d": 113
+        },
+        {
+          "t": 2963,
+          "d": 50
+        },
+        {
+          "t": 3025,
+          "d": 325
+        },
+        {
+          "t": 3363,
+          "d": 500
+        },
+        {
+          "t": 3875,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "버스는 다섯 시간쯤 걸려요. 내일 기차는 거의 다 찼는데, 아침 7시에 한 자리 남았어요.",
+      "en": "The bus takes about five hours. Tomorrow's trains are almost full, but there's one seat left at seven a.m.",
+      "ms": 7128,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bus",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "takes",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Tomorrow's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trains",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "almost",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seat",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seven",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a.m.",
+          18
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 63
+        },
+        {
+          "t": 150,
+          "d": 300
+        },
+        {
+          "t": 463,
+          "d": 275
+        },
+        {
+          "t": 750,
+          "d": 263
+        },
+        {
+          "t": 1013,
+          "d": 300
+        },
+        {
+          "t": 1325,
+          "d": 550
+        },
+        {
+          "t": 2263,
+          "d": 488
+        },
+        {
+          "t": 2763,
+          "d": 488
+        },
+        {
+          "t": 3263,
+          "d": 150
+        },
+        {
+          "t": 3425,
+          "d": 375
+        },
+        {
+          "t": 3800,
+          "d": 363
+        },
+        {
+          "t": 4575,
+          "d": 125
+        },
+        {
+          "t": 4713,
+          "d": 213
+        },
+        {
+          "t": 4938,
+          "d": 288
+        },
+        {
+          "t": 5238,
+          "d": 313
+        },
+        {
+          "t": 5563,
+          "d": 338
+        },
+        {
+          "t": 5913,
+          "d": 138
+        },
+        {
+          "t": 6063,
+          "d": 350
+        },
+        {
+          "t": 6425,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "7시는 너무 이르니 그냥 버스를 타겠다고 하고, 표를 새로 받아야 하는지 물어봐",
+      "en": "Seven is a bit early for me. I'll take the bus. Do I need a new ticket?",
+      "ms": 4968,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Seven",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bus",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ticket",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 375
+        },
+        {
+          "t": 438,
+          "d": 163
+        },
+        {
+          "t": 613,
+          "d": 75
+        },
+        {
+          "t": 700,
+          "d": 238
+        },
+        {
+          "t": 963,
+          "d": 338
+        },
+        {
+          "t": 1313,
+          "d": 188
+        },
+        {
+          "t": 1513,
+          "d": 325
+        },
+        {
+          "t": 2213,
+          "d": 88
+        },
+        {
+          "t": 2313,
+          "d": 238
+        },
+        {
+          "t": 2563,
+          "d": 100
+        },
+        {
+          "t": 2675,
+          "d": 450
+        },
+        {
+          "t": 3525,
+          "d": 88
+        },
+        {
+          "t": 3625,
+          "d": 63
+        },
+        {
+          "t": 3700,
+          "d": 213
+        },
+        {
+          "t": 3925,
+          "d": 25
+        },
+        {
+          "t": 3963,
+          "d": 200
+        },
+        {
+          "t": 4175,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아니요, 지금 표로 버스 타실 수 있어요. C 정류장에서 기사님께 보여주시면 돼요.",
+      "en": "No, your ticket is valid on the bus. Just show it to the driver at stop C.",
+      "ms": 5232,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "your",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ticket",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "valid",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bus",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "show",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "driver",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stop",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "C",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 475
+        },
+        {
+          "t": 825,
+          "d": 125
+        },
+        {
+          "t": 963,
+          "d": 350
+        },
+        {
+          "t": 1325,
+          "d": 125
+        },
+        {
+          "t": 1463,
+          "d": 350
+        },
+        {
+          "t": 1825,
+          "d": 100
+        },
+        {
+          "t": 1938,
+          "d": 75
+        },
+        {
+          "t": 2025,
+          "d": 475
+        },
+        {
+          "t": 2900,
+          "d": 200
+        },
+        {
+          "t": 3100,
+          "d": 225
+        },
+        {
+          "t": 3338,
+          "d": 63
+        },
+        {
+          "t": 3400,
+          "d": 63
+        },
+        {
+          "t": 3475,
+          "d": 88
+        },
+        {
+          "t": 3563,
+          "d": 488
+        },
+        {
+          "t": 4063,
+          "d": 100
+        },
+        {
+          "t": 4175,
+          "d": 313
+        },
+        {
+          "t": 4500,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "strike",
+      "kind": "word",
+      "meaning_ko": "파업",
+      "example": "All the trains are delayed because of the strike.",
+      "prompt_ko": "파업 때문에 기차가 다 늦어진다고 말해봐"
+    },
+    {
+      "term": "replacement",
+      "kind": "word",
+      "meaning_ko": "대체(물), 대신하는 것",
+      "example": "They sent me a replacement for the broken one.",
+      "prompt_ko": "고장 난 것 대신 새 걸 보내줬다고 말해봐"
+    },
+    {
+      "term": "refund",
+      "kind": "word",
+      "meaning_ko": "환불(하다)",
+      "example": "Can I get a full refund if I cancel?",
+      "prompt_ko": "취소하면 전액 환불받을 수 있는지 물어봐"
+    },
+    {
+      "term": "valid",
+      "kind": "word",
+      "meaning_ko": "유효한",
+      "example": "Is this ticket still valid tomorrow?",
+      "prompt_ko": "이 표가 내일도 유효한지 물어봐"
+    },
+    {
+      "term": "What are my options?",
+      "kind": "phrase",
+      "meaning_ko": "제가 어떻게 할 수 있나요? (선택지를 묻기)",
+      "prompt_ko": "비행기를 놓쳤다며 어떤 방법이 있는지 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-train-strike/full.mp3",
+  "full_starts": [
+    0,
+    1872,
+    7560,
+    13584,
+    18408,
+    25536,
+    30504
+  ],
+  "generated_at": "2026-10-13T20:31:22.818Z"
+}

@@ -1,0 +1,1694 @@
+{
+  "id": "2026-10-04-dentist-reschedule",
+  "situation_ko": "목요일 치과 예약을 출장 때문에 옮기려고 전화한다. 접수처는 다음 빈자리가 3주 뒤라며 취소 대기 명단을 권한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "치과 접수처",
+      "meaning_ko": "브라이트 스마일 치과입니다. 무엇을 도와드릴까요?",
+      "en": "Bright Smile Dental, this is Karen. How can I help you?",
+      "ms": 3768,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Bright",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Smile",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Dental",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "this",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Karen",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 238
+        },
+        {
+          "t": 325,
+          "d": 363
+        },
+        {
+          "t": 700,
+          "d": 375
+        },
+        {
+          "t": 1100,
+          "d": 200
+        },
+        {
+          "t": 1313,
+          "d": 113
+        },
+        {
+          "t": 1438,
+          "d": 513
+        },
+        {
+          "t": 2350,
+          "d": 138
+        },
+        {
+          "t": 2500,
+          "d": 163
+        },
+        {
+          "t": 2675,
+          "d": 88
+        },
+        {
+          "t": 2775,
+          "d": 300
+        },
+        {
+          "t": 3088,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "목요일 오후 세 시 예약이 있는데 출장이 잡혀서 옮겨야 한다고 말해봐",
+      "en": "Hi, I have an appointment on Thursday at three, but something came up at work and I need to reschedule.",
+      "ms": 5760,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "appointment",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Thursday",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "something",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "came",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reschedule",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 325
+        },
+        {
+          "t": 713,
+          "d": 100
+        },
+        {
+          "t": 825,
+          "d": 125
+        },
+        {
+          "t": 950,
+          "d": 38
+        },
+        {
+          "t": 988,
+          "d": 350
+        },
+        {
+          "t": 1350,
+          "d": 125
+        },
+        {
+          "t": 1488,
+          "d": 475
+        },
+        {
+          "t": 1975,
+          "d": 88
+        },
+        {
+          "t": 2063,
+          "d": 425
+        },
+        {
+          "t": 2763,
+          "d": 113
+        },
+        {
+          "t": 2875,
+          "d": 338
+        },
+        {
+          "t": 3225,
+          "d": 200
+        },
+        {
+          "t": 3425,
+          "d": 113
+        },
+        {
+          "t": 3550,
+          "d": 75
+        },
+        {
+          "t": 3638,
+          "d": 313
+        },
+        {
+          "t": 4200,
+          "d": 100
+        },
+        {
+          "t": 4300,
+          "d": 25
+        },
+        {
+          "t": 4325,
+          "d": 188
+        },
+        {
+          "t": 4513,
+          "d": 63
+        },
+        {
+          "t": 4575,
+          "d": 825
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠습니다. 근데 솔직히 말씀드리면 이번 달은 꽉 찼어요. 제일 빠른 게 25일 오전이에요.",
+      "en": "No problem. To be honest, though, we're fully booked this month. The earliest I have is the twenty-fifth, in the morning.",
+      "ms": 7128,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "To",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "honest",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we're",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fully",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "earliest",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-fifth",
+          17
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "in",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 163
+        },
+        {
+          "t": 263,
+          "d": 563
+        },
+        {
+          "t": 1200,
+          "d": 88
+        },
+        {
+          "t": 1300,
+          "d": 163
+        },
+        {
+          "t": 1475,
+          "d": 400
+        },
+        {
+          "t": 1900,
+          "d": 163
+        },
+        {
+          "t": 2088,
+          "d": 150
+        },
+        {
+          "t": 2250,
+          "d": 325
+        },
+        {
+          "t": 2588,
+          "d": 238
+        },
+        {
+          "t": 2838,
+          "d": 213
+        },
+        {
+          "t": 3063,
+          "d": 413
+        },
+        {
+          "t": 3875,
+          "d": 50
+        },
+        {
+          "t": 3938,
+          "d": 575
+        },
+        {
+          "t": 4525,
+          "d": 88
+        },
+        {
+          "t": 4625,
+          "d": 263
+        },
+        {
+          "t": 4900,
+          "d": 113
+        },
+        {
+          "t": 5025,
+          "d": 100
+        },
+        {
+          "t": 5138,
+          "d": 788
+        },
+        {
+          "t": 5950,
+          "d": 150
+        },
+        {
+          "t": 6113,
+          "d": 75
+        },
+        {
+          "t": 6200,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "3주는 좀 길다고, 이가 시려서 그렇게 오래 기다리고 싶지 않다고 말해봐",
+      "en": "That's a bit far off. My tooth has been really sensitive, so I'd rather not wait that long.",
+      "ms": 5712,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "far",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "My",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tooth",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sensitive",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wait",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "long",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 113
+        },
+        {
+          "t": 225,
+          "d": 50
+        },
+        {
+          "t": 275,
+          "d": 163
+        },
+        {
+          "t": 450,
+          "d": 263
+        },
+        {
+          "t": 713,
+          "d": 325
+        },
+        {
+          "t": 1450,
+          "d": 163
+        },
+        {
+          "t": 1613,
+          "d": 363
+        },
+        {
+          "t": 1988,
+          "d": 200
+        },
+        {
+          "t": 2200,
+          "d": 238
+        },
+        {
+          "t": 2438,
+          "d": 438
+        },
+        {
+          "t": 2875,
+          "d": 738
+        },
+        {
+          "t": 3763,
+          "d": 188
+        },
+        {
+          "t": 3963,
+          "d": 175
+        },
+        {
+          "t": 4138,
+          "d": 225
+        },
+        {
+          "t": 4375,
+          "d": 238
+        },
+        {
+          "t": 4613,
+          "d": 238
+        },
+        {
+          "t": 4850,
+          "d": 200
+        },
+        {
+          "t": 5050,
+          "d": 288
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 취소 대기 명단에 올려드릴까요? 자리가 나면 보통 하루 전에 연락드려요.",
+      "en": "Then would you like me to put you on the cancellation list? If a spot opens up, we usually call the day before.",
+      "ms": 6480,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancellation",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "list",
+          11
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "If",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spot",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "opens",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          16
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "usually",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 150
+        },
+        {
+          "t": 438,
+          "d": 125
+        },
+        {
+          "t": 575,
+          "d": 250
+        },
+        {
+          "t": 838,
+          "d": 100
+        },
+        {
+          "t": 950,
+          "d": 113
+        },
+        {
+          "t": 1075,
+          "d": 238
+        },
+        {
+          "t": 1325,
+          "d": 125
+        },
+        {
+          "t": 1463,
+          "d": 113
+        },
+        {
+          "t": 1588,
+          "d": 75
+        },
+        {
+          "t": 1675,
+          "d": 775
+        },
+        {
+          "t": 2463,
+          "d": 438
+        },
+        {
+          "t": 3263,
+          "d": 75
+        },
+        {
+          "t": 3350,
+          "d": 50
+        },
+        {
+          "t": 3413,
+          "d": 338
+        },
+        {
+          "t": 3763,
+          "d": 388
+        },
+        {
+          "t": 4163,
+          "d": 238
+        },
+        {
+          "t": 4425,
+          "d": 125
+        },
+        {
+          "t": 4563,
+          "d": 388
+        },
+        {
+          "t": 4963,
+          "d": 225
+        },
+        {
+          "t": 5200,
+          "d": 100
+        },
+        {
+          "t": 5313,
+          "d": 200
+        },
+        {
+          "t": 5525,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그렇게 해달라고 하고, 평일 아침이면 언제든 괜찮다고, 그래도 25일은 일단 잡아달라고 해봐",
+      "en": "Yes, please. Any weekday morning works for me. But could you still hold the twenty-fifth, just in case?",
+      "ms": 6000,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Any",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weekday",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hold",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-fifth",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "just",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 238
+        },
+        {
+          "t": 363,
+          "d": 575
+        },
+        {
+          "t": 1325,
+          "d": 175
+        },
+        {
+          "t": 1500,
+          "d": 363
+        },
+        {
+          "t": 1875,
+          "d": 413
+        },
+        {
+          "t": 2288,
+          "d": 225
+        },
+        {
+          "t": 2513,
+          "d": 125
+        },
+        {
+          "t": 2650,
+          "d": 225
+        },
+        {
+          "t": 3275,
+          "d": 100
+        },
+        {
+          "t": 3375,
+          "d": 125
+        },
+        {
+          "t": 3513,
+          "d": 100
+        },
+        {
+          "t": 3625,
+          "d": 313
+        },
+        {
+          "t": 3950,
+          "d": 163
+        },
+        {
+          "t": 4125,
+          "d": 50
+        },
+        {
+          "t": 4175,
+          "d": 613
+        },
+        {
+          "t": 4788,
+          "d": 200
+        },
+        {
+          "t": 5000,
+          "d": 75
+        },
+        {
+          "t": 5075,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "물론이죠. 25일 오전 9시 반으로 잡아두고 명단에도 올려둘게요.",
+      "en": "Of course. I've got you down for nine thirty on the twenty-fifth, and you're on the list.",
+      "ms": 5232,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I've",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nine",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-fifth",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you're",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "list",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 88
+        },
+        {
+          "t": 150,
+          "d": 450
+        },
+        {
+          "t": 988,
+          "d": 88
+        },
+        {
+          "t": 1088,
+          "d": 200
+        },
+        {
+          "t": 1300,
+          "d": 88
+        },
+        {
+          "t": 1400,
+          "d": 275
+        },
+        {
+          "t": 1688,
+          "d": 138
+        },
+        {
+          "t": 1838,
+          "d": 275
+        },
+        {
+          "t": 2125,
+          "d": 313
+        },
+        {
+          "t": 2450,
+          "d": 100
+        },
+        {
+          "t": 2563,
+          "d": 75
+        },
+        {
+          "t": 2650,
+          "d": 800
+        },
+        {
+          "t": 3688,
+          "d": 188
+        },
+        {
+          "t": 3888,
+          "d": 175
+        },
+        {
+          "t": 4075,
+          "d": 138
+        },
+        {
+          "t": 4225,
+          "d": 100
+        },
+        {
+          "t": 4338,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "reschedule",
+      "meaning_ko": "일정을 다시 잡다, 날짜를 옮기다",
+      "example": "Something came up at work and I need to reschedule."
+    },
+    {
+      "kind": "word",
+      "term": "sensitive",
+      "meaning_ko": "(이가) 시린, 예민한",
+      "example": "My tooth has been really sensitive."
+    },
+    {
+      "kind": "word",
+      "term": "earliest",
+      "meaning_ko": "가장 빠른 (시간·날짜)",
+      "example": "The earliest I have is the twenty-fifth."
+    },
+    {
+      "kind": "phrase",
+      "term": "something came up",
+      "meaning_ko": "일이 생겼다",
+      "prompt_ko": "갑자기 일이 생겨서 약속을 못 지킨다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "that's a bit far off",
+      "meaning_ko": "그건 좀 멀다 (시간상)",
+      "prompt_ko": "3주 뒤 예약은 너무 멀다고 말해봐",
+      "keywords": [
+        {
+          "word": "far off",
+          "meaning_ko": "(시간·거리가) 멀리 떨어진"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "hold it, just in case",
+      "meaning_ko": "혹시 모르니 잡아둬 달라",
+      "prompt_ko": "혹시 모르니 그 날짜는 일단 잡아달라고 부탁해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-dentist-reschedule/full.mp3",
+  "full_starts": [
+    0,
+    3768,
+    9528,
+    16656,
+    22368,
+    28848,
+    34848
+  ],
+  "generated_at": "2026-10-03T21:40:47.066Z"
+}

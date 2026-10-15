@@ -1,0 +1,1646 @@
+{
+  "id": "2026-10-04-meeting-wrapup",
+  "situation_ko": "내가 진행하는 회의가 5분 남았는데 결론이 없다. 정리하고 담당자를 정하려는데, 한 참석자가 다른 주제를 더 얘기하자고 붙든다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-BrianMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "동료 참석자",
+      "meaning_ko": "그리고 하나 더, 내년 툴 예산 얘기도 지금 해야 할 것 같은데요.",
+      "en": "And one more thing, I think we should also talk about next year's tool budget while we're all here.",
+      "ms": 5160,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "And",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "year's",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tool",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "while",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 150
+        },
+        {
+          "t": 225,
+          "d": 188
+        },
+        {
+          "t": 425,
+          "d": 225
+        },
+        {
+          "t": 663,
+          "d": 375
+        },
+        {
+          "t": 1063,
+          "d": 113
+        },
+        {
+          "t": 1188,
+          "d": 188
+        },
+        {
+          "t": 1388,
+          "d": 75
+        },
+        {
+          "t": 1475,
+          "d": 175
+        },
+        {
+          "t": 1663,
+          "d": 288
+        },
+        {
+          "t": 1963,
+          "d": 275
+        },
+        {
+          "t": 2250,
+          "d": 288
+        },
+        {
+          "t": 2550,
+          "d": 275
+        },
+        {
+          "t": 2838,
+          "d": 238
+        },
+        {
+          "t": 3088,
+          "d": 225
+        },
+        {
+          "t": 3325,
+          "d": 413
+        },
+        {
+          "t": 3750,
+          "d": 225
+        },
+        {
+          "t": 3988,
+          "d": 175
+        },
+        {
+          "t": 4175,
+          "d": 188
+        },
+        {
+          "t": 4375,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "중요한 얘기지만 5분밖에 안 남았다고 하고, 그건 따로 미팅을 잡자고 말해봐",
+      "en": "That's an important one, but we've only got five minutes left. Let's set up a separate meeting for it.",
+      "ms": 5904,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "important",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we've",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "separate",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meeting",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 225
+        },
+        {
+          "t": 313,
+          "d": 50
+        },
+        {
+          "t": 375,
+          "d": 413
+        },
+        {
+          "t": 800,
+          "d": 275
+        },
+        {
+          "t": 1450,
+          "d": 175
+        },
+        {
+          "t": 1638,
+          "d": 200
+        },
+        {
+          "t": 1850,
+          "d": 225
+        },
+        {
+          "t": 2075,
+          "d": 213
+        },
+        {
+          "t": 2300,
+          "d": 388
+        },
+        {
+          "t": 2700,
+          "d": 288
+        },
+        {
+          "t": 2988,
+          "d": 450
+        },
+        {
+          "t": 3813,
+          "d": 225
+        },
+        {
+          "t": 4050,
+          "d": 163
+        },
+        {
+          "t": 4225,
+          "d": 138
+        },
+        {
+          "t": 4425,
+          "d": 63
+        },
+        {
+          "t": 4500,
+          "d": 363
+        },
+        {
+          "t": 4875,
+          "d": 263
+        },
+        {
+          "t": 5150,
+          "d": 200
+        },
+        {
+          "t": 5363,
+          "d": 188
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "근데 다들 모이기가 정말 힘들잖아요. 10분만 더 하면 안 될까요?",
+      "en": "It's just so hard to get everyone in one room. Can't we go ten minutes over?",
+      "ms": 4920,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "It's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hard",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "everyone",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can't",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          15
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 138
+        },
+        {
+          "t": 200,
+          "d": 163
+        },
+        {
+          "t": 375,
+          "d": 213
+        },
+        {
+          "t": 600,
+          "d": 338
+        },
+        {
+          "t": 950,
+          "d": 88
+        },
+        {
+          "t": 1050,
+          "d": 213
+        },
+        {
+          "t": 1275,
+          "d": 413
+        },
+        {
+          "t": 1700,
+          "d": 125
+        },
+        {
+          "t": 1838,
+          "d": 250
+        },
+        {
+          "t": 2100,
+          "d": 400
+        },
+        {
+          "t": 2875,
+          "d": 263
+        },
+        {
+          "t": 3150,
+          "d": 100
+        },
+        {
+          "t": 3263,
+          "d": 175
+        },
+        {
+          "t": 3450,
+          "d": 250
+        },
+        {
+          "t": 3713,
+          "d": 350
+        },
+        {
+          "t": 4075,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "다음 일정이 있는 사람이 있으니 시간은 못 늘린다고 하고, 대신 오늘 중으로 30분짜리 일정을 보내겠다고 해봐",
+      "en": "Some people have back-to-back meetings, so I don't want to run over. I'll send out a thirty-minute invite before the end of the day.",
+      "ms": 7152,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Some",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "people",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back-to-back",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meetings",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty-minute",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "invite",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          23
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 375,
+          "d": 300
+        },
+        {
+          "t": 688,
+          "d": 238
+        },
+        {
+          "t": 938,
+          "d": 538
+        },
+        {
+          "t": 1488,
+          "d": 500
+        },
+        {
+          "t": 2125,
+          "d": 313
+        },
+        {
+          "t": 2450,
+          "d": 88
+        },
+        {
+          "t": 2550,
+          "d": 125
+        },
+        {
+          "t": 2688,
+          "d": 100
+        },
+        {
+          "t": 2800,
+          "d": 50
+        },
+        {
+          "t": 2863,
+          "d": 175
+        },
+        {
+          "t": 3050,
+          "d": 400
+        },
+        {
+          "t": 3850,
+          "d": 175
+        },
+        {
+          "t": 4038,
+          "d": 338
+        },
+        {
+          "t": 4388,
+          "d": 188
+        },
+        {
+          "t": 4625,
+          "d": 50
+        },
+        {
+          "t": 4675,
+          "d": 700
+        },
+        {
+          "t": 5388,
+          "d": 375
+        },
+        {
+          "t": 5775,
+          "d": 275
+        },
+        {
+          "t": 6063,
+          "d": 50
+        },
+        {
+          "t": 6125,
+          "d": 175
+        },
+        {
+          "t": 6313,
+          "d": 50
+        },
+        {
+          "t": 6363,
+          "d": 75
+        },
+        {
+          "t": 6438,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠어요. 그럼 오늘 건은 결론이 뭐예요?",
+      "en": "Fair enough. So where did we land on today's topic?",
+      "ms": 3960,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "So",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "where",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "land",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "topic",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 263
+        },
+        {
+          "t": 363,
+          "d": 475
+        },
+        {
+          "t": 1200,
+          "d": 188
+        },
+        {
+          "t": 1400,
+          "d": 213
+        },
+        {
+          "t": 1625,
+          "d": 125
+        },
+        {
+          "t": 1763,
+          "d": 113
+        },
+        {
+          "t": 1888,
+          "d": 438
+        },
+        {
+          "t": 2338,
+          "d": 225
+        },
+        {
+          "t": 2575,
+          "d": 375
+        },
+        {
+          "t": 2963,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "정리해서, 출시를 2주 미루기로 했고 수요일까지 민지가 일정표를, 내가 고객 공지를 맡는다고 말해봐",
+      "en": "To sum up, we're pushing the launch back two weeks. Minji will update the timeline by Wednesday, and I'll draft the customer announcement.",
+      "ms": 7992,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "To",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sum",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we're",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pushing",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "launch",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Minji",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "will",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "update",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "timeline",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Wednesday",
+          16
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "draft",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customer",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "announcement",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 225
+        },
+        {
+          "t": 400,
+          "d": 250
+        },
+        {
+          "t": 1063,
+          "d": 138
+        },
+        {
+          "t": 1213,
+          "d": 313
+        },
+        {
+          "t": 1538,
+          "d": 75
+        },
+        {
+          "t": 1625,
+          "d": 413
+        },
+        {
+          "t": 2050,
+          "d": 263
+        },
+        {
+          "t": 2325,
+          "d": 163
+        },
+        {
+          "t": 2500,
+          "d": 463
+        },
+        {
+          "t": 3338,
+          "d": 300
+        },
+        {
+          "t": 3650,
+          "d": 163
+        },
+        {
+          "t": 3825,
+          "d": 350
+        },
+        {
+          "t": 4188,
+          "d": 63
+        },
+        {
+          "t": 4263,
+          "d": 575
+        },
+        {
+          "t": 4850,
+          "d": 138
+        },
+        {
+          "t": 5000,
+          "d": 650
+        },
+        {
+          "t": 5863,
+          "d": 200
+        },
+        {
+          "t": 6063,
+          "d": 125
+        },
+        {
+          "t": 6200,
+          "d": 350
+        },
+        {
+          "t": 6550,
+          "d": 75
+        },
+        {
+          "t": 6625,
+          "d": 400
+        },
+        {
+          "t": 7025,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "깔끔하네요. 회의록에 그대로 적을게요.",
+      "en": "Sounds clear. I'll put that in the notes exactly as you said it.",
+      "ms": 4440,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Sounds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clear",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "notes",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exactly",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "said",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 400
+        },
+        {
+          "t": 463,
+          "d": 475
+        },
+        {
+          "t": 1313,
+          "d": 125
+        },
+        {
+          "t": 1450,
+          "d": 225
+        },
+        {
+          "t": 1688,
+          "d": 275
+        },
+        {
+          "t": 1975,
+          "d": 125
+        },
+        {
+          "t": 2113,
+          "d": 75
+        },
+        {
+          "t": 2200,
+          "d": 375
+        },
+        {
+          "t": 2588,
+          "d": 663
+        },
+        {
+          "t": 3263,
+          "d": 125
+        },
+        {
+          "t": 3400,
+          "d": 100
+        },
+        {
+          "t": 3513,
+          "d": 275
+        },
+        {
+          "t": 3800,
+          "d": 263
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "separate",
+      "meaning_ko": "별개의, 따로 (발음 주의: 형용사 '세퍼릿')",
+      "example": "Let's set up a separate meeting for it."
+    },
+    {
+      "kind": "word",
+      "term": "invite",
+      "meaning_ko": "(명사) 초대, 회의 초대장",
+      "example": "I'll send out a thirty-minute invite."
+    },
+    {
+      "kind": "word",
+      "term": "draft",
+      "meaning_ko": "초안을 쓰다",
+      "example": "I'll draft the customer announcement."
+    },
+    {
+      "kind": "phrase",
+      "term": "back-to-back meetings",
+      "meaning_ko": "연달아 잡힌 회의",
+      "prompt_ko": "오후 내내 회의가 연달아 있어서 시간을 못 낸다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "where did we land on",
+      "meaning_ko": "~는 결론이 어떻게 났나",
+      "prompt_ko": "가격 문제는 결론이 어떻게 났는지 물어봐",
+      "keywords": [
+        {
+          "word": "land",
+          "meaning_ko": "(논의가) 결론에 이르다, 착지하다"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "push back",
+      "meaning_ko": "(일정을) 뒤로 미루다",
+      "prompt_ko": "출시를 2주 미루기로 했다고 정리해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-04-meeting-wrapup/full.mp3",
+  "full_starts": [
+    0,
+    5160,
+    11064,
+    15984,
+    23136,
+    27096,
+    35088
+  ],
+  "generated_at": "2026-10-03T21:41:55.731Z"
+}

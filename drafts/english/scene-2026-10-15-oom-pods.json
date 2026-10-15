@@ -1,0 +1,1689 @@
+{
+  "id": "2026-10-15-oom-pods",
+  "situation_ko": "주문 서비스 파드가 밤새 메모리 초과로 계속 재시작됐다. SRE 는 메모리 한도를 두 배로 올리자고 하고, 나는 배포 후 생긴 누수부터 의심한다. SRE 는 오늘 저녁 트래픽 피크 전에 뭔가 해야 한다고 압박한다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "SRE",
+      "meaning_ko": "주문 서비스 파드가 밤새 메모리 초과로 열두 번 재시작됐어. 한도를 1기가에서 2기가로 올리자.",
+      "en": "The order service pods got OOMKilled twelve times overnight. Let's just bump the memory limit from one gig to two.",
+      "ms": 7080,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "order",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "service",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pods",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "got",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "OOMKilled",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twelve",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "times",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "overnight",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bump",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "memory",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "limit",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gig",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 275
+        },
+        {
+          "t": 463,
+          "d": 325
+        },
+        {
+          "t": 800,
+          "d": 425
+        },
+        {
+          "t": 1238,
+          "d": 263
+        },
+        {
+          "t": 1625,
+          "d": 725
+        },
+        {
+          "t": 2363,
+          "d": 488
+        },
+        {
+          "t": 2863,
+          "d": 388
+        },
+        {
+          "t": 3263,
+          "d": 475
+        },
+        {
+          "t": 4113,
+          "d": 200
+        },
+        {
+          "t": 4313,
+          "d": 213
+        },
+        {
+          "t": 4538,
+          "d": 238
+        },
+        {
+          "t": 4788,
+          "d": 75
+        },
+        {
+          "t": 4875,
+          "d": 363
+        },
+        {
+          "t": 5250,
+          "d": 363
+        },
+        {
+          "t": 5625,
+          "d": 175
+        },
+        {
+          "t": 5813,
+          "d": 188
+        },
+        {
+          "t": 6013,
+          "d": 188
+        },
+        {
+          "t": 6213,
+          "d": 75
+        },
+        {
+          "t": 6300,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "화요일 배포 이후에 시작됐으니 한도가 아니라 누수 같다고 말해봐",
+      "en": "It started right after Tuesday's deploy, so I think it's a leak, not the limit.",
+      "ms": 4920,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "It",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "started",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Tuesday's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deploy",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "leak",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "not",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "limit",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 113
+        },
+        {
+          "t": 175,
+          "d": 363
+        },
+        {
+          "t": 550,
+          "d": 325
+        },
+        {
+          "t": 888,
+          "d": 300
+        },
+        {
+          "t": 1200,
+          "d": 475
+        },
+        {
+          "t": 1688,
+          "d": 450
+        },
+        {
+          "t": 2163,
+          "d": 200
+        },
+        {
+          "t": 2375,
+          "d": 88
+        },
+        {
+          "t": 2475,
+          "d": 188
+        },
+        {
+          "t": 2675,
+          "d": 125
+        },
+        {
+          "t": 2813,
+          "d": 63
+        },
+        {
+          "t": 2888,
+          "d": 475
+        },
+        {
+          "t": 3613,
+          "d": 338
+        },
+        {
+          "t": 3963,
+          "d": 100
+        },
+        {
+          "t": 4075,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럴 수 있지. 근데 저녁 피크가 여섯 시간 뒤야. 그 전에 뭐라도 해야 해.",
+      "en": "Could be. But the evening peak is six hours away, and we need something in place before then.",
+      "ms": 5712,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Could",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "evening",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "peak",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "away",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "something",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "place",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "then",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 200
+        },
+        {
+          "t": 275,
+          "d": 338
+        },
+        {
+          "t": 988,
+          "d": 88
+        },
+        {
+          "t": 1088,
+          "d": 38
+        },
+        {
+          "t": 1138,
+          "d": 375
+        },
+        {
+          "t": 1525,
+          "d": 313
+        },
+        {
+          "t": 1900,
+          "d": 175
+        },
+        {
+          "t": 2088,
+          "d": 300
+        },
+        {
+          "t": 2400,
+          "d": 275
+        },
+        {
+          "t": 2688,
+          "d": 438
+        },
+        {
+          "t": 3475,
+          "d": 200
+        },
+        {
+          "t": 3688,
+          "d": 138
+        },
+        {
+          "t": 3838,
+          "d": 188
+        },
+        {
+          "t": 4038,
+          "d": 313
+        },
+        {
+          "t": 4350,
+          "d": 75
+        },
+        {
+          "t": 4438,
+          "d": 288
+        },
+        {
+          "t": 4738,
+          "d": 300
+        },
+        {
+          "t": 5038,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 일단 한도는 올리되 임시방편으로만 하고, 그동안 힙 덤프를 떠보겠다고 해봐",
+      "en": "Okay, let's raise the limit as a stopgap. In the meantime, I'll grab a heap dump and see what's growing.",
+      "ms": 6336,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "raise",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "limit",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stopgap",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "In",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meantime",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "grab",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heap",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dump",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what's",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "growing",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 263
+        },
+        {
+          "t": 350,
+          "d": 313
+        },
+        {
+          "t": 675,
+          "d": 325
+        },
+        {
+          "t": 1013,
+          "d": 125
+        },
+        {
+          "t": 1150,
+          "d": 375
+        },
+        {
+          "t": 1538,
+          "d": 150
+        },
+        {
+          "t": 1700,
+          "d": 63
+        },
+        {
+          "t": 1775,
+          "d": 725
+        },
+        {
+          "t": 2863,
+          "d": 88
+        },
+        {
+          "t": 2963,
+          "d": 75
+        },
+        {
+          "t": 3050,
+          "d": 625
+        },
+        {
+          "t": 3688,
+          "d": 150
+        },
+        {
+          "t": 3850,
+          "d": 275
+        },
+        {
+          "t": 4138,
+          "d": 38
+        },
+        {
+          "t": 4188,
+          "d": 300
+        },
+        {
+          "t": 4500,
+          "d": 350
+        },
+        {
+          "t": 4875,
+          "d": 125
+        },
+        {
+          "t": 5013,
+          "d": 238
+        },
+        {
+          "t": 5263,
+          "d": 200
+        },
+        {
+          "t": 5475,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아. 근데 두 배로 올리면 노드에 다 안 들어가. 1.5기가가 최대야.",
+      "en": "Fine. But if we double it, the pods won't fit on the nodes. One and a half gigs is the max.",
+      "ms": 6552,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Fine",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "double",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pods",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fit",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nodes",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "One",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gigs",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "max",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 438
+        },
+        {
+          "t": 888,
+          "d": 100
+        },
+        {
+          "t": 988,
+          "d": 113
+        },
+        {
+          "t": 1113,
+          "d": 100
+        },
+        {
+          "t": 1225,
+          "d": 263
+        },
+        {
+          "t": 1488,
+          "d": 163
+        },
+        {
+          "t": 1913,
+          "d": 88
+        },
+        {
+          "t": 2013,
+          "d": 438
+        },
+        {
+          "t": 2463,
+          "d": 238
+        },
+        {
+          "t": 2713,
+          "d": 188
+        },
+        {
+          "t": 2913,
+          "d": 100
+        },
+        {
+          "t": 3013,
+          "d": 50
+        },
+        {
+          "t": 3063,
+          "d": 563
+        },
+        {
+          "t": 4000,
+          "d": 350
+        },
+        {
+          "t": 4363,
+          "d": 100
+        },
+        {
+          "t": 4463,
+          "d": 38
+        },
+        {
+          "t": 4513,
+          "d": 425
+        },
+        {
+          "t": 4950,
+          "d": 400
+        },
+        {
+          "t": 5425,
+          "d": 125
+        },
+        {
+          "t": 5563,
+          "d": 63
+        },
+        {
+          "t": 5638,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "1.5면 충분하다고, 메모리 사용량에 알림을 걸어두자고 해봐",
+      "en": "One and a half should buy us some time. Let's also set an alert at eighty percent memory usage.",
+      "ms": 6288,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "One",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "buy",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "some",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alert",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eighty",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "memory",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "usage",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 225
+        },
+        {
+          "t": 325,
+          "d": 100
+        },
+        {
+          "t": 438,
+          "d": 63
+        },
+        {
+          "t": 513,
+          "d": 325
+        },
+        {
+          "t": 850,
+          "d": 250
+        },
+        {
+          "t": 1113,
+          "d": 238
+        },
+        {
+          "t": 1363,
+          "d": 100
+        },
+        {
+          "t": 1475,
+          "d": 175
+        },
+        {
+          "t": 1663,
+          "d": 438
+        },
+        {
+          "t": 2475,
+          "d": 225
+        },
+        {
+          "t": 2713,
+          "d": 363
+        },
+        {
+          "t": 3088,
+          "d": 313
+        },
+        {
+          "t": 3413,
+          "d": 113
+        },
+        {
+          "t": 3538,
+          "d": 463
+        },
+        {
+          "t": 4025,
+          "d": 213
+        },
+        {
+          "t": 4263,
+          "d": 238
+        },
+        {
+          "t": 4513,
+          "d": 425
+        },
+        {
+          "t": 4950,
+          "d": 363
+        },
+        {
+          "t": 5325,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알았어. 알림은 내가 걸게. 원인 찾으면 바로 알려줘.",
+      "en": "Got it. I'll set up the alert. Ping me as soon as you find the cause.",
+      "ms": 4896,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Got",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alert",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Ping",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "soon",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "find",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cause",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 188
+        },
+        {
+          "t": 263,
+          "d": 200
+        },
+        {
+          "t": 863,
+          "d": 225
+        },
+        {
+          "t": 1100,
+          "d": 250
+        },
+        {
+          "t": 1363,
+          "d": 113
+        },
+        {
+          "t": 1475,
+          "d": 63
+        },
+        {
+          "t": 1538,
+          "d": 450
+        },
+        {
+          "t": 2350,
+          "d": 213
+        },
+        {
+          "t": 2575,
+          "d": 250
+        },
+        {
+          "t": 2838,
+          "d": 175
+        },
+        {
+          "t": 3025,
+          "d": 300
+        },
+        {
+          "t": 3338,
+          "d": 113
+        },
+        {
+          "t": 3463,
+          "d": 113
+        },
+        {
+          "t": 3588,
+          "d": 238
+        },
+        {
+          "t": 3825,
+          "d": 63
+        },
+        {
+          "t": 3888,
+          "d": 638
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "leak",
+      "kind": "word",
+      "meaning_ko": "누수, 새는 것; (정보) 유출",
+      "example": "We found a memory leak in the cache layer.",
+      "prompt_ko": "캐시 레이어에서 메모리 누수를 찾았다고 말해봐"
+    },
+    {
+      "term": "stopgap",
+      "kind": "word",
+      "meaning_ko": "임시방편, 땜질 처방",
+      "example": "This is only a stopgap until we fix the real problem.",
+      "prompt_ko": "진짜 문제를 고칠 때까지 이건 임시방편일 뿐이라고 말해봐"
+    },
+    {
+      "term": "bump",
+      "kind": "word",
+      "meaning_ko": "(수치를) 조금 올리다",
+      "example": "Can we bump the timeout to thirty seconds?",
+      "prompt_ko": "타임아웃을 30초로 올려도 되는지 물어봐"
+    },
+    {
+      "term": "buy us some time",
+      "kind": "phrase",
+      "meaning_ko": "시간을 좀 벌어주다",
+      "prompt_ko": "롤백하면 원인을 찾을 시간을 좀 벌 수 있다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-oom-pods/full.mp3",
+  "full_starts": [
+    0,
+    7080,
+    12000,
+    17712,
+    24048,
+    30600,
+    36888
+  ],
+  "generated_at": "2026-10-14T20:32:21.464Z"
+}

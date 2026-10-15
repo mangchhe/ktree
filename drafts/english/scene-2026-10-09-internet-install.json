@@ -1,0 +1,1814 @@
+{
+  "id": "2026-10-09-internet-install",
+  "situation_ko": "인터넷 설치 기사가 집에 왔다. 공유기를 거실에 놓고 싶은데 기사는 벽에 구멍을 뚫어야 한다며 집주인 허락을 먼저 받으라고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-BrianMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "설치 기사",
+      "meaning_ko": "안녕하세요, 인터넷 설치 왔습니다. 선은 어디로 들어와 있나요?",
+      "en": "Hi, I'm here for the internet installation. Where does the line come into the place?",
+      "ms": 5832,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "internet",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "installation",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Where",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "line",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "place",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 375
+        },
+        {
+          "t": 988,
+          "d": 163
+        },
+        {
+          "t": 1163,
+          "d": 275
+        },
+        {
+          "t": 1450,
+          "d": 125
+        },
+        {
+          "t": 1588,
+          "d": 75
+        },
+        {
+          "t": 1675,
+          "d": 450
+        },
+        {
+          "t": 2138,
+          "d": 775
+        },
+        {
+          "t": 3313,
+          "d": 175
+        },
+        {
+          "t": 3500,
+          "d": 175
+        },
+        {
+          "t": 3688,
+          "d": 125
+        },
+        {
+          "t": 3825,
+          "d": 438
+        },
+        {
+          "t": 4275,
+          "d": 250
+        },
+        {
+          "t": 4538,
+          "d": 263
+        },
+        {
+          "t": 4813,
+          "d": 113
+        },
+        {
+          "t": 4938,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "현관 옆 벽에 단자가 있는데 공유기는 거실에 놓고 싶다고 말해봐",
+      "en": "There's a socket by the front door, but I'd rather have the router in the living room.",
+      "ms": 4512,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "There's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "socket",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "front",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "door",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "router",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "living",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 225,
+          "d": 50
+        },
+        {
+          "t": 288,
+          "d": 400
+        },
+        {
+          "t": 700,
+          "d": 138
+        },
+        {
+          "t": 850,
+          "d": 88
+        },
+        {
+          "t": 950,
+          "d": 275
+        },
+        {
+          "t": 1225,
+          "d": 363
+        },
+        {
+          "t": 1988,
+          "d": 250
+        },
+        {
+          "t": 2250,
+          "d": 163
+        },
+        {
+          "t": 2425,
+          "d": 300
+        },
+        {
+          "t": 2725,
+          "d": 150
+        },
+        {
+          "t": 2875,
+          "d": 88
+        },
+        {
+          "t": 2963,
+          "d": 413
+        },
+        {
+          "t": 3388,
+          "d": 138
+        },
+        {
+          "t": 3525,
+          "d": 75
+        },
+        {
+          "t": 3613,
+          "d": 263
+        },
+        {
+          "t": 3875,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "설치 기사",
+      "meaning_ko": "그러면 선을 벽 안으로 통과시켜야 합니다. 구멍을 작게 하나 뚫어야 하는데, 집주인 허락 없이는 못 합니다.",
+      "en": "Then I'd have to run the cable through the wall. That means drilling a small hole, and I can't do that without the landlord's approval.",
+      "ms": 7824,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cable",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wall",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "means",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drilling",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "small",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hole",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "without",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "landlord's",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approval",
+          24
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 188
+        },
+        {
+          "t": 263,
+          "d": 125
+        },
+        {
+          "t": 400,
+          "d": 150
+        },
+        {
+          "t": 563,
+          "d": 100
+        },
+        {
+          "t": 675,
+          "d": 313
+        },
+        {
+          "t": 1000,
+          "d": 88
+        },
+        {
+          "t": 1100,
+          "d": 400
+        },
+        {
+          "t": 1513,
+          "d": 213
+        },
+        {
+          "t": 1738,
+          "d": 100
+        },
+        {
+          "t": 1850,
+          "d": 450
+        },
+        {
+          "t": 2688,
+          "d": 175
+        },
+        {
+          "t": 2875,
+          "d": 288
+        },
+        {
+          "t": 3175,
+          "d": 413
+        },
+        {
+          "t": 3600,
+          "d": 63
+        },
+        {
+          "t": 3675,
+          "d": 363
+        },
+        {
+          "t": 4050,
+          "d": 450
+        },
+        {
+          "t": 4788,
+          "d": 188
+        },
+        {
+          "t": 4988,
+          "d": 88
+        },
+        {
+          "t": 5088,
+          "d": 313
+        },
+        {
+          "t": 5413,
+          "d": 163
+        },
+        {
+          "t": 5588,
+          "d": 288
+        },
+        {
+          "t": 5888,
+          "d": 375
+        },
+        {
+          "t": 6275,
+          "d": 88
+        },
+        {
+          "t": 6375,
+          "d": 525
+        },
+        {
+          "t": 6913,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "구멍을 안 뚫고 할 수 있는 다른 방법이 있는지 물어봐",
+      "en": "Is there any way around that? I'd rather not drill anything if we can avoid it.",
+      "ms": 5136,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Is",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "way",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I'd",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drill",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "avoid",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 150
+        },
+        {
+          "t": 238,
+          "d": 263
+        },
+        {
+          "t": 513,
+          "d": 238
+        },
+        {
+          "t": 763,
+          "d": 175
+        },
+        {
+          "t": 950,
+          "d": 388
+        },
+        {
+          "t": 1350,
+          "d": 413
+        },
+        {
+          "t": 2163,
+          "d": 300
+        },
+        {
+          "t": 2525,
+          "d": 300
+        },
+        {
+          "t": 2838,
+          "d": 225
+        },
+        {
+          "t": 3075,
+          "d": 350
+        },
+        {
+          "t": 3438,
+          "d": 500
+        },
+        {
+          "t": 3950,
+          "d": 113
+        },
+        {
+          "t": 4075,
+          "d": 75
+        },
+        {
+          "t": 4163,
+          "d": 100
+        },
+        {
+          "t": 4263,
+          "d": 325
+        },
+        {
+          "t": 4588,
+          "d": 188
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "설치 기사",
+      "meaning_ko": "선을 바닥 몰딩 따라 돌릴 수는 있어요. 다만 7미터 정도 되고 문턱을 두 번 넘어갑니다.",
+      "en": "I can run it along the baseboard instead. It'd be about seven meters, though, and it crosses two doorways.",
+      "ms": 6936,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "along",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "baseboard",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It'd",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seven",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meters",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "crosses",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doorways",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 88
+        },
+        {
+          "t": 150,
+          "d": 188
+        },
+        {
+          "t": 350,
+          "d": 213
+        },
+        {
+          "t": 575,
+          "d": 163
+        },
+        {
+          "t": 763,
+          "d": 400
+        },
+        {
+          "t": 1175,
+          "d": 100
+        },
+        {
+          "t": 1288,
+          "d": 588
+        },
+        {
+          "t": 1888,
+          "d": 613
+        },
+        {
+          "t": 2863,
+          "d": 213
+        },
+        {
+          "t": 3088,
+          "d": 113
+        },
+        {
+          "t": 3213,
+          "d": 275
+        },
+        {
+          "t": 3500,
+          "d": 350
+        },
+        {
+          "t": 3863,
+          "d": 463
+        },
+        {
+          "t": 4350,
+          "d": 375
+        },
+        {
+          "t": 5013,
+          "d": 175
+        },
+        {
+          "t": 5200,
+          "d": 88
+        },
+        {
+          "t": 5300,
+          "d": 463
+        },
+        {
+          "t": 5775,
+          "d": 163
+        },
+        {
+          "t": 5950,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그렇게 하면 선에 발이 걸릴 것 같다고 걱정을 말하고, 선을 눌러 고정해줄 수 있냐고 부탁해봐",
+      "en": "I'm worried someone will trip over it. Could you tape it down along the edge?",
+      "ms": 4032,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worried",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "someone",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "will",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trip",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tape",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "along",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "edge",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 188
+        },
+        {
+          "t": 300,
+          "d": 300
+        },
+        {
+          "t": 600,
+          "d": 313
+        },
+        {
+          "t": 925,
+          "d": 88
+        },
+        {
+          "t": 1025,
+          "d": 213
+        },
+        {
+          "t": 1250,
+          "d": 225
+        },
+        {
+          "t": 1475,
+          "d": 200
+        },
+        {
+          "t": 2063,
+          "d": 113
+        },
+        {
+          "t": 2188,
+          "d": 100
+        },
+        {
+          "t": 2288,
+          "d": 225
+        },
+        {
+          "t": 2513,
+          "d": 88
+        },
+        {
+          "t": 2613,
+          "d": 213
+        },
+        {
+          "t": 2838,
+          "d": 263
+        },
+        {
+          "t": 3100,
+          "d": 63
+        },
+        {
+          "t": 3175,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "설치 기사",
+      "meaning_ko": "케이블 커버를 깔아드릴게요. 걸릴 일 없고, 나중에 집주인이 허락하면 다시 와서 벽 안으로 넣어드릴 수 있습니다.",
+      "en": "I'll lay a cable cover over it — nothing to catch your foot on. And if the landlord signs off later, I can come back and put it inside the wall.",
+      "ms": 8808,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I'll",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lay",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cable",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cover",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "nothing",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "catch",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "foot",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "landlord",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "signs",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "later",
+          19
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "inside",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wall",
+          29
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 125
+        },
+        {
+          "t": 200,
+          "d": 188
+        },
+        {
+          "t": 400,
+          "d": 63
+        },
+        {
+          "t": 475,
+          "d": 363
+        },
+        {
+          "t": 850,
+          "d": 350
+        },
+        {
+          "t": 1213,
+          "d": 275
+        },
+        {
+          "t": 1500,
+          "d": 213
+        },
+        {
+          "t": 2063,
+          "d": 338
+        },
+        {
+          "t": 2413,
+          "d": 75
+        },
+        {
+          "t": 2500,
+          "d": 263
+        },
+        {
+          "t": 2775,
+          "d": 113
+        },
+        {
+          "t": 2900,
+          "d": 238
+        },
+        {
+          "t": 3150,
+          "d": 325
+        },
+        {
+          "t": 3838,
+          "d": 113
+        },
+        {
+          "t": 3963,
+          "d": 125
+        },
+        {
+          "t": 4100,
+          "d": 100
+        },
+        {
+          "t": 4213,
+          "d": 475
+        },
+        {
+          "t": 4700,
+          "d": 338
+        },
+        {
+          "t": 5050,
+          "d": 213
+        },
+        {
+          "t": 5275,
+          "d": 488
+        },
+        {
+          "t": 6175,
+          "d": 138
+        },
+        {
+          "t": 6325,
+          "d": 150
+        },
+        {
+          "t": 6488,
+          "d": 200
+        },
+        {
+          "t": 6700,
+          "d": 350
+        },
+        {
+          "t": 7075,
+          "d": 138
+        },
+        {
+          "t": 7225,
+          "d": 163
+        },
+        {
+          "t": 7400,
+          "d": 100
+        },
+        {
+          "t": 7513,
+          "d": 413
+        },
+        {
+          "t": 7938,
+          "d": 75
+        },
+        {
+          "t": 8025,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "socket",
+      "meaning_ko": "(벽에 붙은) 단자, 콘센트",
+      "example": "There's a socket by the front door.",
+      "prompt_ko": "현관 옆 벽에 단자가 있다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "baseboard",
+      "meaning_ko": "(벽 아래쪽) 바닥 몰딩, 걸레받이",
+      "example": "I can run it along the baseboard instead.",
+      "prompt_ko": "선을 바닥 몰딩 따라 돌릴 수 있다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "drill",
+      "meaning_ko": "(구멍을) 뚫다",
+      "example": "I can't drill a hole without the landlord's approval.",
+      "prompt_ko": "집주인 허락 없이는 구멍을 못 뚫는다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "is there any way around that?",
+      "meaning_ko": "그걸 피해 갈 방법이 없을까요?",
+      "prompt_ko": "구멍을 안 뚫는 다른 방법이 있는지 물어봐",
+      "keywords": [
+        {
+          "word": "around",
+          "meaning_ko": "여기서는 '피해서, 우회해서' — 문제를 돌아가는 것"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "trip over it",
+      "meaning_ko": "그것에 발이 걸려 넘어지다",
+      "prompt_ko": "누가 선에 발이 걸릴 것 같아 걱정이라고 말해봐",
+      "keywords": [
+        {
+          "word": "trip",
+          "meaning_ko": "발이 걸려 비틀거리다 (여행 trip 과 같은 철자, 뜻은 완전히 다르다)"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "sign off on it",
+      "meaning_ko": "그것을 승인하다, 허락해주다",
+      "prompt_ko": "집주인이 나중에 허락하면 다시 와달라고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-internet-install/full.mp3",
+  "full_starts": [
+    0,
+    5832,
+    10344,
+    18168,
+    23304,
+    30240,
+    34272
+  ],
+  "generated_at": "2026-10-08T20:35:00.757Z"
+}

@@ -137,7 +137,22 @@ node eng-gen.mjs drafts/english/scene-<날짜>-<슬러그>.json
 node eng-gen.mjs drafts/english/article-<날짜>.json
 ```
 
-## 3. 독백 프롬프트 2~3개 (오픽)
+## 3. 독백 프롬프트 4~6개 (오픽) — 최우선
+
+🔴 **사용자가 실제 시험에서 15문항 중 질문을 하나도 못 알아들었다.** 답을 못 한 게
+아니라 **뭘 묻는지를 몰랐다.** 단어 몇 개만 들렸다고 한다.
+
+그러니 이 단계가 장면·기사보다 우선이다. 시간이 모자라면 여기를 먼저 채운다.
+
+· 문항은 **귀로만** 나간다(`prompts/<id>.mp3`). 그래서 `question_en` 은
+  실제 시험처럼 **말로 들었을 때 파악되는 문장**이어야 한다 — 글로 읽으면 쉬운데
+  들으면 안 들리는 긴 수식어·관계절을 피한다.
+· 오픽 질문은 **틀이 정해져 있다.** 그 틀을 반복 노출시켜야 2초 안에 파악된다:
+  `I'd like to know about…` / `Tell me about…` / `Can you describe…` /
+  `What do you usually do when…` / `Let's role-play. Imagine…` /
+  `Have you ever had a problem with…` / `How has … changed over the years?`
+  한 묶음 안에서 이 틀을 **서로 다르게** 쓴다.
+· 유형이 겹치지 않게 뽑되, 재고가 가장 적은 유형부터 채운다.
 
 **사용자는 오픽 점수를 목표로 한다.** 장면은 한 문장짜리 턴을 훈련하는데,
 오픽은 **혼자 60~90초를 말하는 시험**이고 ACTFL 등급을 가르는 것은 text type 이다 —

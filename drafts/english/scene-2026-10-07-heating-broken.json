@@ -1,0 +1,1362 @@
+{
+  "id": "2026-10-07-heating-broken",
+  "situation_ko": "어제부터 집 난방이 안 된다. 집주인에게 전화하니 수리 기사는 금요일에나 온다며 대신 전기 난로를 주겠다고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "집주인",
+      "meaning_ko": "안녕하세요, 마크예요. 난방 때문에 문자 주셨죠?",
+      "en": "Hi, this is Mark. You texted me about the heating?",
+      "ms": 2976,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "this",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Mark",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "texted",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heating",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 163
+        },
+        {
+          "t": 288,
+          "d": 175
+        },
+        {
+          "t": 463,
+          "d": 100
+        },
+        {
+          "t": 563,
+          "d": 400
+        },
+        {
+          "t": 1363,
+          "d": 63
+        },
+        {
+          "t": 1425,
+          "d": 363
+        },
+        {
+          "t": 1800,
+          "d": 100
+        },
+        {
+          "t": 1900,
+          "d": 238
+        },
+        {
+          "t": 2150,
+          "d": 50
+        },
+        {
+          "t": 2200,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "어제부터 난방이 안 돼서 집이 꽁꽁 얼 것 같다고 말해봐",
+      "en": "Yes. The heating stopped working yesterday, and the apartment is freezing.",
+      "ms": 4584,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heating",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stopped",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "working",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "yesterday",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "apartment",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "freezing",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 613
+        },
+        {
+          "t": 1063,
+          "d": 38
+        },
+        {
+          "t": 1113,
+          "d": 375
+        },
+        {
+          "t": 1500,
+          "d": 325
+        },
+        {
+          "t": 1825,
+          "d": 288
+        },
+        {
+          "t": 2125,
+          "d": 613
+        },
+        {
+          "t": 2750,
+          "d": 275
+        },
+        {
+          "t": 3038,
+          "d": 63
+        },
+        {
+          "t": 3100,
+          "d": 450
+        },
+        {
+          "t": 3563,
+          "d": 138
+        },
+        {
+          "t": 3700,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "이런. 수리 기사를 보낼 수는 있는데, 제일 빨라야 금요일이에요.",
+      "en": "Oh no. I can get a repair guy out there, but the earliest he can come is Friday.",
+      "ms": 4728,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "repair",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "guy",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "earliest",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "he",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 325
+        },
+        {
+          "t": 888,
+          "d": 75
+        },
+        {
+          "t": 975,
+          "d": 88
+        },
+        {
+          "t": 1075,
+          "d": 113
+        },
+        {
+          "t": 1188,
+          "d": 25
+        },
+        {
+          "t": 1213,
+          "d": 388
+        },
+        {
+          "t": 1600,
+          "d": 200
+        },
+        {
+          "t": 1800,
+          "d": 150
+        },
+        {
+          "t": 1963,
+          "d": 300
+        },
+        {
+          "t": 2513,
+          "d": 125
+        },
+        {
+          "t": 2638,
+          "d": 88
+        },
+        {
+          "t": 2738,
+          "d": 525
+        },
+        {
+          "t": 3275,
+          "d": 75
+        },
+        {
+          "t": 3363,
+          "d": 113
+        },
+        {
+          "t": 3475,
+          "d": 175
+        },
+        {
+          "t": 3650,
+          "d": 88
+        },
+        {
+          "t": 3738,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "금요일은 사흘이나 남았다고, 더 빨리 올 수 있는 다른 사람은 없는지 물어봐",
+      "en": "Friday is three days away. Is there anyone else who could come sooner?",
+      "ms": 4320,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Friday",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "away",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anyone",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "who",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sooner",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 150,
+          "d": 450
+        },
+        {
+          "t": 613,
+          "d": 275
+        },
+        {
+          "t": 900,
+          "d": 288
+        },
+        {
+          "t": 1200,
+          "d": 250
+        },
+        {
+          "t": 1463,
+          "d": 425
+        },
+        {
+          "t": 2275,
+          "d": 138
+        },
+        {
+          "t": 2413,
+          "d": 213
+        },
+        {
+          "t": 2638,
+          "d": 325
+        },
+        {
+          "t": 2975,
+          "d": 250
+        },
+        {
+          "t": 3225,
+          "d": 88
+        },
+        {
+          "t": 3325,
+          "d": 113
+        },
+        {
+          "t": 3438,
+          "d": 138
+        },
+        {
+          "t": 3588,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "딱히 없어요, 지금이 바쁜 철이라서요. 대신 오늘 밤에 전기 난로를 갖다 드릴 수 있어요.",
+      "en": "Not really, it's their busy season. But I could drop off a space heater tonight.",
+      "ms": 4920,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Not",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "it's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "their",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "busy",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "season",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drop",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "space",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heater",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tonight",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 225
+        },
+        {
+          "t": 325,
+          "d": 425
+        },
+        {
+          "t": 1113,
+          "d": 100
+        },
+        {
+          "t": 1213,
+          "d": 163
+        },
+        {
+          "t": 1388,
+          "d": 363
+        },
+        {
+          "t": 1763,
+          "d": 500
+        },
+        {
+          "t": 2675,
+          "d": 75
+        },
+        {
+          "t": 2750,
+          "d": 50
+        },
+        {
+          "t": 2800,
+          "d": 125
+        },
+        {
+          "t": 2925,
+          "d": 375
+        },
+        {
+          "t": 3313,
+          "d": 213
+        },
+        {
+          "t": 3525,
+          "d": 50
+        },
+        {
+          "t": 3588,
+          "d": 375
+        },
+        {
+          "t": 3963,
+          "d": 213
+        },
+        {
+          "t": 4175,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "난로는 고맙게 받겠다고 하고, 그걸 쓰면 전기료가 더 나오니 그 차액은 내달라고 해봐",
+      "en": "Okay, I'd appreciate that. But it'll raise my electric bill, so could you cover the difference?",
+      "ms": 6504,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "appreciate",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it'll",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "raise",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "electric",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bill",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cover",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "difference",
+          15
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 363
+        },
+        {
+          "t": 913,
+          "d": 175
+        },
+        {
+          "t": 1100,
+          "d": 588
+        },
+        {
+          "t": 1700,
+          "d": 325
+        },
+        {
+          "t": 2425,
+          "d": 175
+        },
+        {
+          "t": 2688,
+          "d": 225
+        },
+        {
+          "t": 2925,
+          "d": 263
+        },
+        {
+          "t": 3188,
+          "d": 113
+        },
+        {
+          "t": 3313,
+          "d": 438
+        },
+        {
+          "t": 3750,
+          "d": 338
+        },
+        {
+          "t": 4613,
+          "d": 338
+        },
+        {
+          "t": 4950,
+          "d": 138
+        },
+        {
+          "t": 5100,
+          "d": 88
+        },
+        {
+          "t": 5200,
+          "d": 288
+        },
+        {
+          "t": 5500,
+          "d": 75
+        },
+        {
+          "t": 5575,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그건 맞는 말이네요. 고지서 사진만 보내주시면 다음 달 월세에서 빼드릴게요.",
+      "en": "That's fair. Just send me a photo of the bill, and I'll take it off next month's rent.",
+      "ms": 4824,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "photo",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bill",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month's",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rent",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 450
+        },
+        {
+          "t": 1125,
+          "d": 113
+        },
+        {
+          "t": 1238,
+          "d": 113
+        },
+        {
+          "t": 1350,
+          "d": 88
+        },
+        {
+          "t": 1438,
+          "d": 38
+        },
+        {
+          "t": 1475,
+          "d": 400
+        },
+        {
+          "t": 1875,
+          "d": 88
+        },
+        {
+          "t": 1963,
+          "d": 75
+        },
+        {
+          "t": 2050,
+          "d": 388
+        },
+        {
+          "t": 2875,
+          "d": 63
+        },
+        {
+          "t": 2938,
+          "d": 113
+        },
+        {
+          "t": 3063,
+          "d": 225
+        },
+        {
+          "t": 3288,
+          "d": 63
+        },
+        {
+          "t": 3350,
+          "d": 288
+        },
+        {
+          "t": 3650,
+          "d": 250
+        },
+        {
+          "t": 3900,
+          "d": 238
+        },
+        {
+          "t": 4138,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "freezing",
+      "meaning_ko": "몹시 추운, 얼 것 같은",
+      "example": "The apartment is freezing."
+    },
+    {
+      "kind": "word",
+      "term": "sooner",
+      "meaning_ko": "더 빨리, 더 일찍",
+      "example": "Is there anyone else who could come sooner?"
+    },
+    {
+      "kind": "word",
+      "term": "space heater",
+      "meaning_ko": "(소형) 전기 난로",
+      "example": "I could drop off a space heater tonight."
+    },
+    {
+      "kind": "phrase",
+      "term": "drop off",
+      "meaning_ko": "(물건을) 갖다 주다, 맡기고 가다",
+      "prompt_ko": "오늘 저녁에 그걸 집 앞에 갖다 주겠다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "cover the difference",
+      "meaning_ko": "차액을 부담하다",
+      "prompt_ko": "늘어난 만큼의 비용은 상대가 내달라고 말해봐",
+      "keywords": [
+        {
+          "word": "difference",
+          "meaning_ko": "차액, 차이"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-heating-broken/full.mp3",
+  "full_starts": [
+    0,
+    2976,
+    7560,
+    12288,
+    16608,
+    21528,
+    28032
+  ],
+  "generated_at": "2026-10-06T20:35:45.230Z"
+}

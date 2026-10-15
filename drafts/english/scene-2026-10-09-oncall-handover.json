@@ -1,0 +1,1881 @@
+{
+  "id": "2026-10-09-oncall-handover",
+  "situation_ko": "해외 팀과 온콜 인수인계 콜. 전임자는 '조용한 주였다'고 하는데, 같은 알람이 새벽마다 떴다 사라진 흔적이 남아 있다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "전임 온콜 담당",
+      "meaning_ko": "인수인계 할게요. 제 쪽은 조용한 주였어요 — 호출 한 번 안 받았습니다.",
+      "en": "Handing over to you. It was a quiet week on my end — I didn't get paged once.",
+      "ms": 5232,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Handing",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quiet",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          11
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "didn't",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paged",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "once",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 313
+        },
+        {
+          "t": 400,
+          "d": 263
+        },
+        {
+          "t": 675,
+          "d": 150
+        },
+        {
+          "t": 838,
+          "d": 313
+        },
+        {
+          "t": 1538,
+          "d": 63
+        },
+        {
+          "t": 1613,
+          "d": 138
+        },
+        {
+          "t": 1763,
+          "d": 63
+        },
+        {
+          "t": 1838,
+          "d": 400
+        },
+        {
+          "t": 2250,
+          "d": 238
+        },
+        {
+          "t": 2500,
+          "d": 88
+        },
+        {
+          "t": 2600,
+          "d": 200
+        },
+        {
+          "t": 2813,
+          "d": 350
+        },
+        {
+          "t": 3425,
+          "d": 113
+        },
+        {
+          "t": 3550,
+          "d": 238
+        },
+        {
+          "t": 3800,
+          "d": 175
+        },
+        {
+          "t": 3988,
+          "d": 400
+        },
+        {
+          "t": 4400,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "조용했다는 건 좋지만, 새벽 3시쯤 같은 알람이 떴다가 스스로 사라진 기록을 봤다고 짚어봐",
+      "en": "Good to hear, but I noticed the same alert firing around three in the morning and then clearing on its own.",
+      "ms": 6024,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hear",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "noticed",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alert",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "firing",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "then",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clearing",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "its",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "own",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 188
+        },
+        {
+          "t": 288,
+          "d": 88
+        },
+        {
+          "t": 388,
+          "d": 488
+        },
+        {
+          "t": 1075,
+          "d": 238
+        },
+        {
+          "t": 1325,
+          "d": 75
+        },
+        {
+          "t": 1413,
+          "d": 425
+        },
+        {
+          "t": 1850,
+          "d": 63
+        },
+        {
+          "t": 1925,
+          "d": 275
+        },
+        {
+          "t": 2213,
+          "d": 325
+        },
+        {
+          "t": 2550,
+          "d": 413
+        },
+        {
+          "t": 2975,
+          "d": 325
+        },
+        {
+          "t": 3313,
+          "d": 325
+        },
+        {
+          "t": 3650,
+          "d": 100
+        },
+        {
+          "t": 3763,
+          "d": 50
+        },
+        {
+          "t": 3825,
+          "d": 463
+        },
+        {
+          "t": 4300,
+          "d": 125
+        },
+        {
+          "t": 4438,
+          "d": 163
+        },
+        {
+          "t": 4613,
+          "d": 400
+        },
+        {
+          "t": 5025,
+          "d": 113
+        },
+        {
+          "t": 5150,
+          "d": 163
+        },
+        {
+          "t": 5325,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "전임 온콜 담당",
+      "meaning_ko": "아, 그거요. 스스로 복구되니까 그냥 노이즈로 봤어요.",
+      "en": "Oh, that one. It recovers by itself, so I've been treating it as noise.",
+      "ms": 4704,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "recovers",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "itself",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I've",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "treating",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "noise",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 263
+        },
+        {
+          "t": 450,
+          "d": 325
+        },
+        {
+          "t": 1163,
+          "d": 100
+        },
+        {
+          "t": 1275,
+          "d": 513
+        },
+        {
+          "t": 1800,
+          "d": 163
+        },
+        {
+          "t": 1975,
+          "d": 525
+        },
+        {
+          "t": 2525,
+          "d": 175
+        },
+        {
+          "t": 2713,
+          "d": 150
+        },
+        {
+          "t": 2875,
+          "d": 150
+        },
+        {
+          "t": 3038,
+          "d": 388
+        },
+        {
+          "t": 3438,
+          "d": 138
+        },
+        {
+          "t": 3588,
+          "d": 150
+        },
+        {
+          "t": 3750,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "스스로 복구되는 알람이 더 위험하다고 말하고, 그 시간에 배치 잡이 도는지 물어봐",
+      "en": "That's the kind I worry about, honestly — it hides the real trend. Is there a batch job running at that hour?",
+      "ms": 6528,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "kind",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worry",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "honestly",
+          6
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "it",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hides",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "real",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trend",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "batch",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "job",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "running",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hour",
+          20
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 213
+        },
+        {
+          "t": 288,
+          "d": 88
+        },
+        {
+          "t": 388,
+          "d": 288
+        },
+        {
+          "t": 688,
+          "d": 100
+        },
+        {
+          "t": 800,
+          "d": 350
+        },
+        {
+          "t": 1163,
+          "d": 400
+        },
+        {
+          "t": 1588,
+          "d": 588
+        },
+        {
+          "t": 2200,
+          "d": 88
+        },
+        {
+          "t": 2300,
+          "d": 363
+        },
+        {
+          "t": 2675,
+          "d": 88
+        },
+        {
+          "t": 2775,
+          "d": 263
+        },
+        {
+          "t": 3050,
+          "d": 513
+        },
+        {
+          "t": 3925,
+          "d": 163
+        },
+        {
+          "t": 4100,
+          "d": 175
+        },
+        {
+          "t": 4288,
+          "d": 88
+        },
+        {
+          "t": 4388,
+          "d": 300
+        },
+        {
+          "t": 4700,
+          "d": 313
+        },
+        {
+          "t": 5025,
+          "d": 338
+        },
+        {
+          "t": 5375,
+          "d": 113
+        },
+        {
+          "t": 5500,
+          "d": 200
+        },
+        {
+          "t": 5713,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "전임 온콜 담당",
+      "meaning_ko": "맞아요, 야간 리포트 잡이 돌아요. 그게 커넥션 풀을 꽤 먹습니다.",
+      "en": "There is — the nightly reporting job. It does eat up a fair chunk of the connection pool.",
+      "ms": 5280,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "There",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nightly",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reporting",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "job",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "does",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eat",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chunk",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "connection",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pool",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 263
+        },
+        {
+          "t": 538,
+          "d": 125
+        },
+        {
+          "t": 675,
+          "d": 388
+        },
+        {
+          "t": 1075,
+          "d": 538
+        },
+        {
+          "t": 1625,
+          "d": 413
+        },
+        {
+          "t": 2400,
+          "d": 100
+        },
+        {
+          "t": 2513,
+          "d": 238
+        },
+        {
+          "t": 2763,
+          "d": 150
+        },
+        {
+          "t": 2925,
+          "d": 125
+        },
+        {
+          "t": 3063,
+          "d": 75
+        },
+        {
+          "t": 3150,
+          "d": 288
+        },
+        {
+          "t": 3450,
+          "d": 313
+        },
+        {
+          "t": 3775,
+          "d": 88
+        },
+        {
+          "t": 3875,
+          "d": 88
+        },
+        {
+          "t": 3975,
+          "d": 538
+        },
+        {
+          "t": 4525,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그렇다면 노이즈가 아니라 용량 문제라고 정리하고, 티켓을 하나 열어두자고 제안해봐",
+      "en": "Then it's not noise — it's a capacity problem waiting to bite us. Let me open a ticket so it doesn't get lost on the next handover.",
+      "ms": 8280,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "noise",
+          3
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "it's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "capacity",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "waiting",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bite",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "open",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ticket",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lost",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "handover",
+          25
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 150
+        },
+        {
+          "t": 238,
+          "d": 163
+        },
+        {
+          "t": 413,
+          "d": 250
+        },
+        {
+          "t": 675,
+          "d": 600
+        },
+        {
+          "t": 1525,
+          "d": 175
+        },
+        {
+          "t": 1713,
+          "d": 63
+        },
+        {
+          "t": 1788,
+          "d": 575
+        },
+        {
+          "t": 2375,
+          "d": 463
+        },
+        {
+          "t": 2850,
+          "d": 325
+        },
+        {
+          "t": 3188,
+          "d": 113
+        },
+        {
+          "t": 3313,
+          "d": 275
+        },
+        {
+          "t": 3600,
+          "d": 338
+        },
+        {
+          "t": 4313,
+          "d": 125
+        },
+        {
+          "t": 4450,
+          "d": 150
+        },
+        {
+          "t": 4613,
+          "d": 250
+        },
+        {
+          "t": 4875,
+          "d": 75
+        },
+        {
+          "t": 4963,
+          "d": 400
+        },
+        {
+          "t": 5375,
+          "d": 250
+        },
+        {
+          "t": 5638,
+          "d": 88
+        },
+        {
+          "t": 5738,
+          "d": 300
+        },
+        {
+          "t": 6050,
+          "d": 213
+        },
+        {
+          "t": 6275,
+          "d": 450
+        },
+        {
+          "t": 6750,
+          "d": 138
+        },
+        {
+          "t": 6900,
+          "d": 75
+        },
+        {
+          "t": 6988,
+          "d": 275
+        },
+        {
+          "t": 7275,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "전임 온콜 담당",
+      "meaning_ko": "그렇게 하죠. 근데 그 잡은 데이터팀 소유라서 우리가 바로 손대긴 어려워요 — 먼저 그쪽에 걸어둬야 합니다.",
+      "en": "Fair enough. Just a heads-up, though — that job belongs to the data team, so we can't touch it directly. You'll have to loop them in first.",
+      "ms": 7872,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heads-up",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          5
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "that",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "job",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "belongs",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "data",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "touch",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "directly",
+          18
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You'll",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "loop",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          25
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 225
+        },
+        {
+          "t": 313,
+          "d": 450
+        },
+        {
+          "t": 1150,
+          "d": 238
+        },
+        {
+          "t": 1400,
+          "d": 50
+        },
+        {
+          "t": 1463,
+          "d": 513
+        },
+        {
+          "t": 2000,
+          "d": 163
+        },
+        {
+          "t": 2188,
+          "d": 225
+        },
+        {
+          "t": 2425,
+          "d": 250
+        },
+        {
+          "t": 2688,
+          "d": 375
+        },
+        {
+          "t": 3075,
+          "d": 113
+        },
+        {
+          "t": 3200,
+          "d": 113
+        },
+        {
+          "t": 3325,
+          "d": 288
+        },
+        {
+          "t": 3625,
+          "d": 300
+        },
+        {
+          "t": 3950,
+          "d": 150
+        },
+        {
+          "t": 4113,
+          "d": 113
+        },
+        {
+          "t": 4238,
+          "d": 250
+        },
+        {
+          "t": 4500,
+          "d": 250
+        },
+        {
+          "t": 4763,
+          "d": 88
+        },
+        {
+          "t": 4863,
+          "d": 650
+        },
+        {
+          "t": 5888,
+          "d": 113
+        },
+        {
+          "t": 6013,
+          "d": 175
+        },
+        {
+          "t": 6200,
+          "d": 125
+        },
+        {
+          "t": 6338,
+          "d": 263
+        },
+        {
+          "t": 6613,
+          "d": 163
+        },
+        {
+          "t": 6788,
+          "d": 113
+        },
+        {
+          "t": 6913,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "handover",
+      "meaning_ko": "인수인계",
+      "example": "It doesn't get lost on the next handover.",
+      "prompt_ko": "다음 인수인계에서 이게 묻히지 않게 하자고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "noise",
+      "meaning_ko": "(모니터링에서) 의미 없는 알람, 잡음",
+      "example": "I've been treating it as noise.",
+      "prompt_ko": "그 알람을 그냥 잡음으로 봐왔다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "capacity",
+      "meaning_ko": "용량, 처리 여력",
+      "example": "It's a capacity problem, not noise.",
+      "prompt_ko": "노이즈가 아니라 용량 문제라고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "paged",
+      "meaning_ko": "(장애로) 호출받다",
+      "example": "I didn't get paged once.",
+      "prompt_ko": "이번 주에 한 번도 호출 안 받았다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "clearing on its own",
+      "meaning_ko": "(알람이) 스스로 해제되다",
+      "prompt_ko": "같은 알람이 떴다가 스스로 사라졌다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "eat up a fair chunk of",
+      "meaning_ko": "~을 꽤 많이 잡아먹다",
+      "prompt_ko": "그 잡이 커넥션 풀을 꽤 먹는다고 말해봐",
+      "keywords": [
+        {
+          "word": "chunk",
+          "meaning_ko": "덩어리, 상당한 몫 — a fair chunk 는 '꽤 많은 양'"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "loop them in",
+      "meaning_ko": "그쪽을 논의에 끼워 넣다, 공유하다",
+      "prompt_ko": "먼저 데이터팀을 끼워 넣어야 한다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "waiting to bite us",
+      "meaning_ko": "언젠가 우리를 물 (터질) 문제",
+      "prompt_ko": "언젠가 터질 문제라고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-oncall-handover/full.mp3",
+  "full_starts": [
+    0,
+    5232,
+    11256,
+    15960,
+    22488,
+    27768,
+    36048
+  ],
+  "generated_at": "2026-10-08T20:35:53.219Z"
+}

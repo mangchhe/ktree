@@ -1,0 +1,41 @@
+[
+  {
+    "kind": "describe", "topic": "비즈니스", "level": 3, "seconds": 75,
+    "question_en": "Describe the place where you work. What does your office or workspace look like, and what do you like or dislike about it?",
+    "hint_ko": "① 어디에 있고 첫인상이 어떤지 한 줄 ② 공간 배치를 바깥→안 순서로(입구·자리·회의실) ③ 좋은 점 하나·아쉬운 점 하나 ④ 그래서 일하는 방식이 어떻게 달라지는지로 마무리",
+    "model_en": "I work in an office building near a subway station, about thirty minutes from my place. From the outside, it's a pretty ordinary glass building, but our floor feels a lot more relaxed than you'd expect.\n\nWhen you walk in, the first thing you see is a small kitchen area with a coffee machine, and that's basically where everyone gathers in the morning. Past that, there's an open space with long desks, and along the windows there are a few meeting rooms and a couple of phone booths for calls.\n\nWhat I like most is the natural light. My desk is right by the window, so I don't feel stuck inside all day. The downside is that it can get really noisy, especially when two or three people are on calls at the same time.\n\nSo what I usually do is grab a phone booth or put on my headphones when I need to focus. Overall, it's not a fancy office, but it's comfortable, and I actually don't mind going in.",
+    "model_note_ko": "묘사형은 '전체 인상 → 공간을 순서대로 → 장단점 → 내 생활과 연결' 네 문단. 공간은 입구에서 안쪽으로 한 방향으로 훑어야 듣는 사람이 그림을 그린다. 'The first thing you see is', 'Past that', 'The downside is that' 이 문단 안의 이동과 전환을 이끈다. 마지막에 '그래서 나는 어떻게 한다'를 붙이면 묘사가 나열에서 문단으로 선다.",
+    "phrases": [
+      { "term": "the first thing you see is", "meaning_ko": "들어가면 제일 먼저 보이는 건" },
+      { "term": "past that", "meaning_ko": "그걸 지나면" },
+      { "term": "the downside is that", "meaning_ko": "아쉬운 점은 ~라는 것" },
+      { "term": "I actually don't mind", "meaning_ko": "사실 별로 싫지 않다" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "여가", "level": 2, "seconds": 75,
+    "question_en": "You said you like going to parks. Which park do you usually go to, and what do you typically do there?",
+    "hint_ko": "① 어느 공원인지·얼마나 자주 가는지 ② 가면 보통 하는 일을 순서대로(도착→활동→마무리) ③ 계절이나 날씨에 따라 달라지는 점 ④ 왜 그게 나한테 좋은지로 마무리",
+    "model_en": "There's a big park along the river, about ten minutes' walk from my place, and I go there two or three times a week, usually in the evening after work.\n\nWhat I usually do is start with a slow walk along the river path to clear my head. After about twenty minutes, I'll stop at a bench near the water and just sit there for a while, sometimes with a podcast, sometimes with nothing at all. On my way back, I often grab a cold drink from the convenience store by the entrance.\n\nIt changes a bit depending on the season, though. In spring and fall, I stay longer and sometimes bring a mat to lie on the grass. In summer, I go later at night because it's way too hot before sunset.\n\nThe reason I keep going back is that it's the only time in my day when I'm not looking at a screen. Even half an hour there makes me feel a lot calmer.",
+    "model_note_ko": "습관형은 '얼마나 자주 → 보통의 순서 → 달라지는 경우 → 이유' 네 문단. 핵심은 현재형과 'I'll', 'usually', 'often' 같은 빈도 표현으로 '반복'을 말하는 것. 'depending on the season, though' 로 변형을 넣으면 단조로운 루틴이 문단 두 개로 늘어난다. 'The reason I keep ~ is that' 으로 닫으면 이유가 하나의 문단이 된다.",
+    "phrases": [
+      { "term": "what I usually do is", "meaning_ko": "내가 보통 하는 건" },
+      { "term": "to clear my head", "meaning_ko": "머리를 식히려고" },
+      { "term": "it changes depending on", "meaning_ko": "~에 따라 달라진다" },
+      { "term": "the reason I keep going back is that", "meaning_ko": "계속 다시 가는 이유는" }
+    ]
+  },
+  {
+    "kind": "past", "topic": "일상", "level": 3, "seconds": 90,
+    "question_en": "Tell me about a time something broke or went wrong at home. What happened, what did you do about it, and how did it end?",
+    "hint_ko": "① 언제·무엇이 고장 났는지 배경 ② 처음 알아챈 순간과 상황이 나빠지는 과정 ③ 직접 해보거나 사람을 불러 해결한 전환점 ④ 그 뒤로 달라진 점으로 회고",
+    "model_en": "Last winter, on one of the coldest nights of the year, the boiler in my apartment suddenly stopped working. It was around eleven at night, and I only noticed because the shower went cold halfway through.\n\nAt first, I thought it was just a small glitch, so I turned it off and on again a few times. Nothing happened. Then I saw an error code on the panel, and by that point the whole place was starting to get really cold.\n\nWhat I ended up doing was calling the building manager, who gave me the number of a repair service that worked late. The technician came the next morning and found that a part had frozen. It took him about an hour, and luckily it wasn't too expensive.\n\nLooking back, the worst part wasn't the cold, it was not knowing who to call. Since then, I've saved the repair number on my phone, and I check the boiler before winter starts.",
+    "model_note_ko": "과거 경험형은 '배경 → 악화 → 해결(전환점) → 교훈' 네 문단. 'At first, I thought', 'by that point' 으로 시간이 흐르며 나빠지는 걸 보여주고, 'What I ended up doing was' 가 전환점을 알린다. 회고 문단에서 'Since then' 으로 현재의 습관과 이어 붙이면 과거 시제와 현재완료가 섞여 문단 수준의 시제 운용을 보여준다.",
+    "phrases": [
+      { "term": "at first, I thought", "meaning_ko": "처음엔 ~인 줄 알았다" },
+      { "term": "by that point", "meaning_ko": "그쯤 되니" },
+      { "term": "what I ended up doing was", "meaning_ko": "결국 내가 한 건" },
+      { "term": "since then", "meaning_ko": "그 뒤로는" }
+    ]
+  }
+]

@@ -1,0 +1,1488 @@
+{
+  "id": "2026-10-08-dry-cleaning",
+  "situation_ko": "동네 세탁소에 맡긴 재킷을 찾으러 왔는데 얼룩이 그대로 남아 있다. 직원은 원래 그런 얼룩이라 안 빠진다고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "세탁소 직원",
+      "meaning_ko": "안녕하세요! 재킷 찾으러 오셨네요, 여기 있습니다.",
+      "en": "Hi there! You're here for the jacket, right? Here you go.",
+      "ms": 4032,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          "! ",
+          null
+        ],
+        [
+          "You're",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jacket",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "right",
+          7
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Here",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 375,
+          "d": 375
+        },
+        {
+          "t": 1100,
+          "d": 125
+        },
+        {
+          "t": 1238,
+          "d": 313
+        },
+        {
+          "t": 1563,
+          "d": 113
+        },
+        {
+          "t": 1688,
+          "d": 75
+        },
+        {
+          "t": 1763,
+          "d": 438
+        },
+        {
+          "t": 2213,
+          "d": 363
+        },
+        {
+          "t": 3038,
+          "d": 125
+        },
+        {
+          "t": 3163,
+          "d": 88
+        },
+        {
+          "t": 3263,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "소매에 얼룩이 그대로 있다고, 안 빠진 것 같다고 말해봐",
+      "en": "Wait, there's still a stain on the sleeve. It doesn't look like it came out.",
+      "ms": 4152,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Wait",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "there's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stain",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sleeve",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "came",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 300
+        },
+        {
+          "t": 688,
+          "d": 150
+        },
+        {
+          "t": 850,
+          "d": 200
+        },
+        {
+          "t": 1050,
+          "d": 50
+        },
+        {
+          "t": 1113,
+          "d": 375
+        },
+        {
+          "t": 1488,
+          "d": 88
+        },
+        {
+          "t": 1588,
+          "d": 50
+        },
+        {
+          "t": 1638,
+          "d": 563
+        },
+        {
+          "t": 2600,
+          "d": 63
+        },
+        {
+          "t": 2663,
+          "d": 200
+        },
+        {
+          "t": 2863,
+          "d": 125
+        },
+        {
+          "t": 2988,
+          "d": 175
+        },
+        {
+          "t": 3163,
+          "d": 63
+        },
+        {
+          "t": 3238,
+          "d": 238
+        },
+        {
+          "t": 3475,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 그거요. 저희가 해봤는데 그 얼룩은 원단에 너무 깊이 배서 안 빠지더라고요.",
+      "en": "Oh, that one. We tried, but that stain had really set into the fabric — it just wouldn't lift.",
+      "ms": 6816,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tried",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stain",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fabric",
+          13
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wouldn't",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lift",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 413
+        },
+        {
+          "t": 788,
+          "d": 238
+        },
+        {
+          "t": 1038,
+          "d": 388
+        },
+        {
+          "t": 1775,
+          "d": 100
+        },
+        {
+          "t": 1888,
+          "d": 538
+        },
+        {
+          "t": 2625,
+          "d": 163
+        },
+        {
+          "t": 2788,
+          "d": 213
+        },
+        {
+          "t": 3013,
+          "d": 375
+        },
+        {
+          "t": 3400,
+          "d": 238
+        },
+        {
+          "t": 3650,
+          "d": 313
+        },
+        {
+          "t": 3975,
+          "d": 288
+        },
+        {
+          "t": 4275,
+          "d": 163
+        },
+        {
+          "t": 4450,
+          "d": 88
+        },
+        {
+          "t": 4538,
+          "d": 563
+        },
+        {
+          "t": 5375,
+          "d": 113
+        },
+        {
+          "t": 5500,
+          "d": 263
+        },
+        {
+          "t": 5775,
+          "d": 275
+        },
+        {
+          "t": 6063,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 세탁비는 왜 다 받냐고, 할인을 받을 수 있는지 물어봐",
+      "en": "Then why am I being charged full price? Can I get some kind of discount?",
+      "ms": 4176,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "am",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "being",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charged",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          7
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Can",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "some",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "kind",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "discount",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 163
+        },
+        {
+          "t": 363,
+          "d": 63
+        },
+        {
+          "t": 425,
+          "d": 100
+        },
+        {
+          "t": 525,
+          "d": 225
+        },
+        {
+          "t": 750,
+          "d": 450
+        },
+        {
+          "t": 1200,
+          "d": 213
+        },
+        {
+          "t": 1413,
+          "d": 638
+        },
+        {
+          "t": 2450,
+          "d": 88
+        },
+        {
+          "t": 2538,
+          "d": 75
+        },
+        {
+          "t": 2613,
+          "d": 125
+        },
+        {
+          "t": 2738,
+          "d": 263
+        },
+        {
+          "t": 3013,
+          "d": 150
+        },
+        {
+          "t": 3163,
+          "d": 63
+        },
+        {
+          "t": 3225,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞는 말씀이세요. 오늘 세탁비는 안 받고, 다음 방문 때 20% 할인 쿠폰을 드릴게요.",
+      "en": "That's fair. I'll waive today's charge, and I can give you a 20% coupon for your next visit.",
+      "ms": 6192,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "waive",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "20%",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "coupon",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "visit",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 300
+        },
+        {
+          "t": 388,
+          "d": 450
+        },
+        {
+          "t": 1350,
+          "d": 200
+        },
+        {
+          "t": 1563,
+          "d": 238
+        },
+        {
+          "t": 1800,
+          "d": 375
+        },
+        {
+          "t": 2188,
+          "d": 575
+        },
+        {
+          "t": 2975,
+          "d": 225
+        },
+        {
+          "t": 3213,
+          "d": 88
+        },
+        {
+          "t": 3313,
+          "d": 100
+        },
+        {
+          "t": 3425,
+          "d": 125
+        },
+        {
+          "t": 3563,
+          "d": 100
+        },
+        {
+          "t": 3663,
+          "d": 63
+        },
+        {
+          "t": 3738,
+          "d": 750
+        },
+        {
+          "t": 4500,
+          "d": 463
+        },
+        {
+          "t": 4975,
+          "d": 100
+        },
+        {
+          "t": 5075,
+          "d": 75
+        },
+        {
+          "t": 5163,
+          "d": 250
+        },
+        {
+          "t": 5425,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그 정도면 괜찮다고, 다음엔 얼룩진 부분을 먼저 알려달라고 말해봐",
+      "en": "That works for me. Next time, could you just flag it up front if a stain won't come out?",
+      "ms": 4968,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Next",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "could",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flag",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "front",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stain",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          18
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 200
+        },
+        {
+          "t": 388,
+          "d": 125
+        },
+        {
+          "t": 513,
+          "d": 225
+        },
+        {
+          "t": 1125,
+          "d": 175
+        },
+        {
+          "t": 1300,
+          "d": 325
+        },
+        {
+          "t": 2050,
+          "d": 125
+        },
+        {
+          "t": 2175,
+          "d": 63
+        },
+        {
+          "t": 2238,
+          "d": 200
+        },
+        {
+          "t": 2438,
+          "d": 263
+        },
+        {
+          "t": 2700,
+          "d": 63
+        },
+        {
+          "t": 2763,
+          "d": 100
+        },
+        {
+          "t": 2863,
+          "d": 350
+        },
+        {
+          "t": 3500,
+          "d": 75
+        },
+        {
+          "t": 3575,
+          "d": 38
+        },
+        {
+          "t": 3625,
+          "d": 375
+        },
+        {
+          "t": 4000,
+          "d": 175
+        },
+        {
+          "t": 4175,
+          "d": 150
+        },
+        {
+          "t": 4338,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "물론이죠. 맡기실 때 바로 확인해서 알려드릴게요.",
+      "en": "Of course. I'll check it right when you drop it off and let you know.",
+      "ms": 4008,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drop",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 150
+        },
+        {
+          "t": 250,
+          "d": 575
+        },
+        {
+          "t": 1225,
+          "d": 125
+        },
+        {
+          "t": 1363,
+          "d": 250
+        },
+        {
+          "t": 1625,
+          "d": 138
+        },
+        {
+          "t": 1775,
+          "d": 213
+        },
+        {
+          "t": 1988,
+          "d": 100
+        },
+        {
+          "t": 2100,
+          "d": 75
+        },
+        {
+          "t": 2175,
+          "d": 288
+        },
+        {
+          "t": 2463,
+          "d": 63
+        },
+        {
+          "t": 2538,
+          "d": 313
+        },
+        {
+          "t": 2963,
+          "d": 138
+        },
+        {
+          "t": 3100,
+          "d": 125
+        },
+        {
+          "t": 3225,
+          "d": 75
+        },
+        {
+          "t": 3313,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "stain",
+      "meaning_ko": "얼룩",
+      "example": "There's still a stain on the sleeve."
+    },
+    {
+      "kind": "word",
+      "term": "fabric",
+      "meaning_ko": "원단, 천",
+      "example": "That stain had really set into the fabric."
+    },
+    {
+      "kind": "word",
+      "term": "waive",
+      "meaning_ko": "(요금 등을) 면제하다",
+      "example": "I'll waive today's charge."
+    },
+    {
+      "kind": "phrase",
+      "term": "set into the fabric",
+      "meaning_ko": "원단에 깊이 배다",
+      "prompt_ko": "얼룩이 원단에 너무 깊이 배서 안 빠진다고 말해봐",
+      "keywords": [
+        {
+          "word": "set",
+          "meaning_ko": "(얼룩 등이) 굳다, 배다"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "flag it up front",
+      "meaning_ko": "미리 알려주다, 짚어주다",
+      "prompt_ko": "문제가 있으면 미리 알려달라고 부탁해봐",
+      "keywords": [
+        {
+          "word": "flag",
+          "meaning_ko": "(문제를) 짚다, 표시하다"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-dry-cleaning/full.mp3",
+  "full_starts": [
+    0,
+    4032,
+    8184,
+    15000,
+    19176,
+    25368,
+    30336
+  ],
+  "generated_at": "2026-10-07T20:32:48.311Z"
+}

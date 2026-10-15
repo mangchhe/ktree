@@ -1,0 +1,41 @@
+[
+  {
+    "kind": "past", "topic": "여행", "level": 3, "seconds": 90,
+    "question_en": "Tell me about a trip where something didn't go as planned. What happened, how did you deal with it, and how did the trip turn out?",
+    "hint_ko": "① 언제·어디로·누구랑 갔는지 짧게 ② 무엇이 틀어졌는지 시간 순으로 ③ 어떻게 수습했는지(전환점) ④ 돌아보면 어땠는지로 마무리",
+    "model_en": "A couple of years ago, I went to Osaka with two friends for a long weekend. We'd planned everything down to the hour, and the main event was a day trip to Kyoto on the second day.\n\nThe problem was that on the morning we were supposed to leave, a typhoon warning came out, and all the trains were suspended. We were stuck in the hotel lobby, and at first we were pretty frustrated, because we'd already booked a tea ceremony there.\n\nSo what we ended up doing was changing the plan completely. We found a covered shopping street near the hotel, tried a bunch of street food, and spent the evening at a tiny local bar where the owner taught us a few Japanese phrases.\n\nLooking back, that rainy day turned out to be the best part of the trip. It taught me not to plan every single hour, because the unplanned moments are usually the ones I remember.",
+    "model_note_ko": "과거 경험형은 '배경 → 문제 → 대처(전환점) → 회고' 네 문단. 'The problem was that', 'what we ended up doing was', 'Looking back' 이 각 문단 첫머리에서 전환을 알린다. 사건만 나열하면 IM, 전환점과 회고가 문단으로 서야 IH 이상이 나온다.",
+    "phrases": [
+      { "term": "the problem was that", "meaning_ko": "문제는 ~였다" },
+      { "term": "what we ended up doing was", "meaning_ko": "결국 우리가 한 건" },
+      { "term": "looking back", "meaning_ko": "돌이켜보면" },
+      { "term": "turned out to be", "meaning_ko": "결과적으로 ~였다" }
+    ]
+  },
+  {
+    "kind": "compare", "topic": "일상", "level": 3, "seconds": 90,
+    "question_en": "How has the way you buy groceries changed compared to a few years ago? What do you do differently now, and why?",
+    "hint_ko": "① 예전엔 어떻게 장을 봤는지 ② 지금은 어떻게 하는지 ③ 왜 바뀌었는지 ④ 좋아진 점과 아쉬운 점 하나씩으로 마무리",
+    "model_en": "A few years ago, I used to do all my grocery shopping at a big supermarket on weekends. I'd drive there on Saturday morning, walk around for an hour, and come home with way more than I actually needed.\n\nThese days, it's almost the opposite. I order most things online on my phone, usually at night, and they show up at my door early the next morning. I only go to a store when I want fresh fruit or something I need to see before buying.\n\nThe main reason it changed is time. My schedule got a lot busier, and spending half of my Saturday in a supermarket just didn't make sense anymore.\n\nOverall, it's a lot more convenient, and I waste less food because I only order what I need. On the other hand, I kind of miss wandering around and finding something new by accident.",
+    "model_note_ko": "비교형은 대칭이 핵심이다 — 문단 1 '예전'과 문단 2 '지금'을 같은 항목(언제·어디서·얼마나)으로 맞췄다. 그다음 이유 한 문단, 장단점 한 문단. 'used to / these days / the main reason / on the other hand' 가 문단 사이의 다리다.",
+    "phrases": [
+      { "term": "I used to", "meaning_ko": "예전엔 ~하곤 했다" },
+      { "term": "these days, it's almost the opposite", "meaning_ko": "요즘은 거의 반대다" },
+      { "term": "the main reason it changed is", "meaning_ko": "바뀐 주된 이유는" },
+      { "term": "on the other hand", "meaning_ko": "반면에" }
+    ]
+  },
+  {
+    "kind": "solve", "topic": "여가", "level": 3, "seconds": 75,
+    "question_en": "You borrowed a friend's camera for a weekend trip, and it got damaged. Call your friend, explain what happened, and suggest a way to make it right.",
+    "hint_ko": "① 사과하며 무슨 일이 있었는지 ② 상태가 어떤지 구체적으로 ③ 해결책 제안(수리비 부담) ④ 안 되면 차선(새 걸로 사주기)",
+    "model_en": "Hey, it's me. I'm really sorry, but I have some bad news about your camera. On the last day of the trip, I put it down on a bench for a second, and it slipped off onto the stone floor.\n\nThe thing is, it still turns on, but the lens won't zoom in or out anymore, and there's a small crack on the side. I didn't want to try fixing it myself and make it worse.\n\nWhat I'd like to do is take it to the repair shop downtown this week and pay for the whole thing. I already called them, and they said it should take about five days.\n\nIf it turns out it can't be fixed, I'll buy you the same model, or a newer one if you'd prefer. Again, I'm really sorry. Just let me know what works for you.",
+    "model_note_ko": "문제해결형은 '사과+경위 → 상태 → 제안 → 차선'. 'The thing is' 로 상황을 구체화하고 'What I'd like to do is' 로 제안을, 'If it turns out' 으로 차선을 연다. 차선까지 말해야 대화를 주도하는 인상이 생긴다.",
+    "phrases": [
+      { "term": "I have some bad news about", "meaning_ko": "~에 관해 안 좋은 소식이 있어" },
+      { "term": "the thing is", "meaning_ko": "문제는 / 사실은" },
+      { "term": "what I'd like to do is", "meaning_ko": "내가 하고 싶은 건" },
+      { "term": "if it turns out", "meaning_ko": "만약 ~로 밝혀지면" }
+    ]
+  }
+]

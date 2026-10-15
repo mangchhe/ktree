@@ -1,0 +1,1815 @@
+{
+  "id": "2026-10-09-offer-negotiation",
+  "situation_ko": "오퍼를 받고 조건을 협상하는 통화. 기본급을 올려달라고 하는데 상대는 밴드 상한이라며 못 올린다고 한다. 대신 다른 카드를 내민다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "채용 담당자",
+      "meaning_ko": "오퍼 보셨죠? 궁금한 점이나 짚고 싶은 부분 있으세요?",
+      "en": "You've had a chance to look at the offer — anything you'd like to talk through?",
+      "ms": 4152,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "You've",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "chance",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "offer",
+          8
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "anything",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you'd",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 138
+        },
+        {
+          "t": 225,
+          "d": 163
+        },
+        {
+          "t": 400,
+          "d": 63
+        },
+        {
+          "t": 475,
+          "d": 338
+        },
+        {
+          "t": 825,
+          "d": 113
+        },
+        {
+          "t": 950,
+          "d": 213
+        },
+        {
+          "t": 1175,
+          "d": 88
+        },
+        {
+          "t": 1275,
+          "d": 100
+        },
+        {
+          "t": 1388,
+          "d": 525
+        },
+        {
+          "t": 2325,
+          "d": 375
+        },
+        {
+          "t": 2713,
+          "d": 138
+        },
+        {
+          "t": 2863,
+          "d": 188
+        },
+        {
+          "t": 3063,
+          "d": 100
+        },
+        {
+          "t": 3175,
+          "d": 313
+        },
+        {
+          "t": 3500,
+          "d": 288
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "전체적으로는 마음에 든다고 먼저 말하고, 기본급 하나만 다시 보고 싶다고 꺼내봐",
+      "en": "Overall I'm happy with it. There's one piece I'd like to revisit, and that's the base salary.",
+      "ms": 5952,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Overall",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happy",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "piece",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "revisit",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that's",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "base",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "salary",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 450
+        },
+        {
+          "t": 538,
+          "d": 150
+        },
+        {
+          "t": 700,
+          "d": 375
+        },
+        {
+          "t": 1088,
+          "d": 200
+        },
+        {
+          "t": 1300,
+          "d": 263
+        },
+        {
+          "t": 1950,
+          "d": 175
+        },
+        {
+          "t": 2138,
+          "d": 250
+        },
+        {
+          "t": 2400,
+          "d": 300
+        },
+        {
+          "t": 2713,
+          "d": 238
+        },
+        {
+          "t": 2963,
+          "d": 200
+        },
+        {
+          "t": 3175,
+          "d": 113
+        },
+        {
+          "t": 3300,
+          "d": 650
+        },
+        {
+          "t": 4175,
+          "d": 188
+        },
+        {
+          "t": 4375,
+          "d": 275
+        },
+        {
+          "t": 4663,
+          "d": 100
+        },
+        {
+          "t": 4775,
+          "d": 238
+        },
+        {
+          "t": 5025,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "채용 담당자",
+      "meaning_ko": "말씀해주세요. 어느 정도를 생각하고 계신가요?",
+      "en": "Of course. What number did you have in mind?",
+      "ms": 3024,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mind",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 88
+        },
+        {
+          "t": 150,
+          "d": 450
+        },
+        {
+          "t": 988,
+          "d": 150
+        },
+        {
+          "t": 1150,
+          "d": 300
+        },
+        {
+          "t": 1463,
+          "d": 188
+        },
+        {
+          "t": 1663,
+          "d": 88
+        },
+        {
+          "t": 1763,
+          "d": 225
+        },
+        {
+          "t": 2000,
+          "d": 100
+        },
+        {
+          "t": 2113,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "비슷한 직무 시장가를 알아봤고 10% 정도 위를 기대했다고 말해봐 — 근거를 같이 대",
+      "en": "Based on what I'm seeing for comparable roles, I was expecting something closer to ten percent above this.",
+      "ms": 6408,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Based",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seeing",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "comparable",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "roles",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expecting",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "something",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "closer",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "above",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 313
+        },
+        {
+          "t": 400,
+          "d": 200
+        },
+        {
+          "t": 613,
+          "d": 150
+        },
+        {
+          "t": 775,
+          "d": 113
+        },
+        {
+          "t": 900,
+          "d": 375
+        },
+        {
+          "t": 1288,
+          "d": 188
+        },
+        {
+          "t": 1488,
+          "d": 538
+        },
+        {
+          "t": 2038,
+          "d": 500
+        },
+        {
+          "t": 2988,
+          "d": 125
+        },
+        {
+          "t": 3125,
+          "d": 138
+        },
+        {
+          "t": 3275,
+          "d": 488
+        },
+        {
+          "t": 3775,
+          "d": 325
+        },
+        {
+          "t": 4113,
+          "d": 475
+        },
+        {
+          "t": 4600,
+          "d": 113
+        },
+        {
+          "t": 4725,
+          "d": 225
+        },
+        {
+          "t": 4963,
+          "d": 388
+        },
+        {
+          "t": 5363,
+          "d": 300
+        },
+        {
+          "t": 5675,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "채용 담당자",
+      "meaning_ko": "솔직히 말씀드리면 그 직급 밴드 상한에 거의 닿아 있어서 기본급은 더 못 올립니다. 다만 다른 쪽은 움직일 여지가 있어요.",
+      "en": "I have to be honest — you're near the top of the band for that level, so base is where I have the least room. But there's headroom elsewhere.",
+      "ms": 7224,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "honest",
+          4
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "you're",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "near",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "top",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "band",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "level",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "base",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "where",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "least",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          23
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "headroom",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "elsewhere",
+          27
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 175
+        },
+        {
+          "t": 350,
+          "d": 100
+        },
+        {
+          "t": 463,
+          "d": 175
+        },
+        {
+          "t": 650,
+          "d": 450
+        },
+        {
+          "t": 1125,
+          "d": 125
+        },
+        {
+          "t": 1263,
+          "d": 225
+        },
+        {
+          "t": 1500,
+          "d": 100
+        },
+        {
+          "t": 1613,
+          "d": 275
+        },
+        {
+          "t": 1900,
+          "d": 75
+        },
+        {
+          "t": 1988,
+          "d": 100
+        },
+        {
+          "t": 2100,
+          "d": 263
+        },
+        {
+          "t": 2375,
+          "d": 113
+        },
+        {
+          "t": 2500,
+          "d": 225
+        },
+        {
+          "t": 2738,
+          "d": 300
+        },
+        {
+          "t": 3063,
+          "d": 163
+        },
+        {
+          "t": 3238,
+          "d": 275
+        },
+        {
+          "t": 3525,
+          "d": 125
+        },
+        {
+          "t": 3663,
+          "d": 150
+        },
+        {
+          "t": 3825,
+          "d": 63
+        },
+        {
+          "t": 3900,
+          "d": 200
+        },
+        {
+          "t": 4113,
+          "d": 100
+        },
+        {
+          "t": 4225,
+          "d": 325
+        },
+        {
+          "t": 4563,
+          "d": 350
+        },
+        {
+          "t": 5313,
+          "d": 125
+        },
+        {
+          "t": 5450,
+          "d": 225
+        },
+        {
+          "t": 5688,
+          "d": 463
+        },
+        {
+          "t": 6163,
+          "d": 688
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "어디가 움직일 수 있는지 구체적으로 물어보고, 사이닝 보너스나 6개월 재검토가 가능한지 짚어봐",
+      "en": "Where can you move, then? A signing bonus would help, or a salary review at six months instead of twelve.",
+      "ms": 6816,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Where",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "then",
+          4
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "A",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "signing",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bonus",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "or",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "salary",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "review",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twelve",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 188
+        },
+        {
+          "t": 263,
+          "d": 138
+        },
+        {
+          "t": 413,
+          "d": 100
+        },
+        {
+          "t": 525,
+          "d": 450
+        },
+        {
+          "t": 988,
+          "d": 350
+        },
+        {
+          "t": 1738,
+          "d": 50
+        },
+        {
+          "t": 1800,
+          "d": 400
+        },
+        {
+          "t": 2213,
+          "d": 388
+        },
+        {
+          "t": 2613,
+          "d": 150
+        },
+        {
+          "t": 2775,
+          "d": 488
+        },
+        {
+          "t": 3438,
+          "d": 250
+        },
+        {
+          "t": 3700,
+          "d": 63
+        },
+        {
+          "t": 3775,
+          "d": 463
+        },
+        {
+          "t": 4250,
+          "d": 438
+        },
+        {
+          "t": 4700,
+          "d": 125
+        },
+        {
+          "t": 4838,
+          "d": 288
+        },
+        {
+          "t": 5138,
+          "d": 350
+        },
+        {
+          "t": 5500,
+          "d": 338
+        },
+        {
+          "t": 5850,
+          "d": 88
+        },
+        {
+          "t": 5950,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "채용 담당자",
+      "meaning_ko": "사이닝 보너스는 승인받을 수 있을 것 같습니다. 6개월 재검토는 전사 규정이라 제가 약속드릴 수 없어요 — 대신 서면으로 남겨드릴 수는 있습니다.",
+      "en": "The signing bonus I can probably get approved. The six-month review I can't promise — that's a company-wide cycle — but I can put our conversation in writing so it's on record.",
+      "ms": 10488,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "signing",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bonus",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "probably",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approved",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six-month",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "review",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "promise",
+          13
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "that's",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "company-wide",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cycle",
+          17
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "but",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversation",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "writing",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          28
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "record",
+          29
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 63
+        },
+        {
+          "t": 150,
+          "d": 438
+        },
+        {
+          "t": 600,
+          "d": 400
+        },
+        {
+          "t": 1013,
+          "d": 88
+        },
+        {
+          "t": 1113,
+          "d": 163
+        },
+        {
+          "t": 1288,
+          "d": 413
+        },
+        {
+          "t": 1713,
+          "d": 163
+        },
+        {
+          "t": 1888,
+          "d": 663
+        },
+        {
+          "t": 2950,
+          "d": 75
+        },
+        {
+          "t": 3038,
+          "d": 588
+        },
+        {
+          "t": 3638,
+          "d": 325
+        },
+        {
+          "t": 3975,
+          "d": 88
+        },
+        {
+          "t": 4075,
+          "d": 288
+        },
+        {
+          "t": 4375,
+          "d": 550
+        },
+        {
+          "t": 5188,
+          "d": 263
+        },
+        {
+          "t": 5463,
+          "d": 63
+        },
+        {
+          "t": 5538,
+          "d": 675
+        },
+        {
+          "t": 6225,
+          "d": 538
+        },
+        {
+          "t": 7088,
+          "d": 138
+        },
+        {
+          "t": 7238,
+          "d": 100
+        },
+        {
+          "t": 7350,
+          "d": 150
+        },
+        {
+          "t": 7513,
+          "d": 188
+        },
+        {
+          "t": 7713,
+          "d": 113
+        },
+        {
+          "t": 7838,
+          "d": 713
+        },
+        {
+          "t": 8563,
+          "d": 138
+        },
+        {
+          "t": 8713,
+          "d": 375
+        },
+        {
+          "t": 9100,
+          "d": 188
+        },
+        {
+          "t": 9300,
+          "d": 150
+        },
+        {
+          "t": 9463,
+          "d": 163
+        },
+        {
+          "t": 9638,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "headroom",
+      "meaning_ko": "더 올릴 여지, 남은 여유분",
+      "example": "Base is where I have the least room, but there's headroom elsewhere.",
+      "prompt_ko": "기본급은 어렵지만 다른 쪽에는 여지가 있다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "band",
+      "meaning_ko": "(직급별) 연봉 구간",
+      "example": "You're near the top of the band for that level.",
+      "prompt_ko": "그 직급 연봉 구간 상한에 가깝다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "comparable",
+      "meaning_ko": "비교할 만한, 같은 수준의",
+      "example": "Based on what I'm seeing for comparable roles…",
+      "prompt_ko": "비슷한 직무들을 보고 판단했다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "revisit",
+      "meaning_ko": "다시 논의하다, 재검토하다",
+      "example": "There's one piece I'd like to revisit.",
+      "prompt_ko": "한 가지만 다시 논의하고 싶다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "talk through",
+      "meaning_ko": "짚어가며 이야기하다",
+      "prompt_ko": "짚고 싶은 부분이 있는지 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "what number did you have in mind?",
+      "meaning_ko": "어느 정도 금액을 생각하고 계셨어요?",
+      "prompt_ko": "어느 정도 금액을 생각했는지 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "put it in writing",
+      "meaning_ko": "서면으로 남기다",
+      "prompt_ko": "약속은 못 하지만 서면으로 남겨줄 수 있다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "something closer to",
+      "meaning_ko": "~에 더 가까운 수준",
+      "prompt_ko": "10% 정도 위를 기대했다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-offer-negotiation/full.mp3",
+  "full_starts": [
+    0,
+    4152,
+    10104,
+    13128,
+    19536,
+    26760,
+    33576
+  ],
+  "generated_at": "2026-10-08T20:36:38.910Z"
+}

@@ -1,0 +1,1364 @@
+{
+  "id": "2026-10-15-overbooked-flight",
+  "situation_ko": "출장 귀국편 게이트에서 초과 예약으로 자리를 양보할 사람을 찾는다는 방송이 나온다. 보상 조건을 물어보는데, 대체편이 다음 날 아침이라 내일 회의와 겹친다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "게이트 직원",
+      "meaning_ko": "이 항공편이 초과 예약됐습니다. 다음 편으로 바꿔주실 자원자를 찾고 있어요.",
+      "en": "This flight is overbooked, so we're looking for volunteers to take a later flight.",
+      "ms": 4752,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "This",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "overbooked",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we're",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looking",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "volunteers",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "later",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 213
+        },
+        {
+          "t": 325,
+          "d": 363
+        },
+        {
+          "t": 700,
+          "d": 175
+        },
+        {
+          "t": 950,
+          "d": 563
+        },
+        {
+          "t": 1800,
+          "d": 375
+        },
+        {
+          "t": 2275,
+          "d": 125
+        },
+        {
+          "t": 2400,
+          "d": 238
+        },
+        {
+          "t": 2650,
+          "d": 100
+        },
+        {
+          "t": 2750,
+          "d": 638
+        },
+        {
+          "t": 3388,
+          "d": 63
+        },
+        {
+          "t": 3450,
+          "d": 225
+        },
+        {
+          "t": 3688,
+          "d": 50
+        },
+        {
+          "t": 3738,
+          "d": 275
+        },
+        {
+          "t": 4013,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "자리를 양보하면 보상이 뭔지 물어봐",
+      "en": "What's the compensation if I give up my seat?",
+      "ms": 2424,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "What's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compensation",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seat",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 75
+        },
+        {
+          "t": 325,
+          "d": 700
+        },
+        {
+          "t": 1025,
+          "d": 88
+        },
+        {
+          "t": 1113,
+          "d": 63
+        },
+        {
+          "t": 1188,
+          "d": 175
+        },
+        {
+          "t": 1363,
+          "d": 88
+        },
+        {
+          "t": 1450,
+          "d": 138
+        },
+        {
+          "t": 1600,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "400달러 여행 바우처와 오늘 밤 호텔 숙박을 드려요. 다음 편은 내일 아침 7시 출발입니다.",
+      "en": "We're offering a four hundred dollar travel voucher and a hotel room tonight. The next flight leaves at seven tomorrow morning.",
+      "ms": 7512,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "We're",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "offering",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollar",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "travel",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "voucher",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotel",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tonight",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "leaves",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seven",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 138
+        },
+        {
+          "t": 213,
+          "d": 388
+        },
+        {
+          "t": 613,
+          "d": 75
+        },
+        {
+          "t": 700,
+          "d": 363
+        },
+        {
+          "t": 1075,
+          "d": 325
+        },
+        {
+          "t": 1400,
+          "d": 275
+        },
+        {
+          "t": 1675,
+          "d": 325
+        },
+        {
+          "t": 2000,
+          "d": 550
+        },
+        {
+          "t": 2588,
+          "d": 238
+        },
+        {
+          "t": 2913,
+          "d": 25
+        },
+        {
+          "t": 2950,
+          "d": 438
+        },
+        {
+          "t": 3388,
+          "d": 175
+        },
+        {
+          "t": 3575,
+          "d": 488
+        },
+        {
+          "t": 4463,
+          "d": 50
+        },
+        {
+          "t": 4525,
+          "d": 338
+        },
+        {
+          "t": 4863,
+          "d": 300
+        },
+        {
+          "t": 5175,
+          "d": 388
+        },
+        {
+          "t": 5575,
+          "d": 275
+        },
+        {
+          "t": 5850,
+          "d": 388
+        },
+        {
+          "t": 6250,
+          "d": 425
+        },
+        {
+          "t": 6688,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "내일 오전 열 시에 회의가 있어서 그건 너무 늦다고 말해봐",
+      "en": "I have a meeting at ten tomorrow, so that's cutting it too close.",
+      "ms": 3936,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meeting",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cutting",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "too",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "close",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 113
+        },
+        {
+          "t": 275,
+          "d": 50
+        },
+        {
+          "t": 338,
+          "d": 350
+        },
+        {
+          "t": 688,
+          "d": 88
+        },
+        {
+          "t": 788,
+          "d": 250
+        },
+        {
+          "t": 1038,
+          "d": 575
+        },
+        {
+          "t": 1988,
+          "d": 113
+        },
+        {
+          "t": 2100,
+          "d": 163
+        },
+        {
+          "t": 2263,
+          "d": 263
+        },
+        {
+          "t": 2525,
+          "d": 88
+        },
+        {
+          "t": 2613,
+          "d": 250
+        },
+        {
+          "t": 2863,
+          "d": 700
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "이해해요. 그럼 오늘 밤 9시에 다른 항공사 편이 있는데, 그건 경유가 하나 있어요.",
+      "en": "I understand. There's also a nine p.m. flight on a partner airline, but it has one stop.",
+      "ms": 5952,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nine",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "p.m.",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flight",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "partner",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "airline",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "has",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stop",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 688
+        },
+        {
+          "t": 1325,
+          "d": 250
+        },
+        {
+          "t": 1575,
+          "d": 413
+        },
+        {
+          "t": 2000,
+          "d": 88
+        },
+        {
+          "t": 2100,
+          "d": 388
+        },
+        {
+          "t": 2488,
+          "d": 363
+        },
+        {
+          "t": 2863,
+          "d": 388
+        },
+        {
+          "t": 3263,
+          "d": 88
+        },
+        {
+          "t": 3363,
+          "d": 50
+        },
+        {
+          "t": 3425,
+          "d": 375
+        },
+        {
+          "t": 3813,
+          "d": 425
+        },
+        {
+          "t": 4275,
+          "d": 175
+        },
+        {
+          "t": 4550,
+          "d": 50
+        },
+        {
+          "t": 4600,
+          "d": 238
+        },
+        {
+          "t": 4850,
+          "d": 250
+        },
+        {
+          "t": 5113,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그 편이면 몇 시에 도착하는지, 보상은 똑같은지 물어봐",
+      "en": "What time would that get in? And is the compensation the same?",
+      "ms": 3288,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "What",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "And",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compensation",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 175,
+          "d": 188
+        },
+        {
+          "t": 363,
+          "d": 88
+        },
+        {
+          "t": 463,
+          "d": 163
+        },
+        {
+          "t": 625,
+          "d": 125
+        },
+        {
+          "t": 750,
+          "d": 250
+        },
+        {
+          "t": 1413,
+          "d": 88
+        },
+        {
+          "t": 1513,
+          "d": 75
+        },
+        {
+          "t": 1588,
+          "d": 88
+        },
+        {
+          "t": 1675,
+          "d": 750
+        },
+        {
+          "t": 2438,
+          "d": 75
+        },
+        {
+          "t": 2525,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "새벽 1시쯤 도착이고, 바우처는 같은데 호텔은 필요 없으시겠네요.",
+      "en": "It lands around one a.m. The voucher is the same, but you wouldn't need the hotel.",
+      "ms": 5448,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "It",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lands",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a.m.",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "The",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "voucher",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wouldn't",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotel",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 413
+        },
+        {
+          "t": 675,
+          "d": 475
+        },
+        {
+          "t": 1163,
+          "d": 275
+        },
+        {
+          "t": 1450,
+          "d": 475
+        },
+        {
+          "t": 2338,
+          "d": 63
+        },
+        {
+          "t": 2413,
+          "d": 500
+        },
+        {
+          "t": 2925,
+          "d": 113
+        },
+        {
+          "t": 3050,
+          "d": 88
+        },
+        {
+          "t": 3150,
+          "d": 450
+        },
+        {
+          "t": 3813,
+          "d": 200
+        },
+        {
+          "t": 4025,
+          "d": 125
+        },
+        {
+          "t": 4150,
+          "d": 188
+        },
+        {
+          "t": 4338,
+          "d": 150
+        },
+        {
+          "t": 4500,
+          "d": 38
+        },
+        {
+          "t": 4538,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "compensation",
+      "kind": "word",
+      "meaning_ko": "보상, 보상금",
+      "example": "The airline offered compensation for the delay.",
+      "prompt_ko": "항공사가 지연에 대해 보상을 해줬다고 말해봐"
+    },
+    {
+      "term": "voucher",
+      "kind": "word",
+      "meaning_ko": "바우처, 상품권, 이용권",
+      "example": "They gave me a meal voucher for the airport.",
+      "prompt_ko": "공항에서 쓸 식사 쿠폰을 받았다고 말해봐"
+    },
+    {
+      "term": "cutting it close",
+      "kind": "phrase",
+      "meaning_ko": "시간이 너무 빠듯하다",
+      "prompt_ko": "출발 30분 전에 공항에 도착하는 건 너무 빠듯하다고 말해봐"
+    },
+    {
+      "term": "give up my seat",
+      "kind": "phrase",
+      "meaning_ko": "자리를 양보하다",
+      "prompt_ko": "다음 편을 타는 대신 자리를 양보하겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-15-overbooked-flight/full.mp3",
+  "full_starts": [
+    0,
+    4752,
+    7176,
+    14688,
+    18624,
+    24576,
+    27864
+  ],
+  "generated_at": "2026-10-14T20:32:08.233Z"
+}

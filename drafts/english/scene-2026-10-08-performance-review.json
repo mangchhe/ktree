@@ -1,0 +1,1423 @@
+{
+  "id": "2026-10-08-performance-review",
+  "situation_ko": "팀원의 분기 성과 평가 면담. 마감을 자주 놓친 걸 짚으려는데, 팀원은 업무량 자체가 비현실적이었다고 되받아친다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "면담을 시작하면서, 이번 분기 전반적으로는 잘했다고 먼저 말해봐",
+      "en": "So before anything else, I want to say overall you had a solid quarter.",
+      "ms": 4656,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "say",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "overall",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "solid",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 338
+        },
+        {
+          "t": 450,
+          "d": 388
+        },
+        {
+          "t": 850,
+          "d": 300
+        },
+        {
+          "t": 1163,
+          "d": 413
+        },
+        {
+          "t": 1788,
+          "d": 63
+        },
+        {
+          "t": 1863,
+          "d": 150
+        },
+        {
+          "t": 2013,
+          "d": 50
+        },
+        {
+          "t": 2063,
+          "d": 375
+        },
+        {
+          "t": 2738,
+          "d": 488
+        },
+        {
+          "t": 3225,
+          "d": 100
+        },
+        {
+          "t": 3338,
+          "d": 138
+        },
+        {
+          "t": 3475,
+          "d": 38
+        },
+        {
+          "t": 3525,
+          "d": 338
+        },
+        {
+          "t": 3863,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/0.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "감사합니다. 들을 말이 더 있을 것 같은 느낌이 드는데요.",
+      "en": "Thanks. I have a feeling there's a 'but' coming, though.",
+      "ms": 3144,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "feeling",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " '",
+          null
+        ],
+        [
+          "but",
+          7
+        ],
+        [
+          "' ",
+          null
+        ],
+        [
+          "coming",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 475
+        },
+        {
+          "t": 1000,
+          "d": 63
+        },
+        {
+          "t": 1063,
+          "d": 100
+        },
+        {
+          "t": 1163,
+          "d": 63
+        },
+        {
+          "t": 1225,
+          "d": 388
+        },
+        {
+          "t": 1613,
+          "d": 175
+        },
+        {
+          "t": 1788,
+          "d": 88
+        },
+        {
+          "t": 1875,
+          "d": 250
+        },
+        {
+          "t": 2138,
+          "d": 275
+        },
+        {
+          "t": 2438,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/1.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그래도 마감을 세 번이나 놓친 건 짚고 넘어가야 한다고 말해봐",
+      "en": "There is — I do need to bring up that you missed three deadlines this quarter.",
+      "ms": 4248,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "There",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "missed",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deadlines",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 225
+        },
+        {
+          "t": 288,
+          "d": 375
+        },
+        {
+          "t": 800,
+          "d": 125
+        },
+        {
+          "t": 938,
+          "d": 125
+        },
+        {
+          "t": 1075,
+          "d": 150
+        },
+        {
+          "t": 1238,
+          "d": 63
+        },
+        {
+          "t": 1313,
+          "d": 213
+        },
+        {
+          "t": 1538,
+          "d": 150
+        },
+        {
+          "t": 1688,
+          "d": 113
+        },
+        {
+          "t": 1813,
+          "d": 100
+        },
+        {
+          "t": 1925,
+          "d": 400
+        },
+        {
+          "t": 2338,
+          "d": 438
+        },
+        {
+          "t": 2788,
+          "d": 525
+        },
+        {
+          "t": 3313,
+          "d": 150
+        },
+        {
+          "t": 3475,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/2.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그건 알아요. 근데 솔직히 그 세 프로젝트를 동시에 맡은 것 자체가 애초에 무리였어요.",
+      "en": "I know. But honestly, being handed all three of those projects at once was unrealistic from the start.",
+      "ms": 7008,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "honestly",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "being",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "handed",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "all",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "those",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "projects",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "once",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "unrealistic",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 163,
+          "d": 338
+        },
+        {
+          "t": 938,
+          "d": 138
+        },
+        {
+          "t": 1075,
+          "d": 738
+        },
+        {
+          "t": 2038,
+          "d": 225
+        },
+        {
+          "t": 2263,
+          "d": 450
+        },
+        {
+          "t": 2725,
+          "d": 288
+        },
+        {
+          "t": 3013,
+          "d": 575
+        },
+        {
+          "t": 3650,
+          "d": 75
+        },
+        {
+          "t": 3725,
+          "d": 188
+        },
+        {
+          "t": 3913,
+          "d": 525
+        },
+        {
+          "t": 4438,
+          "d": 88
+        },
+        {
+          "t": 4525,
+          "d": 425
+        },
+        {
+          "t": 4950,
+          "d": 325
+        },
+        {
+          "t": 5288,
+          "d": 750
+        },
+        {
+          "t": 6038,
+          "d": 125
+        },
+        {
+          "t": 6163,
+          "d": 38
+        },
+        {
+          "t": 6200,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/3.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "일리가 있다고 인정하고, 그럼 다음 분기엔 우선순위를 어떻게 정하면 좋을지 물어봐",
+      "en": "That's fair, actually. So how do you think we should prioritize things next quarter?",
+      "ms": 5088,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "actually",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "So",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "how",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prioritize",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "things",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 288
+        },
+        {
+          "t": 363,
+          "d": 525
+        },
+        {
+          "t": 1088,
+          "d": 488
+        },
+        {
+          "t": 1963,
+          "d": 263
+        },
+        {
+          "t": 2238,
+          "d": 163
+        },
+        {
+          "t": 2413,
+          "d": 50
+        },
+        {
+          "t": 2475,
+          "d": 50
+        },
+        {
+          "t": 2525,
+          "d": 213
+        },
+        {
+          "t": 2750,
+          "d": 88
+        },
+        {
+          "t": 2850,
+          "d": 275
+        },
+        {
+          "t": 3138,
+          "d": 713
+        },
+        {
+          "t": 3850,
+          "d": 263
+        },
+        {
+          "t": 4125,
+          "d": 238
+        },
+        {
+          "t": 4363,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/4.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "한 번에 두 개만 맡고, 세 번째는 넘기기 전에 미리 얘기해주셨으면 좋겠어요.",
+      "en": "I'd rather take on two at a time, and have a heads-up conversation before a third one gets added.",
+      "ms": 5352,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "heads-up",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversation",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "third",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gets",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "added",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 250
+        },
+        {
+          "t": 475,
+          "d": 225
+        },
+        {
+          "t": 700,
+          "d": 125
+        },
+        {
+          "t": 825,
+          "d": 213
+        },
+        {
+          "t": 1038,
+          "d": 75
+        },
+        {
+          "t": 1113,
+          "d": 25
+        },
+        {
+          "t": 1150,
+          "d": 438
+        },
+        {
+          "t": 2038,
+          "d": 63
+        },
+        {
+          "t": 2100,
+          "d": 150
+        },
+        {
+          "t": 2250,
+          "d": 50
+        },
+        {
+          "t": 2313,
+          "d": 325
+        },
+        {
+          "t": 2638,
+          "d": 763
+        },
+        {
+          "t": 3463,
+          "d": 350
+        },
+        {
+          "t": 3813,
+          "d": 38
+        },
+        {
+          "t": 3863,
+          "d": 338
+        },
+        {
+          "t": 4200,
+          "d": 188
+        },
+        {
+          "t": 4388,
+          "d": 200
+        },
+        {
+          "t": 4588,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/5.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "좋다고, 매니저와 이야기해서 일정을 그렇게 조정해보겠다고 말해봐",
+      "en": "Sounds good. Let me talk to the manager and see about adjusting the schedule that way.",
+      "ms": 5376,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sounds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "manager",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "adjusting",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "schedule",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "way",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 400
+        },
+        {
+          "t": 475,
+          "d": 350
+        },
+        {
+          "t": 1200,
+          "d": 113
+        },
+        {
+          "t": 1313,
+          "d": 75
+        },
+        {
+          "t": 1400,
+          "d": 275
+        },
+        {
+          "t": 1688,
+          "d": 75
+        },
+        {
+          "t": 1775,
+          "d": 63
+        },
+        {
+          "t": 1850,
+          "d": 575
+        },
+        {
+          "t": 2738,
+          "d": 225
+        },
+        {
+          "t": 2975,
+          "d": 213
+        },
+        {
+          "t": 3188,
+          "d": 313
+        },
+        {
+          "t": 3525,
+          "d": 513
+        },
+        {
+          "t": 4050,
+          "d": 75
+        },
+        {
+          "t": 4138,
+          "d": 388
+        },
+        {
+          "t": 4538,
+          "d": 175
+        },
+        {
+          "t": 4713,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "deadline",
+      "meaning_ko": "마감 기한",
+      "example": "You missed three deadlines this quarter."
+    },
+    {
+      "kind": "word",
+      "term": "unrealistic",
+      "meaning_ko": "비현실적인",
+      "example": "That was unrealistic from the start."
+    },
+    {
+      "kind": "word",
+      "term": "prioritize",
+      "meaning_ko": "우선순위를 정하다",
+      "example": "How should we prioritize things next quarter?"
+    },
+    {
+      "kind": "phrase",
+      "term": "bring up",
+      "meaning_ko": "(화제를) 꺼내다, 짚고 넘어가다",
+      "prompt_ko": "마감을 놓친 걸 짚고 넘어가야 한다고 말해봐",
+      "keywords": []
+    },
+    {
+      "kind": "phrase",
+      "term": "a heads-up",
+      "meaning_ko": "미리 주는 귀띔, 사전 안내",
+      "prompt_ko": "일이 추가되기 전에 미리 얘기해줬으면 좋겠다고 말해봐",
+      "keywords": [
+        {
+          "word": "heads-up",
+          "meaning_ko": "사전 귀띔, 미리 알림"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-08-performance-review/full.mp3",
+  "full_starts": [
+    0,
+    4656,
+    7800,
+    12048,
+    19056,
+    24144,
+    29496
+  ],
+  "generated_at": "2026-10-07T20:33:19.092Z"
+}

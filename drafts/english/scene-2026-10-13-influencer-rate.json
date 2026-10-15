@@ -1,0 +1,1715 @@
+{
+  "id": "2026-10-13-influencer-rate",
+  "situation_ko": "인플루언서 매니저가 게시물 단가로 8천 달러를 부른다. 지난 캠페인 숫자로 반박하고 고정비+커미션 구조를 제안한다. 상대는 고정비를 더 올려달라고 한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "인플루언서 매니저",
+      "meaning_ko": "연락 주셔서 감사해요. 릴스 하나에 스토리 세 개면 그분 단가는 8천 달러예요.",
+      "en": "Thanks for reaching out. For one reel and three stories, her rate is eight thousand dollars.",
+      "ms": 6408,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Thanks",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reaching",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "For",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reel",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stories",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "her",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rate",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eight",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 363,
+          "d": 125
+        },
+        {
+          "t": 500,
+          "d": 288
+        },
+        {
+          "t": 800,
+          "d": 300
+        },
+        {
+          "t": 1525,
+          "d": 213
+        },
+        {
+          "t": 1750,
+          "d": 250
+        },
+        {
+          "t": 2000,
+          "d": 425
+        },
+        {
+          "t": 2438,
+          "d": 150
+        },
+        {
+          "t": 2713,
+          "d": 275
+        },
+        {
+          "t": 3000,
+          "d": 550
+        },
+        {
+          "t": 3988,
+          "d": 150
+        },
+        {
+          "t": 4150,
+          "d": 313
+        },
+        {
+          "t": 4588,
+          "d": 225
+        },
+        {
+          "t": 5000,
+          "d": 163
+        },
+        {
+          "t": 5175,
+          "d": 338
+        },
+        {
+          "t": 5525,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "예산을 한참 넘는다고 하고, 지난 캠페인 기준이면 고객당 획득비가 40달러쯤 돼서 정당화가 안 된다고 숫자로 말해봐",
+      "en": "That's well above our budget. Based on our last campaign, that would put our cost per customer at about forty dollars, and we can't justify that.",
+      "ms": 8688,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "well",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "above",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Based",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "campaign",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cost",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "per",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customer",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          20
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "justify",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          25
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 175
+        },
+        {
+          "t": 288,
+          "d": 188
+        },
+        {
+          "t": 488,
+          "d": 263
+        },
+        {
+          "t": 750,
+          "d": 113
+        },
+        {
+          "t": 863,
+          "d": 438
+        },
+        {
+          "t": 1713,
+          "d": 188
+        },
+        {
+          "t": 1913,
+          "d": 88
+        },
+        {
+          "t": 2000,
+          "d": 88
+        },
+        {
+          "t": 2088,
+          "d": 313
+        },
+        {
+          "t": 2413,
+          "d": 563
+        },
+        {
+          "t": 3250,
+          "d": 113
+        },
+        {
+          "t": 3363,
+          "d": 138
+        },
+        {
+          "t": 3513,
+          "d": 200
+        },
+        {
+          "t": 3725,
+          "d": 163
+        },
+        {
+          "t": 3900,
+          "d": 388
+        },
+        {
+          "t": 4288,
+          "d": 125
+        },
+        {
+          "t": 4413,
+          "d": 550
+        },
+        {
+          "t": 5088,
+          "d": 100
+        },
+        {
+          "t": 5188,
+          "d": 250
+        },
+        {
+          "t": 5450,
+          "d": 388
+        },
+        {
+          "t": 5850,
+          "d": 613
+        },
+        {
+          "t": 6725,
+          "d": 175
+        },
+        {
+          "t": 6913,
+          "d": 150
+        },
+        {
+          "t": 7075,
+          "d": 338
+        },
+        {
+          "t": 7413,
+          "d": 550
+        },
+        {
+          "t": 7975,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "이해해요. 그래도 그분 참여율이 6%가 넘어요. 업계 평균의 두 배예요.",
+      "en": "I understand, but her engagement rate is over six percent. That's twice the industry average.",
+      "ms": 6696,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "her",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "engagement",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rate",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twice",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "industry",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "average",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 188
+        },
+        {
+          "t": 288,
+          "d": 650
+        },
+        {
+          "t": 1175,
+          "d": 213
+        },
+        {
+          "t": 1488,
+          "d": 188
+        },
+        {
+          "t": 1675,
+          "d": 538
+        },
+        {
+          "t": 2225,
+          "d": 263
+        },
+        {
+          "t": 2588,
+          "d": 250
+        },
+        {
+          "t": 2913,
+          "d": 250
+        },
+        {
+          "t": 3175,
+          "d": 288
+        },
+        {
+          "t": 3463,
+          "d": 575
+        },
+        {
+          "t": 4438,
+          "d": 325
+        },
+        {
+          "t": 4775,
+          "d": 488
+        },
+        {
+          "t": 5263,
+          "d": 113
+        },
+        {
+          "t": 5375,
+          "d": 413
+        },
+        {
+          "t": 5800,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 고정비 3천 달러에 그분 코드로 팔린 건마다 15% 커미션을 주는 건 어떠냐고 제안해봐",
+      "en": "Then how about this: a flat fee of three thousand dollars, plus fifteen percent commission on every sale through her code.",
+      "ms": 8040,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "how",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          3
+        ],
+        [
+          ": ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flat",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fee",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "plus",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifteen",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "commission",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "every",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sale",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "her",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "code",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 188
+        },
+        {
+          "t": 300,
+          "d": 175
+        },
+        {
+          "t": 475,
+          "d": 313
+        },
+        {
+          "t": 800,
+          "d": 413
+        },
+        {
+          "t": 1700,
+          "d": 50
+        },
+        {
+          "t": 1763,
+          "d": 300
+        },
+        {
+          "t": 2063,
+          "d": 425
+        },
+        {
+          "t": 2500,
+          "d": 88
+        },
+        {
+          "t": 2600,
+          "d": 400
+        },
+        {
+          "t": 3000,
+          "d": 438
+        },
+        {
+          "t": 3438,
+          "d": 550
+        },
+        {
+          "t": 4163,
+          "d": 350
+        },
+        {
+          "t": 4525,
+          "d": 513
+        },
+        {
+          "t": 5050,
+          "d": 313
+        },
+        {
+          "t": 5375,
+          "d": 438
+        },
+        {
+          "t": 5925,
+          "d": 225
+        },
+        {
+          "t": 6275,
+          "d": 300
+        },
+        {
+          "t": 6575,
+          "d": 425
+        },
+        {
+          "t": 7013,
+          "d": 163
+        },
+        {
+          "t": 7175,
+          "d": 100
+        },
+        {
+          "t": 7275,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "음, 그분이 성과형 계약은 잘 안 하세요. 고정비를 5천까지 올려주실 수 있나요?",
+      "en": "Hmm, she doesn't usually do performance deals. Could you go up to five thousand on the flat fee?",
+      "ms": 6096,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hmm",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "she",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "usually",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "performance",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deals",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flat",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fee",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 388
+        },
+        {
+          "t": 1000,
+          "d": 150
+        },
+        {
+          "t": 1150,
+          "d": 225
+        },
+        {
+          "t": 1388,
+          "d": 313
+        },
+        {
+          "t": 1713,
+          "d": 150
+        },
+        {
+          "t": 1863,
+          "d": 525
+        },
+        {
+          "t": 2388,
+          "d": 525
+        },
+        {
+          "t": 3275,
+          "d": 125
+        },
+        {
+          "t": 3413,
+          "d": 100
+        },
+        {
+          "t": 3525,
+          "d": 238
+        },
+        {
+          "t": 3775,
+          "d": 188
+        },
+        {
+          "t": 3963,
+          "d": 150
+        },
+        {
+          "t": 4113,
+          "d": 388
+        },
+        {
+          "t": 4513,
+          "d": 375
+        },
+        {
+          "t": 4900,
+          "d": 75
+        },
+        {
+          "t": 4988,
+          "d": 75
+        },
+        {
+          "t": 5075,
+          "d": 300
+        },
+        {
+          "t": 5375,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "4천까지는 맞춰줄 수 있다고 하고, 첫 달 성과가 좋으면 더 긴 계약을 얘기하자고 해봐",
+      "en": "I can meet you at four thousand. And if the first month goes well, we can talk about a longer contract.",
+      "ms": 5616,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meet",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "goes",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "well",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "longer",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "contract",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 175,
+          "d": 100
+        },
+        {
+          "t": 275,
+          "d": 150
+        },
+        {
+          "t": 425,
+          "d": 125
+        },
+        {
+          "t": 550,
+          "d": 63
+        },
+        {
+          "t": 625,
+          "d": 288
+        },
+        {
+          "t": 913,
+          "d": 513
+        },
+        {
+          "t": 1825,
+          "d": 50
+        },
+        {
+          "t": 1875,
+          "d": 75
+        },
+        {
+          "t": 1950,
+          "d": 75
+        },
+        {
+          "t": 2025,
+          "d": 300
+        },
+        {
+          "t": 2325,
+          "d": 188
+        },
+        {
+          "t": 2525,
+          "d": 250
+        },
+        {
+          "t": 2775,
+          "d": 400
+        },
+        {
+          "t": 3425,
+          "d": 125
+        },
+        {
+          "t": 3563,
+          "d": 100
+        },
+        {
+          "t": 3663,
+          "d": 288
+        },
+        {
+          "t": 3950,
+          "d": 238
+        },
+        {
+          "t": 4188,
+          "d": 25
+        },
+        {
+          "t": 4213,
+          "d": 363
+        },
+        {
+          "t": 4588,
+          "d": 675
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그분께 한번 여쭤볼게요. 목요일까지 답 드릴게요.",
+      "en": "Let me run it by her. I'll get back to you by Thursday.",
+      "ms": 3504,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "her",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Thursday",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 138
+        },
+        {
+          "t": 188,
+          "d": 125
+        },
+        {
+          "t": 313,
+          "d": 175
+        },
+        {
+          "t": 500,
+          "d": 113
+        },
+        {
+          "t": 613,
+          "d": 188
+        },
+        {
+          "t": 800,
+          "d": 363
+        },
+        {
+          "t": 1538,
+          "d": 100
+        },
+        {
+          "t": 1650,
+          "d": 138
+        },
+        {
+          "t": 1800,
+          "d": 213
+        },
+        {
+          "t": 2013,
+          "d": 88
+        },
+        {
+          "t": 2113,
+          "d": 113
+        },
+        {
+          "t": 2238,
+          "d": 200
+        },
+        {
+          "t": 2450,
+          "d": 688
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "rate",
+      "kind": "word",
+      "meaning_ko": "단가, 요금; 비율",
+      "example": "What's your hourly rate for this kind of project?",
+      "prompt_ko": "이런 프로젝트는 시간당 단가가 얼마인지 물어봐"
+    },
+    {
+      "term": "commission",
+      "kind": "word",
+      "meaning_ko": "수수료, 커미션",
+      "example": "Agents get a ten percent commission on each sale.",
+      "prompt_ko": "판매 건마다 10% 수수료를 받는다고 말해봐"
+    },
+    {
+      "term": "justify",
+      "kind": "word",
+      "meaning_ko": "정당화하다, 타당하다고 설명하다",
+      "example": "I can't justify spending that much on one post.",
+      "prompt_ko": "게시물 하나에 그만큼 쓰는 건 설명이 안 된다고 말해봐"
+    },
+    {
+      "term": "flat fee",
+      "kind": "phrase",
+      "meaning_ko": "고정 금액, 정액 수수료",
+      "keywords": [
+        {
+          "word": "flat",
+          "meaning_ko": "(금액이) 고정된, 균일한"
+        }
+      ],
+      "prompt_ko": "성과와 상관없이 고정비로 2천 달러를 주겠다고 말해봐"
+    },
+    {
+      "term": "run it by",
+      "kind": "phrase",
+      "meaning_ko": "~에게 한번 물어보다, 의견을 구하다",
+      "prompt_ko": "결정하기 전에 공동대표에게 한번 물어보겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-influencer-rate/full.mp3",
+  "full_starts": [
+    0,
+    6408,
+    15096,
+    21792,
+    29832,
+    35928,
+    41544
+  ],
+  "generated_at": "2026-10-13T20:31:09.198Z"
+}

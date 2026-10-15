@@ -1,0 +1,53 @@
+[
+  {
+    "kind": "ask",
+    "topic": "운동",
+    "level": 2,
+    "seconds": 60,
+    "question_en": "I've just joined a gym near my place. Ask me three or four questions about it.",
+    "hint_ko": "질문 3~4개를 만들어라. 한 줄씩 던지지 말고 — 왜 궁금한지 한 마디 → 질문 → 다음 질문으로 엮어라. 묻고 싶은 것: 언제 가는지 · 어떤 운동을 하는지 · 트레이너를 쓰는지 · 비용",
+    "model_en": "Oh, nice — I've been thinking about joining one myself, so let me ask you a few things.\n\nFirst, when do you usually go? I'm curious whether it gets packed in the evening, because that's the only time I'd be able to make it.\n\nSecond, what do you actually do when you're there — mostly weights, or do you use the machines and the cardio stuff too? And is there a trainer who shows you around, or are you on your own from day one?\n\nOne last thing: how much is the membership, and did you have to sign up for a whole year? That's the part that always stops me.",
+    "model_note_ko": "질문형은 '질문 목록'이 아니라 **대화**로 들려야 한다. 왜 궁금한지(나도 등록 생각 중) 한 줄을 깔고, first/second/one last thing 으로 묶으면 문단이 생긴다. 질문만 네 개 나열하면 IM 에서 멈춘다.",
+    "phrases": [
+      { "term": "let me ask you a few things", "meaning_ko": "몇 가지 물어볼게" },
+      { "term": "get packed", "meaning_ko": "사람이 꽉 차다" },
+      { "term": "make it", "meaning_ko": "(시간 맞춰) 갈 수 있다" },
+      { "term": "one last thing", "meaning_ko": "마지막으로 하나만" },
+      { "term": "from day one", "meaning_ko": "첫날부터" }
+    ]
+  },
+  {
+    "kind": "compare",
+    "topic": "운동",
+    "level": 3,
+    "seconds": 90,
+    "question_en": "How has the way you exercise changed over the years? Compare what you used to do with what you do now.",
+    "hint_ko": "예전 vs 지금을 **대칭으로** 짜라 — 예전엔 무엇을 어떻게 했는지 → 무엇이 바뀌었는지(계기) → 지금은 어떻게 하는지 → 어느 쪽이 나은지 한 줄",
+    "model_en": "Back in my twenties, exercise was all or nothing for me. I'd go hard four or five times a week for a month, usually running, and then I'd stop completely for half a year. There was no plan behind it — I just went whenever I felt motivated.\n\nWhat changed was my knees, honestly. After one bad stretch I realized I was training in a way that my body couldn't keep up with, and that forced me to rethink the whole thing.\n\nThese days it's the opposite. I do less per session but I almost never skip — three short sessions a week, mostly strength work, and I walk a lot in between. It's not dramatic, and nobody would be impressed watching me do it.\n\nBut looking back, the boring version is the one that actually stuck. Consistency beat intensity, which is not what I would have said ten years ago.",
+    "model_note_ko": "비교형은 **같은 축으로 두 번** 말해야 한다 — 빈도·강도·동기를 예전에서 한 번, 지금에서 한 번. 가운데 '무엇이 바뀌게 했는지'(무릎) 문단이 전환점이고, 마지막 문단에서 looking back 으로 평가를 붙이면 AL 쪽 구조가 된다.",
+    "phrases": [
+      { "term": "all or nothing", "meaning_ko": "전부 아니면 전무, 극단적으로" },
+      { "term": "go hard", "meaning_ko": "세게 몰아붙이다" },
+      { "term": "keep up with", "meaning_ko": "~을 따라가다, 버텨내다" },
+      { "term": "looking back", "meaning_ko": "돌아보면" },
+      { "term": "the one that actually stuck", "meaning_ko": "실제로 몸에 붙어 남은 쪽" }
+    ]
+  },
+  {
+    "kind": "solve",
+    "topic": "여가",
+    "level": 3,
+    "seconds": 75,
+    "question_en": "You booked tickets to a concert, but when you arrive the seats you paid for are already taken by someone else. Explain the situation to a staff member and work out what to do.",
+    "hint_ko": "문제 해결형은 **단계가 보여야** 한다 — 상황 설명 → 내 근거(예매 내역) → 요청 → 그게 안 되면 차선. 화를 내는 묘사보다 단계 구조가 점수를 만든다",
+    "model_en": "Excuse me, I think there's a mix-up with our seats. We're in row G, seats twelve and thirteen, but there's already a couple sitting there and they say those are their seats too.\n\nI have the booking right here on my phone — it was paid for three weeks ago, and the confirmation clearly shows row G. I'm not saying they're in the wrong; it looks like the same seats got sold twice.\n\nWhat I'd like is to be seated together somewhere in the same section before the opening act starts. We don't need the exact seats, just the two of us next to each other.\n\nIf nothing is left down here, I'd rather take a refund than get split up in the back. But if you can move us, that's the outcome I'm after.",
+    "model_note_ko": "4단계가 한 문단씩이다: 문제 → 근거 → 요청 → 차선. 'I'm not saying they're in the wrong' 처럼 상대를 공격하지 않고 틀을 잡는 한 줄이 B2~C1 의 완곡 어법이고, 마지막 문단의 I'd rather A than B 가 차선을 명확히 만든다.",
+    "phrases": [
+      { "term": "there's a mix-up", "meaning_ko": "뭔가 착오가 있다" },
+      { "term": "got sold twice", "meaning_ko": "중복으로 팔렸다" },
+      { "term": "what I'd like is", "meaning_ko": "제가 원하는 건" },
+      { "term": "get split up", "meaning_ko": "따로 떨어져 앉다" },
+      { "term": "the outcome I'm after", "meaning_ko": "제가 바라는 결과" }
+    ]
+  }
+]

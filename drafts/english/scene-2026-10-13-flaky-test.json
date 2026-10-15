@@ -1,0 +1,1499 @@
+{
+  "id": "2026-10-13-flaky-test",
+  "situation_ko": "결제 연동 테스트가 오늘만 세 번 실패해서 릴리스가 막혔다. 동료는 그냥 꺼버리자고 하고, 나는 격리를 제안한다. 동료는 '누가 고칠 건데?'라고 되묻는다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "동료 개발자",
+      "meaning_ko": "릴리스가 또 막혔어. 그 결제 연동 테스트가 오늘만 세 번째 실패야.",
+      "en": "The release is blocked again. That payment integration test failed for the third time today.",
+      "ms": 5736,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "blocked",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "integration",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "failed",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "third",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 513
+        },
+        {
+          "t": 813,
+          "d": 100
+        },
+        {
+          "t": 925,
+          "d": 400
+        },
+        {
+          "t": 1338,
+          "d": 363
+        },
+        {
+          "t": 2113,
+          "d": 163
+        },
+        {
+          "t": 2275,
+          "d": 350
+        },
+        {
+          "t": 2625,
+          "d": 525
+        },
+        {
+          "t": 3150,
+          "d": 363
+        },
+        {
+          "t": 3525,
+          "d": 500
+        },
+        {
+          "t": 4138,
+          "d": 88
+        },
+        {
+          "t": 4238,
+          "d": 75
+        },
+        {
+          "t": 4313,
+          "d": 388
+        },
+        {
+          "t": 4700,
+          "d": 263
+        },
+        {
+          "t": 4975,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "우리 코드 문제는 아닌 것 같다고, 그 테스트가 들쭉날쭉해서 다시 돌리면 통과한다고 말해봐",
+      "en": "I don't think it's our code. That test is flaky. It passes if you just rerun it.",
+      "ms": 5664,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "code",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flaky",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "passes",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rerun",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 63
+        },
+        {
+          "t": 138,
+          "d": 188
+        },
+        {
+          "t": 338,
+          "d": 188
+        },
+        {
+          "t": 538,
+          "d": 175
+        },
+        {
+          "t": 725,
+          "d": 150
+        },
+        {
+          "t": 888,
+          "d": 488
+        },
+        {
+          "t": 1763,
+          "d": 163
+        },
+        {
+          "t": 1938,
+          "d": 363
+        },
+        {
+          "t": 2313,
+          "d": 150
+        },
+        {
+          "t": 2475,
+          "d": 575
+        },
+        {
+          "t": 3438,
+          "d": 38
+        },
+        {
+          "t": 3488,
+          "d": 500
+        },
+        {
+          "t": 4000,
+          "d": 163
+        },
+        {
+          "t": 4175,
+          "d": 100
+        },
+        {
+          "t": 4288,
+          "d": 300
+        },
+        {
+          "t": 4600,
+          "d": 400
+        },
+        {
+          "t": 5013,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 그냥 꺼버리자. 아무도 안 믿는 테스트 때문에 릴리스를 붙잡고 있을 순 없어.",
+      "en": "Then let's just disable it. We can't hold the release for a test nobody trusts.",
+      "ms": 4704,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "disable",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hold",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nobody",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trusts",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 150
+        },
+        {
+          "t": 325,
+          "d": 188
+        },
+        {
+          "t": 525,
+          "d": 538
+        },
+        {
+          "t": 1063,
+          "d": 150
+        },
+        {
+          "t": 1625,
+          "d": 88
+        },
+        {
+          "t": 1713,
+          "d": 188
+        },
+        {
+          "t": 1900,
+          "d": 200
+        },
+        {
+          "t": 2100,
+          "d": 50
+        },
+        {
+          "t": 2150,
+          "d": 413
+        },
+        {
+          "t": 2575,
+          "d": 150
+        },
+        {
+          "t": 2738,
+          "d": 63
+        },
+        {
+          "t": 2800,
+          "d": 488
+        },
+        {
+          "t": 3350,
+          "d": 350
+        },
+        {
+          "t": 3700,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "아예 끄는 건 별로라고 하고, 격리해서 계속 돌기는 하되 파이프라인은 안 막게 하자고 제안해봐",
+      "en": "I'd rather not turn it off completely. Can we quarantine it, so it still runs but doesn't block the pipeline?",
+      "ms": 6504,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "turn",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "completely",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarantine",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "runs",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "but",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doesn't",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "block",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pipeline",
+          19
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 125
+        },
+        {
+          "t": 200,
+          "d": 288
+        },
+        {
+          "t": 500,
+          "d": 275
+        },
+        {
+          "t": 788,
+          "d": 213
+        },
+        {
+          "t": 1013,
+          "d": 88
+        },
+        {
+          "t": 1113,
+          "d": 238
+        },
+        {
+          "t": 1363,
+          "d": 738
+        },
+        {
+          "t": 2463,
+          "d": 138
+        },
+        {
+          "t": 2613,
+          "d": 100
+        },
+        {
+          "t": 2725,
+          "d": 550
+        },
+        {
+          "t": 3288,
+          "d": 188
+        },
+        {
+          "t": 3500,
+          "d": 238
+        },
+        {
+          "t": 3750,
+          "d": 88
+        },
+        {
+          "t": 3850,
+          "d": 313
+        },
+        {
+          "t": 4175,
+          "d": 400
+        },
+        {
+          "t": 4588,
+          "d": 175
+        },
+        {
+          "t": 4775,
+          "d": 300
+        },
+        {
+          "t": 5088,
+          "d": 300
+        },
+        {
+          "t": 5400,
+          "d": 88
+        },
+        {
+          "t": 5500,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아, 근데 누가 고쳐? 지난번에 격리한 건 몇 달째 그대로 있었잖아.",
+      "en": "Fine, but who's going to fix it? Last time we quarantined something, it sat there for months.",
+      "ms": 5640,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Fine",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "who's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Last",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarantined",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "something",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sat",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 150,
+          "d": 325
+        },
+        {
+          "t": 700,
+          "d": 150
+        },
+        {
+          "t": 850,
+          "d": 188
+        },
+        {
+          "t": 1038,
+          "d": 125
+        },
+        {
+          "t": 1163,
+          "d": 38
+        },
+        {
+          "t": 1200,
+          "d": 275
+        },
+        {
+          "t": 1488,
+          "d": 188
+        },
+        {
+          "t": 2075,
+          "d": 200
+        },
+        {
+          "t": 2275,
+          "d": 163
+        },
+        {
+          "t": 2438,
+          "d": 113
+        },
+        {
+          "t": 2563,
+          "d": 663
+        },
+        {
+          "t": 3238,
+          "d": 450
+        },
+        {
+          "t": 3850,
+          "d": 88
+        },
+        {
+          "t": 3938,
+          "d": 388
+        },
+        {
+          "t": 4338,
+          "d": 163
+        },
+        {
+          "t": 4500,
+          "d": 125
+        },
+        {
+          "t": 4638,
+          "d": 638
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "일리 있다고 인정하고, 티켓을 만들어 내가 맡아서 금요일까지 근본 원인을 찾겠다고 약속해봐",
+      "en": "Fair point. I'll file a ticket and take it myself. I'll find the root cause by Friday.",
+      "ms": 5928,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "file",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ticket",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "myself",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "find",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "root",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cause",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 213
+        },
+        {
+          "t": 313,
+          "d": 413
+        },
+        {
+          "t": 1100,
+          "d": 113
+        },
+        {
+          "t": 1225,
+          "d": 375
+        },
+        {
+          "t": 1613,
+          "d": 75
+        },
+        {
+          "t": 1700,
+          "d": 438
+        },
+        {
+          "t": 2150,
+          "d": 125
+        },
+        {
+          "t": 2288,
+          "d": 213
+        },
+        {
+          "t": 2513,
+          "d": 75
+        },
+        {
+          "t": 2600,
+          "d": 663
+        },
+        {
+          "t": 3638,
+          "d": 113
+        },
+        {
+          "t": 3763,
+          "d": 338
+        },
+        {
+          "t": 4113,
+          "d": 50
+        },
+        {
+          "t": 4175,
+          "d": 313
+        },
+        {
+          "t": 4500,
+          "d": 313
+        },
+        {
+          "t": 4825,
+          "d": 163
+        },
+        {
+          "t": 5000,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아. 대신 월요일에도 계속 들쭉날쭉하면 지워버린다.",
+      "en": "Deal. But if it's still flaky on Monday, we delete it.",
+      "ms": 3648,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Deal",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flaky",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Monday",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "delete",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 338
+        },
+        {
+          "t": 863,
+          "d": 63
+        },
+        {
+          "t": 925,
+          "d": 88
+        },
+        {
+          "t": 1013,
+          "d": 100
+        },
+        {
+          "t": 1125,
+          "d": 213
+        },
+        {
+          "t": 1350,
+          "d": 413
+        },
+        {
+          "t": 1775,
+          "d": 138
+        },
+        {
+          "t": 1925,
+          "d": 513
+        },
+        {
+          "t": 2650,
+          "d": 125
+        },
+        {
+          "t": 2788,
+          "d": 338
+        },
+        {
+          "t": 3125,
+          "d": 175
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "flaky",
+      "kind": "word",
+      "meaning_ko": "(테스트·시스템이) 들쭉날쭉한, 믿을 수 없는",
+      "example": "The Wi-Fi here is really flaky in the afternoon.",
+      "prompt_ko": "그 테스트가 가끔만 실패해서 믿을 수가 없다고 말해봐"
+    },
+    {
+      "term": "quarantine",
+      "kind": "word",
+      "meaning_ko": "격리(하다)",
+      "example": "We quarantined the broken test until someone can fix it.",
+      "prompt_ko": "고칠 때까지 그 테스트를 격리하자고 말해봐"
+    },
+    {
+      "term": "rerun",
+      "kind": "word",
+      "meaning_ko": "다시 돌리다, 재실행",
+      "example": "Let me rerun the job and see if it passes.",
+      "prompt_ko": "잡을 다시 돌려서 통과하는지 보겠다고 말해봐"
+    },
+    {
+      "term": "file a ticket",
+      "kind": "phrase",
+      "meaning_ko": "티켓(이슈)을 등록하다",
+      "keywords": [
+        {
+          "word": "file",
+          "meaning_ko": "(서류·요청을) 정식으로 제출·등록하다"
+        }
+      ],
+      "prompt_ko": "이 버그 티켓을 등록해두겠다고 말해봐"
+    },
+    {
+      "term": "root cause",
+      "kind": "phrase",
+      "meaning_ko": "근본 원인",
+      "prompt_ko": "재시작은 임시방편이고 근본 원인을 찾아야 한다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-13-flaky-test/full.mp3",
+  "full_starts": [
+    0,
+    5736,
+    11400,
+    16104,
+    22608,
+    28248,
+    34176
+  ],
+  "generated_at": "2026-10-13T20:31:50.650Z"
+}

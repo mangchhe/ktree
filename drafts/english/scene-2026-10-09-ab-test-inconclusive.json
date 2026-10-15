@@ -1,0 +1,1923 @@
+{
+  "id": "2026-10-09-ab-test-inconclusive",
+  "situation_ko": "랜딩페이지 A/B 테스트 결과 회의. 에이전시는 새 버전이 이겼다며 전면 적용을 밀지만, 표본이 작아 결과가 유의하지 않다. 숫자를 소리 내어 짚어야 한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "에이전시 담당자",
+      "meaning_ko": "결과는 명확합니다. B 안이 전환율 4.2% 로 A 안 3.6% 를 이겼어요. 전면 적용 권합니다.",
+      "en": "The results are clear. Version B converted at four point two percent against three point six, so we'd recommend rolling it out to everyone.",
+      "ms": 8688,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "results",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clear",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Version",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "B",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "converted",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "against",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "point",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          15
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we'd",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "recommend",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rolling",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "everyone",
+          23
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 50
+        },
+        {
+          "t": 138,
+          "d": 400
+        },
+        {
+          "t": 550,
+          "d": 88
+        },
+        {
+          "t": 650,
+          "d": 438
+        },
+        {
+          "t": 1475,
+          "d": 338
+        },
+        {
+          "t": 1813,
+          "d": 163
+        },
+        {
+          "t": 1988,
+          "d": 463
+        },
+        {
+          "t": 2463,
+          "d": 100
+        },
+        {
+          "t": 2575,
+          "d": 338
+        },
+        {
+          "t": 2913,
+          "d": 238
+        },
+        {
+          "t": 3150,
+          "d": 188
+        },
+        {
+          "t": 3350,
+          "d": 488
+        },
+        {
+          "t": 3913,
+          "d": 375
+        },
+        {
+          "t": 4300,
+          "d": 313
+        },
+        {
+          "t": 4613,
+          "d": 288
+        },
+        {
+          "t": 4900,
+          "d": 563
+        },
+        {
+          "t": 5700,
+          "d": 150
+        },
+        {
+          "t": 5850,
+          "d": 213
+        },
+        {
+          "t": 6075,
+          "d": 538
+        },
+        {
+          "t": 6763,
+          "d": 388
+        },
+        {
+          "t": 7150,
+          "d": 63
+        },
+        {
+          "t": 7213,
+          "d": 325
+        },
+        {
+          "t": 7600,
+          "d": 138
+        },
+        {
+          "t": 7800,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "표본이 얼마였는지 먼저 묻고, 전환 건수 자체가 몇 건인지 물어봐",
+      "en": "Before we do that — how big was the sample? And how many conversions are we actually talking about?",
+      "ms": 6648,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Before",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "how",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "big",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sample",
+          8
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "And",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "how",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "many",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversions",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talking",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 313
+        },
+        {
+          "t": 413,
+          "d": 88
+        },
+        {
+          "t": 513,
+          "d": 200
+        },
+        {
+          "t": 725,
+          "d": 288
+        },
+        {
+          "t": 1538,
+          "d": 250
+        },
+        {
+          "t": 1800,
+          "d": 325
+        },
+        {
+          "t": 2138,
+          "d": 150
+        },
+        {
+          "t": 2300,
+          "d": 75
+        },
+        {
+          "t": 2388,
+          "d": 575
+        },
+        {
+          "t": 3350,
+          "d": 338
+        },
+        {
+          "t": 3850,
+          "d": 213
+        },
+        {
+          "t": 4075,
+          "d": 200
+        },
+        {
+          "t": 4288,
+          "d": 588
+        },
+        {
+          "t": 4888,
+          "d": 100
+        },
+        {
+          "t": 5000,
+          "d": 125
+        },
+        {
+          "t": 5138,
+          "d": 363
+        },
+        {
+          "t": 5513,
+          "d": 375
+        },
+        {
+          "t": 5900,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "에이전시 담당자",
+      "meaning_ko": "변형별로 약 1,900 명 유입이고, 전환은 B 가 80 건, A 가 68 건입니다.",
+      "en": "Around nineteen hundred visitors per variant. Eighty conversions on B, sixty-eight on A.",
+      "ms": 6096,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Around",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nineteen",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "visitors",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "per",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "variant",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Eighty",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversions",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "B",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "sixty-eight",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "A",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 363,
+          "d": 413
+        },
+        {
+          "t": 788,
+          "d": 275
+        },
+        {
+          "t": 1063,
+          "d": 563
+        },
+        {
+          "t": 1738,
+          "d": 188
+        },
+        {
+          "t": 1925,
+          "d": 588
+        },
+        {
+          "t": 2913,
+          "d": 200
+        },
+        {
+          "t": 3113,
+          "d": 475
+        },
+        {
+          "t": 3588,
+          "d": 150
+        },
+        {
+          "t": 3738,
+          "d": 438
+        },
+        {
+          "t": 4475,
+          "d": 650
+        },
+        {
+          "t": 5138,
+          "d": 213
+        },
+        {
+          "t": 5350,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "12건 차이로는 확신할 수 없다고 말하고, 신뢰 수준이 얼마로 나왔는지 물어봐",
+      "en": "That's a twelve-conversion gap — too thin for me to bet the whole funnel on. What confidence level did the test come back at?",
+      "ms": 7392,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twelve-conversion",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gap",
+          3
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "too",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thin",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bet",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "whole",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "funnel",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "confidence",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "level",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          22
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 363,
+          "d": 63
+        },
+        {
+          "t": 438,
+          "d": 863
+        },
+        {
+          "t": 1313,
+          "d": 363
+        },
+        {
+          "t": 2188,
+          "d": 188
+        },
+        {
+          "t": 2388,
+          "d": 238
+        },
+        {
+          "t": 2638,
+          "d": 113
+        },
+        {
+          "t": 2763,
+          "d": 225
+        },
+        {
+          "t": 3000,
+          "d": 138
+        },
+        {
+          "t": 3150,
+          "d": 175
+        },
+        {
+          "t": 3338,
+          "d": 50
+        },
+        {
+          "t": 3388,
+          "d": 300
+        },
+        {
+          "t": 3700,
+          "d": 288
+        },
+        {
+          "t": 4000,
+          "d": 250
+        },
+        {
+          "t": 4600,
+          "d": 150
+        },
+        {
+          "t": 4763,
+          "d": 625
+        },
+        {
+          "t": 5400,
+          "d": 400
+        },
+        {
+          "t": 5813,
+          "d": 125
+        },
+        {
+          "t": 5950,
+          "d": 63
+        },
+        {
+          "t": 6025,
+          "d": 325
+        },
+        {
+          "t": 6350,
+          "d": 138
+        },
+        {
+          "t": 6488,
+          "d": 263
+        },
+        {
+          "t": 6750,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "에이전시 담당자",
+      "meaning_ko": "솔직히 말씀드리면 82% 입니다. 95% 에는 못 미치지만 방향은 분명하다고 봅니다.",
+      "en": "I'll be straight with you — eighty-two percent. It's short of ninety-five, but the direction looks solid to us.",
+      "ms": 7176,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'll",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "straight",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "eighty-two",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "short",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ninety-five",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "direction",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looks",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "solid",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 100
+        },
+        {
+          "t": 300,
+          "d": 313
+        },
+        {
+          "t": 613,
+          "d": 163
+        },
+        {
+          "t": 788,
+          "d": 250
+        },
+        {
+          "t": 1538,
+          "d": 525
+        },
+        {
+          "t": 2063,
+          "d": 550
+        },
+        {
+          "t": 3013,
+          "d": 88
+        },
+        {
+          "t": 3113,
+          "d": 238
+        },
+        {
+          "t": 3350,
+          "d": 75
+        },
+        {
+          "t": 3425,
+          "d": 1013
+        },
+        {
+          "t": 4713,
+          "d": 100
+        },
+        {
+          "t": 4813,
+          "d": 75
+        },
+        {
+          "t": 4888,
+          "d": 550
+        },
+        {
+          "t": 5488,
+          "d": 313
+        },
+        {
+          "t": 5813,
+          "d": 400
+        },
+        {
+          "t": 6213,
+          "d": 138
+        },
+        {
+          "t": 6363,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "전면 적용 대신 2주 더 돌려서 표본을 두 배로 키우자고 제안해봐",
+      "en": "Then let's not call it yet. I'd rather run it two more weeks and double the sample before we commit.",
+      "ms": 6144,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "yet",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rather",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "double",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sample",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "commit",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 275
+        },
+        {
+          "t": 375,
+          "d": 213
+        },
+        {
+          "t": 600,
+          "d": 188
+        },
+        {
+          "t": 800,
+          "d": 238
+        },
+        {
+          "t": 1050,
+          "d": 75
+        },
+        {
+          "t": 1125,
+          "d": 350
+        },
+        {
+          "t": 1863,
+          "d": 163
+        },
+        {
+          "t": 2038,
+          "d": 338
+        },
+        {
+          "t": 2375,
+          "d": 213
+        },
+        {
+          "t": 2600,
+          "d": 100
+        },
+        {
+          "t": 2713,
+          "d": 200
+        },
+        {
+          "t": 2925,
+          "d": 200
+        },
+        {
+          "t": 3138,
+          "d": 425
+        },
+        {
+          "t": 3800,
+          "d": 325
+        },
+        {
+          "t": 4138,
+          "d": 313
+        },
+        {
+          "t": 4463,
+          "d": 75
+        },
+        {
+          "t": 4550,
+          "d": 400
+        },
+        {
+          "t": 4963,
+          "d": 325
+        },
+        {
+          "t": 5288,
+          "d": 100
+        },
+        {
+          "t": 5388,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "에이전시 담당자",
+      "meaning_ko": "가능합니다. 다만 다음 주부터 성수기 트래픽이 들어오기 때문에, 그 기간 사용자가 평소와 달라서 결과가 섞일 수 있습니다.",
+      "en": "We can do that. One catch, though — peak-season traffic starts next week, and those visitors behave differently, so the second half of the test won't be apples to apples.",
+      "ms": 10824,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "One",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "catch",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          6
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "peak-season",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "traffic",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "starts",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "those",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "visitors",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "behave",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "differently",
+          16
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "second",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "apples",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          27
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "apples",
+          28
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 88
+        },
+        {
+          "t": 263,
+          "d": 188
+        },
+        {
+          "t": 450,
+          "d": 313
+        },
+        {
+          "t": 1175,
+          "d": 188
+        },
+        {
+          "t": 1363,
+          "d": 438
+        },
+        {
+          "t": 1875,
+          "d": 363
+        },
+        {
+          "t": 2713,
+          "d": 575
+        },
+        {
+          "t": 3288,
+          "d": 400
+        },
+        {
+          "t": 3700,
+          "d": 325
+        },
+        {
+          "t": 4025,
+          "d": 325
+        },
+        {
+          "t": 4350,
+          "d": 288
+        },
+        {
+          "t": 5050,
+          "d": 100
+        },
+        {
+          "t": 5150,
+          "d": 250
+        },
+        {
+          "t": 5400,
+          "d": 450
+        },
+        {
+          "t": 5863,
+          "d": 538
+        },
+        {
+          "t": 6488,
+          "d": 575
+        },
+        {
+          "t": 7475,
+          "d": 263
+        },
+        {
+          "t": 7738,
+          "d": 88
+        },
+        {
+          "t": 7838,
+          "d": 375
+        },
+        {
+          "t": 8213,
+          "d": 325
+        },
+        {
+          "t": 8538,
+          "d": 63
+        },
+        {
+          "t": 8600,
+          "d": 75
+        },
+        {
+          "t": 8688,
+          "d": 425
+        },
+        {
+          "t": 9125,
+          "d": 225
+        },
+        {
+          "t": 9350,
+          "d": 113
+        },
+        {
+          "t": 9463,
+          "d": 300
+        },
+        {
+          "t": 9763,
+          "d": 88
+        },
+        {
+          "t": 9850,
+          "d": 613
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "variant",
+      "meaning_ko": "(A/B 테스트의) 변형, 버전",
+      "example": "Around nineteen hundred visitors per variant.",
+      "prompt_ko": "변형별로 유입이 1,900명쯤이었다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "sample",
+      "meaning_ko": "표본, 측정에 쓴 모집단 크기",
+      "example": "I'd rather double the sample before we commit.",
+      "prompt_ko": "결정하기 전에 표본을 두 배로 키우자고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "funnel",
+      "meaning_ko": "(유입에서 결제까지의) 퍼널",
+      "example": "Too thin for me to bet the whole funnel on.",
+      "prompt_ko": "퍼널 전체를 걸 만큼 확실하진 않다고 말해봐"
+    },
+    {
+      "kind": "word",
+      "term": "confidence",
+      "meaning_ko": "(통계의) 신뢰 수준",
+      "example": "What confidence level did the test come back at?",
+      "prompt_ko": "테스트 신뢰 수준이 얼마로 나왔는지 물어봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "let's not call it yet",
+      "meaning_ko": "아직 결론 내리지 말자",
+      "prompt_ko": "아직 결론 내리지 말자고 말해봐",
+      "keywords": [
+        {
+          "word": "call",
+          "meaning_ko": "여기서는 '판정하다, 결론을 선언하다'"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "apples to apples",
+      "meaning_ko": "같은 조건끼리의 비교",
+      "prompt_ko": "같은 조건의 비교가 안 된다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "I'll be straight with you",
+      "meaning_ko": "솔직하게 말씀드리면",
+      "prompt_ko": "솔직하게 말하자면 82%였다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "short of ninety-five",
+      "meaning_ko": "95에는 못 미치는",
+      "prompt_ko": "95%에는 못 미친다고 말해봐",
+      "keywords": [
+        {
+          "word": "short of",
+          "meaning_ko": "~에 미치지 못하는, 모자라는"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-09-ab-test-inconclusive/full.mp3",
+  "full_starts": [
+    0,
+    8688,
+    15336,
+    21432,
+    28824,
+    36000,
+    42144
+  ],
+  "generated_at": "2026-10-08T20:36:19.732Z"
+}

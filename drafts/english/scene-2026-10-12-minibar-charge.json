@@ -1,0 +1,1094 @@
+{
+  "id": "2026-10-12-minibar-charge",
+  "situation_ko": "호텔 체크아웃인데 청구서에 마시지도 않은 미니바 요금이 찍혀 있다. 프런트에 빼달라고 한다. 직원은 기록을 확인하겠다며 시간을 끈다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-EmmaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "프런트",
+      "meaning_ko": "체크아웃 도와드릴게요. 여기 최종 청구서입니다.",
+      "en": "Checking out? Here's your final bill — could you take a look?",
+      "ms": 3720,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Checking",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          1
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Here's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "final",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bill",
+          5
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "could",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "look",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 400
+        },
+        {
+          "t": 475,
+          "d": 400
+        },
+        {
+          "t": 1263,
+          "d": 213
+        },
+        {
+          "t": 1488,
+          "d": 125
+        },
+        {
+          "t": 1625,
+          "d": 375
+        },
+        {
+          "t": 2013,
+          "d": 313
+        },
+        {
+          "t": 2350,
+          "d": 175
+        },
+        {
+          "t": 2538,
+          "d": 100
+        },
+        {
+          "t": 2650,
+          "d": 238
+        },
+        {
+          "t": 2900,
+          "d": 50
+        },
+        {
+          "t": 2963,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "미니바를 쓴 적이 없는데 요금이 잡혀 있다고 짚어봐",
+      "en": "I think there's a mistake — I never used the minibar, but there's a charge for it.",
+      "ms": 4272,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "mistake",
+          4
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "never",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "used",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minibar",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 150
+        },
+        {
+          "t": 313,
+          "d": 125
+        },
+        {
+          "t": 438,
+          "d": 25
+        },
+        {
+          "t": 463,
+          "d": 600
+        },
+        {
+          "t": 1525,
+          "d": 25
+        },
+        {
+          "t": 1550,
+          "d": 300
+        },
+        {
+          "t": 1863,
+          "d": 188
+        },
+        {
+          "t": 2050,
+          "d": 50
+        },
+        {
+          "t": 2100,
+          "d": 563
+        },
+        {
+          "t": 2800,
+          "d": 100
+        },
+        {
+          "t": 2900,
+          "d": 150
+        },
+        {
+          "t": 3050,
+          "d": 38
+        },
+        {
+          "t": 3100,
+          "d": 413
+        },
+        {
+          "t": 3513,
+          "d": 250
+        },
+        {
+          "t": 3763,
+          "d": 138
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "확인해 볼게요. 음, 센서에는 음료 하나가 빠진 걸로 기록돼 있네요.",
+      "en": "Let me check… hmm, the sensor logged one drink as taken.",
+      "ms": 3216,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Let",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          2
+        ],
+        [
+          "… ",
+          null
+        ],
+        [
+          "hmm",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sensor",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "logged",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drink",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "taken",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 100
+        },
+        {
+          "t": 188,
+          "d": 113
+        },
+        {
+          "t": 313,
+          "d": 275
+        },
+        {
+          "t": 600,
+          "d": 213
+        },
+        {
+          "t": 838,
+          "d": 88
+        },
+        {
+          "t": 938,
+          "d": 450
+        },
+        {
+          "t": 1400,
+          "d": 275
+        },
+        {
+          "t": 1688,
+          "d": 175
+        },
+        {
+          "t": 1875,
+          "d": 288
+        },
+        {
+          "t": 2175,
+          "d": 125
+        },
+        {
+          "t": 2313,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "건드린 적도 없다고, 그 요금을 청구서에서 빼달라고 분명히 요청해",
+      "en": "I didn't touch anything in there. Could you take that charge off the bill?",
+      "ms": 3864,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "didn't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "touch",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bill",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 213
+        },
+        {
+          "t": 363,
+          "d": 288
+        },
+        {
+          "t": 775,
+          "d": 400
+        },
+        {
+          "t": 1188,
+          "d": 138
+        },
+        {
+          "t": 1338,
+          "d": 350
+        },
+        {
+          "t": 2100,
+          "d": 75
+        },
+        {
+          "t": 2175,
+          "d": 63
+        },
+        {
+          "t": 2238,
+          "d": 213
+        },
+        {
+          "t": 2450,
+          "d": 125
+        },
+        {
+          "t": 2575,
+          "d": 363
+        },
+        {
+          "t": 2938,
+          "d": 150
+        },
+        {
+          "t": 3088,
+          "d": 75
+        },
+        {
+          "t": 3163,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠습니다. 이번엔 서비스로 빼드릴게요.",
+      "en": "Of course. I'll remove it as a courtesy this time.",
+      "ms": 3624,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "remove",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "as",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "courtesy",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 88
+        },
+        {
+          "t": 150,
+          "d": 450
+        },
+        {
+          "t": 1000,
+          "d": 213
+        },
+        {
+          "t": 1225,
+          "d": 375
+        },
+        {
+          "t": 1613,
+          "d": 125
+        },
+        {
+          "t": 1750,
+          "d": 138
+        },
+        {
+          "t": 1900,
+          "d": 75
+        },
+        {
+          "t": 1988,
+          "d": 538
+        },
+        {
+          "t": 2538,
+          "d": 225
+        },
+        {
+          "t": 2775,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "고맙다고 하고, 수정된 영수증을 이메일로 받고 싶다고 말해",
+      "en": "Thank you. Could you email me a corrected receipt?",
+      "ms": 2976,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Thank",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "corrected",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "receipt",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 125,
+          "d": 175
+        },
+        {
+          "t": 313,
+          "d": 225
+        },
+        {
+          "t": 950,
+          "d": 113
+        },
+        {
+          "t": 1063,
+          "d": 100
+        },
+        {
+          "t": 1163,
+          "d": 375
+        },
+        {
+          "t": 1538,
+          "d": 150
+        },
+        {
+          "t": 1688,
+          "d": 38
+        },
+        {
+          "t": 1725,
+          "d": 425
+        },
+        {
+          "t": 2150,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "방금 보내드렸어요. 남은 여정 안전하게 다녀오세요.",
+      "en": "Just sent it. Have a safe trip home!",
+      "ms": 2904,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Just",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sent",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Have",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "safe",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trip",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "home",
+          7
+        ],
+        [
+          "!",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 200
+        },
+        {
+          "t": 275,
+          "d": 300
+        },
+        {
+          "t": 588,
+          "d": 275
+        },
+        {
+          "t": 1263,
+          "d": 150
+        },
+        {
+          "t": 1425,
+          "d": 63
+        },
+        {
+          "t": 1500,
+          "d": 300
+        },
+        {
+          "t": 1813,
+          "d": 275
+        },
+        {
+          "t": 2100,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "charge",
+      "kind": "word",
+      "meaning_ko": "청구된 요금, (요금을) 청구하다",
+      "example": "There's an extra charge on my bill I don't recognize.",
+      "prompt_ko": "청구서에 모르는 추가 요금이 있다고 말해봐"
+    },
+    {
+      "term": "receipt",
+      "kind": "word",
+      "meaning_ko": "영수증",
+      "example": "Could you email me a copy of the receipt?",
+      "prompt_ko": "영수증을 이메일로 보내달라고 부탁해봐"
+    },
+    {
+      "term": "Could you take that off the bill?",
+      "kind": "phrase",
+      "meaning_ko": "그 요금 청구서에서 빼주시겠어요?",
+      "prompt_ko": "잘못 잡힌 요금을 청구서에서 빼달라고 요청해봐"
+    },
+    {
+      "term": "as a courtesy",
+      "kind": "phrase",
+      "meaning_ko": "서비스 차원에서, 호의로",
+      "keywords": [
+        {
+          "word": "courtesy",
+          "meaning_ko": "호의, 예의"
+        }
+      ],
+      "prompt_ko": "이번엔 서비스 차원에서 요금을 빼주겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-minibar-charge/full.mp3",
+  "full_starts": [
+    0,
+    3720,
+    7992,
+    11208,
+    15072,
+    18696,
+    21672
+  ],
+  "generated_at": "2026-10-11T20:35:34.115Z"
+}

@@ -1,0 +1,1494 @@
+{
+  "id": "2026-10-07-conversion-gap",
+  "situation_ko": "팀원이 구글 광고 전환이 역대 최고라고 보고한다. 그런데 우리 결제 데이터와 숫자가 안 맞는다. 어느 숫자를 믿을지 정해야 한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "퍼포먼스 마케터",
+      "meaning_ko": "좋은 소식이에요. 구글 광고에서 이번 달 전환이 400건으로 잡혀요. 역대 최고예요.",
+      "en": "Great news. Google Ads is reporting four hundred conversions this month. That's a record.",
+      "ms": 6312,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Great",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "news",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Google",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Ads",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reporting",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversions",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "record",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 238
+        },
+        {
+          "t": 338,
+          "d": 563
+        },
+        {
+          "t": 1300,
+          "d": 375
+        },
+        {
+          "t": 1675,
+          "d": 388
+        },
+        {
+          "t": 2163,
+          "d": 125
+        },
+        {
+          "t": 2288,
+          "d": 550
+        },
+        {
+          "t": 3013,
+          "d": 363
+        },
+        {
+          "t": 3388,
+          "d": 263
+        },
+        {
+          "t": 3650,
+          "d": 613
+        },
+        {
+          "t": 4263,
+          "d": 188
+        },
+        {
+          "t": 4450,
+          "d": 475
+        },
+        {
+          "t": 5338,
+          "d": 138
+        },
+        {
+          "t": 5475,
+          "d": 50
+        },
+        {
+          "t": 5525,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "좋긴 한데, 우리 결제 데이터로는 신규 주문이 250건뿐이라고 짚어봐",
+      "en": "That's great, but our own payment data only shows two hundred fifty new orders.",
+      "ms": 5040,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "great",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "own",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "data",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shows",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifty",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "orders",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 238
+        },
+        {
+          "t": 338,
+          "d": 425
+        },
+        {
+          "t": 1025,
+          "d": 263
+        },
+        {
+          "t": 1300,
+          "d": 138
+        },
+        {
+          "t": 1438,
+          "d": 188
+        },
+        {
+          "t": 1638,
+          "d": 325
+        },
+        {
+          "t": 1975,
+          "d": 388
+        },
+        {
+          "t": 2413,
+          "d": 238
+        },
+        {
+          "t": 2663,
+          "d": 450
+        },
+        {
+          "t": 3113,
+          "d": 250
+        },
+        {
+          "t": 3363,
+          "d": 363
+        },
+        {
+          "t": 3738,
+          "d": 275
+        },
+        {
+          "t": 4013,
+          "d": 163
+        },
+        {
+          "t": 4175,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞아요, 구글은 조회 후 전환까지 세거든요. 광고를 보기만 하고 하루 안에 사도 들어가요.",
+      "en": "Right, Google counts view-through conversions too. Someone sees an ad and buys within a day.",
+      "ms": 6336,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Right",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "Google",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "counts",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "view-through",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversions",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "too",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Someone",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sees",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ad",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "buys",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "within",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 263
+        },
+        {
+          "t": 600,
+          "d": 350
+        },
+        {
+          "t": 950,
+          "d": 400
+        },
+        {
+          "t": 1363,
+          "d": 700
+        },
+        {
+          "t": 2063,
+          "d": 538
+        },
+        {
+          "t": 2600,
+          "d": 363
+        },
+        {
+          "t": 3363,
+          "d": 300
+        },
+        {
+          "t": 3675,
+          "d": 288
+        },
+        {
+          "t": 3975,
+          "d": 63
+        },
+        {
+          "t": 4038,
+          "d": 363
+        },
+        {
+          "t": 4550,
+          "d": 150
+        },
+        {
+          "t": 4713,
+          "d": 550
+        },
+        {
+          "t": 5275,
+          "d": 263
+        },
+        {
+          "t": 5550,
+          "d": 50
+        },
+        {
+          "t": 5600,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 숫자가 60퍼센트 부풀려진 거라, 그걸로 고객 획득 단가를 계산하면 안 된다고 말해봐",
+      "en": "So the number is inflated by sixty percent. We can't calculate our cost per acquisition from it.",
+      "ms": 5976,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "So",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "inflated",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sixty",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "calculate",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cost",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "per",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "acquisition",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 188
+        },
+        {
+          "t": 288,
+          "d": 88
+        },
+        {
+          "t": 375,
+          "d": 450
+        },
+        {
+          "t": 838,
+          "d": 125
+        },
+        {
+          "t": 975,
+          "d": 575
+        },
+        {
+          "t": 1550,
+          "d": 175
+        },
+        {
+          "t": 1738,
+          "d": 413
+        },
+        {
+          "t": 2163,
+          "d": 550
+        },
+        {
+          "t": 3100,
+          "d": 100
+        },
+        {
+          "t": 3213,
+          "d": 238
+        },
+        {
+          "t": 3450,
+          "d": 513
+        },
+        {
+          "t": 3975,
+          "d": 113
+        },
+        {
+          "t": 4100,
+          "d": 400
+        },
+        {
+          "t": 4500,
+          "d": 138
+        },
+        {
+          "t": 4650,
+          "d": 525
+        },
+        {
+          "t": 5175,
+          "d": 175
+        },
+        {
+          "t": 5350,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞는 말이에요. 그런데 클릭만 세면 구글이 실제보다 훨씬 나빠 보여요.",
+      "en": "Fair, but if we only count clicks, Google looks much worse than it really is.",
+      "ms": 4608,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "count",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clicks",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "Google",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looks",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "much",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worse",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 250
+        },
+        {
+          "t": 400,
+          "d": 100
+        },
+        {
+          "t": 513,
+          "d": 75
+        },
+        {
+          "t": 600,
+          "d": 100
+        },
+        {
+          "t": 713,
+          "d": 150
+        },
+        {
+          "t": 875,
+          "d": 300
+        },
+        {
+          "t": 1175,
+          "d": 563
+        },
+        {
+          "t": 1950,
+          "d": 363
+        },
+        {
+          "t": 2313,
+          "d": 213
+        },
+        {
+          "t": 2525,
+          "d": 313
+        },
+        {
+          "t": 2838,
+          "d": 488
+        },
+        {
+          "t": 3325,
+          "d": 100
+        },
+        {
+          "t": 3425,
+          "d": 125
+        },
+        {
+          "t": 3563,
+          "d": 250
+        },
+        {
+          "t": 3813,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 지역 하나에서 일주일간 광고를 끄고 주문이 얼마나 줄어드는지 보는 홀드아웃 테스트를 하자고 해봐",
+      "en": "Then let's run a holdout test. We'll pause ads in one region for a week and see how much orders drop.",
+      "ms": 6720,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "holdout",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We'll",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pause",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ads",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "region",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "how",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "much",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "orders",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drop",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 288
+        },
+        {
+          "t": 375,
+          "d": 238
+        },
+        {
+          "t": 625,
+          "d": 200
+        },
+        {
+          "t": 838,
+          "d": 25
+        },
+        {
+          "t": 875,
+          "d": 463
+        },
+        {
+          "t": 1338,
+          "d": 500
+        },
+        {
+          "t": 2213,
+          "d": 150
+        },
+        {
+          "t": 2375,
+          "d": 388
+        },
+        {
+          "t": 2775,
+          "d": 325
+        },
+        {
+          "t": 3113,
+          "d": 213
+        },
+        {
+          "t": 3325,
+          "d": 225
+        },
+        {
+          "t": 3563,
+          "d": 375
+        },
+        {
+          "t": 3950,
+          "d": 125
+        },
+        {
+          "t": 4088,
+          "d": 63
+        },
+        {
+          "t": 4150,
+          "d": 350
+        },
+        {
+          "t": 4575,
+          "d": 238
+        },
+        {
+          "t": 4825,
+          "d": 288
+        },
+        {
+          "t": 5125,
+          "d": 175
+        },
+        {
+          "t": 5300,
+          "d": 325
+        },
+        {
+          "t": 5638,
+          "d": 338
+        },
+        {
+          "t": 5975,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋은 생각이에요. 다음 주 월요일로 세팅하고, 그다음 주에 결과를 공유할게요.",
+      "en": "Good idea. I'll set it up for next Monday and share the results the week after.",
+      "ms": 4896,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "idea",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Monday",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "share",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "results",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 550
+        },
+        {
+          "t": 1150,
+          "d": 88
+        },
+        {
+          "t": 1250,
+          "d": 163
+        },
+        {
+          "t": 1413,
+          "d": 50
+        },
+        {
+          "t": 1463,
+          "d": 150
+        },
+        {
+          "t": 1613,
+          "d": 138
+        },
+        {
+          "t": 1750,
+          "d": 275
+        },
+        {
+          "t": 2038,
+          "d": 550
+        },
+        {
+          "t": 2838,
+          "d": 113
+        },
+        {
+          "t": 2963,
+          "d": 288
+        },
+        {
+          "t": 3250,
+          "d": 75
+        },
+        {
+          "t": 3338,
+          "d": 400
+        },
+        {
+          "t": 3750,
+          "d": 75
+        },
+        {
+          "t": 3825,
+          "d": 238
+        },
+        {
+          "t": 4063,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "conversion",
+      "meaning_ko": "전환 (구매·가입 같은 목표 행동)",
+      "example": "Google Ads is reporting four hundred conversions."
+    },
+    {
+      "kind": "word",
+      "term": "inflated",
+      "meaning_ko": "부풀려진, 실제보다 큰",
+      "example": "The number is inflated by sixty percent."
+    },
+    {
+      "kind": "word",
+      "term": "holdout",
+      "meaning_ko": "홀드아웃 (비교용으로 광고를 끈 집단)",
+      "example": "Let's run a holdout test in one region."
+    },
+    {
+      "kind": "phrase",
+      "term": "cost per acquisition",
+      "meaning_ko": "고객 획득 단가 (CPA)",
+      "prompt_ko": "고객 한 명을 데려오는 데 드는 비용부터 계산해보자고 말해봐",
+      "keywords": [
+        {
+          "word": "acquisition",
+          "meaning_ko": "획득, 확보"
+        }
+      ]
+    },
+    {
+      "kind": "phrase",
+      "term": "look worse than it really is",
+      "meaning_ko": "실제보다 나빠 보이다",
+      "prompt_ko": "이 숫자만 보면 실제보다 나빠 보인다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-conversion-gap/full.mp3",
+  "full_starts": [
+    0,
+    6312,
+    11352,
+    17688,
+    23664,
+    28272,
+    34992
+  ],
+  "generated_at": "2026-10-06T20:36:59.005Z"
+}

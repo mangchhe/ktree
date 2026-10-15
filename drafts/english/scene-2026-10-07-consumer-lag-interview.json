@@ -1,0 +1,1524 @@
+{
+  "id": "2026-10-07-consumer-lag-interview",
+  "situation_ko": "해외 회사 기술 면접. 카프카 컨슈머가 밀리는 상황을 어떻게 풀지 묻는다. 파티션을 늘리겠다고 하자 면접관이 그건 안 된다는 조건을 건다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "면접관",
+      "meaning_ko": "카프카 컨슈머가 밀린다고 해보죠. 피크 시간마다 랙이 계속 늘어요. 어떻게 접근하시겠어요?",
+      "en": "Let's say your Kafka consumer is falling behind. Lag keeps growing during peak hours. How would you approach it?",
+      "ms": 7128,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Let's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "say",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Kafka",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "consumer",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "falling",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "behind",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Lag",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keeps",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "growing",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "during",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "peak",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approach",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          18
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 225
+        },
+        {
+          "t": 313,
+          "d": 138
+        },
+        {
+          "t": 463,
+          "d": 138
+        },
+        {
+          "t": 613,
+          "d": 413
+        },
+        {
+          "t": 1038,
+          "d": 538
+        },
+        {
+          "t": 1588,
+          "d": 213
+        },
+        {
+          "t": 1813,
+          "d": 325
+        },
+        {
+          "t": 2150,
+          "d": 575
+        },
+        {
+          "t": 3100,
+          "d": 438
+        },
+        {
+          "t": 3600,
+          "d": 313
+        },
+        {
+          "t": 3925,
+          "d": 375
+        },
+        {
+          "t": 4313,
+          "d": 225
+        },
+        {
+          "t": 4550,
+          "d": 200
+        },
+        {
+          "t": 4763,
+          "d": 500
+        },
+        {
+          "t": 5663,
+          "d": 188
+        },
+        {
+          "t": 5863,
+          "d": 125
+        },
+        {
+          "t": 5988,
+          "d": 100
+        },
+        {
+          "t": 6100,
+          "d": 400
+        },
+        {
+          "t": 6513,
+          "d": 250
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "먼저 병목이 처리 시간인지 그냥 메시지 양인지부터 확인하겠다고 말해봐",
+      "en": "First, I'd figure out whether the bottleneck is processing time or just message volume.",
+      "ms": 5640,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "First",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "figure",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "whether",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bottleneck",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "processing",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "or",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "message",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "volume",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 450
+        },
+        {
+          "t": 1013,
+          "d": 100
+        },
+        {
+          "t": 1113,
+          "d": 275
+        },
+        {
+          "t": 1388,
+          "d": 213
+        },
+        {
+          "t": 1600,
+          "d": 200
+        },
+        {
+          "t": 1800,
+          "d": 63
+        },
+        {
+          "t": 1863,
+          "d": 575
+        },
+        {
+          "t": 2513,
+          "d": 88
+        },
+        {
+          "t": 2600,
+          "d": 663
+        },
+        {
+          "t": 3263,
+          "d": 388
+        },
+        {
+          "t": 3988,
+          "d": 88
+        },
+        {
+          "t": 4088,
+          "d": 250
+        },
+        {
+          "t": 4338,
+          "d": 500
+        },
+        {
+          "t": 4838,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "처리 시간이라고 해보죠. 메시지마다 외부 API 를 호출하는데 200밀리초쯤 걸려요.",
+      "en": "Say it's processing time. Each message calls an external API that takes about two hundred milliseconds.",
+      "ms": 7272,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Say",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "processing",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Each",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "message",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "calls",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "external",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "API",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "takes",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hundred",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "milliseconds",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 425
+        },
+        {
+          "t": 775,
+          "d": 138
+        },
+        {
+          "t": 913,
+          "d": 550
+        },
+        {
+          "t": 1475,
+          "d": 463
+        },
+        {
+          "t": 2313,
+          "d": 238
+        },
+        {
+          "t": 2563,
+          "d": 513
+        },
+        {
+          "t": 3088,
+          "d": 338
+        },
+        {
+          "t": 3500,
+          "d": 75
+        },
+        {
+          "t": 3588,
+          "d": 513
+        },
+        {
+          "t": 4113,
+          "d": 550
+        },
+        {
+          "t": 4675,
+          "d": 238
+        },
+        {
+          "t": 4925,
+          "d": 288
+        },
+        {
+          "t": 5225,
+          "d": 288
+        },
+        {
+          "t": 5525,
+          "d": 275
+        },
+        {
+          "t": 5800,
+          "d": 313
+        },
+        {
+          "t": 6125,
+          "d": 775
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 파티션을 늘려서 컨슈머를 수평으로 확장하겠다고 말해봐",
+      "en": "Then I'd add more partitions, so we can scale out the consumers.",
+      "ms": 3984,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "add",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "partitions",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "scale",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "consumers",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 200,
+          "d": 113
+        },
+        {
+          "t": 313,
+          "d": 138
+        },
+        {
+          "t": 450,
+          "d": 275
+        },
+        {
+          "t": 725,
+          "d": 838
+        },
+        {
+          "t": 1788,
+          "d": 113
+        },
+        {
+          "t": 1900,
+          "d": 113
+        },
+        {
+          "t": 2025,
+          "d": 113
+        },
+        {
+          "t": 2138,
+          "d": 438
+        },
+        {
+          "t": 2575,
+          "d": 150
+        },
+        {
+          "t": 2738,
+          "d": 63
+        },
+        {
+          "t": 2800,
+          "d": 800
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그런데 함정이 있어요. 파티션 수는 못 바꿔요. 다른 팀이 순서에 의존하고 있거든요.",
+      "en": "Here's the catch. You can't change the partition count, because another team depends on the ordering.",
+      "ms": 5760,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Here's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "catch",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can't",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "partition",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "count",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "because",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "another",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "depends",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ordering",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 225
+        },
+        {
+          "t": 375,
+          "d": 75
+        },
+        {
+          "t": 450,
+          "d": 538
+        },
+        {
+          "t": 1350,
+          "d": 125
+        },
+        {
+          "t": 1475,
+          "d": 288
+        },
+        {
+          "t": 1775,
+          "d": 313
+        },
+        {
+          "t": 2100,
+          "d": 75
+        },
+        {
+          "t": 2188,
+          "d": 438
+        },
+        {
+          "t": 2625,
+          "d": 363
+        },
+        {
+          "t": 3200,
+          "d": 438
+        },
+        {
+          "t": 3700,
+          "d": 363
+        },
+        {
+          "t": 4075,
+          "d": 300
+        },
+        {
+          "t": 4388,
+          "d": 350
+        },
+        {
+          "t": 4750,
+          "d": 75
+        },
+        {
+          "t": 4838,
+          "d": 50
+        },
+        {
+          "t": 4900,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 파티션 안에서 키별로 묶어 병렬 처리하겠다고, 그러면 키 단위 순서는 지켜진다고 말해봐",
+      "en": "In that case, I'd process messages in parallel inside each partition, grouped by key. That keeps the ordering per key.",
+      "ms": 8040,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "In",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "process",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "messages",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "parallel",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "inside",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "each",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "partition",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "grouped",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "key",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "That",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keeps",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ordering",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "per",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "key",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 88
+        },
+        {
+          "t": 175,
+          "d": 200
+        },
+        {
+          "t": 375,
+          "d": 475
+        },
+        {
+          "t": 1075,
+          "d": 150
+        },
+        {
+          "t": 1225,
+          "d": 488
+        },
+        {
+          "t": 1713,
+          "d": 525
+        },
+        {
+          "t": 2238,
+          "d": 138
+        },
+        {
+          "t": 2375,
+          "d": 525
+        },
+        {
+          "t": 2900,
+          "d": 575
+        },
+        {
+          "t": 3613,
+          "d": 175
+        },
+        {
+          "t": 3800,
+          "d": 550
+        },
+        {
+          "t": 4588,
+          "d": 263
+        },
+        {
+          "t": 4850,
+          "d": 200
+        },
+        {
+          "t": 5063,
+          "d": 413
+        },
+        {
+          "t": 5888,
+          "d": 125
+        },
+        {
+          "t": 6025,
+          "d": 313
+        },
+        {
+          "t": 6350,
+          "d": 100
+        },
+        {
+          "t": 6500,
+          "d": 513
+        },
+        {
+          "t": 7100,
+          "d": 175
+        },
+        {
+          "t": 7288,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요, 제가 짚어주길 바랐던 트레이드오프가 바로 그거예요. 다음 질문으로 넘어가죠.",
+      "en": "Nice, that's exactly the trade-off I wanted you to spot. Let's move on to the next question.",
+      "ms": 5688,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Nice",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exactly",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trade-off",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wanted",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spot",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "question",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 563
+        },
+        {
+          "t": 775,
+          "d": 250
+        },
+        {
+          "t": 1038,
+          "d": 475
+        },
+        {
+          "t": 1525,
+          "d": 88
+        },
+        {
+          "t": 1625,
+          "d": 600
+        },
+        {
+          "t": 2300,
+          "d": 88
+        },
+        {
+          "t": 2400,
+          "d": 275
+        },
+        {
+          "t": 2688,
+          "d": 88
+        },
+        {
+          "t": 2788,
+          "d": 63
+        },
+        {
+          "t": 2863,
+          "d": 500
+        },
+        {
+          "t": 3750,
+          "d": 238
+        },
+        {
+          "t": 4000,
+          "d": 188
+        },
+        {
+          "t": 4188,
+          "d": 200
+        },
+        {
+          "t": 4400,
+          "d": 75
+        },
+        {
+          "t": 4488,
+          "d": 75
+        },
+        {
+          "t": 4575,
+          "d": 238
+        },
+        {
+          "t": 4813,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "kind": "word",
+      "term": "bottleneck",
+      "meaning_ko": "병목, 전체 속도를 막는 지점",
+      "example": "The bottleneck is processing time, not volume."
+    },
+    {
+      "kind": "word",
+      "term": "ordering",
+      "meaning_ko": "순서 (보장)",
+      "example": "Another team depends on the ordering."
+    },
+    {
+      "kind": "word",
+      "term": "spot",
+      "meaning_ko": "알아차리다, 찾아내다",
+      "example": "That's the trade-off I wanted you to spot."
+    },
+    {
+      "kind": "phrase",
+      "term": "fall behind",
+      "meaning_ko": "뒤처지다, (처리가) 밀리다",
+      "prompt_ko": "컨슈머가 들어오는 양을 못 따라가고 밀리고 있다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "scale out",
+      "meaning_ko": "(서버·인스턴스를 늘려) 수평 확장하다",
+      "prompt_ko": "인스턴스를 더 붙여서 수평으로 확장하겠다고 말해봐"
+    },
+    {
+      "kind": "phrase",
+      "term": "here's the catch",
+      "meaning_ko": "그런데 문제가 하나 있다, 함정은 이거다",
+      "prompt_ko": "좋아 보이지만 숨은 문제가 하나 있다고 꺼내봐",
+      "keywords": [
+        {
+          "word": "catch",
+          "meaning_ko": "숨은 문제, 함정"
+        }
+      ]
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-07-consumer-lag-interview/full.mp3",
+  "full_starts": [
+    0,
+    7128,
+    12768,
+    20040,
+    24024,
+    29784,
+    37824
+  ],
+  "generated_at": "2026-10-06T20:36:40.600Z"
+}

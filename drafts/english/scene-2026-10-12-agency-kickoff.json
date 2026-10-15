@@ -1,0 +1,1525 @@
+{
+  "id": "2026-10-12-agency-kickoff",
+  "situation_ko": "새 퍼포먼스 마케팅 에이전시와 킥오프. 월 예산·목표 CAC·ROAS 를 소리 내어 전달한다. 에이전시는 초기 30일은 그 목표가 빡세다고 한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-BrianMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "에이전시",
+      "meaning_ko": "모시게 돼 기뻐요. 이번 분기 목표부터 맞춰볼까요?",
+      "en": "Great to have you on board — should we start by aligning on this quarter's goals?",
+      "ms": 4824,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Great",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "board",
+          5
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "should",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "aligning",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter's",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "goals",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 238
+        },
+        {
+          "t": 338,
+          "d": 63
+        },
+        {
+          "t": 413,
+          "d": 188
+        },
+        {
+          "t": 613,
+          "d": 125
+        },
+        {
+          "t": 750,
+          "d": 163
+        },
+        {
+          "t": 925,
+          "d": 400
+        },
+        {
+          "t": 1825,
+          "d": 188
+        },
+        {
+          "t": 2025,
+          "d": 100
+        },
+        {
+          "t": 2138,
+          "d": 375
+        },
+        {
+          "t": 2525,
+          "d": 175
+        },
+        {
+          "t": 2713,
+          "d": 538
+        },
+        {
+          "t": 3263,
+          "d": 100
+        },
+        {
+          "t": 3375,
+          "d": 150
+        },
+        {
+          "t": 3538,
+          "d": 463
+        },
+        {
+          "t": 4013,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "월 예산 4만 달러, 목표 CAC 는 25달러 아래, ROAS 는 3배라고 숫자를 또박또박 말해봐",
+      "en": "Sure. Our budget is forty thousand dollars a month, target CAC under twenty-five dollars, and we want ROAS around three times.",
+      "ms": 8520,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Our",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "target",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "CAC",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "under",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-five",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ROAS",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "times",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 388
+        },
+        {
+          "t": 813,
+          "d": 138
+        },
+        {
+          "t": 963,
+          "d": 363
+        },
+        {
+          "t": 1338,
+          "d": 175
+        },
+        {
+          "t": 1525,
+          "d": 275
+        },
+        {
+          "t": 1813,
+          "d": 338
+        },
+        {
+          "t": 2163,
+          "d": 313
+        },
+        {
+          "t": 2488,
+          "d": 50
+        },
+        {
+          "t": 2550,
+          "d": 488
+        },
+        {
+          "t": 3363,
+          "d": 375
+        },
+        {
+          "t": 3750,
+          "d": 325
+        },
+        {
+          "t": 4088,
+          "d": 213
+        },
+        {
+          "t": 4313,
+          "d": 488
+        },
+        {
+          "t": 4813,
+          "d": 525
+        },
+        {
+          "t": 5638,
+          "d": 238
+        },
+        {
+          "t": 5888,
+          "d": 125
+        },
+        {
+          "t": 6025,
+          "d": 313
+        },
+        {
+          "t": 6350,
+          "d": 688
+        },
+        {
+          "t": 7050,
+          "d": 338
+        },
+        {
+          "t": 7400,
+          "d": 200
+        },
+        {
+          "t": 7613,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "솔직히 첫 30일은 학습 기간이라 CAC 가 그보다 높게 나올 거예요.",
+      "en": "Honestly, the first thirty days are a learning phase, so CAC will likely run higher than that.",
+      "ms": 5880,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Honestly",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "learning",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "phase",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "CAC",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "will",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "likely",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "higher",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 550
+        },
+        {
+          "t": 888,
+          "d": 100
+        },
+        {
+          "t": 1000,
+          "d": 325
+        },
+        {
+          "t": 1325,
+          "d": 225
+        },
+        {
+          "t": 1563,
+          "d": 325
+        },
+        {
+          "t": 1900,
+          "d": 75
+        },
+        {
+          "t": 1988,
+          "d": 50
+        },
+        {
+          "t": 2050,
+          "d": 325
+        },
+        {
+          "t": 2388,
+          "d": 450
+        },
+        {
+          "t": 3113,
+          "d": 263
+        },
+        {
+          "t": 3388,
+          "d": 388
+        },
+        {
+          "t": 3825,
+          "d": 138
+        },
+        {
+          "t": 3963,
+          "d": 413
+        },
+        {
+          "t": 4388,
+          "d": 238
+        },
+        {
+          "t": 4625,
+          "d": 375
+        },
+        {
+          "t": 5013,
+          "d": 125
+        },
+        {
+          "t": 5150,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "초기 상승 기간은 괜찮다고 하되, 지출과 CAC 를 매주 보고해달라고 요청해",
+      "en": "I'm fine with a ramp-up period, but I'll need weekly reporting on spend and CAC so we catch problems early.",
+      "ms": 6600,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ramp-up",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "period",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weekly",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reporting",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spend",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "CAC",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "catch",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problems",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 350
+        },
+        {
+          "t": 600,
+          "d": 125
+        },
+        {
+          "t": 738,
+          "d": 25
+        },
+        {
+          "t": 775,
+          "d": 400
+        },
+        {
+          "t": 1188,
+          "d": 450
+        },
+        {
+          "t": 2125,
+          "d": 150
+        },
+        {
+          "t": 2288,
+          "d": 113
+        },
+        {
+          "t": 2413,
+          "d": 238
+        },
+        {
+          "t": 2663,
+          "d": 350
+        },
+        {
+          "t": 3025,
+          "d": 475
+        },
+        {
+          "t": 3513,
+          "d": 138
+        },
+        {
+          "t": 3663,
+          "d": 375
+        },
+        {
+          "t": 4050,
+          "d": 113
+        },
+        {
+          "t": 4175,
+          "d": 388
+        },
+        {
+          "t": 4800,
+          "d": 163
+        },
+        {
+          "t": 4975,
+          "d": 100
+        },
+        {
+          "t": 5088,
+          "d": 288
+        },
+        {
+          "t": 5388,
+          "d": 413
+        },
+        {
+          "t": 5813,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼요. 처음엔 예산의 70%는 검색, 30%는 소셜로 가르는 걸 제안해요.",
+      "en": "Absolutely. I'd suggest splitting the budget seventy percent search, thirty percent social to start.",
+      "ms": 6600,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Absolutely",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "suggest",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "splitting",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seventy",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "search",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thirty",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "social",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 763
+        },
+        {
+          "t": 1238,
+          "d": 275
+        },
+        {
+          "t": 1513,
+          "d": 563
+        },
+        {
+          "t": 2075,
+          "d": 363
+        },
+        {
+          "t": 2450,
+          "d": 88
+        },
+        {
+          "t": 2550,
+          "d": 400
+        },
+        {
+          "t": 2963,
+          "d": 363
+        },
+        {
+          "t": 3338,
+          "d": 388
+        },
+        {
+          "t": 3725,
+          "d": 475
+        },
+        {
+          "t": 4650,
+          "d": 275
+        },
+        {
+          "t": 4938,
+          "d": 438
+        },
+        {
+          "t": 5388,
+          "d": 375
+        },
+        {
+          "t": 5763,
+          "d": 63
+        },
+        {
+          "t": 5838,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그 배분 좋다고 하고, 첫 광고 소재는 언제 라이브되는지 물어봐",
+      "en": "That split works for me. When do you expect the first creatives to go live?",
+      "ms": 5016,
+      "voice": "en-US-BrianMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "split",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "When",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expect",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "creatives",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "live",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 388
+        },
+        {
+          "t": 650,
+          "d": 350
+        },
+        {
+          "t": 1013,
+          "d": 150
+        },
+        {
+          "t": 1175,
+          "d": 350
+        },
+        {
+          "t": 1925,
+          "d": 175
+        },
+        {
+          "t": 2113,
+          "d": 63
+        },
+        {
+          "t": 2188,
+          "d": 125
+        },
+        {
+          "t": 2325,
+          "d": 538
+        },
+        {
+          "t": 2875,
+          "d": 100
+        },
+        {
+          "t": 2988,
+          "d": 350
+        },
+        {
+          "t": 3350,
+          "d": 513
+        },
+        {
+          "t": 3875,
+          "d": 100
+        },
+        {
+          "t": 3988,
+          "d": 163
+        },
+        {
+          "t": 4163,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "다음 주 월요일요. 그때 성과 대시보드 링크도 같이 보내드릴게요.",
+      "en": "Next Monday — I'll send over the performance dashboard link the same day.",
+      "ms": 4704,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Next",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Monday",
+          1
+        ],
+        [
+          " — ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "performance",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dashboard",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "link",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 275
+        },
+        {
+          "t": 375,
+          "d": 425
+        },
+        {
+          "t": 1050,
+          "d": 188
+        },
+        {
+          "t": 1250,
+          "d": 338
+        },
+        {
+          "t": 1600,
+          "d": 163
+        },
+        {
+          "t": 1775,
+          "d": 75
+        },
+        {
+          "t": 1850,
+          "d": 600
+        },
+        {
+          "t": 2600,
+          "d": 650
+        },
+        {
+          "t": 3250,
+          "d": 250
+        },
+        {
+          "t": 3513,
+          "d": 88
+        },
+        {
+          "t": 3613,
+          "d": 350
+        },
+        {
+          "t": 3975,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "target CAC",
+      "kind": "phrase",
+      "meaning_ko": "목표 고객획득비용",
+      "keywords": [
+        {
+          "word": "CAC",
+          "meaning_ko": "고객 한 명을 얻는 데 드는 비용 (Customer Acquisition Cost)"
+        }
+      ],
+      "prompt_ko": "목표 고객획득비용이 25달러 아래라고 말해봐"
+    },
+    {
+      "term": "ramp-up period",
+      "kind": "phrase",
+      "meaning_ko": "성과가 오르기 전 초기 적응·학습 기간",
+      "keywords": [
+        {
+          "word": "ramp up",
+          "meaning_ko": "서서히 끌어올리다"
+        }
+      ],
+      "prompt_ko": "초기 상승 기간은 감수하겠다고 말해봐"
+    },
+    {
+      "term": "run higher",
+      "kind": "phrase",
+      "meaning_ko": "(비용·수치가) 더 높게 나오다",
+      "prompt_ko": "초기엔 비용이 목표보다 높게 나올 거라고 말해봐"
+    },
+    {
+      "term": "spend",
+      "kind": "word",
+      "meaning_ko": "(광고) 지출, 집행 금액",
+      "example": "Let's cap daily spend at two thousand dollars.",
+      "prompt_ko": "하루 지출을 2천 달러로 묶자고 말해봐"
+    },
+    {
+      "term": "go live",
+      "kind": "phrase",
+      "meaning_ko": "(광고·기능이) 공개되다, 가동되다",
+      "prompt_ko": "첫 광고 소재가 언제 공개되는지 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-12-agency-kickoff/full.mp3",
+  "full_starts": [
+    0,
+    4824,
+    13344,
+    19224,
+    25824,
+    32424,
+    37440
+  ],
+  "generated_at": "2026-10-11T20:36:18.062Z"
+}

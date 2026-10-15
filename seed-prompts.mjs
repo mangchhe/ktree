@@ -152,10 +152,14 @@ for (const [i, it] of items.entries()) {
 }
 if (bad.length) { console.error('✗ 넣지 않았습니다:\n  ' + bad.join('\n  ')); process.exit(1); }
 
-const { data: have, error: e1 } = await sb.from('eng_prompts').select('question_en');
+const { data: have, error: e1 } = await sb.from('eng_prompts').select('question_en, kind');
 if (e1) { console.error('✗ eng_prompts 조회 실패 — english-v6-speaking.sql 을 먼저 실행하세요\n ', e1.message); process.exit(1); }
 const seen = new Set((have || []).map(r => r.question_en));
 const rows = items.filter(p => !seen.has(p.question_en)).map(p => ({ ...p, user_id: auth.user.id }));
+
+const stock = {};
+(have || []).forEach(r => stock[r.kind] = (stock[r.kind] || 0) + 1);
+console.log('재고:', [...KINDS].map(k => `${k} ${stock[k] || 0}`).join(' · '));
 
 const by = {};
 items.forEach(p => by[p.kind] = (by[p.kind] || 0) + 1);

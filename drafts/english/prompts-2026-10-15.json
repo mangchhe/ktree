@@ -1,0 +1,41 @@
+[
+  {
+    "kind": "describe", "topic": "운동", "level": 2, "seconds": 75,
+    "question_en": "You indicated that you go to a gym. Describe the gym you go to. Where is it, what does it look like, and what kind of people go there?",
+    "hint_ko": "① 어디 있고 얼마나 큰지 한 줄 ② 들어가서 안쪽까지 공간 순서대로(카운터·유산소·웨이트·탈의실) ③ 어떤 사람들이 언제 오는지 ④ 내가 그곳을 좋아하는 이유 하나로 마무리",
+    "model_en": "The gym I go to is on the second floor of a building right across from my office. It's not huge, but it's big enough that I rarely have to wait for a machine.\n\nWhen you walk in, there's a small front desk where you scan your card. Right behind it, there's a row of treadmills facing the windows. Past that, the back half of the room is all free weights and racks, and the locker rooms are in the far corner.\n\nAs for the people, it really depends on the time. In the morning, it's mostly office workers squeezing in a quick session before work. In the evening, it gets more crowded, with a lot of college students who take their training pretty seriously.\n\nWhat I like most is that nobody bothers you. Everyone just puts on their headphones and does their own thing, so I can focus and get out in under an hour.",
+    "model_note_ko": "묘사형 네 문단: '위치·규모 → 공간을 입구부터 안쪽으로 → 사람(시간대로 나눠서) → 내가 좋아하는 점'. 'Right behind it', 'Past that', 'in the far corner' 로 시선을 한 방향으로 옮기면 듣는 사람이 그림을 그린다. 사람 묘사는 'it really depends on the time' 으로 아침/저녁 대비를 만들면 한 문장짜리 정보가 한 문단이 된다.",
+    "phrases": [
+      { "term": "big enough that", "meaning_ko": "~할 만큼은 충분히 크다" },
+      { "term": "as for", "meaning_ko": "~에 대해 말하자면" },
+      { "term": "it really depends on", "meaning_ko": "그건 ~에 따라 정말 달라" },
+      { "term": "what I like most is that", "meaning_ko": "제일 좋은 점은 ~라는 거야" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "여행", "level": 3, "seconds": 75,
+    "question_en": "Tell me about how you usually prepare for a trip. What do you do in the days before you leave?",
+    "hint_ko": "① 언제부터 준비를 시작하는지 한 줄 ② 며칠 전→전날→당일 순서로 하는 일 ③ 국내/해외에 따라 달라지는 점 ④ 이렇게 준비하게 된 이유(예전 실수)로 마무리",
+    "model_en": "I'm not a super organized person in general, but when it comes to travel, I usually start getting ready about a week before I leave.\n\nThe first thing I do is make a simple checklist on my phone. A few days before the trip, I check the weather and figure out what to pack. Then, the night before, I lay everything out on the bed, go through the list one more time, and only then put it in my suitcase.\n\nIt's a bit different when I go abroad, though. I double-check my passport, get some local currency, and make sure my phone plan works overseas. For short trips in Korea, I honestly just throw a few things in a backpack.\n\nThe reason I'm so careful now is that I once forgot my charger on a business trip and spent the first morning hunting for one. Ever since then, the checklist has saved me more than once.",
+    "model_note_ko": "습관형 네 문단: '언제 시작하는지 → 시간 순서대로의 루틴 → 경우에 따라 달라지는 점 → 이유(과거 일화)'. 'The first thing I do is', 'A few days before', 'the night before' 로 루틴에 시간 축을 세운다. 마지막 문단에서 과거 실수 하나를 끌어오면 현재형 습관 답변에 과거 시제가 섞여 문단 간 연결이 생긴다.",
+    "phrases": [
+      { "term": "when it comes to", "meaning_ko": "~에 관해서라면" },
+      { "term": "the first thing I do is", "meaning_ko": "내가 제일 먼저 하는 건" },
+      { "term": "it's a bit different when", "meaning_ko": "~할 때는 좀 달라" },
+      { "term": "ever since then", "meaning_ko": "그 뒤로 쭉" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "일상", "level": 2, "seconds": 60,
+    "question_en": "I live in a house in the suburbs. Ask me three or four questions about where I live.",
+    "hint_ko": "① 질문 시작을 알리는 한 줄 ② 위치·크기 같은 기본 질문 ③ 생활(이웃·출퇴근·장보기) 질문 ④ 좋은 점/불편한 점을 묻는 의견 질문 ⑤ 짧은 마무리 한 줄",
+    "model_en": "Oh, a house in the suburbs sounds really nice. I've always lived in apartments, so I'm curious. Can I ask you a few things?\n\nFirst, where exactly is it, and how long have you lived there? I'm also wondering how big it is. Do you have a yard or a garden?\n\nWhat about daily life? How long does it take you to get into the city? And is it easy to get groceries, or do you have to drive everywhere?\n\nLastly, what do you like most about living there, and is there anything you miss about living in the city? Thanks, I'd love to hear about it.",
+    "model_note_ko": "질문형은 질문을 그냥 네 개 던지면 IM 이다. '왜 궁금한지 한 줄 → 기본 정보 → 생활 → 의견' 으로 묶고 'First', 'What about', 'Lastly' 로 문단을 나눈다. 'I'm curious', 'I'm also wondering' 처럼 질문 앞에 쿠션을 넣으면 질문이 단순 의문문 나열에서 대화가 된다. 직접의문문과 간접의문문(I'm wondering how big it is)을 섞는 것도 점수 포인트.",
+    "phrases": [
+      { "term": "I'm curious", "meaning_ko": "궁금해서요" },
+      { "term": "I'm also wondering", "meaning_ko": "~도 궁금한데요" },
+      { "term": "what about", "meaning_ko": "~는 어때요? (화제 전환)" },
+      { "term": "lastly", "meaning_ko": "마지막으로" }
+    ]
+  }
+]
