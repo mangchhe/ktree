@@ -1,7 +1,7 @@
 <!--ktree
 title: 풀스캔 세 곳 — DB CPU 튜닝 사례로 배우는 인덱스와 EXPLAIN
 date: 2026-10-16
-summary: 앱은 한가한데 DB만 99%였던 사례로 배우는 DB 튜닝 — 풀스캔과 인덱스·1회×횟수·DB load·리터럴 SQL과 개인정보·EXPLAIN·인덱스 없는 상관 서브쿼리·GROUP BY와 세미조인·FK 없는 조인 컬럼·루프 안의 쿼리·복합/커버링 인덱스·정렬을 대신하는 인덱스·컬럼 순서·온라인 DDL·결과 검증·캐시보다 먼저·점검 순서 — 17개 개념.
+summary: 앱은 한가한데 DB만 99%였던 사례로 배우는 DB 튜닝 — 풀스캔과 인덱스·1회×횟수·DB load·리터럴 SQL과 개인정보·EXPLAIN·인덱스 없는 상관 서브쿼리·GROUP BY와 세미조인·FK 없는 조인 컬럼·루프 안의 쿼리·복합/커버링 인덱스·정렬을 대신하는 인덱스·컬럼 순서·온라인 DDL·결과 검증·전후 결과·캐시보다 먼저·점검 순서 — 18개 개념.
 domain: db
 -->
 <meta charset="utf-8">
@@ -102,9 +102,9 @@ domain: db
   <div class="eyebrow">TECH NOTE · 데이터베이스 · 성능 튜닝</div>
   <h1>풀스캔 세 곳 — DB CPU 튜닝 사례로 배우는 인덱스와 EXPLAIN</h1>
   <p class="lede">매일 저녁 DB CPU가 99%까지 차고 API 응답이 20배 느려졌다. 앱 서버는 한가했다.
-    원인은 <b>인덱스를 못 타서 테이블을 통째로 읽는 쿼리 세 곳</b>이었고, 캐시도 서버 증설도 없이 쿼리 수정과 인덱스 세 개로 풀었다.
+    원인은 <b>인덱스를 못 타서 테이블을 통째로 읽는 쿼리 세 곳</b>이었고, 캐시도 서버 증설도 없이 쿼리 수정과 인덱스로 풀었다 — API 평균 3.8배, DB load 5분의 1.
     그 과정을 따라가며 DB 튜닝에 필요한 개념을 그림 위주로 정리했다.</p>
-  <div class="meta"><span>2026-10-16</span><span>17 concepts</span><span>MySQL 8 · InnoDB · Performance Insights · EXPLAIN · B-tree</span></div>
+  <div class="meta"><span>2026-10-16</span><span>18 concepts</span><span>MySQL 8 · InnoDB · Performance Insights · EXPLAIN · B-tree</span></div>
 </header>
 
 <nav class="toc">
@@ -125,8 +125,9 @@ domain: db
     <li><span class="n">12</span><a href="#c8c">컬럼 순서 — 같다(=) 먼저, 범위 나중</a></li>
     <li><span class="n">13</span><a href="#c9">인덱스 거는 법 — 온라인 DDL과 비용</a></li>
     <li><span class="n">14</span><a href="#c10">고치기 전에 — 결과가 같은지 검증</a></li>
-    <li><span class="n">15</span><a href="#c11">캐시·증설보다 먼저</a></li>
-    <li><span class="n">16</span><a href="#c12">다음에 볼 때의 순서</a></li>
+    <li><span class="n">15</span><a href="#c10b">결과 — 같은 시간대 전후</a></li>
+    <li><span class="n">16</span><a href="#c11">캐시·증설보다 먼저</a></li>
+    <li><span class="n">17</span><a href="#c12">다음에 볼 때의 순서</a></li>
   </ol>
 </nav>
 
@@ -610,9 +611,49 @@ JOIN point_history h ON … = x.m
   </div>
 </section>
 
+<!-- c10b -->
+<section class="card" id="c10b">
+  <div class="head"><span class="num">15</span><h2>결과 — 같은 시간대 전후</h2><span class="cat">result</span></div>
+  <div class="body">
+    <figure class="fig">
+      <svg class="dgm" viewBox="0 0 700 230" role="img" aria-label="같은 시간대 하루 전과 비교. API 평균 208에서 55밀리초, p95 652에서 193, p99 1123에서 290, DB load 0.55에서 0.12">
+        <text x="10" y="16" class="sm mut">밤 같은 1시간, 요청 수 거의 같음 (9,365 → 9,155)</text>
+        <text x="10" y="46" class="b">API 평균</text>
+        <rect class="fbad" x="120" y="34" width="93" height="12" rx="2"/><text x="220" y="45" class="sm badt">208ms</text>
+        <rect class="fgood" x="120" y="50" width="25" height="12" rx="2"/><text x="152" y="61" class="sm goodt">55ms</text>
+        <text x="10" y="96" class="b">API p95</text>
+        <rect class="fbad" x="120" y="84" width="290" height="12" rx="2"/><text x="418" y="95" class="sm badt">652ms</text>
+        <rect class="fgood" x="120" y="100" width="86" height="12" rx="2"/><text x="214" y="111" class="sm goodt">193ms</text>
+        <text x="10" y="146" class="b">API p99</text>
+        <rect class="fbad" x="120" y="134" width="500" height="12" rx="2"/><text x="628" y="145" class="sm badt">1,123ms</text>
+        <rect class="fgood" x="120" y="150" width="129" height="12" rx="2"/><text x="257" y="161" class="sm goodt">290ms</text>
+        <text x="10" y="196" class="b">DB load</text>
+        <rect class="fbad" x="120" y="184" width="440" height="12" rx="2"/><text x="568" y="195" class="sm badt">0.55</text>
+        <rect class="fgood" x="120" y="200" width="96" height="12" rx="2"/><text x="224" y="211" class="sm goodt">0.12</text>
+      </svg>
+      <figcaption>빨강 = 변경 전, 초록 = 변경 후. 이후 남은 풀스캔까지 인덱스로 정리하자 DB CPU 7%, load 0.02~0.07.</figcaption>
+    </figure>
+    <div class="tbl">
+    <table>
+      <thead><tr><th>항목</th><th>전</th><th>후</th></tr></thead>
+      <tbody>
+        <tr><td>잔액 조회 API (사례 B) avg / p95</td><td>509 / 1,196ms</td><td>35 / 63ms</td></tr>
+        <tr><td>매시간 알림 배치 (루프 안 쿼리)</td><td>31.6초</td><td>2.4초</td></tr>
+        <tr><td>호출 많은 API 6개</td><td>143~427ms</td><td>34~84ms (전부 개선)</td></tr>
+        <tr><td>DB CPU (밤)</td><td>18.9%</td><td>10.0% → 추가 정리 후 7%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>특정 API가 아니라 <b>모든 API가 같이 빨라진 것</b>이 사례 C의 증거다. 모든 요청이 지나는 인증 경로의 풀스캔이 사라졌기 때문이다.
+      반대로 잔액 조회만 유독 크게(15배) 빨라진 건 사례 B, 매시간 배치가 13배 빨라진 건 루프 안 쿼리 때문이다. 수치가 어디서 얼마나 줄었는지가 원인과 맞아떨어지는지 보는 것도 검증이다.</p>
+    <div class="tldr"><b>한 줄</b> — 서버 증설 없이 인덱스 11개와 쿼리 2개 수정으로 API 평균 3.8배, DB load 5분의 1. 개선 폭의 분포가 원인 분석과 맞는지까지 본다.</div>
+  </div>
+</section>
+
+
 <!-- 11 -->
 <section class="card" id="c11">
-  <div class="head"><span class="num">15</span><h2>캐시·증설보다 먼저</h2><span class="cat">decision</span></div>
+  <div class="head"><span class="num">16</span><h2>캐시·증설보다 먼저</h2><span class="cat">decision</span></div>
   <div class="body">
     <div class="tbl">
     <table>
@@ -630,7 +671,7 @@ JOIN point_history h ON … = x.m
 
 <!-- 12 -->
 <section class="card" id="c12">
-  <div class="head"><span class="num">16</span><h2>다음에 볼 때의 순서</h2><span class="cat">checklist</span></div>
+  <div class="head"><span class="num">17</span><h2>다음에 볼 때의 순서</h2><span class="cat">checklist</span></div>
   <div class="body">
     <figure class="fig">
       <svg class="dgm" viewBox="0 0 700 150" role="img" aria-label="점검 순서: CPU 확인, wait event, 쿼리별 load, 코드 위치, EXPLAIN에서 ALL 찾기, 인덱스 또는 쿼리 수정, 결과 검증과 전후 비교">
