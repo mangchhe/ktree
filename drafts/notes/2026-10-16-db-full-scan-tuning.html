@@ -1,7 +1,7 @@
 <!--ktree
 title: 풀스캔 세 곳 — DB CPU 튜닝 사례로 배우는 인덱스와 EXPLAIN
 date: 2026-10-16
-summary: 앱은 한가한데 DB만 99%였던 사례로 배우는 DB 튜닝 — 풀스캔과 인덱스·비용은 1회×횟수·DB load·EXPLAIN 읽기·인덱스 없는 상관 서브쿼리·GROUP BY와 세미조인·FK 없는 조인 컬럼·복합/커버링 인덱스·온라인 DDL·결과 검증·캐시보다 먼저·점검 순서 — 13개 개념.
+summary: 앱은 한가한데 DB만 99%였던 사례로 배우는 DB 튜닝 — 풀스캔과 인덱스·1회×횟수·DB load·리터럴 SQL과 개인정보·EXPLAIN·인덱스 없는 상관 서브쿼리·GROUP BY와 세미조인·FK 없는 조인 컬럼·루프 안의 쿼리·복합/커버링 인덱스·정렬을 대신하는 인덱스·컬럼 순서·온라인 DDL·결과 검증·캐시보다 먼저·점검 순서 — 17개 개념.
 domain: db
 -->
 <meta charset="utf-8">
@@ -104,7 +104,7 @@ domain: db
   <p class="lede">매일 저녁 DB CPU가 99%까지 차고 API 응답이 20배 느려졌다. 앱 서버는 한가했다.
     원인은 <b>인덱스를 못 타서 테이블을 통째로 읽는 쿼리 세 곳</b>이었고, 캐시도 서버 증설도 없이 쿼리 수정과 인덱스 세 개로 풀었다.
     그 과정을 따라가며 DB 튜닝에 필요한 개념을 그림 위주로 정리했다.</p>
-  <div class="meta"><span>2026-10-16</span><span>13 concepts</span><span>MySQL 8 · InnoDB · Performance Insights · EXPLAIN · B-tree</span></div>
+  <div class="meta"><span>2026-10-16</span><span>17 concepts</span><span>MySQL 8 · InnoDB · Performance Insights · EXPLAIN · B-tree</span></div>
 </header>
 
 <nav class="toc">
@@ -114,15 +114,19 @@ domain: db
     <li><span class="n">01</span><a href="#c1">풀스캔과 인덱스</a></li>
     <li><span class="n">02</span><a href="#c2">비용 = 1회 비용 × 횟수</a></li>
     <li><span class="n">03</span><a href="#c3">DB load — CPU 몇 개에 몇 명이 몰렸나</a></li>
-    <li><span class="n">04</span><a href="#c4">EXPLAIN 한 줄 읽기</a></li>
-    <li><span class="n">05</span><a href="#c5">사례 A — 인덱스 없는 상관 서브쿼리</a></li>
-    <li><span class="n">06</span><a href="#c6">사례 B — GROUP BY가 세미조인을 막는다</a></li>
-    <li><span class="n">07</span><a href="#c7">사례 C — 모든 요청에 붙은 조인</a></li>
-    <li><span class="n">08</span><a href="#c8">복합 인덱스와 커버링 인덱스</a></li>
-    <li><span class="n">09</span><a href="#c9">인덱스 거는 법 — 온라인 DDL과 비용</a></li>
-    <li><span class="n">10</span><a href="#c10">고치기 전에 — 결과가 같은지 검증</a></li>
-    <li><span class="n">11</span><a href="#c11">캐시·증설보다 먼저</a></li>
-    <li><span class="n">12</span><a href="#c12">다음에 볼 때의 순서</a></li>
+    <li><span class="n">04</span><a href="#c3b">모니터링 함정 — 리터럴 SQL에 개인정보가 찍힌다</a></li>
+    <li><span class="n">05</span><a href="#c4">EXPLAIN 한 줄 읽기</a></li>
+    <li><span class="n">06</span><a href="#c5">사례 A — 인덱스 없는 상관 서브쿼리</a></li>
+    <li><span class="n">07</span><a href="#c6">사례 B — GROUP BY가 세미조인을 막는다</a></li>
+    <li><span class="n">08</span><a href="#c7">사례 C — 모든 요청에 붙은 조인</a></li>
+    <li><span class="n">09</span><a href="#c7b">루프 안의 쿼리는 N배</a></li>
+    <li><span class="n">10</span><a href="#c8">복합 인덱스와 커버링 인덱스</a></li>
+    <li><span class="n">11</span><a href="#c8b">인덱스는 정렬도 대신한다</a></li>
+    <li><span class="n">12</span><a href="#c8c">컬럼 순서 — 같다(=) 먼저, 범위 나중</a></li>
+    <li><span class="n">13</span><a href="#c9">인덱스 거는 법 — 온라인 DDL과 비용</a></li>
+    <li><span class="n">14</span><a href="#c10">고치기 전에 — 결과가 같은지 검증</a></li>
+    <li><span class="n">15</span><a href="#c11">캐시·증설보다 먼저</a></li>
+    <li><span class="n">16</span><a href="#c12">다음에 볼 때의 순서</a></li>
   </ol>
 </nav>
 
@@ -240,9 +244,30 @@ domain: db
   </div>
 </section>
 
+<!-- c3b -->
+<section class="card" id="c3b">
+  <div class="head"><span class="num">04</span><h2>모니터링 함정 — 리터럴 SQL에 개인정보가 찍힌다</h2><span class="cat">gotcha</span></div>
+  <div class="body">
+    <figure class="fig">
+      <svg class="dgm" viewBox="0 0 700 150" role="img" aria-label="정규화된 SQL은 값 자리가 물음표로 바뀌어 쿼리 모양별로 묶이고, 리터럴 SQL은 실제 조회 값이 그대로 남아 개인정보가 노출된다">
+        <text x="10" y="18" class="goodt">sql_tokenized — 분석은 이걸로</text>
+        <rect class="boxgood" x="10" y="28" width="680" height="34" rx="5"/>
+        <text x="22" y="50" class="sm">SELECT … FROM member WHERE identity_key = <tspan class="goodt">?</tspan> AND platform = <tspan class="goodt">?</tspan></text>
+        <text x="10" y="90" class="badt">sql (리터럴) — 값이 그대로</text>
+        <rect class="boxbad" x="10" y="100" width="680" height="34" rx="5"/>
+        <text x="22" y="122" class="sm">SELECT … FROM member WHERE identity_key = <tspan class="badt">'xQ7…(실제 개인 식별값)…9k'</tspan> AND …</text>
+      </svg>
+    </figure>
+    <p>DB 모니터링은 같은 쿼리를 두 방식으로 묶는다. 값을 <code>?</code>로 바꾼 <b>정규화</b>(쿼리 모양별 합산)와, 값까지 그대로인 <b>리터럴</b>(값마다 따로)이다.
+      전체 SQL을 보려고 리터럴 쪽을 열었더니 회원 식별키가 그대로 찍혀 나왔다. 분석은 정규화 쪽으로 충분하고, 정규화가 더 정확하다(같은 쿼리가 한 줄로 합쳐진다).</p>
+    <div class="tldr"><b>한 줄</b> — 쿼리 분석은 정규화 SQL로. 리터럴 SQL은 개인정보가 섞이니 출력·공유·스크린샷하지 않는다.</div>
+  </div>
+</section>
+
+
 <!-- 04 -->
 <section class="card" id="c4">
-  <div class="head"><span class="num">04</span><h2>EXPLAIN 한 줄 읽기</h2><span class="cat">explain</span></div>
+  <div class="head"><span class="num">05</span><h2>EXPLAIN 한 줄 읽기</h2><span class="cat">explain</span></div>
   <div class="body">
     <p><code>EXPLAIN SELECT …</code>는 쿼리를 실행하지 않고 실행 계획만 보여준다. 한 줄이 "테이블 하나를 어떻게 읽나"다.</p>
     <figure class="fig">
@@ -273,7 +298,7 @@ domain: db
         <text x="521" y="66" text-anchor="middle" class="sm mut">인덱스 전체</text>
         <text x="635" y="66" text-anchor="middle" class="sm badt">테이블 전체</text>
       </svg>
-      <figcaption>Extra에 <code>Using index</code>가 있으면 좋은 신호다 — 인덱스만 읽고 끝났다(08).</figcaption>
+      <figcaption>Extra에 <code>Using index</code>가 있으면 좋은 신호다 — 인덱스만 읽고 끝났다(10).</figcaption>
     </figure>
     <p><code>EXPLAIN ANALYZE</code>는 실제로 실행해 시간을 재지만 그만큼 부하를 준다. 운영 DB에서 풀스캔 쿼리는 계획(EXPLAIN)만 봤다.</p>
     <div class="tldr"><b>한 줄</b> — type 열에서 ALL을 먼저 찾고, 그 줄의 rows가 앞 단계 행마다 반복되는지 본다.</div>
@@ -282,7 +307,7 @@ domain: db
 
 <!-- 05 -->
 <section class="card" id="c5">
-  <div class="head"><span class="num">05</span><h2>사례 A — 인덱스 없는 상관 서브쿼리</h2><span class="cat">case</span></div>
+  <div class="head"><span class="num">06</span><h2>사례 A — 인덱스 없는 상관 서브쿼리</h2><span class="cat">case</span></div>
   <div class="body">
     <p>저녁 6시 푸시 배치가 "회원별 최신 한도 1건"을 상관 서브쿼리로 구했다. 상관 서브쿼리는 <b>바깥 행마다 다시 실행</b>된다.</p>
 <pre><code>SELECT member_id FROM quota_snapshot q
@@ -324,7 +349,7 @@ WHERE member_id IN (:4,500명) AND remaining &lt;= 40
 
 <!-- 06 -->
 <section class="card" id="c6">
-  <div class="head"><span class="num">06</span><h2>사례 B — GROUP BY가 세미조인을 막는다</h2><span class="cat">case</span></div>
+  <div class="head"><span class="num">07</span><h2>사례 B — GROUP BY가 세미조인을 막는다</h2><span class="cat">case</span></div>
   <div class="body">
     <p>포인트 잔액 = 지갑별 <b>최신 이력</b>의 잔여량 합. 최신 이력을 이렇게 구했다.</p>
 <pre><code>SELECT h.* FROM point_history h
@@ -372,7 +397,7 @@ JOIN point_history h ON … = x.m
 
 <!-- 07 -->
 <section class="card" id="c7">
-  <div class="head"><span class="num">07</span><h2>사례 C — 모든 요청에 붙은 조인</h2><span class="cat">case</span></div>
+  <div class="head"><span class="num">08</span><h2>사례 C — 모든 요청에 붙은 조인</h2><span class="cat">case</span></div>
   <div class="body">
     <p>앞의 둘을 고친 뒤에도 사람이 적은 밤에 DB CPU가 30%대였다. load의 60%가 <b>인증 필터</b>였다. 로그인된 요청이면 API와 무관하게 매번 회원 정보를 테이블 7개와 조인해 읽는데, 그중 2개의 조인 컬럼에 인덱스가 없었다.</p>
     <figure class="fig">
@@ -401,9 +426,42 @@ JOIN point_history h ON … = x.m
   </div>
 </section>
 
+<!-- c7b -->
+<section class="card" id="c7b">
+  <div class="head"><span class="num">09</span><h2>루프 안의 쿼리는 N배</h2><span class="cat">case</span></div>
+  <div class="body">
+    <p>알림 배치가 대상자 <b>1명마다</b> "이 알림을 이미 보냈나"를 물었다. 쿼리 하나는 풀스캔 한 번이지만, 대상자가 N명이면 N번이다.</p>
+    <figure class="fig">
+      <svg class="dgm" viewBox="0 0 700 200" role="img" aria-label="대상자마다 알림 테이블을 풀스캔하면 대상자 수 곱하기 163만 행. 인덱스를 걸면 대상자 수 곱하기 몇 행, 한 번에 모아 조회하면 쿼리 1번">
+        <defs><marker id="a7b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path class="tip" d="M0,0 L8,4 L0,8 z"/></marker></defs>
+        <text x="10" y="18" class="b">for (대상자 : N명) { 이미 보냈나? }</text>
+        <rect class="box" x="10" y="32" width="64" height="22" rx="4"/><text x="42" y="47" text-anchor="middle" class="sm">회원 1</text>
+        <rect class="box" x="10" y="60" width="64" height="22" rx="4"/><text x="42" y="75" text-anchor="middle" class="sm">회원 2</text>
+        <text x="42" y="98" text-anchor="middle" class="mut">⋮</text>
+        <rect class="box" x="10" y="106" width="64" height="22" rx="4"/><text x="42" y="121" text-anchor="middle" class="sm">회원 N</text>
+        <line class="e e-bad" x1="78" y1="43" x2="168" y2="60" marker-end="url(#a7b)"/>
+        <line class="e e-bad" x1="78" y1="71" x2="168" y2="72" marker-end="url(#a7b)"/>
+        <line class="e e-bad" x1="78" y1="117" x2="168" y2="88" marker-end="url(#a7b)"/>
+        <rect class="boxbad" x="174" y="40" width="150" height="66" rx="5"/><text x="249" y="68" text-anchor="middle" class="sm">알림 테이블 전체</text><text x="249" y="86" text-anchor="middle" class="sm badt">163만 행</text>
+        <text x="174" y="128" class="sm badt">N × 163만</text>
+
+        <text x="380" y="40" class="goodt">해결 ① 인덱스</text>
+        <text x="380" y="58" class="sm">N × 몇 행 — 코드 그대로</text>
+        <text x="380" y="98" class="goodt">해결 ② 한 번에 모아 묻기</text>
+        <text x="380" y="116" class="sm">WHERE member_id IN (:N명) GROUP BY …</text>
+        <text x="380" y="132" class="sm">→ 쿼리 1번, 앱에서 Map으로 조회</text>
+        <text x="10" y="172" class="sm mut">5분마다 도는 배치라 하루 288번 × N번. 잡 하나가 10~30초씩 걸리던 이유.</text>
+      </svg>
+    </figure>
+    <p>ORM 세계에서 흔히 말하는 <b>N+1</b>과 같은 구조다. 이번에는 인덱스(①)로 1회 비용을 줄였다. 호출 수 자체가 문제가 되는 규모면 ②로 묶는다.</p>
+    <div class="tldr"><b>한 줄</b> — 반복문 안의 쿼리는 1회 비용 × 반복 수다. 루프 안에서 풀스캔이 돌면 가장 먼저 의심한다.</div>
+  </div>
+</section>
+
+
 <!-- 08 -->
 <section class="card" id="c8">
-  <div class="head"><span class="num">08</span><h2>복합 인덱스와 커버링 인덱스</h2><span class="cat">index</span></div>
+  <div class="head"><span class="num">10</span><h2>복합 인덱스와 커버링 인덱스</h2><span class="cat">index</span></div>
   <div class="body">
     <figure class="fig">
       <svg class="dgm" viewBox="0 0 700 210" role="img" aria-label="identity_key, platform 순서로 정렬된 복합 인덱스. identity_key만 또는 둘 다로 찾으면 쓸 수 있고, platform만으로는 정렬이 흩어져 있어 못 쓴다">
@@ -424,13 +482,85 @@ JOIN point_history h ON … = x.m
       </svg>
     </figure>
     <p>"이 식별키로 앱 가입자가 있나?"는 <code>identity_key</code>, <code>platform</code>, PK만 필요하다. InnoDB 보조 인덱스에는 PK가 자동으로 붙어 있어서, <code>(identity_key, platform)</code> 하나로 인덱스만 읽고 끝난다. 앞 컬럼이 같으므로 로그인용 <code>identity_key</code> 단독 조회도 같은 인덱스를 탄다.</p>
+        <div class="fig">
+      <svg class="dgm" viewBox="0 0 700 120" role="img" aria-label="별점 테이블의 인덱스는 보낸 사람 기준이라 받은 사람으로 찾는 조회는 풀스캔이 됐다. 받은 사람 기준 인덱스를 따로 추가했다">
+        <text x="10" y="18" class="b">실전: 같은 테이블, 반대 방향</text>
+        <rect class="box" x="10" y="30" width="250" height="30" rx="5"/><text x="22" y="50" class="sm">idx (from_member, to_member)</text>
+        <rect class="boxgood" x="280" y="30" width="200" height="30" rx="5"/><text x="292" y="50" class="sm">from_member = ?  → 사용</text>
+        <rect class="boxbad" x="490" y="30" width="200" height="30" rx="5"/><text x="502" y="50" class="sm">to_member = ?  → ALL</text>
+        <text x="10" y="86" class="sm">"내가 보낸 평가"와 "내가 받은 평가"는 서로 다른 인덱스가 필요하다 → idx (to_member) 추가.</text>
+        <text x="10" y="106" class="sm mut">같은 컬럼 조합 인덱스가 유니크 키와 하나 더 있어서(중복) 그건 지웠다.</text>
+      </svg>
+    </div>
     <div class="tldr"><b>한 줄</b> — 복합 인덱스는 왼쪽부터 쓰인다. 자주 같이 쓰는 조건을 왼쪽부터 묶으면 조회 여러 개를 한 인덱스로 덮는다.</div>
   </div>
 </section>
 
+<!-- c8b -->
+<section class="card" id="c8b">
+  <div class="head"><span class="num">11</span><h2>인덱스는 정렬도 대신한다</h2><span class="cat">index</span></div>
+  <div class="body">
+    <p><code>WHERE member_id = ? AND type = ? ORDER BY created_at DESC LIMIT 1</code> — "최신 1건"은 인덱스 유무에 따라 일의 양이 완전히 다르다.</p>
+    <figure class="fig">
+      <svg class="dgm" viewBox="0 0 700 200" role="img" aria-label="인덱스가 없으면 전체를 읽고 조건에 맞는 행을 모아 정렬한 뒤 1건을 쓴다. 인덱스가 있으면 이미 정렬된 묶음의 끝에서 1건만 읽는다">
+        <defs><marker id="a8b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path class="tip" d="M0,0 L8,4 L0,8 z"/></marker></defs>
+        <text x="10" y="18" class="badt">인덱스 없음</text>
+        <rect class="boxbad" x="10" y="30" width="130" height="40" rx="5"/><text x="75" y="48" text-anchor="middle" class="sm">전체 읽기</text><text x="75" y="62" text-anchor="middle" class="sm badt">163만 행</text>
+        <line class="e e-bad" x1="144" y1="50" x2="174" y2="50" marker-end="url(#a8b)"/>
+        <rect class="boxbad" x="180" y="30" width="130" height="40" rx="5"/><text x="245" y="48" text-anchor="middle" class="sm">조건 맞는 것 모아</text><text x="245" y="62" text-anchor="middle" class="sm badt">정렬 (filesort)</text>
+        <line class="e e-bad" x1="314" y1="50" x2="344" y2="50" marker-end="url(#a8b)"/>
+        <rect class="box" x="350" y="30" width="90" height="40" rx="5"/><text x="395" y="54" text-anchor="middle" class="sm">1건 사용</text>
+
+        <text x="10" y="104" class="goodt">idx (member_id, type, created_at)</text>
+        <rect class="box" x="10" y="116" width="420" height="22"/><text x="20" y="131" class="sm mut">… member 7 · LIKE · 10/01  →  member 7 · LIKE · 10/09  →</text>
+        <rect class="boxgood" x="430" y="116" width="150" height="22"/><text x="440" y="131" class="sm">7 · LIKE · 10/16</text>
+        <rect class="box" x="580" y="116" width="110" height="22"/><text x="590" y="131" class="sm mut">member 8 …</text>
+        <line class="e e-good" x1="505" y1="160" x2="505" y2="142" marker-end="url(#a8b)"/>
+        <text x="505" y="176" text-anchor="middle" class="sm goodt">끝에서 1건만 (Backward index scan)</text>
+      </svg>
+    </figure>
+    <p>인덱스는 값이 <b>정렬된 채로</b> 저장돼 있어서, 조건 컬럼 뒤에 정렬 컬럼을 붙이면 정렬을 따로 할 필요가 없다. EXPLAIN의 <code>Using filesort</code>가 사라지고 <code>LIMIT 1</code>이 진짜 1건만 읽게 된다.</p>
+    <div class="tldr"><b>한 줄</b> — WHERE 컬럼 다음에 ORDER BY 컬럼을 이어 붙인 인덱스는 "찾기"와 "정렬"을 같이 해준다.</div>
+  </div>
+</section>
+
+<!-- c8c -->
+<section class="card" id="c8c">
+  <div class="head"><span class="num">12</span><h2>컬럼 순서 — 같다(=) 먼저, 범위 나중</h2><span class="cat">index</span></div>
+  <div class="body">
+    <p>조건: <code>member_id = ?</code> 그리고 <code>exposed_at</code>이 하루 범위. 같은 두 컬럼이라도 인덱스 순서에 따라 읽는 양이 다르다.</p>
+    <figure class="fig">
+      <svg class="dgm" viewBox="0 0 700 200" role="img" aria-label="member_id 먼저면 회원 7의 행이 한곳에 모여 있고 그 안에서 날짜 범위만 잘라 읽는다. 날짜 먼저면 그날 전체 회원의 행이 섞여 있어 범위 전체를 읽으며 회원 7을 골라야 한다">
+        <text x="10" y="18" class="goodt">(member_id, exposed_at) — 권장</text>
+        <rect class="box" x="10" y="28" width="100" height="22"/><text x="18" y="43" class="sm mut">6 · 10/16</text>
+        <rect class="box" x="110" y="28" width="100" height="22"/><text x="118" y="43" class="sm mut">7 · 10/14</text>
+        <rect class="boxgood" x="210" y="28" width="100" height="22"/><text x="218" y="43" class="sm">7 · 10/16 09h</text>
+        <rect class="boxgood" x="310" y="28" width="100" height="22"/><text x="318" y="43" class="sm">7 · 10/16 21h</text>
+        <rect class="box" x="410" y="28" width="100" height="22"/><text x="418" y="43" class="sm mut">7 · 10/17</text>
+        <rect class="box" x="510" y="28" width="100" height="22"/><text x="518" y="43" class="sm mut">8 · 10/16</text>
+        <text x="10" y="70" class="sm goodt">회원 7 묶음 안에서 날짜 범위만 잘라 읽음 → 2행</text>
+
+        <text x="10" y="110" class="badt">(exposed_at, member_id) — 반대</text>
+        <rect class="boxamb" x="10" y="120" width="100" height="22"/><text x="18" y="135" class="sm">10/16 · 2</text>
+        <rect class="boxamb" x="110" y="120" width="100" height="22"/><text x="118" y="135" class="sm">10/16 · 5</text>
+        <rect class="boxgood" x="210" y="120" width="100" height="22"/><text x="218" y="135" class="sm">10/16 · 7</text>
+        <rect class="boxamb" x="310" y="120" width="100" height="22"/><text x="318" y="135" class="sm">10/16 · 9</text>
+        <rect class="boxamb" x="410" y="120" width="100" height="22"/><text x="418" y="135" class="sm">10/16 · 12</text>
+        <rect class="boxamb" x="510" y="120" width="100" height="22"/><text x="518" y="135" class="sm">… 그날 전원</text>
+        <text x="10" y="162" class="sm badt">그날 모든 회원의 행을 다 읽으며 7을 골라냄 → 수천 행</text>
+        <text x="10" y="188" class="sm mut">범위 조건 뒤의 컬럼은 "찾기"에 못 쓰이고 "거르기"에만 쓰인다</text>
+      </svg>
+    </figure>
+    <p>인덱스는 왼쪽 컬럼부터 차례로 좁힌다. 범위 조건을 만나면 거기서 좁히기가 끝난다. 그래서 등호 조건 컬럼을 앞에, 범위 컬럼을 맨 뒤에 둔다.
+      <code>type IN (…)</code> 같은 조건은 이미 몇 행으로 좁혀진 뒤라 인덱스에 안 넣고 거르기만 해도 충분했다.</p>
+    <div class="tldr"><b>한 줄</b> — 복합 인덱스 순서: 등호(=) 컬럼 → 정렬 컬럼 또는 범위 컬럼. 범위가 앞에 오면 뒤 컬럼은 놀게 된다.</div>
+  </div>
+</section>
+
+
 <!-- 09 -->
 <section class="card" id="c9">
-  <div class="head"><span class="num">09</span><h2>인덱스 거는 법 — 온라인 DDL과 비용</h2><span class="cat">operate</span></div>
+  <div class="head"><span class="num">13</span><h2>인덱스 거는 법 — 온라인 DDL과 비용</h2><span class="cat">operate</span></div>
   <div class="body">
     <figure class="fig">
       <svg class="dgm" viewBox="0 0 700 120" role="img" aria-label="CREATE INDEX는 시작과 끝에 아주 짧은 잠금만 잡고 그 사이에는 읽기와 쓰기가 계속된다. 끝나면 다음 쿼리부터 바로 인덱스를 쓴다">
@@ -452,7 +582,7 @@ JOIN point_history h ON … = x.m
 
 <!-- 10 -->
 <section class="card" id="c10">
-  <div class="head"><span class="num">10</span><h2>고치기 전에 — 결과가 같은지 검증</h2><span class="cat">verify</span></div>
+  <div class="head"><span class="num">14</span><h2>고치기 전에 — 결과가 같은지 검증</h2><span class="cat">verify</span></div>
   <div class="body">
     <p>잔액은 돈이다. 쿼리를 바꾸면 빨라지는 것보다 <b>값이 그대로인지</b>가 먼저다. 세 겹으로 확인했다.</p>
     <figure class="fig">
@@ -482,7 +612,7 @@ JOIN point_history h ON … = x.m
 
 <!-- 11 -->
 <section class="card" id="c11">
-  <div class="head"><span class="num">11</span><h2>캐시·증설보다 먼저</h2><span class="cat">decision</span></div>
+  <div class="head"><span class="num">15</span><h2>캐시·증설보다 먼저</h2><span class="cat">decision</span></div>
   <div class="body">
     <div class="tbl">
     <table>
@@ -500,7 +630,7 @@ JOIN point_history h ON … = x.m
 
 <!-- 12 -->
 <section class="card" id="c12">
-  <div class="head"><span class="num">12</span><h2>다음에 볼 때의 순서</h2><span class="cat">checklist</span></div>
+  <div class="head"><span class="num">16</span><h2>다음에 볼 때의 순서</h2><span class="cat">checklist</span></div>
   <div class="body">
     <figure class="fig">
       <svg class="dgm" viewBox="0 0 700 150" role="img" aria-label="점검 순서: CPU 확인, wait event, 쿼리별 load, 코드 위치, EXPLAIN에서 ALL 찾기, 인덱스 또는 쿼리 수정, 결과 검증과 전후 비교">
