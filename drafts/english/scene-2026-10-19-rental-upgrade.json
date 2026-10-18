@@ -1,0 +1,1159 @@
+{
+  "id": "2026-10-19-rental-upgrade",
+  "situation_ko": "출장지 공항에서 예약한 렌터카를 받으러 간다. 직원이 소형차가 다 나갔다며 하루 20달러를 더 내고 SUV 를 타라고 한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "렌터카 직원",
+      "meaning_ko": "안녕하세요. 예약하셨나요?",
+      "en": "Good afternoon. Do you have a reservation?",
+      "ms": 2784,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afternoon",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reservation",
+          6
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 150
+        },
+        {
+          "t": 225,
+          "d": 700
+        },
+        {
+          "t": 1313,
+          "d": 50
+        },
+        {
+          "t": 1375,
+          "d": 50
+        },
+        {
+          "t": 1438,
+          "d": 175
+        },
+        {
+          "t": 1625,
+          "d": 50
+        },
+        {
+          "t": 1688,
+          "d": 738
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "예약했다고, 소형차를 사흘 빌리기로 했다고 말해봐",
+      "en": "Yes, I booked a compact car for three days.",
+      "ms": 2976,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compact",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "car",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 400
+        },
+        {
+          "t": 725,
+          "d": 63
+        },
+        {
+          "t": 788,
+          "d": 200
+        },
+        {
+          "t": 988,
+          "d": 50
+        },
+        {
+          "t": 1038,
+          "d": 463
+        },
+        {
+          "t": 1500,
+          "d": 238
+        },
+        {
+          "t": 1750,
+          "d": 125
+        },
+        {
+          "t": 1875,
+          "d": 263
+        },
+        {
+          "t": 2138,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "렌터카 직원",
+      "meaning_ko": "죄송한데 지금 소형차가 다 나갔어요. 하루 20달러 더 내시면 SUV 를 드릴 수 있어요.",
+      "en": "I'm sorry, we're out of compact cars right now. I can give you an SUV for twenty dollars more a day.",
+      "ms": 6720,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sorry",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we're",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "compact",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cars",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 150
+        },
+        {
+          "t": 263,
+          "d": 488
+        },
+        {
+          "t": 1175,
+          "d": 113
+        },
+        {
+          "t": 1300,
+          "d": 113
+        },
+        {
+          "t": 1413,
+          "d": 63
+        },
+        {
+          "t": 1488,
+          "d": 513
+        },
+        {
+          "t": 2013,
+          "d": 400
+        },
+        {
+          "t": 2425,
+          "d": 175
+        },
+        {
+          "t": 2600,
+          "d": 350
+        },
+        {
+          "t": 3350,
+          "d": 125
+        },
+        {
+          "t": 3488,
+          "d": 138
+        },
+        {
+          "t": 3625,
+          "d": 163
+        },
+        {
+          "t": 3788,
+          "d": 263
+        },
+        {
+          "t": 4138,
+          "d": 163
+        },
+        {
+          "t": 4313,
+          "d": 525
+        },
+        {
+          "t": 4850,
+          "d": 150
+        },
+        {
+          "t": 5013,
+          "d": 275
+        },
+        {
+          "t": 5300,
+          "d": 400
+        },
+        {
+          "t": 5713,
+          "d": 188
+        },
+        {
+          "t": 5913,
+          "d": 63
+        },
+        {
+          "t": 5988,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "내 잘못도 아닌데 왜 돈을 더 내야 하냐고 물어봐",
+      "en": "That's not my fault. Why should I pay extra?",
+      "ms": 2664,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fault",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Why",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pay",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "extra",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 125
+        },
+        {
+          "t": 225,
+          "d": 150
+        },
+        {
+          "t": 388,
+          "d": 125
+        },
+        {
+          "t": 513,
+          "d": 413
+        },
+        {
+          "t": 1338,
+          "d": 75
+        },
+        {
+          "t": 1413,
+          "d": 113
+        },
+        {
+          "t": 1538,
+          "d": 50
+        },
+        {
+          "t": 1588,
+          "d": 225
+        },
+        {
+          "t": 1813,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "렌터카 직원",
+      "meaning_ko": "맞는 말씀이에요. 추가 요금 없이 SUV 를 드릴게요. 대신 기름은 가득 채워서 반납해주세요.",
+      "en": "You're right. I'll give you the SUV at no extra charge, but please return it with a full tank.",
+      "ms": 5928,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "You're",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "extra",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "please",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "return",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tank",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 138
+        },
+        {
+          "t": 213,
+          "d": 375
+        },
+        {
+          "t": 1013,
+          "d": 188
+        },
+        {
+          "t": 1200,
+          "d": 138
+        },
+        {
+          "t": 1338,
+          "d": 100
+        },
+        {
+          "t": 1450,
+          "d": 88
+        },
+        {
+          "t": 1550,
+          "d": 613
+        },
+        {
+          "t": 2175,
+          "d": 175
+        },
+        {
+          "t": 2363,
+          "d": 375
+        },
+        {
+          "t": 2750,
+          "d": 313
+        },
+        {
+          "t": 3063,
+          "d": 525
+        },
+        {
+          "t": 3788,
+          "d": 138
+        },
+        {
+          "t": 3938,
+          "d": 263
+        },
+        {
+          "t": 4213,
+          "d": 300
+        },
+        {
+          "t": 4525,
+          "d": 113
+        },
+        {
+          "t": 4650,
+          "d": 125
+        },
+        {
+          "t": 4788,
+          "d": 63
+        },
+        {
+          "t": 4863,
+          "d": 275
+        },
+        {
+          "t": 5150,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "고맙다고 하고, 근처에 주유소가 있냐고 물어봐",
+      "en": "Great, thanks. Is there a gas station near here?",
+      "ms": 2928,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Great",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gas",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "station",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "near",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "here",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 263
+        },
+        {
+          "t": 363,
+          "d": 513
+        },
+        {
+          "t": 1288,
+          "d": 88
+        },
+        {
+          "t": 1375,
+          "d": 100
+        },
+        {
+          "t": 1475,
+          "d": 63
+        },
+        {
+          "t": 1538,
+          "d": 238
+        },
+        {
+          "t": 1775,
+          "d": 325
+        },
+        {
+          "t": 2100,
+          "d": 163
+        },
+        {
+          "t": 2263,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "렌터카 직원",
+      "meaning_ko": "네, 공항 바로 밖에 왼쪽에 하나 있어요.",
+      "en": "Yes, there's one right outside the airport, on the left.",
+      "ms": 3384,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "there's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "outside",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "airport",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "on",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 463
+        },
+        {
+          "t": 563,
+          "d": 225
+        },
+        {
+          "t": 800,
+          "d": 338
+        },
+        {
+          "t": 1150,
+          "d": 175
+        },
+        {
+          "t": 1338,
+          "d": 413
+        },
+        {
+          "t": 1763,
+          "d": 50
+        },
+        {
+          "t": 1825,
+          "d": 513
+        },
+        {
+          "t": 2363,
+          "d": 113
+        },
+        {
+          "t": 2488,
+          "d": 63
+        },
+        {
+          "t": 2563,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "reservation",
+      "kind": "word",
+      "meaning_ko": "예약",
+      "example": "I have a reservation for two at seven.",
+      "prompt_ko": "7시에 두 명 예약했다고 말해봐"
+    },
+    {
+      "term": "fault",
+      "kind": "word",
+      "meaning_ko": "잘못, 책임",
+      "example": "Don't worry, it wasn't your fault.",
+      "prompt_ko": "그건 네 잘못이 아니라고 말해줘"
+    },
+    {
+      "term": "be out of",
+      "kind": "phrase",
+      "meaning_ko": "~이 다 떨어지다, 다 나가다",
+      "prompt_ko": "우유가 다 떨어졌다고 말해봐"
+    },
+    {
+      "term": "at no extra charge",
+      "kind": "phrase",
+      "meaning_ko": "추가 요금 없이",
+      "keywords": [
+        {
+          "word": "charge",
+          "meaning_ko": "요금"
+        }
+      ],
+      "prompt_ko": "추가 요금 없이 방을 바꿔줄 수 있냐고 물어봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-rental-upgrade/full.mp3",
+  "full_starts": [
+    0,
+    2784,
+    5760,
+    12480,
+    15144,
+    21072,
+    24000
+  ],
+  "generated_at": "2026-10-18T20:37:29.572Z"
+}

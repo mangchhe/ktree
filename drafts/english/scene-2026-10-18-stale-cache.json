@@ -1,0 +1,1216 @@
+{
+  "id": "2026-10-18-stale-cache",
+  "situation_ko": "PM 이 가격을 바꿨는데 사용자들이 아직 옛 가격을 본다고 한다. 원인은 캐시다. PM 은 캐시를 그냥 끄자고 하는데, 그러면 DB 가 버티지 못한다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "PM",
+      "meaning_ko": "가격을 한 시간 전에 바꿨는데 고객들이 아직 옛 가격을 본대요. 왜 그래요?",
+      "en": "We changed the prices an hour ago, but customers still see the old ones. What's going on?",
+      "ms": 6240,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "changed",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prices",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hour",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ago",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customers",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "old",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ones",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What's",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "going",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 338
+        },
+        {
+          "t": 588,
+          "d": 63
+        },
+        {
+          "t": 663,
+          "d": 438
+        },
+        {
+          "t": 1113,
+          "d": 150
+        },
+        {
+          "t": 1275,
+          "d": 250
+        },
+        {
+          "t": 1538,
+          "d": 400
+        },
+        {
+          "t": 2413,
+          "d": 138
+        },
+        {
+          "t": 2563,
+          "d": 625
+        },
+        {
+          "t": 3200,
+          "d": 350
+        },
+        {
+          "t": 3550,
+          "d": 188
+        },
+        {
+          "t": 3738,
+          "d": 125
+        },
+        {
+          "t": 3875,
+          "d": 188
+        },
+        {
+          "t": 4075,
+          "d": 488
+        },
+        {
+          "t": 4925,
+          "d": 225
+        },
+        {
+          "t": 5150,
+          "d": 275
+        },
+        {
+          "t": 5425,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "가격이 캐시에 있어서 그렇고, 캐시가 두 시간마다 갱신된다고 설명해봐",
+      "en": "The prices are cached, and the cache only refreshes every two hours.",
+      "ms": 4632,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prices",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cached",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cache",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "refreshes",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "every",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hours",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 63
+        },
+        {
+          "t": 175,
+          "d": 413
+        },
+        {
+          "t": 588,
+          "d": 88
+        },
+        {
+          "t": 688,
+          "d": 625
+        },
+        {
+          "t": 1738,
+          "d": 38
+        },
+        {
+          "t": 1788,
+          "d": 75
+        },
+        {
+          "t": 1875,
+          "d": 425
+        },
+        {
+          "t": 2313,
+          "d": 238
+        },
+        {
+          "t": 2550,
+          "d": 725
+        },
+        {
+          "t": 3288,
+          "d": 225
+        },
+        {
+          "t": 3513,
+          "d": 250
+        },
+        {
+          "t": 3775,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 캐시를 그냥 끄면 안 돼요? 이런 일이 다시 없으면 좋겠어요.",
+      "en": "Can't we just turn the cache off? I don't want this to happen again.",
+      "ms": 3744,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Can't",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "turn",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cache",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          6
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happen",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 200
+        },
+        {
+          "t": 300,
+          "d": 113
+        },
+        {
+          "t": 425,
+          "d": 225
+        },
+        {
+          "t": 650,
+          "d": 150
+        },
+        {
+          "t": 813,
+          "d": 63
+        },
+        {
+          "t": 888,
+          "d": 338
+        },
+        {
+          "t": 1238,
+          "d": 375
+        },
+        {
+          "t": 2013,
+          "d": 100
+        },
+        {
+          "t": 2125,
+          "d": 163
+        },
+        {
+          "t": 2300,
+          "d": 150
+        },
+        {
+          "t": 2450,
+          "d": 150
+        },
+        {
+          "t": 2600,
+          "d": 63
+        },
+        {
+          "t": 2675,
+          "d": 300
+        },
+        {
+          "t": 2975,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그러면 모든 요청이 DB로 가서 트래픽이 몰릴 때 DB가 못 버틴다고 해봐",
+      "en": "If we do that, every request hits the database, and it won't hold up at peak traffic.",
+      "ms": 5712,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "If",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "every",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "request",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hits",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "database",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hold",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "peak",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "traffic",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 113
+        },
+        {
+          "t": 200,
+          "d": 88
+        },
+        {
+          "t": 288,
+          "d": 213
+        },
+        {
+          "t": 500,
+          "d": 313
+        },
+        {
+          "t": 1288,
+          "d": 250
+        },
+        {
+          "t": 1550,
+          "d": 600
+        },
+        {
+          "t": 2150,
+          "d": 238
+        },
+        {
+          "t": 2400,
+          "d": 88
+        },
+        {
+          "t": 2500,
+          "d": 713
+        },
+        {
+          "t": 3588,
+          "d": 100
+        },
+        {
+          "t": 3700,
+          "d": 100
+        },
+        {
+          "t": 3813,
+          "d": 200
+        },
+        {
+          "t": 4013,
+          "d": 225
+        },
+        {
+          "t": 4238,
+          "d": 163
+        },
+        {
+          "t": 4413,
+          "d": 88
+        },
+        {
+          "t": 4513,
+          "d": 225
+        },
+        {
+          "t": 4738,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠어요. 그럼 대안이 뭐예요?",
+      "en": "Fair enough. So what's the alternative?",
+      "ms": 3480,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "So",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alternative",
+          5
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 325
+        },
+        {
+          "t": 438,
+          "d": 475
+        },
+        {
+          "t": 1313,
+          "d": 388
+        },
+        {
+          "t": 2150,
+          "d": 213
+        },
+        {
+          "t": 2363,
+          "d": 88
+        },
+        {
+          "t": 2450,
+          "d": 663
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "가격이 바뀔 때마다 캐시를 비우게 하겠다고, 지금은 수동으로 바로 비워주겠다고 해봐",
+      "en": "I'll make it clear the cache whenever a price changes. For now, I'll clear it manually.",
+      "ms": 5376,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'll",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clear",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cache",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "whenever",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "changes",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "For",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "clear",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "manually",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 150
+        },
+        {
+          "t": 313,
+          "d": 100
+        },
+        {
+          "t": 425,
+          "d": 288
+        },
+        {
+          "t": 713,
+          "d": 75
+        },
+        {
+          "t": 788,
+          "d": 563
+        },
+        {
+          "t": 1488,
+          "d": 363
+        },
+        {
+          "t": 1850,
+          "d": 38
+        },
+        {
+          "t": 1888,
+          "d": 350
+        },
+        {
+          "t": 2238,
+          "d": 613
+        },
+        {
+          "t": 3288,
+          "d": 75
+        },
+        {
+          "t": 3363,
+          "d": 313
+        },
+        {
+          "t": 3938,
+          "d": 150
+        },
+        {
+          "t": 4088,
+          "d": 275
+        },
+        {
+          "t": 4363,
+          "d": 63
+        },
+        {
+          "t": 4438,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "완벽해요. 끝나면 알려주세요.",
+      "en": "Perfect. Let me know when it's done.",
+      "ms": 2448,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Perfect",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "done",
+          6
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 488
+        },
+        {
+          "t": 950,
+          "d": 138
+        },
+        {
+          "t": 1100,
+          "d": 88
+        },
+        {
+          "t": 1188,
+          "d": 238
+        },
+        {
+          "t": 1425,
+          "d": 113
+        },
+        {
+          "t": 1550,
+          "d": 150
+        },
+        {
+          "t": 1700,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "cached",
+      "kind": "word",
+      "meaning_ko": "캐시에 저장된",
+      "example": "The page loads fast because it's cached.",
+      "prompt_ko": "이 데이터가 캐시에 저장돼 있어서 바로 안 바뀐다고 말해봐"
+    },
+    {
+      "term": "refresh",
+      "kind": "word",
+      "meaning_ko": "갱신하다, 새로 고치다",
+      "example": "The dashboard refreshes every five minutes.",
+      "prompt_ko": "대시보드가 5분마다 갱신된다고 말해봐"
+    },
+    {
+      "term": "alternative",
+      "kind": "word",
+      "meaning_ko": "대안, 다른 방법",
+      "example": "If that doesn't work, we need an alternative.",
+      "prompt_ko": "다른 대안이 있냐고 물어봐"
+    },
+    {
+      "term": "manually",
+      "kind": "word",
+      "meaning_ko": "수동으로, 손으로 직접",
+      "example": "I had to restart the server manually.",
+      "prompt_ko": "서버를 수동으로 재시작했다고 말해봐"
+    },
+    {
+      "term": "hit the database",
+      "kind": "phrase",
+      "meaning_ko": "(요청이) DB 까지 가다, DB 를 치다",
+      "prompt_ko": "이 API 는 요청마다 DB 를 친다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-stale-cache/full.mp3",
+  "full_starts": [
+    0,
+    6240,
+    10872,
+    14616,
+    20328,
+    23808,
+    29184
+  ],
+  "generated_at": "2026-10-17T20:32:51.653Z"
+}

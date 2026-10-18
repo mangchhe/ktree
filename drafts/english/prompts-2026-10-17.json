@@ -1,0 +1,67 @@
+[
+  {
+    "kind": "habit", "topic": "비즈니스", "level": 2, "seconds": 75,
+    "question_en": "What do you usually do when you start your workday? Tell me about your morning routine at work.",
+    "hint_ko": "① 몇 시쯤 어떻게 출근(또는 재택 시작)하는지 한 줄 ② 자리에 앉아 제일 먼저 하는 일 ③ 오전 중 집중하는 방식 ④ 이 루틴이 왜 나한테 맞는지로 마무리",
+    "model_en": "I usually start work around nine, and my mornings follow pretty much the same pattern every day.\n\nThe first thing I do is go through my messages and my calendar. I don't answer everything right away. I just sort out what's urgent and what can wait until the afternoon.\n\nAfter that, I try to block out two hours for focused work. I turn off notifications, put on some music, and work on whatever needs the most thinking. That's usually when I get the most done.\n\nThe reason I stick to this routine is simple. If I start the day by replying to everyone, the whole morning just disappears. So protecting those first few hours really makes a difference for me.",
+    "model_note_ko": "습관형은 '언제 시작 → 첫 행동 → 핵심 시간대 → 왜 이렇게 하는지' 네 문단. 'The first thing I do is' → 'After that' 으로 순서를 덩어리로 묶고, 마지막 문단 'The reason I stick to this routine is' 로 이유 하나를 깊게 판다. 분 단위 나열 대신 '왜'를 붙이면 문단이 된다.",
+    "phrases": [
+      { "term": "the first thing I do is", "meaning_ko": "제일 먼저 하는 건" },
+      { "term": "block out", "meaning_ko": "(시간을) 따로 비워두다" },
+      { "term": "the reason I stick to this is", "meaning_ko": "내가 이걸 고수하는 이유는" },
+      { "term": "really makes a difference", "meaning_ko": "확실히 차이가 난다" }
+    ]
+  },
+  {
+    "kind": "describe", "topic": "여가", "level": 2, "seconds": 75,
+    "question_en": "I'd like to know about a café you like to go to. Where is it, what does it look like, and why do you like it?",
+    "hint_ko": "① 어디에 있고 얼마나 자주 가는지 ② 들어가면 보이는 모습을 순서대로(입구·자리·창가) ③ 내가 주로 앉는 자리와 하는 일 ④ 다른 카페가 아니라 여기인 이유로 마무리",
+    "model_en": "There's a small café about ten minutes from my place that I go to almost every weekend.\n\nIt's on the second floor of an old building, so it's easy to miss from the street. When you walk in, the counter is right in front of you, and there are maybe eight or nine wooden tables. The best part is the big windows on one side. You can look down at the street and watch people walk by.\n\nI usually grab the table in the corner by the window. I order a latte, and I'll read a book or just plan my week for an hour or so.\n\nWhat keeps me going back isn't really the coffee, to be honest. It's the atmosphere. It's quiet, the music isn't too loud, and nobody rushes you to leave.",
+    "model_note_ko": "묘사형: '위치 → 들어가서 보이는 순서 → 내 자리 → 왜 여기인지'. 'When you walk in', 'right in front of you', 'on one side' 가 공간 이동 표지다. 마지막에 'What keeps me going back isn't …, it's …' 로 예상을 뒤집으면 칭찬 나열이 아니라 논지가 생긴다.",
+    "phrases": [
+      { "term": "it's easy to miss", "meaning_ko": "모르고 지나치기 쉽다" },
+      { "term": "when you walk in", "meaning_ko": "들어가면" },
+      { "term": "the best part is", "meaning_ko": "제일 좋은 점은" },
+      { "term": "what keeps me going back is", "meaning_ko": "내가 계속 가게 되는 이유는" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "여행", "level": 2, "seconds": 60,
+    "question_en": "Let's role-play. Imagine you want to rent a car for a weekend trip. Call the rental company and ask three or four questions.",
+    "hint_ko": "① 인사 + 무슨 일로 전화했는지 한 줄 ② 가격·포함 사항 ③ 보험·추가 요금 ④ 픽업·반납 장소와 시간 ⑤ 감사 인사로 닫기",
+    "model_en": "Hi, I'm calling because I'd like to rent a car for this weekend, from Friday evening to Sunday night.\n\nFirst, could you tell me how much it would be for a small car? And does that price include insurance, or is that extra?\n\nI was also wondering if there's a limit on how far I can drive. I'm planning to go about three hundred kilometers in total.\n\nOne more thing. Is it possible to pick the car up at the train station and drop it off somewhere else? If there's an extra fee for that, I'd like to know.\n\nOkay, that's really helpful. Thank you so much.",
+    "model_note_ko": "질문형은 '전화한 이유 → 질문 3~4개 → 감사'. 질문마다 틀을 바꾼다 — 'Could you tell me', 'Does that include', 'I was wondering if', 'Is it possible to'. 같은 'Can I…?' 만 반복하면 IM에 걸린다. 'First … also … One more thing' 이 질문들을 하나의 통화로 엮는다.",
+    "phrases": [
+      { "term": "I'm calling because", "meaning_ko": "~때문에 전화드렸어요" },
+      { "term": "I was also wondering if", "meaning_ko": "혹시 ~인지도 궁금해요" },
+      { "term": "is it possible to", "meaning_ko": "~하는 게 가능한가요" },
+      { "term": "one more thing", "meaning_ko": "하나만 더요" }
+    ]
+  },
+  {
+    "kind": "compare", "topic": "여행", "level": 3, "seconds": 90,
+    "question_en": "How has the way you travel changed over the years? Tell me how you used to plan trips and how you do it now.",
+    "hint_ko": "① 예전과 지금이 꽤 다르다는 한 줄 ② 예전: 정보 찾기·예약·현지에서 길 찾기 ③ 지금: 같은 항목을 대칭되게 ④ 좋아진 점과 잃은 점 → 내 결론",
+    "model_en": "Honestly, the way I travel now is almost nothing like how I used to.\n\nWhen I was in my twenties, I planned everything with guidebooks. I'd book a package tour through an agency, print out maps, and carry a little notebook with addresses written in it. If I got lost, I just had to ask someone on the street.\n\nThese days, it's a completely different story. I book flights and hotels on my phone in about ten minutes, and I read reviews before I go anywhere. Once I'm there, I just follow the map app, so I almost never get lost.\n\nThe upside is that it's way easier and usually cheaper. The downside is that trips feel a bit less surprising. Back then, getting lost was sometimes the best part. So I'd say travel is more convenient now, but I miss that sense of adventure.",
+    "model_note_ko": "비교형: '예전' 문단과 '지금' 문단을 같은 항목(정보·예약·길 찾기)으로 대칭. 'When I was in my twenties' ↔ 'These days, it's a completely different story'. 'The upside … The downside' 로 평가를 묶고 'Back then' 으로 다시 과거를 불러 'So I'd say' 로 결론 — 문단끼리 서로 참조하면 AL 쪽으로 간다.",
+    "phrases": [
+      { "term": "almost nothing like", "meaning_ko": "~와는 거의 딴판인" },
+      { "term": "these days, it's a completely different story", "meaning_ko": "요즘은 완전히 딴판이다" },
+      { "term": "back then", "meaning_ko": "그때는" },
+      { "term": "I miss that sense of", "meaning_ko": "그 ~한 느낌이 그립다" }
+    ]
+  },
+  {
+    "kind": "solve", "topic": "운동", "level": 3, "seconds": 75,
+    "question_en": "Unfortunately, there's a problem. You paid for a three-month gym membership, but today they say your membership has expired. Explain the situation and offer two or three solutions.",
+    "hint_ko": "① 문제를 한 줄로 ② 근거: 언제 얼마를 냈는지·영수증 ③ 요청: 기록 확인 후 남은 기간 복구 ④ 안 되면 차선: 오늘은 임시 입장 + 나중에 연락, 또는 환불",
+    "model_en": "Hi, I think there's been a mistake. The front desk just told me my membership has expired, but I signed up for three months, and it's only been about six weeks.\n\nI paid at this desk on the first of last month, and I have the receipt right here on my phone. I can show you the payment and the date.\n\nCould you check your system and fix the end date? I'd really like to keep using the gym until my three months are up.\n\nIf you can't sort it out today, that's okay. Could you at least let me in for my workout now, and then call me once it's fixed? Or if it turns out you can't restore it, I'd like a refund for the weeks I haven't used.",
+    "model_note_ko": "문제 해결형 고정 틀: '문제 → 근거 → 요청 → 차선'. 'I think there's been a mistake' 로 부드럽게 열고, 날짜·영수증으로 근거를 대고, 'Could you…' 로 요청, 'If you can't…, could you at least…' 로 차선을 준다. 차선을 두 개 내야 '해결책 2~3개' 지시를 채운다.",
+    "phrases": [
+      { "term": "I think there's been a mistake", "meaning_ko": "뭔가 착오가 있는 것 같아요" },
+      { "term": "until my three months are up", "meaning_ko": "제 석 달이 끝날 때까지" },
+      { "term": "if you can't sort it out today", "meaning_ko": "오늘 해결이 안 되면" },
+      { "term": "could you at least", "meaning_ko": "적어도 ~는 해주실 수 있을까요" }
+    ]
+  }
+]

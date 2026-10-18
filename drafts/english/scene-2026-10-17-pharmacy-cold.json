@@ -1,0 +1,1323 @@
+{
+  "id": "2026-10-17-pharmacy-cold",
+  "situation_ko": "사흘째 감기 기운이 있어 약국에 간다. 약을 사려는데 약사가 증상을 묻더니 병원부터 가보라고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "약사",
+      "meaning_ko": "안녕하세요, 뭘 찾으세요?",
+      "en": "Hi there, what can I get for you?",
+      "ms": 2472,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 225
+        },
+        {
+          "t": 350,
+          "d": 313
+        },
+        {
+          "t": 1188,
+          "d": 113
+        },
+        {
+          "t": 1300,
+          "d": 125
+        },
+        {
+          "t": 1438,
+          "d": 88
+        },
+        {
+          "t": 1538,
+          "d": 163
+        },
+        {
+          "t": 1700,
+          "d": 125
+        },
+        {
+          "t": 1825,
+          "d": 288
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "사흘째 목이 아프고 기침이 난다며 감기약을 달라고 해봐",
+      "en": "I've had a sore throat and a cough for three days. Do you have anything for a cold?",
+      "ms": 4920,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I've",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sore",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "throat",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cough",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cold",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 75
+        },
+        {
+          "t": 163,
+          "d": 100
+        },
+        {
+          "t": 263,
+          "d": 50
+        },
+        {
+          "t": 313,
+          "d": 300
+        },
+        {
+          "t": 613,
+          "d": 513
+        },
+        {
+          "t": 1213,
+          "d": 88
+        },
+        {
+          "t": 1300,
+          "d": 50
+        },
+        {
+          "t": 1350,
+          "d": 425
+        },
+        {
+          "t": 1950,
+          "d": 150
+        },
+        {
+          "t": 2100,
+          "d": 350
+        },
+        {
+          "t": 2450,
+          "d": 550
+        },
+        {
+          "t": 3400,
+          "d": 25
+        },
+        {
+          "t": 3438,
+          "d": 88
+        },
+        {
+          "t": 3525,
+          "d": 175
+        },
+        {
+          "t": 3700,
+          "d": 325
+        },
+        {
+          "t": 4025,
+          "d": 138
+        },
+        {
+          "t": 4163,
+          "d": 38
+        },
+        {
+          "t": 4200,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "열도 있으세요? 그리고 기침할 때 가래가 나오나요?",
+      "en": "Do you have a fever too? And is the cough dry, or are you coughing anything up?",
+      "ms": 4680,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Do",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fever",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "too",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "And",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cough",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dry",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "or",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "coughing",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 50
+        },
+        {
+          "t": 125,
+          "d": 63
+        },
+        {
+          "t": 200,
+          "d": 213
+        },
+        {
+          "t": 425,
+          "d": 63
+        },
+        {
+          "t": 500,
+          "d": 325
+        },
+        {
+          "t": 838,
+          "d": 338
+        },
+        {
+          "t": 1550,
+          "d": 113
+        },
+        {
+          "t": 1675,
+          "d": 88
+        },
+        {
+          "t": 1775,
+          "d": 75
+        },
+        {
+          "t": 1863,
+          "d": 338
+        },
+        {
+          "t": 2213,
+          "d": 400
+        },
+        {
+          "t": 2788,
+          "d": 163
+        },
+        {
+          "t": 2950,
+          "d": 113
+        },
+        {
+          "t": 3075,
+          "d": 125
+        },
+        {
+          "t": 3213,
+          "d": 450
+        },
+        {
+          "t": 3675,
+          "d": 363
+        },
+        {
+          "t": 4050,
+          "d": 263
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "어젯밤에 열이 좀 났고 기침은 마른기침이라고 말해봐",
+      "en": "I had a slight fever last night, but the cough is pretty dry.",
+      "ms": 3408,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slight",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fever",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "night",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cough",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pretty",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dry",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 100
+        },
+        {
+          "t": 250,
+          "d": 38
+        },
+        {
+          "t": 288,
+          "d": 425
+        },
+        {
+          "t": 713,
+          "d": 288
+        },
+        {
+          "t": 1000,
+          "d": 350
+        },
+        {
+          "t": 1350,
+          "d": 225
+        },
+        {
+          "t": 1588,
+          "d": 113
+        },
+        {
+          "t": 1700,
+          "d": 75
+        },
+        {
+          "t": 1775,
+          "d": 363
+        },
+        {
+          "t": 2150,
+          "d": 100
+        },
+        {
+          "t": 2263,
+          "d": 263
+        },
+        {
+          "t": 2525,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "열이 났다면 진료를 먼저 받아보시는 게 좋겠어요. 그동안 쓸 목캔디는 드릴 수 있어요.",
+      "en": "If you had a fever, I'd see a doctor first. In the meantime, I can give you some throat lozenges.",
+      "ms": 6096,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "If",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "had",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fever",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'd",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doctor",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "In",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meantime",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "some",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "throat",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lozenges",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 88
+        },
+        {
+          "t": 175,
+          "d": 88
+        },
+        {
+          "t": 275,
+          "d": 113
+        },
+        {
+          "t": 388,
+          "d": 50
+        },
+        {
+          "t": 450,
+          "d": 425
+        },
+        {
+          "t": 1113,
+          "d": 138
+        },
+        {
+          "t": 1250,
+          "d": 150
+        },
+        {
+          "t": 1413,
+          "d": 50
+        },
+        {
+          "t": 1475,
+          "d": 363
+        },
+        {
+          "t": 1850,
+          "d": 550
+        },
+        {
+          "t": 2763,
+          "d": 88
+        },
+        {
+          "t": 2850,
+          "d": 63
+        },
+        {
+          "t": 2925,
+          "d": 663
+        },
+        {
+          "t": 3788,
+          "d": 125
+        },
+        {
+          "t": 3925,
+          "d": 113
+        },
+        {
+          "t": 4050,
+          "d": 125
+        },
+        {
+          "t": 4188,
+          "d": 125
+        },
+        {
+          "t": 4325,
+          "d": 238
+        },
+        {
+          "t": 4575,
+          "d": 350
+        },
+        {
+          "t": 4938,
+          "d": 788
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "알겠다고, 목캔디 사가고 내일 아침에 병원 가보겠다고 해봐",
+      "en": "Okay, I'll take the lozenges, and I'll see a doctor tomorrow morning.",
+      "ms": 4152,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lozenges",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doctor",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "morning",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 363
+        },
+        {
+          "t": 713,
+          "d": 163
+        },
+        {
+          "t": 875,
+          "d": 200
+        },
+        {
+          "t": 1088,
+          "d": 88
+        },
+        {
+          "t": 1175,
+          "d": 800
+        },
+        {
+          "t": 2175,
+          "d": 125
+        },
+        {
+          "t": 2300,
+          "d": 88
+        },
+        {
+          "t": 2400,
+          "d": 225
+        },
+        {
+          "t": 2625,
+          "d": 50
+        },
+        {
+          "t": 2675,
+          "d": 363
+        },
+        {
+          "t": 3038,
+          "d": 338
+        },
+        {
+          "t": 3388,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 물 많이 드시고 푹 쉬세요.",
+      "en": "Good idea. Drink lots of water and get some rest.",
+      "ms": 3888,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "idea",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Drink",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lots",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "water",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "some",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rest",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 163
+        },
+        {
+          "t": 250,
+          "d": 525
+        },
+        {
+          "t": 1163,
+          "d": 200
+        },
+        {
+          "t": 1375,
+          "d": 250
+        },
+        {
+          "t": 1638,
+          "d": 63
+        },
+        {
+          "t": 1700,
+          "d": 438
+        },
+        {
+          "t": 2413,
+          "d": 213
+        },
+        {
+          "t": 2725,
+          "d": 150
+        },
+        {
+          "t": 2888,
+          "d": 175
+        },
+        {
+          "t": 3075,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "sore throat",
+      "kind": "phrase",
+      "meaning_ko": "목 아픔, 인후통",
+      "prompt_ko": "어제부터 목이 아프다고 말해봐"
+    },
+    {
+      "term": "fever",
+      "kind": "word",
+      "meaning_ko": "열 (몸의 발열)",
+      "example": "She stayed home because she had a fever.",
+      "prompt_ko": "아이가 열이 나서 오늘 집에 있다고 말해봐"
+    },
+    {
+      "term": "slight",
+      "kind": "word",
+      "meaning_ko": "약간의, 가벼운",
+      "example": "There's a slight delay on the train.",
+      "prompt_ko": "약간 늦어질 것 같다고 말해봐"
+    },
+    {
+      "term": "in the meantime",
+      "kind": "phrase",
+      "meaning_ko": "그동안, 그 사이에",
+      "prompt_ko": "결과가 나올 때까지 그동안 다른 일을 하겠다고 말해봐"
+    },
+    {
+      "term": "rest",
+      "kind": "word",
+      "meaning_ko": "휴식; 쉬다",
+      "example": "You need some rest after a long trip.",
+      "prompt_ko": "오늘은 그냥 집에서 쉬고 싶다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-pharmacy-cold/full.mp3",
+  "full_starts": [
+    0,
+    2472,
+    7392,
+    12072,
+    15480,
+    21576,
+    25728
+  ],
+  "generated_at": "2026-10-16T20:32:45.194Z"
+}

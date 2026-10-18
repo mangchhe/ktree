@@ -455,6 +455,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .pstep .pb{font-size:12.5px;line-height:1.6;color:var(--sub);margin-top:2px}
 .pstep .pb b{color:var(--text)}
 .sh{font-size:17px;font-weight:800;margin:2px 0 8px}
+.prow2{position:relative}
+.pflag{position:absolute;top:7px;right:7px;padding:3px 8px;font-size:12px;line-height:1}
 </style>
 </head>
 <body>
@@ -544,7 +546,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-16.6';
+const BUILD = '2026-10-19.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -651,7 +653,7 @@ async function playCommute(btn, only){
   tStopAudio();
   const label = btn.textContent;
   btn.textContent = '… loading'; btn.disabled = true;
-  const track = await concatMp3(urls);
+  const track = await concatMp3(urls, (n, m) => { btn.textContent = `… ${n}/${m}`; });
   btn.textContent = label; btn.disabled = false;
   if (!track) { toast('오디오 일부가 아직 안 올라왔어'); return; }
   const a = new Audio(URL.createObjectURL(track.blob));
@@ -815,15 +817,27 @@ function clearMedia(){
   try { navigator.mediaSession.playbackState = 'paused'; } catch (_) {}
 }
 
+/** 글자 → 오디오 파일 이름. 읽을 수 있게 두고 끝에 해시를 붙여 잘림·충돌을 막는다.
+ *  tts-cards.mjs 가 **이 함수를 이 파일에서 그대로 읽어** 쓴다 — 양쪽이 어긋날 수 없다. */
+function audioKey(s){
+  const n = String(s || '').trim().toLowerCase().replace(/\s+/g, ' ');
+  let h = 0; for (let i = 0; i < n.length; i++) h = (h * 31 + n.charCodeAt(i)) | 0;
+  return n.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) + '-' + (h >>> 0).toString(36);
+}
+const CARD_AUD = `${SUPABASE_URL}/storage/v1/object/public/eng-audio/cards`;
+const enUrl = t => t ? `${CARD_AUD}/t/${audioKey(t)}.mp3` : null;
+const koUrl = t => t ? `${CARD_AUD}/k/${audioKey(t)}.mp3` : null;
+
 function playCard(card, onend){
-  if (!card?.id || noAudio.has(card.id)) return speak(card.answer_en, onend);
+  const key = card?.answer_en && audioKey(card.answer_en);
+  if (!key || noAudio.has(key)) return speak(card?.answer_en, onend);
   if (cardAudio) cardAudio.pause();
   if ('speechSynthesis' in window) speechSynthesis.cancel();
-  const a = new Audio(`${SUPABASE_URL}/storage/v1/object/public/eng-audio/cards/${card.id}.mp3`);
+  const a = new Audio(enUrl(card.answer_en));
   cardAudio = a;
   a.playbackRate = tRate;
   if (onend) a.onended = onend;
-  const fallback = () => { noAudio.add(card.id); speak(card.answer_en, onend); };
+  const fallback = () => { noAudio.add(key); speak(card.answer_en, onend); };
   a.onerror = fallback;
   a.play().catch(fallback);
 }
@@ -1308,6 +1322,7 @@ function openAct(a){
 
 let scIdx = 0, scMode = 'listen';
 let scPhase = 'pre';      // 'pre' = 어휘 먼저, 'dialog' = 대화
+let scMean = true;        // 해석을 기본으로 펼친다 — 숨기면 못 찾는다
 let scLoop = false;       // 장면 반복 재생
 
 function actScene(el){
@@ -1346,10 +1361,11 @@ function stopPre(){
  *  다음이 시작되지 않는" WebKit 버그에 걸린다. 통짜 한 파일이면 그 함정이 없다.
  *  msedge-tts 산출물이 24kHz 모노 CBR 로 고정이라 ffmpeg 없이 이어붙여도 맞는다.
  *  groups 는 url 묶음의 배열 — 묶음 하나가 marks 한 칸이 된다. 하나라도 없으면 null. */
-async function concatMp3(groups){
+async function concatMp3(groups, onProgress){
   const parts = [], marks = [];
-  let at = 0;
+  let at = 0, done = 0;
   for (const g of groups) {
+    onProgress && onProgress(++done, groups.length);
     const bufs = [];
     for (const u of g.filter(Boolean)) {
       const r = await fetch(u);
@@ -1365,8 +1381,8 @@ async function concatMp3(groups){
   return { blob: new Blob([all], { type:'audio/mpeg' }), marks, bytes: at };
 }
 
-const buildPreTrack = (cards, withKo) =>
-  concatMp3(cards.map(c => withKo && c.koUrl ? [c.url, c.koUrl] : [c.url]));
+const buildPreTrack = (cards, withKo, onProgress) =>
+  concatMp3(cards.map(c => withKo && c.koUrl ? [c.url, c.koUrl] : [c.url]), onProgress);
 
 function drawWarmup(el, { title, context, items, onDone, backLabel }){
   const v = items.filter(x => x && x.term);
@@ -1392,6 +1408,7 @@ function drawWarmup(el, { title, context, items, onDone, backLabel }){
         ${x.example ? `<div class="pex">${esc(x.example)}</div>` : ''}
         ${(x.keywords || []).length ? `<div class="pkw">${(x.keywords||[]).map(k =>
           `<span><b>${esc(k.word)}</b> ${esc(k.meaning_ko)}</span>`).join('')}</div>` : ''}
+        <button class="btn sm pflag" data-pf="${i}" title="찍어두기">☆</button>
       </div>`).join('')}
     </div>
     <div class="actbar" style="margin-top:14px">
@@ -1399,22 +1416,12 @@ function drawWarmup(el, { title, context, items, onDone, backLabel }){
     </div>`;
   wireBar();
 
-  // 🔴 오늘 큐(tVocab)에서만 찾으면 안 된다 — 어휘가 전부 큐에 드는 게 아니라
-  //    (실측 25개 중 5개가 밖) 그 몇 개만 로봇 음성으로 떨어진다.
-  const byTerm = new Map([...tVocab.today, ...tVocab.past].map(c => [c.answer_en, c]));
-  const ready = (async () => {
-    const missing = v.map(x => x.term).filter(t => !byTerm.has(t));
-    if (missing.length) {
-      const { data } = await sb.from('eng_cards').select('id, answer_en, kind, prompt_ko, note')
-        .eq('user_id', currentUser.id).in('answer_en', missing);
-      (data || []).forEach(c => byTerm.set(c.answer_en, c));
-    }
-    return v.map(x => {
-      const c = byTerm.get(x.term);
-      return c ? { id:c.id, url:`${AUD}/${c.id}.mp3`, koUrl:`${AUD}/${c.id}.ko.mp3`, card:c }
-               : { id:null, url:null, koUrl:null, card:null };
-    });
-  })();
+  // 경로가 글자에서 나오므로 **카드 행을 찾을 필요가 없다.** 전에는 여기서 eng_cards 를
+  // 한 번 더 조회했고(큐에 안 든 어휘가 로봇 음성으로 떨어져서), 그 왕복이 Play all 을
+  // 누를 때마다 기다리게 만들었다. 카드가 아직 없는 어휘도 이제 네이티브로 나온다.
+  const koText = x => x.kind === 'word' ? (x.meaning_ko || '') : (x.meaning_ko || x.prompt_ko || '');
+  const cards = v.map(x => ({ term:x.term, url:enUrl(x.term), koUrl:koUrl(koText(x)),
+                              card:{ answer_en:x.term } }));
 
   const rowEl = i => el.querySelector(`.prow2[data-i="${i}"]`);
   const mark = i => {
@@ -1442,9 +1449,19 @@ function drawWarmup(el, { title, context, items, onDone, backLabel }){
 
   el.querySelectorAll('.prow2').forEach(r => r.onclick = async () => {
     stopPre(); preStop = true;
-    const i = +r.dataset.i, cards = await ready;
+    const i = +r.dataset.i;
     mark(i);
     if (cards[i].card) playCard(cards[i].card); else speak(v[i].term);
+  });
+
+  // 훑기에서 바로 찍기. 카드 행을 미리 안 들고 있으므로 누를 때 글자로 찾는다 —
+  // 탭 한 번에 한 번만 나가는 질의라 미리 받아두는 것보다 싸다.
+  el.querySelectorAll('[data-pf]').forEach(b => b.onclick = async () => {
+    const term = v[+b.dataset.pf].term;
+    const { data } = await sb.from('eng_cards').select('id, flagged')
+      .eq('user_id', currentUser.id).eq('answer_en', term).limit(1).maybeSingle();
+    if (!data) return toast('아직 카드가 안 만들어졌어 — 드릴에서 찍어줘');
+    await toggleFlag(data, b);
   });
 
   el.querySelectorAll('[data-pm]').forEach(b => b.onclick = () => {
@@ -1454,10 +1471,9 @@ function drawWarmup(el, { title, context, items, onDone, backLabel }){
 
   $('pre-all').onclick = async () => {
     stopPre(); preStop = false;
-    const cards = await ready;
-    if (preStop) return;
-    const btn = $('pre-all'); if (btn) btn.textContent = '… loading';
-    const track = cards.every(c => c.url) ? await buildPreTrack(cards, preMode === 'ko') : null;
+    const btn = $('pre-all');
+    const track = await buildPreTrack(cards, preMode === 'ko',
+      (n, m) => { if (btn) btn.textContent = `… ${n}/${m}`; });
     if (btn) btn.textContent = '▶ Play all';
     if (preStop) return;
     if (!track) { chainPre(cards); return; }
@@ -1518,6 +1534,7 @@ function drawScene(el){
       <button class="btn sm" id="sc-stop">■ Stop</button>
       <button class="btn sm${scLoop ? ' on' : ''}" id="sc-loop" title="Play the scene over and over">🔁 Repeat</button>
       <button class="btn sm" id="sc-words">Words</button>
+      <button class="btn sm${scMean ? ' on' : ''}" id="sc-mean" title="Korean for every line">해석</button>
     </div>
     <div id="sc-turns"></div>
     <p class="leg"><span class="sw">Dotted</span> = swallowed under 150ms. Natives barely pronounce it.</p>
@@ -1544,6 +1561,11 @@ function drawScene(el){
   };
   // 대화 중에 모르는 표현이 나오면 되돌아갈 수 있어야 한다
   $('sc-words').onclick = () => { tStopAudio(); scPhase='pre'; drawScene(el); };
+  $('sc-mean').onclick = function(){
+    scMean = !scMean; this.classList.toggle('on', scMean);
+    turns.forEach(t => t.showMean = false);   // 줄마다 따로 열어둔 것은 토글에 맞춘다
+    paintTurns(sc);
+  };
   $('sc-next').onclick = async () => {
     tStopAudio();
     const n = Math.max(tSession?.progress?.scenes?.done || 0, scIdx + 1);
@@ -1565,11 +1587,12 @@ function paintTurns(sc){
     // 이해하려면 **모든 줄**에 기댈 것이 있어야 한다. 모르는 줄이 하나라도 있으면
     // 거기서 흐름이 끊긴다.
     const mean = !hide && (t.meaning_ko || (t.is_me ? t.intent_ko : ''));
+    const openMean = scMean || t.showMean;
     d.innerHTML = `<span class="who">${esc(t.role_ko || t.who)}</span><span class="line">
       ${t.is_me && t.intent_ko ? `<span class="intent">↳ ${esc(t.intent_ko)}</span>` : ''}
       ${hide ? '<span class="hid">Your turn — tap to see the model line</span>' : segHtml(t.segs || [], t.ev || [])}
-      ${mean ? `<button class="tchev${t.showMean ? ' open' : ''}" aria-label="Show meaning" aria-expanded="${!!t.showMean}">›</button>` : ''}
-      ${mean && t.showMean ? `<span class="mean">${esc(mean)}</span>` : ''}</span>`;
+      ${mean ? `<button class="tchev${openMean ? ' open' : ''}" aria-label="Show meaning" aria-expanded="${openMean}">›</button>` : ''}
+      ${mean && openMean ? `<span class="mean">${esc(mean)}</span>` : ''}</span>`;
     const mb = d.querySelector('.tchev');
     if (mb) mb.onclick = e => { e.stopPropagation(); t.showMean = !t.showMean; paintTurns(sc); };
     d.querySelector('.line').onclick = async () => {
@@ -1912,6 +1935,8 @@ function actVocab(el){
         ${c.source_ref ? `<div class="vsrc">Source · ${esc(c.source_ref)}</div>` : ''}
         <div class="srow" style="margin-top:12px">
           <button class="check" id="v-ok" style="margin-top:0;flex:1 1 auto">Got it — next</button>
+          <button class="btn sm" id="v-replay" title="Play again">🔊</button>
+          <button class="btn sm${c.flagged ? ' on' : ''}" id="v-flag" title="찍어두기">${c.flagged ? '★' : '☆'}</button>
           <button class="btn sm" id="v-kill" title="Never show this again">✕</button></div></div>`;
       $('v-kill').onclick = async () => {
         // 어색한 카드는 알아챈 자리에서 바로 뺄 수 있어야 한다. 참고 넘기면 계속 돌아온다.
@@ -1931,7 +1956,6 @@ function actVocab(el){
         }});
       };
       $('v-ok').onclick = async () => {
-        playVocab(c);
         await bumpXp(XP.recog, 'Vocab check');
         i++; await saveProgress({ vocab:{ done:i, total:list.length } }); draw();
       };
@@ -1944,6 +1968,10 @@ function actVocab(el){
         <div id="v-ans" hidden style="margin-top:12px">
           <div class="vt" style="font-size:16px">${esc(c.prompt_ko)}</div>
           ${c.note ? `<div class="vex">${esc(c.note)}</div>` : ''}
+          <div class="srow" style="margin-top:10px">
+            <button class="btn sm" id="v-replay" title="Play again">🔊 Listen again</button>
+            <button class="btn sm${c.flagged ? ' on' : ''}" id="v-flag" title="찍어두기">${c.flagged ? '★' : '☆'}</button>
+          </div>
           <div class="grades" style="margin-top:12px">
             <button class="grade miss">Again</button><button class="grade soso">Hard</button><button class="grade good">Good</button>
           </div></div></div>`;
@@ -1955,10 +1983,25 @@ function actVocab(el){
         <div id="v-ans" hidden style="margin-top:12px">
           <div class="vt">${esc(c.answer_en)}</div>
           ${c.note ? `<div class="vm">${esc(c.note)}</div>` : ''}
+          <div class="srow" style="margin-top:10px">
+            <button class="btn sm" id="v-replay" title="Play again">🔊 Listen again</button>
+            <button class="btn sm${c.flagged ? ' on' : ''}" id="v-flag" title="찍어두기">${c.flagged ? '★' : '☆'}</button>
+          </div>
           <div class="grades" style="margin-top:12px">
             <button class="grade miss">Again</button><button class="grade soso">Hard</button><button class="grade good">Good</button>
           </div></div></div>`;
     }
+    // 🔊 다시 듣기 — 세 갈래 모두. 한 번 듣고 끝이면 못 외운 단어를 다시 들을 길이 없었다.
+    const rp = $('v-replay');
+    if (rp) rp.onclick = () => playVocab(c);
+    const fl = $('v-flag');
+    if (fl) fl.onclick = () => toggleFlag(c, fl);
+    // 인지 카드는 보여주는 순간 들려준다 — 소리가 화면과 같은 카드여야 한다.
+    if (kind === 'recog') playVocab(c);
+    // 다음 카드 음성을 미리 받아 둔다. 탭할 때마다 네트워크를 기다리던 것이 이것 때문이다.
+    const nx = list[i+1];
+    if (nx) { const u = enUrl(nx.c.answer_en); if (u) { const a = new Audio(); a.preload = 'auto'; a.src = u; } }
+
     // 배선은 분기 밖에 둔다 — 단어·표현 두 갈래가 같은 reveal/채점을 쓴다.
     // 분기 안에 두면 새 갈래를 만들 때 조용히 빠진다 (실제로 단어 갈래가 그랬다).
     if ($('v-reveal')) {
@@ -1979,6 +2022,20 @@ function actVocab(el){
   }
 }
 function playVocab(c){ tStopAudio(); playCard(c); }
+
+/* 찍어놓기 — 못 외운 것, 들어도 이해 안 되는 것을 손으로 표시한다.
+   status(SRS 단계)와 섞지 않는다. 찍는 순간 복습 단계가 날아가면 안 된다. */
+async function toggleFlag(c, btn){
+  const want = !c.flagged;
+  const { error } = await sb.from('eng_cards').update({ flagged: want }).eq('id', c.id);
+  if (error) return toast('Failed — check your connection');
+  c.flagged = want;
+  if (btn) {
+    btn.textContent = btn.textContent.includes('찍') ? (want ? '★ 찍음' : '☆ 찍어두기') : (want ? '★' : '☆');
+    btn.classList.toggle('on', want);
+  }
+  toast(want ? '찍어뒀어 — Vocab 탭 Flagged 에서 모아 봐' : '찍기 해제');
+}
 
 /* ── 막 4 · 마무리 퀴즈 ──────────────────────────────────
  *
@@ -2334,10 +2391,11 @@ async function renderVocab(){
           k==='all'?'':` ${all.filter(c => (c.kind||'phrase')===k).length}`}</button>`).join('')}
     </div>
     <div class="srow" style="margin:0 0 12px">
-      ${[['studied','Studied'],['new','Not yet'],['mature','Mature'],['all','All']]
+      ${[['studied','Studied'],['new','Not yet'],['mature','Mature'],['flagged','★ Flagged'],['all','All']]
         .map(([k,l]) => {
           const n = k==='all' ? all.length
                   : k==='studied' ? all.filter(isStudied).length
+                  : k==='flagged' ? all.filter(c => c.flagged).length
                   : all.filter(c => c.status===k).length;
           return `<button class="tchip${vbFilter===k?' on':''}" data-f="${k}">${l} ${n}</button>`;
         }).join('')}
@@ -2347,14 +2405,22 @@ async function renderVocab(){
 
   let rows = vbFilter === 'all' ? all
            : vbFilter === 'studied' ? all.filter(isStudied)
+           : vbFilter === 'flagged' ? all.filter(c => c.flagged)
            : all.filter(c => c.status === vbFilter);
   if (vbKind !== 'all') rows = rows.filter(c => (c.kind || 'phrase') === vbKind);
   if (!rows.length) {
     list.innerHTML = vbFilter === 'studied'
       ? '<div class="empty">Nothing studied yet.<br>Finish a <b>Vocab drill</b> on the Today board — graded cards land here.</div>'
+      : vbFilter === 'flagged'
+      ? '<div class="empty">찍어둔 게 없어.<br>드릴이나 어휘 훑기에서 <b>☆</b> 를 누르면 여기 모여.</div>'
       : '<div class="empty">Nothing here. Run today\'s board once and they pile up.</div>';
     return;
   }
+  // 찍은 것만 모아 한 트랙으로 — "얘들만 따로 들을 수 있게" 가 이 버튼이다.
+  const bar = vbFilter === 'flagged' ? `<div class="actbar" style="margin-bottom:10px">
+      <button class="btn sm primary-btn" id="vb-all">▶ 찍은 것 ${rows.length}개 듣기</button>
+      <button class="btn sm" id="vb-stop">■</button>
+      <span class="dmh">뜻까지 한 트랙으로</span></div>` : '';
   const badge = c => c.status === 'mature' ? '<span class="ipill done">Mature</span>'
     : c.status === 'new' ? '<span class="ipill wait">New</span>'
     : `<span class="ipill wait">${c.interval_days}d</span>`;
@@ -2362,7 +2428,7 @@ async function renderVocab(){
   // ✕ 를 모든 줄에 상시 노출하면 파괴적 동작이 목록의 기본 상태가 되고, 잘못 누르기도 쉽다.
   // **한글은 요약 줄에 두지 않는다.** 영어 옆에 답이 나란히 있으면 훑을 때마다 답을 먼저 읽게 되고,
   // 장부가 자가 점검 자리가 아니라 단순 목록이 된다. 영어를 보고 떠올린 뒤 펼쳐 맞춘다.
-  list.innerHTML = rows.map(c => `<div class="vrow" data-id="${esc(c.id)}">
+  list.innerHTML = bar + rows.map(c => `<div class="vrow" data-id="${esc(c.id)}">
       <button class="vsum">
         <span class="itx"><span class="ie">${esc(c.answer_en)}
           ${(c.kind||'phrase')==='word' ? '<em class="kdot">Word</em>' : ''}</span></span>
@@ -2374,6 +2440,7 @@ async function renderVocab(){
         <div class="vmeta">${c.next_review ? 'Next review ' + esc(c.next_review) : ''}${c.source_ref ? ' · ' + esc(c.source_ref) : ''}</div>
         <div class="srow" style="margin-top:9px">
           <button class="btn sm" data-play="${esc(c.id)}">🔊 Listen</button>
+          <button class="btn sm${c.flagged ? ' on' : ''}" data-flag="${esc(c.id)}">${c.flagged ? '★ 찍음' : '☆ 찍어두기'}</button>
           <button class="btn sm vkill" data-kill="${esc(c.id)}">Never again</button>
         </div>
       </div></div>`).join('');
@@ -2389,6 +2456,23 @@ async function renderVocab(){
   list.querySelectorAll('[data-play]').forEach(b => b.onclick = () => {
     tStopAudio(); playCard(byId[b.dataset.play]);
   });
+  list.querySelectorAll('[data-flag]').forEach(b => b.onclick = () => toggleFlag(byId[b.dataset.flag], b));
+  const va = $('vb-all');
+  if (va) {
+    va.onclick = async () => {
+      tStopAudio();
+      const label = va.textContent; va.disabled = true;
+      const track = await concatMp3(rows.map(c => [enUrl(c.answer_en), koUrl(c.prompt_ko)]),
+        (n, m) => { va.textContent = `… ${n}/${m}`; });
+      va.textContent = label; va.disabled = false;
+      if (!track) return toast('오디오 일부가 아직 안 올라왔어');
+      tAudio = new Audio(URL.createObjectURL(track.blob));
+      tAudio.playbackRate = tRate;
+      setMedia('Flagged vocabulary', `ktree English · ${rows.length} items`);
+      tAudio.play().catch(() => {});
+    };
+    $('vb-stop').onclick = () => tStopAudio();
+  }
   list.querySelectorAll('[data-kill]').forEach(b => b.onclick = async () => {
     b.disabled = true;
     const id = b.dataset.kill, prev = byId[id]?.status || 'new';

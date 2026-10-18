@@ -1,0 +1,1220 @@
+{
+  "id": "2026-10-19-no-rollback",
+  "situation_ko": "내 배포 직후 결제 API 에러율이 올랐다. 매니저는 바로 롤백하자는데, 이번 배포에 DB 스키마 변경이 들어 있어 롤백이 오히려 더 위험하다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "당신 배포 직후에 에러율이 뛰었어요. 그냥 롤백할까요?",
+      "en": "Error rates jumped right after your deploy. Should we just roll it back?",
+      "ms": 4296,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Error",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rates",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jumped",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "after",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deploy",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Should",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "roll",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 263
+        },
+        {
+          "t": 363,
+          "d": 375
+        },
+        {
+          "t": 750,
+          "d": 363
+        },
+        {
+          "t": 1125,
+          "d": 188
+        },
+        {
+          "t": 1325,
+          "d": 238
+        },
+        {
+          "t": 1563,
+          "d": 88
+        },
+        {
+          "t": 1663,
+          "d": 500
+        },
+        {
+          "t": 2563,
+          "d": 213
+        },
+        {
+          "t": 2775,
+          "d": 100
+        },
+        {
+          "t": 2875,
+          "d": 250
+        },
+        {
+          "t": 3138,
+          "d": 225
+        },
+        {
+          "t": 3375,
+          "d": 75
+        },
+        {
+          "t": 3450,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "에러가 결제 API 에서만 나고, 전체 요청의 2퍼센트쯤이라고 말해봐",
+      "en": "The errors are only coming from the payment API. It's about two percent of requests.",
+      "ms": 4824,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "errors",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "coming",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "API",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "requests",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 163,
+          "d": 350
+        },
+        {
+          "t": 513,
+          "d": 125
+        },
+        {
+          "t": 738,
+          "d": 288
+        },
+        {
+          "t": 1025,
+          "d": 275
+        },
+        {
+          "t": 1313,
+          "d": 113
+        },
+        {
+          "t": 1425,
+          "d": 63
+        },
+        {
+          "t": 1488,
+          "d": 300
+        },
+        {
+          "t": 1788,
+          "d": 613
+        },
+        {
+          "t": 2813,
+          "d": 75
+        },
+        {
+          "t": 2888,
+          "d": 250
+        },
+        {
+          "t": 3138,
+          "d": 200
+        },
+        {
+          "t": 3350,
+          "d": 375
+        },
+        {
+          "t": 3725,
+          "d": 50
+        },
+        {
+          "t": 3775,
+          "d": 700
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "결제의 2퍼센트면 그래도 많아요. 롤백이 제일 안전한 거 아니에요?",
+      "en": "Two percent of payments is still a lot. Isn't rolling back the safest option?",
+      "ms": 4752,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Two",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payments",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lot",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Isn't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rolling",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "safest",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "option",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 350
+        },
+        {
+          "t": 638,
+          "d": 88
+        },
+        {
+          "t": 738,
+          "d": 513
+        },
+        {
+          "t": 1300,
+          "d": 125
+        },
+        {
+          "t": 1438,
+          "d": 225
+        },
+        {
+          "t": 1663,
+          "d": 38
+        },
+        {
+          "t": 1713,
+          "d": 450
+        },
+        {
+          "t": 2538,
+          "d": 250
+        },
+        {
+          "t": 2800,
+          "d": 338
+        },
+        {
+          "t": 3150,
+          "d": 275
+        },
+        {
+          "t": 3438,
+          "d": 88
+        },
+        {
+          "t": 3538,
+          "d": 413
+        },
+        {
+          "t": 3963,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "이번 배포에 스키마 변경이 들어 있어서 롤백하면 오히려 더 나빠질 수 있다고 설명해봐",
+      "en": "Not this time. The deploy included a schema change, so rolling back could make things worse.",
+      "ms": 6144,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Not",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "deploy",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "included",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "schema",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rolling",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "things",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worse",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 263,
+          "d": 163
+        },
+        {
+          "t": 425,
+          "d": 350
+        },
+        {
+          "t": 1188,
+          "d": 63
+        },
+        {
+          "t": 1250,
+          "d": 388
+        },
+        {
+          "t": 1638,
+          "d": 475
+        },
+        {
+          "t": 2113,
+          "d": 38
+        },
+        {
+          "t": 2150,
+          "d": 400
+        },
+        {
+          "t": 2550,
+          "d": 575
+        },
+        {
+          "t": 3475,
+          "d": 188
+        },
+        {
+          "t": 3663,
+          "d": 400
+        },
+        {
+          "t": 4063,
+          "d": 413
+        },
+        {
+          "t": 4575,
+          "d": 150
+        },
+        {
+          "t": 4725,
+          "d": 175
+        },
+        {
+          "t": 4913,
+          "d": 263
+        },
+        {
+          "t": 5188,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "알겠어요. 그럼 어떻게 하자는 거예요?",
+      "en": "Okay. Then what do you suggest?",
+      "ms": 2496,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Then",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "suggest",
+          5
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 413
+        },
+        {
+          "t": 863,
+          "d": 275
+        },
+        {
+          "t": 1200,
+          "d": 150
+        },
+        {
+          "t": 1363,
+          "d": 38
+        },
+        {
+          "t": 1413,
+          "d": 63
+        },
+        {
+          "t": 1488,
+          "d": 638
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "원인을 거의 찾았다고, 20분 안에 핫픽스를 올리겠다고 말해봐",
+      "en": "I've almost found the cause. I can ship a hotfix within twenty minutes.",
+      "ms": 4200,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I've",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "almost",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "found",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cause",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ship",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hotfix",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "within",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 275
+        },
+        {
+          "t": 488,
+          "d": 175
+        },
+        {
+          "t": 663,
+          "d": 50
+        },
+        {
+          "t": 713,
+          "d": 563
+        },
+        {
+          "t": 1688,
+          "d": 63
+        },
+        {
+          "t": 1750,
+          "d": 88
+        },
+        {
+          "t": 1850,
+          "d": 163
+        },
+        {
+          "t": 2013,
+          "d": 38
+        },
+        {
+          "t": 2063,
+          "d": 638
+        },
+        {
+          "t": 2713,
+          "d": 300
+        },
+        {
+          "t": 3025,
+          "d": 288
+        },
+        {
+          "t": 3325,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "좋아요. 계속 상황 알려주고, 더 나빠지면 다시 얘기해요.",
+      "en": "Fine. Keep me posted, and if it gets worse, we'll talk again.",
+      "ms": 4680,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Fine",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Keep",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "posted",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gets",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "worse",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we'll",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "talk",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 538
+        },
+        {
+          "t": 975,
+          "d": 188
+        },
+        {
+          "t": 1175,
+          "d": 88
+        },
+        {
+          "t": 1275,
+          "d": 538
+        },
+        {
+          "t": 2038,
+          "d": 338
+        },
+        {
+          "t": 2488,
+          "d": 125
+        },
+        {
+          "t": 2613,
+          "d": 88
+        },
+        {
+          "t": 2713,
+          "d": 200
+        },
+        {
+          "t": 2913,
+          "d": 450
+        },
+        {
+          "t": 3525,
+          "d": 150
+        },
+        {
+          "t": 3688,
+          "d": 238
+        },
+        {
+          "t": 3938,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "include",
+      "kind": "word",
+      "meaning_ko": "포함하다",
+      "example": "The price includes breakfast.",
+      "prompt_ko": "이번 릴리스에 버그 수정 두 개가 포함돼 있다고 말해봐"
+    },
+    {
+      "term": "cause",
+      "kind": "word",
+      "meaning_ko": "원인",
+      "example": "We still don't know the cause of the outage.",
+      "prompt_ko": "아직 장애 원인을 모른다고 말해봐"
+    },
+    {
+      "term": "within",
+      "kind": "word",
+      "meaning_ko": "~ 이내에, ~ 안에",
+      "example": "I'll get back to you within an hour.",
+      "prompt_ko": "한 시간 안에 답을 주겠다고 말해봐"
+    },
+    {
+      "term": "roll back",
+      "kind": "phrase",
+      "meaning_ko": "(배포·변경을) 되돌리다",
+      "prompt_ko": "어제 배포를 되돌렸다고 말해봐"
+    },
+    {
+      "term": "keep me posted",
+      "kind": "phrase",
+      "meaning_ko": "계속 상황 알려줘",
+      "prompt_ko": "진행 상황을 계속 알려달라고 부탁해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-no-rollback/full.mp3",
+  "full_starts": [
+    0,
+    4296,
+    9120,
+    13872,
+    20016,
+    22512,
+    26712
+  ],
+  "generated_at": "2026-10-18T20:37:42.908Z"
+}

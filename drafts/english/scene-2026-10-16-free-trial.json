@@ -1,0 +1,1527 @@
+{
+  "id": "2026-10-16-free-trial",
+  "situation_ko": "그로스 리드가 무료 체험을 7일에서 14일로 늘린 테스트 결과를 보고한다. 가입은 늘었는데 유료 전환율은 떨어졌다. 리드는 그래도 이대로 가자고 한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-EmmaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "그로스 리드",
+      "meaning_ko": "14일 체험 테스트 결과 나왔어요. 가입이 22% 늘었어요.",
+      "en": "The fourteen-day trial results are in. Sign-ups went up twenty-two percent.",
+      "ms": 4608,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fourteen-day",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trial",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "results",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Sign-ups",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-two",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 663
+        },
+        {
+          "t": 838,
+          "d": 375
+        },
+        {
+          "t": 1213,
+          "d": 413
+        },
+        {
+          "t": 1625,
+          "d": 150
+        },
+        {
+          "t": 1775,
+          "d": 238
+        },
+        {
+          "t": 2425,
+          "d": 538
+        },
+        {
+          "t": 3025,
+          "d": 125
+        },
+        {
+          "t": 3150,
+          "d": 88
+        },
+        {
+          "t": 3238,
+          "d": 438
+        },
+        {
+          "t": 3688,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "좋다고 하면서, 근데 실제로 돈 내는 사람으로 바뀌는 비율은 어떻게 됐는지 물어봐",
+      "en": "That's great. But what happened to the paid conversion rate?",
+      "ms": 3960,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "great",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happened",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paid",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "conversion",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rate",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 288
+        },
+        {
+          "t": 400,
+          "d": 500
+        },
+        {
+          "t": 1288,
+          "d": 125
+        },
+        {
+          "t": 1425,
+          "d": 163
+        },
+        {
+          "t": 1600,
+          "d": 388
+        },
+        {
+          "t": 2000,
+          "d": 113
+        },
+        {
+          "t": 2125,
+          "d": 113
+        },
+        {
+          "t": 2250,
+          "d": 288
+        },
+        {
+          "t": 2550,
+          "d": 613
+        },
+        {
+          "t": 3175,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그건 18%에서 14%로 떨어졌어요. 그래도 전체 유료 사용자 수는 조금 늘었어요.",
+      "en": "That dropped from eighteen to fourteen percent. But the total number of paying users still went up a little.",
+      "ms": 6552,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dropped",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "eighteen",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fourteen",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "total",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paying",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "users",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "little",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 288,
+          "d": 338
+        },
+        {
+          "t": 625,
+          "d": 163
+        },
+        {
+          "t": 950,
+          "d": 463
+        },
+        {
+          "t": 1413,
+          "d": 75
+        },
+        {
+          "t": 1488,
+          "d": 525
+        },
+        {
+          "t": 2025,
+          "d": 538
+        },
+        {
+          "t": 2975,
+          "d": 88
+        },
+        {
+          "t": 3063,
+          "d": 88
+        },
+        {
+          "t": 3150,
+          "d": 288
+        },
+        {
+          "t": 3438,
+          "d": 288
+        },
+        {
+          "t": 3725,
+          "d": 88
+        },
+        {
+          "t": 3813,
+          "d": 500
+        },
+        {
+          "t": 4325,
+          "d": 525
+        },
+        {
+          "t": 5025,
+          "d": 500
+        },
+        {
+          "t": 5525,
+          "d": 175
+        },
+        {
+          "t": 5700,
+          "d": 100
+        },
+        {
+          "t": 5800,
+          "d": 38
+        },
+        {
+          "t": 5838,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "계산해보면 순증가는 1% 정도뿐이고, 체험 기간이 길어진 만큼 서버랑 지원 비용은 더 든다고 짚어봐",
+      "en": "If you do the math, that's only about a one percent net gain. And longer trials cost us more in servers and support.",
+      "ms": 7032,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "If",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "math",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "net",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gain",
+          12
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "longer",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trials",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cost",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "servers",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "support",
+          22
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 100
+        },
+        {
+          "t": 163,
+          "d": 100
+        },
+        {
+          "t": 275,
+          "d": 188
+        },
+        {
+          "t": 475,
+          "d": 100
+        },
+        {
+          "t": 588,
+          "d": 450
+        },
+        {
+          "t": 1063,
+          "d": 250
+        },
+        {
+          "t": 1325,
+          "d": 238
+        },
+        {
+          "t": 1575,
+          "d": 238
+        },
+        {
+          "t": 1825,
+          "d": 75
+        },
+        {
+          "t": 1913,
+          "d": 213
+        },
+        {
+          "t": 2138,
+          "d": 400
+        },
+        {
+          "t": 2550,
+          "d": 225
+        },
+        {
+          "t": 2788,
+          "d": 425
+        },
+        {
+          "t": 3613,
+          "d": 125
+        },
+        {
+          "t": 3750,
+          "d": 325
+        },
+        {
+          "t": 4088,
+          "d": 450
+        },
+        {
+          "t": 4550,
+          "d": 338
+        },
+        {
+          "t": 4900,
+          "d": 138
+        },
+        {
+          "t": 5050,
+          "d": 213
+        },
+        {
+          "t": 5275,
+          "d": 100
+        },
+        {
+          "t": 5388,
+          "d": 463
+        },
+        {
+          "t": 5863,
+          "d": 88
+        },
+        {
+          "t": 5963,
+          "d": 688
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞아요. 그런데 14일 체험으로 들어온 사람들은 이탈이 훨씬 적어요. 석 달 유지율이 10포인트 높아요.",
+      "en": "True. But people from the longer trial churn a lot less. Their three-month retention is ten points higher.",
+      "ms": 7080,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "True",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "people",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "longer",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trial",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "churn",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lot",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "less",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Their",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three-month",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retention",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "points",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "higher",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 350
+        },
+        {
+          "t": 838,
+          "d": 100
+        },
+        {
+          "t": 950,
+          "d": 288
+        },
+        {
+          "t": 1238,
+          "d": 100
+        },
+        {
+          "t": 1350,
+          "d": 63
+        },
+        {
+          "t": 1425,
+          "d": 375
+        },
+        {
+          "t": 1800,
+          "d": 413
+        },
+        {
+          "t": 2213,
+          "d": 263
+        },
+        {
+          "t": 2475,
+          "d": 38
+        },
+        {
+          "t": 2525,
+          "d": 288
+        },
+        {
+          "t": 2813,
+          "d": 575
+        },
+        {
+          "t": 3800,
+          "d": 150
+        },
+        {
+          "t": 3950,
+          "d": 500
+        },
+        {
+          "t": 4450,
+          "d": 588
+        },
+        {
+          "t": 5375,
+          "d": 163
+        },
+        {
+          "t": 5550,
+          "d": 375
+        },
+        {
+          "t": 5938,
+          "d": 350
+        },
+        {
+          "t": 6288,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그건 꽤 중요한 정보라고 하고, 결정 전에 한 달만 더 돌려서 그 유지율이 계속 유지되는지 보자고 해봐",
+      "en": "Okay, that changes things. Let's run it one more month and see if that retention holds before we decide.",
+      "ms": 6192,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "changes",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "things",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retention",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "holds",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "decide",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 213
+        },
+        {
+          "t": 500,
+          "d": 488
+        },
+        {
+          "t": 1000,
+          "d": 475
+        },
+        {
+          "t": 1863,
+          "d": 238
+        },
+        {
+          "t": 2113,
+          "d": 188
+        },
+        {
+          "t": 2313,
+          "d": 113
+        },
+        {
+          "t": 2438,
+          "d": 188
+        },
+        {
+          "t": 2638,
+          "d": 200
+        },
+        {
+          "t": 2850,
+          "d": 350
+        },
+        {
+          "t": 3213,
+          "d": 88
+        },
+        {
+          "t": 3313,
+          "d": 213
+        },
+        {
+          "t": 3538,
+          "d": 125
+        },
+        {
+          "t": 3675,
+          "d": 175
+        },
+        {
+          "t": 3863,
+          "d": 500
+        },
+        {
+          "t": 4375,
+          "d": 325
+        },
+        {
+          "t": 4713,
+          "d": 338
+        },
+        {
+          "t": 5063,
+          "d": 100
+        },
+        {
+          "t": 5175,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "합리적이네요. 다음 달 말에 같은 지표로 다시 보고드릴게요.",
+      "en": "Makes sense. I'll come back with the same numbers at the end of next month.",
+      "ms": 4080,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Makes",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sense",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 213
+        },
+        {
+          "t": 325,
+          "d": 563
+        },
+        {
+          "t": 1288,
+          "d": 88
+        },
+        {
+          "t": 1375,
+          "d": 163
+        },
+        {
+          "t": 1550,
+          "d": 288
+        },
+        {
+          "t": 1850,
+          "d": 88
+        },
+        {
+          "t": 1938,
+          "d": 63
+        },
+        {
+          "t": 2000,
+          "d": 350
+        },
+        {
+          "t": 2363,
+          "d": 338
+        },
+        {
+          "t": 2700,
+          "d": 63
+        },
+        {
+          "t": 2763,
+          "d": 88
+        },
+        {
+          "t": 2850,
+          "d": 150
+        },
+        {
+          "t": 3000,
+          "d": 50
+        },
+        {
+          "t": 3063,
+          "d": 238
+        },
+        {
+          "t": 3300,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "do the math",
+      "kind": "phrase",
+      "meaning_ko": "계산해보다, 따져보다",
+      "prompt_ko": "따져보면 택시가 렌트보다 싸다고 말해봐"
+    },
+    {
+      "term": "net",
+      "kind": "word",
+      "meaning_ko": "순(純)~, 최종적으로 남는",
+      "example": "After all the costs, our net profit was pretty small.",
+      "prompt_ko": "비용을 다 빼고 나니 순이익이 꽤 작았다고 말해봐"
+    },
+    {
+      "term": "churn",
+      "kind": "word",
+      "meaning_ko": "(고객이) 이탈하다; 이탈",
+      "example": "Most users churn in the first two weeks.",
+      "prompt_ko": "사용자 대부분이 첫 2주 안에 떠난다고 말해봐"
+    },
+    {
+      "term": "retention",
+      "kind": "word",
+      "meaning_ko": "유지율, (고객을) 붙잡아 두는 것",
+      "example": "Retention is more important than sign-ups right now.",
+      "prompt_ko": "지금은 가입 수보다 유지율이 더 중요하다고 말해봐"
+    },
+    {
+      "term": "that changes things",
+      "kind": "phrase",
+      "meaning_ko": "그럼 얘기가 달라지네요",
+      "prompt_ko": "예산이 두 배라면 얘기가 달라진다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-free-trial/full.mp3",
+  "full_starts": [
+    0,
+    4608,
+    8568,
+    15120,
+    22152,
+    29232,
+    35424
+  ],
+  "generated_at": "2026-10-15T20:34:14.131Z"
+}

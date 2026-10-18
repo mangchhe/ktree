@@ -1,0 +1,1551 @@
+{
+  "id": "2026-10-16-service-charge",
+  "situation_ko": "출장지 식당에서 계산서를 받았는데 생각보다 많이 나왔다. 물어보니 봉사료가 이미 포함돼 있다. 그런데 팁을 따로 또 냈던 상황이다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-EmmaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "웨이터",
+      "meaning_ko": "식사는 어떠셨어요? 다른 건 필요 없으세요?",
+      "en": "How was everything? Can I get you anything else?",
+      "ms": 2736,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "How",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "everything",
+          2
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anything",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "else",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 150
+        },
+        {
+          "t": 363,
+          "d": 488
+        },
+        {
+          "t": 1250,
+          "d": 75
+        },
+        {
+          "t": 1325,
+          "d": 75
+        },
+        {
+          "t": 1400,
+          "d": 113
+        },
+        {
+          "t": 1513,
+          "d": 88
+        },
+        {
+          "t": 1613,
+          "d": 300
+        },
+        {
+          "t": 1913,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "맛있었다고 하고, 계산서 금액이 예상보다 높은데 뭐가 들어간 건지 물어봐",
+      "en": "It was great, thanks. But the bill is a bit higher than I expected. Could you explain this line?",
+      "ms": 5904,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "It",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "great",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bill",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "higher",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expected",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "explain",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "line",
+          18
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 50
+        },
+        {
+          "t": 138,
+          "d": 150
+        },
+        {
+          "t": 300,
+          "d": 313
+        },
+        {
+          "t": 625,
+          "d": 500
+        },
+        {
+          "t": 1513,
+          "d": 100
+        },
+        {
+          "t": 1625,
+          "d": 113
+        },
+        {
+          "t": 1750,
+          "d": 225
+        },
+        {
+          "t": 1988,
+          "d": 125
+        },
+        {
+          "t": 2125,
+          "d": 63
+        },
+        {
+          "t": 2200,
+          "d": 175
+        },
+        {
+          "t": 2388,
+          "d": 338
+        },
+        {
+          "t": 2738,
+          "d": 150
+        },
+        {
+          "t": 2900,
+          "d": 88
+        },
+        {
+          "t": 3000,
+          "d": 750
+        },
+        {
+          "t": 4138,
+          "d": 125
+        },
+        {
+          "t": 4275,
+          "d": 125
+        },
+        {
+          "t": 4413,
+          "d": 463
+        },
+        {
+          "t": 4888,
+          "d": 200
+        },
+        {
+          "t": 5100,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 그건 봉사료 15%예요. 여섯 명 이상 일행에는 자동으로 붙어요.",
+      "en": "Oh, that's a fifteen percent service charge. It's added automatically for groups of six or more.",
+      "ms": 6552,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifteen",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "service",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "added",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "automatically",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "groups",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "six",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "or",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 288
+        },
+        {
+          "t": 675,
+          "d": 150
+        },
+        {
+          "t": 825,
+          "d": 63
+        },
+        {
+          "t": 900,
+          "d": 538
+        },
+        {
+          "t": 1450,
+          "d": 350
+        },
+        {
+          "t": 1813,
+          "d": 325
+        },
+        {
+          "t": 2150,
+          "d": 488
+        },
+        {
+          "t": 3025,
+          "d": 100
+        },
+        {
+          "t": 3125,
+          "d": 350
+        },
+        {
+          "t": 3488,
+          "d": 675
+        },
+        {
+          "t": 4175,
+          "d": 163
+        },
+        {
+          "t": 4338,
+          "d": 388
+        },
+        {
+          "t": 4738,
+          "d": 75
+        },
+        {
+          "t": 4813,
+          "d": 625
+        },
+        {
+          "t": 5613,
+          "d": 100
+        },
+        {
+          "t": 5713,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그걸 몰라서 카드 결제할 때 팁 20%를 따로 또 넣었다고 말해봐",
+      "en": "I didn't realize that. I already added a twenty percent tip on the card machine.",
+      "ms": 5016,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "didn't",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "realize",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "added",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tip",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "card",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "machine",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 50
+        },
+        {
+          "t": 138,
+          "d": 288
+        },
+        {
+          "t": 438,
+          "d": 488
+        },
+        {
+          "t": 938,
+          "d": 388
+        },
+        {
+          "t": 1725,
+          "d": 125
+        },
+        {
+          "t": 1863,
+          "d": 388
+        },
+        {
+          "t": 2263,
+          "d": 263
+        },
+        {
+          "t": 2538,
+          "d": 63
+        },
+        {
+          "t": 2613,
+          "d": 338
+        },
+        {
+          "t": 2963,
+          "d": 425
+        },
+        {
+          "t": 3400,
+          "d": 225
+        },
+        {
+          "t": 3638,
+          "d": 100
+        },
+        {
+          "t": 3750,
+          "d": 75
+        },
+        {
+          "t": 3838,
+          "d": 300
+        },
+        {
+          "t": 4150,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 그럼 이중으로 내신 거네요. 결제를 취소하고 다시 해드릴 수는 있는데, 매니저 승인이 필요해서 몇 분 걸려요.",
+      "en": "Ah, so you paid it twice. I can cancel the payment and run it again, but I need my manager to approve it. It'll take a few minutes.",
+      "ms": 8304,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Ah",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "paid",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twice",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cancel",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "run",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "manager",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approve",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          22
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It'll",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "few",
+          26
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          27
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 725,
+          "d": 113
+        },
+        {
+          "t": 838,
+          "d": 75
+        },
+        {
+          "t": 913,
+          "d": 175
+        },
+        {
+          "t": 1088,
+          "d": 63
+        },
+        {
+          "t": 1150,
+          "d": 600
+        },
+        {
+          "t": 2163,
+          "d": 75
+        },
+        {
+          "t": 2238,
+          "d": 100
+        },
+        {
+          "t": 2338,
+          "d": 363
+        },
+        {
+          "t": 2700,
+          "d": 63
+        },
+        {
+          "t": 2763,
+          "d": 488
+        },
+        {
+          "t": 3400,
+          "d": 150
+        },
+        {
+          "t": 3563,
+          "d": 188
+        },
+        {
+          "t": 3750,
+          "d": 50
+        },
+        {
+          "t": 3800,
+          "d": 413
+        },
+        {
+          "t": 4500,
+          "d": 163
+        },
+        {
+          "t": 4675,
+          "d": 25
+        },
+        {
+          "t": 4700,
+          "d": 288
+        },
+        {
+          "t": 4988,
+          "d": 125
+        },
+        {
+          "t": 5113,
+          "d": 550
+        },
+        {
+          "t": 5675,
+          "d": 150
+        },
+        {
+          "t": 5825,
+          "d": 425
+        },
+        {
+          "t": 6263,
+          "d": 188
+        },
+        {
+          "t": 6850,
+          "d": 125
+        },
+        {
+          "t": 6975,
+          "d": 175
+        },
+        {
+          "t": 7150,
+          "d": 50
+        },
+        {
+          "t": 7213,
+          "d": 200
+        },
+        {
+          "t": 7413,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "괜찮다고, 기다리겠다고 하고, 새 영수증도 달라고 해봐 (회사에 경비 청구해야 하니까)",
+      "en": "That's fine, I can wait. Could I also get a new receipt? I need it for my expense report.",
+      "ms": 6048,
+      "voice": "en-US-EmmaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wait",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "receipt",
+          11
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "expense",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "report",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 225
+        },
+        {
+          "t": 313,
+          "d": 275
+        },
+        {
+          "t": 613,
+          "d": 100
+        },
+        {
+          "t": 725,
+          "d": 200
+        },
+        {
+          "t": 938,
+          "d": 425
+        },
+        {
+          "t": 1763,
+          "d": 125
+        },
+        {
+          "t": 1900,
+          "d": 125
+        },
+        {
+          "t": 2038,
+          "d": 313
+        },
+        {
+          "t": 2363,
+          "d": 175
+        },
+        {
+          "t": 2550,
+          "d": 38
+        },
+        {
+          "t": 2600,
+          "d": 225
+        },
+        {
+          "t": 2838,
+          "d": 575
+        },
+        {
+          "t": 3813,
+          "d": 50
+        },
+        {
+          "t": 3875,
+          "d": 238
+        },
+        {
+          "t": 4125,
+          "d": 113
+        },
+        {
+          "t": 4250,
+          "d": 150
+        },
+        {
+          "t": 4413,
+          "d": 150
+        },
+        {
+          "t": 4575,
+          "d": 513
+        },
+        {
+          "t": 5100,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "물론이죠. 금방 가져다드릴게요. 헷갈리게 해서 죄송해요.",
+      "en": "Absolutely. I'll bring it right over. Sorry for the confusion.",
+      "ms": 4224,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Absolutely",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Sorry",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "confusion",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 725
+        },
+        {
+          "t": 1238,
+          "d": 75
+        },
+        {
+          "t": 1325,
+          "d": 188
+        },
+        {
+          "t": 1513,
+          "d": 125
+        },
+        {
+          "t": 1650,
+          "d": 225
+        },
+        {
+          "t": 1875,
+          "d": 400
+        },
+        {
+          "t": 2688,
+          "d": 350
+        },
+        {
+          "t": 3038,
+          "d": 88
+        },
+        {
+          "t": 3138,
+          "d": 75
+        },
+        {
+          "t": 3213,
+          "d": 638
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "service charge",
+      "kind": "phrase",
+      "meaning_ko": "봉사료",
+      "keywords": [
+        {
+          "word": "charge",
+          "meaning_ko": "요금, 청구 금액"
+        }
+      ],
+      "prompt_ko": "계산서에 봉사료가 포함돼 있냐고 물어봐"
+    },
+    {
+      "term": "realize",
+      "kind": "word",
+      "meaning_ko": "깨닫다, 알아차리다",
+      "example": "I didn't realize the store closed so early.",
+      "prompt_ko": "가게가 그렇게 일찍 닫는 줄 몰랐다고 말해봐"
+    },
+    {
+      "term": "receipt",
+      "kind": "word",
+      "meaning_ko": "영수증",
+      "example": "Can I get a receipt, please?",
+      "prompt_ko": "영수증 좀 받을 수 있냐고 물어봐"
+    },
+    {
+      "term": "expense report",
+      "kind": "phrase",
+      "meaning_ko": "경비 정산서",
+      "keywords": [
+        {
+          "word": "expense",
+          "meaning_ko": "비용, 지출"
+        }
+      ],
+      "prompt_ko": "금요일까지 경비 정산서를 내야 한다고 말해봐"
+    },
+    {
+      "term": "confusion",
+      "kind": "word",
+      "meaning_ko": "혼란, 헷갈림",
+      "example": "There was some confusion about the meeting time.",
+      "prompt_ko": "회의 시간 때문에 좀 헷갈림이 있었다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-service-charge/full.mp3",
+  "full_starts": [
+    0,
+    2736,
+    8640,
+    15192,
+    20208,
+    28512,
+    34560
+  ],
+  "generated_at": "2026-10-15T20:33:39.560Z"
+}

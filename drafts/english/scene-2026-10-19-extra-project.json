@@ -1,0 +1,1178 @@
+{
+  "id": "2026-10-19-extra-project",
+  "situation_ko": "매니저가 금요일 마감인 새 고객 프로젝트를 맡아달라고 한다. 이미 일이 꽉 차 있어 뭘 미룰지 정해달라고 하자, 매니저는 그것도 다 중요하다고 한다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "잠깐 시간 돼요? 새 고객 프로젝트를 맡아줬으면 해요. 금요일 마감이에요.",
+      "en": "Hey, do you have a minute? I need you to take on the new client project. It's due Friday.",
+      "ms": 5424,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hey",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "do",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minute",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "new",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "client",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "project",
+          15
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "due",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 238
+        },
+        {
+          "t": 350,
+          "d": 88
+        },
+        {
+          "t": 438,
+          "d": 50
+        },
+        {
+          "t": 500,
+          "d": 163
+        },
+        {
+          "t": 675,
+          "d": 63
+        },
+        {
+          "t": 738,
+          "d": 400
+        },
+        {
+          "t": 1513,
+          "d": 88
+        },
+        {
+          "t": 1613,
+          "d": 200
+        },
+        {
+          "t": 1825,
+          "d": 63
+        },
+        {
+          "t": 1900,
+          "d": 75
+        },
+        {
+          "t": 1988,
+          "d": 300
+        },
+        {
+          "t": 2300,
+          "d": 100
+        },
+        {
+          "t": 2400,
+          "d": 63
+        },
+        {
+          "t": 2475,
+          "d": 250
+        },
+        {
+          "t": 2738,
+          "d": 375
+        },
+        {
+          "t": 3125,
+          "d": 600
+        },
+        {
+          "t": 4088,
+          "d": 175
+        },
+        {
+          "t": 4263,
+          "d": 225
+        },
+        {
+          "t": 4500,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "돕고는 싶지만 지금 프로젝트 두 개로 이미 꽉 차 있다고 말해봐",
+      "en": "I'd like to help, but I'm already at full capacity with two projects.",
+      "ms": 4512,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "capacity",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "projects",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 163
+        },
+        {
+          "t": 363,
+          "d": 75
+        },
+        {
+          "t": 438,
+          "d": 375
+        },
+        {
+          "t": 1263,
+          "d": 113
+        },
+        {
+          "t": 1388,
+          "d": 113
+        },
+        {
+          "t": 1500,
+          "d": 463
+        },
+        {
+          "t": 1975,
+          "d": 88
+        },
+        {
+          "t": 2075,
+          "d": 300
+        },
+        {
+          "t": 2388,
+          "d": 650
+        },
+        {
+          "t": 3038,
+          "d": 138
+        },
+        {
+          "t": 3175,
+          "d": 188
+        },
+        {
+          "t": 3375,
+          "d": 775
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "바쁜 건 알아요. 근데 이 고객사가 정말 중요해요.",
+      "en": "I know you're busy, but this client is really important.",
+      "ms": 3432,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you're",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "busy",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "client",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "important",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 50
+        },
+        {
+          "t": 138,
+          "d": 238
+        },
+        {
+          "t": 388,
+          "d": 125
+        },
+        {
+          "t": 525,
+          "d": 413
+        },
+        {
+          "t": 1075,
+          "d": 125
+        },
+        {
+          "t": 1213,
+          "d": 163
+        },
+        {
+          "t": 1375,
+          "d": 463
+        },
+        {
+          "t": 1888,
+          "d": 150
+        },
+        {
+          "t": 2050,
+          "d": 463
+        },
+        {
+          "t": 2525,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 지금 하는 것 중 어느 걸 미뤄도 되는지 정해달라고 해봐",
+      "en": "Then could you tell me which of my current projects can wait?",
+      "ms": 2952,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tell",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "which",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "current",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "projects",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wait",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 88
+        },
+        {
+          "t": 200,
+          "d": 125
+        },
+        {
+          "t": 325,
+          "d": 88
+        },
+        {
+          "t": 413,
+          "d": 213
+        },
+        {
+          "t": 638,
+          "d": 150
+        },
+        {
+          "t": 800,
+          "d": 288
+        },
+        {
+          "t": 1088,
+          "d": 63
+        },
+        {
+          "t": 1163,
+          "d": 138
+        },
+        {
+          "t": 1313,
+          "d": 313
+        },
+        {
+          "t": 1625,
+          "d": 463
+        },
+        {
+          "t": 2088,
+          "d": 150
+        },
+        {
+          "t": 2238,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "솔직히 그 둘도 다 중요해요.",
+      "en": "Honestly, they're both important too.",
+      "ms": 2184,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Honestly",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "they're",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "both",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "important",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "too",
+          4
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 513
+        },
+        {
+          "t": 625,
+          "d": 200
+        },
+        {
+          "t": 838,
+          "d": 263
+        },
+        {
+          "t": 1113,
+          "d": 363
+        },
+        {
+          "t": 1475,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그럼 금요일까지는 초안만 보내고 완성본은 다음 주에 주겠다고 제안해봐",
+      "en": "In that case, I can send a first draft by Friday and the final version next week.",
+      "ms": 4920,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "In",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "draft",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Friday",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "final",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "version",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 88
+        },
+        {
+          "t": 175,
+          "d": 188
+        },
+        {
+          "t": 363,
+          "d": 450
+        },
+        {
+          "t": 1013,
+          "d": 63
+        },
+        {
+          "t": 1088,
+          "d": 88
+        },
+        {
+          "t": 1175,
+          "d": 188
+        },
+        {
+          "t": 1363,
+          "d": 38
+        },
+        {
+          "t": 1400,
+          "d": 338
+        },
+        {
+          "t": 1738,
+          "d": 400
+        },
+        {
+          "t": 2138,
+          "d": 150
+        },
+        {
+          "t": 2300,
+          "d": 688
+        },
+        {
+          "t": 3150,
+          "d": 163
+        },
+        {
+          "t": 3313,
+          "d": 63
+        },
+        {
+          "t": 3388,
+          "d": 350
+        },
+        {
+          "t": 3738,
+          "d": 288
+        },
+        {
+          "t": 4025,
+          "d": 238
+        },
+        {
+          "t": 4263,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "매니저",
+      "meaning_ko": "그거 괜찮겠네요. 고객사에 확인해볼게요.",
+      "en": "That could work. Let me check with the client.",
+      "ms": 2808,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "check",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "client",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 200
+        },
+        {
+          "t": 288,
+          "d": 138
+        },
+        {
+          "t": 438,
+          "d": 413
+        },
+        {
+          "t": 1238,
+          "d": 113
+        },
+        {
+          "t": 1350,
+          "d": 88
+        },
+        {
+          "t": 1438,
+          "d": 338
+        },
+        {
+          "t": 1788,
+          "d": 88
+        },
+        {
+          "t": 1888,
+          "d": 75
+        },
+        {
+          "t": 1975,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "due",
+      "kind": "word",
+      "meaning_ko": "(~까지) 마감인, 기한인",
+      "example": "The report is due on Monday.",
+      "prompt_ko": "보고서가 월요일 마감이라고 말해봐"
+    },
+    {
+      "term": "current",
+      "kind": "word",
+      "meaning_ko": "현재의, 지금 하는",
+      "example": "My current job is pretty stable.",
+      "prompt_ko": "지금 진행 중인 프로젝트가 두 개라고 말해봐"
+    },
+    {
+      "term": "draft",
+      "kind": "word",
+      "meaning_ko": "초안",
+      "example": "I'll send you a draft tonight.",
+      "prompt_ko": "오늘 밤에 초안을 보내겠다고 말해봐"
+    },
+    {
+      "term": "take on",
+      "kind": "phrase",
+      "meaning_ko": "(일을) 맡다",
+      "prompt_ko": "일을 하나 더 맡을 여유가 없다고 말해봐"
+    },
+    {
+      "term": "at full capacity",
+      "kind": "phrase",
+      "meaning_ko": "여력이 꽉 찬, 최대한으로 돌아가는",
+      "keywords": [
+        {
+          "word": "capacity",
+          "meaning_ko": "수용 능력, 여력"
+        }
+      ],
+      "prompt_ko": "우리 팀이 지금 일이 꽉 차 있다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-extra-project/full.mp3",
+  "full_starts": [
+    0,
+    5424,
+    9936,
+    13368,
+    16320,
+    18504,
+    23424
+  ],
+  "generated_at": "2026-10-18T20:38:08.361Z"
+}

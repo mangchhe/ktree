@@ -1,0 +1,1611 @@
+{
+  "id": "2026-10-16-overdue-invoice",
+  "situation_ko": "거래처가 송장 대금을 45일째 안 내고 있다. 담당자에게 전화한다. 담당자는 내부 결재에 걸려 있다며 다음 달로 미루려 한다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "거래처 담당자",
+      "meaning_ko": "안녕하세요, 다니엘입니다. 무슨 일이세요?",
+      "en": "Hi, this is Daniel. What can I do for you?",
+      "ms": 2904,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "this",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Daniel",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 200
+        },
+        {
+          "t": 600,
+          "d": 175
+        },
+        {
+          "t": 775,
+          "d": 125
+        },
+        {
+          "t": 900,
+          "d": 438
+        },
+        {
+          "t": 1750,
+          "d": 50
+        },
+        {
+          "t": 1800,
+          "d": 88
+        },
+        {
+          "t": 1888,
+          "d": 63
+        },
+        {
+          "t": 1950,
+          "d": 200
+        },
+        {
+          "t": 2150,
+          "d": 175
+        },
+        {
+          "t": 2325,
+          "d": 213
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "8월에 보낸 송장 건으로 전화했다고, 45일이 지났는데 아직 입금이 안 됐다고 말해봐",
+      "en": "Hi Daniel. I'm calling about the invoice we sent in August. It's been forty-five days, and we still haven't received payment.",
+      "ms": 8352,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Daniel",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'm",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "calling",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "invoice",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sent",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "August",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty-five",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          14
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "haven't",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "received",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 200
+        },
+        {
+          "t": 325,
+          "d": 550
+        },
+        {
+          "t": 1275,
+          "d": 163
+        },
+        {
+          "t": 1450,
+          "d": 363
+        },
+        {
+          "t": 1825,
+          "d": 188
+        },
+        {
+          "t": 2025,
+          "d": 50
+        },
+        {
+          "t": 2088,
+          "d": 538
+        },
+        {
+          "t": 2638,
+          "d": 100
+        },
+        {
+          "t": 2738,
+          "d": 275
+        },
+        {
+          "t": 3013,
+          "d": 100
+        },
+        {
+          "t": 3125,
+          "d": 650
+        },
+        {
+          "t": 4163,
+          "d": 163
+        },
+        {
+          "t": 4338,
+          "d": 188
+        },
+        {
+          "t": 4538,
+          "d": 688
+        },
+        {
+          "t": 5238,
+          "d": 488
+        },
+        {
+          "t": 5938,
+          "d": 263
+        },
+        {
+          "t": 6213,
+          "d": 138
+        },
+        {
+          "t": 6363,
+          "d": 275
+        },
+        {
+          "t": 6650,
+          "d": 288
+        },
+        {
+          "t": 6938,
+          "d": 488
+        },
+        {
+          "t": 7438,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 죄송해요. 그게 재무팀 결재에 걸려 있어요. 다음 달 지급 주기로 넘어갈 것 같아요.",
+      "en": "Ah, sorry about that. It's stuck in approval with our finance team. It'll probably go out in next month's payment cycle.",
+      "ms": 6576,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Ah",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "sorry",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "stuck",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "approval",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "finance",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It'll",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "probably",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month's",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cycle",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 200,
+          "d": 300
+        },
+        {
+          "t": 500,
+          "d": 225
+        },
+        {
+          "t": 725,
+          "d": 325
+        },
+        {
+          "t": 1463,
+          "d": 100
+        },
+        {
+          "t": 1575,
+          "d": 238
+        },
+        {
+          "t": 1813,
+          "d": 50
+        },
+        {
+          "t": 1863,
+          "d": 488
+        },
+        {
+          "t": 2363,
+          "d": 113
+        },
+        {
+          "t": 2475,
+          "d": 100
+        },
+        {
+          "t": 2588,
+          "d": 538
+        },
+        {
+          "t": 3138,
+          "d": 325
+        },
+        {
+          "t": 3863,
+          "d": 150
+        },
+        {
+          "t": 4013,
+          "d": 313
+        },
+        {
+          "t": 4325,
+          "d": 225
+        },
+        {
+          "t": 4563,
+          "d": 238
+        },
+        {
+          "t": 4813,
+          "d": 113
+        },
+        {
+          "t": 4938,
+          "d": 250
+        },
+        {
+          "t": 5200,
+          "d": 238
+        },
+        {
+          "t": 5450,
+          "d": 288
+        },
+        {
+          "t": 5738,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "계약상 30일 안에 지급하기로 했으니, 다음 달까지는 너무 늦다고 정중하지만 분명하게 말해봐",
+      "en": "I understand, but our contract says payment within thirty days. Waiting until next month is too late for us.",
+      "ms": 7296,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "contract",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "says",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payment",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "within",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Waiting",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "until",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "too",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "us",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 638
+        },
+        {
+          "t": 1113,
+          "d": 263
+        },
+        {
+          "t": 1388,
+          "d": 125
+        },
+        {
+          "t": 1525,
+          "d": 575
+        },
+        {
+          "t": 2113,
+          "d": 313
+        },
+        {
+          "t": 2438,
+          "d": 438
+        },
+        {
+          "t": 2875,
+          "d": 300
+        },
+        {
+          "t": 3188,
+          "d": 250
+        },
+        {
+          "t": 3450,
+          "d": 525
+        },
+        {
+          "t": 4388,
+          "d": 413
+        },
+        {
+          "t": 4813,
+          "d": 275
+        },
+        {
+          "t": 5100,
+          "d": 263
+        },
+        {
+          "t": 5363,
+          "d": 300
+        },
+        {
+          "t": 5738,
+          "d": 225
+        },
+        {
+          "t": 5975,
+          "d": 200
+        },
+        {
+          "t": 6188,
+          "d": 200
+        },
+        {
+          "t": 6400,
+          "d": 125
+        },
+        {
+          "t": 6525,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠어요. 오늘 재무팀에 따로 요청해볼게요. 근데 금액 전체는 어려울 수도 있어요.",
+      "en": "Fair enough. I'll push finance on it today. But I'm not sure they can release the full amount.",
+      "ms": 5040,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Fair",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "push",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "finance",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sure",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "they",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "amount",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 163,
+          "d": 163
+        },
+        {
+          "t": 325,
+          "d": 375
+        },
+        {
+          "t": 1100,
+          "d": 100
+        },
+        {
+          "t": 1200,
+          "d": 200
+        },
+        {
+          "t": 1400,
+          "d": 475
+        },
+        {
+          "t": 1875,
+          "d": 125
+        },
+        {
+          "t": 2000,
+          "d": 63
+        },
+        {
+          "t": 2063,
+          "d": 425
+        },
+        {
+          "t": 2900,
+          "d": 88
+        },
+        {
+          "t": 3000,
+          "d": 75
+        },
+        {
+          "t": 3075,
+          "d": 150
+        },
+        {
+          "t": 3238,
+          "d": 225
+        },
+        {
+          "t": 3463,
+          "d": 125
+        },
+        {
+          "t": 3588,
+          "d": 100
+        },
+        {
+          "t": 3688,
+          "d": 300
+        },
+        {
+          "t": 4000,
+          "d": 75
+        },
+        {
+          "t": 4075,
+          "d": 263
+        },
+        {
+          "t": 4338,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 이번 주에 절반이라도 먼저 보내주고, 나머지 날짜를 이메일로 확정해달라고 요청해봐",
+      "en": "Then could you send at least half this week, and confirm a date for the rest by email?",
+      "ms": 4800,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "least",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "confirm",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "date",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rest",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 200
+        },
+        {
+          "t": 300,
+          "d": 175
+        },
+        {
+          "t": 488,
+          "d": 88
+        },
+        {
+          "t": 588,
+          "d": 300
+        },
+        {
+          "t": 900,
+          "d": 75
+        },
+        {
+          "t": 975,
+          "d": 213
+        },
+        {
+          "t": 1200,
+          "d": 238
+        },
+        {
+          "t": 1450,
+          "d": 163
+        },
+        {
+          "t": 1625,
+          "d": 288
+        },
+        {
+          "t": 2313,
+          "d": 300
+        },
+        {
+          "t": 2700,
+          "d": 325
+        },
+        {
+          "t": 3025,
+          "d": 75
+        },
+        {
+          "t": 3113,
+          "d": 225
+        },
+        {
+          "t": 3350,
+          "d": 88
+        },
+        {
+          "t": 3450,
+          "d": 75
+        },
+        {
+          "t": 3538,
+          "d": 250
+        },
+        {
+          "t": 3800,
+          "d": 113
+        },
+        {
+          "t": 3925,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그건 될 것 같아요. 오늘 퇴근 전까지 이메일 드릴게요.",
+      "en": "I think we can do that. I'll email you before the end of the day.",
+      "ms": 3504,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "email",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "end",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 113
+        },
+        {
+          "t": 263,
+          "d": 75
+        },
+        {
+          "t": 338,
+          "d": 88
+        },
+        {
+          "t": 438,
+          "d": 213
+        },
+        {
+          "t": 650,
+          "d": 338
+        },
+        {
+          "t": 1400,
+          "d": 175
+        },
+        {
+          "t": 1588,
+          "d": 388
+        },
+        {
+          "t": 1988,
+          "d": 188
+        },
+        {
+          "t": 2175,
+          "d": 325
+        },
+        {
+          "t": 2500,
+          "d": 63
+        },
+        {
+          "t": 2575,
+          "d": 150
+        },
+        {
+          "t": 2725,
+          "d": 38
+        },
+        {
+          "t": 2763,
+          "d": 63
+        },
+        {
+          "t": 2825,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "invoice",
+      "kind": "word",
+      "meaning_ko": "송장, 청구서",
+      "example": "I'll send you the invoice tomorrow morning.",
+      "prompt_ko": "청구서를 내일 아침에 보내드리겠다고 말해봐"
+    },
+    {
+      "term": "approval",
+      "kind": "word",
+      "meaning_ko": "승인, 결재",
+      "example": "The budget still needs approval from my boss.",
+      "prompt_ko": "그 예산은 아직 상사 결재가 필요하다고 말해봐"
+    },
+    {
+      "term": "release",
+      "kind": "word",
+      "meaning_ko": "(돈·자료를) 내주다, 풀다; 출시하다",
+      "example": "They won't release the money until the work is done.",
+      "prompt_ko": "일이 끝날 때까지 돈을 안 내주겠다고 한다고 말해봐"
+    },
+    {
+      "term": "push someone on it",
+      "kind": "phrase",
+      "meaning_ko": "(누구에게) 그 일을 재촉하다",
+      "prompt_ko": "그 건은 내가 오늘 개발팀에 재촉해보겠다고 말해봐"
+    },
+    {
+      "term": "at least",
+      "kind": "phrase",
+      "meaning_ko": "적어도, 최소한",
+      "prompt_ko": "적어도 하루 전에는 알려달라고 부탁해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-overdue-invoice/full.mp3",
+  "full_starts": [
+    0,
+    2904,
+    11256,
+    17832,
+    25128,
+    30168,
+    34968
+  ],
+  "generated_at": "2026-10-15T20:34:24.702Z"
+}

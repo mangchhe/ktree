@@ -1,0 +1,1094 @@
+{
+  "id": "2026-10-19-haircut-trim",
+  "situation_ko": "미용실에 가서 길이는 두고 살짝만 다듬어달라고 한다. 미용사는 머리끝이 상했다며 5센티를 자르자고 권한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "미용사",
+      "meaning_ko": "안녕하세요, 앉으세요. 오늘은 어떻게 해드릴까요?",
+      "en": "Hi, have a seat. What are we doing today?",
+      "ms": 2688,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "have",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seat",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "doing",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 125,
+          "d": 263
+        },
+        {
+          "t": 400,
+          "d": 125
+        },
+        {
+          "t": 538,
+          "d": 50
+        },
+        {
+          "t": 600,
+          "d": 400
+        },
+        {
+          "t": 1363,
+          "d": 100
+        },
+        {
+          "t": 1463,
+          "d": 50
+        },
+        {
+          "t": 1525,
+          "d": 100
+        },
+        {
+          "t": 1625,
+          "d": 263
+        },
+        {
+          "t": 1888,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "살짝만 다듬고 길이는 그대로 두고 싶다고 말해봐",
+      "en": "I just want a trim. I'd like to keep the length.",
+      "ms": 2640,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "trim",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keep",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "length",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 113
+        },
+        {
+          "t": 263,
+          "d": 88
+        },
+        {
+          "t": 350,
+          "d": 25
+        },
+        {
+          "t": 375,
+          "d": 350
+        },
+        {
+          "t": 1138,
+          "d": 100
+        },
+        {
+          "t": 1238,
+          "d": 150
+        },
+        {
+          "t": 1388,
+          "d": 88
+        },
+        {
+          "t": 1488,
+          "d": 238
+        },
+        {
+          "t": 1725,
+          "d": 88
+        },
+        {
+          "t": 1825,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "미용사",
+      "meaning_ko": "알겠어요. 근데 솔직히 머리끝이 많이 상했어요. 5센티 정도 자르는 걸 권해요.",
+      "en": "Okay. But to be honest, your ends are pretty damaged. I'd suggest cutting about five centimeters.",
+      "ms": 6600,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "honest",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "your",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ends",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pretty",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "damaged",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "suggest",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cutting",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "centimeters",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 463
+        },
+        {
+          "t": 950,
+          "d": 163
+        },
+        {
+          "t": 1125,
+          "d": 75
+        },
+        {
+          "t": 1213,
+          "d": 150
+        },
+        {
+          "t": 1375,
+          "d": 438
+        },
+        {
+          "t": 1838,
+          "d": 188
+        },
+        {
+          "t": 2038,
+          "d": 225
+        },
+        {
+          "t": 2275,
+          "d": 138
+        },
+        {
+          "t": 2425,
+          "d": 288
+        },
+        {
+          "t": 2713,
+          "d": 638
+        },
+        {
+          "t": 3750,
+          "d": 263
+        },
+        {
+          "t": 4013,
+          "d": 500
+        },
+        {
+          "t": 4525,
+          "d": 313
+        },
+        {
+          "t": 4850,
+          "d": 275
+        },
+        {
+          "t": 5138,
+          "d": 325
+        },
+        {
+          "t": 5463,
+          "d": 763
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "5센티는 너무 많다고, 그 절반만 잘라줄 수 있냐고 물어봐",
+      "en": "Five is too much for me. Could you cut half of that?",
+      "ms": 3072,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Five",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "too",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "much",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cut",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 138,
+          "d": 213
+        },
+        {
+          "t": 363,
+          "d": 88
+        },
+        {
+          "t": 463,
+          "d": 188
+        },
+        {
+          "t": 650,
+          "d": 213
+        },
+        {
+          "t": 863,
+          "d": 125
+        },
+        {
+          "t": 1000,
+          "d": 200
+        },
+        {
+          "t": 1600,
+          "d": 75
+        },
+        {
+          "t": 1675,
+          "d": 88
+        },
+        {
+          "t": 1775,
+          "d": 188
+        },
+        {
+          "t": 1975,
+          "d": 338
+        },
+        {
+          "t": 2313,
+          "d": 75
+        },
+        {
+          "t": 2388,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "미용사",
+      "meaning_ko": "그럼요, 2~3센티 잘라드릴게요. 그래도 다 해결되진 않아요.",
+      "en": "Sure, we can do two or three. It won't fix everything, though.",
+      "ms": 4176,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "or",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "everything",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 350
+        },
+        {
+          "t": 588,
+          "d": 113
+        },
+        {
+          "t": 713,
+          "d": 125
+        },
+        {
+          "t": 850,
+          "d": 188
+        },
+        {
+          "t": 1050,
+          "d": 325
+        },
+        {
+          "t": 1388,
+          "d": 125
+        },
+        {
+          "t": 1513,
+          "d": 400
+        },
+        {
+          "t": 2300,
+          "d": 100
+        },
+        {
+          "t": 2413,
+          "d": 213
+        },
+        {
+          "t": 2625,
+          "d": 313
+        },
+        {
+          "t": 3013,
+          "d": 438
+        },
+        {
+          "t": 3463,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "괜찮다고, 필요하면 다음에 더 자르겠다고 말해봐",
+      "en": "That's fine. I'll cut more next time if I need to.",
+      "ms": 2952,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fine",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cut",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 150
+        },
+        {
+          "t": 263,
+          "d": 450
+        },
+        {
+          "t": 1125,
+          "d": 88
+        },
+        {
+          "t": 1225,
+          "d": 125
+        },
+        {
+          "t": 1350,
+          "d": 138
+        },
+        {
+          "t": 1488,
+          "d": 213
+        },
+        {
+          "t": 1713,
+          "d": 163
+        },
+        {
+          "t": 1875,
+          "d": 100
+        },
+        {
+          "t": 1975,
+          "d": 25
+        },
+        {
+          "t": 2013,
+          "d": 275
+        },
+        {
+          "t": 2300,
+          "d": 288
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "미용사",
+      "meaning_ko": "좋아요. 먼저 머리부터 감겨드릴게요.",
+      "en": "Sounds good. Let's start with a quick wash.",
+      "ms": 3024,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sounds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Let's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quick",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wash",
+          7
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 413
+        },
+        {
+          "t": 500,
+          "d": 325
+        },
+        {
+          "t": 1200,
+          "d": 200
+        },
+        {
+          "t": 1400,
+          "d": 250
+        },
+        {
+          "t": 1663,
+          "d": 125
+        },
+        {
+          "t": 1800,
+          "d": 50
+        },
+        {
+          "t": 1863,
+          "d": 263
+        },
+        {
+          "t": 2125,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "trim",
+      "kind": "word",
+      "meaning_ko": "살짝 다듬기, 다듬다",
+      "example": "I need a quick trim before the wedding.",
+      "prompt_ko": "머리를 살짝만 다듬고 싶다고 말해봐"
+    },
+    {
+      "term": "damaged",
+      "kind": "word",
+      "meaning_ko": "상한, 손상된",
+      "example": "My hair got damaged from the sun.",
+      "prompt_ko": "머리끝이 많이 상했다고 말해봐"
+    },
+    {
+      "term": "suggest",
+      "kind": "word",
+      "meaning_ko": "권하다, 제안하다",
+      "example": "I'd suggest booking a table early.",
+      "prompt_ko": "일찍 예약하는 걸 권한다고 말해봐"
+    },
+    {
+      "term": "to be honest",
+      "kind": "phrase",
+      "meaning_ko": "솔직히 말하면",
+      "prompt_ko": "솔직히 그 영화 별로였다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-haircut-trim/full.mp3",
+  "full_starts": [
+    0,
+    2688,
+    5328,
+    11928,
+    15000,
+    19176,
+    22128
+  ],
+  "generated_at": "2026-10-18T20:37:07.443Z"
+}

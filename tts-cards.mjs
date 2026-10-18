@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * 카드 문장(answer_en) → 네이티브 mp3 일괄 생성 (MS Edge 뉴럴 TTS, 무료)
- * Storage 의 eng-audio/cards/<card_id>.mp3 로 올린다 — 앱은 이 경로를 먼저 시도하고
+ * Storage 의 eng-audio/cards/t/<글자키>.mp3 (한국어는 cards/k/) 로 올린다 — 앱은 이 경로를 먼저 시도하고
  * 없으면 기기 TTS 로 폴백하므로, 새 카드가 생기면 이 스크립트만 다시 돌리면 된다.
  *
  *   node tts-cards.mjs            # 오디오 없는 카드만 생성
@@ -44,22 +44,53 @@ const { error: ae } = await sb.auth.signInWithPassword({
 });
 if (ae) die(`로그인 실패: ${ae.message}`);
 
-const { data: cards, error } = await sb.from('eng_cards').select('id, answer_en, prompt_ko').limit(5000);
-if (error) die(error.message);
+// 🔴 카드 id 로 경로를 잡으면 **앱이 카드를 만든 뒤에야** 음성을 구울 수 있다.
+// 카드는 사람마다 공부하는 순간 앱이 만드는데 음성은 그 전날 밤에 굽기 때문에,
+// 오늘 새로 나온 어휘는 매일 기기 TTS 로 떨어졌다 (실측: 하루 25장 전부).
+// 그래서 **글자로 경로를 잡는다** — 장면·기사가 만들어진 직후에 구울 수 있고,
+// 같은 표현은 사람이 몇이든 파일 하나를 같이 쓴다.
+// audioKey 는 앱 파일에서 그대로 읽어온다. 베껴 두면 언젠가 어긋나고,
+// 어긋나면 조용히 전부 로봇 음성으로 떨어진다.
+const appHtml = readFileSync(new URL('./english.html', import.meta.url), 'utf8');
+const audioKey = new Function(
+  appHtml.slice(appHtml.indexOf('function audioKey(s){'), appHtml.indexOf('const CARD_AUD =')) +
+  '; return audioKey;')();
+
+const [sc, ar, cd] = await Promise.all([
+  sb.from('eng_scenes').select('vocab').limit(2000),
+  sb.from('eng_articles').select('vocab').limit(2000),
+  sb.from('eng_cards').select('answer_en, prompt_ko').limit(5000),
+]);
+for (const r of [sc, ar, cd]) if (r.error) die(r.error.message);
+
+// 영어는 term, 한국어는 뜻. 같은 글자는 한 번만 굽는다.
+const en = new Map(), ko = new Map();
+const addEn = t => { const x = String(t || '').trim(); if (x) en.set(audioKey(x), x); };
+const addKo = t => { const x = String(t || '').trim(); if (x) ko.set(audioKey(x), x); };
+for (const row of [...(sc.data || []), ...(ar.data || [])])
+  for (const v of (row.vocab || [])) {
+    addEn(v.term);
+    addKo(v.kind === 'word' ? v.meaning_ko : (v.meaning_ko || v.prompt_ko));
+  }
+for (const c of (cd.data || [])) { addEn(c.answer_en); addKo(c.prompt_ko); }
 
 // 이미 구운 것 확인 (Storage list 는 1000개 단위 페이지)
-const have = new Set();
-if (!ALL) {
+async function listed(dir){
+  const have = new Set();
   for (let page = 0; ; page++) {
     const { data: objs } = await sb.storage.from('eng-audio')
-      .list('cards', { limit: 1000, offset: page * 1000 });
+      .list(dir, { limit: 1000, offset: page * 1000 });
     (objs || []).forEach(o => have.add(o.name.replace(/\.mp3$/, '')));
     if (!objs || objs.length < 1000) break;
   }
+  return have;
 }
+const [haveEn, haveKo] = ALL ? [new Set(), new Set()]
+                             : await Promise.all([listed('cards/t'), listed('cards/k')]);
 
-const todo = cards.filter(c => !have.has(c.id));
-const koTodo = KO ? cards.filter(c => c.prompt_ko && !have.has(c.id + '.ko')) : [];
+const todo   = [...en].filter(([k]) => !haveEn.has(k)).map(([k, text]) => ({ k, text }));
+const koTodo = KO ? [...ko].filter(([k]) => !haveKo.has(k)).map(([k, text]) => ({ k, text })) : [];
+console.log(`· 어휘 영어 ${en.size}종 · 한국어 ${ko.size}종 (장면·기사·카드 전체)`);
 // 카드가 최신이어도 **끝내지 않는다** — 아래 질문 음성까지 가야 한다 (여기서 끊겨 질문이 0개였다)
 if (!todo.length && !koTodo.length) console.log('· 카드는 전부 최신');
 console.log(`영어 ${todo.length}장 · 한국어 ${koTodo.length}장 생성...`);
@@ -92,17 +123,17 @@ async function synth(text) {
 let ok = 0, fail = 0;
 for (const c of todo) {
   try {
-    const buf = await synth(c.answer_en);
+    const buf = await synth(c.text);
     if (buf.length < 500) throw new Error('오디오가 비정상적으로 작음');
     const { error: se } = await sb.storage.from('eng-audio')
-      .upload(`cards/${c.id}.mp3`, buf, { contentType: 'audio/mpeg', upsert: true });
+      .upload(`cards/t/${c.k}.mp3`, buf, { contentType: 'audio/mpeg', upsert: true });
     if (se) throw se;
     ok++;
     process.stdout.write(`\r  ${ok}/${todo.length}`);
     await new Promise(r => setTimeout(r, 150));   // 서비스에 예의
   } catch (e) {
     fail++;
-    console.error(`\n  ✗ "${c.answer_en.slice(0, 40)}...": ${e.message}`);
+    console.error(`\n  ✗ "${c.text.slice(0, 40)}...": ${e.message}`);
   }
 }
 console.log(`\n✓ 영어 ${ok}장 생성${fail ? `, ${fail}장 실패 (기기 TTS 폴백으로 동작)` : ''}`);
@@ -110,17 +141,17 @@ console.log(`\n✓ 영어 ${ok}장 생성${fail ? `, ${fail}장 실패 (기기 T
 let kok = 0, kofail = 0;
 for (const c of koTodo) {
   try {
-    const buf = await synthWith(ktts, c.prompt_ko);
+    const buf = await synthWith(ktts, c.text);
     if (buf.length < 500) throw new Error('오디오가 비정상적으로 작음');
     const { error: se } = await sb.storage.from('eng-audio')
-      .upload(`cards/${c.id}.ko.mp3`, buf, { contentType: 'audio/mpeg', upsert: true });
+      .upload(`cards/k/${c.k}.mp3`, buf, { contentType: 'audio/mpeg', upsert: true });
     if (se) throw se;
     kok++;
     process.stdout.write(`\r  한국어 ${kok}/${koTodo.length}`);
     await new Promise(r => setTimeout(r, 150));
   } catch (e) {
     kofail++;
-    console.error(`\n  ✗ ko "${String(c.prompt_ko).slice(0, 30)}...": ${e.message}`);
+    console.error(`\n  ✗ ko "${String(c.text).slice(0, 30)}...": ${e.message}`);
   }
 }
 if (koTodo.length) console.log(`\n✓ 한국어 ${kok}장 생성${kofail ? `, ${kofail}장 실패` : ''}`);

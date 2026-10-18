@@ -1,0 +1,67 @@
+[
+  {
+    "kind": "past", "topic": "여가", "level": 3, "seconds": 90,
+    "question_en": "I'd like to know about the last time you went to the movies. Who did you go with, what did you see, and how was it?",
+    "hint_ko": "① 언제, 누구와, 왜 그 영화를 골랐는지 ② 극장에 도착해서 생긴 일(예상 밖 일 하나) ③ 영화 자체에 대한 감상 ④ 돌아보면 그날이 어땠는지로 마무리",
+    "model_en": "The last time I went to the movies was about a month ago. My friend had been asking me for weeks, so we finally picked a Saturday and went to see a new thriller.\n\nThe funny thing is, we almost missed it. We got stuck in traffic, and by the time we found our seats, the lights were already down. We spent the first five minutes trying to figure out who was who.\n\nThe movie itself was better than I expected. The story kept me guessing until the very end, and the sound in the theater made the tense scenes even more intense. I honestly forgot about my phone for two hours.\n\nLooking back, it wasn't just about the movie. It was the first time in a while that I'd actually gone out on a weekend, so it felt like a small break from my routine.",
+    "model_note_ko": "과거 경험은 '배경 → 사건(전환점) → 결과 → 회고' 네 문단. 'The funny thing is' 로 예상 밖 사건을 열면 단순 나열이 이야기로 바뀐다. 'by the time' 같은 시간 접속으로 과거 시제를 엮고, 마지막 'Looking back' 문단에서 의미를 한 줄 더하면 AL 쪽 문단 연결이 된다.",
+    "phrases": [
+      { "term": "the funny thing is", "meaning_ko": "웃긴 건, 재미있는 건" },
+      { "term": "by the time", "meaning_ko": "~할 무렵에는, ~했을 때 이미" },
+      { "term": "better than I expected", "meaning_ko": "생각보다 좋았다" },
+      { "term": "looking back", "meaning_ko": "돌이켜보면" }
+    ]
+  },
+  {
+    "kind": "describe", "topic": "여행", "level": 2, "seconds": 75,
+    "question_en": "Can you describe a place you visited on vacation that you want to go back to? What was it like?",
+    "hint_ko": "① 어디였고 언제 갔는지 한 줄 ② 도착했을 때 처음 보인 풍경 ③ 거기서 제일 좋았던 한 가지를 구체적으로 ④ 왜 다시 가고 싶은지로 마무리",
+    "model_en": "One place I'd love to go back to is a small island in the south that I visited two summers ago.\n\nWhen you get off the ferry, the first thing you notice is how quiet it is. There are no big hotels, just low houses, narrow roads, and the sea on almost every side.\n\nWhat I liked most was a little beach on the far side of the island. It took about twenty minutes to walk there, but the water was so clear that you could see the fish from the shore. We stayed there until the sun went down.\n\nThe main reason I want to go back is the pace. Everything there moves slowly, and for once, I didn't check my email at all. I'd like to stay longer next time.",
+    "model_note_ko": "묘사는 '어디 → 첫인상 → 핵심 장면 하나 → 왜'. 'the first thing you notice is' 로 첫인상을 열고, 'What I liked most was' 로 하나를 골라 깊게 그린다. 이것저것 나열하면 문장 단위가 되고, 하나를 파면 문단이 된다.",
+    "phrases": [
+      { "term": "one place I'd love to go back to is", "meaning_ko": "꼭 다시 가고 싶은 곳은" },
+      { "term": "the first thing you notice is", "meaning_ko": "제일 먼저 눈에 띄는 건" },
+      { "term": "what I liked most was", "meaning_ko": "제일 좋았던 건" },
+      { "term": "for once", "meaning_ko": "모처럼, 이번만큼은" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "일상", "level": 2, "seconds": 75,
+    "question_en": "What do you usually do when you have a free weekend at home? Tell me about a typical weekend.",
+    "hint_ko": "① 주말이 보통 어떤 분위기인지 한 줄 ② 토요일 오전에 하는 일 ③ 오후·저녁에 하는 일 ④ 왜 이렇게 보내는지, 가끔 달라지는 점으로 마무리",
+    "model_en": "When I have a free weekend, I try to keep it pretty relaxed, because my weekdays are usually packed.\n\nOn Saturday mornings, I sleep in a little and then make a proper breakfast, which I never have time for during the week. After that, I usually clean the house and do the laundry, just to get it out of the way.\n\nIn the afternoon, I either go for a walk around my neighborhood or watch a series I've been saving. In the evening, I sometimes cook something new or order food and just take it easy.\n\nI like weekends this way because they help me recharge. Every now and then I make plans with friends, but most of the time, a quiet weekend is exactly what I need.",
+    "model_note_ko": "습관형은 시간 순서로 문단을 나누면 구조가 저절로 선다: 개요 → 오전 → 오후·저녁 → 이유. 'either A or B', 'every now and then', 'most of the time' 같은 빈도 표현이 '보통 ~한다'를 단조롭지 않게 만든다.",
+    "phrases": [
+      { "term": "get it out of the way", "meaning_ko": "(해야 할 일을) 먼저 해치우다" },
+      { "term": "take it easy", "meaning_ko": "느긋하게 쉬다" },
+      { "term": "every now and then", "meaning_ko": "가끔, 이따금" },
+      { "term": "most of the time", "meaning_ko": "대부분은" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "비즈니스", "level": 2, "seconds": 60,
+    "question_en": "Let's role-play. Imagine a new coworker just joined your team. Ask them three or four questions to get to know them.",
+    "hint_ko": "① 인사하고 환영한다 ② 전에 어디서 무슨 일을 했는지 ③ 여기서 맡을 일 ④ 업무 밖 질문 하나(점심·출퇴근) ⑤ 도움 필요하면 말하라고 닫기",
+    "model_en": "Hi, welcome to the team! I'm glad you're here. I'd love to get to know you a little.\n\nFirst, where were you working before this, and what kind of work did you do there?\n\nAnd what will you be working on here? Have you already met the people you'll be working with?\n\nOh, and how's your commute? Is it a long way from home?\n\nAnyway, if you need anything, just let me know. Maybe we can grab lunch this week.",
+    "model_note_ko": "질문 만들기는 '인사 → 과거 → 현재 → 개인 → 마무리'로 질문 간 흐름을 준다. 'First', 'And', 'Oh, and', 'Anyway' 로 질문을 이어붙이면 질문 목록이 아니라 대화처럼 들린다. 의문문 형태(where/what/have you/is it)를 서로 다르게 쓴다.",
+    "phrases": [
+      { "term": "I'd love to get to know you", "meaning_ko": "당신에 대해 좀 알고 싶어요" },
+      { "term": "what will you be working on", "meaning_ko": "어떤 일을 맡게 되나요" },
+      { "term": "Oh, and", "meaning_ko": "아, 그리고 (말 덧붙이기)" },
+      { "term": "grab lunch", "meaning_ko": "점심 같이 먹다" }
+    ]
+  },
+  {
+    "kind": "solve", "topic": "일상", "level": 3, "seconds": 75,
+    "question_en": "Unfortunately, there's a problem. You ordered a jacket online, but the wrong size arrived, and you need it this weekend. Call the store, explain the situation, and suggest two or three solutions.",
+    "hint_ko": "① 누구인지·주문번호 ② 무엇이 잘못 왔는지 ③ 이번 주말까지 필요하다는 사정 ④ 해결책 2~3개(빠른 교환·매장 수령·환불) ⑤ 어느 쪽을 원하는지로 마무리",
+    "model_en": "Hi, I'm calling about an online order I received yesterday. My order number is four, five, two, seven.\n\nThe problem is that I ordered a medium jacket, but you sent me a large. I need it for a trip this weekend, so I'm a bit worried about the timing.\n\nThere are a few ways we could fix this. First, could you send me the right size by express shipping? Or, if one of your stores has a medium, I could pick it up there and return the large at the same time. If neither of those works, I'd just like a full refund.\n\nThe store pickup would be best for me, if possible. Could you check if it's available near me?",
+    "model_note_ko": "문제 해결은 '신원 → 문제 → 사정(왜 급한지) → 해결책 여러 개 → 내 선호'. 'The problem is that' 으로 문제를 한 문장에 정리하고, 'First / Or / If neither of those works' 로 대안을 순서 있게 내민다. 마지막에 선호를 밝혀야 상대가 움직인다.",
+    "phrases": [
+      { "term": "I'm calling about", "meaning_ko": "~ 건으로 전화드렸어요" },
+      { "term": "the problem is that", "meaning_ko": "문제는 ~라는 거예요" },
+      { "term": "there are a few ways we could fix this", "meaning_ko": "해결할 방법이 몇 가지 있어요" },
+      { "term": "if neither of those works", "meaning_ko": "둘 다 안 되면" }
+    ]
+  }
+]

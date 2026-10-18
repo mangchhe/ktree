@@ -1,0 +1,663 @@
+shape
+fiscal
+That's water under the bridge at this point.
+don't bother
+harder than it sounds
+flaky
+lag
+bump
+I'm on it.
+Wanna grab a coffee?
+The server went down during the deployment.
+There's a trade-off here between latency and consistency.
+trial
+lease
+Looks good to me — feel free to merge.
+That's a bit steeper than I expected.
+a long way off
+spot
+Will this make me drowsy?
+buy ourselves some time
+push someone on it
+expense report
+could carry over to
+hand it off
+I'll go with
+invite
+Did anything change on that cluster?
+buffer
+I'll have to take a rain check this time.
+borrow
+go through
+which of those should slip?
+this keeps happening
+conversion
+if it checks out
+outlet
+I'll be honest
+Just following up on my previous email — any updates on this?
+duplicate
+to be honest
+hold up
+I'm just browsing, thanks.
+waive the difference
+pull it up
+take off
+sitting on their hands
+rebalancing
+Would you mind if
+swamped
+when you get a chance
+cut scope
+cut both ways
+here's the catch
+track
+Want me to pair with you?
+package
+noise
+it wasn't part of what we agreed on
+what number did you have in mind?
+my bag might not make it
+connection
+that changes things
+pull out of that channel
+where did we land on
+eventually
+Could you take that off the bill?
+crack the problem
+I'll own it myself
+we landed at two point eight
+cover
+creative
+carry over
+make a business case
+move forward with
+reimburse
+rate
+valid
+flat
+give you a heads-up
+within
+departures
+variant
+secondary
+queue
+Is there any way to ~?
+return it with a full tank
+cost per acquisition
+urgent
+spiky
+Let's just agree to disagree on this one.
+hold it for airport pickup
+apples to apples
+look into
+leave them out
+Would you mind taking a photo of us?
+I'm looking for a role where I can take on more ownership and work with a global team.
+draft
+When did it start happening?
+Take one every eight hours, with food
+that's not really on me
+reasonable
+cohort
+do away with
+actual
+Thanks for catching that.
+The Wi-Fi doesn't seem to be working in my room.
+rough
+go live
+I just pushed a fix.
+We didn't see any message loss during the load test.
+it's not mint
+My bag didn't come out on the belt — what's the procedure for filing a claim?
+I'd rather not wait
+Let me check and get back to you.
+Since when?
+talk through
+Not much — I just took it easy at home.
+No blockers.
+in their hurry
+prescription
+refund
+standby
+bring up
+remaining
+That would introduce a single point of failure.
+in sync with
+fair
+sore
+fall behind
+upfront
+alternative
+scope
+Could I get a late checkout, by any chance?
+back-to-back meetings
+quarantine
+So, to sum up: we ship Friday, and QA starts Monday.
+Do you have a minute?
+The server is down.
+quarter over quarter
+compensation
+submit a claim
+slip through
+Could you take a look at this PR?
+keep an eye on
+the cough gets worse at night
+heads-up
+waive
+the rest
+I'd like to speak with whoever's in charge, if that's possible.
+I have one blocker — I'm waiting on the design review.
+Yesterday I worked on the login API.
+the total comes to
+severe
+trim
+prioritize
+pull it in by two weeks
+automatically
+below plan
+call
+We rolled back to the previous version.
+Where were we?
+bump the memory limit
+Would the booking confirmation work?
+handover
+trade secret
+as a courtesy
+pull in up to eight times the power
+utility
+afterthought
+before I jump in
+hold it, just in case
+cutting it close
+cached
+Since we're staying two weeks, is there any flexibility on the rate?
+Want me to switch it?
+What's the case for it?
+subsidy
+I'd rather not kill it outright
+drive
+enhancements
+claim tag
+at no extra charge
+tricky
+get to it first thing in the morning
+cut someone off
+There was just one problem.
+It wasn't really my thing at first, but it grew on me.
+the design calls for
+CAC landed at about one eighty-five
+struggle
+fever
+that doesn't really make sense for me
+we're not going to make Friday
+earliest
+alternate
+commit
+payback
+rule out
+name ~ after
+Ping me if I forget
+I've been really into running lately.
+I can get to it first thing in the morning.
+that's a bit far off
+honor
+close this out
+fault
+Let me think it over and get back to you — I don't want to commit just yet.
+How long have you been here?
+I'm feeling a bit off today.
+donor
+miss my connection
+spike
+funnel
+My connection is in forty minutes and I'm worried I won't make it — is there anything you can do?
+I think that's a bit of a stretch.
+ended up leading
+separately
+downstairs
+merge
+revisit
+selling point
+If it's not better in three days, see a doctor
+that's the trade-off I'm willing to make
+reversible
+inflated
+proof
+Hi, I have a reservation under Joohyun.
+compress
+sting
+churn
+even out
+double-check
+Is there any chance
+catch on
+ramp-up period
+get paged at three in the morning
+relocate
+upgrade
+approved
+knock one percentage point off the rate
+revenue
+I missed my connection
+Let me play devil's advocate for a second.
+headcount
+Got it — I'll get to it shortly.
+confusion
+Looking forward to hearing from you.
+exhausted
+Let's do that instead
+headroom
+luggage
+tight
+look worse than it really is
+venue
+on purpose
+I'd start simple and scale it out later if we need to.
+the twist is
+Given that the service was never provided, I'd like to request a full refund.
+drain
+file a ticket
+agenda
+renter
+What can I get started for you?
+make the connection
+invoice
+bottleneck
+trip over it
+resident
+charge
+something came up
+What do you recommend?
+hold you to that
+coined
+split it up
+due
+cover the retry window
+the root cause was
+I'm worried I might miss my connecting flight.
+net
+settle
+stopgap
+backfill
+I couldn't reproduce the bug on my end.
+lock in
+include
+Do you have a table for two?
+ahead of schedule
+There seems to be a discrepancy in the bill — could you walk me through the charges?
+I've had a sore throat for two days
+Is there really nothing else you can do?
+prototype
+I can't pin down why.
+doable
+point out
+Could I get a window seat, please?
+refresh
+membership
+I'd rather we hold off on this decision until next week.
+Consumer lag is building up.
+I'll be straight with you
+works out to about fifty thousand yuan
+fill
+run it by
+It seems my reservation didn't go through — could you double-check?
+option
+blended ROAS
+terms
+touched down
+a heads-up
+pair
+a stopgap
+something closer to
+suitcase
+workaround
+sign off on it
+reschedule
+it runs into one of yours
+Do you mind moving your car?
+suggest
+Could you take a look at my PR when you get a chance?
+Where are you headed?
+timeline
+damaged
+eat up a fair chunk of
+assigned
+at full capacity
+recipient
+Speaking of which, have you tried that new place?
+It stops partway through
+that's where the headroom is
+volume
+make a real difference
+We've put safeguards in place to prevent this from happening again.
+it took on
+neighbor
+quote
+release
+dealbreaker
+How do I get to the station from here?
+price tag
+space heater
+merged
+allergy
+existing
+I'd appreciate it if you could move us to another room — this one isn't what we booked.
+run higher
+fabric
+Is it blocking anything?
+reservation
+picks up ninety percent of the tab
+bother
+I'm writing to ask about the deadline.
+vendor
+rug
+make that work
+meet you at
+shift
+a big deal
+a freeze won't help
+I'd like you to own it
+Let me walk you through an incident I handled last year, and what we changed afterward.
+roughly
+It's almost there.
+knock off
+My baggage didn't show up on the carousel.
+Give me thirty minutes to narrow it down
+target CAC
+otherwise
+cut down the operational overhead
+ship
+storage
+walk me through what happens when
+chunk
+account
+it's out of my hands
+jump
+how much delay is acceptable
+shift forty percent of it into search
+cut over
+Given the tight timeline, I suggest we cut down the scope.
+a string of
+Honestly, it didn't quite live up to the hype.
+surveillance
+booked solid until next Tuesday
+leadership
+just so you know
+confidence
+pick up
+verify
+clearing on its own
+overhead
+bring in
+socket
+slide
+what's driving that
+caught up with
+fully booked
+replacement
+we were flying blind
+fuzzing
+packed
+align
+victim
+justify
+transparent
+What would you recommend that's nut-free?
+go unnoticed
+hit the database
+transfer
+drum
+booked
+steady
+at least
+meter
+worth
+Sorry, I can't hear you.
+Give me thirty minutes to narrow it down first.
+flat fee
+that's news to me
+rerun
+go all in
+uncomfortable
+sponsorship
+It's just that
+Would it be possible to rebook me on the next available flight?
+commitment
+available
+I really appreciate the offer — that said, I'd like to discuss the terms a bit further.
+jitter
+According to the confirmation, breakfast was included — could you double-check that?
+for fifteen minutes at a stretch
+drowsy
+acknowledgement
+we're risking less than one percent of the month
+strike
+dries up the top of the funnel
+line by line
+that's as far as I can go
+commission
+That makes sense to me.
+printed
+I'm working from home today.
+loop them in
+Under the hood, it batches the writes before flushing them.
+I'd say it's a bit of a trade-off.
+swap
+sign-up
+keep the budget flat
+downtime
+revised
+cover the difference
+bring that down
+sensitive
+moving the bottleneck around
+click-through rate
+couldn't keep up
+conversion rate
+deadline
+The new version does away with ZooKeeper completely.
+sore throat
+store credit
+turn heads
+I'm still on the fence about it, honestly.
+comparable
+Something feels off, but I can't put my finger on it.
+leak
+Could we get the check, please?
+I'm afraid that's not going to work for me.
+faulty
+inspect
+retention
+receipt
+based on
+I'm running a bit late — I'll be there in 10.
+I can't pin down why
+slight
+rush
+let's not call it yet
+it's been running fine
+they cost us more than they brought in
+I'm still going through the logs.
+do the math
+make an exception
+I appreciate the heads-up
+even after you factor that in
+gradually
+That seems high
+threshold
+I'm waiting on a review.
+around the clock
+My bag never came out on the belt
+Could you say that again?
+a common target for attacks
+the purpose of your visit
+Today I'll wrap that up.
+twist
+set into the fabric
+is there any way around that?
+sample
+give up my seat
+I've been running on fumes for the past couple of weeks.
+rank by priority
+What am I walking into?
+ramp up
+paged
+capacity
+Both approaches are viable, but I'd lean toward the queue-based one — it degrades more gracefully under load.
+still fell short
+hike
+behind the scenes
+bluff
+put it in writing
+slipped from three point one to two point two
+I wanted you to hear it from me first
+stain
+realize
+Put it in writing
+switch
+orbit
+facility
+I'll make an exception
+Please find the file attached.
+scale out
+roll back
+throw in
+Yesterday I wrapped up the API work, and today I'll move on to testing.
+freezing
+You're breaking up a little — could you say that again?
+keep me posted
+flag it up front
+My concern is that
+The operator has finally caught up with the latest release.
+credit
+I put up a PR.
+across the board
+pick up sound
+drop support for
+scope it down
+drop off
+be out of
+We're still looking into the root cause.
+I've had a sore throat for two days now.
+current
+That's a bit steeper than I expected
+deploy
+Let's take that offline and keep this meeting on track.
+does away with
+decoder
+approval
+merge it as is
+phased delivery
+ordering
+I'm still going through the logs
+renew
+dry run
+waiting to bite us
+a room frees up
+drill
+go viral
+I'm pretty swamped
+Ping me if I forget.
+without a second thought
+a lot more than we budgeted for
+What are my options?
+blocking
+patch them afterward
+It won't reach you until tomorrow morning
+leave out
+after the fact
+I can live with that
+slip
+confirm
+pin down
+will say a lot about
+How was your weekend?
+relocation
+It keeps getting OOM-killed
+make the call
+We've gotten a bit sidetracked — where were we?
+holdout
+alone
+service charge
+turn it around fast
+contractor
+spend
+they're away until Sunday
+quorum
+Just a nit: this variable name could be clearer.
+unrealistic
+weigh
+catch
+insensitive
+baseboard
+root cause
+we're out of
+sooner
+rest
+gap
+neither one is wrong, exactly
+hazard
+He tends to overthink things, but his instincts are usually right.
+overload
+give back as much as they take
+outright
+Could you share the budgeted range?
+voucher
+manually
+The cough gets worse at night.
+Is there anything I can do in the meantime?
+I'm just following up on
+freeze
+length
+generic
+steep
+make a huge difference
+evidence
+take on
+It works on my machine.
+give or take
+separate
+in case I don't get on
+hint
+get away with
+Let's do that instead.
+have it delivered to my hotel
+put the quality at risk
+Let me sleep on it and get back to you.
+What team are you on?
+your time
+Mind if I plug it in?
+round trip
+hiring freeze
+so the radiators can catch up
+trace
+malicious
+flag
+we have two options
+scaling spend forty percent
+To be clear, this is just a stopgap until the proper fix lands.
+budget
+push back
+band
+every other week
+reach
+Sorry for the late reply.
+Let me check the logs.
+cause
+short of ninety-five
+I see your point, but I wouldn't go that far.
+roll it back to the previous build
+Under the hood
+thumping
+beforehand
+opponent
+put a queue in front
+roll it back
+working
+crowded
+I could go with that, as long as the deposit is refundable.
+pose as
+under the hood
+in the meantime
+buy us some time

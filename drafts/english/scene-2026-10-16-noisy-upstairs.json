@@ -1,0 +1,1575 @@
+{
+  "id": "2026-10-16-noisy-upstairs",
+  "situation_ko": "윗집에서 밤마다 쿵쿵 소리가 나서 잠을 설친다. 올라가서 정중하게 말한다. 윗집은 아기가 새벽에 깬다며 사정을 얘기한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "윗집 이웃",
+      "meaning_ko": "안녕하세요! 무슨 일이세요?",
+      "en": "Oh, hi! Can I help you?",
+      "ms": 2184,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "hi",
+          1
+        ],
+        [
+          "! ",
+          null
+        ],
+        [
+          "Can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 263
+        },
+        {
+          "t": 363,
+          "d": 313
+        },
+        {
+          "t": 1050,
+          "d": 125
+        },
+        {
+          "t": 1188,
+          "d": 88
+        },
+        {
+          "t": 1275,
+          "d": 225
+        },
+        {
+          "t": 1513,
+          "d": 300
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "바로 아랫집 사람인데, 밤늦게 쿵쿵거리는 소리 때문에 왔다고 조심스럽게 말해봐",
+      "en": "Hi, I live right below you. Sorry to bother you, but I've been hearing a lot of thumping late at night.",
+      "ms": 6216,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "live",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "below",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Sorry",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bother",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I've",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "been",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hearing",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lot",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thumping",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "night",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 238
+        },
+        {
+          "t": 775,
+          "d": 88
+        },
+        {
+          "t": 863,
+          "d": 213
+        },
+        {
+          "t": 1075,
+          "d": 163
+        },
+        {
+          "t": 1250,
+          "d": 338
+        },
+        {
+          "t": 1588,
+          "d": 250
+        },
+        {
+          "t": 2238,
+          "d": 325
+        },
+        {
+          "t": 2563,
+          "d": 75
+        },
+        {
+          "t": 2638,
+          "d": 375
+        },
+        {
+          "t": 3013,
+          "d": 250
+        },
+        {
+          "t": 3525,
+          "d": 175
+        },
+        {
+          "t": 3713,
+          "d": 113
+        },
+        {
+          "t": 3825,
+          "d": 113
+        },
+        {
+          "t": 3938,
+          "d": 400
+        },
+        {
+          "t": 4350,
+          "d": 38
+        },
+        {
+          "t": 4388,
+          "d": 388
+        },
+        {
+          "t": 4775,
+          "d": 50
+        },
+        {
+          "t": 4825,
+          "d": 375
+        },
+        {
+          "t": 5200,
+          "d": 175
+        },
+        {
+          "t": 5375,
+          "d": 88
+        },
+        {
+          "t": 5463,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "어머, 정말 죄송해요. 아기가 새벽 두 시쯤 깨서, 재우려고 거실을 왔다 갔다 하거든요.",
+      "en": "Oh no, I'm so sorry. Our baby wakes up around two, and we walk back and forth in the living room to calm her down.",
+      "ms": 7080,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sorry",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Our",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "baby",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wakes",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "walk",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forth",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "living",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "calm",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "her",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          24
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 150
+        },
+        {
+          "t": 250,
+          "d": 313
+        },
+        {
+          "t": 588,
+          "d": 213
+        },
+        {
+          "t": 813,
+          "d": 300
+        },
+        {
+          "t": 1113,
+          "d": 475
+        },
+        {
+          "t": 1975,
+          "d": 238
+        },
+        {
+          "t": 2225,
+          "d": 275
+        },
+        {
+          "t": 2513,
+          "d": 238
+        },
+        {
+          "t": 2750,
+          "d": 88
+        },
+        {
+          "t": 2838,
+          "d": 300
+        },
+        {
+          "t": 3150,
+          "d": 375
+        },
+        {
+          "t": 3738,
+          "d": 200
+        },
+        {
+          "t": 3950,
+          "d": 138
+        },
+        {
+          "t": 4100,
+          "d": 250
+        },
+        {
+          "t": 4363,
+          "d": 238
+        },
+        {
+          "t": 4613,
+          "d": 100
+        },
+        {
+          "t": 4725,
+          "d": 425
+        },
+        {
+          "t": 5163,
+          "d": 125
+        },
+        {
+          "t": 5300,
+          "d": 75
+        },
+        {
+          "t": 5375,
+          "d": 263
+        },
+        {
+          "t": 5650,
+          "d": 238
+        },
+        {
+          "t": 5900,
+          "d": 88
+        },
+        {
+          "t": 6000,
+          "d": 238
+        },
+        {
+          "t": 6250,
+          "d": 75
+        },
+        {
+          "t": 6338,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그건 이해한다고, 그런데 요즘 일 때문에 일찍 일어나야 해서 잠이 부족하다고 말해봐",
+      "en": "I totally understand. It's just that I have to get up early for work, so I'm not getting much sleep.",
+      "ms": 4992,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "totally",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "work",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'm",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "getting",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "much",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sleep",
+          19
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 388
+        },
+        {
+          "t": 550,
+          "d": 588
+        },
+        {
+          "t": 1538,
+          "d": 88
+        },
+        {
+          "t": 1638,
+          "d": 150
+        },
+        {
+          "t": 1788,
+          "d": 88
+        },
+        {
+          "t": 1875,
+          "d": 50
+        },
+        {
+          "t": 1925,
+          "d": 138
+        },
+        {
+          "t": 2063,
+          "d": 75
+        },
+        {
+          "t": 2138,
+          "d": 113
+        },
+        {
+          "t": 2250,
+          "d": 125
+        },
+        {
+          "t": 2388,
+          "d": 263
+        },
+        {
+          "t": 2650,
+          "d": 188
+        },
+        {
+          "t": 2838,
+          "d": 350
+        },
+        {
+          "t": 3400,
+          "d": 138
+        },
+        {
+          "t": 3550,
+          "d": 88
+        },
+        {
+          "t": 3638,
+          "d": 163
+        },
+        {
+          "t": 3800,
+          "d": 188
+        },
+        {
+          "t": 3988,
+          "d": 175
+        },
+        {
+          "t": 4163,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "당연하죠. 거실에 러그를 깔면 좀 나을까요? 이번 주말에 사려고 했어요.",
+      "en": "Of course. Would a rug in the living room help? We were planning to get one this weekend anyway.",
+      "ms": 5496,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Would",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "rug",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "living",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "room",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          9
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "We",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "were",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "planning",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weekend",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anyway",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 125
+        },
+        {
+          "t": 200,
+          "d": 575
+        },
+        {
+          "t": 1150,
+          "d": 100
+        },
+        {
+          "t": 1263,
+          "d": 50
+        },
+        {
+          "t": 1325,
+          "d": 375
+        },
+        {
+          "t": 1713,
+          "d": 88
+        },
+        {
+          "t": 1813,
+          "d": 63
+        },
+        {
+          "t": 1888,
+          "d": 263
+        },
+        {
+          "t": 2163,
+          "d": 150
+        },
+        {
+          "t": 2325,
+          "d": 363
+        },
+        {
+          "t": 3075,
+          "d": 88
+        },
+        {
+          "t": 3175,
+          "d": 100
+        },
+        {
+          "t": 3288,
+          "d": 375
+        },
+        {
+          "t": 3675,
+          "d": 100
+        },
+        {
+          "t": 3788,
+          "d": 138
+        },
+        {
+          "t": 3938,
+          "d": 150
+        },
+        {
+          "t": 4088,
+          "d": 163
+        },
+        {
+          "t": 4263,
+          "d": 363
+        },
+        {
+          "t": 4638,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그거면 아주 큰 도움이 되겠다고, 그리고 실내화를 신는 것도 방법이라고 제안해봐",
+      "en": "That would make a huge difference. Maybe soft slippers could help, too.",
+      "ms": 4056,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "huge",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "difference",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Maybe",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "soft",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slippers",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "too",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 63
+        },
+        {
+          "t": 238,
+          "d": 163
+        },
+        {
+          "t": 400,
+          "d": 38
+        },
+        {
+          "t": 438,
+          "d": 475
+        },
+        {
+          "t": 925,
+          "d": 638
+        },
+        {
+          "t": 1963,
+          "d": 200
+        },
+        {
+          "t": 2175,
+          "d": 313
+        },
+        {
+          "t": 2488,
+          "d": 450
+        },
+        {
+          "t": 2938,
+          "d": 150
+        },
+        {
+          "t": 3088,
+          "d": 238
+        },
+        {
+          "t": 3338,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋은 생각이에요. 말해줘서 고마워요. 그래도 시끄러우면 언제든 문 두드려주세요.",
+      "en": "Good idea. Thanks for being so nice about it. If it's still loud, just knock anytime.",
+      "ms": 6024,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "idea",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Thanks",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "being",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "nice",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "loud",
+          12
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "just",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "knock",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anytime",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 138
+        },
+        {
+          "t": 225,
+          "d": 500
+        },
+        {
+          "t": 1125,
+          "d": 225
+        },
+        {
+          "t": 1363,
+          "d": 113
+        },
+        {
+          "t": 1475,
+          "d": 225
+        },
+        {
+          "t": 1713,
+          "d": 363
+        },
+        {
+          "t": 2088,
+          "d": 338
+        },
+        {
+          "t": 2438,
+          "d": 263
+        },
+        {
+          "t": 2713,
+          "d": 213
+        },
+        {
+          "t": 3300,
+          "d": 113
+        },
+        {
+          "t": 3425,
+          "d": 163
+        },
+        {
+          "t": 3588,
+          "d": 250
+        },
+        {
+          "t": 3838,
+          "d": 400
+        },
+        {
+          "t": 4488,
+          "d": 213
+        },
+        {
+          "t": 4700,
+          "d": 250
+        },
+        {
+          "t": 5075,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "bother",
+      "kind": "word",
+      "meaning_ko": "귀찮게 하다, 방해하다",
+      "example": "Sorry to bother you, but do you have a minute?",
+      "prompt_ko": "바쁜데 방해해서 미안하다고, 잠깐 시간 되냐고 물어봐"
+    },
+    {
+      "term": "thumping",
+      "kind": "word",
+      "meaning_ko": "쿵쿵거리는 소리",
+      "example": "I could hear thumping from the floor above.",
+      "prompt_ko": "윗층에서 쿵쿵 소리가 들렸다고 말해봐"
+    },
+    {
+      "term": "rug",
+      "kind": "word",
+      "meaning_ko": "(바닥에 까는) 러그, 깔개",
+      "example": "We put a thick rug under the dining table.",
+      "prompt_ko": "식탁 밑에 두꺼운 러그를 깔았다고 말해봐"
+    },
+    {
+      "term": "It's just that",
+      "kind": "phrase",
+      "meaning_ko": "다만 ~라서요 (부드럽게 사정 말하기)",
+      "prompt_ko": "가고 싶은데, 다만 내일 아침 일찍 회의가 있다고 말해봐"
+    },
+    {
+      "term": "make a huge difference",
+      "kind": "phrase",
+      "meaning_ko": "큰 차이를 만들다, 큰 도움이 되다",
+      "prompt_ko": "의자 하나 바꿨더니 허리가 훨씬 나아졌다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-noisy-upstairs/full.mp3",
+  "full_starts": [
+    0,
+    2184,
+    8400,
+    15480,
+    20472,
+    25968,
+    30024
+  ],
+  "generated_at": "2026-10-15T20:33:21.911Z"
+}

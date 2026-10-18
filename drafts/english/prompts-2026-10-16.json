@@ -1,0 +1,67 @@
+[
+  {
+    "kind": "describe", "topic": "일상", "level": 2, "seconds": 75,
+    "question_en": "Can you describe your home? What does it look like, and which room do you like the most?",
+    "hint_ko": "① 어떤 형태의 집인지·얼마나 살았는지 한 줄 ② 현관에서 안쪽으로 공간을 순서대로(거실·부엌·방) ③ 제일 좋아하는 방과 그 이유 ④ 아쉬운 점 하나로 마무리",
+    "model_en": "I live in a small apartment on the eighth floor of an older building. I've been there for about three years, and it's just the right size for me.\n\nWhen you open the front door, there's a short hallway with a shoe rack. Past that, the living room and the kitchen are basically one open space. The kitchen is tiny, but it has a big window, so it never feels dark. At the back, there's one bedroom and a small bathroom.\n\nMy favorite spot is definitely the living room. I put a big sofa right in front of the window, and that's where I spend most of my evenings, reading or just watching the city lights.\n\nIf I had to pick one thing I don't love, it's the storage. There's never enough space for my stuff. But overall, it really feels like home.",
+    "model_note_ko": "묘사형 기본 틀: '어떤 집인지 → 문 열고 안쪽으로 이동 → 좋아하는 곳 → 아쉬운 점'. 공간은 한 방향으로만 훑어야 듣는 사람이 그림을 그린다. 'When you open the front door', 'Past that', 'At the back' 이 이동 표지다. 마지막에 아쉬운 점을 하나 넣으면 칭찬 나열이 균형 잡힌 문단이 된다.",
+    "phrases": [
+      { "term": "when you open the front door", "meaning_ko": "현관문을 열면" },
+      { "term": "at the back", "meaning_ko": "안쪽에는, 뒤쪽에는" },
+      { "term": "my favorite spot is definitely", "meaning_ko": "제일 좋아하는 곳은 단연" },
+      { "term": "if I had to pick one thing", "meaning_ko": "하나만 꼽자면" }
+    ]
+  },
+  {
+    "kind": "past", "topic": "일상", "level": 3, "seconds": 90,
+    "question_en": "Have you ever had a problem with your phone or computer? Tell me what happened and how you fixed it.",
+    "hint_ko": "① 언제·어떤 기기가 어떻게 고장 났는지 배경 ② 하필 그때 곤란했던 이유(악화) ③ 해본 것들과 결국 해결한 방법(전환점) ④ 그 뒤로 바뀐 습관으로 회고",
+    "model_en": "A couple of years ago, my laptop suddenly wouldn't turn on. It was the night before a big presentation, and all my slides were on it.\n\nAt first, I thought the battery was just dead, so I plugged it in and waited. Nothing. Then I tried holding down the power button, unplugging everything, all the usual tricks. By that point it was almost midnight, and I was starting to panic.\n\nWhat I ended up doing was rebuilding the slides on my old tablet from an earlier version in my email. It took me until three in the morning. The next day, I took the laptop to a repair shop, and it turned out the charging port was broken. It was a cheap fix, which almost made it more frustrating.\n\nLooking back, the problem wasn't the laptop, it was me not having a backup. Since then, everything I work on goes straight to the cloud.",
+    "model_note_ko": "과거 경험형은 '배경 → 악화 → 전환점 → 회고' 네 문단. 'At first, I thought' → 'By that point' 로 시간이 흐르며 상황이 나빠지는 걸 보여주고, 'What I ended up doing was' 가 전환점, 'it turned out' 이 반전을 맡는다. 'Looking back … Since then' 으로 과거를 지금 습관에 붙이면 시제를 문단 단위로 운용한다는 게 들린다.",
+    "phrases": [
+      { "term": "by that point", "meaning_ko": "그쯤 되니" },
+      { "term": "what I ended up doing was", "meaning_ko": "결국 내가 한 건" },
+      { "term": "it turned out", "meaning_ko": "알고 보니" },
+      { "term": "looking back", "meaning_ko": "돌이켜보면" }
+    ]
+  },
+  {
+    "kind": "compare", "topic": "일상", "level": 3, "seconds": 90,
+    "question_en": "How has your neighborhood changed over the years? Tell me what it was like before and what it's like now.",
+    "hint_ko": "① 언제부터 살았고 처음 모습 한 문단 ② 지금 모습을 같은 항목(가게·사람·분위기)으로 대칭되게 ③ 좋아진 점과 아쉬운 점 ④ 내 생각으로 마무리",
+    "model_en": "I've lived in the same neighborhood for about eight years, and it's honestly hard to recognize now.\n\nWhen I first moved in, it was a pretty quiet area. Most of the shops were small family-run places, like a tiny bakery and an old hardware store, and you'd see the same faces every day.\n\nThese days, it's a completely different story. A lot of those old shops have turned into trendy cafés and chain stores, and on weekends the streets are packed with people from other parts of the city.\n\nThe upside is that there's a lot more to do, and I can get pretty much anything within a five-minute walk. The downside is that rent has gone up a lot, and some of my favorite places had to close. So I'd say it's more convenient now, but it's lost a bit of its character.",
+    "model_note_ko": "비교형은 '예전' 한 문단, '지금' 한 문단을 같은 항목(가게·사람)으로 대칭시키는 게 핵심. 'When I first moved in' ↔ 'These days, it's a completely different story' 가 두 문단을 맞세운다. 'The upside … The downside' 로 평가를 한 문단에 묶고, 'So I'd say' 로 내 결론을 내면 단순 나열이 아니라 논지가 있는 답이 된다.",
+    "phrases": [
+      { "term": "it's hard to recognize now", "meaning_ko": "지금은 몰라볼 정도다" },
+      { "term": "these days, it's a completely different story", "meaning_ko": "요즘은 완전히 딴판이다" },
+      { "term": "the upside is that", "meaning_ko": "좋은 점은 ~라는 것" },
+      { "term": "so I'd say", "meaning_ko": "그래서 내 생각엔" }
+    ]
+  },
+  {
+    "kind": "ask", "topic": "운동", "level": 2, "seconds": 60,
+    "question_en": "Let's role-play. Imagine you want to join a yoga class. Call the studio and ask three or four questions.",
+    "hint_ko": "① 인사하고 왜 전화했는지 한 줄 ② 질문 3~4개를 서로 다른 틀로(시간·가격·초보 가능 여부·준비물) ③ 감사 인사와 다음 행동으로 마무리",
+    "model_en": "Hi, I'm calling because I'm interested in joining one of your yoga classes, and I had a few questions.\n\nFirst, what times are the classes? I work until six, so I'm wondering if you have anything in the evening.\n\nAlso, how much is it? Do you offer a monthly pass, or do I have to pay for each class separately?\n\nI've never really done yoga before, so is there a class for complete beginners? And do I need to bring my own mat, or can I borrow one there?\n\nGreat, that's really helpful. Thank you so much. I think I'll come by this week for a trial class.",
+    "model_note_ko": "질문형은 질문을 여러 개 '쌓는' 게 아니라 틀을 바꿔가며 묻는 게 점수다 — 'what times', 'how much', 'Do you offer … or …', 'is there', 'do I need to'. 질문마다 내 사정('I work until six', 'I've never done yoga')을 한 줄 붙이면 질문이 대화가 된다. 인사로 열고 다음 행동으로 닫는 틀을 반드시 지킨다.",
+    "phrases": [
+      { "term": "I'm calling because", "meaning_ko": "~때문에 전화드렸어요" },
+      { "term": "I'm wondering if", "meaning_ko": "~인지 궁금해서요" },
+      { "term": "do I need to bring", "meaning_ko": "~를 가져가야 하나요" },
+      { "term": "I'll come by", "meaning_ko": "들를게요" }
+    ]
+  },
+  {
+    "kind": "solve", "topic": "여행", "level": 3, "seconds": 75,
+    "question_en": "I'm sorry, but there's a problem. You just landed, and your suitcase didn't come out. Go to the airline desk and explain the situation.",
+    "hint_ko": "① 무슨 일인지(편명·가방이 안 나옴) ② 근거: 가방 생김새·태그 번호 ③ 요청: 어디 있는지 확인·호텔로 배송 ④ 차선: 오늘 못 받으면 필요한 물건 비용 처리",
+    "model_en": "Hi, I just got off flight two-oh-five from Seoul, and my suitcase never came out. I waited at the belt until it stopped.\n\nIt's a medium-sized black suitcase with a red strap around it. Here's my baggage tag. The number is right there on the sticker.\n\nCould you check where it is right now? If it's still in Seoul or on the next flight, I'd really appreciate it if you could send it to my hotel. I'm staying downtown for the next four days.\n\nThe thing is, I have a meeting tomorrow morning, and all my clothes are in that bag. So if it can't get here by tonight, can the airline cover a few basic things, like a shirt and toiletries? I'll keep the receipts, of course.",
+    "model_note_ko": "해결형 틀: '문제 → 근거 → 요청 → 차선'. 근거 문단에서 가방을 구체적으로 묘사하고 태그를 내밀면 상대가 바로 움직일 수 있다. 'I'd really appreciate it if you could' 로 정중하게 요청하고, 'The thing is' 로 사정을 꺼내 차선책(비용 처리)으로 넘어간다. 차선이 있어야 문단 하나가 더 생긴다.",
+    "phrases": [
+      { "term": "I just got off", "meaning_ko": "방금 (비행기에서) 내렸어요" },
+      { "term": "I'd really appreciate it if you could", "meaning_ko": "~해주시면 정말 감사하겠어요" },
+      { "term": "the thing is", "meaning_ko": "문제는요, 사실은요" },
+      { "term": "can the airline cover", "meaning_ko": "항공사가 ~를 부담해줄 수 있나요" }
+    ]
+  }
+]

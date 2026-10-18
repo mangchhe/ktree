@@ -1,0 +1,1209 @@
+{
+  "id": "2026-10-17-missed-connection",
+  "situation_ko": "출장 중 첫 기차가 늦어 갈아탈 기차를 놓쳤다. 매표소에 가니 다음 기차는 만석이라며 버스를 권한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "역무원",
+      "meaning_ko": "다음 분이요. 무엇을 도와드릴까요?",
+      "en": "Next, please. How can I help?",
+      "ms": 2832,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Next",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "help",
+          5
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 513
+        },
+        {
+          "t": 575,
+          "d": 638
+        },
+        {
+          "t": 1625,
+          "d": 175
+        },
+        {
+          "t": 1813,
+          "d": 138
+        },
+        {
+          "t": 1963,
+          "d": 88
+        },
+        {
+          "t": 2050,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "앞 기차가 늦어서 갈아탈 기차를 놓쳤다고 말해봐",
+      "en": "My first train was late, so I missed my connection to Lyon.",
+      "ms": 3408,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "My",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "train",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "late",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "missed",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "connection",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Lyon",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 238
+        },
+        {
+          "t": 413,
+          "d": 288
+        },
+        {
+          "t": 700,
+          "d": 163
+        },
+        {
+          "t": 863,
+          "d": 375
+        },
+        {
+          "t": 1488,
+          "d": 163
+        },
+        {
+          "t": 1663,
+          "d": 50
+        },
+        {
+          "t": 1713,
+          "d": 225
+        },
+        {
+          "t": 1938,
+          "d": 138
+        },
+        {
+          "t": 2075,
+          "d": 450
+        },
+        {
+          "t": 2525,
+          "d": 63
+        },
+        {
+          "t": 2600,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "죄송해요. 다음 기차는 한 시간 뒤인데 이미 만석이에요.",
+      "en": "I'm sorry about that. The next train is in an hour, but it's already fully booked.",
+      "ms": 5280,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I'm",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sorry",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "train",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hour",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fully",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 225,
+          "d": 363
+        },
+        {
+          "t": 588,
+          "d": 238
+        },
+        {
+          "t": 825,
+          "d": 350
+        },
+        {
+          "t": 1563,
+          "d": 63
+        },
+        {
+          "t": 1638,
+          "d": 288
+        },
+        {
+          "t": 1925,
+          "d": 388
+        },
+        {
+          "t": 2313,
+          "d": 125
+        },
+        {
+          "t": 2450,
+          "d": 63
+        },
+        {
+          "t": 2525,
+          "d": 163
+        },
+        {
+          "t": 2700,
+          "d": 388
+        },
+        {
+          "t": 3288,
+          "d": 225
+        },
+        {
+          "t": 3575,
+          "d": 125
+        },
+        {
+          "t": 3775,
+          "d": 388
+        },
+        {
+          "t": 4175,
+          "d": 338
+        },
+        {
+          "t": 4513,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "오늘 저녁까지는 꼭 도착해야 한다며 다른 방법이 있는지 물어봐",
+      "en": "I really need to get there by this evening. Is there any other option?",
+      "ms": 3528,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "by",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "evening",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Is",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "any",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "option",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 200
+        },
+        {
+          "t": 363,
+          "d": 150
+        },
+        {
+          "t": 525,
+          "d": 50
+        },
+        {
+          "t": 588,
+          "d": 200
+        },
+        {
+          "t": 788,
+          "d": 238
+        },
+        {
+          "t": 1038,
+          "d": 138
+        },
+        {
+          "t": 1175,
+          "d": 200
+        },
+        {
+          "t": 1375,
+          "d": 413
+        },
+        {
+          "t": 2188,
+          "d": 75
+        },
+        {
+          "t": 2263,
+          "d": 113
+        },
+        {
+          "t": 2388,
+          "d": 188
+        },
+        {
+          "t": 2575,
+          "d": 175
+        },
+        {
+          "t": 2750,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "15분 뒤에 출발하는 버스가 있어요. 표는 그대로 쓰실 수 있지만 40분 정도 더 걸려요.",
+      "en": "There's a bus leaving in fifteen minutes. Your ticket is still valid, but it takes about forty minutes longer.",
+      "ms": 6648,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "There's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bus",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "leaving",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifteen",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Your",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ticket",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "valid",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "takes",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "longer",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 75
+        },
+        {
+          "t": 350,
+          "d": 350
+        },
+        {
+          "t": 713,
+          "d": 513
+        },
+        {
+          "t": 1238,
+          "d": 188
+        },
+        {
+          "t": 1438,
+          "d": 450
+        },
+        {
+          "t": 1888,
+          "d": 500
+        },
+        {
+          "t": 2775,
+          "d": 125
+        },
+        {
+          "t": 2913,
+          "d": 350
+        },
+        {
+          "t": 3363,
+          "d": 138
+        },
+        {
+          "t": 3513,
+          "d": 275
+        },
+        {
+          "t": 3800,
+          "d": 425
+        },
+        {
+          "t": 4413,
+          "d": 113
+        },
+        {
+          "t": 4538,
+          "d": 75
+        },
+        {
+          "t": 4613,
+          "d": 250
+        },
+        {
+          "t": 4875,
+          "d": 263
+        },
+        {
+          "t": 5150,
+          "d": 325
+        },
+        {
+          "t": 5488,
+          "d": 275
+        },
+        {
+          "t": 5775,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그 버스로 하겠다고, 어디서 타는지 물어봐",
+      "en": "That works for me. Where do I catch the bus?",
+      "ms": 2664,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "works",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Where",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "catch",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bus",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 100
+        },
+        {
+          "t": 213,
+          "d": 188
+        },
+        {
+          "t": 400,
+          "d": 113
+        },
+        {
+          "t": 513,
+          "d": 225
+        },
+        {
+          "t": 1125,
+          "d": 63
+        },
+        {
+          "t": 1200,
+          "d": 88
+        },
+        {
+          "t": 1288,
+          "d": 88
+        },
+        {
+          "t": 1375,
+          "d": 275
+        },
+        {
+          "t": 1650,
+          "d": 75
+        },
+        {
+          "t": 1725,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "나가셔서 왼쪽으로 가세요. 3번 승강장이에요.",
+      "en": "Go out the main exit and turn left. It's platform three.",
+      "ms": 4200,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Go",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "main",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exit",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "turn",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "platform",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 150
+        },
+        {
+          "t": 400,
+          "d": 50
+        },
+        {
+          "t": 463,
+          "d": 213
+        },
+        {
+          "t": 688,
+          "d": 425
+        },
+        {
+          "t": 1275,
+          "d": 200
+        },
+        {
+          "t": 1475,
+          "d": 288
+        },
+        {
+          "t": 1763,
+          "d": 413
+        },
+        {
+          "t": 2550,
+          "d": 200
+        },
+        {
+          "t": 2763,
+          "d": 675
+        },
+        {
+          "t": 3438,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "miss my connection",
+      "kind": "phrase",
+      "meaning_ko": "갈아탈 편을 놓치다",
+      "keywords": [
+        {
+          "word": "connection",
+          "meaning_ko": "환승편, 연결편"
+        }
+      ],
+      "prompt_ko": "비행기가 늦어서 환승편을 놓쳤다고 말해봐"
+    },
+    {
+      "term": "fully booked",
+      "kind": "phrase",
+      "meaning_ko": "예약이 꽉 찬, 만석인",
+      "prompt_ko": "그 호텔은 이번 주말에 예약이 꽉 찼다고 말해봐"
+    },
+    {
+      "term": "option",
+      "kind": "word",
+      "meaning_ko": "선택지, 방법",
+      "example": "Taking a taxi is the fastest option.",
+      "prompt_ko": "택시가 제일 빠른 방법이라고 말해봐"
+    },
+    {
+      "term": "valid",
+      "kind": "word",
+      "meaning_ko": "유효한, 쓸 수 있는",
+      "example": "My passport is valid until next year.",
+      "prompt_ko": "이 쿠폰이 아직 유효한지 물어봐"
+    },
+    {
+      "term": "catch",
+      "kind": "word",
+      "meaning_ko": "(버스·기차를) 타다, 잡아타다",
+      "example": "I need to catch the last train home.",
+      "prompt_ko": "막차를 타야 해서 지금 가봐야 한다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-missed-connection/full.mp3",
+  "full_starts": [
+    0,
+    2832,
+    6240,
+    11520,
+    15048,
+    21696,
+    24360
+  ],
+  "generated_at": "2026-10-16T20:33:00.270Z"
+}

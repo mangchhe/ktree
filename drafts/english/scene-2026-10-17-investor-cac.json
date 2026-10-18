@@ -1,0 +1,1131 @@
+{
+  "id": "2026-10-17-investor-cac",
+  "situation_ko": "월간 투자자 업데이트 통화. 투자자가 고객 획득 비용이 왜 올랐냐고 묻는다. 설명하자 회수 기간을 따지고 든다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "투자자",
+      "meaning_ko": "CAC 가 지난 분기 32달러에서 41달러로 올랐네요. 무슨 일이죠?",
+      "en": "I see your CAC went from thirty-two dollars to forty-one last quarter. What happened?",
+      "ms": 5424,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "CAC",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty-two",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty-one",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "quarter",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happened",
+          13
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 188
+        },
+        {
+          "t": 275,
+          "d": 275
+        },
+        {
+          "t": 563,
+          "d": 113
+        },
+        {
+          "t": 675,
+          "d": 375
+        },
+        {
+          "t": 1100,
+          "d": 163
+        },
+        {
+          "t": 1275,
+          "d": 225
+        },
+        {
+          "t": 1500,
+          "d": 500
+        },
+        {
+          "t": 2013,
+          "d": 488
+        },
+        {
+          "t": 2513,
+          "d": 125
+        },
+        {
+          "t": 2650,
+          "d": 638
+        },
+        {
+          "t": 3300,
+          "d": 288
+        },
+        {
+          "t": 3600,
+          "d": 425
+        },
+        {
+          "t": 4363,
+          "d": 163
+        },
+        {
+          "t": 4538,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나(대표)",
+      "is_me": true,
+      "intent_ko": "일부러 객단가 높은 고객층을 노리느라 그랬다고 설명해봐",
+      "en": "That was on purpose. We shifted our spend toward customers who buy more.",
+      "ms": 4368,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "purpose",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "shifted",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spend",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "toward",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customers",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "who",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "buy",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 113
+        },
+        {
+          "t": 275,
+          "d": 125
+        },
+        {
+          "t": 400,
+          "d": 638
+        },
+        {
+          "t": 1450,
+          "d": 75
+        },
+        {
+          "t": 1525,
+          "d": 388
+        },
+        {
+          "t": 1925,
+          "d": 125
+        },
+        {
+          "t": 2050,
+          "d": 388
+        },
+        {
+          "t": 2450,
+          "d": 313
+        },
+        {
+          "t": 2763,
+          "d": 550
+        },
+        {
+          "t": 3325,
+          "d": 88
+        },
+        {
+          "t": 3413,
+          "d": 175
+        },
+        {
+          "t": 3588,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그런데 그게 효과가 있다는 걸 어떻게 알죠? 아직 초기잖아요.",
+      "en": "But how do you know it's working? It's still early.",
+      "ms": 3576,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "But",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "how",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "working",
+          6
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "It's",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "still",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "early",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 275
+        },
+        {
+          "t": 588,
+          "d": 213
+        },
+        {
+          "t": 800,
+          "d": 63
+        },
+        {
+          "t": 875,
+          "d": 63
+        },
+        {
+          "t": 950,
+          "d": 163
+        },
+        {
+          "t": 1125,
+          "d": 125
+        },
+        {
+          "t": 1263,
+          "d": 513
+        },
+        {
+          "t": 2175,
+          "d": 188
+        },
+        {
+          "t": 2363,
+          "d": 325
+        },
+        {
+          "t": 2700,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "이 고객들의 첫 주문 금액이 평균 28퍼센트 더 높다고 숫자로 말해봐",
+      "en": "Their first order is twenty-eight percent bigger on average.",
+      "ms": 3528,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Their",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "order",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty-eight",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bigger",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "average",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 125
+        },
+        {
+          "t": 238,
+          "d": 325
+        },
+        {
+          "t": 563,
+          "d": 275
+        },
+        {
+          "t": 1088,
+          "d": 113
+        },
+        {
+          "t": 1200,
+          "d": 450
+        },
+        {
+          "t": 1650,
+          "d": 500
+        },
+        {
+          "t": 2150,
+          "d": 313
+        },
+        {
+          "t": 2463,
+          "d": 125
+        },
+        {
+          "t": 2588,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 그럼 회수 기간은요? 우리가 신경 쓰는 건 그거예요.",
+      "en": "Okay. And what about payback? That's what we care about.",
+      "ms": 4704,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "And",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "payback",
+          4
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "That's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "care",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 400
+        },
+        {
+          "t": 875,
+          "d": 300
+        },
+        {
+          "t": 1713,
+          "d": 163
+        },
+        {
+          "t": 1875,
+          "d": 250
+        },
+        {
+          "t": 2125,
+          "d": 575
+        },
+        {
+          "t": 3075,
+          "d": 300
+        },
+        {
+          "t": 3388,
+          "d": 113
+        },
+        {
+          "t": 3513,
+          "d": 113
+        },
+        {
+          "t": 3638,
+          "d": 275
+        },
+        {
+          "t": 3925,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "회수 기간은 다섯 달에서 넉 달로 오히려 줄었다고, 다음 업데이트 때 코호트 자료를 주겠다고 해봐",
+      "en": "Payback actually dropped from five months to four. I'll share the cohort data in our next update.",
+      "ms": 5808,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Payback",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actually",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dropped",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "five",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "months",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "four",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "share",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cohort",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "data",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "update",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 375
+        },
+        {
+          "t": 588,
+          "d": 313
+        },
+        {
+          "t": 900,
+          "d": 450
+        },
+        {
+          "t": 1363,
+          "d": 188
+        },
+        {
+          "t": 1563,
+          "d": 438
+        },
+        {
+          "t": 2013,
+          "d": 250
+        },
+        {
+          "t": 2263,
+          "d": 63
+        },
+        {
+          "t": 2325,
+          "d": 438
+        },
+        {
+          "t": 3175,
+          "d": 100
+        },
+        {
+          "t": 3275,
+          "d": 200
+        },
+        {
+          "t": 3475,
+          "d": 75
+        },
+        {
+          "t": 3550,
+          "d": 438
+        },
+        {
+          "t": 3988,
+          "d": 388
+        },
+        {
+          "t": 4500,
+          "d": 100
+        },
+        {
+          "t": 4600,
+          "d": 75
+        },
+        {
+          "t": 4688,
+          "d": 275
+        },
+        {
+          "t": 4975,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋네요. 그게 지속되는지 보고 싶어요.",
+      "en": "Great. I'd like to see if that holds up.",
+      "ms": 2688,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Great",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'd",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "see",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "holds",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 413
+        },
+        {
+          "t": 850,
+          "d": 113
+        },
+        {
+          "t": 963,
+          "d": 175
+        },
+        {
+          "t": 1150,
+          "d": 63
+        },
+        {
+          "t": 1225,
+          "d": 213
+        },
+        {
+          "t": 1450,
+          "d": 100
+        },
+        {
+          "t": 1563,
+          "d": 125
+        },
+        {
+          "t": 1688,
+          "d": 300
+        },
+        {
+          "t": 1988,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "on purpose",
+      "kind": "phrase",
+      "meaning_ko": "일부러, 의도적으로",
+      "prompt_ko": "가격을 일부러 낮게 잡았다고 말해봐"
+    },
+    {
+      "term": "shift",
+      "kind": "word",
+      "meaning_ko": "(방향·자원을) 옮기다, 전환하다",
+      "example": "We shifted more budget to video ads.",
+      "prompt_ko": "예산을 검색 광고에서 영상 광고로 옮겼다고 말해봐"
+    },
+    {
+      "term": "payback",
+      "kind": "word",
+      "meaning_ko": "투자 회수 (기간)",
+      "example": "Our payback period is about four months.",
+      "prompt_ko": "회수 기간이 넉 달 정도라고 말해봐"
+    },
+    {
+      "term": "cohort",
+      "kind": "word",
+      "meaning_ko": "코호트, 같은 시기에 들어온 고객 묶음",
+      "example": "The March cohort is spending more than any other.",
+      "prompt_ko": "3월에 들어온 고객 묶음이 제일 많이 쓴다고 말해봐"
+    },
+    {
+      "term": "hold up",
+      "kind": "phrase",
+      "meaning_ko": "(결과·주장이) 유지되다, 버티다",
+      "prompt_ko": "이 결과가 다음 달에도 유지될지 지켜보자고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-investor-cac/full.mp3",
+  "full_starts": [
+    0,
+    5424,
+    9792,
+    13368,
+    16896,
+    21600,
+    27408
+  ],
+  "generated_at": "2026-10-16T20:33:37.082Z"
+}

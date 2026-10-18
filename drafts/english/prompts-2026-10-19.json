@@ -1,0 +1,67 @@
+[
+  {
+    "kind": "past", "topic": "비즈니스", "level": 3, "seconds": 90,
+    "question_en": "I'd like to know about your first day at your current job. What happened that day, and how did you feel?",
+    "hint_ko": "① 언제·어디로 첫 출근했는지 배경 ② 아침에 도착해서 생긴 일(누굴 만났나, 뭘 받았나) ③ 기억에 남는 순간 하나(실수·놀람) ④ 그날 끝나고 든 생각 + 지금 돌아보면",
+    "model_en": "My first day at my current job was about two years ago, on a cold Monday in January. I remember I left home really early because I didn't want to be late.\n\nWhen I got there, my manager showed me around the office and introduced me to the team. Then I spent most of the morning setting up my laptop, which took much longer than I expected.\n\nThe moment I remember most happened at lunch. A few teammates took me to a small noodle place nearby, and we ended up talking for over an hour. That's when I started to feel relaxed.\n\nBy the end of the day, I was tired but happy. Looking back, that lunch is the reason I felt at home so quickly.",
+    "model_note_ko": "과거 경험은 '배경 → 일어난 일 → 전환점 → 지금의 해석'의 네 문단. 'When I got there / Then / The moment I remember most / By the end of the day' 같은 시간 표지가 문단을 엮고, 'Looking back' 으로 현재 시점의 평가를 붙이면 단순 나열에서 이야기로 올라간다.",
+    "phrases": [
+      { "term": "the moment I remember most", "meaning_ko": "가장 기억에 남는 순간은" },
+      { "term": "ended up", "meaning_ko": "결국 ~하게 됐다" },
+      { "term": "looking back", "meaning_ko": "돌이켜보면" },
+      { "term": "felt at home", "meaning_ko": "편하게 느꼈다, 적응했다" }
+    ]
+  },
+  {
+    "kind": "compare", "topic": "여가", "level": 3, "seconds": 90,
+    "question_en": "How has the way you listen to music changed over the years? Tell me how you listened before and how you listen now.",
+    "hint_ko": "① 예전(학생 때) 어떻게 들었나 — 기기·방식 ② 지금은 어떻게 듣나 — 앱·장소 ③ 무엇이 좋아지고 무엇이 아쉬운지 ④ 한 줄 정리",
+    "model_en": "When I was in high school, I listened to music on an MP3 player. I had to download songs one by one, so I listened to the same albums again and again.\n\nThese days, it's completely different. I use a streaming app on my phone, and I mostly listen on my commute or while I work. I hardly ever choose albums anymore. Instead, I just play a playlist the app makes for me.\n\nOn the one hand, it's much more convenient, and I find new songs all the time. On the other hand, I don't really get attached to any album like I used to.\n\nSo overall, I listen to more music now, but back then, it meant more to me.",
+    "model_note_ko": "비교형은 '예전 문단 / 지금 문단 / 장단점 문단 / 결론'으로 대칭을 세운다. 'When I was ~ / These days' 로 시점을 가르고, 'On the one hand / On the other hand' 로 평가를 양쪽에 놓은 뒤 'So overall' 로 닫는다. 'used to' 와 현재시제 대비가 시제 통제를 보여준다.",
+    "phrases": [
+      { "term": "these days, it's completely different", "meaning_ko": "요즘은 완전히 달라요" },
+      { "term": "hardly ever", "meaning_ko": "거의 ~하지 않는다" },
+      { "term": "on the one hand / on the other hand", "meaning_ko": "한편으로는 / 다른 한편으로는" },
+      { "term": "back then", "meaning_ko": "그때는, 예전에는" }
+    ]
+  },
+  {
+    "kind": "habit", "topic": "여가", "level": 2, "seconds": 75,
+    "question_en": "What do you usually do when you watch a movie at home? Tell me about how you get ready and what you do.",
+    "hint_ko": "① 언제 보는지(요일·시간) ② 준비 — 간식·조명·자리 ③ 볼 때 습관(폰 끄기, 누구랑) ④ 끝나고 하는 일 + 왜 이게 좋은지",
+    "model_en": "I usually watch movies at home on Friday nights, because it's the end of the week and I can finally relax.\n\nBefore I start, I get a few things ready. I make some popcorn, turn off the big lights, and grab a blanket from the bedroom. Most of the time, I watch with my partner, so we spend a while choosing a movie together.\n\nWhile the movie is on, I try to put my phone away. If I don't, I end up checking it and missing half the story.\n\nAfterwards, we usually talk about the movie for a bit. For me, that's the best part, so it's become a little Friday tradition.",
+    "model_note_ko": "습관형은 '언제 → 준비 → 하는 동안 → 끝나고·이유'의 시간 순서로 문단을 자른다. 'Before I start / While the movie is on / Afterwards' 가 문단 간 접착제이고, 'Most of the time', 'usually' 같은 빈도 표현으로 습관임을 계속 드러낸다.",
+    "phrases": [
+      { "term": "before I start", "meaning_ko": "시작하기 전에" },
+      { "term": "while ~ is on", "meaning_ko": "~가 틀어져 있는 동안" },
+      { "term": "put my phone away", "meaning_ko": "폰을 치워두다" },
+      { "term": "afterwards", "meaning_ko": "그 후에, 끝나고" }
+    ]
+  },
+  {
+    "kind": "solve", "topic": "비즈니스", "level": 3, "seconds": 75,
+    "question_en": "Let's role-play. Imagine your laptop stopped working one hour before an important meeting. Call the IT team, explain the problem, and ask for help.",
+    "hint_ko": "① 누구·어느 팀인지 ② 증상(언제부터, 뭘 해봤는지) ③ 왜 급한지 — 한 시간 뒤 회의 ④ 요청 — 바로 봐주기 ⑤ 차선 — 임시 노트북 빌리기",
+    "model_en": "Hi, this is Min from the sales team. I'm calling because I have a problem with my laptop.\n\nAbout ten minutes ago, the screen suddenly went black, and now it won't turn on at all. I've already tried charging it and holding the power button, but nothing happened.\n\nThe thing is, I have a big client meeting in an hour, and all my slides are on this laptop. Could someone come and take a look at it right away?\n\nIf it can't be fixed that quickly, could I borrow a spare laptop for the meeting? My files are backed up online, so I could get them back in a few minutes.",
+    "model_note_ko": "문제 해결은 '신원 → 증상과 해본 것 → 급한 이유 + 요청 → 차선책' 네 문단. 'I've already tried' 로 기본 조치를 했음을 먼저 밝히면 상대가 같은 질문을 안 한다. 'The thing is' 로 급한 사정을 꺼내고, 'If it can't be ~' 로 차선을 미리 내밀어야 통화가 한 번에 끝난다.",
+    "phrases": [
+      { "term": "I'm calling because", "meaning_ko": "~ 때문에 전화드렸어요" },
+      { "term": "I've already tried", "meaning_ko": "이미 ~해봤어요" },
+      { "term": "the thing is", "meaning_ko": "문제는요, 사실은요" },
+      { "term": "take a look at it", "meaning_ko": "한번 봐주다" }
+    ]
+  },
+  {
+    "kind": "describe", "topic": "운동", "level": 2, "seconds": 75,
+    "question_en": "Can you describe a place where you like to walk or run? Where is it, and what does it look like?",
+    "hint_ko": "① 어디인지·집에서 얼마나 먼지 ② 생김새 — 길·나무·물·사람들 ③ 시간대별 분위기(아침 vs 저녁) ④ 왜 거기가 좋은지",
+    "model_en": "There's a path along the river near my apartment, and that's my favorite place to walk. It's only about five minutes from my front door.\n\nThe path is wide and flat, with trees on one side and the water on the other. There are benches every few hundred meters, and in spring, the whole path is covered with cherry blossoms.\n\nIn the morning, it's quiet, and you mostly see people jogging or walking their dogs. In the evening, it gets much busier, with families and couples out for a walk.\n\nWhat I like most is that it never feels crowded, even on weekends. It's the easiest way for me to clear my head after work.",
+    "model_note_ko": "묘사형은 '위치 → 생김새 → 분위기(시간대) → 내가 좋아하는 이유'. 공간은 'on one side / on the other' 처럼 방향으로, 분위기는 'In the morning / In the evening' 대비로 문단을 세운다. 'What I like most is that' 으로 개인 평가를 붙이면 단순 묘사에서 한 단계 올라간다.",
+    "phrases": [
+      { "term": "on one side ... on the other", "meaning_ko": "한쪽에는 … 다른 쪽에는" },
+      { "term": "it gets much busier", "meaning_ko": "훨씬 붐벼진다" },
+      { "term": "what I like most is that", "meaning_ko": "제일 좋은 건 ~라는 거예요" },
+      { "term": "clear my head", "meaning_ko": "머리를 식히다" }
+    ]
+  }
+]

@@ -1,0 +1,1209 @@
+{
+  "id": "2026-10-18-return-blender",
+  "situation_ko": "산 지 열흘 된 믹서기가 고장 나서 가게에 환불하러 간다. 직원은 환불은 안 되고 매장 적립금만 된다고 한다.",
+  "topic": "일상",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "직원",
+      "meaning_ko": "안녕하세요. 무엇을 도와드릴까요?",
+      "en": "Hi there. What can I do for you?",
+      "ms": 2520,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 263
+        },
+        {
+          "t": 388,
+          "d": 388
+        },
+        {
+          "t": 1125,
+          "d": 125
+        },
+        {
+          "t": 1263,
+          "d": 125
+        },
+        {
+          "t": 1400,
+          "d": 88
+        },
+        {
+          "t": 1500,
+          "d": 188
+        },
+        {
+          "t": 1688,
+          "d": 163
+        },
+        {
+          "t": 1850,
+          "d": 313
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "열흘 전에 산 믹서기가 벌써 안 켜진다고 말해봐",
+      "en": "I bought this blender ten days ago, and it already won't turn on.",
+      "ms": 4296,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bought",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "blender",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ago",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "already",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "turn",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 175,
+          "d": 275
+        },
+        {
+          "t": 450,
+          "d": 163
+        },
+        {
+          "t": 613,
+          "d": 575
+        },
+        {
+          "t": 1388,
+          "d": 275
+        },
+        {
+          "t": 1663,
+          "d": 250
+        },
+        {
+          "t": 1913,
+          "d": 450
+        },
+        {
+          "t": 2775,
+          "d": 100
+        },
+        {
+          "t": 2875,
+          "d": 63
+        },
+        {
+          "t": 2950,
+          "d": 263
+        },
+        {
+          "t": 3225,
+          "d": 188
+        },
+        {
+          "t": 3413,
+          "d": 225
+        },
+        {
+          "t": 3638,
+          "d": 275
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "죄송합니다. 영수증 있으세요? 환불 대신 매장 적립금으로 드릴 수 있어요.",
+      "en": "Sorry about that. Do you have the receipt? I can give you store credit instead of a refund.",
+      "ms": 5544,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sorry",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "receipt",
+          7
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "store",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "credit",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "instead",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "refund",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 50,
+          "d": 375
+        },
+        {
+          "t": 425,
+          "d": 250
+        },
+        {
+          "t": 675,
+          "d": 338
+        },
+        {
+          "t": 1388,
+          "d": 50
+        },
+        {
+          "t": 1450,
+          "d": 63
+        },
+        {
+          "t": 1513,
+          "d": 275
+        },
+        {
+          "t": 1788,
+          "d": 75
+        },
+        {
+          "t": 1875,
+          "d": 538
+        },
+        {
+          "t": 2825,
+          "d": 88
+        },
+        {
+          "t": 2925,
+          "d": 125
+        },
+        {
+          "t": 3063,
+          "d": 125
+        },
+        {
+          "t": 3200,
+          "d": 88
+        },
+        {
+          "t": 3300,
+          "d": 400
+        },
+        {
+          "t": 3713,
+          "d": 388
+        },
+        {
+          "t": 4113,
+          "d": 375
+        },
+        {
+          "t": 4500,
+          "d": 50
+        },
+        {
+          "t": 4563,
+          "d": 50
+        },
+        {
+          "t": 4625,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "영수증은 있다고 하면서, 적립금 말고 돈으로 돌려받고 싶다고 해봐",
+      "en": "Here's the receipt. But I'd really prefer to get my money back.",
+      "ms": 3528,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Here's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "receipt",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prefer",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "money",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 125,
+          "d": 188
+        },
+        {
+          "t": 313,
+          "d": 75
+        },
+        {
+          "t": 400,
+          "d": 475
+        },
+        {
+          "t": 1288,
+          "d": 88
+        },
+        {
+          "t": 1375,
+          "d": 125
+        },
+        {
+          "t": 1513,
+          "d": 213
+        },
+        {
+          "t": 1738,
+          "d": 388
+        },
+        {
+          "t": 2138,
+          "d": 63
+        },
+        {
+          "t": 2200,
+          "d": 113
+        },
+        {
+          "t": 2325,
+          "d": 100
+        },
+        {
+          "t": 2425,
+          "d": 250
+        },
+        {
+          "t": 2688,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "보통 환불은 일주일 안에만 돼요. 하지만 제품 불량이면 매니저가 예외를 둘 수 있어요.",
+      "en": "Refunds are usually only within seven days. But if it's faulty, my manager can make an exception.",
+      "ms": 6312,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Refunds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "usually",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "within",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seven",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "days",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "faulty",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "my",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "manager",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "make",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "exception",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 538
+        },
+        {
+          "t": 625,
+          "d": 125
+        },
+        {
+          "t": 763,
+          "d": 488
+        },
+        {
+          "t": 1263,
+          "d": 338
+        },
+        {
+          "t": 1613,
+          "d": 350
+        },
+        {
+          "t": 1975,
+          "d": 275
+        },
+        {
+          "t": 2250,
+          "d": 488
+        },
+        {
+          "t": 3138,
+          "d": 150
+        },
+        {
+          "t": 3338,
+          "d": 113
+        },
+        {
+          "t": 3463,
+          "d": 175
+        },
+        {
+          "t": 3650,
+          "d": 563
+        },
+        {
+          "t": 4288,
+          "d": 113
+        },
+        {
+          "t": 4413,
+          "d": 500
+        },
+        {
+          "t": 4925,
+          "d": 138
+        },
+        {
+          "t": 5063,
+          "d": 163
+        },
+        {
+          "t": 5238,
+          "d": 63
+        },
+        {
+          "t": 5313,
+          "d": 650
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "처음부터 불량이었던 거라고, 매니저와 얘기해보겠다고 해봐",
+      "en": "It was faulty from the start. Could I speak to your manager, please?",
+      "ms": 4224,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "It",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "faulty",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "from",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "start",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "speak",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "manager",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 113
+        },
+        {
+          "t": 263,
+          "d": 513
+        },
+        {
+          "t": 788,
+          "d": 138
+        },
+        {
+          "t": 938,
+          "d": 63
+        },
+        {
+          "t": 1000,
+          "d": 438
+        },
+        {
+          "t": 1850,
+          "d": 88
+        },
+        {
+          "t": 1938,
+          "d": 88
+        },
+        {
+          "t": 2025,
+          "d": 288
+        },
+        {
+          "t": 2313,
+          "d": 75
+        },
+        {
+          "t": 2388,
+          "d": 100
+        },
+        {
+          "t": 2488,
+          "d": 425
+        },
+        {
+          "t": 3275,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "물론이죠. 잠깐만 기다려 주세요.",
+      "en": "Of course. Give me just a minute.",
+      "ms": 2544,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Of",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "course",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Give",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minute",
+          6
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 138
+        },
+        {
+          "t": 213,
+          "d": 575
+        },
+        {
+          "t": 1175,
+          "d": 138
+        },
+        {
+          "t": 1325,
+          "d": 200
+        },
+        {
+          "t": 1538,
+          "d": 250
+        },
+        {
+          "t": 1788,
+          "d": 25
+        },
+        {
+          "t": 1825,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "receipt",
+      "kind": "word",
+      "meaning_ko": "영수증",
+      "example": "Please keep the receipt in case you need to return it.",
+      "prompt_ko": "영수증을 잃어버렸다고 말해봐"
+    },
+    {
+      "term": "refund",
+      "kind": "word",
+      "meaning_ko": "환불; 환불하다",
+      "example": "They gave me a full refund.",
+      "prompt_ko": "전액 환불을 받을 수 있냐고 물어봐"
+    },
+    {
+      "term": "faulty",
+      "kind": "word",
+      "meaning_ko": "결함이 있는, 불량인",
+      "example": "The charger was faulty, so I exchanged it.",
+      "prompt_ko": "충전기가 불량이라 바꿔야 한다고 말해봐"
+    },
+    {
+      "term": "store credit",
+      "kind": "phrase",
+      "meaning_ko": "매장 적립금 (환불 대신 주는)",
+      "prompt_ko": "적립금 말고 현금으로 받고 싶다고 말해봐"
+    },
+    {
+      "term": "make an exception",
+      "kind": "phrase",
+      "meaning_ko": "예외를 두다",
+      "keywords": [
+        {
+          "word": "exception",
+          "meaning_ko": "예외"
+        }
+      ],
+      "prompt_ko": "이번 한 번만 예외로 해줄 수 없냐고 부탁해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-return-blender/full.mp3",
+  "full_starts": [
+    0,
+    2520,
+    6816,
+    12360,
+    15888,
+    22200,
+    26424
+  ],
+  "generated_at": "2026-10-17T20:32:08.055Z"
+}

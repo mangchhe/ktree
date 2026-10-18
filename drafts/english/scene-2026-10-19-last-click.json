@@ -1,0 +1,1196 @@
+{
+  "id": "2026-10-19-last-click",
+  "situation_ko": "그로스 매니저가 메타 광고가 지난달 매출의 70퍼센트를 만들었다며 예산을 더 옮기자고 한다. 그런데 그 숫자는 라스트클릭 기준이라 검색의 기여가 빠져 있다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "그로스 매니저",
+      "meaning_ko": "지난달 매출의 70퍼센트를 메타가 만들었어요. 예산을 거기로 더 옮기고 싶어요.",
+      "en": "Meta drove seventy percent of our sales last month. I want to move more budget there.",
+      "ms": 5448,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Meta",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "drove",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seventy",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sales",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "there",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 263
+        },
+        {
+          "t": 350,
+          "d": 338
+        },
+        {
+          "t": 700,
+          "d": 388
+        },
+        {
+          "t": 1100,
+          "d": 488
+        },
+        {
+          "t": 1600,
+          "d": 88
+        },
+        {
+          "t": 1688,
+          "d": 138
+        },
+        {
+          "t": 1838,
+          "d": 563
+        },
+        {
+          "t": 2550,
+          "d": 325
+        },
+        {
+          "t": 2875,
+          "d": 400
+        },
+        {
+          "t": 3625,
+          "d": 63
+        },
+        {
+          "t": 3700,
+          "d": 150
+        },
+        {
+          "t": 3863,
+          "d": 38
+        },
+        {
+          "t": 3913,
+          "d": 225
+        },
+        {
+          "t": 4150,
+          "d": 225
+        },
+        {
+          "t": 4388,
+          "d": 350
+        },
+        {
+          "t": 4738,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "그 숫자는 라스트클릭 기준이라 다른 채널이 빠져 있다고 말해봐",
+      "en": "That number is based on last click, so it leaves out the other channels.",
+      "ms": 4032,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "based",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "click",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "leaves",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "channels",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 238
+        },
+        {
+          "t": 413,
+          "d": 125
+        },
+        {
+          "t": 550,
+          "d": 325
+        },
+        {
+          "t": 875,
+          "d": 138
+        },
+        {
+          "t": 1013,
+          "d": 338
+        },
+        {
+          "t": 1350,
+          "d": 338
+        },
+        {
+          "t": 2050,
+          "d": 150
+        },
+        {
+          "t": 2200,
+          "d": 100
+        },
+        {
+          "t": 2300,
+          "d": 325
+        },
+        {
+          "t": 2625,
+          "d": 163
+        },
+        {
+          "t": 2800,
+          "d": 100
+        },
+        {
+          "t": 2900,
+          "d": 175
+        },
+        {
+          "t": 3075,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/1.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "그로스 매니저",
+      "meaning_ko": "그렇긴 한데, 우리 늘 라스트클릭으로 봐왔잖아요.",
+      "en": "Sure, but last click is what we've always used.",
+      "ms": 3120,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sure",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "click",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we've",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "always",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "used",
+          8
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 413
+        },
+        {
+          "t": 525,
+          "d": 200
+        },
+        {
+          "t": 738,
+          "d": 375
+        },
+        {
+          "t": 1113,
+          "d": 250
+        },
+        {
+          "t": 1375,
+          "d": 125
+        },
+        {
+          "t": 1500,
+          "d": 138
+        },
+        {
+          "t": 1650,
+          "d": 188
+        },
+        {
+          "t": 1888,
+          "d": 375
+        },
+        {
+          "t": 2275,
+          "d": 488
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "고객 절반 이상이 사기 전에 검색으로 한 번 더 들어온다고 말해봐",
+      "en": "More than half of our customers come back through search before they buy.",
+      "ms": 4104,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "More",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "than",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "customers",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "search",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "they",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "buy",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 150
+        },
+        {
+          "t": 225,
+          "d": 88
+        },
+        {
+          "t": 313,
+          "d": 350
+        },
+        {
+          "t": 675,
+          "d": 75
+        },
+        {
+          "t": 750,
+          "d": 113
+        },
+        {
+          "t": 863,
+          "d": 438
+        },
+        {
+          "t": 1313,
+          "d": 163
+        },
+        {
+          "t": 1475,
+          "d": 300
+        },
+        {
+          "t": 1775,
+          "d": 275
+        },
+        {
+          "t": 2100,
+          "d": 600
+        },
+        {
+          "t": 2900,
+          "d": 313
+        },
+        {
+          "t": 3213,
+          "d": 113
+        },
+        {
+          "t": 3338,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/3.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "그로스 매니저",
+      "meaning_ko": "어, 그건 몰랐네요. 그럼 어떻게 할까요?",
+      "en": "Huh, I didn't know that. So what should we do?",
+      "ms": 3216,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Huh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "didn't",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "So",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 113,
+          "d": 313
+        },
+        {
+          "t": 463,
+          "d": 125
+        },
+        {
+          "t": 588,
+          "d": 200
+        },
+        {
+          "t": 800,
+          "d": 188
+        },
+        {
+          "t": 1000,
+          "d": 388
+        },
+        {
+          "t": 1750,
+          "d": 250
+        },
+        {
+          "t": 2013,
+          "d": 175
+        },
+        {
+          "t": 2188,
+          "d": 188
+        },
+        {
+          "t": 2375,
+          "d": 113
+        },
+        {
+          "t": 2488,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "예산의 10퍼센트만 옮겨서 2주 동안 테스트해보자고 제안해봐",
+      "en": "Let's move just ten percent of the budget and test it for two weeks.",
+      "ms": 4032,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Let's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "move",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "test",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 150
+        },
+        {
+          "t": 238,
+          "d": 188
+        },
+        {
+          "t": 425,
+          "d": 313
+        },
+        {
+          "t": 788,
+          "d": 300
+        },
+        {
+          "t": 1088,
+          "d": 363
+        },
+        {
+          "t": 1450,
+          "d": 50
+        },
+        {
+          "t": 1500,
+          "d": 75
+        },
+        {
+          "t": 1575,
+          "d": 438
+        },
+        {
+          "t": 2113,
+          "d": 150
+        },
+        {
+          "t": 2275,
+          "d": 388
+        },
+        {
+          "t": 2675,
+          "d": 88
+        },
+        {
+          "t": 2775,
+          "d": 163
+        },
+        {
+          "t": 2938,
+          "d": 213
+        },
+        {
+          "t": 3150,
+          "d": 513
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/5.mp3"
+    },
+    {
+      "who": "a",
+      "role_ko": "그로스 매니저",
+      "meaning_ko": "네, 그게 합리적이네요. 세팅하고 결과 공유할게요.",
+      "en": "Okay, that's fair. I'll set it up and share the results.",
+      "ms": 3936,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "that's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "share",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "results",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 363
+        },
+        {
+          "t": 450,
+          "d": 300
+        },
+        {
+          "t": 750,
+          "d": 388
+        },
+        {
+          "t": 1575,
+          "d": 188
+        },
+        {
+          "t": 1763,
+          "d": 200
+        },
+        {
+          "t": 1963,
+          "d": 75
+        },
+        {
+          "t": 2050,
+          "d": 250
+        },
+        {
+          "t": 2463,
+          "d": 175
+        },
+        {
+          "t": 2638,
+          "d": 275
+        },
+        {
+          "t": 2913,
+          "d": 63
+        },
+        {
+          "t": 2988,
+          "d": 588
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "drive",
+      "kind": "word",
+      "meaning_ko": "(성과·매출을) 만들어내다, 이끌다",
+      "example": "Search drives most of our traffic.",
+      "prompt_ko": "검색이 우리 트래픽 대부분을 만들어낸다고 말해봐"
+    },
+    {
+      "term": "budget",
+      "kind": "word",
+      "meaning_ko": "예산",
+      "example": "We're already over budget this quarter.",
+      "prompt_ko": "이번 분기 예산을 이미 넘었다고 말해봐"
+    },
+    {
+      "term": "fair",
+      "kind": "word",
+      "meaning_ko": "합리적인, 일리 있는",
+      "example": "That's a fair question.",
+      "prompt_ko": "그건 일리 있는 지적이라고 말해봐"
+    },
+    {
+      "term": "based on",
+      "kind": "phrase",
+      "meaning_ko": "~ 기준으로, ~에 근거한",
+      "prompt_ko": "이 숫자는 지난달 데이터 기준이라고 말해봐"
+    },
+    {
+      "term": "leave out",
+      "kind": "phrase",
+      "meaning_ko": "빼다, 누락하다",
+      "prompt_ko": "보고서에 중요한 숫자 하나가 빠졌다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-19-last-click/full.mp3",
+  "full_starts": [
+    0,
+    5448,
+    9480,
+    12600,
+    16704,
+    19920,
+    23952
+  ],
+  "generated_at": "2026-10-18T20:37:56.821Z"
+}

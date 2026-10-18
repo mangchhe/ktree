@@ -1,0 +1,1383 @@
+{
+  "id": "2026-10-17-split-pr",
+  "situation_ko": "Kafka 컨슈머 재시도 로직을 고친 PR 을 올렸다. 리뷰어가 너무 크다며 쪼개자고 하는데, 오늘 배포가 걸려 있다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "리뷰어",
+      "meaning_ko": "PR 봤는데 파일이 40개 넘게 바뀌었어요. 이건 쪼개야 할 것 같아요.",
+      "en": "I looked at your PR. It touches over forty files. I think we need to split it up.",
+      "ms": 5664,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looked",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "at",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "PR",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "touches",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "files",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "split",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          17
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 75
+        },
+        {
+          "t": 163,
+          "d": 250
+        },
+        {
+          "t": 413,
+          "d": 63
+        },
+        {
+          "t": 488,
+          "d": 113
+        },
+        {
+          "t": 600,
+          "d": 550
+        },
+        {
+          "t": 1538,
+          "d": 113
+        },
+        {
+          "t": 1650,
+          "d": 625
+        },
+        {
+          "t": 2288,
+          "d": 275
+        },
+        {
+          "t": 2575,
+          "d": 325
+        },
+        {
+          "t": 2900,
+          "d": 600
+        },
+        {
+          "t": 3850,
+          "d": 88
+        },
+        {
+          "t": 3938,
+          "d": 225
+        },
+        {
+          "t": 4175,
+          "d": 100
+        },
+        {
+          "t": 4288,
+          "d": 175
+        },
+        {
+          "t": 4475,
+          "d": 75
+        },
+        {
+          "t": 4563,
+          "d": 313
+        },
+        {
+          "t": 4888,
+          "d": 75
+        },
+        {
+          "t": 4963,
+          "d": 350
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "대부분은 이름 바꾼 것뿐이고 실제 로직 변경은 파일 세 개라고 설명해봐",
+      "en": "Most of those are just renames. The actual logic change is only in three files.",
+      "ms": 5856,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Most",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "those",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "just",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "renames",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "actual",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "logic",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "three",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "files",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 213
+        },
+        {
+          "t": 313,
+          "d": 50
+        },
+        {
+          "t": 363,
+          "d": 238
+        },
+        {
+          "t": 613,
+          "d": 50
+        },
+        {
+          "t": 675,
+          "d": 200
+        },
+        {
+          "t": 888,
+          "d": 825
+        },
+        {
+          "t": 2113,
+          "d": 75
+        },
+        {
+          "t": 2188,
+          "d": 325
+        },
+        {
+          "t": 2513,
+          "d": 375
+        },
+        {
+          "t": 2888,
+          "d": 563
+        },
+        {
+          "t": 3738,
+          "d": 175
+        },
+        {
+          "t": 3925,
+          "d": 313
+        },
+        {
+          "t": 4250,
+          "d": 113
+        },
+        {
+          "t": 4375,
+          "d": 388
+        },
+        {
+          "t": 4763,
+          "d": 713
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그래도 그게 섞여 있으면 리뷰하기가 정말 어려워요. 놓치는 게 생길 수 있어요.",
+      "en": "Even so, mixing them makes it really hard to review. Something could slip through.",
+      "ms": 5400,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Even",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "so",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "mixing",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "them",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "makes",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hard",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "review",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Something",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slip",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "through",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 238
+        },
+        {
+          "t": 313,
+          "d": 475
+        },
+        {
+          "t": 988,
+          "d": 375
+        },
+        {
+          "t": 1375,
+          "d": 175
+        },
+        {
+          "t": 1563,
+          "d": 238
+        },
+        {
+          "t": 1813,
+          "d": 138
+        },
+        {
+          "t": 1963,
+          "d": 288
+        },
+        {
+          "t": 2263,
+          "d": 363
+        },
+        {
+          "t": 2638,
+          "d": 100
+        },
+        {
+          "t": 2750,
+          "d": 488
+        },
+        {
+          "t": 3625,
+          "d": 475
+        },
+        {
+          "t": 4113,
+          "d": 150
+        },
+        {
+          "t": 4275,
+          "d": 338
+        },
+        {
+          "t": 4625,
+          "d": 438
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "일리 있다고 인정하되, 이 수정이 오늘 배포에 들어가야 한다고 말해봐",
+      "en": "That's fair. The thing is, the retry fix needs to go out in today's release.",
+      "ms": 5064,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "The",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thing",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retry",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "needs",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today's",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 488
+        },
+        {
+          "t": 1175,
+          "d": 63
+        },
+        {
+          "t": 1238,
+          "d": 388
+        },
+        {
+          "t": 1638,
+          "d": 200
+        },
+        {
+          "t": 1850,
+          "d": 100
+        },
+        {
+          "t": 1950,
+          "d": 475
+        },
+        {
+          "t": 2438,
+          "d": 538
+        },
+        {
+          "t": 2975,
+          "d": 213
+        },
+        {
+          "t": 3188,
+          "d": 88
+        },
+        {
+          "t": 3275,
+          "d": 200
+        },
+        {
+          "t": 3475,
+          "d": 150
+        },
+        {
+          "t": 3638,
+          "d": 125
+        },
+        {
+          "t": 3775,
+          "d": 363
+        },
+        {
+          "t": 4138,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 재시도 수정만 먼저 따로 올려요. 그건 오늘 오후에 바로 봐줄게요.",
+      "en": "Then pull the retry fix into its own PR first. I can review that one this afternoon.",
+      "ms": 5592,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pull",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retry",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fix",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "its",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "own",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "PR",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "review",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "one",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afternoon",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 188
+        },
+        {
+          "t": 275,
+          "d": 238
+        },
+        {
+          "t": 525,
+          "d": 88
+        },
+        {
+          "t": 625,
+          "d": 400
+        },
+        {
+          "t": 1038,
+          "d": 425
+        },
+        {
+          "t": 1475,
+          "d": 213
+        },
+        {
+          "t": 1700,
+          "d": 150
+        },
+        {
+          "t": 1863,
+          "d": 225
+        },
+        {
+          "t": 2100,
+          "d": 338
+        },
+        {
+          "t": 2450,
+          "d": 500
+        },
+        {
+          "t": 3388,
+          "d": 100
+        },
+        {
+          "t": 3500,
+          "d": 150
+        },
+        {
+          "t": 3663,
+          "d": 400
+        },
+        {
+          "t": 4075,
+          "d": 188
+        },
+        {
+          "t": 4275,
+          "d": 150
+        },
+        {
+          "t": 4438,
+          "d": 150
+        },
+        {
+          "t": 4600,
+          "d": 638
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "좋다고, 한 시간 안에 올리고 이름 변경은 다음 주에 따로 하겠다고 해봐",
+      "en": "Sounds good. I'll have it up within the hour, and I'll do the renames separately next week.",
+      "ms": 5544,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Sounds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "within",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hour",
+          8
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "and",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'll",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "renames",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "separately",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 363,
+          "d": 225
+        },
+        {
+          "t": 1000,
+          "d": 88
+        },
+        {
+          "t": 1088,
+          "d": 175
+        },
+        {
+          "t": 1275,
+          "d": 63
+        },
+        {
+          "t": 1338,
+          "d": 113
+        },
+        {
+          "t": 1450,
+          "d": 288
+        },
+        {
+          "t": 1750,
+          "d": 88
+        },
+        {
+          "t": 1838,
+          "d": 438
+        },
+        {
+          "t": 2750,
+          "d": 63
+        },
+        {
+          "t": 2813,
+          "d": 75
+        },
+        {
+          "t": 2900,
+          "d": 163
+        },
+        {
+          "t": 3075,
+          "d": 88
+        },
+        {
+          "t": 3163,
+          "d": 738
+        },
+        {
+          "t": 4100,
+          "d": 450
+        },
+        {
+          "t": 4550,
+          "d": 288
+        },
+        {
+          "t": 4838,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "완벽해요. 올리면 태그해 주세요.",
+      "en": "Perfect. Just tag me when it's ready.",
+      "ms": 2952,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Perfect",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Just",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tag",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "when",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ready",
+          6
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 500
+        },
+        {
+          "t": 950,
+          "d": 313
+        },
+        {
+          "t": 1263,
+          "d": 350
+        },
+        {
+          "t": 1613,
+          "d": 250
+        },
+        {
+          "t": 1938,
+          "d": 125
+        },
+        {
+          "t": 2075,
+          "d": 138
+        },
+        {
+          "t": 2225,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "split it up",
+      "kind": "phrase",
+      "meaning_ko": "여러 개로 쪼개다",
+      "prompt_ko": "작업이 너무 커서 세 개로 쪼개자고 말해봐"
+    },
+    {
+      "term": "slip through",
+      "kind": "phrase",
+      "meaning_ko": "(실수·버그가) 걸러지지 않고 빠져나가다",
+      "prompt_ko": "테스트가 없으면 버그가 걸러지지 않고 넘어갈 수 있다고 말해봐"
+    },
+    {
+      "term": "actual",
+      "kind": "word",
+      "meaning_ko": "실제의, 진짜",
+      "example": "The actual cost was much lower than we expected.",
+      "prompt_ko": "실제 문제는 다른 데 있었다고 말해봐"
+    },
+    {
+      "term": "separately",
+      "kind": "word",
+      "meaning_ko": "따로, 별도로",
+      "example": "Let's discuss the budget separately.",
+      "prompt_ko": "그 문제는 회의 끝나고 따로 얘기하자고 말해봐"
+    },
+    {
+      "term": "release",
+      "kind": "word",
+      "meaning_ko": "배포, 출시(판)",
+      "example": "The new feature will be in the next release.",
+      "prompt_ko": "그 기능은 다음 배포에 들어간다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-17-split-pr/full.mp3",
+  "full_starts": [
+    0,
+    5664,
+    11520,
+    16920,
+    21984,
+    27576,
+    33120
+  ],
+  "generated_at": "2026-10-16T20:33:12.857Z"
+}

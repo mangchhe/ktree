@@ -1,0 +1,1252 @@
+{
+  "id": "2026-10-18-no-agenda",
+  "situation_ko": "다른 팀 동료가 안건 없이 내일 한 시간짜리 회의를 잡았다. 무슨 회의인지 물어보고 시간을 줄이자고 한다. 동료는 다른 사람도 부르고 싶어 한다.",
+  "topic": "비즈니스",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "다른 팀 동료",
+      "meaning_ko": "안녕하세요, 내일 회의 초대 받으셨죠?",
+      "en": "Hey, did you get my invite for tomorrow?",
+      "ms": 2136,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hey",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "did",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "invite",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow",
+          7
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 125,
+          "d": 238
+        },
+        {
+          "t": 375,
+          "d": 175
+        },
+        {
+          "t": 550,
+          "d": 75
+        },
+        {
+          "t": 638,
+          "d": 150
+        },
+        {
+          "t": 800,
+          "d": 113
+        },
+        {
+          "t": 913,
+          "d": 300
+        },
+        {
+          "t": 1225,
+          "d": 100
+        },
+        {
+          "t": 1338,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "받았다고 하면서, 안건이 없던데 무슨 회의인지 물어봐",
+      "en": "I did, thanks. There was no agenda, though. What's it about?",
+      "ms": 3816,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "There",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "no",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "agenda",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 163,
+          "d": 225
+        },
+        {
+          "t": 400,
+          "d": 488
+        },
+        {
+          "t": 1263,
+          "d": 50
+        },
+        {
+          "t": 1313,
+          "d": 100
+        },
+        {
+          "t": 1413,
+          "d": 125
+        },
+        {
+          "t": 1538,
+          "d": 488
+        },
+        {
+          "t": 2225,
+          "d": 325
+        },
+        {
+          "t": 2950,
+          "d": 100
+        },
+        {
+          "t": 3050,
+          "d": 50
+        },
+        {
+          "t": 3100,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "다음 달 출시 일정을 맞춰보고 싶어서요. 한 시간 정도면 될 것 같아요.",
+      "en": "I want to align on the launch timeline for next month. An hour should be enough.",
+      "ms": 4872,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "want",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "align",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "launch",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "timeline",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "An",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "hour",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "be",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "enough",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 163
+        },
+        {
+          "t": 325,
+          "d": 50
+        },
+        {
+          "t": 388,
+          "d": 413
+        },
+        {
+          "t": 813,
+          "d": 75
+        },
+        {
+          "t": 900,
+          "d": 75
+        },
+        {
+          "t": 988,
+          "d": 388
+        },
+        {
+          "t": 1375,
+          "d": 588
+        },
+        {
+          "t": 1975,
+          "d": 100
+        },
+        {
+          "t": 2075,
+          "d": 263
+        },
+        {
+          "t": 2338,
+          "d": 363
+        },
+        {
+          "t": 3075,
+          "d": 188
+        },
+        {
+          "t": 3275,
+          "d": 363
+        },
+        {
+          "t": 3650,
+          "d": 213
+        },
+        {
+          "t": 3863,
+          "d": 88
+        },
+        {
+          "t": 3963,
+          "d": 538
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그 정도면 30분이면 충분할 것 같다고, 미리 질문을 보내주면 준비해 가겠다고 해봐",
+      "en": "I think thirty minutes would cover it. If you send me your questions beforehand, I'll come prepared.",
+      "ms": 5280,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "think",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "minutes",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "would",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cover",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "questions",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "beforehand",
+          13
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "come",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "prepared",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 225
+        },
+        {
+          "t": 400,
+          "d": 375
+        },
+        {
+          "t": 775,
+          "d": 288
+        },
+        {
+          "t": 1063,
+          "d": 125
+        },
+        {
+          "t": 1188,
+          "d": 350
+        },
+        {
+          "t": 1538,
+          "d": 163
+        },
+        {
+          "t": 2100,
+          "d": 88
+        },
+        {
+          "t": 2188,
+          "d": 63
+        },
+        {
+          "t": 2250,
+          "d": 163
+        },
+        {
+          "t": 2413,
+          "d": 63
+        },
+        {
+          "t": 2475,
+          "d": 113
+        },
+        {
+          "t": 2588,
+          "d": 425
+        },
+        {
+          "t": 3013,
+          "d": 663
+        },
+        {
+          "t": 4125,
+          "d": 75
+        },
+        {
+          "t": 4200,
+          "d": 175
+        },
+        {
+          "t": 4375,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 그런데 디자인 팀도 부르고 싶은데, 그럼 시간이 더 걸릴 수도 있어요.",
+      "en": "Sounds good. But I'd also like to bring in the design team, which might take longer.",
+      "ms": 5184,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Sounds",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "good",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I'd",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "design",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "team",
+          11
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "which",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "might",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "longer",
+          15
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 413
+        },
+        {
+          "t": 513,
+          "d": 350
+        },
+        {
+          "t": 1250,
+          "d": 213
+        },
+        {
+          "t": 1475,
+          "d": 138
+        },
+        {
+          "t": 1625,
+          "d": 325
+        },
+        {
+          "t": 1963,
+          "d": 238
+        },
+        {
+          "t": 2213,
+          "d": 88
+        },
+        {
+          "t": 2313,
+          "d": 213
+        },
+        {
+          "t": 2538,
+          "d": 63
+        },
+        {
+          "t": 2613,
+          "d": 63
+        },
+        {
+          "t": 2688,
+          "d": 350
+        },
+        {
+          "t": 3050,
+          "d": 338
+        },
+        {
+          "t": 3763,
+          "d": 188
+        },
+        {
+          "t": 3963,
+          "d": 200
+        },
+        {
+          "t": 4175,
+          "d": 188
+        },
+        {
+          "t": 4375,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그럼 일정 얘기 먼저 끝내고, 디자인 얘기는 따로 잡자고 제안해봐",
+      "en": "Then let's settle the timeline first and set up a separate session for design.",
+      "ms": 4920,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "let's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "settle",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "timeline",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "separate",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "session",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "design",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 163
+        },
+        {
+          "t": 275,
+          "d": 150
+        },
+        {
+          "t": 425,
+          "d": 213
+        },
+        {
+          "t": 638,
+          "d": 63
+        },
+        {
+          "t": 713,
+          "d": 550
+        },
+        {
+          "t": 1275,
+          "d": 625
+        },
+        {
+          "t": 2338,
+          "d": 163
+        },
+        {
+          "t": 2513,
+          "d": 288
+        },
+        {
+          "t": 2800,
+          "d": 175
+        },
+        {
+          "t": 3088,
+          "d": 38
+        },
+        {
+          "t": 3138,
+          "d": 475
+        },
+        {
+          "t": 3613,
+          "d": 413
+        },
+        {
+          "t": 4025,
+          "d": 100
+        },
+        {
+          "t": 4125,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "합리적이네요. 오늘 오후에 안건 보낼게요.",
+      "en": "That makes sense. I'll send out an agenda this afternoon.",
+      "ms": 3768,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "makes",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sense",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "agenda",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afternoon",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 213
+        },
+        {
+          "t": 325,
+          "d": 263
+        },
+        {
+          "t": 588,
+          "d": 525
+        },
+        {
+          "t": 1613,
+          "d": 150
+        },
+        {
+          "t": 1775,
+          "d": 300
+        },
+        {
+          "t": 2088,
+          "d": 138
+        },
+        {
+          "t": 2238,
+          "d": 75
+        },
+        {
+          "t": 2325,
+          "d": 338
+        },
+        {
+          "t": 2675,
+          "d": 150
+        },
+        {
+          "t": 2825,
+          "d": 575
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "agenda",
+      "kind": "word",
+      "meaning_ko": "(회의) 안건, 의제",
+      "example": "Let's stick to the agenda so we finish on time.",
+      "prompt_ko": "회의 전에 안건을 공유해달라고 부탁해봐"
+    },
+    {
+      "term": "align",
+      "kind": "word",
+      "meaning_ko": "(의견·계획을) 맞추다, 조율하다",
+      "example": "We need to align on priorities before Monday.",
+      "prompt_ko": "월요일 전에 우선순위를 맞추자고 말해봐"
+    },
+    {
+      "term": "beforehand",
+      "kind": "word",
+      "meaning_ko": "미리, 사전에",
+      "example": "Please read the document beforehand.",
+      "prompt_ko": "자료를 미리 읽어 와달라고 말해봐"
+    },
+    {
+      "term": "settle",
+      "kind": "word",
+      "meaning_ko": "(문제·일정을) 정하다, 결론 내다",
+      "example": "We still haven't settled the budget.",
+      "prompt_ko": "아직 예산을 못 정했다고 말해봐"
+    },
+    {
+      "term": "bring in",
+      "kind": "phrase",
+      "meaning_ko": "(사람을) 불러들이다, 합류시키다",
+      "prompt_ko": "법무팀도 이 논의에 부르자고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-no-agenda/full.mp3",
+  "full_starts": [
+    0,
+    2136,
+    5952,
+    10824,
+    16104,
+    21288,
+    26208
+  ],
+  "generated_at": "2026-10-17T20:32:37.547Z"
+}

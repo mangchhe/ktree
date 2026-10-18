@@ -1,0 +1,1215 @@
+{
+  "id": "2026-10-18-underspend",
+  "situation_ko": "에이전시가 이번 달 광고 예산의 60퍼센트밖에 안 썼다. 이유를 물으니 노출 단가가 올라서 일부러 줄였다고 한다. 남은 예산을 어떻게 할지 정한다.",
+  "topic": "마케팅",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "에이전시 담당자",
+      "meaning_ko": "이번 달 숫자 보셨어요? 지출이 계획보다 좀 낮아요.",
+      "en": "Have you seen this month's numbers? Spend is a bit below plan.",
+      "ms": 3768,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Have",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seen",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "numbers",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "Spend",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bit",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "below",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "plan",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 63
+        },
+        {
+          "t": 163,
+          "d": 88
+        },
+        {
+          "t": 250,
+          "d": 275
+        },
+        {
+          "t": 525,
+          "d": 163
+        },
+        {
+          "t": 700,
+          "d": 338
+        },
+        {
+          "t": 1038,
+          "d": 600
+        },
+        {
+          "t": 2050,
+          "d": 275
+        },
+        {
+          "t": 2338,
+          "d": 75
+        },
+        {
+          "t": 2413,
+          "d": 50
+        },
+        {
+          "t": 2463,
+          "d": 225
+        },
+        {
+          "t": 2688,
+          "d": 300
+        },
+        {
+          "t": 2988,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나(대표)",
+      "is_me": true,
+      "intent_ko": "봤다고, 5만 달러 중에 3만 달러밖에 안 썼던데 왜 그런지 물어봐",
+      "en": "I did. You only spent thirty thousand out of fifty. Why is that?",
+      "ms": 4944,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "did",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "You",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "only",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spent",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifty",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Why",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 138
+        },
+        {
+          "t": 238,
+          "d": 438
+        },
+        {
+          "t": 1050,
+          "d": 150
+        },
+        {
+          "t": 1213,
+          "d": 275
+        },
+        {
+          "t": 1500,
+          "d": 425
+        },
+        {
+          "t": 1938,
+          "d": 275
+        },
+        {
+          "t": 2225,
+          "d": 438
+        },
+        {
+          "t": 2675,
+          "d": 113
+        },
+        {
+          "t": 2800,
+          "d": 50
+        },
+        {
+          "t": 2850,
+          "d": 488
+        },
+        {
+          "t": 3688,
+          "d": 300
+        },
+        {
+          "t": 3988,
+          "d": 150
+        },
+        {
+          "t": 4150,
+          "d": 425
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "노출 단가가 2주 만에 40퍼센트 올라서 일부러 속도를 늦췄어요.",
+      "en": "CPMs went up forty percent in two weeks, so we slowed down on purpose.",
+      "ms": 5304,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "CPMs",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "two",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "weeks",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "slowed",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "purpose",
+          13
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 688
+        },
+        {
+          "t": 788,
+          "d": 125
+        },
+        {
+          "t": 913,
+          "d": 100
+        },
+        {
+          "t": 1013,
+          "d": 450
+        },
+        {
+          "t": 1463,
+          "d": 500
+        },
+        {
+          "t": 1975,
+          "d": 113
+        },
+        {
+          "t": 2100,
+          "d": 225
+        },
+        {
+          "t": 2325,
+          "d": 575
+        },
+        {
+          "t": 3075,
+          "d": 225
+        },
+        {
+          "t": 3388,
+          "d": 125
+        },
+        {
+          "t": 3513,
+          "d": 400
+        },
+        {
+          "t": 3913,
+          "d": 225
+        },
+        {
+          "t": 4138,
+          "d": 125
+        },
+        {
+          "t": 4275,
+          "d": 675
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "판단은 이해하지만, 그런 결정은 미리 알려줬어야 한다고 말해봐",
+      "en": "I understand the call, but you should have flagged it with me first.",
+      "ms": 3816,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "call",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flagged",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "first",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 413
+        },
+        {
+          "t": 688,
+          "d": 63
+        },
+        {
+          "t": 763,
+          "d": 475
+        },
+        {
+          "t": 1425,
+          "d": 238
+        },
+        {
+          "t": 1838,
+          "d": 63
+        },
+        {
+          "t": 1913,
+          "d": 163
+        },
+        {
+          "t": 2088,
+          "d": 100
+        },
+        {
+          "t": 2200,
+          "d": 325
+        },
+        {
+          "t": 2538,
+          "d": 50
+        },
+        {
+          "t": 2600,
+          "d": 113
+        },
+        {
+          "t": 2725,
+          "d": 138
+        },
+        {
+          "t": 2875,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞는 말씀이에요. 남은 2만 달러는 다음 달로 넘길까요?",
+      "en": "That's fair. Should we roll the remaining twenty thousand into next month?",
+      "ms": 4656,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Should",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "roll",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "remaining",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thousand",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          11
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 175
+        },
+        {
+          "t": 288,
+          "d": 488
+        },
+        {
+          "t": 1163,
+          "d": 150
+        },
+        {
+          "t": 1313,
+          "d": 150
+        },
+        {
+          "t": 1463,
+          "d": 463
+        },
+        {
+          "t": 1938,
+          "d": 75
+        },
+        {
+          "t": 2025,
+          "d": 488
+        },
+        {
+          "t": 2525,
+          "d": 350
+        },
+        {
+          "t": 2875,
+          "d": 563
+        },
+        {
+          "t": 3525,
+          "d": 150
+        },
+        {
+          "t": 3675,
+          "d": 275
+        },
+        {
+          "t": 3950,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "절반은 다음 달로 넘기고, 나머지 절반은 이번 주 리타기팅에 쓰자고 해봐",
+      "en": "Let's carry half over and put the other half into retargeting this week.",
+      "ms": 4656,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Let's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "carry",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "over",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "other",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "half",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "retargeting",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 175
+        },
+        {
+          "t": 275,
+          "d": 288
+        },
+        {
+          "t": 575,
+          "d": 313
+        },
+        {
+          "t": 963,
+          "d": 463
+        },
+        {
+          "t": 1475,
+          "d": 163
+        },
+        {
+          "t": 1650,
+          "d": 188
+        },
+        {
+          "t": 1850,
+          "d": 113
+        },
+        {
+          "t": 2025,
+          "d": 238
+        },
+        {
+          "t": 2263,
+          "d": 400
+        },
+        {
+          "t": 2700,
+          "d": 288
+        },
+        {
+          "t": 3063,
+          "d": 663
+        },
+        {
+          "t": 3725,
+          "d": 163
+        },
+        {
+          "t": 3900,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 오늘 안에 세팅하고 목요일에 결과 공유드릴게요.",
+      "en": "Got it. I'll set it up today and share results on Thursday.",
+      "ms": 3744,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Got",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "share",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "results",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Thursday",
+          11
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 200
+        },
+        {
+          "t": 313,
+          "d": 125
+        },
+        {
+          "t": 838,
+          "d": 88
+        },
+        {
+          "t": 925,
+          "d": 138
+        },
+        {
+          "t": 1063,
+          "d": 63
+        },
+        {
+          "t": 1125,
+          "d": 113
+        },
+        {
+          "t": 1238,
+          "d": 463
+        },
+        {
+          "t": 1838,
+          "d": 138
+        },
+        {
+          "t": 1975,
+          "d": 250
+        },
+        {
+          "t": 2225,
+          "d": 363
+        },
+        {
+          "t": 2600,
+          "d": 100
+        },
+        {
+          "t": 2700,
+          "d": 663
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "below plan",
+      "kind": "phrase",
+      "meaning_ko": "계획보다 낮은, 계획 미달",
+      "prompt_ko": "이번 달 매출이 계획보다 10퍼센트 낮다고 말해봐"
+    },
+    {
+      "term": "flag",
+      "kind": "word",
+      "meaning_ko": "(문제를) 미리 알리다, 짚다",
+      "example": "Please flag any issues before the launch.",
+      "prompt_ko": "문제가 있으면 바로 알려달라고 말해봐"
+    },
+    {
+      "term": "remaining",
+      "kind": "word",
+      "meaning_ko": "남은, 나머지의",
+      "example": "We'll spend the remaining budget in December.",
+      "prompt_ko": "남은 예산을 12월에 쓰겠다고 말해봐"
+    },
+    {
+      "term": "carry over",
+      "kind": "phrase",
+      "meaning_ko": "(다음 기간으로) 이월하다, 넘기다",
+      "prompt_ko": "안 쓴 예산을 다음 분기로 넘기자고 말해봐"
+    },
+    {
+      "term": "call",
+      "kind": "word",
+      "meaning_ko": "(내린) 판단, 결정",
+      "example": "It was a tough call, but we paused the campaign.",
+      "prompt_ko": "어려운 판단이었지만 캠페인을 멈췄다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-underspend/full.mp3",
+  "full_starts": [
+    0,
+    3768,
+    8712,
+    14016,
+    17832,
+    22488,
+    27144
+  ],
+  "generated_at": "2026-10-17T20:33:01.698Z"
+}

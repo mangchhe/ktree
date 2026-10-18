@@ -1,0 +1,1575 @@
+{
+  "id": "2026-10-16-cloud-bill",
+  "situation_ko": "재무팀이 이번 달 클라우드 비용이 30% 뛰었다며 이유를 묻는다. 원인은 디버그 로그를 켜둔 채 배포한 것. 재무팀은 다음 달 예산을 지금 확정해야 한다고 재촉한다.",
+  "topic": "테크",
+  "level": 3,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "재무 담당",
+      "meaning_ko": "이번 달 클라우드 비용이 30% 가까이 늘었어요. 무슨 일인지 아세요?",
+      "en": "Our cloud bill went up almost thirty percent this month. Do you know what happened?",
+      "ms": 4920,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Our",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cloud",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bill",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "went",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "almost",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "thirty",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "what",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happened",
+          14
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 188
+        },
+        {
+          "t": 275,
+          "d": 438
+        },
+        {
+          "t": 725,
+          "d": 375
+        },
+        {
+          "t": 1225,
+          "d": 175
+        },
+        {
+          "t": 1413,
+          "d": 163
+        },
+        {
+          "t": 1650,
+          "d": 413
+        },
+        {
+          "t": 2063,
+          "d": 288
+        },
+        {
+          "t": 2363,
+          "d": 375
+        },
+        {
+          "t": 2738,
+          "d": 150
+        },
+        {
+          "t": 2900,
+          "d": 400
+        },
+        {
+          "t": 3688,
+          "d": 50
+        },
+        {
+          "t": 3750,
+          "d": 75
+        },
+        {
+          "t": 3838,
+          "d": 150
+        },
+        {
+          "t": 4000,
+          "d": 88
+        },
+        {
+          "t": 4088,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "확인해봤는데, 대부분 로그 저장 비용이고, 지난주 배포 때 디버그 로그가 켜진 채로 나갔다고 말해봐",
+      "en": "I looked into it. Most of it is log storage. Debug logging was left on in last week's release.",
+      "ms": 6216,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "looked",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "into",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Most",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "log",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "storage",
+          9
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Debug",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "logging",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "left",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "on",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "last",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week's",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          18
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 50
+        },
+        {
+          "t": 138,
+          "d": 188
+        },
+        {
+          "t": 325,
+          "d": 263
+        },
+        {
+          "t": 588,
+          "d": 163
+        },
+        {
+          "t": 1150,
+          "d": 213
+        },
+        {
+          "t": 1363,
+          "d": 63
+        },
+        {
+          "t": 1425,
+          "d": 75
+        },
+        {
+          "t": 1513,
+          "d": 138
+        },
+        {
+          "t": 1650,
+          "d": 363
+        },
+        {
+          "t": 2025,
+          "d": 663
+        },
+        {
+          "t": 3113,
+          "d": 338
+        },
+        {
+          "t": 3450,
+          "d": 363
+        },
+        {
+          "t": 3813,
+          "d": 175
+        },
+        {
+          "t": 3988,
+          "d": 350
+        },
+        {
+          "t": 4350,
+          "d": 175
+        },
+        {
+          "t": 4525,
+          "d": 138
+        },
+        {
+          "t": 4663,
+          "d": 438
+        },
+        {
+          "t": 5100,
+          "d": 200
+        },
+        {
+          "t": 5300,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 고치셨어요? 그리고 이게 또 일어나지 않는다고 어떻게 확신해요?",
+      "en": "Okay, is it fixed? And how do we know it won't happen again?",
+      "ms": 3936,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fixed",
+          3
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "And",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "how",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "do",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "we",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "won't",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "happen",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          12
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 63,
+          "d": 300
+        },
+        {
+          "t": 375,
+          "d": 125
+        },
+        {
+          "t": 513,
+          "d": 88
+        },
+        {
+          "t": 600,
+          "d": 538
+        },
+        {
+          "t": 1513,
+          "d": 200
+        },
+        {
+          "t": 1863,
+          "d": 213
+        },
+        {
+          "t": 2075,
+          "d": 88
+        },
+        {
+          "t": 2175,
+          "d": 88
+        },
+        {
+          "t": 2275,
+          "d": 238
+        },
+        {
+          "t": 2525,
+          "d": 100
+        },
+        {
+          "t": 2638,
+          "d": 150
+        },
+        {
+          "t": 2800,
+          "d": 300
+        },
+        {
+          "t": 3113,
+          "d": 463
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "어제 꺼서 고쳤고, 로그 양이 갑자기 늘면 알림이 오도록 설정해뒀다고 말해봐",
+      "en": "We turned it off yesterday. We also set up an alert, so if log volume jumps again, we'll know right away.",
+      "ms": 6504,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "We",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "turned",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "yesterday",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "We",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "also",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "set",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "alert",
+          10
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "log",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "volume",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "jumps",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "again",
+          16
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we'll",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "know",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "away",
+          20
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 75
+        },
+        {
+          "t": 175,
+          "d": 213
+        },
+        {
+          "t": 388,
+          "d": 50
+        },
+        {
+          "t": 438,
+          "d": 225
+        },
+        {
+          "t": 675,
+          "d": 563
+        },
+        {
+          "t": 1638,
+          "d": 88
+        },
+        {
+          "t": 1725,
+          "d": 238
+        },
+        {
+          "t": 1963,
+          "d": 188
+        },
+        {
+          "t": 2150,
+          "d": 100
+        },
+        {
+          "t": 2263,
+          "d": 63
+        },
+        {
+          "t": 2325,
+          "d": 413
+        },
+        {
+          "t": 3125,
+          "d": 225
+        },
+        {
+          "t": 3350,
+          "d": 113
+        },
+        {
+          "t": 3475,
+          "d": 250
+        },
+        {
+          "t": 3725,
+          "d": 388
+        },
+        {
+          "t": 4125,
+          "d": 275
+        },
+        {
+          "t": 4400,
+          "d": 363
+        },
+        {
+          "t": 5175,
+          "d": 138
+        },
+        {
+          "t": 5313,
+          "d": 238
+        },
+        {
+          "t": 5563,
+          "d": 175
+        },
+        {
+          "t": 5738,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "좋아요. 그런데 다음 달 예산을 오늘 확정해야 해요. 얼마로 잡으면 될까요?",
+      "en": "Good. But I need to lock in next month's budget today. What number should I put down?",
+      "ms": 5040,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "But",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "lock",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "budget",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "What",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "number",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "should",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "put",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "down",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 250
+        },
+        {
+          "t": 725,
+          "d": 200
+        },
+        {
+          "t": 938,
+          "d": 63
+        },
+        {
+          "t": 1013,
+          "d": 188
+        },
+        {
+          "t": 1213,
+          "d": 88
+        },
+        {
+          "t": 1313,
+          "d": 300
+        },
+        {
+          "t": 1625,
+          "d": 163
+        },
+        {
+          "t": 1800,
+          "d": 275
+        },
+        {
+          "t": 2088,
+          "d": 275
+        },
+        {
+          "t": 2363,
+          "d": 275
+        },
+        {
+          "t": 2650,
+          "d": 450
+        },
+        {
+          "t": 3475,
+          "d": 150
+        },
+        {
+          "t": 3625,
+          "d": 225
+        },
+        {
+          "t": 3863,
+          "d": 163
+        },
+        {
+          "t": 4038,
+          "d": 75
+        },
+        {
+          "t": 4125,
+          "d": 138
+        },
+        {
+          "t": 4263,
+          "d": 413
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "평소 수준으로 잡되, 트래픽 증가에 대비해 10% 여유분을 두자고 해봐",
+      "en": "I'd go back to our usual level, plus about ten percent of buffer in case traffic grows.",
+      "ms": 5664,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I'd",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "our",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "usual",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "level",
+          6
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "plus",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ten",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "percent",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "buffer",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "case",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "traffic",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "grows",
+          16
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 113
+        },
+        {
+          "t": 213,
+          "d": 150
+        },
+        {
+          "t": 375,
+          "d": 238
+        },
+        {
+          "t": 613,
+          "d": 113
+        },
+        {
+          "t": 725,
+          "d": 125
+        },
+        {
+          "t": 850,
+          "d": 500
+        },
+        {
+          "t": 1350,
+          "d": 413
+        },
+        {
+          "t": 2013,
+          "d": 263
+        },
+        {
+          "t": 2275,
+          "d": 263
+        },
+        {
+          "t": 2550,
+          "d": 225
+        },
+        {
+          "t": 2788,
+          "d": 350
+        },
+        {
+          "t": 3138,
+          "d": 88
+        },
+        {
+          "t": 3238,
+          "d": 463
+        },
+        {
+          "t": 3863,
+          "d": 125
+        },
+        {
+          "t": 3988,
+          "d": 275
+        },
+        {
+          "t": 4263,
+          "d": 463
+        },
+        {
+          "t": 4725,
+          "d": 563
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알겠어요. 그렇게 할게요. 다음 주에 일일 비용 보고서 하나 보내줄 수 있어요?",
+      "en": "Got it, I'll go with that. Could you send me a daily cost report starting next week?",
+      "ms": 4752,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Got",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          1
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "go",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Could",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "me",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "daily",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "cost",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "report",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "starting",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "next",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "week",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 188
+        },
+        {
+          "t": 288,
+          "d": 125
+        },
+        {
+          "t": 425,
+          "d": 113
+        },
+        {
+          "t": 538,
+          "d": 125
+        },
+        {
+          "t": 663,
+          "d": 125
+        },
+        {
+          "t": 800,
+          "d": 375
+        },
+        {
+          "t": 1550,
+          "d": 113
+        },
+        {
+          "t": 1663,
+          "d": 88
+        },
+        {
+          "t": 1763,
+          "d": 275
+        },
+        {
+          "t": 2050,
+          "d": 100
+        },
+        {
+          "t": 2163,
+          "d": 113
+        },
+        {
+          "t": 2288,
+          "d": 325
+        },
+        {
+          "t": 2625,
+          "d": 400
+        },
+        {
+          "t": 3038,
+          "d": 375
+        },
+        {
+          "t": 3425,
+          "d": 375
+        },
+        {
+          "t": 3800,
+          "d": 263
+        },
+        {
+          "t": 4063,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "look into",
+      "kind": "phrase",
+      "meaning_ko": "조사하다, 알아보다",
+      "prompt_ko": "그 문제 알아보고 오늘 안에 답을 주겠다고 말해봐"
+    },
+    {
+      "term": "volume",
+      "kind": "word",
+      "meaning_ko": "양, 규모 (소리 크기 말고 '분량')",
+      "example": "Order volume doubles every December.",
+      "prompt_ko": "주문량이 매년 12월이면 두 배가 된다고 말해봐"
+    },
+    {
+      "term": "lock in",
+      "kind": "phrase",
+      "meaning_ko": "(조건·숫자를) 확정하다",
+      "prompt_ko": "가격이 오르기 전에 이 가격으로 확정하자고 말해봐"
+    },
+    {
+      "term": "buffer",
+      "kind": "word",
+      "meaning_ko": "여유분, 완충",
+      "example": "Let's add a two-day buffer to the schedule.",
+      "prompt_ko": "일정에 이틀 정도 여유를 두자고 말해봐"
+    },
+    {
+      "term": "storage",
+      "kind": "word",
+      "meaning_ko": "저장 공간; 보관",
+      "example": "We're running out of storage on the server.",
+      "prompt_ko": "서버 저장 공간이 다 떨어져 간다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-16-cloud-bill/full.mp3",
+  "full_starts": [
+    0,
+    4920,
+    11136,
+    15072,
+    21576,
+    26616,
+    32280
+  ],
+  "generated_at": "2026-10-15T20:34:02.093Z"
+}

@@ -1,0 +1,897 @@
+{
+  "id": "2026-10-18-taxi-meter",
+  "situation_ko": "출장지 공항에서 택시를 탔다. 출발하려는데 기사가 미터기가 고장이라며 정액 요금을 부른다. 생각보다 비싸다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AndrewMultilingualNeural",
+    "b": "en-US-AvaMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "택시 기사",
+      "meaning_ko": "어디로 가세요?",
+      "en": "Where are you headed?",
+      "ms": 1872,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Where",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "headed",
+          3
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 88
+        },
+        {
+          "t": 188,
+          "d": 88
+        },
+        {
+          "t": 288,
+          "d": 113
+        },
+        {
+          "t": 400,
+          "d": 363
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "시내에 있는 호텔 이름을 대고, 미터기로 가달라고 해봐",
+      "en": "The Grand Hotel downtown, please. Can you use the meter?",
+      "ms": 3720,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Grand",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Hotel",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "downtown",
+          3
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          4
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "use",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meter",
+          9
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 63
+        },
+        {
+          "t": 150,
+          "d": 313
+        },
+        {
+          "t": 475,
+          "d": 363
+        },
+        {
+          "t": 850,
+          "d": 525
+        },
+        {
+          "t": 1388,
+          "d": 563
+        },
+        {
+          "t": 2338,
+          "d": 125
+        },
+        {
+          "t": 2463,
+          "d": 100
+        },
+        {
+          "t": 2575,
+          "d": 313
+        },
+        {
+          "t": 2888,
+          "d": 75
+        },
+        {
+          "t": 2975,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "미터기가 오늘 고장이에요. 시내까지 정액 60달러예요.",
+      "en": "The meter's broken today. It's a flat sixty dollars to downtown.",
+      "ms": 4080,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "The",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meter's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "broken",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          3
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "flat",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sixty",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "downtown",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 50
+        },
+        {
+          "t": 150,
+          "d": 375
+        },
+        {
+          "t": 525,
+          "d": 450
+        },
+        {
+          "t": 975,
+          "d": 413
+        },
+        {
+          "t": 1775,
+          "d": 88
+        },
+        {
+          "t": 1863,
+          "d": 63
+        },
+        {
+          "t": 1925,
+          "d": 325
+        },
+        {
+          "t": 2250,
+          "d": 425
+        },
+        {
+          "t": 2675,
+          "d": 338
+        },
+        {
+          "t": 3025,
+          "d": 63
+        },
+        {
+          "t": 3100,
+          "d": 625
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/2.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "보통 40달러쯤이라고 들었다며 너무 비싸다고 말해봐",
+      "en": "That seems high. I was told it's usually around forty.",
+      "ms": 3624,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "seems",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "high",
+          2
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "told",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it's",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "usually",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "around",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "forty",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 75,
+          "d": 175
+        },
+        {
+          "t": 250,
+          "d": 363
+        },
+        {
+          "t": 625,
+          "d": 425
+        },
+        {
+          "t": 1450,
+          "d": 88
+        },
+        {
+          "t": 1538,
+          "d": 175
+        },
+        {
+          "t": 1713,
+          "d": 313
+        },
+        {
+          "t": 2038,
+          "d": 163
+        },
+        {
+          "t": 2213,
+          "d": 300
+        },
+        {
+          "t": 2525,
+          "d": 288
+        },
+        {
+          "t": 2825,
+          "d": 450
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "지금 차가 많이 막혀서요. 50달러 어때요?",
+      "en": "Traffic is really bad right now. How about fifty?",
+      "ms": 3168,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Traffic",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "really",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bad",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "How",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "about",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifty",
+          8
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 363
+        },
+        {
+          "t": 463,
+          "d": 125
+        },
+        {
+          "t": 600,
+          "d": 250
+        },
+        {
+          "t": 850,
+          "d": 250
+        },
+        {
+          "t": 1100,
+          "d": 175
+        },
+        {
+          "t": 1275,
+          "d": 313
+        },
+        {
+          "t": 1988,
+          "d": 100
+        },
+        {
+          "t": 2088,
+          "d": 225
+        },
+        {
+          "t": 2325,
+          "d": 475
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/4.mp3"
+    },
+    {
+      "who": "b",
+      "is_me": true,
+      "intent_ko": "그냥 됐다고, 내려서 미터기 되는 다른 택시를 타겠다고 해봐",
+      "en": "No, thanks. I'll get out and take another taxi with a working meter.",
+      "ms": 4680,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "get",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "out",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "take",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "another",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "taxi",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "working",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "meter",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 88,
+          "d": 375
+        },
+        {
+          "t": 475,
+          "d": 488
+        },
+        {
+          "t": 1350,
+          "d": 125
+        },
+        {
+          "t": 1488,
+          "d": 150
+        },
+        {
+          "t": 1650,
+          "d": 275
+        },
+        {
+          "t": 2013,
+          "d": 150
+        },
+        {
+          "t": 2175,
+          "d": 200
+        },
+        {
+          "t": 2388,
+          "d": 250
+        },
+        {
+          "t": 2650,
+          "d": 588
+        },
+        {
+          "t": 3350,
+          "d": 163
+        },
+        {
+          "t": 3513,
+          "d": 63
+        },
+        {
+          "t": 3588,
+          "d": 338
+        },
+        {
+          "t": 3938,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "알았어요, 알았어요. 40달러로 하죠.",
+      "en": "Okay, okay. Forty it is.",
+      "ms": 2232,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Okay",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "okay",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Forty",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "is",
+          4
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 200
+        },
+        {
+          "t": 325,
+          "d": 425
+        },
+        {
+          "t": 1213,
+          "d": 250
+        },
+        {
+          "t": 1463,
+          "d": 63
+        },
+        {
+          "t": 1538,
+          "d": 338
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/6.mp3"
+    }
+  ],
+  "vocab": [
+    {
+      "term": "Where are you headed?",
+      "kind": "phrase",
+      "meaning_ko": "어디로 가세요?",
+      "keywords": [
+        {
+          "word": "headed",
+          "meaning_ko": "~로 향하는"
+        }
+      ],
+      "prompt_ko": "택시 기사가 행선지를 묻는 말을 해봐"
+    },
+    {
+      "term": "flat",
+      "kind": "word",
+      "meaning_ko": "(요금이) 정액의, 고정된",
+      "example": "They charge a flat fee for delivery.",
+      "prompt_ko": "배송비가 정액 5달러라고 말해봐"
+    },
+    {
+      "term": "meter",
+      "kind": "word",
+      "meaning_ko": "(택시) 미터기",
+      "example": "Could you turn on the meter, please?",
+      "prompt_ko": "기사에게 미터기를 켜달라고 해봐"
+    },
+    {
+      "term": "working",
+      "kind": "word",
+      "meaning_ko": "작동하는, 제대로 되는",
+      "example": "Is there a working elevator in this building?",
+      "prompt_ko": "작동하는 엘리베이터가 있냐고 물어봐"
+    },
+    {
+      "term": "That seems high",
+      "kind": "phrase",
+      "meaning_ko": "좀 비싼 것 같은데요",
+      "prompt_ko": "견적 금액이 좀 비싼 것 같다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-18-taxi-meter/full.mp3",
+  "full_starts": [
+    0,
+    1872,
+    5592,
+    9672,
+    13296,
+    16464,
+    21144
+  ],
+  "generated_at": "2026-10-17T20:32:26.785Z"
+}
