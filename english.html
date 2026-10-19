@@ -555,7 +555,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-19.2';
+const BUILD = '2026-10-19.3';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1254,7 +1254,7 @@ async function renderToday(){
       <button class="btn sm" id="t-cmtq">▶ Questions</button>
       <button class="btn sm" id="t-cmt-stop">■</button>
       <button class="btn sm${cmtLoop ? ' on' : ''}" id="t-cmt-loop">🔁</button>
-      <span class="dmh">한 트랙으로 이어 틀고 화면 꺼도 돼</span>
+      <span class="dmh">화면 꺼도 계속 들려</span>
     </div>
     <div class="board">
       ${order.map(bcard).join('')}
@@ -2441,7 +2441,7 @@ async function renderVocab(){
   const bar = vbFilter === 'flagged' ? `<div class="actbar" style="margin-bottom:10px">
       <button class="btn sm primary-btn" id="vb-all">▶ 찍은 것 ${rows.length}개 듣기</button>
       <button class="btn sm" id="vb-stop">■</button>
-      <span class="dmh">뜻까지 한 트랙으로</span></div>` : '';
+      <span class="dmh">영어 → 뜻 순서로</span></div>` : '';
   const badge = c => c.status === 'mature' ? '<span class="ipill done">Mature</span>'
     : c.status === 'new' ? '<span class="ipill wait">New</span>'
     : `<span class="ipill wait">${c.interval_days}d</span>`;
@@ -2684,7 +2684,7 @@ const PLAN = {
     title: '출근하는 날',
     sub: '입 못 여는 60~100분과 입 여는 20분으로 쪼개진다',
     steps: [
-      { w:'아침 지하철 · 30~50분', b:'<b>▶ Commute</b> 한 번. 오늘 장면·기사·질문이 한 트랙으로 흐른다. 화면 꺼도 되고 백그라운드로 돈다. <b>처음 듣는 재료라 이해 안 되는 게 정상이다</b> — 흘려 들어도 된다.' },
+      { w:'아침 지하철 · 30~50분', b:'<b>▶ Commute</b> 한 번. 오늘 장면·기사·질문이 쭉 이어서 나온다. 화면 꺼도 계속 들린다. <b>처음 듣는 재료라 이해 안 되는 게 정상이다</b> — 흘려 들어도 된다.' },
       { w:'점심 틈 · 2분',         b:'<b>Vocab drill</b>. 앉아서 폰만 보면 되고, 아침에 들은 단어가 그대로 나온다. 채점해야 복습 큐가 돈다.' },
       { w:'퇴근 지하철 · 30~50분', b:'<b>▶ Questions</b>. 오늘 질문 세 개만 돈다. 입 안 열어도 되고, 머릿속으로만 답을 짜면 된다. <b>질문 이해는 리스닝 과제다</b> — 네가 시험에서 넘어진 지점이 정확히 여기다.' },
       { w:'집 · 20분',             b:'<b>Speaking</b> 세 문항을 입으로. 질문을 이미 두 번 들었으니 이번엔 내용에 집중한다. 남으면 <b>Scenes·News</b> 를 화면으로 다시, 그리고 <b>Quiz</b>.' },
