@@ -455,6 +455,15 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .pstep .pb{font-size:12.5px;line-height:1.6;color:var(--sub);margin-top:2px}
 .pstep .pb b{color:var(--text)}
 .sh{font-size:17px;font-weight:800;margin:2px 0 8px}
+.gram{background:var(--card2);border:1px solid var(--border);border-radius:9px;margin:0 0 12px;font-size:12.5px}
+.gram summary{padding:9px 13px;cursor:pointer;list-style:none;display:flex;gap:8px;align-items:center;font-weight:600}
+.gram summary::-webkit-details-marker{display:none}
+.gram summary::after{content:'›';margin-left:auto;color:var(--dim);font-size:15px;transition:transform .15s}
+.gram[open] summary::after{transform:rotate(90deg)}
+.gram .gl{font-size:10px;font-weight:800;color:var(--warn);background:var(--warn-bg);padding:2px 7px;border-radius:99px;flex:none}
+.gram .gw{padding:0 13px 2px;color:var(--sub);line-height:1.6}
+.gram .ge{padding:7px 13px 11px;color:var(--text);font-style:italic}
+.gram .ge em{font-style:normal;font-size:10.5px;color:var(--dim);font-family:var(--num)}
 .prow2{position:relative}
 .pflag{position:absolute;top:7px;right:7px;padding:3px 8px;font-size:12px;line-height:1}
 </style>
@@ -546,7 +555,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-19.1';
+const BUILD = '2026-10-19.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1528,6 +1537,7 @@ function drawScene(el){
   el.innerHTML = actBar(`Scene ${scIdx+1}/${tScenes.length}`) + `
     <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
       <b style="color:var(--eng)">Context</b> · ${esc(sc.situation_ko)}</div>
+    ${grammarHtml(sc)}
     <div class="actbar">
       <button class="btn sm" id="sc-listen">▶ Play all</button>
       <button class="btn sm" id="sc-fill">Fill my turns</button>
@@ -1573,6 +1583,17 @@ function drawScene(el){
     if (n >= tScenes.length) { await maybeComplete(); renderToday(); }
     else { scIdx = Math.min(n, tScenes.length - 1); scPhase = 'pre'; drawScene(el); }
   };
+}
+
+/* 장면에 쓰인 패턴 **하나**. 목록으로 나열하면 안 읽는 부록이 되고, 지금 막힌 건
+   문법 지식이 아니라 입에서 나오느냐다. 그래서 하나만, 그 줄을 짚어서, 접어 둔다. */
+function grammarHtml(sc){
+  const g = sc.grammar;
+  if (!g?.name_ko) return '';
+  return `<details class="gram"><summary><span class="gl">문법</span>${esc(g.name_ko)}</summary>
+    ${g.why_ko ? `<div class="gw">${esc(g.why_ko)}</div>` : ''}
+    ${g.en ? `<div class="ge">${Number.isInteger(g.turn) ? `<em>turn ${g.turn + 1}</em> ` : ''}“${esc(g.en)}”</div>` : ''}
+  </details>`;
 }
 
 function paintTurns(sc){

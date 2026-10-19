@@ -394,6 +394,7 @@ if (!DRY) {
       scene_id: doc.id, situation_ko: doc.situation_ko || '', topic: doc.topic || '일상',
       level: doc.level || 2, turns: doc.turns, ms: totalMs, vocab: vocabRows(doc),
       full_url: doc.full_url || null, full_starts: doc.full_starts || [],
+      grammar: doc.grammar || null,
     });
   } else {
     await pushRow('eng_articles', 'user_id,article_id', {
