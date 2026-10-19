@@ -466,6 +466,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .gram .ge em{font-style:normal;font-size:10.5px;color:var(--dim);font-family:var(--num)}
 .prow2{position:relative}
 .pflag{position:absolute;top:7px;right:7px;padding:3px 8px;font-size:12px;line-height:1}
+.tflag{padding:2px 7px;font-size:11px;line-height:1;margin-left:6px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -555,7 +556,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-19.3';
+const BUILD = '2026-10-19.4';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -840,9 +841,12 @@ const koUrl = t => t ? `${CARD_AUD}/k/${audioKey(t)}.mp3` : null;
 function playCard(card, onend){
   const key = card?.answer_en && audioKey(card.answer_en);
   if (!key || noAudio.has(key)) return speak(card?.answer_en, onend);
+  // 찍어둔 대화 줄은 자기 턴 음성을 들고 있다 — 글자키 음성은 오늘 밤에 구워지므로
+  // 찍은 직후부터 들리려면 이미 있는 파일을 가리켜야 한다.
+  const src = card.audio_url || enUrl(card.answer_en);
   if (cardAudio) cardAudio.pause();
   if ('speechSynthesis' in window) speechSynthesis.cancel();
-  const a = new Audio(enUrl(card.answer_en));
+  const a = new Audio(src);
   cardAudio = a;
   a.playbackRate = tRate;
   if (onend) a.onended = onend;
@@ -1127,21 +1131,21 @@ async function loadTodayVocab(){
   // 실제로 오늘 90장이 만들어져 20장에서 잘렸고 70장이 고아가 될 뻔했다.
   const { data: fresh } = await sb.from('eng_cards').select('*')
     .eq('user_id', currentUser.id)
-    .eq('status','new').neq('status','suspended')
+    .eq('status','new').neq('status','suspended').neq('kind','line')
     .gte('created_at', d + 'T00:00:00').limit(VOCAB_NEW);
   let mine = fresh || [];
   if (mine.length < VOCAB_NEW) {
     // 모자라면 **오래된 미학습 카드부터** 채운다 (pack 으로 올린 것도 여기서 소화된다)
     const { data: backlog } = await sb.from('eng_cards').select('*')
       .eq('user_id', currentUser.id)
-      .eq('status','new').neq('status','suspended')
+      .eq('status','new').neq('status','suspended').neq('kind','line')
       .lt('created_at', d + 'T00:00:00')
       .order('created_at').limit(VOCAB_NEW - mine.length);
     mine = [...mine, ...(backlog || [])];
   }
   const { data: due } = await sb.from('eng_cards').select('*')
     .eq('user_id', currentUser.id)
-    .neq('status','new').neq('status','suspended').lte('next_review', d)
+    .neq('status','new').neq('status','suspended').neq('kind','line').lte('next_review', d)
     .order('next_review').limit(VOCAB_DUE);
   tVocab = { today: mine, past: due || [] };
 }
@@ -1417,7 +1421,7 @@ function drawWarmup(el, { title, context, items, onDone, backLabel }){
         ${x.example ? `<div class="pex">${esc(x.example)}</div>` : ''}
         ${(x.keywords || []).length ? `<div class="pkw">${(x.keywords||[]).map(k =>
           `<span><b>${esc(k.word)}</b> ${esc(k.meaning_ko)}</span>`).join('')}</div>` : ''}
-        <button class="btn sm pflag" data-pf="${i}" title="찍어두기">☆</button>
+        <button class="btn sm pflag" data-ft="${esc(x.term)}" title="찍어두기">☆</button>
       </div>`).join('')}
     </div>
     <div class="actbar" style="margin-top:14px">
@@ -1463,15 +1467,13 @@ function drawWarmup(el, { title, context, items, onDone, backLabel }){
     if (cards[i].card) playCard(cards[i].card); else speak(v[i].term);
   });
 
-  // 훑기에서 바로 찍기. 카드 행을 미리 안 들고 있으므로 누를 때 글자로 찾는다 —
-  // 탭 한 번에 한 번만 나가는 질의라 미리 받아두는 것보다 싸다.
-  el.querySelectorAll('[data-pf]').forEach(b => b.onclick = async () => {
-    const term = v[+b.dataset.pf].term;
-    const { data } = await sb.from('eng_cards').select('id, flagged')
-      .eq('user_id', currentUser.id).eq('answer_en', term).limit(1).maybeSingle();
-    if (!data) return toast('아직 카드가 안 만들어졌어 — 드릴에서 찍어줘');
-    await toggleFlag(data, b);
+  // 카드가 아직 없는 어휘도 찍을 수 있어야 한다 — 어휘 카드는 사람마다 공부하는
+  // 순간 만들어지므로 "아직 없어서 못 찍는" 구멍이 생긴다.
+  el.querySelectorAll('[data-ft]').forEach(b => b.onclick = () => {
+    const x = v.find(y => y.term === b.dataset.ft);
+    flagByText(b, { en:x.term, ko:koText(x), kind:x.kind === 'word' ? 'word' : 'phrase' });
   });
+  paintFlags(el);
 
   el.querySelectorAll('[data-pm]').forEach(b => b.onclick = () => {
     preMode = b.dataset.pm; stopPre();
@@ -1612,10 +1614,17 @@ function paintTurns(sc){
     d.innerHTML = `<span class="who">${esc(t.role_ko || t.who)}</span><span class="line">
       ${t.is_me && t.intent_ko ? `<span class="intent">↳ ${esc(t.intent_ko)}</span>` : ''}
       ${hide ? '<span class="hid">Your turn — tap to see the model line</span>' : segHtml(t.segs || [], t.ev || [])}
+      ${hide || !t.en ? '' : `<button class="btn sm tflag" data-ft="${esc(t.en)}" title="이 줄 찍어두기">☆</button>`}
       ${mean ? `<button class="tchev${openMean ? ' open' : ''}" aria-label="Show meaning" aria-expanded="${openMean}">›</button>` : ''}
       ${mean && openMean ? `<span class="mean">${esc(mean)}</span>` : ''}</span>`;
     const mb = d.querySelector('.tchev');
     if (mb) mb.onclick = e => { e.stopPropagation(); t.showMean = !t.showMean; paintTurns(sc); };
+    const fb = d.querySelector('.tflag');
+    if (fb) fb.onclick = e => {
+      e.stopPropagation();                    // 줄을 누르면 재생이라 번져선 안 된다
+      flagByText(fb, { en:t.en, ko:t.meaning_ko || t.intent_ko, kind:'line',
+                       topic:sc.topic, ref:sc.scene_id, audio:t.audio_url });
+    };
     d.querySelector('.line').onclick = async () => {
       if (hide) {
         t.open = true; paintTurns(sc); playTurnA(sc, i);
@@ -1628,6 +1637,7 @@ function paintTurns(sc){
     };
     box.appendChild(d);
   });
+  paintFlags(box);
 }
 
 function playTurnA(sc, i, then){
@@ -2051,11 +2061,47 @@ async function toggleFlag(c, btn){
   const { error } = await sb.from('eng_cards').update({ flagged: want }).eq('id', c.id);
   if (error) return toast('Failed — check your connection');
   c.flagged = want;
-  if (btn) {
-    btn.textContent = btn.textContent.includes('찍') ? (want ? '★ 찍음' : '☆ 찍어두기') : (want ? '★' : '☆');
-    btn.classList.toggle('on', want);
-  }
+  paintFlagBtn(btn, want);
   toast(want ? '찍어뒀어 — Vocab 탭 Flagged 에서 모아 봐' : '찍기 해제');
+}
+
+function paintFlagBtn(btn, on){
+  if (!btn) return;
+  btn.textContent = btn.dataset.long ? (on ? '★ 찍음' : '☆ 찍어두기') : (on ? '★' : '☆');
+  btn.classList.toggle('on', on);
+}
+
+/** ☆ 상태를 **그린 뒤에** 채운다.
+ *  🔴 그리기 전에 질의하면 화면과 소리가 그만큼 늦어진다 (훑기가 그래서 느렸다).
+ *  그래서 전에는 아예 '☆' 로 박아놨는데, 그러면 **찍어둔 게 안 보인다** — 나갔다
+ *  들어오면 별이 사라진 것처럼 보이고, 누르면 해제만 됐다. 비동기로 칠한다. */
+async function paintFlags(root){
+  const nodes = [...root.querySelectorAll('[data-ft]')];
+  const terms = [...new Set(nodes.map(n => n.dataset.ft).filter(Boolean))];
+  if (!terms.length) return;
+  const { data } = await sb.from('eng_cards').select('answer_en, flagged')
+    .eq('user_id', currentUser.id).in('answer_en', terms);
+  const on = new Set((data || []).filter(c => c.flagged).map(c => c.answer_en));
+  for (const n of nodes) if (on.has(n.dataset.ft)) paintFlagBtn(n, true);
+}
+
+/** 글자로 찍는다 — 어휘든 대화 한 줄이든 같은 길을 쓴다. 카드가 없으면 만든다.
+ *  대화 줄은 kind='line' 으로 들어가고 **매일 드릴 큐에는 안 든다** (loadTodayVocab) —
+ *  문장이 섞이면 2분짜리 마무리가 무거워지고, 그러면 드릴 자체를 건너뛰게 된다. */
+async function flagByText(btn, f){
+  const en = (f.en || '').trim();
+  if (!en) return;
+  const { data: have } = await sb.from('eng_cards').select('id, flagged')
+    .eq('user_id', currentUser.id).eq('answer_en', en).limit(1).maybeSingle();
+  if (have) return toggleFlag(have, btn);
+  const { error } = await sb.from('eng_cards').insert({
+    user_id: currentUser.id, answer_en: en, prompt_ko: f.ko || en,
+    kind: f.kind || 'phrase', topic: f.topic || null, source: 'flag',
+    source_ref: f.ref || null, status: 'new', flagged: true, audio_url: f.audio || null,
+  });
+  if (error) return toast('Failed — check your connection');
+  paintFlagBtn(btn, true);
+  toast('찍어뒀어 — Vocab 탭 Flagged 에서 모아 봐');
 }
 
 /* ── 막 4 · 마무리 퀴즈 ──────────────────────────────────
@@ -2461,7 +2507,7 @@ async function renderVocab(){
         <div class="vmeta">${c.next_review ? 'Next review ' + esc(c.next_review) : ''}${c.source_ref ? ' · ' + esc(c.source_ref) : ''}</div>
         <div class="srow" style="margin-top:9px">
           <button class="btn sm" data-play="${esc(c.id)}">🔊 Listen</button>
-          <button class="btn sm${c.flagged ? ' on' : ''}" data-flag="${esc(c.id)}">${c.flagged ? '★ 찍음' : '☆ 찍어두기'}</button>
+          <button class="btn sm${c.flagged ? ' on' : ''}" data-flag="${esc(c.id)}" data-long="1">${c.flagged ? '★ 찍음' : '☆ 찍어두기'}</button>
           <button class="btn sm vkill" data-kill="${esc(c.id)}">Never again</button>
         </div>
       </div></div>`).join('');
@@ -2483,7 +2529,7 @@ async function renderVocab(){
     va.onclick = async () => {
       tStopAudio();
       const label = va.textContent; va.disabled = true;
-      const track = await concatMp3(rows.map(c => [enUrl(c.answer_en), koUrl(c.prompt_ko)]),
+      const track = await concatMp3(rows.map(c => [c.audio_url || enUrl(c.answer_en), koUrl(c.prompt_ko)]),
         (n, m) => { va.textContent = `… ${n}/${m}`; });
       va.textContent = label; va.disabled = false;
       if (!track) return toast('오디오 일부가 아직 안 올라왔어');
