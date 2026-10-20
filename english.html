@@ -560,7 +560,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.4';
+const BUILD = '2026-10-21.5';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2981,6 +2981,18 @@ function renderPlan(){
 
     ${block('office')}
     ${block('home')}
+
+    <div class="vcard" style="margin-bottom:14px">
+      <div class="vt" style="font-size:14px">Speaking 한 문항은 네 걸음</div>
+      <div class="vm">
+        <b style="color:var(--text)">1 이해</b> — 뭘 묻는 질문이고 뭐가 점수가 되는지 읽는다. 말은 안 한다.<br>
+        <b style="color:var(--text)">2 따라</b> — 모범답안을 한 줄씩 듣고 그대로 소리내서 따라한다.<br>
+        <b style="color:var(--text)">3 틀</b> — 모범답안을 덮고 틀만 보고 빈칸을 네 얘기로 채운다.<br>
+        <b style="color:var(--text)">4 혼자</b> — 질문만 듣고 90초. 여기만 시험과 같다.<br><br>
+        걸음마다 네 입에서 나오는 양이 늘어난다. 바로 4걸음이 되면 위의 숫자를 눌러 건너뛰면 된다.
+        <b style="color:var(--text)">30초 전엔 Done 이 안 눌린다</b> — 오픽은 분량 자체가 채점 항목이다.
+      </div>
+    </div>
 
     <div class="vcard" style="margin-bottom:14px">
       <div class="vt" style="font-size:14px">20분 없는 날</div>
