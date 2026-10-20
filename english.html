@@ -557,7 +557,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.1';
+const BUILD = '2026-10-21.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1340,9 +1340,22 @@ let scLoop = false;       // 장면 반복 재생
 
 function actScene(el){
   const done = tSession?.progress?.scenes?.done || 0;
-  scIdx = Math.min(done, tScenes.length - 1);
-  scPhase = 'pre';
+  // 🔴 done 은 "어디까지 했나"일 뿐인데 그걸 그대로 들어갈 자리로 썼다. 다 끝내면
+  // done 이 장면 수와 같아져서 **늘 마지막 장면**으로 들어가고, 거기선 다음 버튼이
+  // "Back to Today" 라 앞 장면으로 돌아갈 길이 없었다. 다 했으면 처음부터 다시 본다.
+  const all = done >= tScenes.length;
+  scIdx = all ? 0 : done;
+  scPhase = all ? 'dialog' : 'pre';   // 복습이면 어휘 훑기를 또 시키지 않는다 (Words 로 열면 된다)
   drawScene(el);
+}
+
+/* 장면을 골라 가는 줄. 끝낸 뒤에도 아무 장면이나 다시 열 수 있어야 한다. */
+function sceneNav(){
+  if (tScenes.length < 2) return '';
+  const done = tSession?.progress?.scenes?.done || 0;
+  return `<div class="srow" style="margin-bottom:10px">${tScenes.map((x, i) =>
+    `<button class="tchip${i === scIdx ? ' on' : ''}" data-si="${i}" title="${esc(x.situation_ko || '')}"
+      >${i + 1}${i < done ? ' ✓' : ''}</button>`).join('')}</div>`;
 }
 
 /* 🔴 어휘를 **본문 앞에** 둔다.
@@ -1542,7 +1555,7 @@ function drawScene(el){
   if (!sc) { renderToday(); return; }
   if (scPhase === 'pre') { drawPre(el, sc); return; }
   const turns = sc.turns || [];
-  el.innerHTML = actBar(`Scene ${scIdx+1}/${tScenes.length}`) + `
+  el.innerHTML = actBar(`Scene ${scIdx+1}/${tScenes.length}`) + sceneNav() + `
     <div class="sit" style="background:var(--eng-bg);border-radius:9px;padding:10px 13px;font-size:13px;margin-bottom:12px">
       <b style="color:var(--eng)">Context</b> · ${esc(sc.situation_ko)}</div>
     ${grammarHtml(sc)}
@@ -1560,6 +1573,9 @@ function drawScene(el){
       <button class="btn sm primary-btn" id="sc-next" style="padding:8px 14px">${scIdx+1 < tScenes.length ? 'Next scene →' : 'Back to Today →'}</button>
     </div>`;
   wireBar();
+  el.querySelectorAll('[data-si]').forEach(b => b.onclick = () => {
+    tStopAudio(); scIdx = +b.dataset.si; scPhase = 'dialog'; drawScene(el);
+  });
   paintTurns(sc);
   // 기본은 1배. 자동으로 0.75× 로 내리면 원속에 귀가 안 익는다 — 실전 속도로
   // 알아듣는 게 목적이다. 느리게 듣고 싶으면 배율을 직접 누른다.
