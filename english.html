@@ -556,7 +556,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-19.4';
+const BUILD = '2026-10-20.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1375,17 +1375,23 @@ function stopPre(){
  *  msedge-tts 산출물이 24kHz 모노 CBR 로 고정이라 ffmpeg 없이 이어붙여도 맞는다.
  *  groups 는 url 묶음의 배열 — 묶음 하나가 marks 한 칸이 된다. 하나라도 없으면 null. */
 async function concatMp3(groups, onProgress){
-  const parts = [], marks = [];
-  let at = 0, done = 0;
-  for (const g of groups) {
+  // 🔴 하나씩 순서대로 받으면 **항목 수만큼 왕복이 쌓인다** — 어휘 25개를 "해석 같이"로
+  // 들으면 50왕복이라 누르고 몇 초를 기다렸다. 장면·기사는 통짜 파일 한 개라 바로 시작한다.
+  // 그래서 한 번에 다 던진다. 동시 연결 수는 브라우저가 호스트당 알아서 제한한다.
+  const grab = async u => {
+    try { const r = await fetch(u); return r.ok ? new Uint8Array(await r.arrayBuffer()) : null; }
+    catch (_) { return null; }
+  };
+  let done = 0;
+  const got = await Promise.all(groups.map(async g => {
+    const bufs = await Promise.all(g.filter(Boolean).map(grab));
     onProgress && onProgress(++done, groups.length);
-    const bufs = [];
-    for (const u of g.filter(Boolean)) {
-      const r = await fetch(u);
-      if (!r.ok) return null;                       // 하나라도 없으면 통짜를 포기한다
-      bufs.push(new Uint8Array(await r.arrayBuffer()));
-    }
-    if (!bufs.length) return null;
+    return bufs;
+  }));
+  const parts = [], marks = [];
+  let at = 0;
+  for (const bufs of got) {
+    if (!bufs.length || bufs.some(b => !b)) return null;   // 하나라도 없으면 통짜를 포기한다
     marks.push(at);
     for (const b of bufs) { parts.push(b); at += b.length; }
   }
