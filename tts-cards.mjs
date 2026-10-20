@@ -56,12 +56,20 @@ const audioKey = new Function(
   appHtml.slice(appHtml.indexOf('function audioKey(s){'), appHtml.indexOf('const CARD_AUD =')) +
   '; return audioKey;')();
 
-const [sc, ar, cd] = await Promise.all([
+// 모범답안을 **문장 단위로** 굽는다 — Speaking 2걸음(따라 말하기)이 한 줄씩 들려준다.
+// 쪼개는 규칙도 앱에서 읽어온다. 베껴 두면 어긋나고, 어긋나면 조용히 로봇 음성이 된다.
+const sentences = new Function(
+  appHtml.slice(appHtml.indexOf('const sentences = t =>'),
+                appHtml.indexOf('\n', appHtml.indexOf('const sentences = t =>'))) +
+  '; return sentences;')();
+
+const [sc, ar, cd, pr] = await Promise.all([
   sb.from('eng_scenes').select('vocab').limit(2000),
   sb.from('eng_articles').select('vocab').limit(2000),
   sb.from('eng_cards').select('answer_en, prompt_ko').limit(5000),
+  sb.from('eng_prompts').select('id, question_en, model_en'),
 ]);
-for (const r of [sc, ar, cd]) if (r.error) die(r.error.message);
+for (const r of [sc, ar, cd, pr]) if (r.error) die(r.error.message);
 
 // 영어는 term, 한국어는 뜻. 같은 글자는 한 번만 굽는다.
 const en = new Map(), ko = new Map();
@@ -73,6 +81,7 @@ for (const row of [...(sc.data || []), ...(ar.data || [])])
     addKo(v.kind === 'word' ? v.meaning_ko : (v.meaning_ko || v.prompt_ko));
   }
 for (const c of (cd.data || [])) { addEn(c.answer_en); addKo(c.prompt_ko); }
+for (const x of (pr.data || [])) for (const sn of sentences(x.model_en)) addEn(sn);
 
 // 이미 구운 것 확인 (Storage list 는 1000개 단위 페이지)
 async function listed(dir){
@@ -159,7 +168,7 @@ if (koTodo.length) console.log(`\n✓ 한국어 ${kok}장 생성${kofail ? `, ${
 // ── 오픽 질문 음성 ──────────────────────────────────────
 // 실제 시험은 질문이 **귀로만** 온다. 앱이 질문을 텍스트로 띄워와서
 // "질문을 못 알아듣는" 상태가 그대로 남았다. 경로는 카드와 같은 규칙이라 DB 컬럼이 필요 없다.
-const { data: prompts } = await sb.from('eng_prompts').select('id, question_en');
+const prompts = pr.data || [];
 const phave = new Set();
 for (let page = 0; ; page++) {
   const { data: objs } = await sb.storage.from('eng-audio').list('prompts', { limit: 1000, offset: page * 1000 });
