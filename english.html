@@ -164,7 +164,6 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .spkind{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ok);background:var(--ok-bg);border-radius:99px;padding:2px 9px;margin-bottom:8px}
 .spen{font-size:17px;line-height:1.5;font-weight:600;margin:0}
-.sphint{font-size:12.5px;color:var(--sub);line-height:1.6;margin:8px 0 0}
 .sptimer{text-align:center;margin:18px 0 12px}
 .sptime{font-family:var(--num);font-size:40px;font-weight:700;line-height:1;
   font-variant-numeric:tabular-nums;color:var(--text);transition:color .2s}
@@ -465,6 +464,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .gram .gw{padding:0 13px 2px;color:var(--sub);line-height:1.6}
 .gram .ge{padding:7px 13px 11px;color:var(--text);font-style:italic}
 .gram .ge em{font-style:normal;font-size:10.5px;color:var(--dim);font-family:var(--num)}
+.frame .fb{padding:6px 13px}
+.frame .fb+.fb{border-top:1px solid var(--border)}
+.frame .fk{display:block;font-size:10px;color:var(--dim);font-weight:700}
+.frame .fe{display:block;font-size:13.5px;line-height:1.5;margin-top:2px}
 .prow2{position:relative}
 .pflag{position:absolute;top:7px;right:7px;padding:3px 8px;font-size:12px;line-height:1}
 .tflag{padding:2px 7px;font-size:11px;line-height:1;margin-left:6px;vertical-align:middle}
@@ -557,7 +560,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.2';
+const BUILD = '2026-10-21.3';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1753,6 +1756,49 @@ function chainTurn(sc, i){
  */
 const KIND_LABEL = { describe:'Describe', habit:'Routine', past:'Past experience',
                      compare:'Compare', ask:'Ask questions', solve:'Solve a problem' };
+
+/* 🔴 초보의 벽은 "뭘 어떻게 말하지" 다. 모범답안은 말한 **뒤에** 나오니 그 벽엔 안 닿는다.
+ * 오픽 답은 유형마다 뼈대가 고정이라 질문마다 다를 게 없다 — 상수로 둔다.
+ * 접어 둔다: 시험처럼 맨입으로 해보고 싶으면 안 펴면 된다. */
+const FRAME = {
+  describe: [['어떤지 한마디',        `It's ~. / I'd say it's pretty ~.`],
+             ['눈에 보이는 것 둘셋',  `There's ~, and right next to it, ~.`],
+             ['거기서 내가 뭘 하나',  `That's where I usually ~.`],
+             ['한 줄로 묶기',         `So overall, it's ~.`]],
+  habit:    [['얼마나 자주',          `I'd say I ~ about twice a week.`],
+             ['순서대로',             `First I ~, and then I ~. After that, ~.`],
+             ['왜 그렇게 하나',       `The reason I do that is ~.`],
+             ['요즘 달라진 점',       `These days, though, I ~.`]],
+  past:     [['언제·어디서',          `This was about two years ago, when I ~.`],
+             ['무슨 일이 있었나',     `What happened was, ~.`],
+             ['그래서 어떻게 했나',   `So I ended up ~.`],
+             ['그게 남긴 것',         `Looking back, it ~.`]],
+  compare:  [['옛날엔 이랬다',        `Back then, ~.`],
+             ['지금은 이렇다',        `But now, ~.`],
+             ['뭐가 가장 바뀌었나',   `The biggest change is probably ~.`],
+             ['어느 쪽이 나은가',     `Personally, I'd say ~ is better, because ~.`]],
+  ask:      [['왜 묻는지 한마디',     `I have a few questions about ~.`],
+             ['첫 질문',              `First, could you tell me ~?`],
+             ['둘째·셋째',            `Also, I was wondering ~. And is there any way to ~?`],
+             ['마무리',               `That's all I needed — thanks.`]],
+  solve:    [['문제를 말한다',        `So here's the thing — ~.`],
+             ['왜 곤란한지',          `The problem is that ~.`],
+             ['대안 둘을 준다',       `So I was thinking, either ~ or ~.`],
+             ['공을 넘긴다',          `Which one works better for you?`]],
+};
+
+function frameHtml(p){
+  const beats = FRAME[p.kind] || [];
+  const ph = p.phrases || [];
+  if (!beats.length && !p.hint_ko && !ph.length) return '';
+  return `<details class="gram frame">
+    <summary><span class="gl">틀</span>막막하면 — ${esc(KIND_LABEL[p.kind] || p.kind)} 는 이 순서로</summary>
+    ${p.hint_ko ? `<div class="gw">${esc(p.hint_ko)}</div>` : ''}
+    ${beats.map(([ko, en]) => `<div class="fb"><span class="fk">${esc(ko)}</span><span class="fe">${esc(en)}</span></div>`).join('')}
+    ${ph.length ? `<div class="spph" style="margin:10px 13px 12px">${ph.map(x =>
+      `<div class="sprow"><b>${esc(x.term)}</b><span>${esc(x.meaning_ko)}</span></div>`).join('')}</div>` : ''}
+  </details>`;
+}
 let spIdx = 0, spTimer = null, spStart = 0, spRec = null, spChunks = [], spUrl = null;
 
 function spStop(){
@@ -1780,8 +1826,8 @@ function drawSpeak(el){
         <button class="btn sm" id="sp-show">Show text</button>
       </div>
       <p class="spen" id="sp-text" hidden>${esc(p.question_en)}</p>
-      ${p.hint_ko ? `<p class="sphint" id="sp-hint" hidden>${esc(p.hint_ko)}</p>` : ''}
     </div>
+    ${frameHtml(p)}
     <div class="sptimer">
       <div class="sptime" id="sp-time">0:00</div>
       <div class="sptrack"><i id="sp-bar" style="width:0%"></i></div>
@@ -1810,11 +1856,7 @@ function drawSpeak(el){
     a.onended = () => { qPlays++; this.textContent = qPlays >= 2 ? '🔊 Listen again' : `🔊 Listen again (${2-qPlays} left)`; };
     a.play().catch(() => speak(p.question_en));   // 음성이 없으면 기기 TTS
   };
-  $('sp-show').onclick = function(){
-    $('sp-text').hidden = false;
-    const h = $('sp-hint'); if (h) h.hidden = false;
-    this.remove();
-  };
+  $('sp-show').onclick = function(){ $('sp-text').hidden = false; this.remove(); };
   $('sp-q').click();                               // 들어오자마자 한 번 들려준다
 
   const timeEl = $('sp-time'), barEl = $('sp-bar');
