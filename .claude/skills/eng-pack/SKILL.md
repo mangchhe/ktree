@@ -13,6 +13,21 @@ description: ktree English 밤 보급. 상황 대화 장면 3~5개와 뉴스 기
 - 허용된 도구는 `Bash(node *)` · `Bash(npm install*)` · Read/Write/Edit/Glob/Grep/WebSearch/WebFetch 다.
 - 마지막에 한국어 한 줄로 요약한다 (로그에 남아 아침에 읽는다).
 
+## 🔴 사용자 수준 — 먼저 읽는다
+
+**첫 오픽 결과가 NH** 였다. 재시험은 2027년 1월 초, 목표는 IM1(최소 IL). 앱은 네 단계로
+올라간다 — S1 문장 만들기(NH→IL) · S2 과거로 말하기(IL) · S3 이어 말하기(IL→IM1) · S4 실전(IM).
+단계표는 `english.html` 의 `STAGES`, 문법은 `GRAMMAR`.
+
+그런데 그동안 만든 재료가 **전부 IM~IH** 였다 (장면 L2·L3 만, 모범답안 평균 650자·9문장).
+NH 에게 그걸 따라 말하게 하니 입이 안 떨어졌다 (실측: 말한 시간 3초·10초).
+
+그래서 지금은:
+- **문항마다 `model_l1`(짧은 답)을 반드시** 같이 만든다 — 3장 참고. S1·S2 의 따라 말하기와
+  출퇴근 트랙이 이걸 쓴다.
+- **장면은 L2 를 우선** 만든다. S1·S2 는 L2 까지만 뽑는다(`scMax`). L3 는 재고가 충분하다(53개).
+- 뉴스는 S3 부터 나온다. 기사는 하루 1건을 유지하되 우선순위는 맨 뒤다.
+
 ## 0. 먼저 오늘 것이 있는지 본다
 
 ```bash
@@ -209,7 +224,19 @@ node drafts/english/_prompt-stock.mjs
 - `model_note_ko` 에 **왜 그렇게 구성했는지**를 적는다. 모범답안은 내용이 아니라
   구조를 보라고 주는 것이다.
 - `hint_ko` 는 영어를 번역해주는 게 아니라 **무엇을 말해야 하는지** 순서를 준다.
-- `seconds` 는 60(ask) / 75(describe·habit·solve) / 90(past·compare) 쯤.
+- `seconds` 는 60(ask) / 75(describe·habit·solve) / 90(past·compare) 쯤. (앱의 목표 시간은
+  이제 **단계**가 정한다 — S1 30초 · S2 45초 · S3 60초 · S4 90초. 이 값은 S4 기준이다.)
+- 🔴 **`model_l1` 을 반드시 쓴다** — 같은 질문의 **S1·S2 용 짧은 답**. 없거나 규칙을 어기면
+  `seed-prompts.mjs` 가 **아무것도 넣지 않는다.** 규칙(`l1-rules.mjs`):
+  - 문장 3~6개, 문장마다 13단어 이하
+  - describe·habit·ask 는 **현재시제만**(am·is·are, I go, There is, can, Do you ~?)
+  - past 는 **단순과거만**(went·ate·saw, -ed). compare 는 `Before, I ~ed. Now, I ~.`
+  - solve 는 `Hello, I have a problem. … Can you ~, please? Or can I ~?`
+  - 금지: actually · honestly · which(관계대명사, 의문사 Which ~? 는 된다) · used to ·
+    have been · end up · kind of(얼버무림, what kind of 는 된다) · although · whereas
+  - 예: `I live in an apartment. It is small but clean. There is a park near my home. I like it because it is quiet.`
+  - 같은 내용을 model_en 보다 **짧게가 아니라 쉽게** 쓴다. model_en 앞 문장을 잘라 오면
+    어휘가 그대로 IH 라 소용없다.
 - `phrases` 에는 **담화 표지**를 우선 담는다 — `the thing is`, `what I usually do is`,
   `looking back` 처럼 문단을 엮는 접착제. text type 점수에 직접 걸린다.
 - 🔴 `topic` 은 `eng_topics.name` 과 **같은 한국어 값**이어야 한다. 어긋나면 에러 없이

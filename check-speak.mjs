@@ -8,10 +8,10 @@ import assert from 'node:assert';
 
 const html = readFileSync(new URL('./english.html', import.meta.url), 'utf8');
 const src = html.slice(html.indexOf('const KIND_LABEL ='), html.indexOf('function qBtns('));
-const { KIND_LABEL, KIND_GUIDE, FRAME, sentences, STEP_LABEL, MIN_SPEAK, stepRow } =
+const { KIND_LABEL, KIND_GUIDE, FRAME, sentences, STEP_LABEL, stepRow } =
   new Function(`const esc = s => String(s); ${src}
     spStep = 2;
-    return { KIND_LABEL, KIND_GUIDE, FRAME, sentences, STEP_LABEL, MIN_SPEAK, stepRow };`)();
+    return { KIND_LABEL, KIND_GUIDE, FRAME, sentences, STEP_LABEL, stepRow };`)();
 
 // 1) 유형마다 설명과 틀이 둘 다 있어야 한다
 for (const k of Object.keys(KIND_LABEL)) {
@@ -22,12 +22,16 @@ for (const k of Object.keys(KIND_LABEL)) {
   assert.ok(FRAME[k]?.length >= 3, `${k}: 틀이 없다`);
 }
 
-// 2) 30초 문턱
-assert.ok(MIN_SPEAK >= 30, `문턱이 ${MIN_SPEAK}초 — 30초 밑으로 내리면 의미가 없다`);
+// 2) 문턱 — 단계가 정한다. 문턱이 목표의 2/3 밑이거나 20초 밑이면 의미가 없다
+const STAGES = new Function(html.slice(html.indexOf('const STAGES = {'), html.indexOf('const PROMOTE =')) + '; return STAGES;')();
+for (const [n, x] of Object.entries(STAGES))
+  assert.ok(x.min >= 20 && x.min >= x.sec * 2 / 3 && x.min <= x.sec, `S${n}: 문턱 ${x.min}초 / 목표 ${x.sec}초`);
 const solo = html.slice(html.indexOf('function drawSpSolo('), html.indexOf('/* ── 막 2'));
 assert.ok(/id="sp-end" disabled/.test(solo), 'Done 이 처음부터 눌리면 0초로 끝낼 수 있다');
-assert.ok(/endEl\.disabled = sec < MIN_SPEAK/.test(solo), '타이머가 Done 문턱을 안 건다');
-assert.ok(/MIN_SPEAK - sec/.test(solo), '남은 초를 안 보여주면 왜 안 눌리는지 모른다');
+assert.ok(/minSec = curStage\(\)\.min/.test(solo), '문턱을 단계에서 안 읽는다 — 문항 seconds(IH 기준)로 돌아갔다');
+assert.ok(/endEl\.disabled = sec < minSec/.test(solo), '타이머가 Done 문턱을 안 건다');
+assert.ok(/minSec - sec/.test(solo), '남은 초를 안 보여주면 왜 안 눌리는지 모른다');
+const MIN_SPEAK = STAGES[1].min;
 
 // 3) 걸음 줄
 const row = stepRow();
@@ -43,5 +47,6 @@ assert.deepStrictEqual(sentences(null), []);
 const tts = readFileSync(new URL('./tts-cards.mjs', import.meta.url), 'utf8');
 assert.ok(tts.includes("appHtml.indexOf('const sentences = t =>')"), 'tts-cards 가 규칙을 베껴 두면 어긋난다');
 assert.ok(tts.includes('sentences(x.model_en)'), '모범답안 문장을 굽지 않으면 따라 말하기가 로봇 음성이다');
+assert.ok(tts.includes('sentences(x.model_l1)'), 'S1 답 문장을 굽지 않으면 S1 따라 말하기·출퇴근 트랙이 끊긴다');
 
-console.log(`✓ Speaking — ${Object.keys(KIND_GUIDE).length}유형 설명·틀, 문턱 ${MIN_SPEAK}초, 걸음 ${STEP_LABEL.length}`);
+console.log(`✓ Speaking — ${Object.keys(KIND_GUIDE).length}유형 설명·틀, 문턱 S1 ${MIN_SPEAK}초~, 걸음 ${STEP_LABEL.length}`);

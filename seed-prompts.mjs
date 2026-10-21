@@ -7,8 +7,12 @@
  *   node seed-prompts.mjs <file.json> --dry  넣지 않고 검증만
  *
  * JSON 은 배열이다:
- *   [{ kind, topic, level, seconds, question_en, hint_ko, model_en, model_note_ko,
+ *   [{ kind, topic, level, seconds, question_en, hint_ko, model_en, model_l1, model_note_ko,
  *      phrases:[{term, meaning_ko}] }]
+ *
+ * 🔴 model_l1 — 같은 질문의 **S1·S2 용 짧은 답**. 사용자 출발점이 NH 라 S1·S2 의 따라 말하기와
+ *    출퇴근 트랙은 model_en(IH) 이 아니라 이걸 쓴다. 규칙은 l1-rules.mjs (문장 3~6개, 13단어 이하,
+ *    actually·which(관계대명사)·used to 같은 IM 이상 표현 금지). 어기면 넣지 않는다.
  *
  * kind 는 오픽 문항 유형 — describe · habit · past · compare · ask · solve.
  * 🔴 ask(질문 만들기)를 빠뜨리지 말 것. "나에게 X에 대해 세 가지 물어봐"는 반드시
@@ -22,6 +26,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
+import { checkL1 } from './l1-rules.mjs';
 
 const P = [
   // ── describe ────────────────────────────────────────────
@@ -149,6 +154,9 @@ for (const [i, it] of items.entries()) {
   if (!KINDS.has(it.kind))          bad.push(`#${i} kind='${it.kind}' (describe·habit·past·compare·ask·solve 중 하나)`);
   else if (!it.question_en)         bad.push(`#${i} question_en 없음`);
   else if (known.size && !known.has(it.topic)) bad.push(`#${i} topic='${it.topic}' 가 eng_topics 에 없음 — 넣어도 안 뽑힙니다`);
+  // 내장 시드(파일 없음)는 이미 DB 에 있고 S1 답은 backfill-l1.mjs 로 채웠다 — 파일로 넣을 때만 요구한다
+  else if (FILE && !it.model_l1)    bad.push(`#${i} model_l1 없음 — S1·S2 따라 말하기가 IH 답으로 떨어진다`);
+  else if (FILE) { const w = checkL1(it.model_l1); if (w.length) bad.push(`#${i} model_l1: ${w.join(' · ')}`); }
 }
 if (bad.length) { console.error('✗ 넣지 않았습니다:\n  ' + bad.join('\n  ')); process.exit(1); }
 

@@ -67,7 +67,7 @@ const [sc, ar, cd, pr] = await Promise.all([
   sb.from('eng_scenes').select('vocab').limit(2000),
   sb.from('eng_articles').select('vocab').limit(2000),
   sb.from('eng_cards').select('answer_en, prompt_ko').limit(5000),
-  sb.from('eng_prompts').select('id, question_en, model_en'),
+  sb.from('eng_prompts').select('id, question_en, model_en, model_l1'),
 ]);
 for (const r of [sc, ar, cd, pr]) if (r.error) die(r.error.message);
 
@@ -81,7 +81,13 @@ for (const row of [...(sc.data || []), ...(ar.data || [])])
     addKo(v.kind === 'word' ? v.meaning_ko : (v.meaning_ko || v.prompt_ko));
   }
 for (const c of (cd.data || [])) { addEn(c.answer_en); addKo(c.prompt_ko); }
-for (const x of (pr.data || [])) for (const sn of sentences(x.model_en)) addEn(sn);
+for (const x of (pr.data || [])) for (const sn of [...sentences(x.model_en), ...sentences(x.model_l1)]) addEn(sn);
+
+// 문법 예문 — 판의 Grammar 칸이 사람 목소리로 들려준다. 목록은 앱에 있으니 앱에서 읽는다.
+const GRAMMAR = new Function(
+  appHtml.slice(appHtml.indexOf('const GRAMMAR = ['), appHtml.indexOf('/* GRAMMAR 끝')) +
+  '; return GRAMMAR;')();
+for (const g of GRAMMAR) for (const [e, k] of g.ex) { addEn(e); addKo(k); }
 
 // 이미 구운 것 확인 (Storage list 는 1000개 단위 페이지)
 async function listed(dir){

@@ -464,6 +464,18 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .gram .gw{padding:0 13px 2px;color:var(--sub);line-height:1.6}
 .gram .ge{padding:7px 13px 11px;color:var(--text);font-style:italic}
 .gram .ge em{font-style:normal;font-size:10.5px;color:var(--dim);font-family:var(--num)}
+/* 단계 게이지 — 판 맨 위. 누르면 순서 탭(로드맵)으로 간다 */
+.stage{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--eng-bd);
+  border-radius:12px;padding:11px 14px;margin-bottom:12px;color:var(--text);font:inherit;cursor:pointer}
+.stage .st1{display:flex;align-items:baseline;gap:6px;font-size:14px;font-weight:700}
+.stage .st1 b{color:var(--eng)}
+.stage .st1 em{font-style:normal;font-size:10.5px;color:var(--dim);font-weight:700}
+.stage .stn{margin-left:auto;font-family:var(--num);font-size:11px;color:var(--sub);font-variant-numeric:tabular-nums}
+.stage .sttrack{height:6px;border-radius:99px;background:var(--card2);overflow:hidden;margin:8px 0 6px}
+.stage .sttrack i{display:block;height:100%;background:var(--eng);border-radius:99px;transition:width .3s}
+.stage .st2{font-size:11.5px;color:var(--dim);line-height:1.5}
+.stage .st2 b{color:var(--text)}
+.bcard.opt{border-style:dashed}
 .frame .fb{padding:6px 13px}
 .frame .fb+.fb{border-top:1px solid var(--border)}
 .frame .fk{display:block;font-size:10px;color:var(--dim);font-weight:700}
@@ -563,7 +575,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.7';
+const BUILD = '2026-10-21.8';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -655,12 +667,22 @@ let cmtLoop = false;
 const PROMPT_AUD = id => `${SUPABASE_URL}/storage/v1/object/public/eng-audio/prompts/${id}.mp3`;
 
 function commuteUrls(only){
+  const st = curStage();
   const qs = tPrompts.map(p => [PROMPT_AUD(p.id)]);
   if (only === 'q') return qs;
+  // S1·S2: 질문 바로 뒤에 **그 질문의 짧은 답**. 질문을 귀로 잡는 게 첫 실패였고,
+  // 답의 모양까지 귀에 넣어두면 집에 와서 입을 열 때 첫 문장이 나온다.
+  // 장면·뉴스는 단계가 요구할 때만 — S1 에 원어민 속도 대화를 깔면 그냥 소음이다.
+  const qa = st.model === 'l1'
+    ? tPrompts.map(p => [PROMPT_AUD(p.id), ...sentences(p.model_l1 || '').map(enUrl)])
+    : qs;
+  const g = todayGrammar();
   return [
-    ...tScenes.filter(x => x.full_url).map(x => [x.full_url]),
-    ...(tArticle?.audio_url ? [[tArticle.audio_url]] : []),
-    ...qs,
+    ...(g ? [g.ex.map(([en]) => enUrl(en))] : []),
+    ...(st.board.req.includes('scene') ? tScenes.filter(x => x.full_url).map(x => [x.full_url]) : []),
+    ...(st.board.req.includes('article') || st.board.opt.includes('article')
+        ? (tArticle?.audio_url ? [[tArticle.audio_url]] : []) : []),
+    ...qa,
   ];
 }
 
@@ -937,6 +959,199 @@ const COMBOS = [
   ['describe', 'ask', 'solve'],       // 롤플레이 묶음
   ['describe', 'habit', 'compare'],   // 변화·비교 묶음
 ];
+
+/* 🔴 커리큘럼 단계. 첫 오픽이 NH 였다 — 그런데 재료(장면·모범답안·뉴스)는 전부 IM~IH 로
+ * 만들어져 있어서 따라 말하기에서 입이 안 떨어졌다 (실측 3초·10초). 단계마다 문법·답 길이·
+ * 문항 유형·듣기 재료가 같이 올라간다.
+ *   by     — 1월 초 재시험에 맞춘 **페이스 기준선**. 이 날짜에 자동으로 올라가지 않는다.
+ *   승급   — 실적으로 한다(PROMOTE). 목표 시간을 넘긴 답 + 말한 날 수.
+ *   board  — req 는 완주 조건, opt 는 판에 나오지만 완주를 막지 않는다. 없는 칸은 안 나온다.
+ *   model  — 'l1' 이면 따라 말하기·출퇴근 트랙이 짧은 S1 답(model_l1)을 쓴다. */
+const STAGES = {
+  1: { name:'문장 만들기',   opic:'NH → IL',  by:'11-11', sec:30, min:20, model:'l1', scMax:2,
+       kinds:['describe','habit','ask'],
+       board:{ req:['grammar','speak','vocab'], opt:['scene'], quiz:false },
+       focus:'문장 3~4개, 30초. 현재시제(am·is·are, I go)로. 짧아도 된다 — 문장이 끝까지 가는 게 먼저다.' },
+  2: { name:'과거로 말하기', opic:'IL',       by:'12-02', sec:45, min:30, model:'l1', scMax:2,
+       kinds:['describe','habit','ask','past'],
+       board:{ req:['grammar','speak','scene','vocab'], opt:[], quiz:true },
+       focus:'문장 5~6개, 45초. 과거 문항은 과거형을 끝까지. because·so 로 두 문장을 하나로 묶는다.' },
+  3: { name:'이어 말하기',   opic:'IL → IM1', by:'12-23', sec:60, min:40, model:'en', scMax:3,
+       kinds:['describe','habit','ask','past','compare','solve'],
+       board:{ req:['grammar','speak','scene','vocab'], opt:['article'], quiz:true },
+       focus:'60초. first·then 으로 문장을 덩어리로 만든다. 비교 문항은 -er than, 롤플레이는 대안 둘.' },
+  4: { name:'실전',          opic:'IM',       by:'01-05', sec:90, min:60, model:'en', scMax:3,
+       kinds:['describe','habit','ask','past','compare','solve'],
+       board:{ req:['speak','scene','article','vocab'], opt:['grammar'], quiz:true },
+       focus:'90초. 시험과 같다. 문단으로 — 전체 → 하나 집중 → 왜.' },
+};
+const PROMOTE = { answers:10, days:5 };   // 목표 시간 넘긴 답(Again 제외) 10개 + 말한 날 5일
+let tStage = 1, tStageSince = null, tStageGot = { answers:0, days:0 }, tStageNext = false;
+const curStage = () => STAGES[tStage] || STAGES[1];
+
+/* 승급 실적 — 이 단계에 올라온 뒤, 목표 시간을 넘기고 Again 이 아닌 답만 센다.
+ * 같은 문항을 같은 날 여러 번 해도 한 번이다(eng_prompt_log 의 키가 그렇다). */
+function stageGot(rows, sec, since){
+  const hit = (rows || []).filter(r => (!since || r.done_on >= since)
+    && (r.spoke_ms || 0) >= sec * 1000 && (r.self_grade === 'ok' || r.self_grade === 'good'));
+  return { answers: hit.length, days: new Set(hit.map(r => r.done_on)).size };
+}
+
+/* 🔴 승급은 **다음 날부터**다. 하루 중간에 단계가 바뀌면 그날 판의 완주 조건(S2 는 장면이
+ * 필수)이 갑자기 늘어 다 한 판이 미완이 된다. 그래서 stage_since 를 내일로 적고, 그날까지는
+ * 이전 단계로 읽는다. 순서 탭에서 손으로 바꾼 건 바로 적용한다. */
+async function loadStage(){
+  const { data } = await sb.from('eng_progress').select('stage, stage_since')
+    .eq('user_id', currentUser.id).maybeSingle();
+  const st = data?.stage || 1, since = data?.stage_since || null;
+  tStageNext = !!since && since > today();
+  tStage = tStageNext ? Math.max(1, st - 1) : st;
+  tStageSince = tStageNext ? null : since;
+}
+
+async function setStage(n, why, since = today()){
+  // 행이 없을 수도 있다(아직 XP 를 한 번도 안 받은 사람) — upsert 로 만든다
+  await sb.from('eng_progress').upsert({ user_id: currentUser.id, stage:n, stage_since:since },
+    { onConflict:'user_id' });
+  if (since <= today()) { tStage = n; tStageSince = since; tStageGot = { answers:0, days:0 }; tStageNext = false; }
+  else tStageNext = true;
+  if (why) toast(why);
+}
+
+/* 답을 채점할 때마다 부른다. 올라가면 true. */
+async function checkPromote(){
+  if (tStage >= 4 || tStageNext) return false;
+  const { data } = await sb.from('eng_prompt_log').select('done_on, spoke_ms, self_grade')
+    .eq('user_id', currentUser.id);
+  tStageGot = stageGot(data, curStage().sec, tStageSince);
+  if (tStageGot.answers < PROMOTE.answers || tStageGot.days < PROMOTE.days) return false;
+  const next = tStage + 1;
+  await setStage(next, `🎉 S${next} ${STAGES[next].name} — 내일부터 목표 ${STAGES[next].sec}초`,
+                 kstDate(Date.now() + 864e5));
+  return true;
+}
+
+/* 문법 — 단계마다 몇 개씩. 하루 하나, 단계에 올라온 날부터 순서대로 돌고 다 돌면 처음부터 복습.
+ * 예문은 어휘 훑기 화면에서 사람 목소리로 듣고 따라한다 (tts-cards 가 굽는다).
+ * 🔴 설명은 "왜 오픽에서 필요한가"까지 쓴다 — 문법 이름만 주면 외울 이유가 없다. */
+const GRAMMAR = [
+  { st:1, name:'be동사 — am · is · are',
+    why:'"~이다, ~하다(상태)". 나는 am, 하나는 is, 여럿은 are. 묘사 문항의 절반이 이걸로 시작한다.',
+    ex:[['I am a developer.','나는 개발자다.'],
+        ['My room is small but clean.','내 방은 작지만 깨끗하다.'],
+        ['My coworkers are really nice.','내 동료들은 정말 친절하다.']],
+    try:'너 자신이나 네 방을 한 문장으로.' },
+  { st:1, name:'현재형 — I go · She goes',
+    why:'평소에 하는 일은 현재형. 나·너·우리는 그대로, 그 사람 하나면 끝에 -s. 습관 문항이 전부 이거다.',
+    ex:[['I take the subway to work.','나는 지하철로 출근한다.'],
+        ['I go to the gym after work.','나는 퇴근 후에 헬스장에 간다.'],
+        ['My friend lives near my home.','내 친구는 우리 집 근처에 산다.']],
+    try:'평일 아침에 하는 일 하나.' },
+  { st:1, name:'There is · There are',
+    why:'"~이 있다". 하나면 is, 여럿이면 are. 장소 묘사에서 제일 많이 쓴다 — 보이는 걸 하나씩 짚으면 30초가 찬다.',
+    ex:[['There is a park near my home.','우리 집 근처에 공원이 있다.'],
+        ['There are two rooms in my apartment.','우리 집엔 방이 두 개 있다.'],
+        ['There is a coffee shop downstairs.','아래층에 카페가 있다.']],
+    try:'네 동네에 뭐가 있는지 두 문장.' },
+  { st:1, name:'can · can\'t',
+    why:'"~할 수 있다/없다". 뒤에는 동사 그대로. 롤플레이에서 부탁할 때도 이걸 쓴다(Can I ~?).',
+    ex:[['I can walk to the station.','역까지 걸어갈 수 있다.'],
+        ['I can\'t cook very well.','나는 요리를 잘 못한다.'],
+        ['Can I pay by card?','카드로 내도 돼요?']],
+    try:'네가 할 수 있는 것 하나, 못하는 것 하나.' },
+  { st:1, name:'질문 만들기 — Do you ~? · Where do you ~?',
+    why:'일반동사 질문은 Do 를 맨 앞에. 무엇·어디·언제를 물으면 그 앞에 What·Where·When. "질문해 봐" 문항이 이걸로 끝난다.',
+    ex:[['Do you like your new job?','새 직장 마음에 들어?'],
+        ['Where do you usually go?','보통 어디 가?'],
+        ['What time does it start?','몇 시에 시작해요?']],
+    try:'친구에게 주말 계획을 묻는 질문 두 개.' },
+
+  { st:2, name:'과거형 — -ed',
+    why:'지난 일은 동사 끝에 -ed. 소리는 "드·트·이드"로 갈린다 — 들을 때 이 끝소리를 잡아야 과거인 줄 안다.',
+    ex:[['I watched a movie last night.','어젯밤 영화를 봤다.'],
+        ['We played soccer in the park.','우리는 공원에서 축구를 했다.'],
+        ['I visited Busan last summer.','작년 여름 부산에 갔다.']],
+    try:'어제 한 일 하나.' },
+  { st:2, name:'과거형 — went · ate · saw · had · got · took · bought',
+    why:'자주 쓰는 불규칙 일곱 개. 오픽 과거 문항에 나오는 건 거의 이것뿐이다.',
+    ex:[['I went to Jeju with my friends.','친구들과 제주에 갔다.'],
+        ['We ate seafood by the sea.','바닷가에서 해산물을 먹었다.'],
+        ['I lost my wallet on the subway.','지하철에서 지갑을 잃어버렸다.']],
+    try:'최근 여행이나 외식 한 문장.' },
+  { st:2, name:'because · so',
+    why:'because 뒤엔 이유, so 뒤엔 결과. 문장 두 개를 하나로 묶는 첫 고리다 — 여기서 "이어 말하기"가 시작된다.',
+    ex:[['I like it because it is quiet.','조용해서 좋다.'],
+        ['It rained, so we stayed inside.','비가 와서 안에 있었다.'],
+        ['I was tired, so I went to bed early.','피곤해서 일찍 잤다.']],
+    try:'네 동네가 좋은(싫은) 이유 하나.' },
+  { st:2, name:'얼마나 자주 — usually · sometimes · twice a week',
+    why:'동사 앞에 둔다(I usually go). 습관 문항에서 이게 빠지면 "평소"를 묻는 질문에 답을 안 한 셈이다.',
+    ex:[['I usually get up at seven.','보통 7시에 일어난다.'],
+        ['I sometimes cook on weekends.','주말에 가끔 요리한다.'],
+        ['I go to the gym twice a week.','일주일에 두 번 헬스장에 간다.']],
+    try:'운동이나 취미를 얼마나 자주 하는지.' },
+
+  { st:3, name:'순서 — first · then · after that',
+    why:'일의 순서를 잇는 고리. 문장 다섯 개가 한 덩어리가 된다 — IL 과 IM 을 가르는 게 이 덩어리다.',
+    ex:[['First, I check my email.','먼저 이메일을 확인한다.'],
+        ['Then I have a short meeting.','그다음 짧은 회의를 한다.'],
+        ['After that, I start my real work.','그 후에 본격적으로 일한다.']],
+    try:'퇴근 후 저녁을 순서대로 세 문장.' },
+  { st:3, name:'비교 — bigger than · more convenient · better',
+    why:'짧은 말은 -er, 긴 말은 more, good 은 better. 비교 문항(예전 vs 지금)이 이걸로 굴러간다.',
+    ex:[['My new place is bigger than my old one.','새 집이 예전 집보다 크다.'],
+        ['Online shopping is more convenient.','온라인 쇼핑이 더 편하다.'],
+        ['The bus is better than the subway.','버스가 지하철보다 낫다.']],
+    try:'예전 휴대폰과 지금 휴대폰 비교 한 문장.' },
+  { st:3, name:'앞으로 — will · be going to',
+    why:'정해둔 계획은 be going to, 그 자리에서 정한 건 will. 롤플레이 마무리("다시 연락할게요")에 꼭 나온다.',
+    ex:[['I am going to visit Japan next month.','다음 달 일본에 갈 거다.'],
+        ['I will call you back later.','나중에 다시 전화할게.'],
+        ['It will be cold this weekend.','이번 주말엔 추울 거다.']],
+    try:'이번 주말 계획 한 문장.' },
+  { st:3, name:'경험 — I\'ve been to ~ · I\'ve never ~',
+    why:'"~해 본 적 있다/없다". 언제인지는 안 말한다 — 언제를 말하면 그냥 과거(went)다.',
+    ex:[['I\'ve been to Japan three times.','일본에 세 번 가봤다.'],
+        ['I\'ve never tried surfing.','서핑은 한 번도 안 해봤다.'],
+        ['Have you ever been to Busan?','부산 가본 적 있어?']],
+    try:'가본 곳 하나, 안 해본 것 하나.' },
+  { st:3, name:'때 — when',
+    why:'"~할 때". 문장 둘을 시간으로 묶는다. When I was young 하나로 비교·과거 문항의 첫 문장이 해결된다.',
+    ex:[['When I was young, I lived in Daegu.','어릴 때 대구에 살았다.'],
+        ['I listen to music when I walk.','걸을 때 음악을 듣는다.'],
+        ['When I got home, the door was open.','집에 왔을 때 문이 열려 있었다.']],
+    try:'어릴 때 자주 하던 것 한 문장.' },
+
+  { st:4, name:'공손하게 — Could you ~? · I was wondering if ~',
+    why:'Can 보다 한 단계 공손하다. 롤플레이에서 직원에게 부탁할 때 이게 나오면 같은 내용도 점수가 다르다.',
+    ex:[['Could you check my booking, please?','예약 좀 확인해 주시겠어요?'],
+        ['I was wondering if you have any rooms.','혹시 방이 있을까 해서요.'],
+        ['Would it be possible to change the date?','날짜를 바꿀 수 있을까요?']],
+    try:'호텔 직원에게 부탁 하나.' },
+  { st:4, name:'가정 — If I ~, I would ~',
+    why:'지금 사실이 아닌 걸 가정한다. 과거형으로 말하지만 뜻은 지금이다. 문제해결 문항의 대안에 쓴다.',
+    ex:[['If I had more time, I would travel more.','시간이 더 있으면 여행을 더 할 텐데.'],
+        ['If I were you, I would take the bus.','나라면 버스를 타겠다.'],
+        ['If it rains, we can go to a museum.','비가 오면 박물관에 가면 된다.']],
+    try:'돈이 많다면 뭘 할지 한 문장.' },
+  { st:4, name:'대안 둘 — either ~ or ~ · How about ~?',
+    why:'문제해결 문항은 대안이 없으면 점수가 안 붙는다. 대안 둘을 이 틀에 넣고 상대에게 고르게 한다.',
+    ex:[['We can either meet tomorrow or talk online.','내일 만나거나 온라인으로 얘기해도 돼요.'],
+        ['How about this Saturday instead?','대신 이번 토요일은 어때요?'],
+        ['Which one works better for you?','어느 쪽이 더 좋으세요?']],
+    try:'약속을 못 지키게 됐을 때 대안 두 개.' },
+];
+/* GRAMMAR 끝 — tts-cards.mjs 가 여기까지 잘라 읽는다 */
+
+/* 오늘의 문법. 단계에 올라온 날이 0번째 — 순서대로 돌고 다 돌면 처음부터(복습).
+ * S4 는 자기 문법 + 앞 단계 전체를 섞어 복습한다. */
+function todayGrammar(){
+  const pool = tStage >= 4 ? GRAMMAR : GRAMMAR.filter(g => g.st === tStage);
+  if (!pool.length) return null;
+  const since = tStageSince || today();
+  const n = Math.max(0, Math.round((Date.parse(today() + 'T00:00:00+09:00') - Date.parse(since + 'T00:00:00+09:00')) / 864e5));
+  return pool[n % pool.length];
+}
 const XP = { commute:10, speak:20, turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
              article:8, recog:1, quizOk:5, quizMiss:2, complete:30, cap:250 };
 const RANKS = [
@@ -989,7 +1204,8 @@ async function loadToday(){
     // 마케팅 장면이 그대로 나왔고 거기서 뽑힌 어휘가 다시 큐로 들어왔다 —
     // 같이 쓰는 사람의 도메인 용어를 영어로 외우게 되는 상태였다.
     const tn = activeTopicNames();
-    const scQ = sb.from('eng_scenes').select('*').eq('status','ready');
+    // 단계보다 어려운 장면은 안 뽑는다 (S1·S2 는 L2 까지)
+    const scQ = sb.from('eng_scenes').select('*').eq('status','ready').lte('level', curStage().scMax);
     const arQ = sb.from('eng_articles').select('*');
     const [sc, ar, se, pr, past] = await Promise.all([
       (tn.length ? scQ.in('topic', tn) : scQ).order('created_at',{ascending:false}).limit(30),
@@ -1081,12 +1297,16 @@ async function loadPrompts(){
   tPrompts = [];
   const [pool, log] = await Promise.all([
     sb.from('eng_prompts').select('*'),
-    sb.from('eng_prompt_log').select('prompt_id, done_on, self_grade')
+    sb.from('eng_prompt_log').select('prompt_id, done_on, self_grade, spoke_ms')
       .eq('user_id', currentUser.id).order('done_on', { ascending:false }).limit(400),
   ]);
+  tStageGot = stageGot(log.data, curStage().sec, tStageSince);
   if (pool.error || !pool.data?.length) return;        // v6 미실행이면 조용히 비운다
   const names = activeTopicNames();
-  const all = names.length ? pool.data.filter(p => names.includes(p.topic)) : pool.data;
+  // 단계에 없는 유형은 안 뽑는다 — S1 에 롤플레이(문제해결)가 나오면 그날은 맨입이다
+  const kinds = curStage().kinds;
+  const all = (names.length ? pool.data.filter(p => names.includes(p.topic)) : pool.data)
+    .filter(p => kinds.includes(p.kind));
   if (!all.length) return;
 
   const lastOf = {}, gradeOf = {};
@@ -1174,6 +1394,23 @@ async function bumpXp(n, why){
   } catch(_) { /* 오프라인이면 화면만 올라간다 — 다음 로드에서 맞춰진다 */ }
 }
 
+/* 칸마다 [한 것, 할 것]. 판 그리기·완주 판정·퀴즈 잠금이 **같은 계산**을 써야 한다 —
+ * 따로 세면 판엔 다 찼는데 완주가 안 찍히는 날이 생긴다. */
+function partState(k){
+  const pg = tSession?.progress || {};
+  switch (k) {
+    case 'grammar': return [pg.grammar?.done || 0, todayGrammar() ? 1 : 0];
+    case 'speak':   return [pg.speak?.done || 0,   tPrompts.length];
+    case 'scene':   return [pg.scenes?.done || 0,  tScenes.length];
+    case 'article': return [pg.article?.sent || 0, tArticle ? (tArticle.sentences || []).length : 0];
+    case 'vocab':   return [pg.vocab?.done || 0,   tVocab.today.length + tVocab.past.length];
+    case 'quiz':    return [pg.quiz?.done || 0,    pg.quiz?.total ?? buildQuiz().length];
+  }
+  return [0, 0];
+}
+// 재료가 없는 칸(할 것 0)은 끝난 것으로 친다 — 재료가 모자란 날 완주가 불가능해지면 안 된다
+function partDone(k){ const [d, n] = partState(k); return !n || d >= n; }
+
 /* 판을 세운 날짜. 앱을 켜둔 채 자정을 넘기면 today() 는 바뀌지만 화면의 판은 어제 것이다. */
 const sessDay = () => tSession?.session_date || today();
 
@@ -1222,17 +1459,15 @@ async function renderToday(){
     return;
   }
 
-  const pg = tSession?.progress || {};
-  const sDone = pg.scenes?.done || 0, sTot = tScenes.length;
-  const aSent = pg.article?.sent || 0, aTot = tArticle ? (tArticle.sentences || []).length : 0;
-  const vDone = pg.vocab?.done || 0, vTot = tVocab.today.length + tVocab.past.length;
-  const kDone = pg.speak?.done || 0, kTot = tPrompts.length;
-  // 퀴즈는 세 칸의 재료로 만든다 — 그래서 셋을 끝내기 전에는 열 수 없다.
+  const st = curStage();
+  const [sDone, sTot] = partState('scene'), [aSent, aTot] = partState('article');
+  const [vDone, vTot] = partState('vocab'), [kDone, kTot] = partState('speak');
+  const [gDone, gTot] = partState('grammar'), gram = todayGrammar();
+  // 퀴즈는 앞 칸들의 재료로 만든다 — 그래서 단계의 req 칸을 끝내기 전에는 열 수 없다.
   // 문항 수는 날짜로 씨를 고정해 뽑으므로 다시 그려도 같은 수가 나온다.
-  const three = (!sTot || sDone >= sTot) && (!aTot || aSent >= aTot) && (!vTot || vDone >= vTot)
-             && (!kTot || kDone >= kTot);
-  const qTot = three ? (pg.quiz?.total ?? buildQuiz().length) : 0;
-  const qDone = pg.quiz?.done || 0;
+  const three = st.board.req.every(partDone);
+  const qTot = st.board.quiz && three ? partState('quiz')[1] : 0;
+  const qDone = partState('quiz')[0];
   const r = rankOf(tProg?.xp_total || 0);
   const cls = (d, t) => !t ? '' : d >= t ? ' done' : d > 0 ? ' part' : '';
   const pct = (d, t) => t ? Math.round(d / t * 100) : 0;
@@ -1242,19 +1477,33 @@ async function renderToday(){
   // 재택·주말은 한 자리에 앉아 하니 제일 중요한 Speaking 이 맨 앞이다.
   const home = dayMode() === 'home';
   const defs = {
+    grammar: { t:'Grammar',     s: gram ? esc(gram.name.split(' — ')[0]) : 'none', d:gDone, n:gTot },
     speak:   { t:'Speaking',    s: kTot ? `${kDone}/${kTot}` : 'none',       d:kDone, n:kTot },
     scene:   { t:'Scenes',      s: sTot ? `${sDone}/${sTot}` : 'none',       d:sDone, n:sTot },
     article: { t:'News',        s: aTot ? `${aSent}/${aTot} sent.` : 'none', d:aSent, n:aTot },
     vocab:   { t:'Vocab drill', s: vTot ? `${vDone}/${vTot}` : 'none',       d:vDone, n:vTot },
   };
-  const order = home ? ['speak','scene','article','vocab'] : ['scene','article','vocab','speak'];
-  const bcard = k => { const c = defs[k]; return `
-      <button class="bcard${cls(c.d,c.n)}" data-a="${k}" ${c.n ? '' : 'disabled'}>
+  // 문법이 맨 앞 — 그날 배운 걸 Speaking 틀에서 바로 써먹게 한다.
+  const prio = home ? ['grammar','speak','scene','vocab','article'] : ['grammar','scene','article','vocab','speak'];
+  const order = prio.filter(k => st.board.req.includes(k) || st.board.opt.includes(k));
+  const bcard = k => { const c = defs[k], opt = st.board.opt.includes(k); return `
+      <button class="bcard${cls(c.d,c.n)}${opt ? ' opt' : ''}" data-a="${k}" ${c.n ? '' : 'disabled'}>
         <span class="chk">✓</span><span class="bt">${c.t}</span>
-        <span class="bs">${c.s}</span>
+        <span class="bs">${opt ? '선택 · ' : ''}${c.s}</span>
         <span class="bar"><i style="width:${pct(c.d,c.n)}%"></i></span></button>`; };
+  // 승급 게이지 — "올라가는 재미"는 여기가 맡는다. 실적 둘 중 모자란 쪽이 막는다.
+  const gA = Math.min(tStageGot.answers, PROMOTE.answers), gD = Math.min(tStageGot.days, PROMOTE.days);
+  const next = STAGES[tStage + 1];
+  const stageHtml = `<button class="stage" data-go="plan">
+      <div class="st1"><b>S${tStage}</b> ${esc(st.name)} <em>${esc(st.opic)}</em>
+        <span class="stn">${next ? `${gA}/${PROMOTE.answers} 답 · ${gD}/${PROMOTE.days}일` : '마지막 단계'}</span></div>
+      <div class="sttrack"><i style="width:${!next || tStageNext ? 100 : Math.min(gA / PROMOTE.answers, gD / PROMOTE.days) * 100}%"></i></div>
+      <div class="st2">${tStageNext && next ? `🎉 다 채웠다 — <b>내일부터 S${tStage+1} ${esc(next.name)}</b>`
+        : next ? `${st.sec}초 넘긴 답 ${PROMOTE.answers}개 · ${PROMOTE.days}일 → <b>S${tStage+1} ${esc(next.name)}</b> (예정 ${st.by.replace('-','/')})`
+        : '15문항 모의로 실전 감각을 잡는다'}</div>
+    </button>`;
 
-  box.innerHTML = `
+  box.innerHTML = stageHtml + `
     <div class="xpbar">
       <div class="top"><span class="rk" id="t-rank">Lv ${r.n} <em>${esc(r.name)}</em></span>
         <span class="n" id="t-xpnum">${tProg?.xp_total || 0} / ${r.to} XP</span></div>
@@ -1276,20 +1525,18 @@ async function renderToday(){
     </div>
     <div class="board">
       ${order.map(bcard).join('')}
-      <button class="bcard${cls(qDone,qTot)}${three && qTot ? '' : ' locked'}" data-a="quiz" ${three && qTot?'':'disabled'}>
+      ${st.board.quiz ? `<button class="bcard${cls(qDone,qTot)}${three && qTot ? '' : ' locked'}" data-a="quiz" ${three && qTot?'':'disabled'}>
         <span class="chk">✓</span><span class="bt">Quiz</span>
-        <span class="bs">${!three ? 'after the four' : qTot ? `${qDone}/${qTot}` : 'none'}</span>
-        <span class="bar"><i style="width:${pct(qDone,qTot)}%"></i></span></button>
+        <span class="bs">${!three ? 'after the rest' : qTot ? `${qDone}/${qTot}` : 'none'}</span>
+        <span class="bar"><i style="width:${pct(qDone,qTot)}%"></i></span></button>` : ''}
     </div>
     <div class="tstats">
       <div class="tstat"><div class="v">${tProg?.turns_spoken || 0}</div><div class="l">Turns spoken</div></div>
       <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>m</small></div><div class="l">Listened</div></div>
       <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">Articles read</div></div>
     </div>
-    <p class="leg">${home
-      ? '<b>Speaking 부터.</b> 하나만 할 수 있는 날도 Speaking 이다 — 나머지는 재료다.'
-      : '<b>듣기부터.</b> 아침엔 ▶ Commute, 퇴근길엔 ▶ Questions, 집에서 Speaking.'}
-      Quiz 는 앞의 넷을 끝내면 열려.</p>
+    <p class="leg"><b>S${tStage} 목표</b> — ${esc(st.focus)}
+      ${st.board.opt.length ? `「선택」 칸은 안 해도 오늘이 끝난다.` : ''}</p>
 
     <!-- 옛 Inbox·일기·홈 탭이 하던 일. 탭을 따로 두면 안 쓰니 판 아래로 내렸다 -->
     <div class="strip">
@@ -1338,11 +1585,31 @@ function wireBar(){
 function openAct(a){
   $('t-board').textContent = '';
   const el = $('t-act'); el.hidden = false;
-  if (a === 'scene') actScene(el);
+  if (a === 'grammar') actGrammar(el);
+  else if (a === 'scene') actScene(el);
   else if (a === 'article') { arPhase = 'pre'; actArticle(el); }
   else if (a === 'speak') actSpeak(el);
   else if (a === 'quiz') actQuiz(el);
   else actVocab(el);
+}
+
+/* ── 문법 — 하루 하나 ─────────────────────────────── */
+/* 예문을 듣고 따라하는 일은 어휘 훑기와 같다 — 그 화면을 그대로 쓴다.
+ * 읽고 끝나면 안 남는다. "해보기" 로 자기 문장을 하나 소리내게 한다. */
+function actGrammar(el){
+  const g = todayGrammar();
+  if (!g) { renderToday(); return; }
+  drawWarmup(el, {
+    title: `문법 · ${g.name}`,
+    context: `${g.why}  🗣 해보기 — ${g.try}`,
+    items: g.ex.map(([en, ko]) => ({ term:en, kind:'phrase', meaning_ko:ko })),
+    backLabel: '알겠다 →',
+    onDone: async () => {
+      await saveProgress({ grammar:{ done:1, total:1 } });
+      await maybeComplete();
+      renderToday();
+    },
+  });
 }
 
 /* ── 막 1 · 상황 대화 ───────────────────────────────── */
@@ -1799,9 +2066,39 @@ const FRAME = {
              ['공을 넘긴다',          `Which one works better for you?`]],
 };
 
-function frameHtml(p, open){
-  const beats = FRAME[p.kind] || [];
-  const ph = p.phrases || [];
+/* S1·S2 용 틀. FRAME 의 "I'd say ~"·"What happened was ~" 는 IM 영어라 NH 가 입에 못 올린다.
+ * 여기 쓰는 건 그 단계 문법(be동사·현재형·There is·과거형·because)뿐이다. */
+const FRAME_L1 = {
+  describe: [['어떤 곳인지 한마디', `I live in a ~. / It is a ~ place.`],
+             ['보이는 것',          `There is a ~. There are ~.`],
+             ['거기서 내가 하는 것', `I usually ~ there.`],
+             ['좋은 이유',          `I like it because it is ~.`]],
+  habit:    [['얼마나 자주',        `I usually ~ every ~.`],
+             ['무엇을',             `I ~ and ~.`],
+             ['언제',               `I do it after work. / I do it on ~.`],
+             ['왜',                 `I like it because ~.`]],
+  past:     [['언제·어디',          `Last ~, I went to ~.`],
+             ['무슨 일',            `I ~ed ~. But there was a problem.`],
+             ['어떻게 했나',        `So I ~.`],
+             ['기분',               `I was very ~.`]],
+  compare:  [['예전',               `Before, I ~ed ~.`],
+             ['지금',               `Now, I ~.`],
+             ['차이',               `It is ~er now.`],
+             ['내 생각',            `I like it now because ~.`]],
+  ask:      [['한마디',             `I have some questions.`],
+             ['질문 1',             `What ~ do you ~?`],
+             ['질문 2',             `Where / When do you ~?`],
+             ['질문 3',             `Do you ~?`]],
+  solve:    [['문제',               `Hello, I have a problem.`],
+             ['무슨 문제',          `I ~ed ~, but ~.`],
+             ['부탁',               `Can you ~, please?`],
+             ['대안',               `Or can I ~?`]],
+};
+
+/* l1 이면 S1·S2 틀. 핵심표현(phrases)은 모범답안(IH)에서 뽑은 것이라 그때는 숨긴다. */
+function frameHtml(p, open, l1){
+  const beats = (l1 ? FRAME_L1 : FRAME)[p.kind] || FRAME[p.kind] || [];
+  const ph = l1 ? [] : (p.phrases || []);
   if (!beats.length && !p.hint_ko && !ph.length) return '';
   return `<details class="gram frame"${open ? ' open' : ''}>
     <summary><span class="gl">틀</span>막막하면 — ${esc(KIND_LABEL[p.kind] || p.kind)} 는 이 순서로</summary>
@@ -1881,7 +2178,6 @@ const KIND_GUIDE = {
 
 const STEP_LABEL = ['이해', '따라', '틀', '혼자'];
 let spStep = 1;
-const MIN_SPEAK = 30;   // 이보다 짧으면 Done 이 안 눌린다 — 3초·10초로 끝낸 기록이 있다
 
 /* 모범답안을 문장으로 쪼갠다. 따라 말하기는 한 문장이 한 입이다. */
 const sentences = t => (String(t || '').match(/[^.!?]+[.!?]*/g) || []).map(x => x.trim()).filter(Boolean);
@@ -1917,6 +2213,10 @@ function wireQ(p){
 
 function goStep(el, n){ spStop(); spStep = n; drawSpeak(el); }
 
+/* 단계에 맞는 답. S1·S2 는 짧은 답(model_l1), 없으면 원래 답으로 떨어진다. */
+const spL1 = () => curStage().model === 'l1';
+const spModel = p => spL1() && p.model_l1 ? p.model_l1 : p.model_en;
+
 function drawSpeak(el){
   spStop();
   const p = tPrompts[spIdx];
@@ -1936,6 +2236,7 @@ function drawSpBrief(el, p, head){
                     ['이런 상황이다', g.when], ['뭐가 점수가 되나', g.earns],
                     ['자주 하는 실수', g.trap]] : [];
   el.innerHTML = actBar(head) + stepRow() + qBtns(p) +
+    `<div class="spnote" style="margin-top:8px;border-left:3px solid var(--eng)"><span class="l">S${tStage} ${esc(curStage().name)} — 이번 단계에서는</span>${esc(curStage().focus)}</div>` +
     rows.map(([l, t]) => `<div class="spnote" style="margin-top:8px"><span class="l">${esc(l)}</span>${esc(t)}</div>`).join('') +
     (p.hint_ko ? `<div class="spnote" style="margin-top:8px"><span class="l">이 문항 힌트</span>${esc(p.hint_ko)}</div>` : '') +
     `<div class="actbar" style="margin-top:14px">
@@ -1948,11 +2249,12 @@ function drawSpBrief(el, p, head){
 
 /* 2 따라 — 어휘 훑기와 하는 일이 같다(한 줄 듣고 입으로 따라한다). 그 화면을 그대로 쓴다. */
 function drawSpShadow(el, p, head){
-  const ss = sentences(p.model_en);
+  const ss = sentences(spModel(p));
   if (!ss.length) return goStep(el, 3);
   drawWarmup(el, {
     title: `${head} · 따라 말하기`,
-    context: '한 줄씩 듣고 소리내서 그대로 따라 말해라. 외우는 게 아니라 입에 붙이는 것이다.',
+    context: (spL1() ? `S${tStage} 답이다 — 짧고 쉬운 문장만 썼다. ` : '') +
+      '한 줄씩 듣고 소리내서 그대로 따라 말해라. 외우는 게 아니라 입에 붙이는 것이다.',
     items: ss.map(x => ({ term:x, kind:'phrase', meaning_ko:'' })),
     backLabel: '다음 — 틀 보고 말하기 →',
     nav: stepRow(),
@@ -1965,9 +2267,10 @@ function drawSpShadow(el, p, head){
 function drawSpFrame(el, p, head){
   el.innerHTML = actBar(`${head} · 틀 보고 말하기`) + stepRow() + qBtns(p) +
     `<div class="spnote" style="margin:10px 0"><span class="l">하는 법</span>박자마다 한두 문장씩, 빈칸(~)을 네 얘기로 채워 소리내서 말해라. 시간은 안 잰다. 막히면 2번으로 돌아가 다시 들어라.</div>
-    ${frameHtml(p, true)}
+    ${(g => g ? `<div class="spnote" style="margin:0 0 10px;border-left:3px solid var(--warn)"><span class="l">오늘 문법 — 여기서 한 번 써봐</span>${esc(g.name)} · <i>${esc(g.ex[0][0])}</i></div>` : '')(todayGrammar())}
+    ${frameHtml(p, true, spL1())}
     <div class="actbar" style="margin-top:14px">
-      <button class="btn sm primary-btn" id="sp-next" style="padding:9px 16px">다음 — 혼자 90초 →</button>
+      <button class="btn sm primary-btn" id="sp-next" style="padding:9px 16px">다음 — 혼자 ${curStage().sec}초 →</button>
     </div>`;
   wireBar(); wireQ(p);
   el.querySelectorAll('[data-nav]').forEach(b => b.onclick = () => goStep(el, +b.dataset.nav));
@@ -1976,7 +2279,9 @@ function drawSpFrame(el, p, head){
 
 /* 4 혼자 — 질문만 듣고 90초. 여기만 시험과 같다. */
 function drawSpSolo(el, p, head){
-  const target = p.seconds || 75;
+  // 🔴 목표와 문턱은 **단계**가 정한다. 문항의 seconds(75~90)는 IH 기준이라 NH 에게 그대로 주면
+  // 30초에서 막히고, 그러면 매번 실패로 끝난다 — 올라가는 재미가 안 생긴다.
+  const target = curStage().sec, minSec = curStage().min;
   el.innerHTML = actBar(head) + stepRow() + qBtns(p) + `
     <div class="sptimer">
       <div class="sptime" id="sp-time">0:00</div>
@@ -2003,10 +2308,10 @@ function drawSpSolo(el, p, head){
     barEl.style.width = Math.min(sec / target * 100, 100) + '%';
     timeEl.classList.toggle('hit', sec >= target);
     barEl.classList.toggle('hit', sec >= target);
-    // 🔴 30초 전엔 Done 을 막는다. 3초 말하고 끝낸 날이 실제로 있었고, 그게 쌓이면
+    // 🔴 문턱 전엔 Done 을 막는다. 3초 말하고 끝낸 날이 실제로 있었고, 그게 쌓이면
     // "했다" 는 기록만 남고 실력은 그대로다. 오픽은 분량 자체가 채점 항목이다.
-    endEl.disabled = sec < MIN_SPEAK;
-    endEl.textContent = sec < MIN_SPEAK ? `■ Done (${MIN_SPEAK - sec}s)` : '■ Done';
+    endEl.disabled = sec < minSec;
+    endEl.textContent = sec < minSec ? `■ Done (${minSec - sec}s)` : '■ Done';
   };
 
   $('sp-go').onclick = async () => {
@@ -2044,11 +2349,19 @@ function drawSpSolo(el, p, head){
     $('sp-reveal').onclick = function(){
       this.remove();
       const box = $('sp-model'); box.hidden = false;
-      box.innerHTML = `
-        <div class="spmodel">${esc(p.model_en).replace(/\n\n/g,'</p><p>').replace(/^/,'<p>')+'</p>'}</div>
+      const para = t => esc(t).replace(/\n\n/g,'</p><p>').replace(/^/,'<p>')+'</p>';
+      const full = `
         ${p.model_note_ko ? `<div class="spnote"><span class="l">why it\'s built this way</span>${esc(p.model_note_ko)}</div>` : ''}
         ${(p.phrases||[]).length ? `<div class="spph">${(p.phrases||[]).map(x =>
-          `<div class="sprow"><b>${esc(x.term)}</b><span>${esc(x.meaning_ko)}</span></div>`).join('')}</div>` : ''}
+          `<div class="sprow"><b>${esc(x.term)}</b><span>${esc(x.meaning_ko)}</span></div>`).join('')}</div>` : ''}`;
+      // S1·S2 는 짧은 답이 기준이다. 긴 답은 "언젠가 갈 곳"으로 접어둔다 — 펼쳐 놓으면
+      // 방금 30초를 채운 사람에게 "넌 아직 멀었다"를 보여주는 꼴이 된다.
+      box.innerHTML = spL1() && p.model_l1 ? `
+        <div class="spmodel">${para(p.model_l1)}</div>
+        <details class="gram" style="margin-top:10px"><summary><span class="gl">S3~</span>나중에 갈 답 — 지금은 들어만 둬</summary>
+          <div class="spmodel" style="margin:0 13px 12px">${para(p.model_en)}</div>${full}</details>` : `
+        <div class="spmodel">${para(p.model_en)}</div>${full}`;
+      box.innerHTML += `
         <div class="grades" style="margin-top:14px">
           <button class="grade miss" data-g="again">Again</button>
           <button class="grade soso" data-g="ok">OK</button>
@@ -2062,6 +2375,7 @@ function drawSpSolo(el, p, head){
             spoke_ms: ms, self_grade: g.dataset.g,
           }, { onConflict:'user_id,prompt_id,done_on' });
         } catch(_) {}
+        try { await checkPromote(); } catch(_) {}   // 실패해도 다음 채점 때 다시 센다
         const n = Math.max(tSession?.progress?.speak?.done || 0, spIdx + 1);
         await saveProgress({ speak: { done:n, total:tPrompts.length } });
         if (n >= tPrompts.length) { await maybeComplete(); renderToday(); }
@@ -2153,6 +2467,7 @@ function actVocab(el){
     const prog = $('v-prog'), body = $('v-body');
     if (i >= list.length) {
       prog.textContent = '';
+      maybeComplete();   // 어휘가 그날 마지막 칸일 수 있다 — 전엔 여기서 안 불러 완주가 안 찍혔다
       body.innerHTML = `<div class="donebox"><div class="big">🎉</div><h3>Vocab drill done</h3>
         <p>${tVocab.today.length} from today · ${tVocab.past.length} from before.</p>
         <button onclick="renderToday()">Back to Today</button></div>`;
@@ -2935,22 +3250,22 @@ const PLAN = {
     title: '출근하는 날',
     sub: '입 못 여는 60~100분과 입 여는 20분으로 쪼개진다',
     steps: [
-      { w:'아침 지하철 · 30~50분', b:'<b>▶ Commute</b> 한 번. 오늘 장면·기사·질문이 이어서 나온다. <b>처음 듣는 재료라 이해 안 되는 게 정상이다</b> — 흘려 들어도 된다.' },
-      { w:'점심 틈 · 2분',         b:'<b>Vocab drill</b>. 앉아서 폰만 보면 되고, 아침에 들은 단어가 그대로 나온다. 채점해야 복습 큐가 돈다.' },
-      { w:'퇴근 지하철 · 30~50분', b:'<b>▶ Questions</b>. 오늘 질문 세 개만 돈다. 입 안 열어도 되고, 머릿속으로만 답을 짜면 된다. <b>질문 이해는 리스닝 과제다</b> — 네가 시험에서 넘어진 지점이 정확히 여기다.' },
-      { w:'집 · 20분',             b:'<b>Speaking</b> 세 문항을 입으로. 질문을 이미 두 번 들었으니 이번엔 내용에 집중한다. 남으면 <b>Scenes·News</b> 를 화면으로 다시, 그리고 <b>Quiz</b>.' },
+      { w:'아침 지하철 · 30~50분', b:'<b>▶ Commute</b> 한 번. 오늘 문법 예문 → 질문과 그 답이 이어서 나온다(S2 부터 장면도). <b>이해 안 되는 게 정상이다</b> — 흘려 들어도 된다.' },
+      { w:'점심 틈 · 2분',         b:'<b>Vocab drill</b>. 채점해야 복습 큐가 돈다.' },
+      { w:'퇴근 지하철 · 30~50분', b:'<b>▶ Questions</b>. 질문 세 개만 돈다. 머릿속으로 <b>답의 첫 문장</b>만 짜라 — 네가 시험에서 넘어진 지점이 정확히 질문 듣기다.' },
+      { w:'집 · 20분',             b:'<b>Grammar</b>(5분) → <b>Speaking</b> 세 문항을 네 걸음으로. 남으면 Scenes.' },
     ],
   },
   home: {
     title: '재택 · 주말',
-    sub: '한 자리에서 보드 순서대로',
+    sub: '한 자리에서 판 순서대로',
     steps: [
-      { w:'1', b:'<b>Speaking</b> 3문항 — 제일 중요한 걸 머리 맑을 때.' },
-      { w:'2', b:'<b>Scenes</b> 4장면 — 어휘 훑기 먼저, 그다음 대화.' },
-      { w:'3', b:'<b>News</b> — 같은 구조. 훑기 먼저.' },
-      { w:'4', b:'<b>Vocab drill</b> — 신규 12 + 복습 8.' },
-      { w:'5', b:'<b>Quiz</b> — 앞 넷의 재료로 만들어진다.' },
-      { w:'여유 있으면', b:'양을 늘리지 말고 <b>밀린 복습을 턴다</b>. 평일에 놓친 Vocab 기한이 여기 쌓인다.' },
+      { w:'1', b:'<b>Grammar</b> — 오늘 문법 하나. 예문 따라하고 내 문장 하나.' },
+      { w:'2', b:'<b>Speaking</b> 3문항 — 네 걸음으로. 제일 중요한 걸 머리 맑을 때.' },
+      { w:'3', b:'<b>Scenes</b> — S1 은 선택, S2 부터 필수. 어휘 훑기 먼저.' },
+      { w:'4', b:'<b>Vocab drill</b>.' },
+      { w:'5', b:'<b>Quiz</b> — S2 부터 열린다.' },
+      { w:'여유 있으면', b:'양을 늘리지 말고 <b>밀린 복습을 턴다</b>.' },
     ],
   },
 };
@@ -2958,25 +3273,68 @@ const PLAN = {
 function renderPlan(){
   const mode = dayMode();
   const ovr = todayOvr();
+  const st = curStage(), g = todayGrammar();
   const block = k => {
     const p = PLAN[k], live = mode === k;
     return `<div class="vcard" style="margin-bottom:14px${live ? ';border-color:var(--eng-bd)' : ''}">
       <div class="vt" style="font-size:14px">${p.title}
         ${live ? '<em class="kdot" style="color:var(--eng)">오늘</em>' : ''}</div>
       <div class="vm" style="margin-bottom:4px">${esc(p.sub)}</div>
-      ${p.steps.map((st,i) => `<div class="pstep${live ? '' : ' off'}">
+      ${p.steps.map((s,i) => `<div class="pstep${live ? '' : ' off'}">
         <span class="pn">${i+1}</span>
-        <div><div class="pw">${esc(st.w)}</div><div class="pb">${st.b}</div></div>
+        <div><div class="pw">${esc(s.w)}</div><div class="pb">${s.b}</div></div>
       </div>`).join('')}
     </div>`;
   };
+  const KIND_KO = { describe:'묘사', habit:'습관', ask:'질문하기', past:'과거경험', compare:'비교', solve:'문제해결' };
+  const stageRow = n => {
+    const x = STAGES[n], on = n === tStage, gs = GRAMMAR.filter(y => y.st === n);
+    return `<div class="pstep${on ? '' : ' off'}"${on ? ' style="opacity:1"' : ''}>
+      <span class="pn"${on ? ' style="background:var(--eng);color:#fff"' : ''}>S${n}</span>
+      <div><div class="pw">${esc(x.name)} · ${esc(x.opic)} · ~${x.by.replace('-','/')}${on ? ' <b style="color:var(--eng)">← 지금</b>' : ''}</div>
+        <div class="pb"><b>${x.sec}초</b> · ${x.kinds.map(k => KIND_KO[k]).join('·')}<br>
+          문법: ${gs.map(y => esc(y.name.split(' — ')[0])).join(' · ')}<br>
+          ${n === 1 ? '장면은 선택, 뉴스 없음' : n === 2 ? '쉬운 장면(L2) 필수 · 뉴스 없음' : n === 3 ? '장면 전부 · 뉴스는 선택' : '15문항 모의 · 배경설문 정렬 · 전부'}</div></div>
+    </div>`;
+  };
+  const gA = Math.min(tStageGot.answers, PROMOTE.answers), gD = Math.min(tStageGot.days, PROMOTE.days);
 
   $('pl-body').innerHTML = `
-    <h2 class="sh">학습 순서</h2>
-    <p class="leg" style="margin-top:0">순서는 하나가 아니다 — <b>입을 열 수 있는 시간</b>에 따라 갈린다.
-      원리 하나만 기억하면 돼: <b>입력하고 몇 시간 뒤에 출력한다.</b>
-      듣고 바로 말하면 따라 말하기고, 간격을 두면 꺼내 쓰기다. 기억에 박히는 건 후자고,
-      네 출퇴근이 그 간격을 공짜로 만들어준다.</p>
+    <h2 class="sh">커리큘럼</h2>
+    <p class="leg" style="margin-top:0">첫 오픽이 <b>NH</b> 였다. 1월 초 재시험 목표는 <b>IM1, 최소 IL</b> — 세 칸이다.
+      IH 는 NH 에서 76일로 안 된다. 대신 세 칸이면 확실히 늘었다고 할 수 있다.<br>
+      한 번에 올리지 않는다. <b>네 단계로 쪼개서</b> 문법·말하는 길이·문항 유형·듣기 재료를 같이 올린다.</p>
+
+    <div class="vcard" style="margin-bottom:14px;border-color:var(--eng-bd)">
+      <div class="vt" style="font-size:14px">지금 · S${tStage} ${esc(st.name)} <em class="kdot" style="color:var(--eng)">${esc(st.opic)}</em></div>
+      <div class="vm">${esc(st.focus)}</div>
+      <div class="vm" style="margin-top:8px">
+        <b style="color:var(--text)">올라가는 조건</b> — ${st.sec}초 넘긴 답(Again 제외) ${PROMOTE.answers}개 + 말한 날 ${PROMOTE.days}일.
+        지금 <b style="color:var(--text)">${gA}/${PROMOTE.answers} 답 · ${gD}/${PROMOTE.days}일</b>.
+        ${tStageNext ? '<b style="color:var(--eng)">다 채웠다 — 내일부터 다음 단계.</b>' : ''}
+        날짜(~${st.by.replace('-','/')})는 1월 초에 맞춘 페이스 기준선이다. 빨리 채우면 빨리 올라간다.</div>
+      ${g ? `<div class="vm" style="margin-top:8px"><b style="color:var(--text)">오늘 문법</b> — ${esc(g.name)}</div>` : ''}
+    </div>
+
+    <div class="vcard" style="margin-bottom:14px">
+      <div class="vt" style="font-size:14px">네 단계</div>
+      ${[1,2,3,4].map(stageRow).join('')}
+      <div class="vm" style="margin-top:10px">단계를 직접 바꿀 수도 있다 — 너무 쉽거나 어려우면.</div>
+      <div class="daymode" style="margin:8px 0 0">
+        ${[1,2,3,4].map(n => `<button class="tchip${n === tStage ? ' on' : ''}" data-stg="${n}">S${n}</button>`).join('')}
+      </div>
+    </div>
+
+    <div class="vcard" style="margin-bottom:14px">
+      <div class="vt" style="font-size:14px">Speaking 한 문항은 네 걸음</div>
+      <div class="vm">
+        <b style="color:var(--text)">1 이해</b> — 뭘 묻는 질문이고 뭐가 점수가 되는지 읽는다. 말은 안 한다.<br>
+        <b style="color:var(--text)">2 따라</b> — 단계에 맞는 답을 한 줄씩 듣고 그대로 소리내서 따라한다. S1·S2 는 짧은 답이다.<br>
+        <b style="color:var(--text)">3 틀</b> — 답을 덮고 틀만 보고 빈칸을 네 얘기로 채운다. 오늘 문법을 여기서 써먹는다.<br>
+        <b style="color:var(--text)">4 혼자</b> — 질문만 듣고 ${st.sec}초. 여기만 시험과 같다.<br><br>
+        해본 문항은 4걸음으로 바로 열린다. <b style="color:var(--text)">${st.min}초 전엔 Done 이 안 눌린다</b> — 오픽은 분량 자체가 채점 항목이다.
+      </div>
+    </div>
 
     <div class="vcard" style="margin-bottom:14px">
       <div class="vt" style="font-size:14px">오늘은 어느 쪽</div>
@@ -2992,34 +3350,23 @@ function renderPlan(){
     ${block('office')}
     ${block('home')}
 
-    <div class="vcard" style="margin-bottom:14px">
-      <div class="vt" style="font-size:14px">Speaking 한 문항은 네 걸음</div>
-      <div class="vm">
-        <b style="color:var(--text)">1 이해</b> — 뭘 묻는 질문이고 뭐가 점수가 되는지 읽는다. 말은 안 한다.<br>
-        <b style="color:var(--text)">2 따라</b> — 모범답안을 한 줄씩 듣고 그대로 소리내서 따라한다.<br>
-        <b style="color:var(--text)">3 틀</b> — 모범답안을 덮고 틀만 보고 빈칸을 네 얘기로 채운다.<br>
-        <b style="color:var(--text)">4 혼자</b> — 질문만 듣고 90초. 여기만 시험과 같다.<br><br>
-        걸음마다 네 입에서 나오는 양이 늘어난다. 바로 4걸음이 되면 위의 숫자를 눌러 건너뛰면 된다.
-        <b style="color:var(--text)">30초 전엔 Done 이 안 눌린다</b> — 오픽은 분량 자체가 채점 항목이다.
-      </div>
-    </div>
-
-    <div class="vcard" style="margin-bottom:14px">
-      <div class="vt" style="font-size:14px">20분 없는 날</div>
-      <div class="vm"><b style="color:var(--text)">Speaking 만 해.</b> Scenes·News·Vocab 은 재료고
-        Speaking 이 시험이다. 하나만 할 수 있으면 무조건 Speaking.</div>
-    </div>
-
     <div class="vcard">
-      <div class="vt" style="font-size:14px">1월초 재시험까지</div>
-      <div class="vm">매일 3문항. <b style="color:var(--text)">그게 전부다.</b><br><br>
-        12월에 두 가지를 더 한다 — <b style="color:var(--text)">배경설문 정렬</b>(접수할 때 드릴한 주제만 고른다.
-        오픽은 설문에서 질문을 뽑으니 출제 범위를 네가 고르는 시험이다)과
-        <b style="color:var(--text)">15문항 모의</b>(첫 문항에서 막히면 끝까지 흔들리는 걸 미리 겪어둔다).</div>
+      <div class="vt" style="font-size:14px">20분 없는 날</div>
+      <div class="vm"><b style="color:var(--text)">Speaking 한 문항만.</b> 네 걸음 중 4번(혼자)이라도.
+        나머지는 재료고 Speaking 이 시험이다. 승급 실적도 Speaking 으로만 쌓인다.</div>
     </div>`;
 
   $('pl-body').querySelectorAll('[data-dm]').forEach(b => b.onclick = () => {
     setTodayMode(b.dataset.dm);
+    renderPlan();
+  });
+  $('pl-body').querySelectorAll('[data-stg]').forEach(b => b.onclick = async () => {
+    const n = +b.dataset.stg;
+    if (n === tStage && !tStageNext) return;
+    await setStage(n, `S${n} ${STAGES[n].name} 로 바꿨어 — 오늘 문항부터 바뀐다`);
+    // 단계가 문항 유형·장면 난이도를 정하므로 오늘 판을 다시 세운다
+    tLoaded = false;
+    await loadPrompts();
     renderPlan();
   });
 }
@@ -3149,14 +3496,10 @@ async function renderArchive(){
 /* 세 칸을 다 채웠으면 완주 보너스. 한 번만 준다 */
 async function maybeComplete(){
   if (!tSession || tSession.completed_at) return;
-  const p = tSession.progress || {};
-  // 퀴즈까지 해야 오늘이 끝난다. total 이 없으면(문항을 못 만든 날) 그 칸은 없는 것으로 친다 —
-  // 재료가 모자라 퀴즈가 안 뜬 날 완주가 불가능해지면 안 된다.
-  const ok = (p.scenes?.total && p.scenes.done >= p.scenes.total)
-          && (p.article?.total ? p.article.sent >= p.article.total : true)
-          && (p.vocab?.total ? p.vocab.done >= p.vocab.total : true)
-          && (p.speak?.total ? p.speak.done >= p.speak.total : true)
-          && (p.quiz?.total ? p.quiz.done >= p.quiz.total : true);
+  // 단계가 정한 req 칸만 본다 — S1 에서 장면(선택)·뉴스(없음)를 안 했다고 완주가 막히면 안 된다.
+  // 재료가 없는 칸(total 0)은 끝난 것으로 친다 — 재료가 모자란 날 완주가 불가능해지면 안 된다.
+  const b = curStage().board;
+  const ok = b.req.every(partDone) && (!b.quiz || partDone('quiz'));
   if (!ok) return;
   try {
     await sb.from('eng_sessions').update({ completed_at: new Date().toISOString() })
@@ -3170,6 +3513,7 @@ async function maybeComplete(){
 document.addEventListener('visibilitychange', async () => {
   if (document.hidden || !tSession || tSession.session_date === today()) return;
   tLoaded = false; tGain = 0;
+  await loadStage(); await loadPrompts();
   await loadToday();
   if ($('s-today')?.classList.contains('on')) renderToday();
 });
@@ -3185,6 +3529,7 @@ async function init(){
     await flushPending();
     await loadTopics();
     await loadTodayVocab();
+    await loadStage();          // 단계가 문항 유형을 정하므로 문항보다 먼저
     await loadPrompts();
   } catch (e) {
     // 오프라인 폴백: 마지막 큐 스냅샷으로 복습은 가능하게
