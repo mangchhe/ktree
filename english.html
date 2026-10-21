@@ -575,7 +575,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.9';
+const BUILD = '2026-10-21.10';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -948,7 +948,6 @@ async function paintBuild(){
 
 // XP 는 **정답률이 아니라 입을 연 횟수**에 붙는다. 정답에만 주면 「맞음」을 거짓으로
 // 누르게 되고, 그러면 복습 간격이 가짜로 벌어져 SRS 전체가 무의미해진다.
-const SCENE_N = 4;            // 하루 장면 개수
 const SPEAK_N = 3;            // 하루 독백 개수 — 오픽 콤보가 3문항이라 3이다
 // 실제 시험은 **한 주제로 3문항이 묶여** 온다. 설문에서 고른 주제 하나를 잡고 묘사 →
 // 습관 → 과거경험 식으로 파고든다. 그래서 하루치도 콤보 모양으로 뽑는다 — 유형을
@@ -966,21 +965,23 @@ const COMBOS = [
  *   by     — 1월 초 재시험에 맞춘 **페이스 기준선**. 이 날짜에 자동으로 올라가지 않는다.
  *   승급   — 실적으로 한다(PROMOTE). 목표 시간을 넘긴 답 + 말한 날 수.
  *   board  — req 는 완주 조건, opt 는 판에 나오지만 완주를 막지 않는다. 없는 칸은 안 나온다.
- *   model  — 'l1' 이면 따라 말하기·출퇴근 트랙이 짧은 S1 답(model_l1)을 쓴다. */
+ *   model  — 'l1' 이면 따라 말하기·출퇴근 트랙이 짧은 S1 답(model_l1)을 쓴다.
+ *   scN    — 하루 장면 수. 전엔 늘 4개였는데, IL 단계에 문법·Speaking·어휘까지 얹으면 40분을 넘는다.
+ *            밤 보급(eng-stock.mjs)도 이 숫자로 만들 양을 정한다. */
 const STAGES = {
-  1: { name:'문장 만들기',   opic:'NH → IL',  by:'11-11', sec:30, min:20, model:'l1', scMax:2,
+  1: { name:'문장 만들기',   opic:'NH → IL',  by:'11-11', sec:30, min:20, model:'l1', scMax:2, scN:2,
        kinds:['describe','habit','ask'],
        board:{ req:['grammar','speak','vocab'], opt:['scene'], quiz:false },
        focus:'문장 3~4개, 30초. 현재시제(am·is·are, I go)로. 짧아도 된다 — 문장이 끝까지 가는 게 먼저다.' },
-  2: { name:'과거로 말하기', opic:'IL',       by:'12-02', sec:45, min:30, model:'l1', scMax:2,
+  2: { name:'과거로 말하기', opic:'IL',       by:'12-02', sec:45, min:30, model:'l1', scMax:2, scN:2,
        kinds:['describe','habit','ask','past'],
        board:{ req:['grammar','speak','scene','vocab'], opt:[], quiz:true },
        focus:'문장 5~6개, 45초. 과거 문항은 과거형을 끝까지. because·so 로 두 문장을 하나로 묶는다.' },
-  3: { name:'이어 말하기',   opic:'IL → IM1', by:'12-23', sec:60, min:40, model:'en', scMax:3,
+  3: { name:'이어 말하기',   opic:'IL → IM1', by:'12-23', sec:60, min:40, model:'en', scMax:3, scN:3,
        kinds:['describe','habit','ask','past','compare','solve'],
        board:{ req:['grammar','speak','scene','vocab'], opt:['article'], quiz:true },
        focus:'60초. first·then 으로 문장을 덩어리로 만든다. 비교 문항은 -er than, 롤플레이는 대안 둘.' },
-  4: { name:'실전',          opic:'IM',       by:'01-05', sec:90, min:60, model:'en', scMax:3,
+  4: { name:'실전',          opic:'IM',       by:'01-05', sec:90, min:60, model:'en', scMax:3, scN:4,
        kinds:['describe','habit','ask','past','compare','solve'],
        board:{ req:['speak','scene','article','vocab'], opt:['grammar'], quiz:true },
        focus:'90초. 시험과 같다. 문단으로 — 전체 → 하나 집중 → 왜.' },
@@ -1236,7 +1237,7 @@ async function loadToday(){
       const usedSc = new Set((past.data || []).flatMap(r => r.scene_ids || []));
       const fresh = allSc.filter(x => !usedSc.has(x.id));
       // 다 소진했으면 최신 것으로라도 채운다 — 빈 날을 만들지 않는다
-      tScenes = (fresh.length ? fresh : allSc).slice(0, SCENE_N);
+      tScenes = (fresh.length ? fresh : allSc).slice(0, curStage().scN);
     }
     const pinnedAr = se.data?.article_id;
     if (pinnedAr) tArticle = allAr.find(x => x.id === pinnedAr) || null;
@@ -3448,34 +3449,62 @@ async function renderArchive(){
   const names = activeTopicNames();
   // KST 자정 경계. created_at 은 timestamptz 라 UTC 로 환산해 비교한다.
   const dayStart = new Date(Date.parse(today() + 'T00:00:00+09:00')).toISOString();
-  const q = t => {
-    let x = sb.from(t).select('*', { count:'exact' })
-      .lt('created_at', dayStart)
-      .order('created_at',{ascending:false}).limit(avLimit);
+  // 🔴 보관함도 **단계를 따른다.** 판은 S1 이라 L2 장면만 내는데 보관함이 L3 53개·뉴스 19개를
+  // 그대로 띄우면, 주말에 "더 해볼까" 하고 연 순간 S3~S4 재료를 집고 다시 "너무 어렵다" 가 된다.
+  // 숨긴 건 숫자로만 알려준다 — 사라진 게 아니라 잠긴 것이다.
+  const st = curStage();
+  const news = st.board.req.includes('article') || st.board.opt.includes('article');
+  const base = (t, cols, opt) => {
+    let x = sb.from(t).select(cols, opt).lt('created_at', dayStart);
     if (names.length) x = x.in('topic', names);
     return x;
   };
-  const [sc, ar] = await Promise.all([q('eng_scenes'), q('eng_articles')]);
+  const list = (t, f) => f(base(t, '*', { count:'exact' })).order('created_at',{ascending:false}).limit(avLimit);
+  const count = (t, f) => f(base(t, 'id', { count:'exact', head:true }));
+  const none = Promise.resolve({ data:[], count:0 });
+  const [sc, ar, scLock, arLock, mine] = await Promise.all([
+    list('eng_scenes', x => x.lte('level', st.scMax)),
+    news ? list('eng_articles', x => x) : none,
+    count('eng_scenes', x => x.gt('level', st.scMax)),
+    news ? none : count('eng_articles', x => x),
+    sb.from('eng_sessions').select('scene_ids, article_id').eq('user_id', currentUser.id),
+  ]);
   if (sc.error || ar.error) { box.innerHTML = '<div class="empty">Could not load the archive.</div>'; return; }
   const scenes = sc.data || [], arts = ar.data || [];
+  // 해본 것과 안 해본 것을 가른다 — 다시 하기와 처음 하기는 다른 선택이다
+  const didSc = new Set((mine.data || []).flatMap(r => r.scene_ids || []));
+  const didAr = new Set((mine.data || []).map(r => r.article_id).filter(Boolean));
+  // 잠긴 재료가 몇 단계에서 열리나
+  const opensAt = ok => +Object.keys(STAGES).find(n => +n > tStage && ok(STAGES[n])) || null;
+  const lockN = (scLock.count || 0) + (arLock.count || 0);
+  const lockAt = Math.min(...[scLock.count ? opensAt(x => x.scMax > st.scMax) : null,
+    arLock.count ? opensAt(x => x.board.req.includes('article') || x.board.opt.includes('article')) : null]
+    .filter(Boolean));
+  const lockHtml = lockN ? `<div class="vcard" style="margin:0 0 12px;padding:10px 13px">
+      <div class="vm">🔒 <b style="color:var(--text)">S${lockAt} 부터 열리는 재료 ${lockN}개</b>
+        — ${[scLock.count ? `어려운 장면(L3) ${scLock.count}` : '', arLock.count ? `뉴스 ${arLock.count}` : ''].filter(Boolean).join(' · ')}.
+        지금 집으면 다시 "너무 어렵다" 가 된다. 단계가 오르면 여기 나온다.</div></div>` : '';
   if (!scenes.length && !arts.length) {
     // 왜 비었는지 갈라 말해준다 — "아직 없음"과 "토픽을 다 꺼둠"은 다른 상황이다.
     // topics 가 비어 있는 건 **로드 전/실패**일 수도 있다. 그걸 "다 꺼둠"이라고 하면 거짓말이 된다.
     const allOff = topics.length > 0 && !names.length;
-    box.innerHTML = allOff
+    box.innerHTML = lockHtml + (allOff
       ? '<div class="empty">All topics are off. Turn one on in Today to see archived material.</div>'
-      : '<div class="empty">Nothing here yet — today\'s material moves in tomorrow.</div>';
+      : '<div class="empty">Nothing here yet — today\'s material moves in tomorrow.</div>');
     return;
   }
   const more = (sc.count || 0) > scenes.length || (ar.count || 0) > arts.length;
-  box.innerHTML = `<p class="leg" style="margin:0 0 12px">For redoing past material. Want more on the weekend? Pick from here.</p>
-    ${scenes.length ? `<div class="vprog">${scenes.length} scenes</div>` + scenes.map(x =>
+  const did = on => on ? ' · <b style="color:var(--ok)">✓ 해봄</b>' : '';
+  box.innerHTML = `<p class="leg" style="margin:0 0 12px">지난 재료. 주말에 더 하고 싶으면 여기서 골라 —
+      <b>S${tStage} 에 맞는 것만</b> 보인다.</p>
+    ${lockHtml}
+    ${scenes.length ? `<div class="vprog">장면 ${sc.count ?? scenes.length}개 · 안 해본 것 ${scenes.filter(x => !didSc.has(x.id)).length}${(sc.count ?? 0) > scenes.length ? '+' : ''}</div>` + scenes.map(x =>
       `<div class="initem"><div class="itx"><div class="ie">${esc(x.situation_ko)}</div>
-        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${esc(topicLabel(x.topic))} L${x.level} · ${Math.round(x.ms/1000)}s</div></div>
+        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${esc(topicLabel(x.topic))} L${x.level} · ${Math.round(x.ms/1000)}s${did(didSc.has(x.id))}</div></div>
         <button class="btn sm" data-sc="${x.id}">Open</button></div>`).join('') : ''}
-    ${arts.length ? `<div class="vprog" style="margin-top:14px">${arts.length} articles</div>` + arts.map(x =>
+    ${arts.length ? `<div class="vprog" style="margin-top:14px">뉴스 ${ar.count ?? arts.length}개</div>` + arts.map(x =>
       `<div class="initem"><div class="itx"><div class="ie">${esc(x.title)}</div>
-        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${(x.sentences||[]).length} sentences · ${Math.round(x.ms/1000)}s</div></div>
+        <div class="isrc">${esc((x.created_at||'').slice(0,10))} · ${(x.sentences||[]).length} sentences · ${Math.round(x.ms/1000)}s${did(didAr.has(x.id))}</div></div>
         <button class="btn sm" data-ar="${x.id}">Open</button></div>`).join('') : ''}
     ${more ? `<div class="actbar" style="margin-top:14px;justify-content:center">
       <button class="btn sm" id="av-more">Show more</button></div>` : ''}`;

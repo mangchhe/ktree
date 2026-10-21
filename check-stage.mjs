@@ -119,4 +119,13 @@ assert.deepStrictEqual(t1, ['e/G1.', 'e/G2.', 'q/p1', 'e/A one.', 'e/B two.'], '
 const t4 = track(STAGES[4]).flat();
 assert.ok(t4.includes('scene.mp3') && t4.includes('news.mp3') && !t4.includes('e/A one.'), 'S4 트랙은 장면·뉴스·질문');
 
+// 8) 보관함도 단계를 따른다 — 판은 S1 인데 보관함이 L3·뉴스를 띄우면 다시 "너무 어렵다" 가 된다
+const av = cut('async function renderArchive(', 'box.querySelectorAll(\'[data-sc]\')');
+assert.ok(/list\('eng_scenes', x => x\.lte\('level', st\.scMax\)\)/.test(av), '보관함 장면이 단계 난이도를 안 본다');
+assert.ok(/news \? list\('eng_articles'/.test(av), '보관함 뉴스가 단계를 안 본다');
+assert.ok(/count\('eng_scenes', x => x\.gt\('level', st\.scMax\)\)/.test(av), '잠긴 재료 수를 안 센다 — 사라진 줄 안다');
+// 하루 장면 수도 단계가 정한다
+assert.ok(/slice\(0, curStage\(\)\.scN\)/.test(html), '하루 장면 수가 단계를 안 따른다');
+for (let n = 2; n <= 4; n++) assert.ok(STAGES[n].scN >= STAGES[n - 1].scN, `S${n}: 장면 수가 줄었다`);
+
 console.log(`✓ 단계 — 4단계 · 문법 ${GRAMMAR.length}개 · 승급 ${PROMOTE.answers}답/${PROMOTE.days}일, 다음 날 적용`);
