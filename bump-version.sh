@@ -11,6 +11,12 @@ emulate -L zsh
 setopt err_exit pipefail
 cd "${0:A:h}"
 
+# 🔴 파싱이 안 되면 버전을 안 올린다 — 올리면 폰이 죽은 앱을 새 캐시로 받아간다.
+# (check-* 는 조각만 떼어 봐서, 이름 중복 선언으로 앱 전체가 죽는 걸 못 잡은 적이 있다)
+if [[ "$1" != "--show" ]] && ! node check-parse.mjs >/dev/null; then
+  node check-parse.mjs; exit 1
+fi
+
 cur=$(sed -nE "s/^const BUILD = '([^']+)';/\1/p" english.html | head -1)
 swc=$(sed -nE "s/^const CACHE = 'ktree-([^']+)';/\1/p" sw.js | head -1)
 
