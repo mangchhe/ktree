@@ -68,6 +68,12 @@ const rows = [
 ];
 assert.deepStrictEqual(stageGot(rows, 30, '2026-10-21'), { answers:3, days:2 });
 
+// 4-0) 단계 첫날이 비어 있으면 오늘로 적는다 — 안 적으면 문법이 첫 개에 영원히 멈춘다
+DB = { stage:1, stage_since:null }; wrote = null;
+await env.loadStage();
+assert.deepStrictEqual(wrote, { user_id:'u1', stage:1, stage_since:'2026-10-22' }, '빈 stage_since 를 안 채웠다');
+assert.strictEqual(env.get().tStageSince, '2026-10-22');
+
 // 4) 승급은 다음 날부터 — 하루 중간에 판의 완주 조건이 바뀌면 안 된다
 DB = { stage:2, stage_since:'2026-10-23' };   // 오늘(22일) 승급해서 내일부터
 await env.loadStage();
