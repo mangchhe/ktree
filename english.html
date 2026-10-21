@@ -560,7 +560,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.5';
+const BUILD = '2026-10-21.6';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1171,12 +1171,19 @@ async function bumpXp(n, why){
   } catch(_) { /* 오프라인이면 화면만 올라간다 — 다음 로드에서 맞춰진다 */ }
 }
 
+/* 판을 세운 날짜. 앱을 켜둔 채 자정을 넘기면 today() 는 바뀌지만 화면의 판은 어제 것이다. */
+const sessDay = () => tSession?.session_date || today();
+
 async function saveProgress(patch){
   const p = Object.assign({}, tSession?.progress || {}, patch);
   // 🔴 오늘 고른 것을 **실제로 박아둔다.** 전에는 tSession 에 없으면 빈 배열을 저장해
   // scene_ids 가 영영 null 이었고, 그래서 "오늘 판"이 날짜에 묶이지 않았다 —
   // 자정이 지나면 진도만 0 이 되고 같은 장면을 또 했다.
-  const row = { user_id: currentUser.id, session_date: today(), progress: p,
+  // 🔴 session_date 를 매번 today() 로 잡으면 자정을 넘긴 순간 **어제 판의 진도·XP·장면이
+  // 오늘 판으로 복사된다.** 실측: 10-21 00:00:59 에 어제 것이 그대로 들어와 오늘이
+  // 손도 안 댔는데 완료로 찍혔고, 어제 장면 4개가 오늘 판에 박혀 같은 걸 또 하게 됐다.
+  // 지금 하고 있는 건 어제 세운 판이니 **어제 날짜에** 기록한다.
+  const row = { user_id: currentUser.id, session_date: sessDay(), progress: p,
                 scene_ids: (tSession?.scene_ids?.length ? tSession.scene_ids : tScenes.map(x => x.id)),
                 vocab_ids: (tSession?.vocab_ids?.length ? tSession.vocab_ids
                             : [...tVocab.today, ...tVocab.past].map(x => x.id)),
@@ -3150,11 +3157,19 @@ async function maybeComplete(){
   if (!ok) return;
   try {
     await sb.from('eng_sessions').update({ completed_at: new Date().toISOString() })
-      .eq('user_id', currentUser.id).eq('session_date', today());
+      .eq('user_id', currentUser.id).eq('session_date', sessDay());
     tSession.completed_at = new Date().toISOString();
   } catch(_) {}
   await bumpXp(XP.complete, 'Board complete 🎉');
 }
+
+/* 앱을 켜둔 채 자정을 넘기면 화면은 어제 판이다. 돌아올 때 날짜가 바뀌었으면 다시 세운다. */
+document.addEventListener('visibilitychange', async () => {
+  if (document.hidden || !tSession || tSession.session_date === today()) return;
+  tLoaded = false; tGain = 0;
+  await loadToday();
+  if ($('s-today')?.classList.contains('on')) renderToday();
+});
 
 /* ================= init ================= */
 async function init(){
