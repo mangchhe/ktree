@@ -90,11 +90,11 @@ const out = {
   stock: { freeL2, freeL3, freeArticles: freeAr, lastArticle: lastAr, promptsByKind: kc, promptsWithoutL1: noL1 },
   plan: { scenes: { L2, L3 }, article, prompts },
 };
-if (JSON_OUT) { console.log(JSON.stringify(out)); await sb.auth.signOut(); process.exit(0); }
+if (JSON_OUT) { console.log(JSON.stringify(out)); await sb.auth.signOut({ scope: 'local' }); process.exit(0); }
 
 console.log(`사용자 단계  S${stage} ${st.name} (장면 L${st.scMax} 까지${sceneReq ? ' · 필수' : ' · 선택'}${newsNow ? '' : ' · 뉴스 없음'})`);
 console.log(`안 쓴 재고   장면 L2 ${freeL2} · L3 ${freeL3} · 기사 ${freeAr} (마지막 기사 ${lastAr || '-'})`);
 console.log(`문항 재고    ${Object.entries(kc).map(([k, n]) => `${k} ${n}`).join(' · ')}${noL1 ? ` · ⚠ S1 답 없는 문항 ${noL1}` : ''}`);
 console.log(`오늘 만들 것 장면 L2 ${L2} · L3 ${L3} · 기사 ${article ? 1 : 0} · 문항 ${Object.entries(prompts).map(([k, n]) => `${k} ${n}`).join(' · ')}`);
-await sb.auth.signOut();
+await sb.auth.signOut({ scope: 'local' });
 }

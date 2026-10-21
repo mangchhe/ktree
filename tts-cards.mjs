@@ -203,4 +203,4 @@ if (pTodo.length) {
   console.log(`\n✓ 질문 ${pok}개 생성`);
 }
 
-await sb.auth.signOut();
+await sb.auth.signOut({ scope: 'local' });

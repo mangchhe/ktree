@@ -174,8 +174,8 @@ items.forEach(p => by[p.kind] = (by[p.kind] || 0) + 1);
 console.log(`${FILE || '(내장 시드)'}`);
 console.log('유형 분포:', Object.entries(by).map(([k,v]) => `${k} ${v}`).join(' · '));
 console.log(`전체 ${items.length}개 · 이미 있음 ${items.length - rows.length} · 넣을 것 ${rows.length}`);
-if (DRY || !rows.length) { await sb.auth.signOut(); process.exit(0); }
+if (DRY || !rows.length) { await sb.auth.signOut({ scope: 'local' }); process.exit(0); }
 
 const { error } = await sb.from('eng_prompts').insert(rows);
 console.log(error ? `✗ ${error.message}` : `✓ ${rows.length}개 넣음`);
-await sb.auth.signOut();
+await sb.auth.signOut({ scope: 'local' });

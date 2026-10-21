@@ -38,7 +38,7 @@ if (bad.length) { console.error('✗ 아무것도 안 썼다:\n  ' + bad.join('\
 
 console.log(`검증 통과 ${plan.length}개 · 새로 ${plan.filter(p => !p.was).length} · 덮어씀 ${plan.filter(p => p.was && p.was !== p.text).length}`);
 if (missing.length) console.log(`⚠ S1 답이 없는 문항 ${missing.length}개 — 그 문항은 S1 에서 원래 답으로 떨어진다`);
-if (DRY) { await sb.auth.signOut(); process.exit(0); }
+if (DRY) { await sb.auth.signOut({ scope: 'local' }); process.exit(0); }
 
 let ok = 0;
 for (const p of plan) {
@@ -46,4 +46,4 @@ for (const p of plan) {
   if (error) console.error(`  ✗ ${p.id.slice(0,8)}: ${error.message}`); else ok++;
 }
 console.log(`✓ ${ok}/${plan.length}개 반영`);
-await sb.auth.signOut();
+await sb.auth.signOut({ scope: 'local' });

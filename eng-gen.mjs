@@ -281,7 +281,7 @@ async function showRecent(n) {
   console.log('── 최근 기사 ──');
   for (const r of ar || [])
     console.log(`  ${kst(r.created_at)}  ${r.topic}  ${(r.title||'').slice(0,54)}`);
-  await sb.auth.signOut();
+  await sb.auth.signOut({ scope: 'local' });
 }
 
 if (RECENT) {
@@ -416,5 +416,5 @@ if (kind === 'scene') {
 console.log(`\n${allOk ? '✓' : '✗'} ${kind} "${doc.id}" — 오디오 ${(totalMs / 1000).toFixed(1)}초 · ` +
             `${(totalBytes / 1024).toFixed(0)}KB${DRY ? '' : ' · Storage 업로드 완료'}`);
 console.log(`  타이밍을 ${FILE} 에 기록했다`);
-if (sb) await sb.auth.signOut();
+if (sb) await sb.auth.signOut({ scope: 'local' });
 process.exit(allOk ? 0 : 1);

@@ -271,5 +271,5 @@ try {
   else if (positional.length) await cmdUpload(sb, positional[0]);
   else die('업로드할 HTML 파일 경로가 필요합니다. (--list / --delete <slug> 도 사용 가능)');
 } finally {
-  await sb.auth.signOut();
+  await sb.auth.signOut({ scope: 'local' });
 }

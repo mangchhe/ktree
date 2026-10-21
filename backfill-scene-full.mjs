@@ -64,4 +64,4 @@ for (const s of scenes) {
   console.log(e2 ? `✗ ${s.scene_id} — ${e2.message}`
                  : `✓ ${s.scene_id} — ${urls.length}턴 · ${(full.length/1024).toFixed(0)}KB · ${(at/1000).toFixed(1)}초`);
 }
-await sb.auth.signOut();
+await sb.auth.signOut({ scope: 'local' });

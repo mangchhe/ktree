@@ -17,6 +17,19 @@
  * → 2026-10-03 **회전을 껐다** (Management API: refresh_token_rotation_enabled=false).
  *   클라이언트로는 못 고친다 — 서버가 폐기하면 끝이다.
  *
+ * ── 2026-10-21 두 번째 원인 · 조치 완료 ──────────────────────────
+ * 회전을 끈 뒤에도 "30분마다 풀린다" 가 다시 났다. 서버 설정은 그대로(회전 off · timebox 0 ·
+ * 유휴 0)였는데 auth.sessions 에 이 계정 세션이 **0개**였다 — 누가 지운 것이다.
+ *   → 리포의 node 스크립트 9개(tts-cards · eng-gen · seed-prompts · eng-stock …)가 사용자
+ *     계정으로 로그인했다가 끝날 때 **인자 없이 signOut()** 을 불렀다. supabase-js 기본이
+ *     scope:'global' 이라 **그 계정의 모든 기기 세션을 서버에서 지운다.** 스크립트가 돌 때마다
+ *     폰이 로그아웃됐다(밤 보급 = 매일 새벽, 작업하는 날 = 스크립트 돌릴 때마다).
+ *   실험: 세션 둘을 열고 하나가 signOut() → 다른 쪽 "Invalid Refresh Token: Refresh Token Not
+ *   Found". signOut({ scope:'local' }) → 다른 쪽 살아 있음.
+ *   → 전부 scope:'local' 로. check-signout.mjs 가 인자 없는 signOut 을 막는다.
+ * 또 풀리면 먼저 볼 것: auth.sessions 의 이 계정 세션 수(0 이면 누가 지운 것),
+ *   그리고 그 시각에 스크립트가 돌았는지(~/Library/Logs/ktree-engpack.log).
+ *
  * 걸러낸 오답 둘 (다시 의심하지 말 것):
  *   · "탭이 여러 개라 타이머가 경쟁한다" → 아니다. supabase-js 는 _onVisibilityChanged 에서
  *     **숨은 탭의 자동 갱신을 스스로 끈다**.

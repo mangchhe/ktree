@@ -244,5 +244,5 @@ try {
   else if (cmd === 'briefing') await cmdBriefing(sb, uid);
   else die('사용법: node upload-eng.mjs <pack|stats|journal-pending|journal-correct|inbox-pending|inbox-convert|briefing> [file.json]');
 } finally {
-  await sb.auth.signOut();
+  await sb.auth.signOut({ scope: 'local' });
 }
