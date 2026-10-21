@@ -470,6 +470,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .frame .fe{display:block;font-size:13.5px;line-height:1.5;margin-top:2px}
 .prow2{position:relative}
 .pflag{position:absolute;top:7px;right:7px;padding:3px 8px;font-size:12px;line-height:1}
+/* 별이 떠 있는 자리를 글자가 비워둬야 한다 — 안 비우면 긴 문장 첫 줄이 별 아래로 들어간다.
+   대화 줄(.dturn .line)은 이미 이렇게 비워두는데 어휘 줄만 빠져 있었다. */
+.prow2 .pt{padding-right:40px}
 .tflag{padding:2px 7px;font-size:11px;line-height:1;margin-left:6px;vertical-align:middle}
 </style>
 </head>
@@ -560,7 +563,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.6';
+const BUILD = '2026-10-21.7';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
