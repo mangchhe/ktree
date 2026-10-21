@@ -12,6 +12,7 @@ assert.ok(src.includes('sessDay()'), '추출 실패 — 함수 경계가 바뀌�
 let row = null;
 const make = new Function('TODAY', 'SESSION', `
   let tSession = SESSION, tGain = 5, tArticle = null, tScenes = [{id:'new-1'}], captured = null;
+  let tReplay = null;
   const tVocab = { today:[], past:[] };
   const currentUser = { id:'u1' };
   const today = () => TODAY;
