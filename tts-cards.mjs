@@ -88,6 +88,10 @@ const GRAMMAR = new Function(
   appHtml.slice(appHtml.indexOf('const GRAMMAR = ['), appHtml.indexOf('/* GRAMMAR 끝')) +
   '; return GRAMMAR;')();
 for (const g of GRAMMAR) for (const [e, k] of g.ex) { addEn(e); addKo(k); }
+// 알아듣기 문법 예문 — 장면 대사 칩·문법 사전에서 ▶ 로 들려준다
+const READ = new Function(
+  appHtml.slice(appHtml.indexOf('const READ = ['), appHtml.indexOf('/* READ 끝')) + '; return READ;')();
+for (const g of READ) for (const [e, k] of g.ex) { addEn(e); addKo(k); }
 
 // 이미 구운 것 확인 (Storage list 는 1000개 단위 페이지)
 async function listed(dir){

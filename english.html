@@ -476,6 +476,22 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .stage .st2{font-size:11.5px;color:var(--dim);line-height:1.5}
 .stage .st2 b{color:var(--text)}
 .bcard.opt{border-style:dashed}
+/* 대사 아래 문법 칩 — 장면 상단 "문법"(패턴 하나)과 같은 노란 계열 */
+.dturn .grow{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.gchip{font:inherit;font-size:10.5px;font-weight:700;line-height:1.3;padding:2px 8px;border-radius:99px;
+  border:1px solid var(--warn);background:var(--warn-bg);color:var(--warn);cursor:pointer}
+.gchip.on{box-shadow:0 0 0 2px var(--warn)}
+.gbox{display:block;margin-top:8px;padding:9px 11px;border-radius:9px;background:var(--card);
+  border:1px solid var(--border);font-size:12.5px;line-height:1.6;cursor:default}
+.gm{display:block;color:var(--dim);font-size:11px}
+.gr{display:block;margin:5px 0 7px;color:var(--sub);white-space:pre-line}
+.gex{display:block;width:100%;text-align:left;font:inherit;font-size:13px;background:none;border:0;
+  border-top:1px dashed var(--border);padding:6px 0;color:var(--text);cursor:pointer}
+.gex span{display:block;font-size:11.5px;color:var(--dim)}
+.gall{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--eng);cursor:pointer}
+.gram .gr,.gram .gm{padding:0 13px}
+.gram .gex{padding:6px 13px}
+.gram .gex:last-child{padding-bottom:11px}
 .frame .fb{padding:6px 13px}
 .frame .fb+.fb{border-top:1px solid var(--border)}
 .frame .fk{display:block;font-size:10px;color:var(--dim);font-weight:700}
@@ -575,7 +591,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-21.12';
+const BUILD = '2026-10-21.13';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1170,6 +1186,99 @@ const GRAMMAR = [
 ];
 /* GRAMMAR 끝 — tts-cards.mjs 가 여기까지 잘라 읽는다 */
 
+/* 🔴 알아듣기 문법. GRAMMAR(말하기)는 단계마다 천천히 가도 되지만, 듣는 문법은 **첫날부터** 필요하다 —
+ * 장면 대사 658줄을 세어 보니 넷 중 하나에 could/would 가 나왔다(23%). 'll·will 16%, if 10%,
+ * want/need/have to 9%, let's 8%, 진행 6%, 수동 5%, 현재완료 4%. 기본 문법을 모르면 그게 무슨
+ * 문법인지조차 몰라 찾아볼 수도 없다. 그래서 대사에서 **찾아서 이름과 해석법을 붙여준다.**
+ * 순서 = 우선순위. 한 줄에 칩은 두 개까지라, 더 구체적인 것(부탁·I'd like)을 앞에 둔다.
+ * re 를 고치면 check-read.mjs 가 각 항목의 예문이 자기 re 에 걸리는지, 흔한 오탐을 안 거는지 본다. */
+const READ = [
+  { key:'request', name:'Could you ~? · Can you ~?', ko:'부탁',
+    re:/\b(could|would|can|will) you\b/i,
+    read:'질문 모양이지만 부탁이다 — "~해 줄 수 있어요?". could·would 가 can 보다 공손하다. 대답은 Sure. / Of course.',
+    ex:[['Could you check it for me?','그거 좀 확인해 줄 수 있어요?'],['Can you send me the file?','파일 좀 보내 줄래요?']] },
+  { key:'like', name:"I'd like ~", ko:'~ 주세요 · ~하고 싶어요',
+    re:/\b(I'd|I would|we'd|we would) like\b|\bwould you like\b/i,
+    read:"'d 는 would 다. I'd like + 물건 = ~ 주세요, I'd like to + 동사 = ~하고 싶어요. want 의 공손한 말이다.\nWould you like ~? = ~ 드릴까요?",
+    ex:[["I'd like a coffee, please.",'커피 한 잔 주세요.'],["I'd like to change my booking.",'예약을 바꾸고 싶어요.']] },
+  { key:'will', name:"'ll · will · won't", ko:'~할게 · ~할 거야',
+    re:/\b\w+'ll\b|\bwill\b|\bwon't\b/i,
+    read:"'ll 은 will 이다 — \"~할게\"(그 자리에서 정한 약속), \"~할 거야\"(예상).\nwon't 는 will not — ~안 할 거야, ~안 될 거야.",
+    ex:[["I'll call you back.",'다시 전화할게.'],["It won't take long.",'오래 안 걸릴 거야.']] },
+  { key:'goingto', name:'be going to · gonna', ko:'~할 거야 (정해둔 계획)',
+    re:/\bgoing to (?!the\b|a\b|an\b|my\b|your\b|our\b|his\b|her\b|their\b|work\b|school\b|bed\b)\w+|\bgonna\b/i,
+    read:'going to 뒤에 동사가 오면 "가다"가 아니라 미래다 — 이미 정해둔 계획. 말할 땐 gonna 로 줄인다.\n(going to the store 는 그냥 "가게에 가는 중")',
+    ex:[["I'm going to visit my parents.",'부모님 댁에 갈 거야.'],["It's going to rain.",'비 올 것 같아.']] },
+  { key:'should', name:'should', ko:'~하는 게 좋겠어',
+    re:/\bshould(n't)?\b/i,
+    read:'권할 때 — "~하는 게 좋겠어, ~해야지".\nshould have + p.p. 는 "~했어야 했는데"(후회).',
+    ex:[['You should talk to your manager.','매니저랑 얘기해 보는 게 좋겠어.'],['We should leave now.','이제 가는 게 좋겠어.']] },
+  { key:'maybe', name:'might · may · could be', ko:'~일지도 몰라',
+    re:/\bmight\b|(?<!\bin )(?<!\bof )\bmay\b(?! \d)|\bcould (be|take|happen|work|help|get)\b/i,   // in May·May 3 은 달이다
+    read:'확실하지 않을 때 — "~할지도 몰라, ~일 수도 있어".\nMay I ~? 는 따로다 — "~해도 될까요?"',
+    ex:[['It might rain later.','이따 비 올지도 몰라.'],['That could be a problem.','그게 문제가 될 수도 있어.']] },
+  { key:'would', name:"would · 'd", ko:'~할 텐데 · ~겠어요',
+    re:/\bwould(n't)?\b(?! you\b)(?! like\b)|\b(I|you|we|they|he|she|it|that)'d\b(?! like\b)(?! better\b)/i,
+    read:"상상하거나 부드럽게 말할 때 — \"그러면 ~할 텐데, ~겠어요\". That would be great = 그러면 좋겠어요.\n'd 는 would 아니면 had 다 — 뒤에 동사원형이면 would, p.p. 면 had.",
+    ex:[['That would be great.','그러면 정말 좋겠어요.'],["I'd rather stay home.",'차라리 집에 있을래.']] },
+  { key:'if', name:'if', ko:'만약 ~하면',
+    re:/\bif\b/i,
+    read:'if 뒤가 조건, 콤마 뒤가 결과 — "~하면 …".\nif possible = 가능하면, if not = 아니면, even if = ~해도.',
+    ex:[['If it rains, we can stay inside.','비 오면 안에 있으면 돼.'],['Call me if you need help.','도움 필요하면 전화해.']] },
+  { key:'to', name:'want to · need to · have to', ko:'~하고 싶다 · ~해야 한다',
+    re:/\b(want|wants|wanted|need|needs|needed|have|has|had|try|tries|tried|trying|plan|planning|hope|decided|forgot|remember)\s+to\s+(?!the\b|a\b|an\b|my\b|your\b|our\b|me\b|you\b|him\b|her\b|them\b|us\b|it\b)\w+/i,
+    read:'to + 동사 = "~하는 것".\nwant to ~ = ~하고 싶다 · need to ~ = ~해야 한다 · have to ~ = (어쩔 수 없이) ~해야 한다 · try to ~ = ~하려고 하다',
+    ex:[['I need to finish this today.','오늘 이거 끝내야 해.'],['I have to work late.','늦게까지 일해야 해.']] },
+  { key:'lets', name:"let's · let me", ko:'~하자 · 내가 ~할게',
+    re:/\blet's\b|\blet (me|us)\b/i,
+    read:"let's ~ = \"~하자\".\nlet me ~ = \"내가 ~할게, ~해 볼게\" — Let me check = 확인해 볼게요.",
+    ex:[["Let's take a break.",'좀 쉬자.'],['Let me check.','확인해 볼게요.']] },
+  { key:'ing', name:'be + -ing', ko:'~하는 중',
+    re:/\b(I'm|you're|we're|they're|he's|she's|it's|am|is|are|was|were)\s+(?!(nothing|something|anything|everything|thing|morning|evening|building|meeting|ceiling|during|going to)\b)\w{2,}ing\b/i,
+    read:'"~하는 중이다, ~하고 있다". was ~ing = 그때 ~하고 있었다.\n가까운 미래도 된다 — I\'m leaving tomorrow = 내일 떠나.',
+    ex:[["I'm working from home today.",'오늘 재택하는 중이야.'],['I was paying at the store.','가게에서 계산하고 있었어.']] },
+  { key:'passive', name:'be · get + p.p.', ko:'~되다 · ~당하다',
+    re:/\b(is|are|was|were|been|be|being|get|gets|got)\s+(?!used to\b)(\w{3,}ed|done|made|taken|given|sent|told|shown|known|charged|stuck|broken|lost|found|paid|sold|built|held|hurt|kept|left|stolen)\b/i,
+    read:'"~되다, ~당하다" — 누가 했는지보다 무슨 일이 일어났는지가 중요할 때.\ngot + p.p. 는 말할 때 많이 쓴다 — My card got declined = 카드가 거절됐어.',
+    ex:[['My card got declined.','카드가 거절됐어.'],['The flight was delayed.','비행기가 지연됐어.']] },
+  { key:'perfect', name:"have + p.p. (I've been)", ko:'~해 봤다 · ~해 왔다',
+    // 도치(Have you ~?)는 문장 첫머리만 — 가운데 "have it delivered" 는 사역(배달시키다)이다.
+    // got 은 뺀다 — I've got 은 "있다"(= I have)라 "~해 봤다"로 읽으면 틀린다.
+    re:/(?:\b(?:I've|you've|we've|they've|have|has|haven't|hasn't)|(?:^|[.?!]\s+)(?:have|has|haven't|hasn't)\s+(?:you|we|they|he|she|it|I))\s+(?:(?:already|just|never|ever|not|always|recently)\s+)*(?:been|done|gotten|had|made|seen|heard|tried|used|finished|lost|found|told|said|taken|given|come|gone|left|bought|paid|sent|\w{3,}ed)\b/i,
+    read:'과거에 한 일이 지금까지 이어지거나 남아 있다. 한국어로는 상황 따라 셋 중 하나로 읽는다:\n① ~해 봤다 (경험) — I\'ve been to Japan = 일본 가 봤어\n② ~했다, 그래서 지금 그렇다 — I\'ve lost my wallet = 지갑 잃어버렸어 (지금도 없다)\n③ ~해 왔다 (계속) — I\'ve been working late = 계속 늦게까지 일해 왔어\nlast week 처럼 때를 콕 집으면 안 쓰고 그냥 과거(went)를 쓴다.',
+    ex:[["I've been to Japan twice.",'일본에 두 번 가 봤어.'],["I've lost my wallet.",'지갑을 잃어버렸어.'],["We've been working late.",'계속 늦게까지 일해 왔어.']] },
+  { key:'preping', name:'전치사 + -ing', ko:'~하는 것',
+    re:/\b(about|for|of|by|without|before|after|instead of|mind|enjoy|keep|stop|finish|avoid)\s+(?!(nothing|something|anything|everything|morning|evening|meeting|building|during)\b)\w{2,}ing\b/i,
+    read:'전치사 뒤에 동사가 오면 -ing 로 바꾼다 — "~하는 것".\nThanks for calling = 전화해 줘서 고마워요 · before leaving = 떠나기 전에',
+    ex:[['Thanks for waiting.','기다려 줘서 고마워요.'],["I'm thinking about moving.",'이사할까 생각 중이야.']] },
+];
+/* READ 끝 — tts-cards.mjs 가 여기까지 잘라 읽는다 */
+
+/* 문법 사전(순서 탭)의 그 항목을 펼쳐서 연다 */
+function openGdict(key){
+  show('plan');
+  const d = key && document.getElementById('gd-' + key);
+  if (d) d.open = true;
+  (d || $('gdict'))?.scrollIntoView({ block:'start', behavior:'smooth' });
+}
+
+/* 대사에서 알아듣기 문법을 찾는다. 앞 항목이 우선, 두 개까지. m 은 실제로 걸린 조각. */
+function readHits(en, max = 2){
+  const out = [], s = String(en || '');
+  for (let i = 0; i < READ.length && out.length < max; i++) {
+    const m = s.match(READ[i].re);
+    if (m) out.push({ i, m: m[0] });
+  }
+  return out;
+}
+
+/* 문법 한 항목을 펼친 모양 — 장면 대사 칩과 문법 사전이 같은 걸 쓴다 */
+function readBoxHtml(g, hit){
+  return `${hit ? `<span class="gm">이 줄에서 — “${esc(hit)}”</span>` : ''}
+    <span class="gr">${esc(g.read)}</span>
+    ${g.ex.map(([en, ko]) => `<button class="gex" data-en="${esc(en)}">▶ ${esc(en)}<span>${esc(ko)}</span></button>`).join('')}`;
+}
+
 /* 오늘의 문법. 단계에 올라온 날이 0번째 — 순서대로 돌고 다 돌면 처음부터(복습).
  * S4 는 자기 문법 + 앞 단계 전체를 섞어 복습한다. */
 function todayGrammar(){
@@ -1646,6 +1755,7 @@ function actGrammar(el){
 let scIdx = 0, scMode = 'listen';
 let scPhase = 'pre';      // 'pre' = 어휘 먼저, 'dialog' = 대화
 let scMean = true;        // 해석을 기본으로 펼친다 — 숨기면 못 찾는다
+let scGram = true;        // 대사 아래 문법 칩 — 기본 문법을 모르면 뭘 찾아야 할지도 모른다
 let scLoop = false;       // 장면 반복 재생
 
 function actScene(el){
@@ -1877,6 +1987,7 @@ function drawScene(el){
       <button class="btn sm${scLoop ? ' on' : ''}" id="sc-loop" title="Play the scene over and over">🔁 Repeat</button>
       <button class="btn sm" id="sc-words">Words</button>
       <button class="btn sm${scMean ? ' on' : ''}" id="sc-mean" title="Korean for every line">해석</button>
+      <button class="btn sm${scGram ? ' on' : ''}" id="sc-gram" title="문법 칩">문법</button>
     </div>
     <div id="sc-turns"></div>
     <p class="leg"><span class="sw">Dotted</span> = swallowed under 150ms. Natives barely pronounce it.</p>
@@ -1909,6 +2020,11 @@ function drawScene(el){
   $('sc-mean').onclick = function(){
     scMean = !scMean; this.classList.toggle('on', scMean);
     turns.forEach(t => t.showMean = false);   // 줄마다 따로 열어둔 것은 토글에 맞춘다
+    paintTurns(sc);
+  };
+  $('sc-gram').onclick = function(){
+    scGram = !scGram; this.classList.toggle('on', scGram);
+    turns.forEach(t => t.gOpen = null);
     paintTurns(sc);
   };
   $('sc-next').onclick = async () => {
@@ -1950,9 +2066,21 @@ function paintTurns(sc){
       ${hide ? '<span class="hid">Your turn — tap to see the model line</span>' : segHtml(t.segs || [], t.ev || [])}
       ${hide || !t.en ? '' : `<button class="btn sm tflag" data-ft="${esc(t.en)}" title="이 줄 찍어두기">☆</button>`}
       ${mean ? `<button class="tchev${openMean ? ' open' : ''}" aria-label="Show meaning" aria-expanded="${openMean}">›</button>` : ''}
-      ${mean && openMean ? `<span class="mean">${esc(mean)}</span>` : ''}</span>`;
+      ${mean && openMean ? `<span class="mean">${esc(mean)}</span>` : ''}
+      ${(hits => hits.length ? `<span class="grow">${hits.map(h =>
+          `<button class="gchip${t.gOpen === h.i ? ' on' : ''}" data-gi="${h.i}">${esc(READ[h.i].ko)}</button>`).join('')}</span>
+        ${hits.some(h => h.i === t.gOpen) ? `<span class="gbox"><b>${esc(READ[t.gOpen].name)}</b>
+          ${readBoxHtml(READ[t.gOpen], hits.find(h => h.i === t.gOpen).m)}
+          <span class="gall">문법 사전 전체 ›</span></span>` : ''}` : '')(!hide && scGram ? readHits(t.en) : [])}</span>`;
     const mb = d.querySelector('.tchev');
     if (mb) mb.onclick = e => { e.stopPropagation(); t.showMean = !t.showMean; paintTurns(sc); };
+    // 문법 칩·펼침 안을 눌러도 줄 재생으로 번지면 안 된다
+    d.querySelectorAll('.gchip').forEach(b => b.onclick = e => {
+      e.stopPropagation(); t.gOpen = t.gOpen === +b.dataset.gi ? null : +b.dataset.gi; paintTurns(sc);
+    });
+    d.querySelectorAll('.gex').forEach(b => b.onclick = e => { e.stopPropagation(); playCard({ answer_en:b.dataset.en }); });
+    const gb = d.querySelector('.gbox'); if (gb) gb.addEventListener('click', e => e.stopPropagation());
+    const ga = d.querySelector('.gall'); if (ga) ga.onclick = e => { e.stopPropagation(); openGdict(READ[t.gOpen].key); };
     const fb = d.querySelector('.tflag');
     if (fb) fb.onclick = e => {
       e.stopPropagation();                    // 줄을 누르면 재생이라 번져선 안 된다
@@ -3353,6 +3481,19 @@ function renderPlan(){
       </div>
     </div>
 
+    <div class="vcard" id="gdict" style="margin-bottom:14px">
+      <div class="vt" style="font-size:14px">문법 사전</div>
+      <div class="vm"><b style="color:var(--text)">알아듣기</b> — 장면 대사에 자주 나오는 순서다. 대사 아래 노란 칩을 누르면
+        이게 열린다. 말은 못 해도 들었을 때 뜻은 잡혀야 한다 — 그래서 단계와 상관없이 지금 다 본다.</div>
+      ${READ.map(g => `<details class="gram" id="gd-${g.key}" style="margin:8px 0 0">
+        <summary><span class="gl">${esc(g.ko)}</span>${esc(g.name)}</summary>${readBoxHtml(g)}</details>`).join('')}
+      <div class="vm" style="margin-top:14px"><b style="color:var(--text)">말하기</b> — 단계마다 하루 하나씩 판에 나온다.
+        미리 봐도 된다.</div>
+      ${GRAMMAR.map((g, i) => `<details class="gram" id="gd-g${i}" style="margin:8px 0 0">
+        <summary><span class="gl">S${g.st}</span>${esc(g.name)}</summary>
+        ${readBoxHtml({ read: g.why, ex: g.ex })}</details>`).join('')}
+    </div>
+
     <div class="vcard" style="margin-bottom:14px">
       <div class="vt" style="font-size:14px">Speaking 한 문항은 네 걸음</div>
       <div class="vm">
@@ -3388,6 +3529,7 @@ function renderPlan(){
     setTodayMode(b.dataset.dm);
     renderPlan();
   });
+  $('pl-body').querySelectorAll('.gex').forEach(b => b.onclick = () => playCard({ answer_en:b.dataset.en }));
   $('pl-body').querySelectorAll('[data-stg]').forEach(b => b.onclick = async () => {
     const n = +b.dataset.stg;
     if (n === tStage && !tStageNext) return;
