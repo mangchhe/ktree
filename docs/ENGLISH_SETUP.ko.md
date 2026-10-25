@@ -152,3 +152,15 @@ node upload-eng.mjs briefing <f>          # 오늘의 브리핑 업로드
 - **무제한 큐**: due → 신규 → 앞당겨 복습 순으로 이어져 바닥나지 않는다. 보급은 재고(unseen<15) 기반.
 - **오프라인**: 마지막 큐를 localStorage 에 캐시, 지하철에서 복습한 결과는 복귀 시 자동 sync.
 - **토픽 추가** = 앱에서 ＋ 탭 (행 추가일 뿐, 다음 보급부터 자동으로 채워짐).
+
+## 스피킹 녹음 교정 (speak-fix)
+
+앱이 녹음을 비공개 버킷 `eng-speak` 에 올리고 `eng_speak_fix` 에 pending 행을 만든다.
+Mac 의 launchd `com.hajoo.ktree.speakfix` 가 1분마다 `speak-fix.sh` → `speak-fix.mjs` 를 돌려
+받아쓰기(whisper-cli, 로컬) + 교정(`claude -p --model sonnet`)으로 채운다. 한 건 10~20초.
+
+- 준비: `brew install whisper-cpp ffmpeg`, 모델 `~/.cache/whisper/ggml-small.bin` (다국어 small)
+- 세션: `~/.config/ktree/speak-fix-session.json` (600). 매분 비번 로그인하지 않으려고 둔다. 지우면 다음 실행에 새로 로그인.
+- 로그: `~/Library/Logs/ktree-speakfix.log` (할 일이 있었을 때만 찍힘)
+- Mac 이 자고 있으면 교정은 깨어날 때 채워진다.
+- 스키마: `supabase/english-v18-speak-fix.sql`, 검사: `node check-speakfix.mjs`

@@ -371,6 +371,14 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .dturn .mean{display:block;margin-top:7px;padding-top:7px;border-top:1px solid var(--border);
   font-size:13px;color:var(--dim);line-height:1.55}
 .kw{border-radius:3px;padding:0 .06em}
+.fixbox{margin-top:12px}.fixbox .spnote{margin-top:8px}
+.fixwait{font-size:13px;color:var(--sub);padding:10px 12px;border:1px dashed var(--border);border-radius:9px}
+.fixrow{margin-top:8px;padding:8px 11px;border-radius:9px;background:var(--card);border:1px solid var(--border)}
+.fsaid{font-size:13px;color:var(--dim);text-decoration:line-through}
+.fbetter{font-size:15px;color:var(--ok);font-weight:600;margin-top:2px}
+.fbetter .fplay{padding:1px 7px;margin-left:4px;font-size:11px}
+.fwhy{font-size:12.5px;color:var(--sub);margin-top:3px;line-height:1.5}
+.fsent{cursor:pointer}
 .kw.on{background:var(--warn);color:#241a05;font-weight:700;border-radius:4px}
 .kw.red{opacity:.5;border-bottom:1px dotted currentColor}
 .kw.red.on{opacity:1}
@@ -591,7 +599,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.2';
+const BUILD = '2026-10-26.3';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1674,6 +1682,7 @@ async function renderToday(){
       <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>m</small></div><div class="l">Listened</div></div>
       <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">Articles read</div></div>
     </div>
+    <div id="t-fixes"></div>
     <p class="leg"><b>S${tStage} 목표</b> — ${esc(st.focus)}
       ${st.board.opt.length ? `「선택」 칸은 안 해도 오늘이 끝난다.` : ''}</p>
 
@@ -1704,6 +1713,7 @@ async function renderToday(){
   paintXp('');
   wireStrip();
   paintStreak();
+  paintFixes();
 }
 
 function actBar(title){
@@ -2270,6 +2280,7 @@ function frameHtml(p, open, l1){
   </details>`;
 }
 let spIdx = 0, spTimer = null, spStart = 0, spRec = null, spChunks = [], spUrl = null;
+let spBlob = null;   // Done 이 녹음 Blob 을 기다리는 약속 (onstop 이 비동기라)
 
 function spStop(){
   if (spTimer) { clearInterval(spTimer); spTimer = null; }
@@ -2458,6 +2469,7 @@ function drawSpSolo(el, p, head){
       <button class="btn sm" id="sp-end" disabled>■ Done</button>
     </div>
     <audio id="sp-play" controls hidden style="width:100%;margin-top:10px"></audio>
+    <div id="sp-fix"></div>
     <div id="sp-after" hidden>
       <button class="check" id="sp-reveal" style="margin-top:14px">Show a model answer</button>
       <div id="sp-model" hidden></div>
@@ -2481,6 +2493,7 @@ function drawSpSolo(el, p, head){
 
   $('sp-go').onclick = async () => {
     spStart = Date.now(); spChunks = [];
+    let gotBlob; spBlob = new Promise(r => gotBlob = r);
     $('sp-go').disabled = true;
     spTimer = setInterval(tick, 250); tick();
     // 녹음은 덤이다. 거부되거나 지원이 없으면 조용히 타이머만 돈다.
@@ -2490,13 +2503,15 @@ function drawSpSolo(el, p, head){
       spRec.ondataavailable = e => e.data.size && spChunks.push(e.data);
       spRec.onstop = () => {
         stream.getTracks().forEach(t => t.stop());
-        if (!spChunks.length) return;
+        if (!spChunks.length) return gotBlob(null);
         if (spUrl) URL.revokeObjectURL(spUrl);
-        spUrl = URL.createObjectURL(new Blob(spChunks, { type: spRec.mimeType || 'audio/webm' }));
+        const blob = new Blob(spChunks, { type: spRec.mimeType || 'audio/webm' });
+        gotBlob(blob);
+        spUrl = URL.createObjectURL(blob);
         const a = $('sp-play'); if (a) { a.src = spUrl; a.hidden = false; }
       };
       spRec.start();
-    } catch (_) { spRec = null; }
+    } catch (_) { spRec = null; gotBlob(null); }
   };
 
   $('sp-end').onclick = async () => {
@@ -2511,6 +2526,7 @@ function drawSpSolo(el, p, head){
         user_id: currentUser.id, prompt_id: p.id, done_on: today(), spoke_ms: ms,
       }, { onConflict:'user_id,prompt_id,done_on' });
     } catch(_) {}
+    sendFix(p, ms);    // 기다리지 않는다 — 올리는 동안 모범답을 볼 수 있다
     $('sp-reveal').onclick = function(){
       this.remove();
       const box = $('sp-model'); box.hidden = false;
@@ -2548,6 +2564,93 @@ function drawSpSolo(el, p, head){
       };
     };
   };
+}
+
+/* ── 스피킹 교정 ─────────────────────────────────────
+ * 녹음을 비공개 버킷(eng-speak)에 올리고 pending 행을 만든다. Mac 의 speak-fix.mjs 가
+ * 1분마다 받아쓰기(whisper) + 교정(claude)을 해서 채운다 — 보통 1~2분. Mac 이 꺼져 있으면
+ * 켜질 때 채워진다. 결과는 이 화면(기다리는 동안)과 오늘 판 아래 「스피킹 교정」에 뜬다. */
+async function sendFix(p, ms){
+  const box = $('sp-fix'); if (!box) return;
+  const blob = spBlob ? await Promise.race([spBlob, new Promise(r => setTimeout(() => r(null), 3000))]) : null;
+  if (!blob) { box.innerHTML = `<div class="spnote" style="margin-top:10px">녹음이 안 돼서 교정은 못 받아 — 마이크 권한을 확인해줘.</div>`; return; }
+  box.innerHTML = fixHtml({ status:'sending' });
+  const ext = /mp4|m4a|aac/.test(blob.type) ? 'm4a' : /ogg/.test(blob.type) ? 'ogg' : 'webm';
+  const path = `${currentUser.id}/${today()}-${p.id.slice(0,8)}-${Date.now()}.${ext}`;
+  const up = await sb.storage.from('eng-speak').upload(path, blob, { contentType: blob.type || 'audio/webm' });
+  const ins = up.error ? up : await sb.from('eng_speak_fix')
+    .insert({ prompt_id:p.id, stage:tStage, audio_path:path, spoke_ms:ms }).select('*').single();
+  if (ins.error) { box.innerHTML = fixHtml({ status:'error', error:'올리기 실패 — 연결 확인' }); return; }
+  watchFix(ins.data.id, box);
+}
+
+/** done/error 가 될 때까지 8초마다 본다. 화면을 떠나면(box 가 문서에서 빠지면) 멈춘다. */
+function watchFix(id, box){
+  let n = 0;
+  const tick = async () => {
+    if (!box.isConnected || ++n > 90) return;
+    const { data } = await sb.from('eng_speak_fix').select('*, eng_prompts(question_en)').eq('id', id).maybeSingle();
+    if (data) { box.innerHTML = fixHtml(data); wireFix(box); }
+    if (!data || data.status === 'pending' || data.status === 'working') setTimeout(tick, 8000);
+  };
+  setTimeout(tick, 4000);
+}
+
+function fixHtml(r){
+  const wrap = x => `<div class="fixbox">${x}</div>`;
+  if (r.status === 'sending') return wrap('<div class="fixwait">⏫ 녹음 올리는 중…</div>');
+  if (r.status === 'pending' || r.status === 'working') return wrap(`<div class="fixwait">⏳ ${
+    r.status === 'working' ? '교정하는 중' : '교정 대기'} — 보통 1~2분. 다른 문항 해도 돼, 오늘 판 아래 「스피킹 교정」에 남아.</div>`);
+  if (r.status === 'error') return wrap(`<div class="fixwait">✗ 교정 실패 — ${esc(r.error || '')}</div>`);
+  const x = r.result || {};
+  return wrap(`
+    ${x.intent_ko ? `<div class="spnote"><span class="l">네가 하려던 말</span>${esc(x.intent_ko)}</div>` : ''}
+    ${(x.fixes || []).map(f => `<div class="fixrow">
+      ${f.said ? `<div class="fsaid">${esc(f.said)}</div>` : ''}
+      <div class="fbetter">→ ${esc(f.better)} <button class="btn sm fplay" data-en="${esc(f.better)}">🔊</button></div>
+      <div class="fwhy">${esc(f.why_ko || '')}</div></div>`).join('')}
+    <div class="spnote"><span class="l">고친 답 — 이걸 따라 말해봐</span></div>
+    <div class="spmodel">${sentences(x.fixed || '').map(t =>
+      `<p class="fsent" data-en="${esc(t)}">${esc(t)}</p>`).join('')}</div>
+    <div class="actbar" style="margin-top:6px">
+      <button class="btn sm primary-btn fplayall" data-en="${esc(x.fixed || '')}">🔊 고친 답 듣기</button>
+      ${r.audio_path ? `<button class="btn sm fmine" data-p="${esc(r.audio_path)}">🎙 내 녹음</button>` : ''}
+    </div>
+    ${x.good_ko ? `<div class="spnote"><span class="l">잘한 점</span>${esc(x.good_ko)}</div>` : ''}
+    ${x.next_ko ? `<div class="spnote"><span class="l">다음엔 이거 하나만</span>${esc(x.next_ko)}</div>` : ''}
+    ${r.transcript ? `<details class="gram"><summary><span class="gl">인식</span>앱이 알아들은 그대로</summary>
+      <div class="fwhy" style="margin:0 13px 12px">${esc(r.transcript)}</div></details>` : ''}`);
+}
+
+function wireFix(root){
+  root.querySelectorAll('.fplay,.fsent,.fplayall').forEach(b => b.onclick = e => {
+    e.stopPropagation(); tStopAudio(); speak(b.dataset.en);
+  });
+  root.querySelectorAll('.fmine').forEach(b => b.onclick = async e => {
+    e.stopPropagation(); tStopAudio();
+    const { data } = await sb.storage.from('eng-speak').createSignedUrl(b.dataset.p, 600);
+    if (!data) return toast('녹음을 못 불러왔어');
+    tAudio = new Audio(data.signedUrl); tAudio.play().catch(() => {});
+  });
+}
+
+/** 오늘 판 아래 — 최근 7일 교정. 판을 그린 뒤 채운다(판이 늦게 뜨면 안 된다). */
+async function paintFixes(){
+  const host = $('t-fixes'); if (!host) return;
+  const { data } = await sb.from('eng_speak_fix').select('*, eng_prompts(question_en, question_ko)')
+    .eq('user_id', currentUser.id).gte('created_at', kstDate(Date.now() - 6 * 864e5) + 'T00:00:00+09:00')
+    .order('created_at', { ascending:false }).limit(20);
+  if (!data?.length) { host.innerHTML = ''; return; }
+  const mark = { done:'✓', error:'✗', pending:'⏳', working:'⏳' };
+  host.innerHTML = `<div class="leg" style="margin:14px 0 6px"><b>🎙 스피킹 교정</b></div>` + data.map(r => `
+    <details class="gram fixitem" data-id="${r.id}"><summary><span class="gl">${mark[r.status] || ''}</span>${
+      esc(r.created_at.slice(5,10).replace('-','/'))} · ${esc(r.eng_prompts?.question_ko || r.eng_prompts?.question_en || '')}</summary>
+      <div style="padding:0 13px 12px">${fixHtml(r)}</div></details>`).join('');
+  wireFix(host);
+  host.querySelectorAll('.fixitem').forEach(d => {
+    const r = data.find(x => x.id === d.dataset.id);
+    if (r.status === 'pending' || r.status === 'working') watchFix(r.id, d.querySelector('div'));
+  });
 }
 
 /* ── 막 2 · 뉴스 읽기 ───────────────────────────────── */
