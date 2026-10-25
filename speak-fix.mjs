@@ -12,6 +12,7 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir, homedir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { synthBatch } from './edge-say.mjs';
 
 export const STAGE_RULE = {
   1: '현재시제 위주의 짧은 문장(문장당 13단어 이하) 3~6개. am/is/are, I + 동사, There is, can 정도만.',
@@ -44,6 +45,11 @@ JSON 하나만 출력한다. 다른 글자 없이:
 말한 게 거의 없거나 인식이 비었으면 fixes 는 [] 로 두고 fixed 에 이 질문에 대한 이 단계 수준의 쉬운 답을 쓴다.`;
 }
 
+/** 구울 문장들 — 고친 답의 문장 + 고친 표현. 앱의 재생 버튼이 누르는 단위 그대로다. */
+export function bakeTexts(fix, split) {
+  return [...new Set([...split(fix.fixed), ...fix.fixes.map(f => f.better)].map(t => String(t).trim()).filter(Boolean))];
+}
+
 /** claude 출력에서 JSON 을 꺼낸다. 코드펜스·앞뒤 말이 붙어도 첫 { 부터 마지막 } 까지. */
 export function parseFix(out) {
   const s = out.indexOf('{'), e = out.lastIndexOf('}');
@@ -69,6 +75,25 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     removeItem: k => { const o = load(); delete o[k]; writeFileSync(SESS, JSON.stringify(o)); },
   };
   const html = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
+  // 글자키·문장 나누기는 앱에서 읽는다 (tts-cards.mjs 와 같은 이유 — 베끼면 어긋난다)
+  const app = readFileSync(new URL('./english.html', import.meta.url), 'utf8');
+  const audioKey = new Function(app.slice(app.indexOf('function audioKey(s){'), app.indexOf('const CARD_AUD =')) + '; return audioKey;')();
+  const sentences = new Function(app.slice(app.indexOf('const sentences ='), app.indexOf('\n', app.indexOf('const sentences ='))) + '; return sentences;')();
+  const VOICE = readFileSync(new URL('./tts-cards.mjs', import.meta.url), 'utf8').match(/'(en-US-[A-Za-z]+Neural)'/)[1];
+  // 🔊 고친 답을 원어민 음성으로 굽는다 → eng-audio/cards/t/<글자키>.mp3. 앱의 playCard 가
+  //    이 경로를 먼저 찾으므로 따로 배선할 게 없다. 실패해도 교정은 살린다(앱은 기기 음성으로 읽는다).
+  async function bake(texts) {
+    let n = 0;
+    const got = await synthBatch(texts.map(text => ({ text, voice: VOICE })));
+    for (const [i, r] of got.entries()) {
+      if (!r.buf) continue;
+      const { error } = await sb.storage.from('eng-audio').upload(`cards/t/${audioKey(texts[i])}.mp3`, r.buf,
+        { contentType: 'audio/mpeg', upsert: true });
+      if (!error) n++;
+    }
+    return n;
+  }
+
   const sb = createClient(html.match(/const SUPABASE_URL = '([^']+)'/)[1],
     html.match(/const SUPABASE_ANON_KEY = '([^']+)'/)[1],
     { auth: { storage, persistSession: true, autoRefreshToken: false } });
@@ -111,6 +136,9 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       const out = execFileSync(CLAUDE, ['-p', prompt, '--model', 'sonnet', '--permission-mode', 'dontAsk'],
         { cwd: dir, encoding: 'utf8', timeout: 180e3, maxBuffer: 4e6 });
       const result = parseFix(out);
+      const texts = bakeTexts(result, sentences);
+      try { result.audio = (await bake(texts)) === texts.length; }
+      catch (e) { result.audio = false; console.error('  음성 굽기 실패:', e.message); }
       const { error: e2 } = await sb.from('eng_speak_fix').update({
         status: 'done', transcript, result, error: null, done_at: new Date().toISOString() }).eq('id', r.id);
       if (e2) throw new Error(e2.message);

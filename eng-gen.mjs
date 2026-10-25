@@ -3,7 +3,7 @@
  * 장면·기사 오디오 + **단어/문장 타이밍** 생성 (MS Edge 뉴럴 TTS, 무료).
  *
  * 왜 타이밍인가: 읽는 자리를 문장 박스로 밝히고 단어를 따라가게 하려면 재생 시점이 필요하다.
- * msedge-tts 가 wordBoundary/sentenceBoundary 메타를 주므로 **생성 시점에 박아두면**
+ * Edge TTS 가 wordBoundary 메타를 주므로 **생성 시점에 박아두면**
  * 앱은 audio.currentTime 으로 인덱스만 찾으면 된다 (런타임 계산 없음).
  *
  * 왜 대화는 턴별로 쪼개는가: 역할 채우기가 **내 턴에서 멈춰야** 한다. 어차피 쪼개져 있어야 하므로
@@ -31,7 +31,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
-import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
+import { synth as say } from './edge-say.mjs';
 
 const argv = process.argv.slice(2);
 const RECENT = argv.includes('--recent');
@@ -41,8 +41,7 @@ const SAVE = argv.includes('--save') ? argv[argv.indexOf('--save') + 1] : null;
 if (SAVE) mkdirSync(SAVE, { recursive: true });
 if (!FILE && !RECENT) die('사용법: node eng-gen.mjs <장면|기사 json> [--dry] | --recent [N]');
 
-/** 96kbps CBR 이라 바이트로 길이를 정확히 낸다 (ffprobe 없이) */
-const FMT = OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3;
+/** 96kbps CBR 이라 바이트로 길이를 정확히 낸다 (ffprobe 없이). edge_say.py 가 96k 로 맞춰 굽는다. */
 const BITRATE = 96000;
 const msOf = buf => Math.round(buf.length * 8 / BITRATE * 1000);
 
@@ -50,51 +49,11 @@ function die(m) { console.error(`✗ ${m}`); process.exit(1); }
 
 /* ── TTS ────────────────────────────────────────────────── */
 
-const engines = new Map();
-async function engine(voice) {
-  if (engines.has(voice)) return engines.get(voice);
-  const t = new MsEdgeTTS();
-  await t.setMetadata(voice, FMT, { wordBoundaryEnabled: true, sentenceBoundaryEnabled: true });
-  engines.set(voice, t);
-  return t;
-}
-
-/** 붙어서 오는 pretty-JSON 객체들을 괄호 균형으로 쪼갠다 (JSONL 이 아니다) */
-function parseMeta(raw) {
-  const out = [];
-  let depth = 0, start = -1;
-  for (let i = 0; i < raw.length; i++) {
-    if (raw[i] === '{') { if (depth === 0) start = i; depth++; }
-    else if (raw[i] === '}') { depth--; if (depth === 0 && start >= 0) { out.push(raw.slice(start, i + 1)); start = -1; } }
-  }
-  const items = [];
-  for (const o of out) { try { for (const m of (JSON.parse(o).Metadata || [])) items.push(m); } catch { /* 조각난 객체는 버린다 */ } }
-  return items;
-}
-
-const tick2ms = t => Math.round((t || 0) / 10000);   // 100ns 틱 → ms
-
+// 2026-10-25 부터 node msedge-tts 가 막혀 파이썬 edge-tts 로 굽는다 (edge_say.py).
+// 파이썬은 단어·문장 경계 중 하나만 주므로 단어만 받는다 — 문장 경계는 로그 한 줄에만 쓰였다.
 async function synth(text, voice) {
-  const tts = await engine(voice);
-  const { audioStream, metadataStream } = tts.toStream(text);
-  const chunks = [];
-  let raw = '';
-  audioStream.on('data', c => chunks.push(c));
-  metadataStream?.on('data', c => raw += c.toString());
-  await new Promise((res, rej) => { audioStream.on('end', res); audioStream.on('error', rej); });
-  await new Promise(r => setTimeout(r, 250));        // 메타가 오디오보다 늦게 닫힌다
-
-  const buf = Buffer.concat(chunks);
-  if (buf.length < 500) throw new Error('오디오가 비정상적으로 작다');
-
-  const items = parseMeta(raw);
-  const words = items.filter(m => m.Type === 'WordBoundary').map(m => ({
-    t: tick2ms(m.Data.Offset), d: tick2ms(m.Data.Duration), w: m.Data.text?.Text ?? '',
-  }));
-  const sents = items.filter(m => m.Type === 'SentenceBoundary').map(m => ({
-    t: tick2ms(m.Data.Offset), s: m.Data.text?.Text ?? '',
-  }));
-  return { buf, words, sents, ms: msOf(buf) };
+  const { buf, words } = await say(text, voice);
+  return { buf, words, sents: [], ms: msOf(buf) };
 }
 
 /* ── 정렬: 이벤트를 원문의 **문자 범위**에 붙인다 ──────────────

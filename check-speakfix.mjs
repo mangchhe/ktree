@@ -11,3 +11,8 @@ assert.deepEqual(parseFix('{"fixed":"Hi."}').fixes, []);
 const p = buildPrompt({ question_en: 'Q?', kind: 'describe', stage: 9, transcript: 'uh' });
 assert.match(p, /S9/); assert.match(p, /13단어/, '모르는 단계는 S1 기준');
 console.log('✓ 스피킹 교정 — 출력 해석·프롬프트');
+import { bakeTexts } from './speak-fix.mjs';
+const split = t => (t.match(/[^.!?]+[.!?]*/g) || []).map(x => x.trim());
+assert.deepEqual(bakeTexts({ fixed:'I live here. I like it.', fixes:[{ better:'I live here.' }, { better:'On weekends' }] }, split),
+  ['I live here.', 'I like it.', 'On weekends'], '문장 + 고친 표현, 중복 없이');
+console.log('✓ 스피킹 교정 — 구울 문장');

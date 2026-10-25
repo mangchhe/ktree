@@ -599,7 +599,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.3';
+const BUILD = '2026-10-26.4';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2623,8 +2623,17 @@ function fixHtml(r){
 }
 
 function wireFix(root){
-  root.querySelectorAll('.fplay,.fsent,.fplayall').forEach(b => b.onclick = e => {
-    e.stopPropagation(); tStopAudio(); speak(b.dataset.en);
+  // 원어민 음성은 일꾼이 교정할 때 글자키 경로로 구워둔다 — playCard 가 그걸 먼저 찾고 없으면 기기 음성
+  root.querySelectorAll('.fplay,.fsent').forEach(b => b.onclick = e => {
+    e.stopPropagation(); tStopAudio(); playCard({ answer_en:b.dataset.en });
+  });
+  root.querySelectorAll('.fplayall').forEach(b => b.onclick = async e => {
+    e.stopPropagation(); tStopAudio();
+    const ss = sentences(b.dataset.en);
+    const track = await concatMp3(ss.map(t => [enUrl(t)]));
+    if (!track) return speak(b.dataset.en);
+    tAudio = new Audio(URL.createObjectURL(track.blob)); tAudio.playbackRate = tRate;
+    tAudio.play().catch(() => {});
   });
   root.querySelectorAll('.fmine').forEach(b => b.onclick = async e => {
     e.stopPropagation(); tStopAudio();
@@ -2651,6 +2660,24 @@ async function paintFixes(){
     const r = data.find(x => x.id === d.dataset.id);
     if (r.status === 'pending' || r.status === 'working') watchFix(r.id, d.querySelector('div'));
   });
+}
+
+/** 보관함 맨 위 — 스피킹 교정 전부를 **질문별로** 묶는다. 판 아래는 7일만 보이고,
+ *  같은 질문을 여러 번 하면 처음 답과 지금 답을 나란히 봐야 늘었는지 안다. 오래된 것부터. */
+async function archiveFixes(){
+  const { data } = await sb.from('eng_speak_fix').select('*, eng_prompts(question_en, question_ko)')
+    .eq('user_id', currentUser.id).in('status', ['done','error']).order('created_at').limit(300);
+  if (!data?.length) return '';
+  const by = new Map();
+  for (const r of data) (by.get(r.prompt_id) || by.set(r.prompt_id, []).get(r.prompt_id)).push(r);
+  const groups = [...by.values()].sort((a, b) => b.at(-1).created_at.localeCompare(a.at(-1).created_at));
+  return `<div class="vprog">🎙 스피킹 교정 — 질문 ${groups.length}개 · ${data.length}번</div>` + groups.map(g => `
+    <details class="gram"><summary><span class="gl">${g.length}번</span>${esc(g[0].eng_prompts?.question_ko || g[0].eng_prompts?.question_en || '')}</summary>
+      <div style="padding:0 13px 12px">${g.map((r, i) => `
+        <details class="gram" ${i === g.length - 1 ? 'open' : ''}><summary><span class="gl">${i + 1}</span>${
+          esc(r.created_at.slice(5,10).replace('-','/'))} · ${Math.round((r.spoke_ms || 0) / 1000)}초${
+          r.status === 'error' ? ' · ✗' : ''}</summary><div style="padding:0 13px 12px">${fixHtml(r)}</div></details>`).join('')}
+      </div></details>`).join('') + '<div style="height:14px"></div>';
 }
 
 /* ── 막 2 · 뉴스 읽기 ───────────────────────────────── */
@@ -3751,6 +3778,7 @@ async function renderArchive(){
     news ? none : count('eng_articles', x => x),
     sb.from('eng_done').select('item, item_id').eq('user_id', currentUser.id),
   ]);
+  const fixHead = await archiveFixes();
   if (sc.error || ar.error) { box.innerHTML = '<div class="empty">Could not load the archive.</div>'; return; }
   const scenes = sc.data || [], arts = ar.data || [];
   // 해본 것과 안 해본 것을 가른다 — 다시 하기와 처음 하기는 다른 선택이다.
@@ -3772,15 +3800,17 @@ async function renderArchive(){
     // 왜 비었는지 갈라 말해준다 — "아직 없음"과 "토픽을 다 꺼둠"은 다른 상황이다.
     // topics 가 비어 있는 건 **로드 전/실패**일 수도 있다. 그걸 "다 꺼둠"이라고 하면 거짓말이 된다.
     const allOff = topics.length > 0 && !names.length;
-    box.innerHTML = lockHtml + (allOff
+    box.innerHTML = fixHead + lockHtml + (allOff
       ? '<div class="empty">All topics are off. Turn one on in Today to see archived material.</div>'
       : '<div class="empty">Nothing here yet — today\'s material moves in tomorrow.</div>');
+    wireFix(box);
     return;
   }
   const more = (sc.count || 0) > scenes.length || (ar.count || 0) > arts.length;
   const did = on => on ? ' · <b style="color:var(--ok)">✓ 해봄</b>' : '';
   box.innerHTML = `<p class="leg" style="margin:0 0 12px">지난 재료. 주말에 더 하고 싶으면 여기서 골라 —
       <b>S${tStage} 에 맞는 것만</b> 보인다.</p>
+    ${fixHead}
     ${lockHtml}
     ${scenes.length ? `<div class="vprog">장면 ${sc.count ?? scenes.length}개 · 안 해본 것 ${scenes.filter(x => !didSc.has(x.id)).length}${(sc.count ?? 0) > scenes.length ? '+' : ''}</div>` + scenes.map(x =>
       `<div class="initem"><div class="itx"><div class="ie">${esc(x.situation_ko)}</div>
@@ -3794,6 +3824,7 @@ async function renderArchive(){
       <button class="btn sm" id="av-more">Show more</button></div>` : ''}`;
   const mb = $('av-more');
   if (mb) mb.onclick = () => { avLimit += AV_PAGE; renderArchive(); };
+  wireFix(box);
   // 🔴 보관함에서 연 건 **다시 보기**다 — 오늘 판에 손대면 안 된다. 전엔 tScenes 를 그 장면으로
   // 바꿔치기해서 (1) Today 로 돌아오면 오늘 장면이 사라졌고 (2) 그걸 끝내면 오늘 Scenes 칸이
   // 1/1 완료로 찍혔고 (3) 오늘 아직 저장 전이면 그 옛 장면이 오늘 판에 박혔다. 뉴스는 열기만 해도

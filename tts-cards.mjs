@@ -12,7 +12,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
-import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
+import { synth as say, synthBatch } from './edge-say.mjs';
 
 const argv = process.argv.slice(2);
 const ALL = argv.includes('--all');
@@ -114,30 +114,19 @@ console.log(`· 어휘 영어 ${en.size}종 · 한국어 ${ko.size}종 (장면·
 if (!todo.length && !koTodo.length) console.log('· 카드는 전부 최신');
 console.log(`영어 ${todo.length}장 · 한국어 ${koTodo.length}장 생성...`);
 
-const tts = new MsEdgeTTS();
-await tts.setMetadata(VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
-const ktts = new MsEdgeTTS();
-if (koTodo.length) await ktts.setMetadata(KO_VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
-
-async function synthWith(engine, text) {
-  const { audioStream } = await engine.toStream(text);
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    audioStream.on('data', c => chunks.push(c));
-    audioStream.on('end', () => resolve(Buffer.concat(chunks)));
-    audioStream.on('error', reject);
-  });
+// 카드는 한 묶음으로 미리 굽는다 — 한 장씩 프로세스를 띄우면 수백 장이 몇 분 더 걸린다
+const pre = new Map();
+for (const [list, v] of [[todo, VOICE], [koTodo, KO_VOICE]]) {
+  const r = await synthBatch(list.map(c => ({ text: c.text, voice: v })));
+  list.forEach((c, i) => pre.set(v + '|' + c.text, r[i]));
 }
-
-async function synth(text) {
-  const { audioStream } = await tts.toStream(text);
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    audioStream.on('data', c => chunks.push(c));
-    audioStream.on('end', () => resolve(Buffer.concat(chunks)));
-    audioStream.on('error', reject);
-  });
+async function synthVoice(v, text) {
+  const r = pre.get(v + '|' + text);
+  if (!r) return (await say(text, v)).buf;   // 묶음 밖(질문·모범답 등)은 그때 굽는다
+  if (!r.buf) throw new Error(r.err || 'TTS 실패');
+  return r.buf;
 }
+const synth = text => synthVoice(VOICE, text);
 
 let ok = 0, fail = 0;
 for (const c of todo) {
@@ -160,7 +149,7 @@ console.log(`\n✓ 영어 ${ok}장 생성${fail ? `, ${fail}장 실패 (기기 T
 let kok = 0, kofail = 0;
 for (const c of koTodo) {
   try {
-    const buf = await synthWith(ktts, c.text);
+    const buf = await synthVoice(KO_VOICE, c.text);
     if (buf.length < 500) throw new Error('오디오가 비정상적으로 작음');
     const { error: se } = await sb.storage.from('eng-audio')
       .upload(`cards/k/${c.k}.mp3`, buf, { contentType: 'audio/mpeg', upsert: true });

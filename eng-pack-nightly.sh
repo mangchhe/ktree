@@ -38,8 +38,9 @@ command -v node >/dev/null      || { say "✗ node 를 PATH 에서 못 찾음"; 
 [[ -f "$REPO/upload-eng.mjs" ]] || { say "✗ upload-eng.mjs 가 없다 — REPO 경로 확인"; fail=1 }
 [[ -n "$KTREE_EMAIL" && -n "$KTREE_PASSWORD" ]] \
   || { say "✗ KTREE_EMAIL/KTREE_PASSWORD 가 비었다 (~/.zshrc 확인)"; fail=1 }
-[[ -d "$REPO/node_modules/msedge-tts" ]] \
-  || say "⚠ msedge-tts 없음 — 오디오는 건너뛴다. 'npm install' 필요"
+# 음성은 파이썬 edge-tts(uvx) + ffmpeg 로 굽는다 (edge_say.py — node msedge-tts 는 2026-10-25 에 막혔다)
+command -v uvx >/dev/null && command -v ffmpeg >/dev/null \
+  || say "⚠ uvx·ffmpeg 없음 — 오디오가 전부 실패한다. 'brew install uv ffmpeg' 필요"
 
 if (( fail )); then say "─── 준비 실패로 중단 ───"; exit 1; fi
 say "✓ 준비 확인: claude·node·repo·자격증명"

@@ -8,7 +8,7 @@
  * (다른 추천: en-US-AvaMultilingualNeural, en-US-EmmaMultilingualNeural, en-GB-RyanNeural)
  */
 import { readFileSync, writeFileSync } from 'node:fs';
-import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
+import { synth } from './edge-say.mjs';
 
 const [input, out, voice = 'en-US-AndrewMultilingualNeural'] = process.argv.slice(2);
 if (!input || !out) {
@@ -23,17 +23,8 @@ if (input.endsWith('.json')) {
   text = j.script;
 }
 
-const tts = new MsEdgeTTS();
-await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3);
-const { audioStream } = await tts.toStream(text);
-
-const chunks = [];
-audioStream.on('data', c => chunks.push(c));
-audioStream.on('end', () => {
-  const buf = Buffer.concat(chunks);
-  if (buf.length < 1000) { console.error('✗ 오디오가 비정상적으로 작습니다 — 네트워크/음성 이름 확인'); process.exit(1); }
-  writeFileSync(out, buf);
-  console.log(`✓ ${out} (${(buf.length / 1024).toFixed(0)} KB, ${voice})`);
-  process.exit(0);
-});
-audioStream.on('error', e => { console.error('✗', e.message); process.exit(1); });
+let buf;
+try { ({ buf } = await synth(text, voice)); } catch (e) { console.error('✗', e.message); process.exit(1); }
+if (buf.length < 1000) { console.error('✗ 오디오가 비정상적으로 작습니다 — 네트워크/음성 이름 확인'); process.exit(1); }
+writeFileSync(out, buf);
+console.log(`✓ ${out} (${(buf.length / 1024).toFixed(0)} KB, ${voice})`);
