@@ -29,7 +29,7 @@ const env = new Function('ctx', `
 const { STAGES, PROMOTE, GRAMMAR, stageGot, todayGrammar } = env;
 
 // 1) 단계표 — 올라갈수록 길어지고, 유형은 쌓이기만 한다
-const BOARD = new Set(['grammar','speak','scene','article','vocab']);
+const BOARD = new Set(['grammar','speak','scene','article','vocab', 'shadow']);
 for (let n = 1; n <= 4; n++) {
   const x = STAGES[n], prev = STAGES[n - 1];
   assert.ok(x.kinds.every(k => KL[k]), `S${n}: 모르는 유형`);
