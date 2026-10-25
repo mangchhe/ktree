@@ -615,7 +615,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.10';
+const BUILD = '2026-10-26.11';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2981,8 +2981,10 @@ async function actClip(c){
   $('t-back').onclick = () => { clearInterval(timer); p?.destroy?.(); renderToday(); };
   const YT = await loadYt();
   p = new YT.Player('c-yt', { videoId: c.video_id, width:'100%', height:'100%',
-    playerVars: { start: c.at_sec, playsinline: 1, rel: 0, cc_load_policy: 1, cc_lang_pref: 'en' },
+    // hl:'en' — 폰 언어가 한국어면 유튜브가 자막을 한국어 자동번역으로 띄웠다. 영어 자막을 보며 따라 해야 한다
+    playerVars: { start: c.at_sec, playsinline: 1, rel: 0, cc_load_policy: 1, cc_lang_pref: 'en', hl: 'en' },
     events: { onReady: () => {
+      try { p.setOption('captions', 'track', { languageCode: 'en' }); } catch (_) {}
       const title = p.getVideoData?.().title;
       if (title && title !== c.title) { c.title = title; sb.from('eng_clips').update({ title }).eq('id', c.id).then(); }
     } } });
