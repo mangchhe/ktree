@@ -326,6 +326,8 @@ node upload-eng.mjs journal-pending
   나오는 강의(Bob the Canadian, Speak English With Vanessa, English with Lucy, Rachel's English 등)에서 고른다.
 - **수준:** 위 「사용자 수준」 단계를 따른다. S1·S2 는 천천히 또박또박, 한 사람이 말하는 것.
   팟캐스트·인터뷰·토크쇼(빠르고 말이 겹친다)는 S3 이상에서만.
+- **길이: 20분 이하.** 3분 구간이라 1시간짜리는 20구간 = 몇 주를 한 영상에 묶인다.
+  라이브 강의·몰아보기(compilation)는 뺀다. 검색 결과에 길이가 안 보이면 영상 페이지에서 확인한다.
 - **주제:** 오픽 단골(집·동네, 하루 일과, 운동, 여행, 영화·음악, 카페·식당, 쇼핑, 문제 해결 롤플레이).
   `clips` 목록의 제목을 보고 **겹치지 않게** 고른다.
 - WebSearch 로 찾고 `node upload-eng.mjs clip-add "<url>" "<채널 짧게> — <제목>"`.
