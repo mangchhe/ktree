@@ -83,11 +83,15 @@ export function vttLines(vtt) {
   return out;
 }
 
-/** claude 출력에서 JSON 배열을 꺼낸다 */
-export function parseArr(out, n) {
-  const a = JSON.parse(out.slice(out.indexOf('['), out.lastIndexOf(']') + 1));
-  if (!Array.isArray(a) || a.length !== n) throw new Error(`번역 개수가 다르다 (${a.length}/${n})`);
-  return a.map(String);
+/** claude 출력 {"번호":"뜻"} → Map. 배열로 받으면 줄을 합쳐 개수가 어긋났다 — 번호로 짝을 맞춘다 */
+export function parseKo(out) {
+  let o;
+  try { o = JSON.parse(out.slice(out.indexOf('{'), out.lastIndexOf('}') + 1)); }
+  catch {   // 뜻 안의 따옴표가 안 풀렸거나 객체를 둘 낸 경우 — 성한 짝만 줍는다
+    o = Object.fromEntries([...out.matchAll(/"(\d+)"\s*:\s*"((?:[^"\\]|\\.)*)"\s*[,}]/g)]
+      .map(m => { try { return [m[1], JSON.parse(`"${m[2]}"`)]; } catch { return [m[1], '']; } }));
+  }
+  return new Map(Object.entries(o).filter(([, v]) => typeof v === 'string' && v.trim()).map(([k, v]) => [+k, v.trim()]));
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -195,14 +199,18 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       if (!f) throw new Error('영어 자막이 없는 영상');
       const lines = vttLines(readFileSync(f, 'utf8'));
       if (!lines.length) throw new Error('자막이 비었다');
-      for (let i = 0; i < lines.length; i += 60) {
-        const part = lines.slice(i, i + 60);
-        const prompt = `영어 초보(오픽 IL~IM 목표) 학습자가 유튜브 영상을 따라 말하며 본다. 아래 영어 자막 줄을 ` +
-          `자연스러운 한국어로 옮겨라. 줄이 문장 중간에서 끊겨 있어도 그 줄만큼만 옮긴다. ` +
-          `입력과 같은 개수·순서의 JSON 문자열 배열 하나만 출력한다.\n\n` + JSON.stringify(part.map(l => l.en));
-        const out = execFileSync(CLAUDE, ['-p', prompt, '--model', 'sonnet', '--permission-mode', 'dontAsk'],
-          { cwd: dir, encoding: 'utf8', timeout: 300e3, maxBuffer: 4e6 });
-        parseArr(out, part.length).forEach((ko, j) => { part[j].ko = ko; });
+      // 빠진 번호는 한 번 더 묻는다. 그래도 빠지면 그 줄은 뜻 없이 둔다
+      for (let round = 0; round < 2; round++) {
+        const todo = lines.map((l, i) => [i, l]).filter(([, l]) => !l.ko);
+        for (let k = 0; k < todo.length; k += 50) {
+          const part = Object.fromEntries(todo.slice(k, k + 50).map(([i, l]) => [i, l.en]));
+          const prompt = `영어 초보(오픽 IL~IM 목표) 학습자가 유튜브 영상을 따라 말하며 본다. 아래 영어 자막 줄을 ` +
+            `자연스러운 한국어로 옮겨라. 줄이 문장 중간에서 끊겨 있어도 **그 줄만큼만** 옮기고 줄을 합치지 않는다. ` +
+            `같은 번호 키를 그대로 쓴 JSON 객체 {"번호":"뜻"} 하나만 출력한다.\n\n` + JSON.stringify(part);
+          const out = execFileSync(CLAUDE, ['-p', prompt, '--model', 'sonnet', '--permission-mode', 'dontAsk'],
+            { cwd: dir, encoding: 'utf8', timeout: 300e3, maxBuffer: 4e6 });
+          for (const [i, ko] of parseKo(out)) if (lines[i] && !lines[i].ko) lines[i].ko = ko;
+        }
       }
       const { error } = await sb.from('eng_clips').update({ lines }).eq('id', c.id);
       if (error) throw new Error(error.message);
