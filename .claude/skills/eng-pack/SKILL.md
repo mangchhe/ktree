@@ -318,6 +318,20 @@ node upload-eng.mjs journal-pending
 `[{ "entry_date": "...", "corrected": [{ "orig","better","why","ok" }] }]` 로 저장하고
 `node upload-eng.mjs journal-correct <파일>`. 재사용 값이 있는 것 **최대 2개**는 어휘로도 만든다.
 
+## 6. 섀도잉 영상 (주 1개 · `node upload-eng.mjs clips` 가 `"due": true` 일 때만)
+
+앱 Today 판 아래 🎬 에 유튜브 영상을 하나 넣는다. 사용자가 3분 구간씩 따라 말한다.
+
+- **진짜 사람 목소리만.** "Slow English Listening" 류는 AI 음성이 많다 — 채널이 실제 사람 얼굴·이름으로
+  나오는 강의(Bob the Canadian, Speak English With Vanessa, English with Lucy, Rachel's English 등)에서 고른다.
+- **수준:** 위 「사용자 수준」 단계를 따른다. S1·S2 는 천천히 또박또박, 한 사람이 말하는 것.
+  팟캐스트·인터뷰·토크쇼(빠르고 말이 겹친다)는 S3 이상에서만.
+- **주제:** 오픽 단골(집·동네, 하루 일과, 운동, 여행, 영화·음악, 카페·식당, 쇼핑, 문제 해결 롤플레이).
+  `clips` 목록의 제목을 보고 **겹치지 않게** 고른다.
+- WebSearch 로 찾고 `node upload-eng.mjs clip-add "<url>" "<채널 짧게> — <제목>"`.
+  임베드가 막혔거나 없는 영상이면 이 명령이 거절한다 — 그러면 다른 걸 고른다.
+- `"due": false` 면 건너뛴다. 명령도 일주일에 1개 넘게는 거절한다.
+
 ## 보고
 
 ```

@@ -9,6 +9,8 @@
  *   node upload-eng.mjs inbox-pending            # 변환 대기 인박스 → JSON 출력
  *   node upload-eng.mjs inbox-convert <f.json>   # 인박스 → 카드 변환 반영
  *   node upload-eng.mjs briefing <brief.json> [brief.mp3]  # 브리핑 upsert (+네이티브 오디오)
+ *   node upload-eng.mjs clips                    # 섀도잉 영상 목록 + 이번 주 추가할 차례인지(due)
+ *   node upload-eng.mjs clip-add <유튜브 url> "<제목>"  # 섀도잉 영상 하나 추가 (주 1개까지)
  *
  * 인증: KTREE_EMAIL / KTREE_PASSWORD (upload-note.mjs 와 동일 — 환경변수 또는 ktree/.env)
  *
@@ -200,6 +202,33 @@ async function cmdInboxConvert(sb, uid) {
   }
 }
 
+// ── 섀도잉 영상 (앱 Today 판 아래 🎬) — 주 1개씩 밤 보급이 골라 넣는다 ──
+const CLIP_EVERY_DAYS = 6;   // 일요일마다 돌지 않아도 일주일에 한 번꼴
+async function listClips(sb, uid) {
+  const { data, error } = await sb.from('eng_clips').select('video_id, title, at_sec, chunk_sec, created_at')
+    .eq('user_id', uid).order('created_at');
+  if (error) die(error.message);
+  const last = data.at(-1)?.created_at;
+  const due = !last || Date.now() - Date.parse(last) >= CLIP_EVERY_DAYS * 864e5;
+  return { clips: data, due };
+}
+async function cmdClips(sb, uid) { console.log(JSON.stringify(await listClips(sb, uid), null, 2)); }
+async function cmdClipAdd(sb, uid) {
+  const url = file, title = extra;
+  const id = String(url || '').match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([\w-]{11})/)?.[1];
+  if (!id || !title) die('사용법: clip-add <유튜브 url> "<제목>"');
+  const { clips, due } = await listClips(sb, uid);
+  if (!due) die(`이번 주는 이미 넣었다 (${CLIP_EVERY_DAYS}일에 1개)`);
+  if (clips.some(c => c.video_id === id)) die('이미 있는 영상');
+  // oEmbed 가 401/404 면 없는 영상이거나 임베드가 막힌 영상 — 앱에서 안 튼다
+  const r = await fetch(`https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=${id}`);
+  if (!r.ok) die(`앱에서 못 트는 영상 (oEmbed ${r.status})`);
+  const meta = await r.json();
+  const { error } = await sb.from('eng_clips').insert({ user_id: uid, video_id: id, title, at_sec: 0, chunk_sec: 180 });
+  if (error) die(error.message);
+  console.log(`✓ 섀도잉 영상 추가: ${title} (${meta.author_name})`);
+}
+
 async function cmdBriefing(sb, uid) {
   const b = readJson(file);
   if (!b.script?.trim()) die('script 가 없습니다.');
@@ -242,6 +271,8 @@ try {
   else if (cmd === 'inbox-pending') await cmdInboxPending(sb);
   else if (cmd === 'inbox-convert') await cmdInboxConvert(sb, uid);
   else if (cmd === 'briefing') await cmdBriefing(sb, uid);
+  else if (cmd === 'clips') await cmdClips(sb, uid);
+  else if (cmd === 'clip-add') await cmdClipAdd(sb, uid);
   else die('사용법: node upload-eng.mjs <pack|stats|journal-pending|journal-correct|inbox-pending|inbox-convert|briefing> [file.json]');
 } finally {
   await sb.auth.signOut({ scope: 'local' });
