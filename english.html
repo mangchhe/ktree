@@ -113,6 +113,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tgwg .cell.full .dd{color:#06231a;font-weight:700}
 .tgwg .cell.full .seg u{background:rgba(6,35,26,.3)}
 .tgwg .cell.full .seg u.on{background:#06231a}
+.tgwg .cell .pf{font-size:11px;line-height:1;cursor:pointer}
+.pfbox{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:16px}
+.pfbox img{max-width:100%;max-height:100%;border-radius:10px}
 .tgwg .cell.fut{background:none;border-color:var(--border)}
 .tgwg .cell.fut .dd{color:#2b2e39}
 .tgwg .cell.fut .seg{visibility:hidden}
@@ -609,7 +612,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.6';
+const BUILD = '2026-10-26.7';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -3631,11 +3634,15 @@ async function loadTogether(force){
   if (tgCache && !force) return tgCache;
   // 월 이동용으로 넉넉히. 사람당 하루 한 행이라 400일이어도 두 명이면 800행이 최대다.
   const since = kstDate(Date.now() - 400*864e5);
-  const [se, pr, mem] = await Promise.all([
+  const [se, pr, mem, att] = await Promise.all([
     sb.from('eng_sessions').select('user_id, session_date, progress, xp_earned, completed_at')
       .gte('session_date', since).order('session_date',{ascending:false}),
     sb.from('eng_progress').select('user_id, xp_total, turns_spoken, listened_ms, articles_read'),
-    sb.from('challenge_members').select('user_id, name, email, active'),
+    sb.from('challenge_members').select('id, user_id, name, email, active'),
+    // 이 앱으로 공부하지 않고 **챌린지 앱에서 영어 인증샷만** 올리는 사람도 있다.
+    // 그 인증도 그날 출석이다 — 앱을 바꾸게 하지 말고 여기서 합쳐 센다.
+    sb.from('challenge_attendances').select('member_id, user_id, attended_on, note')
+      .eq('activity_type', 'english').gte('attended_on', since),
   ]);
   const roster = (mem.data || []).filter(m => m.active !== false);
   // 로스터에 없지만 진도를 남긴 사람도 놓치지 않는다
@@ -3645,8 +3652,15 @@ async function loadTogether(force){
   const people = [...roster, ...extra];
   const order = [...people].sort((a,b) =>
     a.user_id === currentUser.id ? -1 : b.user_id === currentUser.id ? 1 : 0);
+  const uidOf = new Map((mem.data || []).map(m => [m.id, m.user_id]));
+  const proofs = new Map();                       // 'uid|날짜' → 사진 URL (없으면 '')
+  for (const a of att.data || []) {
+    const u = a.user_id || uidOf.get(a.member_id);
+    if (u) proofs.set(`${u}|${a.attended_on}`, /^https?:/.test(a.note || '') ? a.note : '');
+  }
   tgCache = {
     people: order,
+    proofs,
     sessions: se.data || [],
     prog: pr.data || [],
     nameOf: m => m.name || (m.email || '').split('@')[0] || 'friend',
@@ -3654,8 +3668,9 @@ async function loadTogether(force){
   return tgCache;
 }
 
-function tgStreak(sessions, id){
+function tgStreak(sessions, id, proofs){
   const days = new Set(sessions.filter(r=>r.user_id===id).map(r=>r.session_date));
+  for (const k of proofs?.keys() || []) if (k.startsWith(id + '|')) days.add(k.slice(id.length + 1));
   let n = 0, cur = Date.now();
   if (!days.has(kstDate(cur))) cur -= 864e5;
   while (days.has(kstDate(cur))) { n++; cur -= 864e5; }
@@ -3672,6 +3687,7 @@ let tgWeekOff = 0;                                   // 0 이면 이번 주, -1 
 function tgCellClass(t, id, day, d){
   if (day > d) return 'fut';
   const se = t.sessions.find(r => r.user_id === id && r.session_date === day);
+  if (t.proofs.has(`${id}|${day}`) && !se?.completed_at) return 'full proof';   // 인증샷 = 출석
   if (!se) return '';
   const pg = se.progress || {};
   const n = ['scenes','article','vocab','quiz'].filter(k => (pg[k]?.done || pg[k]?.sent || 0) > 0).length;
@@ -3713,7 +3729,7 @@ function tgWeekGrid(t, d){
     </div>
     ${t.people.map(m => {
       const mine = t.sessions.filter(r => r.user_id === m.user_id && week.includes(r.session_date));
-      const done = mine.filter(r => r.completed_at).length;
+      const done = week.filter(day => tgCellClass(t, m.user_id, day, d).startsWith('full')).length;
       const xp   = mine.reduce((a, r) => a + (r.xp_earned || 0), 0);
       return `<div class="tgwk${m.user_id===currentUser.id?' me':''}">
         <div class="tgwkh"><span class="nm">${esc(t.nameOf(m))}</span>
@@ -3721,8 +3737,9 @@ function tgWeekGrid(t, d){
         <div class="tgwg">${week.map((day, i) => {
           const k = tgCellClass(t, m.user_id, day, d);
           const se = t.sessions.find(r => r.user_id === m.user_id && r.session_date === day);
-          const seg = tgDayParts(se).map(v =>
-            `<u class="${v === 2 ? 'on' : v === 1 ? 'hf' : ''}"></u>`).join('');
+          const pf = k.includes('proof') ? t.proofs.get(`${m.user_id}|${day}`) : null;
+          const seg = pf != null ? `<span class="pf"${pf ? ` data-pf="${esc(pf)}"` : ''}>📷</span>`
+            : tgDayParts(se).map(v => `<u class="${v === 2 ? 'on' : v === 1 ? 'hf' : ''}"></u>`).join('');
           const cls = ['cell', k, day === d ? 'now' : ''].filter(Boolean).join(' ');
           return `<div><span class="dw${i >= 5 ? ' we' : ''}">${TG_DOW[i]}</span>
             <span class="${cls}" title="${day}"><span class="dd">${+day.slice(8)}</span>
@@ -3746,7 +3763,7 @@ function tgMonthGrid(t, d){
   const label = new Date(Date.UTC(y, mo-1, 1)).toLocaleString('en-US',{month:'long',year:'numeric'});
 
   const counts = id => {
-    const done = cells.filter(c => c && c <= d && tgCellClass(t, id, c, d) === 'full').length;
+    const done = cells.filter(c => c && c <= d && tgCellClass(t, id, c, d).startsWith('full')).length;
     const any  = cells.filter(c => c && c <= d && tgCellClass(t, id, c, d) !== '').length;
     return { done, any };
   };
@@ -3940,7 +3957,7 @@ async function renderTogether(){
     </div>
     ${tgMode === 'week' ? tgWeekGrid(t, d) : tgMonthGrid(t, d)}
     <p class="leg">${tgMode === 'week'
-      ? 'Filled = finished the board · tinted = started. The four ticks are scenes · article · vocabulary · quiz.'
+      ? 'Filled = finished the board · tinted = started · 📷 = 챌린지 앱 영어 인증(누르면 사진). The four ticks are scenes · article · vocabulary · quiz.'
       : 'Filled = finished the board · tinted = started · empty = nothing.'}</p>
 
     <h3 class="tgh">Totals</h3>
@@ -3950,7 +3967,7 @@ async function renderTogether(){
         const r = rankOf(p.xp_total || 0);
         return `<div class="tgcard${m.user_id===currentUser.id?' me':''}">
           <div class="tgname">${esc(t.nameOf(m))} <em>Lv ${r.n} ${esc(r.name)}</em>
-            <span class="tgfire">🔥 ${tgStreak(t.sessions, m.user_id)}</span></div>
+            <span class="tgfire">🔥 ${tgStreak(t.sessions, m.user_id, t.proofs)}</span></div>
           <div class="tgfig">
             <span><b>${num(p.xp_total)}</b> XP</span>
             <span><b>${num(p.turns_spoken)}</b> turns</span>
@@ -3976,6 +3993,12 @@ async function renderTogether(){
   box.querySelectorAll('[data-gw]').forEach(b => b.onclick = () => {
     if (b.disabled) return;
     tgWeekOff = +b.dataset.gw; renderTogether();
+  });
+  box.querySelectorAll('[data-pf]').forEach(b => b.onclick = () => {
+    const o = document.createElement('div');
+    o.className = 'pfbox'; o.innerHTML = `<img src="${esc(b.dataset.pf)}" alt="인증샷">`;
+    o.onclick = () => o.remove();
+    document.body.appendChild(o);
   });
 }
 
