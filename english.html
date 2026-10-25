@@ -114,6 +114,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tgwg .cell.full .seg u{background:rgba(6,35,26,.3)}
 .tgwg .cell.full .seg u.on{background:#06231a}
 .tgwg .cell .pf{font-size:11px;line-height:1;cursor:pointer}
+.tgproof{margin-bottom:14px;padding:12px 13px}
+.tgpok{display:flex;gap:12px;align-items:center}
+.tgpok img{width:64px;height:64px;object-fit:cover;border-radius:8px;cursor:pointer}
 .pfbox{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:16px}
 .pfbox img{max-width:100%;max-height:100%;border-radius:10px}
 .tgwg .cell.fut{background:none;border-color:var(--border)}
@@ -612,7 +615,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.7';
+const BUILD = '2026-10-26.8';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -3650,6 +3653,7 @@ async function loadTogether(force){
     .filter(u => !roster.some(m => m.user_id === u))
     .map(u => ({ user_id:u, name:null, email:null }));
   const people = [...roster, ...extra];
+  const meRow = (mem.data || []).find(m => m.user_id === currentUser.id) || null;
   const order = [...people].sort((a,b) =>
     a.user_id === currentUser.id ? -1 : b.user_id === currentUser.id ? 1 : 0);
   const uidOf = new Map((mem.data || []).map(m => [m.id, m.user_id]));
@@ -3661,6 +3665,7 @@ async function loadTogether(force){
   tgCache = {
     people: order,
     proofs,
+    meRow,
     sessions: se.data || [],
     prog: pr.data || [],
     nameOf: m => m.name || (m.email || '').split('@')[0] || 'friend',
@@ -3947,7 +3952,16 @@ async function renderTogether(){
   const mins = ms => Math.round((ms || 0) / 60000);
   const num = n => (n || 0).toLocaleString();
 
+  const myPf = t.proofs.get(`${currentUser.id}|${d}`);
   box.innerHTML = `
+    <div class="vcard tgproof">
+      ${myPf != null ? `<div class="tgpok">${myPf ? `<img src="${esc(myPf)}" data-pf="${esc(myPf)}" alt="오늘 인증샷">` : ''}
+          <div><b>✓ 오늘 영어 인증함</b><div class="vm">다른 사진으로 바꾸려면 다시 올려.</div></div></div>`
+        : `<div class="vt" style="font-size:14px">📷 오늘 영어 인증</div>
+          <div class="vm">공부한 화면·책·노트 사진 한 장이면 오늘 출석이다.</div>`}
+      <button class="btn sm${myPf != null ? '' : ' primary-btn'}" id="tg-pf" style="margin-top:10px">${myPf != null ? '다시 올리기' : '📷 사진 올리고 인증'}</button>
+      <input type="file" id="tg-pf-file" accept="image/*" hidden>
+    </div>
     <div class="tghead">
       <h3 class="tgh">Rhythm</h3>
       <div class="srow" style="gap:4px">
@@ -3994,12 +4008,58 @@ async function renderTogether(){
     if (b.disabled) return;
     tgWeekOff = +b.dataset.gw; renderTogether();
   });
+  $('tg-pf').onclick = () => $('tg-pf-file').click();
+  $('tg-pf-file').onchange = async e => {
+    const f = e.target.files[0]; if (!f) return;
+    const b = $('tg-pf'); b.disabled = true; b.textContent = '올리는 중…';
+    try { await tgCheckIn(f, t, d); toast('✓ 오늘 인증했어'); tgCache = null; renderTogether(); }
+    catch (err) { b.disabled = false; b.textContent = '📷 사진 올리고 인증'; toast(err.message || '인증 실패'); }
+  };
   box.querySelectorAll('[data-pf]').forEach(b => b.onclick = () => {
     const o = document.createElement('div');
     o.className = 'pfbox'; o.innerHTML = `<img src="${esc(b.dataset.pf)}" alt="인증샷">`;
     o.onclick = () => o.remove();
     document.body.appendChild(o);
   });
+}
+
+/* 오늘 영어 인증 — 챌린지 앱과 같은 자리(challenge_attendances · challenge-proofs)에 쓴다.
+ * 그래서 챌린지 앱 시절 기록과 그대로 이어지고, 챌린지 앱을 따로 안 열어도 된다. */
+async function tgCheckIn(file, t, day){
+  let me = t.meRow;
+  if (!me) {                                     // 로스터에 없으면 지금 들어간다 (insert 는 본인 행만 허용)
+    const { data, error } = await sb.from('challenge_members').insert({ user_id: currentUser.id,
+      name: (currentUser.email || '').split('@')[0], email: currentUser.email }).select('id').single();
+    if (error) throw new Error('멤버 등록 실패 — ' + error.message);
+    me = data;
+  }
+  const blob = await tgStamp(file, day);
+  const path = `${me.id}/${day}_english.jpg`;
+  const up = await sb.storage.from('challenge-proofs').upload(path, blob, { upsert: true, contentType: 'image/jpeg' });
+  if (up.error) throw new Error('사진 올리기 실패 — 연결 확인');
+  const url = sb.storage.from('challenge-proofs').getPublicUrl(path).data.publicUrl + '?t=' + Date.now();
+  const { error } = await sb.from('challenge_attendances').upsert({ member_id: me.id, user_id: currentUser.id,
+    activity_type: 'english', attended_on: day, note: url }, { onConflict: 'member_id,attended_on,activity_type' });
+  if (error) throw new Error('인증 저장 실패 — ' + error.message);
+}
+
+/** 1600px 로 줄이고 왼쪽 아래에 날짜 도장(챌린지 앱과 같은 관례). JPEG — 아이폰 사파리는 webp 로 못 굽는다. */
+async function tgStamp(file, day){
+  const img = await createImageBitmap(file);
+  const k = Math.min(1, 1600 / Math.max(img.width, img.height));
+  const c = document.createElement('canvas');
+  c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+  const x = c.getContext('2d');
+  x.drawImage(img, 0, 0, c.width, c.height);
+  const fs = Math.max(16, Math.round(c.width / 28)), label = `English · ${day} ${new Date().toTimeString().slice(0,5)}`;
+  x.font = `bold ${fs}px sans-serif`;
+  x.fillStyle = 'rgba(0,0,0,.6)'; x.fillRect(10, c.height - fs * 2 - 10, x.measureText(label).width + 20, fs * 1.8);
+  x.fillStyle = '#fff'; x.fillText(label, 20, c.height - fs * 0.75 - 10);
+  for (let q = 0.85; q > 0.3; q -= 0.15) {
+    const b = await new Promise(r => c.toBlob(r, 'image/jpeg', q));
+    if (b && (b.size <= 1.5e6 || q <= 0.4)) return b;
+  }
+  throw new Error('사진 처리 실패');
 }
 
 /* ═══ 보관함 — 지난 장면·기사 다시 하기 ════════════════
