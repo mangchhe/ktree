@@ -6,10 +6,37 @@ stdout: [{"ok", "words":[{t,d,w}] (ms), "err"}]
 왜 파이썬인가: 2026-10-25 에 Edge 가 토큰(Sec-MS-GEC v2)을 바꿔 node 의 msedge-tts 2.1.0
 (최신)가 'Unexpected server response: 200' 으로 전부 막혔다. 파이썬 edge-tts 는 바로 따라간다.
 """
-import asyncio, json, re, shutil, subprocess, sys
+import asyncio, json, os, re, shutil, subprocess, sys, time
 import edge_tts
 
 FFMPEG = shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg"
+
+# EDGE_VERIFY=1 이면 구운 걸 whisper 로 다시 받아 적어 원문과 맞춰 본다 (밤 보급이 켠다).
+# 왜: 2026-10-26 다국어 음성이 "Hi, welcome." 을 러시아어로 읽었는데, 파일은 멀쩡히 생겨서
+# 아무 점검에도 안 걸렸다. ponytail: 받아쓰기라 '다른 언어로 읽음·뭉개짐'은 잡지만
+# 억양만 어색한 건(프랑스식 urgent) 못 잡는다.
+WHISPER = shutil.which("whisper-cli")
+MODEL = os.path.expanduser("~/.cache/whisper/ggml-small.bin")
+VLOG = os.path.expanduser("~/Library/Logs/ktree-tts-verify.log")
+words_of = lambda t: re.findall(r"[a-z0-9']+", t.lower().replace("’", "'"))
+
+def missing(text, heard):
+    got = set(words_of(heard))
+    return [w for w in words_of(text) if w not in got]
+
+# 받아쓰기도 가끔 한 단어는 틀린다 — 두 단어 이상 빠지면(한 단어짜리는 그 하나가) 경고
+bad = lambda text, heard: len(missing(text, heard)) >= min(2, len(words_of(text)))
+
+def verify(text, path):
+    wav = path + ".wav"
+    subprocess.run([FFMPEG, "-loglevel", "error", "-y", "-i", path, "-ar", "16000", "-ac", "1", wav], check=True)
+    heard = subprocess.run([WHISPER, "-m", MODEL, "-l", "en", "-nt", "-np", "-f", wav],
+                           capture_output=True, text=True).stdout.strip()
+    os.remove(wav)
+    if bad(text, heard):
+        line = f"{time.strftime('%Y-%m-%d %H:%M')} ⚠ 음성이 원문과 다름: {text!r} → 들린 것 {heard!r}"
+        print(line, file=sys.stderr)
+        with open(VLOG, "a") as f: f.write(line + "\n")
 
 async def one(it):
     for attempt in range(3):
@@ -44,6 +71,18 @@ async def main():
     async def lim(it):
         async with sem:
             return await one(it)
-    print(json.dumps(await asyncio.gather(*map(lim, items))))
+    res = await asyncio.gather(*map(lim, items))
+    if os.environ.get("EDGE_VERIFY") and WHISPER and os.path.exists(MODEL):
+        for it, r in zip(items, res):
+            if r["ok"] and re.search(r"[A-Za-z]", it["text"]) and it["voice"].startswith("en-"):
+                verify(it["text"], it["out"])
+    print(json.dumps(res))
+
+if sys.argv[1:] == ["--selftest"]:
+    assert not bad("Hi, welcome.", "Hi, welcome.")
+    assert bad("Hi, welcome. Can I have your name and driver's license?", "Балкума. Can I have your name and driver's license?")
+    assert bad("urgent", "Ujong.")
+    assert not bad("I don't know Minsu", "I don’t know Minsoo.")   # 한 단어 오타는 봐준다
+    print("ok"); sys.exit()
 
 asyncio.run(main())

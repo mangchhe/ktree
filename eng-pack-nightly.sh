@@ -53,6 +53,11 @@ if [[ "$1" == "--check" ]]; then
   exit 0
 fi
 
+# 구운 음성을 받아 적어 원문과 맞춰 본다 (edge_say.py) — 어긋난 건 아래에서 로그로 올린다
+export EDGE_VERIFY=1
+VLOG="$HOME/Library/Logs/ktree-tts-verify.log"
+started=$(date '+%Y-%m-%d %H:%M')
+
 # 권한 프롬프트에 답할 사람이 없으므로 필요한 것만 미리 허용한다.
 # 전체 우회(--dangerously-skip-permissions)는 쓰지 않는다 — 새벽에 감독 없이 도는 세션이다.
 "$CLAUDE" -p "/eng-pack" \
@@ -61,6 +66,9 @@ fi
                  Read Write Edit Glob Grep WebSearch WebFetch \
   2>&1 | sed 's/^/    /'
 rc=$?
+
+bad=$([[ -f "$VLOG" ]] && awk -v s="$started" 'substr($0,1,16) >= s' "$VLOG")
+[[ -n "$bad" ]] && { say "⚠ 원문과 다르게 들리는 음성 $(print -r -- "$bad" | wc -l | tr -d ' ')개:"; print -r -- "$bad" | sed 's/^/    /'; }
 
 say "─── eng-pack 종료 (exit=$rc) ───"
 exit $rc
