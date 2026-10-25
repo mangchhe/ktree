@@ -1,6 +1,6 @@
 // speak-fix.mjs 의 교정 출력 해석·프롬프트. node check-speakfix.mjs
 import assert from 'node:assert/strict';
-import { parseFix, buildPrompt } from './speak-fix.mjs';
+import { vttLines, parseArr, parseFix, buildPrompt } from './speak-fix.mjs';
 
 const j = parseFix('여기 있어:\n```json\n{"intent_ko":"a","fixed":"I live in Seoul.","fixes":[{"said":"I living","better":"I live","why_ko":"x"},{"said":"x"}]}\n```');
 assert.equal(j.fixed, 'I live in Seoul.');
@@ -16,3 +16,14 @@ const split = t => (t.match(/[^.!?]+[.!?]*/g) || []).map(x => x.trim());
 assert.deepEqual(bakeTexts({ fixed:'I live here. I like it.', fixes:[{ better:'I live here.' }, { better:'On weekends' }] }, split),
   ['I live here.', 'I like it.', 'On weekends'], '문장 + 고친 표현, 중복 없이');
 console.log('✓ 스피킹 교정 — 구울 문장');
+
+// 섀도잉 자막: 자동자막의 되풀이 줄·태그를 걷고 문장으로 묶는다
+{
+  const auto = `WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nhi I<00:00:01.500><c> get</c> up\n\n00:00:02.000 --> 00:00:02.010\nhi I get up\n\n00:00:02.010 --> 00:00:04.000\nhi I get up\nat seven.\n\n00:00:05.000 --> 00:00:06.000\n[Music]\n\n00:00:06.000 --> 00:00:07.000\nWhat&#39;s next?`;
+  const l = vttLines(auto);
+  assert.deepEqual(l.map(x => x.en), ['hi I get up at seven.', "What's next?"]);
+  assert.equal(l[0].t, 1);
+  assert.deepEqual(parseArr('ok\n["가","나"]', 2), ['가', '나']);
+  assert.throws(() => parseArr('["가"]', 2));
+}
+console.log('✓ vttLines·parseArr');

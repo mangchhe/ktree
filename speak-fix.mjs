@@ -60,6 +60,36 @@ export function parseFix(out) {
   return j;
 }
 
+/** 유튜브 vtt → 문장 [{t, en}]. 자동자막은 큐마다 앞줄을 되풀이하고 마침표가 없다 →
+ *  같은 줄은 버리고, 마침표가 없으면 14단어에서 끊는다. */
+export function vttLines(vtt) {
+  const ent = x => x.replace(/&amp;/g, '&').replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"')
+    .replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/&nbsp;/g, ' ');
+  const frags = [];
+  for (const b of vtt.replace(/\r/g, '').split(/\n\n+/)) {
+    const m = b.match(/(\d+):(\d\d):(\d\d)\.(\d+) -->/); if (!m) continue;
+    const t = +m[1] * 3600 + +m[2] * 60 + +m[3] + +('0.' + m[4]);
+    for (const raw of b.split('\n').slice(b.split('\n').findIndex(l => l.includes('-->')) + 1)) {
+      const text = ent(raw.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+      if (text && !/^\[.*\]$/.test(text) && text !== frags.at(-1)?.text) frags.push({ t, text });   // [Music] 빼고
+    }
+  }
+  const out = []; let cur = null;
+  for (const f of frags) {
+    cur ? (cur.en += ' ' + f.text) : (cur = { t: Math.round(f.t * 10) / 10, en: f.text });
+    if (/[.?!]["”’)]?$/.test(cur.en) || cur.en.split(' ').length >= 14) { out.push(cur); cur = null; }
+  }
+  if (cur) out.push(cur);
+  return out;
+}
+
+/** claude 출력에서 JSON 배열을 꺼낸다 */
+export function parseArr(out, n) {
+  const a = JSON.parse(out.slice(out.indexOf('['), out.lastIndexOf(']') + 1));
+  if (!Array.isArray(a) || a.length !== n) throw new Error(`번역 개수가 다르다 (${a.length}/${n})`);
+  return a.map(String);
+}
+
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const CFG = join(homedir(), '.config', 'ktree');
   const SESS = join(CFG, 'speak-fix-session.json');
@@ -146,6 +176,40 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     } catch (err) {
       console.error(`✗ ${r.id.slice(0, 8)}`, err.message);
       await sb.from('eng_speak_fix').update({ status: 'error', error: String(err.message).slice(0, 500) }).eq('id', r.id);
+    } finally { rmSync(dir, { recursive: true, force: true }); }
+  }
+
+  // ── 섀도잉 영상 문장·뜻 (앱 🎬). 한 번에 하나 — 20분짜리 번역에 몇 분 걸린다.
+  //    launchd 는 이 작업이 도는 동안 다음 실행을 띄우지 않으니 겹치지 않는다.
+  const { data: clips } = await sb.from('eng_clips').select('id, video_id')
+    .is('lines', null).is('lines_err', null).order('created_at').limit(1);
+  for (const c of clips || []) {
+    const t0 = Date.now(), dir = join(tmpdir(), 'ktree-clip-' + c.id);
+    mkdirSync(dir, { recursive: true });
+    try {
+      // 사람이 단 자막이 있으면 그걸(--write-subs), 없으면 자동자막
+      execFileSync('uvx', ['--quiet', 'yt-dlp', '--skip-download', '--write-subs', '--write-auto-subs',
+        '--sub-langs', 'en,en-US,en-GB', '--sub-format', 'vtt', '-P', dir, '-o', 'v',
+        'https://www.youtube.com/watch?v=' + c.video_id], { stdio: 'ignore', timeout: 180e3 });
+      const f = ['v.en.vtt', 'v.en-US.vtt', 'v.en-GB.vtt'].map(x => join(dir, x)).find(existsSync);
+      if (!f) throw new Error('영어 자막이 없는 영상');
+      const lines = vttLines(readFileSync(f, 'utf8'));
+      if (!lines.length) throw new Error('자막이 비었다');
+      for (let i = 0; i < lines.length; i += 60) {
+        const part = lines.slice(i, i + 60);
+        const prompt = `영어 초보(오픽 IL~IM 목표) 학습자가 유튜브 영상을 따라 말하며 본다. 아래 영어 자막 줄을 ` +
+          `자연스러운 한국어로 옮겨라. 줄이 문장 중간에서 끊겨 있어도 그 줄만큼만 옮긴다. ` +
+          `입력과 같은 개수·순서의 JSON 문자열 배열 하나만 출력한다.\n\n` + JSON.stringify(part.map(l => l.en));
+        const out = execFileSync(CLAUDE, ['-p', prompt, '--model', 'sonnet', '--permission-mode', 'dontAsk'],
+          { cwd: dir, encoding: 'utf8', timeout: 300e3, maxBuffer: 4e6 });
+        parseArr(out, part.length).forEach((ko, j) => { part[j].ko = ko; });
+      }
+      const { error } = await sb.from('eng_clips').update({ lines }).eq('id', c.id);
+      if (error) throw new Error(error.message);
+      console.log(`✓ clip ${c.video_id} ${lines.length}줄 ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+    } catch (err) {
+      console.error(`✗ clip ${c.video_id}`, err.message);
+      await sb.from('eng_clips').update({ lines_err: String(err.message).slice(0, 300) }).eq('id', c.id);
     } finally { rmSync(dir, { recursive: true, force: true }); }
   }
 }

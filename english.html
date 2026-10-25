@@ -444,6 +444,12 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .strip input:focus,.strip textarea:focus{border-color:var(--eng-bd);outline:none}
 .strip textarea{width:100%;margin-top:8px;resize:vertical}
 .sdet{margin-top:10px}
+.clines{max-height:42vh;overflow:auto;position:relative;margin:0 0 8px;border:1px solid var(--border);border-radius:var(--r)}
+.cl{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--border);
+  color:var(--text);font:inherit;font-size:15px;line-height:1.45;padding:9px 12px;cursor:pointer}
+.cl.on{background:var(--eng-bg);box-shadow:inset 3px 0 0 var(--eng)}
+.cl .ct{font-family:var(--num);font-size:10.5px;color:var(--dim);margin-right:6px}
+.cl .ck{display:block;font-size:12.5px;color:var(--sub);margin-top:2px}
 .sdet>summary{cursor:pointer;font-size:12.5px;color:var(--sub);list-style:none}
 .sdet>summary::-webkit-details-marker{display:none}
 .sdet>summary::before{content:"▸ ";color:var(--dim)}
@@ -615,7 +621,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.11';
+const BUILD = '2026-10-26.12';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2958,6 +2964,7 @@ async function actClip(c){
     <div style="position:relative;aspect-ratio:16/9;margin:10px 0;background:#000;border-radius:10px;overflow:hidden">
       <div id="c-yt" style="position:absolute;inset:0;width:100%;height:100%"></div></div>
     <div class="leg" id="c-seg" style="margin:0 0 8px"></div>
+    <div class="clines" id="c-lines"></div>
     <div class="actbar" style="flex-wrap:wrap;gap:6px">
       <button class="btn sm" id="c-back5">⏪ 5초</button>
       <button class="btn sm" id="c-a">A 여기부터</button>
@@ -2971,12 +2978,34 @@ async function actClip(c){
       (ab ? ` · 🔁 ${mmss(ab[0])}~${mmss(ab[1])}` : a != null ? ` · A ${mmss(a)} — B 를 눌러` : '');
     $('c-a').classList.toggle('on', a != null); $('c-b').classList.toggle('on', !!ab);
   };
-  seg();
+  // 문장·뜻 — 유튜브 임베드는 폰에서 자막을 안 띄운다. Mac 일꾼이 받아 둔 걸 구간만큼 보여준다
+  let shown = [], cur = -1;
+  const paintLines = () => {
+    const box = $('c-lines'); cur = -1;
+    if (!c.lines) {
+      box.innerHTML = `<p class="leg" style="margin:8px 0">${c.lines_err
+        ? '이 영상은 문장을 못 가져왔어 — ' + esc(c.lines_err) : '문장·뜻 준비 중 — 몇 분 뒤 다시 열어봐'}</p>`;
+      return;
+    }
+    shown = c.lines.filter(l => l.t >= c.at_sec - 1 && l.t < c.at_sec + c.chunk_sec);
+    box.innerHTML = shown.map((l, i) => `<button class="cl" data-i="${i}"><span class="ct">${mmss(l.t)}</span>${
+      esc(l.en)}<span class="ck">${esc(l.ko || '')}</span></button>`).join('');
+    box.querySelectorAll('.cl').forEach(b => b.onclick = () => p?.seekTo?.(shown[+b.dataset.i].t, true));
+  };
+  paintLines();
   const timer = setInterval(() => {
     if (!$('c-yt')) return clearInterval(timer);   // 다른 화면으로 갔다
     if (!p?.getCurrentTime) return;
     const t = p.getCurrentTime(), [lo, hi] = ab || [c.at_sec, c.at_sec + c.chunk_sec];
     if (t >= hi || t < lo - 2) p.seekTo(lo, true);
+    const i = shown.findLastIndex(l => l.t <= t + 0.2);
+    if (i !== cur) {
+      const box = $('c-lines'), els = box.querySelectorAll('.cl');
+      els[cur]?.classList.remove('on'); cur = i;
+      const el = els[i]; if (!el) return;
+      el.classList.add('on');
+      box.scrollTop = el.offsetTop - box.clientHeight / 3;   // 페이지는 안 움직이고 목록만
+    }
   }, 200);
   $('t-back').onclick = () => { clearInterval(timer); p?.destroy?.(); renderToday(); };
   const YT = await loadYt();
@@ -3001,7 +3030,7 @@ async function actClip(c){
     ab = [a, t]; a = null; p.seekTo(ab[0], true); seg();
   };
   $('c-next').onclick = async () => {
-    c.at_sec += c.chunk_sec; a = ab = null; seg(); p.seekTo?.(c.at_sec, true);
+    c.at_sec += c.chunk_sec; a = ab = null; seg(); paintLines(); p.seekTo?.(c.at_sec, true);
     const { error } = await sb.from('eng_clips').update({ at_sec:c.at_sec }).eq('id', c.id);
     if (error) toast('구간 저장 실패');
   };
