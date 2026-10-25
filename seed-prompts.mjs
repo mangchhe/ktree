@@ -7,7 +7,7 @@
  *   node seed-prompts.mjs <file.json> --dry  넣지 않고 검증만
  *
  * JSON 은 배열이다:
- *   [{ kind, topic, level, seconds, question_en, hint_ko, model_en, model_l1, model_note_ko,
+ *   [{ kind, topic, level, seconds, question_en, question_ko, hint_ko, model_en, model_l1, model_note_ko,
  *      phrases:[{term, meaning_ko}] }]
  *
  * 🔴 model_l1 — 같은 질문의 **S1·S2 용 짧은 답**. 사용자 출발점이 NH 라 S1·S2 의 따라 말하기와
@@ -155,6 +155,7 @@ for (const [i, it] of items.entries()) {
   else if (!it.question_en)         bad.push(`#${i} question_en 없음`);
   else if (known.size && !known.has(it.topic)) bad.push(`#${i} topic='${it.topic}' 가 eng_topics 에 없음 — 넣어도 안 뽑힙니다`);
   // 내장 시드(파일 없음)는 이미 DB 에 있고 S1 답은 backfill-l1.mjs 로 채웠다 — 파일로 넣을 때만 요구한다
+  else if (FILE && !it.question_ko) bad.push(`#${i} question_ko 없음 — 스피킹의 '한국어 뜻' 버튼이 빈다`);
   else if (FILE && !it.model_l1)    bad.push(`#${i} model_l1 없음 — S1·S2 따라 말하기가 IH 답으로 떨어진다`);
   else if (FILE) { const w = checkL1(it.model_l1); if (w.length) bad.push(`#${i} model_l1: ${w.join(' · ')}`); }
 }

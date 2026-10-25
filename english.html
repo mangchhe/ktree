@@ -591,7 +591,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.1';
+const BUILD = '2026-10-26.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1321,6 +1321,7 @@ function tFollow(a, ev, paint){
     const ms = a.currentTime * 1000;
     let lo = 0, hi = ev.length - 1, hit = -1;
     while (lo <= hi) { const mid = (lo+hi)>>1; if (ms < ev[mid].t) hi = mid-1; else { hit = mid; lo = mid+1; } }
+    if (hit >= 0 && ms > ev[hit].t + (ev[hit].d ?? 600) + 200) hit = -1;   // 문장 끝 침묵에 마지막 단어가 남지 않게
     if (hit !== last) { last = hit; paint(hit); }
     tRaf = requestAnimationFrame(step);
   };
@@ -2151,7 +2152,9 @@ function playFull(sc){
     const el = document.querySelector(`.dturn[data-i="${i}"]`);
     const ev = turns[i]?.ev || [], rel = ms - (starts[i] || 0);
     let hit = -1; for (let k = 0; k < ev.length; k++) if (rel >= ev[k].t) hit = k;
-    el?.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
+    if (hit >= 0 && rel > ev[hit].t + (ev[hit].d ?? 600) + 200) hit = -1;   // tFollow 과 같은 규칙
+    // 문서 전체에서 끈다 — 이 턴만 끄면 앞 턴의 마지막 단어가 켜진 채 남았다
+    document.querySelectorAll('.kw.on').forEach(x => x.classList.remove('on'));
     if (hit >= 0) el?.querySelector(`.kw[data-e="${hit}"]`)?.classList.add('on');
     tRaf = requestAnimationFrame(step);
   };
@@ -2351,8 +2354,10 @@ function qBtns(p){
     <div class="actbar" style="margin:8px 0 0">
       <button class="btn sm primary-btn" id="sp-q">🔊 Listen to the question</button>
       <button class="btn sm" id="sp-show">Show text</button>
+      ${p.question_ko ? '<button class="btn sm" id="sp-ko">한국어 뜻</button>' : ''}
     </div>
     <p class="spen" id="sp-text" hidden>${esc(p.question_en)}</p>
+    <p class="spen" id="sp-ko-text" hidden style="font-size:14px;color:var(--sub)">${esc(p.question_ko || '')}</p>
   </div>`;
 }
 
@@ -2367,6 +2372,8 @@ function wireQ(p){
     a.play().catch(() => speak(p.question_en));   // 음성이 없으면 기기 TTS
   };
   $('sp-show').onclick = function(){ $('sp-text').hidden = false; this.remove(); };
+  // 뜻은 영어와 따로 연다 — 같이 열면 영어를 안 읽고 한국어만 보게 된다
+  const ko = $('sp-ko'); if (ko) ko.onclick = function(){ $('sp-ko-text').hidden = false; this.remove(); };
 }
 
 function goStep(el, n){ spStop(); spStep = n; drawSpeak(el); }
