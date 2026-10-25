@@ -1,0 +1,1685 @@
+{
+  "id": "2026-10-25-rental-car-swap",
+  "situation_ko": "공항 렌터카 카운터에서 예약한 차를 받으려는데, 예약한 소형차가 없다며 돈을 더 내고 SUV 를 타라고 한다. 이어서 보험까지 권한다.",
+  "topic": "여행",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "렌터카 직원",
+      "meaning_ko": "안녕하세요, 어서 오세요. 성함과 운전면허증 부탁드려요.",
+      "en": "Hi, welcome. Can I have your name and driver's license, please?",
+      "ms": 4296,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "welcome",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Can",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "name",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "and",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "driver's",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "license",
+          9
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          10
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 300
+        },
+        {
+          "t": 475,
+          "d": 575
+        },
+        {
+          "t": 1412,
+          "d": 188
+        },
+        {
+          "t": 1612,
+          "d": 88
+        },
+        {
+          "t": 1712,
+          "d": 112
+        },
+        {
+          "t": 1838,
+          "d": 112
+        },
+        {
+          "t": 1962,
+          "d": 288
+        },
+        {
+          "t": 2275,
+          "d": 150
+        },
+        {
+          "t": 2438,
+          "d": 450
+        },
+        {
+          "t": 2900,
+          "d": 450
+        },
+        {
+          "t": 3375,
+          "d": 500
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "Kim 이름으로 예약했다고 하고, 면허증을 건네봐",
+      "en": "Hi, I have a reservation under Kim. Here's my license.",
+      "ms": 3840,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Hi",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "reservation",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "under",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Kim",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Here's",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "license",
+          9
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 125,
+          "d": 225
+        },
+        {
+          "t": 725,
+          "d": 100
+        },
+        {
+          "t": 838,
+          "d": 125
+        },
+        {
+          "t": 975,
+          "d": 38
+        },
+        {
+          "t": 1025,
+          "d": 612
+        },
+        {
+          "t": 1650,
+          "d": 175
+        },
+        {
+          "t": 1838,
+          "d": 288
+        },
+        {
+          "t": 2562,
+          "d": 125
+        },
+        {
+          "t": 2700,
+          "d": 112
+        },
+        {
+          "t": 2825,
+          "d": 600
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "감사합니다. 음, 죄송하지만 예약하신 소형차가 지금 없어요. 하루 15달러 더 내시면 SUV 를 드릴 수 있어요.",
+      "en": "Thank you. Hmm, I'm sorry, but the small car you booked isn't available right now. I can give you an SUV for fifteen dollars more a day.",
+      "ms": 9168,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Thank",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Hmm",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "I'm",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "sorry",
+          4
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "but",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "small",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "car",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "isn't",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "available",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          14
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "give",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "an",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          21
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fifteen",
+          22
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          23
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "more",
+          24
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          25
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          26
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 275
+        },
+        {
+          "t": 388,
+          "d": 362
+        },
+        {
+          "t": 1112,
+          "d": 500
+        },
+        {
+          "t": 1875,
+          "d": 138
+        },
+        {
+          "t": 2025,
+          "d": 550
+        },
+        {
+          "t": 2650,
+          "d": 200
+        },
+        {
+          "t": 2875,
+          "d": 88
+        },
+        {
+          "t": 2975,
+          "d": 325
+        },
+        {
+          "t": 3312,
+          "d": 262
+        },
+        {
+          "t": 3588,
+          "d": 100
+        },
+        {
+          "t": 3700,
+          "d": 275
+        },
+        {
+          "t": 4025,
+          "d": 188
+        },
+        {
+          "t": 4225,
+          "d": 488
+        },
+        {
+          "t": 4725,
+          "d": 162
+        },
+        {
+          "t": 4900,
+          "d": 375
+        },
+        {
+          "t": 5638,
+          "d": 238
+        },
+        {
+          "t": 5888,
+          "d": 162
+        },
+        {
+          "t": 6062,
+          "d": 138
+        },
+        {
+          "t": 6212,
+          "d": 125
+        },
+        {
+          "t": 6350,
+          "d": 125
+        },
+        {
+          "t": 6525,
+          "d": 512
+        },
+        {
+          "t": 7050,
+          "d": 175
+        },
+        {
+          "t": 7238,
+          "d": 438
+        },
+        {
+          "t": 7688,
+          "d": 400
+        },
+        {
+          "t": 8100,
+          "d": 200
+        },
+        {
+          "t": 8312,
+          "d": 50
+        },
+        {
+          "t": 8375,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "한 달 전에 예약했다고 하고, SUV 때문에 돈을 더 내야 하는지 물어봐",
+      "en": "But I booked that car a month ago. Do I have to pay extra for the SUV?",
+      "ms": 3960,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "But",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "booked",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "car",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "month",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ago",
+          7
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pay",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "extra",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          16
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 112,
+          "d": 62
+        },
+        {
+          "t": 188,
+          "d": 62
+        },
+        {
+          "t": 262,
+          "d": 238
+        },
+        {
+          "t": 512,
+          "d": 138
+        },
+        {
+          "t": 662,
+          "d": 188
+        },
+        {
+          "t": 862,
+          "d": 38
+        },
+        {
+          "t": 912,
+          "d": 200
+        },
+        {
+          "t": 1125,
+          "d": 288
+        },
+        {
+          "t": 1838,
+          "d": 88
+        },
+        {
+          "t": 1938,
+          "d": 62
+        },
+        {
+          "t": 2012,
+          "d": 175
+        },
+        {
+          "t": 2200,
+          "d": 75
+        },
+        {
+          "t": 2288,
+          "d": 175
+        },
+        {
+          "t": 2475,
+          "d": 338
+        },
+        {
+          "t": 2825,
+          "d": 112
+        },
+        {
+          "t": 2950,
+          "d": 75
+        },
+        {
+          "t": 3038,
+          "d": 512
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "맞는 말씀이에요. 좋아요, 같은 가격에 SUV 드릴게요. 종합 보험 드실래요? 하루 20달러예요.",
+      "en": "That's fair. Okay, you can have the SUV for the same price. Would you like full insurance? It's twenty dollars a day.",
+      "ms": 7992,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "That's",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "fair",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Okay",
+          2
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "can",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "SUV",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "same",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "price",
+          11
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Would",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "like",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "insurance",
+          16
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "It's",
+          17
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twenty",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "dollars",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "day",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 325
+        },
+        {
+          "t": 438,
+          "d": 425
+        },
+        {
+          "t": 1225,
+          "d": 400
+        },
+        {
+          "t": 2100,
+          "d": 62
+        },
+        {
+          "t": 2175,
+          "d": 112
+        },
+        {
+          "t": 2300,
+          "d": 100
+        },
+        {
+          "t": 2412,
+          "d": 62
+        },
+        {
+          "t": 2488,
+          "d": 600
+        },
+        {
+          "t": 3100,
+          "d": 112
+        },
+        {
+          "t": 3225,
+          "d": 88
+        },
+        {
+          "t": 3325,
+          "d": 350
+        },
+        {
+          "t": 3688,
+          "d": 450
+        },
+        {
+          "t": 4500,
+          "d": 200
+        },
+        {
+          "t": 4712,
+          "d": 88
+        },
+        {
+          "t": 4812,
+          "d": 175
+        },
+        {
+          "t": 5000,
+          "d": 138
+        },
+        {
+          "t": 5150,
+          "d": 675
+        },
+        {
+          "t": 6188,
+          "d": 250
+        },
+        {
+          "t": 6450,
+          "d": 288
+        },
+        {
+          "t": 6750,
+          "d": 350
+        },
+        {
+          "t": 7112,
+          "d": 62
+        },
+        {
+          "t": 7188,
+          "d": 388
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "카드에 보험이 있어서 괜찮다고 하고, 기름을 가득 채워서 돌려줘야 하는지 물어봐",
+      "en": "No, thanks. My credit card covers that. Do I have to bring it back with a full tank?",
+      "ms": 4992,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "thanks",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "My",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "credit",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "card",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "covers",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Do",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "to",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "with",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tank",
+          17
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 138
+        },
+        {
+          "t": 262,
+          "d": 425
+        },
+        {
+          "t": 1100,
+          "d": 112
+        },
+        {
+          "t": 1225,
+          "d": 300
+        },
+        {
+          "t": 1538,
+          "d": 225
+        },
+        {
+          "t": 1775,
+          "d": 300
+        },
+        {
+          "t": 2088,
+          "d": 288
+        },
+        {
+          "t": 2800,
+          "d": 75
+        },
+        {
+          "t": 2888,
+          "d": 50
+        },
+        {
+          "t": 2950,
+          "d": 162
+        },
+        {
+          "t": 3125,
+          "d": 75
+        },
+        {
+          "t": 3212,
+          "d": 162
+        },
+        {
+          "t": 3388,
+          "d": 88
+        },
+        {
+          "t": 3488,
+          "d": 250
+        },
+        {
+          "t": 3750,
+          "d": 112
+        },
+        {
+          "t": 3875,
+          "d": 38
+        },
+        {
+          "t": 3925,
+          "d": 238
+        },
+        {
+          "t": 4175,
+          "d": 400
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "네, 가득 채워서 반납해 주세요. 아니면 기름값을 청구해요. 열쇠 여기 있어요. 12번 자리에 있어요.",
+      "en": "Yes, please bring it back full. If not, we charge you for the gas. Here are your keys. It's in spot twelve.",
+      "ms": 8304,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Yes",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "please",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "bring",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "back",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "full",
+          5
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "If",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "not",
+          7
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "we",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "charge",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "for",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "the",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "gas",
+          13
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Here",
+          14
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "are",
+          15
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "your",
+          16
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "keys",
+          17
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          18
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "in",
+          19
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "spot",
+          20
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "twelve",
+          21
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 600
+        },
+        {
+          "t": 950,
+          "d": 300
+        },
+        {
+          "t": 1262,
+          "d": 150
+        },
+        {
+          "t": 1425,
+          "d": 88
+        },
+        {
+          "t": 1525,
+          "d": 225
+        },
+        {
+          "t": 1762,
+          "d": 350
+        },
+        {
+          "t": 2475,
+          "d": 225
+        },
+        {
+          "t": 2712,
+          "d": 412
+        },
+        {
+          "t": 3512,
+          "d": 150
+        },
+        {
+          "t": 3675,
+          "d": 375
+        },
+        {
+          "t": 4062,
+          "d": 112
+        },
+        {
+          "t": 4188,
+          "d": 125
+        },
+        {
+          "t": 4325,
+          "d": 88
+        },
+        {
+          "t": 4425,
+          "d": 512
+        },
+        {
+          "t": 5300,
+          "d": 250
+        },
+        {
+          "t": 5562,
+          "d": 75
+        },
+        {
+          "t": 5650,
+          "d": 112
+        },
+        {
+          "t": 5775,
+          "d": 512
+        },
+        {
+          "t": 6650,
+          "d": 200
+        },
+        {
+          "t": 6862,
+          "d": 150
+        },
+        {
+          "t": 7025,
+          "d": 312
+        },
+        {
+          "t": 7350,
+          "d": 525
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/6.mp3"
+    }
+  ],
+  "grammar": {
+    "name_ko": "~해야 해요? (꼭 해야 하는지 묻기)",
+    "why_ko": "규칙이나 비용을 확인할 때 'Do I have to + 동사?' 하나로 묻는다. 'Must I' 는 안 쓴다. 오픽 ask·solve 문항에서 조건을 물을 때 그대로 쓴다.",
+    "turn": 3,
+    "en": "Do I have to pay extra"
+  },
+  "vocab": [
+    {
+      "term": "available",
+      "kind": "word",
+      "meaning_ko": "(지금) 쓸 수 있는, 남아 있는",
+      "example": "Is this room available tonight?",
+      "prompt_ko": "오늘 밤에 이 방을 쓸 수 있는지 물어봐"
+    },
+    {
+      "term": "insurance",
+      "kind": "word",
+      "meaning_ko": "보험",
+      "example": "I don't need extra insurance for the car.",
+      "prompt_ko": "차 보험은 추가로 필요 없다고 말해봐"
+    },
+    {
+      "term": "cover",
+      "kind": "word",
+      "meaning_ko": "(보험·돈이) 보장하다, 대주다",
+      "example": "Does my travel insurance cover this?",
+      "prompt_ko": "여행자 보험이 이것도 보장해주는지 물어봐"
+    },
+    {
+      "term": "pay extra",
+      "kind": "phrase",
+      "meaning_ko": "돈을 더 내다, 추가 요금을 내다",
+      "prompt_ko": "창가 자리로 바꾸면 돈을 더 내야 하는지 물어봐"
+    },
+    {
+      "term": "a full tank",
+      "kind": "phrase",
+      "meaning_ko": "기름을 가득 채운 상태",
+      "keywords": [
+        {
+          "word": "tank",
+          "meaning_ko": "(자동차) 연료 탱크, 통"
+        }
+      ],
+      "prompt_ko": "차를 기름 가득 채워서 돌려주겠다고 말해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-25-rental-car-swap/full.mp3",
+  "full_starts": [
+    0,
+    4296,
+    8136,
+    17304,
+    21264,
+    29256,
+    34248
+  ],
+  "generated_at": "2026-10-25T21:54:38.604Z"
+}

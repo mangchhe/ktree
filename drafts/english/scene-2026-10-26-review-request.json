@@ -1,0 +1,997 @@
+{
+  "id": "2026-10-26-review-request",
+  "situation_ko": "동료에게 오늘 안에 코드 리뷰를 부탁한다. 동료는 오후에 휴가라 못 본다며, 대신 다른 사람에게 부탁하라고 권한다.",
+  "topic": "테크",
+  "level": 2,
+  "voices": {
+    "a": "en-US-AvaMultilingualNeural",
+    "b": "en-US-AndrewMultilingualNeural"
+  },
+  "turns": [
+    {
+      "who": "a",
+      "role_ko": "동료",
+      "meaning_ko": "안녕하세요. 무슨 일이에요?",
+      "en": "Hey, what's up?",
+      "ms": 1920,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Hey",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "what's",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "up",
+          2
+        ],
+        [
+          "?",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 350
+        },
+        {
+          "t": 638,
+          "d": 212
+        },
+        {
+          "t": 862,
+          "d": 325
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/0.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "작은 수정이니 오늘 안에 코드 리뷰를 해줄 수 있는지 정중히 부탁해봐",
+      "en": "I was wondering if you could review my pull request today. It's a small change.",
+      "ms": 4224,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "was",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "wondering",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "if",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "could",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "review",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "my",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "pull",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "request",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "today",
+          10
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          12
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "small",
+          13
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "change",
+          14
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 62
+        },
+        {
+          "t": 175,
+          "d": 125
+        },
+        {
+          "t": 312,
+          "d": 375
+        },
+        {
+          "t": 700,
+          "d": 100
+        },
+        {
+          "t": 812,
+          "d": 88
+        },
+        {
+          "t": 912,
+          "d": 138
+        },
+        {
+          "t": 1062,
+          "d": 338
+        },
+        {
+          "t": 1412,
+          "d": 125
+        },
+        {
+          "t": 1550,
+          "d": 212
+        },
+        {
+          "t": 1775,
+          "d": 375
+        },
+        {
+          "t": 2162,
+          "d": 300
+        },
+        {
+          "t": 2875,
+          "d": 112
+        },
+        {
+          "t": 3000,
+          "d": 50
+        },
+        {
+          "t": 3062,
+          "d": 262
+        },
+        {
+          "t": 3338,
+          "d": 462
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/1.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "아, 미안해요. 저 오늘 오후에 휴가예요. 지금은 시간이 없어요.",
+      "en": "Oh, sorry. I'm off this afternoon, so I don't have time right now.",
+      "ms": 4536,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Oh",
+          0
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "sorry",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'm",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "off",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "this",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "afternoon",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "so",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "have",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "time",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 275
+        },
+        {
+          "t": 400,
+          "d": 500
+        },
+        {
+          "t": 1262,
+          "d": 288
+        },
+        {
+          "t": 1562,
+          "d": 188
+        },
+        {
+          "t": 1762,
+          "d": 150
+        },
+        {
+          "t": 1925,
+          "d": 562
+        },
+        {
+          "t": 2600,
+          "d": 275
+        },
+        {
+          "t": 2888,
+          "d": 88
+        },
+        {
+          "t": 2988,
+          "d": 188
+        },
+        {
+          "t": 3188,
+          "d": 138
+        },
+        {
+          "t": 3338,
+          "d": 225
+        },
+        {
+          "t": 3575,
+          "d": 150
+        },
+        {
+          "t": 3738,
+          "d": 375
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/2.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "급하다고, 내일 오전 배포 전에 필요하다고 말해봐",
+      "en": "I understand. It's kind of urgent, though. I need it before tomorrow's release.",
+      "ms": 4752,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "I",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "understand",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "It's",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "kind",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "of",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "urgent",
+          5
+        ],
+        [
+          ", ",
+          null
+        ],
+        [
+          "though",
+          6
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "need",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "it",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "before",
+          10
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "tomorrow's",
+          11
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "release",
+          12
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 112,
+          "d": 88
+        },
+        {
+          "t": 212,
+          "d": 562
+        },
+        {
+          "t": 1188,
+          "d": 100
+        },
+        {
+          "t": 1300,
+          "d": 188
+        },
+        {
+          "t": 1500,
+          "d": 75
+        },
+        {
+          "t": 1588,
+          "d": 388
+        },
+        {
+          "t": 2012,
+          "d": 225
+        },
+        {
+          "t": 2650,
+          "d": 50
+        },
+        {
+          "t": 2712,
+          "d": 175
+        },
+        {
+          "t": 2900,
+          "d": 75
+        },
+        {
+          "t": 2988,
+          "d": 300
+        },
+        {
+          "t": 3300,
+          "d": 475
+        },
+        {
+          "t": 3788,
+          "d": 550
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/3.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "그럼 민수한테 부탁해 봐요. 이 코드를 잘 알아요.",
+      "en": "Then why don't you ask Minsu? He knows that code well.",
+      "ms": 3696,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "Then",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "why",
+          1
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "don't",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "you",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "ask",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "Minsu",
+          5
+        ],
+        [
+          "? ",
+          null
+        ],
+        [
+          "He",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "knows",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "that",
+          8
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "code",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "well",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 288
+        },
+        {
+          "t": 400,
+          "d": 150
+        },
+        {
+          "t": 562,
+          "d": 150
+        },
+        {
+          "t": 725,
+          "d": 88
+        },
+        {
+          "t": 825,
+          "d": 288
+        },
+        {
+          "t": 1125,
+          "d": 525
+        },
+        {
+          "t": 2012,
+          "d": 200
+        },
+        {
+          "t": 2225,
+          "d": 262
+        },
+        {
+          "t": 2500,
+          "d": 175
+        },
+        {
+          "t": 2688,
+          "d": 225
+        },
+        {
+          "t": 2925,
+          "d": 362
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/4.mp3"
+    },
+    {
+      "who": "b",
+      "role_ko": "나",
+      "is_me": true,
+      "intent_ko": "좋은 생각이라고 하고, 지금 바로 메시지를 보내겠다고 해봐",
+      "en": "Good idea. I'll send him a message right now. Thanks anyway.",
+      "ms": 3720,
+      "voice": "en-US-AndrewMultilingualNeural",
+      "segs": [
+        [
+          "Good",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "idea",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "I'll",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "send",
+          3
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "him",
+          4
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "a",
+          5
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "message",
+          6
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "right",
+          7
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "now",
+          8
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Thanks",
+          9
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "anyway",
+          10
+        ],
+        [
+          ".",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 100
+        },
+        {
+          "t": 212,
+          "d": 375
+        },
+        {
+          "t": 1000,
+          "d": 100
+        },
+        {
+          "t": 1112,
+          "d": 175
+        },
+        {
+          "t": 1300,
+          "d": 75
+        },
+        {
+          "t": 1388,
+          "d": 38
+        },
+        {
+          "t": 1438,
+          "d": 362
+        },
+        {
+          "t": 1812,
+          "d": 188
+        },
+        {
+          "t": 2012,
+          "d": 300
+        },
+        {
+          "t": 2738,
+          "d": 188
+        },
+        {
+          "t": 2938,
+          "d": 362
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/5.mp3"
+    },
+    {
+      "who": "a",
+      "meaning_ko": "별말씀을요. 행운을 빌어요!",
+      "en": "No problem. Good luck!",
+      "ms": 2328,
+      "voice": "en-US-AvaMultilingualNeural",
+      "segs": [
+        [
+          "No",
+          0
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "problem",
+          1
+        ],
+        [
+          ". ",
+          null
+        ],
+        [
+          "Good",
+          2
+        ],
+        [
+          " ",
+          null
+        ],
+        [
+          "luck",
+          3
+        ],
+        [
+          "!",
+          null
+        ]
+      ],
+      "ev": [
+        {
+          "t": 100,
+          "d": 250
+        },
+        {
+          "t": 362,
+          "d": 612
+        },
+        {
+          "t": 1338,
+          "d": 200
+        },
+        {
+          "t": 1550,
+          "d": 362
+        }
+      ],
+      "audio_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/6.mp3"
+    }
+  ],
+  "grammar": {
+    "name_ko": "~해 주실 수 있을까요?",
+    "why_ko": "부탁할 때 'I was wondering if you could ~' 로 시작하면 정중하게 들린다. 직장 이메일·전화 어디서나 쓰고, 오픽 롤플레이 부탁 문항에도 그대로 들어간다.",
+    "turn": 1,
+    "en": "I was wondering if you could review my pull request"
+  },
+  "vocab": [
+    {
+      "term": "review",
+      "kind": "word",
+      "meaning_ko": "검토하다, 리뷰하다",
+      "example": "Can you review my code?",
+      "prompt_ko": "내 코드를 검토해 달라고 말해봐"
+    },
+    {
+      "term": "urgent",
+      "kind": "word",
+      "meaning_ko": "급한, 긴급한",
+      "example": "This bug is urgent.",
+      "prompt_ko": "이 버그는 급하다고 말해봐"
+    },
+    {
+      "term": "release",
+      "kind": "word",
+      "meaning_ko": "배포, 출시",
+      "example": "The release is tomorrow morning.",
+      "prompt_ko": "배포가 내일 아침이라고 말해봐"
+    },
+    {
+      "term": "I was wondering if you could",
+      "kind": "phrase",
+      "meaning_ko": "~해 주실 수 있을까요? (정중한 부탁)",
+      "example": "I was wondering if you could help me.",
+      "prompt_ko": "나를 도와줄 수 있는지 정중하게 물어봐"
+    },
+    {
+      "term": "why don't you ask",
+      "kind": "phrase",
+      "meaning_ko": "~한테 물어보는 게 어때요?",
+      "example": "Why don't you ask your manager?",
+      "prompt_ko": "매니저에게 물어보라고 권해봐"
+    }
+  ],
+  "full_url": "https://mfzlrmwjwwpykjbsafud.supabase.co/storage/v1/object/public/eng-audio/scenes/2026-10-26-review-request/full.mp3",
+  "full_starts": [
+    0,
+    1920,
+    6144,
+    10680,
+    15432,
+    19128,
+    22848
+  ],
+  "generated_at": "2026-10-25T21:54:52.902Z"
+}

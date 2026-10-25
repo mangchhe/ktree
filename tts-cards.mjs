@@ -7,6 +7,7 @@
  *   node tts-cards.mjs            # 오디오 없는 카드만 생성
  *   node tts-cards.mjs --all      # 전부 재생성 (음성 바꿀 때)
  *   node tts-cards.mjs --voice en-US-AvaMultilingualNeural
+ *   node tts-cards.mjs --since 2026-10-24T15:00:00Z   # 그 뒤에 구운 것만 다시 (음성이 깨졌던 구간)
  *
  * 인증: KTREE_EMAIL / KTREE_PASSWORD (다른 도구와 동일)
  */
@@ -23,6 +24,8 @@ const VOICE = argv.includes('--voice') ? argv[argv.indexOf('--voice') + 1] : 'en
 // 같은 포맷(24kHz 모노 MP3)으로 구워두면 영어와 함께 한 트랙으로 묶인다.
 const KO_VOICE = 'ko-KR-SunHiNeural';
 const KO = !argv.includes('--no-ko');
+const SINCE = argv.includes('--since') ? argv[argv.indexOf('--since') + 1] : null;
+const stale = o => SINCE && (o.updated_at || o.created_at) >= SINCE;   // 있어도 없는 셈 친다
 
 function die(m) { console.error(`✗ ${m}`); process.exit(1); }
 
@@ -99,7 +102,7 @@ async function listed(dir){
   for (let page = 0; ; page++) {
     const { data: objs } = await sb.storage.from('eng-audio')
       .list(dir, { limit: 1000, offset: page * 1000 });
-    (objs || []).forEach(o => have.add(o.name.replace(/\.mp3$/, '')));
+    (objs || []).filter(o => !stale(o)).forEach(o => have.add(o.name.replace(/\.mp3$/, '')));
     if (!objs || objs.length < 1000) break;
   }
   return have;
@@ -171,7 +174,7 @@ const prompts = pr.data || [];
 const phave = new Set();
 for (let page = 0; ; page++) {
   const { data: objs } = await sb.storage.from('eng-audio').list('prompts', { limit: 1000, offset: page * 1000 });
-  (objs || []).forEach(o => phave.add(o.name.replace(/\.mp3$/, '')));
+  (objs || []).filter(o => !stale(o)).forEach(o => phave.add(o.name.replace(/\.mp3$/, '')));
   if (!objs || objs.length < 1000) break;
 }
 const pTodo = (prompts || []).filter(x => ALL || !phave.has(x.id));

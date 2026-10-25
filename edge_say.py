@@ -6,7 +6,7 @@ stdout: [{"ok", "words":[{t,d,w}] (ms), "err"}]
 왜 파이썬인가: 2026-10-25 에 Edge 가 토큰(Sec-MS-GEC v2)을 바꿔 node 의 msedge-tts 2.1.0
 (최신)가 'Unexpected server response: 200' 으로 전부 막혔다. 파이썬 edge-tts 는 바로 따라간다.
 """
-import asyncio, json, shutil, subprocess, sys
+import asyncio, json, re, shutil, subprocess, sys
 import edge_tts
 
 FFMPEG = shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg"
@@ -15,7 +15,10 @@ async def one(it):
     for attempt in range(3):
         try:
             words, audio = [], bytearray()
-            c = edge_tts.Communicate(it["text"], it["voice"], boundary="WordBoundary")
+            # 🔴 Multilingual 음성은 언어를 글자로 추측한다 — 파이썬 edge-tts 로 바꾼 뒤
+            # "Hi, welcome." 이 러시아어("Балкума")로 읽혔다. 같은 사람의 영어 전용 음성으로 고정한다.
+            voice = re.sub(r"^(en-[A-Z]{2}-\w+?)MultilingualNeural$", r"\1Neural", it["voice"])
+            c = edge_tts.Communicate(it["text"], voice, boundary="WordBoundary")
             async for ch in c.stream():
                 if ch["type"] == "audio":
                     audio += ch["data"]
