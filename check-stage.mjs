@@ -49,7 +49,9 @@ assert.ok(!STAGES[1].board.req.includes('scene') && !STAGES[1].board.req.include
 for (let n = 1; n <= 4; n++) assert.ok(GRAMMAR.filter(g => g.st === n).length >= 3, `S${n}: 문법이 3개 미만`);
 for (const g of GRAMMAR) {
   assert.ok(g.name && g.why?.length > 15 && g.try, `${g.name}: 설명이 비었다`);
-  assert.strictEqual(g.ex.length, 3, `${g.name}: 예문은 3개`);
+  assert.ok(g.ex.length >= 5, `${g.name}: 예문은 5개 이상`);
+  assert.ok(g.form?.length && g.form.every(r => r.length === 2 && r[1]), `${g.name}: 꼴 표가 비었거나 칸이 어긋남`);
+  assert.ok(g.oops?.length && g.oops.every(r => r.length === 3), `${g.name}: 자주 틀리는 것 [틀린, 맞는, 왜]`);
   for (const [en, ko] of g.ex) {
     assert.ok(en && ko, `${g.name}: 예문 짝이 비었다`);
     assert.ok(en.split(/\s+/).length <= 10, `${g.name}: "${en}" — 예문이 길면 따라하기가 안 된다`);
