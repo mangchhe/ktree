@@ -1,6 +1,6 @@
 // speak-fix.mjs 의 교정 출력 해석·프롬프트. node check-speakfix.mjs
 import assert from 'node:assert/strict';
-import { vttLines, parseKo, parseTips, parseFix, buildPrompt } from './speak-fix.mjs';
+import { vttLines, parseKo, parseTips, parseGuide, parseFix, buildPrompt } from './speak-fix.mjs';
 
 const j = parseFix('여기 있어:\n```json\n{"intent_ko":"a","fixed":"I live in Seoul.","fixes":[{"said":"I living","better":"I live","why_ko":"x"},{"said":"x"}]}\n```');
 assert.equal(j.fixed, 'I live in Seoul.');
@@ -33,3 +33,12 @@ console.log('✓ vttLines·parseKo');
   assert.equal(t.length, 1); assert.equal(t[0].t, 75); assert.deepEqual(t[0].kinds, ['describe']);
 }
 console.log('✓ parseTips');
+
+{
+  const sec = (t, n) => ({ title: t, why: 'w', items: Array.from({ length: n }, (_, i) => ({ head: 'h' + i, body: 'b', stage: 9, kinds: ['past', 'x'], refs: [{ v: 'A', t: '3.6' }, { v: 'ZZ', t: 1 }] })) });
+  const g = parseGuide('공략:\n' + JSON.stringify({ summary: 's', sections: [sec('a', 2), sec('b', 1), sec('c', 1), { title: 'd', items: [] }] }), ['A']);
+  assert.equal(g.sections.length, 3); assert.equal(g.sections[0].items[0].stage, 0);
+  assert.deepEqual(g.sections[0].items[0].refs, [{ v: 'A', t: 4 }]); assert.deepEqual(g.sections[0].items[0].kinds, ['past']);
+  assert.throws(() => parseGuide(JSON.stringify({ summary: 's', sections: [sec('a', 1)] }), ['A']));
+}
+console.log('✓ parseGuide');

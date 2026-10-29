@@ -94,6 +94,24 @@ export function parseTips(out) {
   }));
 }
 
+/** 종합 공략 출력 검사 — 모양이 틀린 항목은 버리고, 출처(refs)는 실제 영상 id 만 남긴다 */
+export function parseGuide(out, ids) {
+  const g = JSON.parse(out.slice(out.indexOf('{'), out.lastIndexOf('}') + 1));
+  const sections = (g.sections || []).map(sec => ({
+    title: String(sec.title || ''), why: String(sec.why || ''),
+    items: (sec.items || []).filter(x => x && x.head && x.body).map(x => ({
+      head: String(x.head), body: String(x.body),
+      stage: [0, 1, 2, 3, 4].includes(+x.stage) ? +x.stage : 0,
+      kinds: (Array.isArray(x.kinds) ? x.kinds : []).filter(k => TIP_KINDS.includes(k)),
+      ex: (Array.isArray(x.ex) ? x.ex : []).map(String).filter(Boolean).slice(0, 6),
+      refs: (Array.isArray(x.refs) ? x.refs : []).filter(r => r && ids.includes(r.v))
+        .map(r => ({ v: r.v, t: Math.max(0, Math.round(+r.t || 0)) })).slice(0, 4),
+    })),
+  })).filter(sec => sec.title && sec.items.length);
+  if (!g.summary || sections.length < 3) throw new Error('공략 모양이 모자라다');
+  return { summary: String(g.summary), sections };
+}
+
 /** claude 출력 {"번호":"뜻"} → Map. 배열로 받으면 줄을 합쳐 개수가 어긋났다 — 번호로 짝을 맞춘다 */
 export function parseKo(out) {
   let o;
@@ -271,5 +289,54 @@ JSON 배열 하나만 출력한다.
       console.error(`✗ tip ${c.video_id}`, err.message);
       await sb.from('eng_tips').update({ err: String(err.message).slice(0, 300) }).eq('id', c.id);
     } finally { rmSync(dir, { recursive: true, force: true }); }
+  }
+
+  // ── 오픽 공략(종합). 영상별 팁이 다 모였고(대기 0) 지난번보다 영상이 늘었으면 다시 엮는다.
+  //    영상 하나씩 요약하면 서로 겹치고 엇갈린다 — 학습자 수준(NH → IM1)과 단계(S1~S4)로 한 권을 만든다.
+  if (!(tipv || []).length) {
+    const [{ data: all }, { data: gd }] = await Promise.all([
+      sb.from('eng_tips').select('video_id, title, channel, tips, err').order('sort'),
+      sb.from('eng_guide').select('src_n').maybeSingle(),
+    ]);
+    const done = (all || []).filter(v => v.tips?.length);
+    const pending = (all || []).some(v => !v.tips && !v.err);
+    if (done.length && !pending && done.length !== (gd?.src_n || 0)) {
+      const t0 = Date.now(), dir = join(tmpdir(), 'ktree-guide');
+      mkdirSync(dir, { recursive: true });
+      try {
+        const prompt = `너는 오픽 코치다. 학습자: 첫 오픽 NH, 2027년 1월 초 재시험, 목표 IM1(최소 IL). 이 앱은 4단계로 올린다 —
+S1 문장 만들기(NH→IL, 30초, 현재시제 3~4문장, 묘사·습관·질문하기) → S2 과거로 말하기(IL, 45초, 과거 경험, because·so) →
+S3 이어 말하기(IL→IM1, 60초, first·then, 비교·롤플레이 문제해결) → S4 실전(IM, 90초, 15문항 모의).
+
+아래는 오픽 유튜버 강의 ${done.length}개에서 뽑은 팁 전부다(영상 id·시각 포함). 이걸 **영상별이 아니라 주제별로 종합**해서
+이 학습자 한 사람을 위한 공략집을 만들어라.
+- 여러 영상이 같은 말을 하면 하나로 합치고 출처를 여러 개 단다. 영상끼리 엇갈리면 "A 는 ~, B 는 ~" 로 밝히고 **이 학습자에게는 무엇이 맞는지** 결론을 낸다.
+- IH·AL 전용 전략은 빼거나 "나중" 으로만 짧게. 목표(IL~IM1)에 직접 도움 되는 것에 집중한다.
+- 일반론으로 끝내지 말고 **이 학습자가 시험장에서/연습할 때 할 행동**으로 쓴다 (예: "난이도는 ○-○ 로 고른다 — 이유").
+- 유형별 답 틀(묘사·습관·과거·비교·롤플레이 질문/문제해결)은 IL 버전과 IM1 버전을 나눠, 영어 뼈대 문장(ex)을 붙인다. 쉬운 단어로.
+- 섹션은 대략: 등급 기준(NH·IL·IM 이 뭐가 다른가) / 시험 세팅(난이도·서베이·자기소개·재조정·시간) / 유형별 답 틀 / 필러·연결어 / 롤플레이 / 감점·하지 말 것 / 남은 기간 연습법. 필요하면 조정.
+- 각 항목 stage: 그 내용을 연습에 들일 단계(1~4), 시험 세팅·전 단계 공통이면 0. kinds: [${TIP_KINDS.join(', ')}] 중 해당하는 것.
+- refs: 근거가 된 팁의 {"v": 영상 id, "t": 초}. 지어내지 않는다.
+출력은 JSON 객체 하나: {"summary": "이 학습자에게 맞춘 핵심 전략 4~6줄", "sections": [{"title", "why": "이 섹션이 왜 중요한지 한 줄",
+"items": [{"head", "body": "한국어 2~6문장", "stage", "kinds", "ex": ["영어"], "refs": [{"v","t"}]}]}]}
+
+` + JSON.stringify(done.map(v => ({ id: v.video_id, title: v.title, channel: v.channel,
+          tips: v.tips.map(x => ({ t: x.t, head: x.head, body: x.body, ex: x.ex, kinds: x.kinds })) })));
+        let guide = null, last;
+        for (let i = 0; i < 2 && !guide; i++) {
+          try {
+            guide = parseGuide(execFileSync(CLAUDE, ['-p', prompt, '--model', 'opus', '--permission-mode', 'dontAsk'],
+              { cwd: dir, encoding: 'utf8', timeout: 900e3, maxBuffer: 16e6 }), done.map(v => v.video_id));
+          } catch (e) { last = e; }
+        }
+        if (!guide) throw new Error((last?.message || '빈 결과').slice(0, 200));
+        const { error } = await sb.from('eng_guide').upsert({ user_id: session.user.id, guide, src_n: done.length,
+          updated_at: new Date().toISOString() });
+        if (error) throw new Error(error.message);
+        const n = guide.sections.reduce((a, x) => a + x.items.length, 0);
+        console.log(`✓ guide 영상 ${done.length}개 → 섹션 ${guide.sections.length} · 항목 ${n} ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+      } catch (err) { console.error('✗ guide', err.message); }
+      finally { rmSync(dir, { recursive: true, force: true }); }
+    }
   }
 }

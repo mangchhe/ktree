@@ -450,6 +450,9 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .tipt{background:none;border:1px solid var(--border);border-radius:8px;color:var(--eng);font:inherit;font-size:11px;padding:2px 7px;cursor:pointer;flex:none}
 .tipt.tsl{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--border);border-radius:0;color:var(--text);font-size:12.5px;padding:6px 0}
 .tipsrc{max-height:50vh;overflow:auto}
+.tipr{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tips{font-family:var(--num);font-size:10px;color:var(--dim);border:1px solid var(--border);border-radius:6px;padding:0 5px}
+.tips.on{color:var(--eng);border-color:var(--eng-bd)}
 .tsl .ct{font-family:var(--num);font-size:10.5px;color:var(--dim);margin-right:6px}
 .clines{max-height:42vh;overflow:auto;position:relative;margin:0 0 8px;border:1px solid var(--border);border-radius:var(--r)}
 .cl{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--border);
@@ -628,7 +631,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-30.2';
+const BUILD = '2026-10-30.3';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2657,12 +2660,12 @@ function wireQ(p){
   // 그 유형(묘사·과거·롤플레이…)의 팁 + 전 유형 팁. 많으면 앞에서 5개
   loadTips().then(() => {
     const b = $('sp-tip'), box = $('sp-tips'); if (!b || !box) return;
-    const list = [...tipsFor(p.kind), ...tipsFor('general')].slice(0, 5);
+    const list = [...tipsFor(p.kind), ...tipsFor('general')].slice(0, 6);
     if (!list.length) return;
     b.hidden = false;
     b.onclick = () => {
       box.hidden = !box.hidden;
-      if (!box.dataset.ok) { box.dataset.ok = '1'; box.insertAdjacentHTML('beforeend', list.map(x => tipHtml(x, x.v)).join('')); wireTips(box); }
+      if (!box.dataset.ok) { box.dataset.ok = '1'; box.insertAdjacentHTML('beforeend', list.map(x => tipHtml(x)).join('')); wireTips(box); }
     };
   });
 }
@@ -4129,16 +4132,29 @@ function renderPlan(){
 
 /* ── 오픽 팁 — 유튜버 강의를 Mac 일꾼이 자막째 받아 팁으로 정리해 둔 것 (eng_tips) ─────────
  * Plan 에서는 영상별로 전부, Speaking 에서는 그 문항 유형에 맞는 것만 꺼낸다. */
-let tTips = null;
-const loadTips = async () => tTips ??= ((await sb.from('eng_tips')
-  .select('id, video_id, title, channel, sort, tips, err').eq('user_id', currentUser.id).order('sort')).data || []);
-const tipsFor = kind => (tTips || []).flatMap(v => (v.tips || [])
-  .filter(x => x.kinds?.includes(kind)).map(x => ({ ...x, v })));
+let tTips = null, tGuide = null;
+const loadTips = async () => {
+  if (tTips) return tTips;
+  const [a, b] = await Promise.all([
+    sb.from('eng_tips').select('id, video_id, title, channel, sort, tips, err').eq('user_id', currentUser.id).order('sort'),
+    sb.from('eng_guide').select('guide, src_n, updated_at').eq('user_id', currentUser.id).maybeSingle(),
+  ]);
+  tGuide = b.data || null;
+  return tTips = a.data || [];
+};
+const tipVid = id => (tTips || []).find(v => v.video_id === id);
+/** Speaking 「💡 팁」 — 종합 공략에서 그 유형 + 지금 단계까지 것. 공략이 아직 없으면 영상별 팁 */
+const tipsFor = kind => tGuide
+  ? tGuide.guide.sections.flatMap(sec => sec.items).filter(x => x.kinds?.includes(kind) && x.stage <= tStage)
+  : (tTips || []).flatMap(v => (v.tips || []).filter(x => x.kinds?.includes(kind))
+      .map(x => ({ ...x, refs:[{ v:v.video_id, t:x.t }] })));
 function tipHtml(x, v){
-  return `<div class="tip"><div class="tiph">${esc(x.head)}
-      <button class="tipt" data-tv="${esc(v.video_id)}" data-tt="${x.t}">▶ ${mmss(x.t)}</button></div>
+  const refs = x.refs || (v ? [{ v:v.video_id, t:x.t }] : []);
+  return `<div class="tip"><div class="tiph"><span>${x.stage ? `<span class="tips${x.stage === tStage ? ' on' : ''}">S${x.stage}</span> ` : ''}${esc(x.head)}</span></div>
     <div class="tipb">${esc(x.body)}</div>
-    ${(x.ex || []).map(e => `<button class="gex" data-en="${esc(e)}">🔊 ${esc(e)}</button>`).join('')}</div>`;
+    ${(x.ex || []).map(e => `<button class="gex" data-en="${esc(e)}">🔊 ${esc(e)}</button>`).join('')}
+    ${refs.length ? `<div class="tipr">${refs.map(r => `<button class="tipt" data-tv="${esc(r.v)}" data-tt="${r.t}">▶ ${
+      v ? '' : esc(tipVid(r.v)?.channel || '영상') + ' '}${mmss(r.t)}</button>`).join('')}</div>` : ''}</div>`;
 }
 /** ▶ 시각을 누르면 그 팁이 든 상자 맨 위에 영상을 그 시각부터 띄운다 */
 function wireTips(root){
@@ -4157,10 +4173,20 @@ async function paintTips(){
   tTips = null;   // Plan 을 열 때마다 새로 — 일꾼이 그 사이 정리를 끝냈을 수 있다
   const vids = await loadTips();
   if (!vids.length) { host.innerHTML = ''; return; }
-  const n = vids.reduce((a, v) => a + (v.tips?.length || 0), 0);
+  const n = vids.reduce((a, v) => a + (v.tips?.length || 0), 0), ready = vids.filter(v => v.tips).length;
+  const g = tGuide?.guide;
   host.innerHTML = `<div class="vcard" style="margin-bottom:14px">
-    <div class="vt" style="font-size:14px">💡 오픽 팁 <em class="kdot">영상 ${vids.length} · 팁 ${n}</em></div>
-    <div class="vm">유튜버 강의를 자막째 받아 정리했다. ▶ 시각을 누르면 그 대목부터 영상이 나온다. Speaking 문항 아래 「💡 팁」엔 그 유형 것만 뜬다.</div>
+    <div class="vt" style="font-size:14px">💡 오픽 공략 <em class="kdot">${g ? `영상 ${tGuide.src_n}개 종합` : `정리 중 ${ready}/${vids.length}`}</em></div>
+    ${g ? `<div class="vm" style="white-space:pre-line;color:var(--text)">${esc(g.summary)}</div>
+      <div class="vm" style="margin-top:6px">S 표시는 연습에 들일 단계다 — <b style="color:var(--eng)">S${tStage}</b> 까지가 지금 할 것.
+        ▶ 은 근거가 된 영상 대목. Speaking 문항 아래 「💡 팁」엔 그 유형·지금 단계 것만 뜬다.</div>
+      ${g.sections.map(sec => `<details class="gram" data-tipbox style="margin:8px 0 0">
+        <summary><span class="gl">${sec.items.length}</span>${esc(sec.title)}</summary>
+        <div style="padding:0 13px 12px">${sec.why ? `<p class="leg" style="margin:4px 0">${esc(sec.why)}</p>` : ''}<div class="tipvid"></div>
+          ${sec.items.map(x => tipHtml(x)).join('')}</div></details>`).join('')}`
+      : `<div class="vm">유튜버 강의 ${vids.length}개를 자막째 받아 하나씩 정리하고 있다 (${ready}/${vids.length}).
+          다 모이면 내 수준(NH → IM1)과 단계에 맞춰 <b>한 권으로 엮는다</b>. 그 전엔 아래 영상별 정리를 본다.</div>`}
+    <details class="sdet"${g ? '' : ' open'}><summary>출처 영상 ${vids.length}개 · 팁 ${n}</summary>
     ${vids.map(v => `<details class="gram" data-tipbox data-id="${v.id}" style="margin:8px 0 0">
       <summary><span class="gl">${v.tips ? v.tips.length : v.err ? '✗' : '⏳'}</span>${esc(v.title || v.video_id)} <span style="color:var(--dim)">· ${esc(v.channel || '')}</span></summary>
       <div style="padding:0 13px 12px"><div class="tipvid"></div>
@@ -4168,6 +4194,7 @@ async function paintTips(){
           : `<p class="leg">${v.err ? '못 가져왔어 — ' + esc(v.err) : '정리 중 — Mac 이 자막을 받아 팁으로 묶고 있다 (영상 하나에 몇 분)'}</p>`}
         <details class="sdet"><summary>자막 원문</summary><div class="tipsrc">불러오는 중…</div></details>
       </div></details>`).join('')}
+    </details>
   </div>`;
   wireTips(host);
   host.querySelectorAll('.tipsrc').forEach(d => d.parentElement.addEventListener('toggle', async () => {
