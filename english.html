@@ -444,6 +444,13 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 .strip input:focus,.strip textarea:focus{border-color:var(--eng-bd);outline:none}
 .strip textarea{width:100%;margin-top:8px;resize:vertical}
 .sdet{margin-top:10px}
+.tip{padding:10px 0;border-bottom:1px solid var(--border)}
+.tiph{font-weight:600;font-size:14px;display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.tipb{font-size:13px;color:var(--sub);line-height:1.55;margin:4px 0 6px;white-space:pre-line}
+.tipt{background:none;border:1px solid var(--border);border-radius:8px;color:var(--eng);font:inherit;font-size:11px;padding:2px 7px;cursor:pointer;flex:none}
+.tipt.tsl{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--border);border-radius:0;color:var(--text);font-size:12.5px;padding:6px 0}
+.tipsrc{max-height:50vh;overflow:auto}
+.tsl .ct{font-family:var(--num);font-size:10.5px;color:var(--dim);margin-right:6px}
 .clines{max-height:42vh;overflow:auto;position:relative;margin:0 0 8px;border:1px solid var(--border);border-radius:var(--r)}
 .cl{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--border);
   color:var(--text);font:inherit;font-size:15px;line-height:1.45;padding:9px 12px;cursor:pointer}
@@ -621,7 +628,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-30.1';
+const BUILD = '2026-10-30.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2626,7 +2633,9 @@ function qBtns(p){
       <button class="btn sm primary-btn" id="sp-q">🔊 Listen to the question</button>
       <button class="btn sm" id="sp-show">Show text</button>
       ${p.question_ko ? '<button class="btn sm" id="sp-ko">한국어 뜻</button>' : ''}
+      <button class="btn sm" id="sp-tip" hidden>💡 팁</button>
     </div>
+    <div id="sp-tips" data-tipbox hidden style="margin-top:8px"><div class="tipvid"></div></div>
     <p class="spen" id="sp-text" hidden>${esc(p.question_en)}</p>
     <p class="spen" id="sp-ko-text" hidden style="font-size:14px;color:var(--sub)">${esc(p.question_ko || '')}</p>
   </div>`;
@@ -2645,6 +2654,17 @@ function wireQ(p){
   $('sp-show').onclick = function(){ $('sp-text').hidden = false; this.remove(); };
   // 뜻은 영어와 따로 연다 — 같이 열면 영어를 안 읽고 한국어만 보게 된다
   const ko = $('sp-ko'); if (ko) ko.onclick = function(){ $('sp-ko-text').hidden = false; this.remove(); };
+  // 그 유형(묘사·과거·롤플레이…)의 팁 + 전 유형 팁. 많으면 앞에서 5개
+  loadTips().then(() => {
+    const b = $('sp-tip'), box = $('sp-tips'); if (!b || !box) return;
+    const list = [...tipsFor(p.kind), ...tipsFor('general')].slice(0, 5);
+    if (!list.length) return;
+    b.hidden = false;
+    b.onclick = () => {
+      box.hidden = !box.hidden;
+      if (!box.dataset.ok) { box.dataset.ok = '1'; box.insertAdjacentHTML('beforeend', list.map(x => tipHtml(x, x.v)).join('')); wireTips(box); }
+    };
+  });
 }
 
 function goStep(el, n){ spStop(); spStep = n; drawSpeak(el); }
@@ -4035,6 +4055,8 @@ function renderPlan(){
       ${g ? `<div class="vm" style="margin-top:8px"><b style="color:var(--text)">오늘 문법</b> — ${esc(g.name)}</div>` : ''}
     </div>
 
+    <div id="pl-tips"></div>
+
     <div class="vcard" style="margin-bottom:14px">
       <div class="vt" style="font-size:14px">네 단계</div>
       ${[1,2,3,4].map(stageRow).join('')}
@@ -4102,6 +4124,61 @@ function renderPlan(){
     await loadPrompts();
     renderPlan();
   });
+  paintTips();
+}
+
+/* ── 오픽 팁 — 유튜버 강의를 Mac 일꾼이 자막째 받아 팁으로 정리해 둔 것 (eng_tips) ─────────
+ * Plan 에서는 영상별로 전부, Speaking 에서는 그 문항 유형에 맞는 것만 꺼낸다. */
+let tTips = null;
+const loadTips = async () => tTips ??= ((await sb.from('eng_tips')
+  .select('id, video_id, title, channel, sort, tips, err').eq('user_id', currentUser.id).order('sort')).data || []);
+const tipsFor = kind => (tTips || []).flatMap(v => (v.tips || [])
+  .filter(x => x.kinds?.includes(kind)).map(x => ({ ...x, v })));
+function tipHtml(x, v){
+  return `<div class="tip"><div class="tiph">${esc(x.head)}
+      <button class="tipt" data-tv="${esc(v.video_id)}" data-tt="${x.t}">▶ ${mmss(x.t)}</button></div>
+    <div class="tipb">${esc(x.body)}</div>
+    ${(x.ex || []).map(e => `<button class="gex" data-en="${esc(e)}">🔊 ${esc(e)}</button>`).join('')}</div>`;
+}
+/** ▶ 시각을 누르면 그 팁이 든 상자 맨 위에 영상을 그 시각부터 띄운다 */
+function wireTips(root){
+  root.querySelectorAll('.gex').forEach(b => b.onclick = () => playCard({ answer_en:b.dataset.en }));
+  root.querySelectorAll('.tipt').forEach(b => b.onclick = () => {
+    const box = b.closest('[data-tipbox]'), hold = box.querySelector('.tipvid');
+    tStopAudio();
+    hold.innerHTML = `<div style="position:relative;aspect-ratio:16/9;margin:6px 0 10px;border-radius:10px;overflow:hidden;background:#000">
+      <iframe src="https://www.youtube.com/embed/${encodeURIComponent(b.dataset.tv)}?start=${+b.dataset.tt}&autoplay=1&playsinline=1&rel=0"
+        style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;
+    hold.scrollIntoView({ block:'nearest', behavior:'smooth' });
+  });
+}
+async function paintTips(){
+  const host = $('pl-tips'); if (!host) return;
+  tTips = null;   // Plan 을 열 때마다 새로 — 일꾼이 그 사이 정리를 끝냈을 수 있다
+  const vids = await loadTips();
+  if (!vids.length) { host.innerHTML = ''; return; }
+  const n = vids.reduce((a, v) => a + (v.tips?.length || 0), 0);
+  host.innerHTML = `<div class="vcard" style="margin-bottom:14px">
+    <div class="vt" style="font-size:14px">💡 오픽 팁 <em class="kdot">영상 ${vids.length} · 팁 ${n}</em></div>
+    <div class="vm">유튜버 강의를 자막째 받아 정리했다. ▶ 시각을 누르면 그 대목부터 영상이 나온다. Speaking 문항 아래 「💡 팁」엔 그 유형 것만 뜬다.</div>
+    ${vids.map(v => `<details class="gram" data-tipbox data-id="${v.id}" style="margin:8px 0 0">
+      <summary><span class="gl">${v.tips ? v.tips.length : v.err ? '✗' : '⏳'}</span>${esc(v.title || v.video_id)} <span style="color:var(--dim)">· ${esc(v.channel || '')}</span></summary>
+      <div style="padding:0 13px 12px"><div class="tipvid"></div>
+        ${v.tips ? v.tips.map(x => tipHtml(x, v)).join('')
+          : `<p class="leg">${v.err ? '못 가져왔어 — ' + esc(v.err) : '정리 중 — Mac 이 자막을 받아 팁으로 묶고 있다 (영상 하나에 몇 분)'}</p>`}
+        <details class="sdet"><summary>자막 원문</summary><div class="tipsrc">불러오는 중…</div></details>
+      </div></details>`).join('')}
+  </div>`;
+  wireTips(host);
+  host.querySelectorAll('.tipsrc').forEach(d => d.parentElement.addEventListener('toggle', async () => {
+    if (!d.parentElement.open || d.dataset.ok) return;
+    const id = d.closest('[data-tipbox]').dataset.id;
+    const { data } = await sb.from('eng_tips').select('video_id, transcript').eq('id', id).maybeSingle();
+    d.dataset.ok = '1';
+    d.innerHTML = data?.transcript?.length ? data.transcript.map(l => `<button class="tipt tsl" data-tv="${esc(data.video_id)}" data-tt="${Math.floor(l.t)}">
+      <span class="ct">${mmss(l.t)}</span>${esc(l.text)}</button>`).join('') : '자막이 아직 없다';
+    wireTips(d.closest('[data-tipbox]'));
+  }));
 }
 
 async function renderTogether(){

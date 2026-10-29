@@ -1,6 +1,6 @@
 // speak-fix.mjs 의 교정 출력 해석·프롬프트. node check-speakfix.mjs
 import assert from 'node:assert/strict';
-import { vttLines, parseKo, parseFix, buildPrompt } from './speak-fix.mjs';
+import { vttLines, parseKo, parseTips, parseFix, buildPrompt } from './speak-fix.mjs';
 
 const j = parseFix('여기 있어:\n```json\n{"intent_ko":"a","fixed":"I live in Seoul.","fixes":[{"said":"I living","better":"I live","why_ko":"x"},{"said":"x"}]}\n```');
 assert.equal(j.fixed, 'I live in Seoul.');
@@ -27,3 +27,9 @@ console.log('✓ 스피킹 교정 — 구울 문장');
   assert.deepEqual([...parseKo('{"0":"가 "다" 라","1":"나"}\n{"5":"x"}')], [[1, '나'], [5, 'x']]);   // 깨진 JSON
 }
 console.log('✓ vttLines·parseKo');
+
+{
+  const t = parseTips('정리:\n[{"t":"75.4","head":"MP 먼저","body":"핵심부터","ex":["I live in Seoul."],"kinds":["describe","nope"]},{"head":"빈 몸"}]');
+  assert.equal(t.length, 1); assert.equal(t[0].t, 75); assert.deepEqual(t[0].kinds, ['describe']);
+}
+console.log('✓ parseTips');

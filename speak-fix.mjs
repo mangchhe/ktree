@@ -83,6 +83,17 @@ export function vttLines(vtt) {
   return out;
 }
 
+/** 팁 정리 출력 → [{t, head, body, ex, kinds}]. 모양이 틀린 건 버린다 */
+export const TIP_KINDS = ['setup', 'describe', 'habit', 'past', 'compare', 'ask', 'solve', 'general'];
+export function parseTips(out) {
+  const a = JSON.parse(out.slice(out.indexOf('['), out.lastIndexOf(']') + 1));
+  return a.filter(x => x && x.head && x.body).map(x => ({
+    t: Math.max(0, Math.round(+x.t || 0)), head: String(x.head), body: String(x.body),
+    ex: (Array.isArray(x.ex) ? x.ex : []).map(String).filter(Boolean).slice(0, 4),
+    kinds: (Array.isArray(x.kinds) ? x.kinds : []).filter(k => TIP_KINDS.includes(k)),
+  }));
+}
+
 /** claude 출력 {"번호":"뜻"} → Map. 배열로 받으면 줄을 합쳐 개수가 어긋났다 — 번호로 짝을 맞춘다 */
 export function parseKo(out) {
   let o;
@@ -218,6 +229,47 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     } catch (err) {
       console.error(`✗ clip ${c.video_id}`, err.message);
       await sb.from('eng_clips').update({ lines_err: String(err.message).slice(0, 300) }).eq('id', c.id);
+    } finally { rmSync(dir, { recursive: true, force: true }); }
+  }
+
+  // ── 오픽 팁 영상 (앱 Plan 「오픽 팁」). 한국어 자막을 받아 그대로 두고(transcript), 팁으로 정리한다(tips).
+  const { data: tipv } = await sb.from('eng_tips').select('id, video_id, title')
+    .is('tips', null).is('err', null).order('sort').limit(1);
+  for (const c of tipv || []) {
+    const t0 = Date.now(), dir = join(tmpdir(), 'ktree-tip-' + c.id);
+    mkdirSync(dir, { recursive: true });
+    try {
+      execFileSync('uvx', ['--quiet', 'yt-dlp', '--skip-download', '--write-subs', '--write-auto-subs',
+        '--sub-langs', 'ko', '--sub-format', 'vtt', '-P', dir, '-o', 'v',
+        'https://www.youtube.com/watch?v=' + c.video_id], { stdio: 'ignore', timeout: 180e3 });
+      const f = join(dir, 'v.ko.vtt');
+      if (!existsSync(f)) throw new Error('한국어 자막이 없는 영상');
+      const transcript = vttLines(readFileSync(f, 'utf8')).map(l => ({ t: l.t, text: l.en }));
+      if (!transcript.length) throw new Error('자막이 비었다');
+      await sb.from('eng_tips').update({ transcript }).eq('id', c.id);
+      const mm = x => `${Math.floor(x / 60)}:${String(Math.floor(x % 60)).padStart(2, '0')}`;
+      const prompt = `오픽 첫 시험 NH, 1월 재시험 목표 IM1(최소 IL)인 학습자가 본다. 아래는 유튜브 강의 「${c.title}」의 자동 자막이다(받아쓰기 오류가 있다).
+이 영상이 말하는 **팁·전략·답변 틀·예문을 빠짐없이** 뽑아 정리하라. 영상의 말과 예시를 최대한 살린다(요약하되 내용을 바꾸지 않는다). 광고·인사·구독 부탁은 뺀다.
+각 팁: {"t": 그 내용이 시작하는 초(자막 시각 기준 정수), "head": 한 줄 제목, "body": 한국어 설명 2~6문장(영상이 든 이유·주의점 포함),
+"ex": 영상에 나온 영어 표현·예문(있으면, 최대 4개, 받아쓰기 오류는 바로잡아서), "kinds": 해당 문항 유형들 중에서 [${TIP_KINDS.join(', ')}]
+(setup=난이도·서베이·시험 진행, describe=묘사, habit=습관·루틴, past=과거 경험, compare=비교, ask=롤플레이 질문하기, solve=롤플레이 문제해결, general=전 유형)}.
+JSON 배열 하나만 출력한다.
+
+` + transcript.map(l => `[${mm(l.t)}|${Math.round(l.t)}] ${l.text}`).join('\n');
+      let tips = null, last;
+      for (let i = 0; i < 2 && !tips; i++) {
+        try {
+          tips = parseTips(execFileSync(CLAUDE, ['-p', prompt, '--model', 'sonnet', '--permission-mode', 'dontAsk'],
+            { cwd: dir, encoding: 'utf8', timeout: 600e3, maxBuffer: 8e6 }));
+        } catch (e) { last = e; }
+      }
+      if (!tips?.length) throw new Error('팁 정리 실패: ' + (last?.message || '빈 결과').slice(0, 200));
+      const { error } = await sb.from('eng_tips').update({ tips }).eq('id', c.id);
+      if (error) throw new Error(error.message);
+      console.log(`✓ tip ${c.video_id} 자막 ${transcript.length}줄 → 팁 ${tips.length}개 ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+    } catch (err) {
+      console.error(`✗ tip ${c.video_id}`, err.message);
+      await sb.from('eng_tips').update({ err: String(err.message).slice(0, 300) }).eq('id', c.id);
     } finally { rmSync(dir, { recursive: true, force: true }); }
   }
 }
