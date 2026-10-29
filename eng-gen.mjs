@@ -199,8 +199,14 @@ async function put(path, buf) {
  * 층마다 필요한 것이 다르다 — 단어는 뜻(meaning_ko), 표현은 상황(prompt_ko).
  * 없으면 싣지 않는다: 상황 없는 표현으로는 산출 복습을 만들 수 없다. */
 function vocabRows(doc) {
-  const items = doc.vocab || [];
-  const ok = v => v.term && (v.kind === 'word' ? v.meaning_ko : v.prompt_ko);
+  // phrase 카드의 정답은 example 문장이다 (앱 materializeVocab). 없으면 본문에서 그 표현이 든 문장을 찾아 채우고,
+  // 그래도 없으면 싣지 않는다 — prompt_ko 는 문장을 시키는데 정답이 덩어리면 둘이 따로 논다.
+  const norm = x => String(x).toLowerCase().replace(/[’‘]/g, "'");
+  const sents = [...(doc.turns || []).map(t => t.en), ...(doc.sentences || []).map(x => typeof x === 'string' ? x : x.en || '')]
+    .flatMap(t => String(t).match(/[^.!?]+[.!?]+["”’)]*/g) || []).map(x => x.trim());
+  const items = (doc.vocab || []).map(v => v.kind === 'word' || v.example ? v
+    : { ...v, example: sents.find(x => norm(x).includes(norm(v.term).split('~')[0].trim())) || '' });
+  const ok = v => v.term && (v.kind === 'word' ? v.meaning_ko : v.prompt_ko && v.example);
   const keep = items.filter(ok).map(v => ({
     kind: v.kind === 'word' ? 'word' : 'phrase',
     term: v.term,
@@ -215,7 +221,7 @@ function vocabRows(doc) {
   const dropped = items.length - keep.length;
   const nw = keep.filter(v => v.kind === 'word').length;
   console.log(`  ${dropped ? '⚠' : '✓'} 어휘 ${keep.length}개 실음 (단어 ${nw} · 표현 ${keep.length - nw})` +
-    (dropped ? ` · ${dropped}개 제외 (단어는 meaning_ko, 표현은 prompt_ko 가 필요하다)` : '') +
+    (dropped ? ` · ${dropped}개 제외 (단어는 meaning_ko, 표현은 prompt_ko·example 이 필요하다)` : '') +
     ' — 카드는 앱이 사람마다 만들어낸다');
   return keep;
 }

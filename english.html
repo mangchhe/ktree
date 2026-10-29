@@ -621,7 +621,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-26.13';
+const BUILD = '2026-10-30.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1667,8 +1667,10 @@ async function materializeVocab(){
       user_id: currentUser.id, kind: word ? 'word' : 'phrase',
       topic: g.topic || '일상', scenario: g.scen, level: v.level || 2,
       // 칸의 역할이 층마다 바뀐다 — word 는 뜻이 정답, phrase 는 상황이 문제다
-      prompt_ko: prompt, answer_en: v.term,
-      note: word ? (v.example || '') : (v.meaning_ko || ''),
+      // 🔴 phrase 의 정답은 **문장(example)** 이다. prompt_ko 는 "한 달 해보고 상황을 보자고 말해봐"처럼
+      //    문장 전체를 시키는데 정답이 덩어리(see how it goes)만이라 둘이 따로 놀았다 (2026-10-30 전수 수정).
+      prompt_ko: prompt, answer_en: word ? v.term : (v.example || v.term),
+      note: word ? (v.example || '') : (v.meaning_ko ? `${v.term} — ${v.meaning_ko}` : v.term),
       source: g.kind, source_ref: g.ref,
       // 컬럼 기본값이 current_date(**UTC**)라 KST 00~09 시에 앱을 열면 어제 날짜가 박힌다.
       // 아침 푸시가 07:30 KST 니 정확히 그 창에서 열게 된다 — 명시적으로 KST 를 넣는다.

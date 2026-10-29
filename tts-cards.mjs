@@ -80,7 +80,7 @@ const addEn = t => { const x = String(t || '').trim(); if (x) en.set(audioKey(x)
 const addKo = t => { const x = String(t || '').trim(); if (x) ko.set(audioKey(x), x); };
 for (const row of [...(sc.data || []), ...(ar.data || [])])
   for (const v of (row.vocab || [])) {
-    addEn(v.term);
+    addEn(v.term); if (v.kind !== 'word') addEn(v.example);   // phrase 카드의 정답은 example 문장
     addKo(v.kind === 'word' ? v.meaning_ko : (v.meaning_ko || v.prompt_ko));
   }
 for (const c of (cd.data || [])) { addEn(c.answer_en); addKo(c.prompt_ko); }
