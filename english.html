@@ -633,7 +633,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-31.3';
+const BUILD = '2026-10-31.4';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1947,6 +1947,7 @@ async function renderToday(){
       <div class="tstat"><div class="v">${Math.round((tProg?.listened_ms||0)/60000)}<small>m</small></div><div class="l">Listened</div></div>
       <div class="tstat"><div class="v">${tProg?.articles_read || 0}</div><div class="l">Articles read</div></div>
     </div>
+    <div id="t-tip" data-tipbox></div>
     <div id="t-fixes"></div>
     <div id="t-clips"></div>
     <p class="leg"><b>S${tStage} 목표</b> — ${esc(st.focus)}
@@ -1981,6 +1982,7 @@ async function renderToday(){
   paintStreak();
   paintFixes();
   paintClips();
+  paintTodayTip();
 }
 
 function actBar(title){
@@ -2668,7 +2670,7 @@ function wireQ(p){
   // 그 유형(묘사·과거·롤플레이…)의 팁 + 전 유형 팁. 많으면 앞에서 5개
   loadTips().then(() => {
     const b = $('sp-tip'), box = $('sp-tips'); if (!b || !box) return;
-    const list = [...tipsFor(p.kind), ...tipsFor('general')].slice(0, 6);
+    const tt = todayTip()?.tip, list = [...new Set([tt, ...tipsFor(p.kind), ...tipsFor('general')].filter(Boolean))].slice(0, 6);
     if (!list.length) return;
     b.hidden = false;
     b.onclick = () => {
@@ -4156,6 +4158,30 @@ const tipsFor = kind => tGuide
   ? tGuide.guide.sections.flatMap(sec => sec.items).filter(x => x.kinds?.includes(kind) && x.stage <= tStage)
   : (tTips || []).flatMap(v => (v.tips || []).filter(x => x.kinds?.includes(kind))
       .map(x => ({ ...x, refs:[{ v:v.video_id, t:x.t }] })));
+/** 오늘의 공략 하나 — 문법(todayGrammar)과 같은 규칙: 이 단계 것을 단계 첫날부터 하루 하나씩,
+ *  다 돌면 처음부터 복습. S1 은 시험 세팅·공통(S0)도 같이 돈다. S4 는 전부 복습. */
+function todayTip(){
+  const secs = tGuide?.guide?.sections || [], all = secs.flatMap(sec => sec.items);   // 원본 그대로 — Speaking 💡 에서 중복을 걸러낸다
+  const pool = tStage >= 4 ? all : all.filter(x => x.stage === tStage || (tStage === 1 && !x.stage));
+  if (!pool.length) return null;
+  const since = tStageSince || today();
+  const n = Math.max(0, Math.round((Date.parse(today() + 'T00:00:00+09:00') - Date.parse(since + 'T00:00:00+09:00')) / 864e5));
+  const tip = pool[n % pool.length];
+  return { tip, sec: secs.find(x => x.items.includes(tip)).title, i: n % pool.length, n: pool.length, lap: Math.floor(n / pool.length) };
+}
+async function paintTodayTip(){
+  const host = $('t-tip'); if (!host) return;
+  await loadTips();
+  const t = todayTip(); if (!t || !$('t-tip')) return;
+  host.innerHTML = `<details class="gram" style="margin:0 0 12px"${localStorage.getItem('ktree.tip') === today() ? '' : ' open'}>
+    <summary><span class="gl">💡</span>오늘의 공략 <span style="color:var(--dim)">· S${tStage} ${t.i + 1}/${t.n}${t.lap ? ' · 복습' : ''}</span></summary>
+    <div style="padding:0 13px 12px"><p class="leg" style="margin:4px 0">${esc(t.sec)}</p><div class="tipvid"></div>
+      ${tipHtml(t.tip)}
+      <p class="leg" style="margin:6px 0 0">🔊 예문을 따라 말하고, 오늘 Speaking 답에 한 번 넣어본다.</p></div></details>`;
+  // 한 번 펼쳐 본 날은 접어 둔다 — 판을 가리지 않게
+  host.querySelector('details').addEventListener('toggle', () => { try { localStorage.setItem('ktree.tip', today()); } catch (_) {} });
+  wireTips(host);
+}
 function tipHtml(x, v){
   const refs = x.refs || (v ? [{ v:v.video_id, t:x.t }] : []);
   return `<div class="tip"><div class="tiph"><span>${x.stage ? `<span class="tips${x.stage === tStage ? ' on' : ''}">S${x.stage}</span> ` : ''}${esc(x.head)}</span></div>

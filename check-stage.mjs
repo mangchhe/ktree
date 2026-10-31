@@ -130,4 +130,13 @@ assert.ok(/count\('eng_scenes', x => x\.gt\('level', st\.scMax\)\)/.test(av), '�
 assert.ok(/slice\(0, curStage\(\)\.scN\)/.test(html), '하루 장면 수가 단계를 안 따른다');
 for (let n = 2; n <= 4; n++) assert.ok(STAGES[n].scN >= STAGES[n - 1].scN, `S${n}: 장면 수가 줄었다`);
 
+// 9) 오늘의 공략 — 문법과 같은 규칙(이 단계 것 하루 하나, S1 은 S0 포함, 다 돌면 복습)
+const tipF = cut('function todayTip(){', '\nasync function paintTodayTip');
+const G9 = { guide:{ sections:[{ title:'A', items:[{h:1,stage:0},{h:2,stage:1},{h:3,stage:2}] },{ title:'B', items:[{h:4,stage:1}] }] } };
+const tt = (st, d) => new Function('st','d','tGuide', `let tStage=st, tStageSince='2026-10-31'; const today=()=>d; ${tipF}; return todayTip();`)(st, d, G9);
+assert.deepStrictEqual([tt(1,'2026-10-31').tip.h, tt(1,'2026-10-31').sec, tt(1,'2026-10-31').n], [1,'A',3], 'S1 첫날은 S0·S1 중 첫 팁');
+assert.deepStrictEqual([tt(1,'2026-11-03').tip.h, tt(1,'2026-11-03').lap], [1,1], '다 돌면 처음부터 복습');
+assert.strictEqual(tt(2,'2026-10-31').n, 1); assert.strictEqual(tt(4,'2026-10-31').n, 4, 'S4 는 전부');
+assert.ok(G9.guide.sections[0].items.includes(tt(1,'2026-10-31').tip), '원본 객체여야 Speaking 💡 중복이 걸러진다');
+
 console.log(`✓ 단계 — 4단계 · 문법 ${GRAMMAR.length}개 · 승급 ${PROMOTE.answers}답/${PROMOTE.days}일, 다음 날 적용`);
