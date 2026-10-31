@@ -633,7 +633,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-31.4';
+const BUILD = '2026-10-31.5';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2908,6 +2908,7 @@ function fixHtml(r){
     <div class="actbar" style="margin-top:6px">
       <button class="btn sm primary-btn fplayall" data-en="${esc(x.fixed || '')}">🔊 고친 답 듣기</button>
       ${r.audio_path ? `<button class="btn sm fmine" data-p="${esc(r.audio_path)}">🎙 내 녹음</button>` : ''}
+      <button class="btn sm fstop">■ Stop</button>
     </div>
     ${x.good_ko ? `<div class="spnote"><span class="l">잘한 점</span>${esc(x.good_ko)}</div>` : ''}
     ${x.next_ko ? `<div class="spnote"><span class="l">다음엔 이거 하나만</span>${esc(x.next_ko)}</div>` : ''}
@@ -2927,6 +2928,11 @@ function wireFix(root){
     if (!track) return speak(b.dataset.en);
     tAudio = new Audio(URL.createObjectURL(track.blob)); tAudio.playbackRate = tRate;
     tAudio.play().catch(() => {});
+  });
+  // 고친 답·내 녹음은 tAudio, 문장 🔊 은 cardAudio·기기 음성 — 셋 다 끈다
+  root.querySelectorAll('.fstop').forEach(b => b.onclick = e => {
+    e.stopPropagation(); tStopAudio(); cardAudio?.pause();
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
   });
   root.querySelectorAll('.fmine').forEach(b => b.onclick = async e => {
     e.stopPropagation(); tStopAudio();
