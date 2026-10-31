@@ -29,6 +29,8 @@
   --num:'Roboto Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 html{color-scheme:dark}
+/* 🔴 하단 탭바(+사파리 바)가 ~130px 를 덮는다 — scrollIntoView 가 그만큼 비켜서 멈추게. 없으면 재생 중인 줄이 탭바 밑에 숨었다 */
+html{scroll-padding:12px 0 calc(140px + env(safe-area-inset-bottom))}
 /* 어떤 자식도 화면을 넓히지 못하게 한다 — 한 군데만 삐져나와도 전체가 잘려 보인다 */
 html,body{max-width:100%;overflow-x:hidden}
 body{
@@ -631,7 +633,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-31.1';
+const BUILD = '2026-10-31.2';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2159,7 +2161,7 @@ function drawWarmup(el, { title, context, items, onDone, backLabel, nav, onNav }
   const rowEl = i => el.querySelector(`.prow2[data-i="${i}"]`);
   const mark = i => {
     document.querySelectorAll('.prow2.on').forEach(x => x.classList.remove('on'));
-    const r = rowEl(i); r?.classList.add('on'); r?.scrollIntoView({ block:'nearest', behavior:'smooth' });
+    const r = rowEl(i); r?.classList.add('on'); r?.scrollIntoView({ block:'center', behavior:'smooth' });
   };
 
   // 통짜를 못 만들 때의 폴백 — 오디오가 빠진 카드가 있으면 하나씩 잇는다.
