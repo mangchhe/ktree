@@ -631,7 +631,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-30.3';
+const BUILD = '2026-10-31.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2255,6 +2255,8 @@ function drawPre(el, sc){
 function drawScene(el){
   const sc = tScenes[scIdx];
   if (!sc) { renderToday(); return; }
+  // 다음 장면·어휘↔대화 전환은 새 화면이다 — 앞 화면에서 내려간 스크롤을 물려받지 않는다
+  window.scrollTo(0, 0);
   if (scPhase === 'pre') { drawPre(el, sc); return; }
   const turns = sc.turns || [];
   el.innerHTML = actBar(`${rpTag()}Scene ${scIdx+1}/${tScenes.length}`) + sceneNav() + `
@@ -2389,7 +2391,8 @@ function playTurnA(sc, i, then){
   if (!t?.audio_url) { then && then(); return; }
   const el = document.querySelector(`.dturn[data-i="${i}"]`);
   el?.classList.add('on');
-  el?.scrollIntoView({ block:'nearest', behavior:'smooth' });
+  // 🔴 nearest 는 화면 끝에 겨우 걸칠 만큼만 굴려서, 하단 탭바에 줄이 반쯤 가렸다 — 가운데로
+  el?.scrollIntoView({ block:'center', behavior:'smooth' });
   tAudio = new Audio(t.audio_url);
   tAudio.playbackRate = tRate;
   setMedia(sc.situation_ko || 'Scene', `Scene ${scIdx+1} · turn ${i+1}`);
@@ -2425,7 +2428,7 @@ function playFull(sc){
       document.querySelectorAll('.dturn.on').forEach(x => x.classList.remove('on'));
       const el = document.querySelector(`.dturn[data-i="${i}"]`);
       el?.classList.add('on');
-      el?.scrollIntoView({ block:'nearest', behavior:'smooth' });
+      el?.scrollIntoView({ block:'center', behavior:'smooth' });
       cur = i;
     }
     // 턴 안에서의 단어 하이라이트
