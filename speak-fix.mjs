@@ -39,10 +39,22 @@ ${model_l1 ? `이 단계 모범답 예시: ${model_l1}\n` : ''}
 JSON 하나만 출력한다. 다른 글자 없이:
 {"intent_ko":"네가 하려던 말 (한국어 1~2문장)",
  "fixed":"고친 전체 답 (영어)",
- "fixes":[{"said":"학습자가 말한 부분","better":"고친 표현","why_ko":"왜 (한국어 한 줄)"}],
+ "fixes":[{"said":"학습자가 말한 부분","better":"고친 문장 (영어 한 문장 통째로)","ko":"better 를 그대로 말하게 시키는 한국어 (예: '주말엔 보통 집에서 쉰다고 말해봐')","why_ko":"왜 (한국어 한 줄)"}],
  "good_ko":"잘한 점 한 줄",
  "next_ko":"다음 번에 딱 하나만 신경 쓸 것"}
 말한 게 거의 없거나 인식이 비었으면 fixes 는 [] 로 두고 fixed 에 이 질문에 대한 이 단계 수준의 쉬운 답을 쓴다.`;
+}
+
+/** 고친 표현 → 복습 카드 행. 막힌 표현을 다시 꺼내게 한다 (게시물 'CIA식' 3단계 — 막힌 건 기록하고 다시 쓴다).
+ *  ko 가 없으면 문제를 못 내니 버린다. 내일부터 Vocab drill 에 섞인다. */
+export function fixCards(fix, { user_id, ref, tomorrow }) {
+  return fix.fixes.filter(f => f.ko && f.better).map(f => ({
+    user_id, kind: 'phrase', topic: '스피킹 교정', scenario: 'speak', level: 2,
+    prompt_ko: String(f.ko).trim(), answer_en: String(f.better).trim(),
+    note: [f.said && `내가 한 말: ${f.said}`, f.why_ko].filter(Boolean).join(' · '),
+    // 'new' 로 두면 밀린 신규 뒤에 줄 서서 '보기만' 한다 — 내가 막힌 건 내일 바로 '말해보기'(채점)로 나오게
+    status: 'learning', source: 'speak', source_ref: ref, next_review: tomorrow,
+  }));
 }
 
 /** 구울 문장들 — 고친 답의 문장 + 고친 표현. 앱의 재생 버튼이 누르는 단위 그대로다. */
@@ -205,7 +217,13 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       const { error: e2 } = await sb.from('eng_speak_fix').update({
         status: 'done', transcript, result, error: null, done_at: new Date().toISOString() }).eq('id', r.id);
       if (e2) throw new Error(e2.message);
-      console.log(`✓ ${r.id.slice(0, 8)} ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+      const tomorrow = new Date(Date.now() + 33 * 3600e3).toISOString().slice(0, 10);   // KST 내일
+      const cards = fixCards(result, { user_id: r.user_id, ref: r.id, tomorrow });
+      if (cards.length) {
+        const { error: e3 } = await sb.from('eng_cards').upsert(cards, { onConflict: 'user_id,prompt_ko,answer_en', ignoreDuplicates: true });
+        if (e3) console.error('  카드 만들기 실패:', e3.message);   // 교정은 이미 저장됐다 — 카드만 놓친다
+      }
+      console.log(`✓ ${r.id.slice(0, 8)} 카드 ${cards.length} ${((Date.now() - t0) / 1000).toFixed(0)}s`);
     } catch (err) {
       console.error(`✗ ${r.id.slice(0, 8)}`, err.message);
       await sb.from('eng_speak_fix').update({ status: 'error', error: String(err.message).slice(0, 500) }).eq('id', r.id);

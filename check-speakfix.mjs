@@ -42,3 +42,14 @@ console.log('✓ parseTips');
   assert.throws(() => parseGuide(JSON.stringify({ summary: 's', sections: [sec('a', 1)] }), ['A']));
 }
 console.log('✓ parseGuide');
+
+// 고친 표현 → 복습 카드: ko 없는 건 버리고, 정답은 고친 문장, 내일부터
+import { fixCards } from './speak-fix.mjs';
+{
+  const c = fixCards({ fixes:[{ said:'I go home weekend', better:'I usually stay home on weekends.', ko:'주말엔 보통 집에 있다고 말해봐', why_ko:'on weekends' },
+                              { better:'No ko here.' }] }, { user_id:'u', ref:'r1', tomorrow:'2026-11-18' });
+  assert.equal(c.length, 1, 'ko 없는 표현은 카드로 못 낸다');
+  assert.deepEqual([c[0].prompt_ko, c[0].answer_en, c[0].source, c[0].next_review, c[0].status], ['주말엔 보통 집에 있다고 말해봐', 'I usually stay home on weekends.', 'speak', '2026-11-18', 'learning']);
+  assert.match(c[0].note, /내가 한 말: I go home weekend/);
+  console.log('✓ 교정 → 카드');
+}
