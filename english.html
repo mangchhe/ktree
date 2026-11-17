@@ -633,7 +633,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-10-31.5';
+const BUILD = '2026-11-17.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -2565,7 +2565,9 @@ let spBlob = null;   // Done 이 녹음 Blob 을 기다리는 약속 (onstop 이
 function spStop(){
   if (spTimer) { clearInterval(spTimer); spTimer = null; }
   try { if (spRec && spRec.state === 'recording') spRec.stop(); } catch(_) {}
+  try { koRec?.stop(); } catch(_) {}   // 한국어 녹음 중에 화면을 옮기면 마이크가 켜진 채 남았다
 }
+let koRec = null;
 
 function actSpeak(el){
   const done = tSession?.progress?.speak?.done || 0;
@@ -2738,12 +2740,14 @@ function drawSpFrame(el, p, head){
     `<div class="spnote" style="margin:10px 0"><span class="l">하는 법</span>박자마다 한두 문장씩, 빈칸(~)을 네 얘기로 채워 소리내서 말해라. 시간은 안 잰다. 막히면 2번으로 돌아가 다시 들어라.</div>
     ${(g => g ? `<div class="spnote" style="margin:0 0 10px;border-left:3px solid var(--warn)"><span class="l">오늘 문법 — 여기서 한 번 써봐</span>${esc(g.name)} · <i>${esc(g.ex[0][0])}</i></div>` : '')(todayGrammar())}
     ${frameHtml(p, true, spL1())}
+    ${koHtml(true)}
     <div class="actbar" style="margin-top:14px">
       <button class="btn sm primary-btn" id="sp-next" style="padding:9px 16px">다음 — 혼자 ${curStage().sec}초 →</button>
     </div>`;
   wireBar(); wireQ(p);
   el.querySelectorAll('[data-nav]').forEach(b => b.onclick = () => goStep(el, +b.dataset.nav));
   $('sp-next').onclick = () => goStep(el, 4);
+  wireKo(p);
 }
 
 /* 4 혼자 — 질문만 듣고 90초. 여기만 시험과 같다. */
@@ -2751,7 +2755,7 @@ function drawSpSolo(el, p, head){
   // 🔴 목표와 문턱은 **단계**가 정한다. 문항의 seconds(75~90)는 IH 기준이라 NH 에게 그대로 주면
   // 30초에서 막히고, 그러면 매번 실패로 끝난다 — 올라가는 재미가 안 생긴다.
   const target = curStage().sec, minSec = curStage().min;
-  el.innerHTML = actBar(head) + stepRow() + qBtns(p) + `
+  el.innerHTML = actBar(head) + stepRow() + qBtns(p) + koHtml(false) + `
     <div class="sptimer">
       <div class="sptime" id="sp-time">0:00</div>
       <div class="sptrack"><i id="sp-bar" style="width:0%"></i></div>
@@ -2767,7 +2771,7 @@ function drawSpSolo(el, p, head){
       <button class="check" id="sp-reveal" style="margin-top:14px">Show a model answer</button>
       <div id="sp-model" hidden></div>
     </div>`;
-  wireBar(); wireQ(p);
+  wireBar(); wireQ(p); wireKo(p);
   el.querySelectorAll('[data-nav]').forEach(b => b.onclick = () => goStep(el, +b.dataset.nav));
   $('sp-q').click();                               // 들어오자마자 한 번 들려준다
 
@@ -2867,14 +2871,53 @@ async function sendFix(p, ms){
   const box = $('sp-fix'); if (!box) return;
   const blob = spBlob ? await Promise.race([spBlob, new Promise(r => setTimeout(() => r(null), 3000))]) : null;
   if (!blob) { box.innerHTML = `<div class="spnote" style="margin-top:10px">녹음이 안 돼서 교정은 못 받아 — 마이크 권한을 확인해줘.</div>`; return; }
-  box.innerHTML = fixHtml({ status:'sending' });
+  upFix(p, blob, ms, box, 'en');
+}
+async function upFix(p, blob, ms, box, lang){
+  box.innerHTML = fixHtml({ status:'sending', lang });
   const ext = /mp4|m4a|aac/.test(blob.type) ? 'm4a' : /ogg/.test(blob.type) ? 'ogg' : 'webm';
-  const path = `${currentUser.id}/${today()}-${p.id.slice(0,8)}-${Date.now()}.${ext}`;
+  const path = `${currentUser.id}/${today()}-${p.id.slice(0,8)}-${lang === 'ko' ? 'ko-' : ''}${Date.now()}.${ext}`;
   const up = await sb.storage.from('eng-speak').upload(path, blob, { contentType: blob.type || 'audio/webm' });
   const ins = up.error ? up : await sb.from('eng_speak_fix')
-    .insert({ prompt_id:p.id, stage:tStage, audio_path:path, spoke_ms:ms }).select('*').single();
-  if (ins.error) { box.innerHTML = fixHtml({ status:'error', error:'올리기 실패 — 연결 확인' }); return; }
+    .insert({ prompt_id:p.id, stage:tStage, audio_path:path, spoke_ms:ms, lang }).select('*').single();
+  if (ins.error) { box.innerHTML = fixHtml({ status:'error', lang, error:'올리기 실패 — 연결 확인' }); return; }
   watchFix(ins.data.id, box);
+}
+
+/* ── 한국어로 먼저 ─────────────────────────────────────
+ * 한국어로는 술술 나오는데 영어는 첫 문장부터 막힌다 — 머릿속 한국어가 '어른 문장'이라서다.
+ * 하고 싶은 말을 한국어로 녹음하면 Mac 이 지금 단계 수준의 짧은 영어 문장으로 쪼개 준다.
+ * 듣고 따라 한 다음 영어로 다시 녹음한다. 문장은 내일 '말해보기' 카드로도 나온다. */
+function koHtml(open){
+  return `<details class="gram" id="ko-box" style="margin:10px 0"${open ? ' open' : ''}>
+    <summary><span class="gl">🇰🇷</span>영어가 안 나오면 — 한국어로 먼저 말하기</summary>
+    <div style="padding:0 13px 12px">
+      <p class="leg" style="margin:4px 0 8px">하고 싶은 말을 <b>한국어로 편하게</b> 말해. 지금 단계(S${tStage})에 맞는 쉬운 영어 문장으로 바꿔줄게 (1~2분).
+        받은 문장을 듣고 따라 한 다음, 영어로 다시 녹음해.</p>
+      <button class="btn sm primary-btn" id="ko-rec">🎙 한국어로 말하기</button>
+      <div id="ko-fix"></div>
+    </div></details>`;
+}
+function wireKo(p){
+  const b = $('ko-rec'); if (!b) return;
+  let chunks = [], t0 = 0;
+  b.onclick = async () => {
+    if (koRec) { koRec.stop(); return; }   // 두 번째 누름 = 끝
+    tStopAudio();
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+      const rec = koRec = new MediaRecorder(stream); chunks = []; t0 = Date.now();
+      rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+      rec.onstop = () => {
+        stream.getTracks().forEach(t => t.stop());
+        const blob = chunks.length ? new Blob(chunks, { type: rec.mimeType || 'audio/webm' }) : null;
+        koRec = null; b.textContent = '🎙 다시 한국어로 말하기'; b.classList.remove('on');
+        if (blob && b.isConnected) upFix(p, blob, Date.now() - t0, $('ko-fix'), 'ko');   // 화면을 떠나며 끊긴 건 버린다
+      };
+      rec.start();
+      b.textContent = '■ 다 말했어'; b.classList.add('on');
+    } catch (_) { koRec = null; toast('마이크를 못 열었어 — 권한 확인'); }
+  };
 }
 
 /** done/error 가 될 때까지 8초마다 본다. 화면을 떠나면(box 가 문서에서 빠지면) 멈춘다. */
@@ -2891,11 +2934,27 @@ function watchFix(id, box){
 
 function fixHtml(r){
   const wrap = x => `<div class="fixbox">${x}</div>`;
+  const ko = r.lang === 'ko';
   if (r.status === 'sending') return wrap('<div class="fixwait">⏫ 녹음 올리는 중…</div>');
   if (r.status === 'pending' || r.status === 'working') return wrap(`<div class="fixwait">⏳ ${
-    r.status === 'working' ? '교정하는 중' : '교정 대기'} — 보통 1~2분. 다른 문항 해도 돼, 오늘 판 아래 「스피킹 교정」에 남아.</div>`);
-  if (r.status === 'error') return wrap(`<div class="fixwait">✗ 교정 실패 — ${esc(r.error || '')}</div>`);
+    ko ? (r.status === 'working' ? '쉬운 영어로 바꾸는 중' : '바꾸기 대기') : r.status === 'working' ? '교정하는 중' : '교정 대기'
+    } — 보통 1~2분. 다른 문항 해도 돼, 오늘 판 아래 「스피킹 교정」에 남아.</div>`);
+  if (r.status === 'error') return wrap(`<div class="fixwait">✗ ${ko ? '바꾸기' : '교정'} 실패 — ${esc(r.error || '')}</div>`);
   const x = r.result || {};
+  if (ko) return wrap(`
+    ${x.intent_ko ? `<div class="spnote"><span class="l">네가 하려던 말</span>${esc(x.intent_ko)}</div>` : ''}
+    <div class="spnote"><span class="l">이렇게 말하면 돼 — 한 줄씩 듣고 따라 해</span></div>
+    <div class="spmodel">${(x.lines || []).map(l => `<p class="fsent" data-en="${esc(l.en)}">${esc(l.en)}
+      <span style="display:block;font-size:12px;color:var(--dim)">${esc(l.ko)}</span></p>`).join('')}</div>
+    <div class="actbar" style="margin-top:6px">
+      <button class="btn sm primary-btn fplayall" data-en="${esc(x.fixed || '')}">🔊 전체 듣기</button>
+      <button class="btn sm fstop">■ Stop</button>
+    </div>
+    ${(x.swaps || []).length ? `<div class="spnote"><span class="l">어려운 말은 이렇게 돌려 말한다</span>${x.swaps.map(w =>
+      `<div class="fixrow"><div class="fsaid">${esc(w.ko)}</div><div class="fbetter">→ ${esc(w.en)} <button class="btn sm fplay" data-en="${esc(w.en)}">🔊</button></div>
+        ${w.why_ko ? `<div class="fwhy">${esc(w.why_ko)}</div>` : ''}</div>`).join('')}</div>` : ''}
+    ${x.tip_ko ? `<div class="spnote"><span class="l">혼자 말할 때 요령</span>${esc(x.tip_ko)}</div>` : ''}
+    <p class="leg">따라 해봤으면 <b>4 혼자</b>에서 영어로 녹음해. 이 문장들은 내일 「말해보기」 카드로도 나와.</p>`);
   return wrap(`
     ${x.intent_ko ? `<div class="spnote"><span class="l">네가 하려던 말</span>${esc(x.intent_ko)}</div>` : ''}
     ${(x.fixes || []).map(f => `<div class="fixrow">
@@ -2952,7 +3011,7 @@ async function paintFixes(){
   const mark = { done:'✓', error:'✗', pending:'⏳', working:'⏳' };
   host.innerHTML = `<div class="leg" style="margin:14px 0 6px"><b>🎙 스피킹 교정</b></div>` + data.map(r => `
     <details class="gram fixitem" data-id="${r.id}"><summary><span class="gl">${mark[r.status] || ''}</span>${
-      esc(r.created_at.slice(5,10).replace('-','/'))} · ${esc(r.eng_prompts?.question_ko || r.eng_prompts?.question_en || '')}</summary>
+      esc(r.created_at.slice(5,10).replace('-','/'))} · ${r.lang === 'ko' ? '🇰🇷 ' : ''}${esc(r.eng_prompts?.question_ko || r.eng_prompts?.question_en || '')}</summary>
       <div style="padding:0 13px 12px">${fixHtml(r)}</div></details>`).join('');
   wireFix(host);
   host.querySelectorAll('.fixitem').forEach(d => {

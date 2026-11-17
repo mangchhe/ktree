@@ -45,6 +45,46 @@ JSON 하나만 출력한다. 다른 글자 없이:
 말한 게 거의 없거나 인식이 비었으면 fixes 는 [] 로 두고 fixed 에 이 질문에 대한 이 단계 수준의 쉬운 답을 쓴다.`;
 }
 
+/** 「한국어로 먼저」 — 학습자가 한국어로 한 말을 이 단계 수준의 쉬운 영어로 바꾼다.
+ *  핵심은 번역이 아니라 **쪼개기**: 어른 한국어 한 문장 → 짧은 영어 문장 여러 개,
+ *  모르는 말(뒹굴다)은 아는 말(lie on the sofa)로 돌려 말하는 법을 보여준다. */
+export function buildKoPrompt({ question_en, question_ko, kind, stage, transcript }) {
+  return `너는 오픽(OPIc) 영어 스피킹 코치다. 학습자는 NH 등급(초보)이고 앱 단계는 S${stage}다.
+학습자는 한국어로는 할 말이 많은데 영어로는 첫 문장부터 막힌다. 그래서 하고 싶은 말을 **한국어로** 먼저 녹음했다.
+
+질문(${kind}): ${question_en}
+질문 뜻: ${question_ko || ''}
+학습자가 한국어로 한 말(음성 인식 결과, 오인식 가능):
+"""${transcript}"""
+
+할 일: 학습자의 내용을 살려서, 학습자가 **지금 바로 소리 내 따라 할 수 있는** 영어 답을 만든다.
+- 이 단계 수준: ${STAGE_RULE[stage] || STAGE_RULE[1]}
+- 쉬운 단어만 쓴다(중학교 1학년 수준). 한국어 한 문장을 영어 짧은 문장 2~3개로 쪼갠다.
+- 첫 문장은 질문의 말을 그대로 돌려 쓴다 (예: "Tell me about your house" → "My house is small.").
+- 학습자가 쓴 어려운 한국어 표현(뒹굴다, 힐링하다, 애매하다 등)은 쉬운 영어로 돌려 말하고 swaps 에 적는다.
+- 내용을 부풀리지 않는다. 너무 짧으면 같은 내용에서 이유(because) 한 문장 정도만 보탠다.
+
+JSON 하나만 출력한다. 다른 글자 없이:
+{"intent_ko":"네가 하려던 말 (한국어 1~2문장)",
+ "lines":[{"en":"영어 한 문장","ko":"그 문장 뜻 (한국어로 말해보라고 시키는 말, 예: '우리 집은 작다고 말해봐')"}],
+ "swaps":[{"ko":"어려운 한국어 표현","en":"쉬운 영어로 돌려 말한 것","why_ko":"한 줄"}],
+ "tip_ko":"다음에 혼자 말할 때 쓸 요령 한 줄"}
+lines 는 3~6개. 인식이 비었으면 이 질문에 대한 이 단계 수준의 쉬운 답을 lines 에 쓴다.`;
+}
+
+export function parseKoFix(out) {
+  const j = JSON.parse(out.slice(out.indexOf('{'), out.lastIndexOf('}') + 1));
+  j.lines = (Array.isArray(j.lines) ? j.lines : []).filter(l => l && l.en).map(l => ({ en: String(l.en).trim().replace(/([^.!?])$/, '$1.'), ko: String(l.ko || '').trim() })).slice(0, 8);
+  if (!j.lines.length) throw new Error('lines 없음');
+  j.swaps = (Array.isArray(j.swaps) ? j.swaps : []).filter(x => x && x.ko && x.en).slice(0, 6);
+  j.fixed = j.lines.map(l => l.en).join(' ');   // 앱의 「🔊 전체 듣기」가 이걸 쓴다
+  j.fixes = [];
+  return j;
+}
+
+/** 내가 하려던 말을 영어로 → 카드. 남이 고른 문장이 아니라 **내 문장**이라 제일 잘 붙는다 */
+export const koCards = (fix, o) => fixCards({ fixes: fix.lines.map(l => ({ better: l.en, ko: l.ko })) }, o);
+
 /** 고친 표현 → 복습 카드 행. 막힌 표현을 다시 꺼내게 한다 (게시물 'CIA식' 3단계 — 막힌 건 기록하고 다시 쓴다).
  *  ko 가 없으면 문제를 못 내니 버린다. 내일부터 Vocab drill 에 섞인다. */
 export function fixCards(fix, { user_id, ref, tomorrow }) {
@@ -203,14 +243,15 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
       writeFileSync(src, Buffer.from(await blob.arrayBuffer()));
       execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-i', src, '-ar', '16000', '-ac', '1', wav]);
       // 영어로 고정한다 — auto 면 한국어 섞인 초보 답을 한국어로 판정해 통째로 번역해버린다
+      const ko = r.lang === 'ko';   // 「한국어로 먼저」 녹음은 한국어로 받아 적는다
       const transcript = execFileSync('whisper-cli',
-        ['-m', MODEL, '-f', wav, '-l', 'en', '-nt', '-np'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
+        ['-m', MODEL, '-f', wav, '-l', ko ? 'ko' : 'en', '-nt', '-np'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
         .replace(/\s+/g, ' ').trim();
-      const prompt = buildPrompt({ ...r.eng_prompts, stage: r.stage, transcript });
+      const prompt = (ko ? buildKoPrompt : buildPrompt)({ ...r.eng_prompts, stage: r.stage, transcript });
       // 빈 디렉터리에서 돌린다 — 리포의 CLAUDE.md·스킬을 끌고 오면 느려지고 엉뚱해진다
       const out = execFileSync(CLAUDE, ['-p', prompt, '--model', 'sonnet', '--permission-mode', 'dontAsk'],
         { cwd: dir, encoding: 'utf8', timeout: 180e3, maxBuffer: 4e6 });
-      const result = parseFix(out);
+      const result = ko ? parseKoFix(out) : parseFix(out);
       const texts = bakeTexts(result, sentences);
       try { result.audio = (await bake(texts)) === texts.length; }
       catch (e) { result.audio = false; console.error('  음성 굽기 실패:', e.message); }
@@ -218,7 +259,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
         status: 'done', transcript, result, error: null, done_at: new Date().toISOString() }).eq('id', r.id);
       if (e2) throw new Error(e2.message);
       const tomorrow = new Date(Date.now() + 33 * 3600e3).toISOString().slice(0, 10);   // KST 내일
-      const cards = fixCards(result, { user_id: r.user_id, ref: r.id, tomorrow });
+      const cards = (ko ? koCards : fixCards)(result, { user_id: r.user_id, ref: r.id, tomorrow });
       if (cards.length) {
         const { error: e3 } = await sb.from('eng_cards').upsert(cards, { onConflict: 'user_id,prompt_ko,answer_en', ignoreDuplicates: true });
         if (e3) console.error('  카드 만들기 실패:', e3.message);   // 교정은 이미 저장됐다 — 카드만 놓친다

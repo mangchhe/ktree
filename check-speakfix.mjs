@@ -53,3 +53,17 @@ import { fixCards } from './speak-fix.mjs';
   assert.match(c[0].note, /내가 한 말: I go home weekend/);
   console.log('✓ 교정 → 카드');
 }
+
+// 「한국어로 먼저」 — 영어 문장들 + 돌려 말하기, 문장 끝 보정, 내 문장이 카드가 된다
+import { parseKoFix, koCards, buildKoPrompt } from './speak-fix.mjs';
+{
+  const j = parseKoFix('```json\n{"intent_ko":"집 얘기","lines":[{"en":"My house is small","ko":"우리 집은 작다고 말해봐"},{"en":"I like it.","ko":"마음에 든다고"},{"ko":"영어 없음"}],"swaps":[{"ko":"뒹굴다","en":"lie on the sofa"}],"tip_ko":"짧게"}\n```');
+  assert.deepEqual(j.lines.map(l => l.en), ['My house is small.', 'I like it.'], '영어 없는 줄은 버리고 끝에 마침표');
+  assert.equal(j.fixed, 'My house is small. I like it.');
+  assert.deepEqual(j.fixes, []);
+  const c = koCards(j, { user_id:'u', ref:'r', tomorrow:'2026-11-18' });
+  assert.deepEqual(c.map(x => [x.prompt_ko, x.answer_en]), [['우리 집은 작다고 말해봐', 'My house is small.'], ['마음에 든다고', 'I like it.']]);
+  assert.throws(() => parseKoFix('{"lines":[]}'), /lines 없음/);
+  assert.match(buildKoPrompt({ question_en:'Q', kind:'describe', stage:1, transcript:'우리 집은 작아' }), /S1[\s\S]*현재시제/);
+  console.log('✓ 한국어로 먼저');
+}
