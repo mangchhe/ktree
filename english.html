@@ -633,7 +633,7 @@ window.attachAuthLog && attachAuthLog(sb);   // 세션이 왜 풀리는지 기�
 
 /* 배포 버전. bump-version.sh 가 여기와 sw.js 의 캐시 이름을 **같은 값으로** 갱신한다.
    빌드 단계가 없는 정적 페이지라, 손으로 두 군데를 고치면 반드시 어긋난다. */
-const BUILD = '2026-11-17.1';
+const BUILD = '2026-11-18.1';
 
 const LEVELS = { 1:'L1 Basics', 2:'L2 Spoken · idiom', 3:'L3 Nuance', 4:'L4 Advanced' };
 // 같이 쓰는 사람이 퍼포먼스 마케팅 쪽이라 '마케팅'을 기본에 넣는다.
@@ -1553,6 +1553,13 @@ function todayGrammar(){
   const n = Math.max(0, Math.round((Date.parse(today() + 'T00:00:00+09:00') - Date.parse(since + 'T00:00:00+09:00')) / 864e5));
   return pool[n % pool.length];
 }
+/** 오늘 문법이 몇 바퀴째인지 — 화면에 '복습'을 안 적으니 "이거 저번에 했는데?"가 됐다 */
+function grammarLap(){
+  const pool = tStage >= 4 ? GRAMMAR : GRAMMAR.filter(g => g.st === tStage);
+  const since = tStageSince || today();
+  const n = Math.max(0, Math.round((Date.parse(today() + 'T00:00:00+09:00') - Date.parse(since + 'T00:00:00+09:00')) / 864e5));
+  return { i: n % pool.length + 1, n: pool.length, lap: Math.floor(n / pool.length) + 1 };
+}
 const XP = { commute:10, speak:20, turn:15, prodGood:10, prodMiss:4, wordGood:6, wordMiss:3,
              article:8, recog:1, quizOk:5, quizMiss:2, complete:30, cap:250 };
 const RANKS = [
@@ -1888,7 +1895,7 @@ async function renderToday(){
   // 재택·주말은 한 자리에 앉아 하니 제일 중요한 Speaking 이 맨 앞이다.
   const home = dayMode() === 'home';
   const defs = {
-    grammar: { t:'Grammar',     s: gram ? esc(gram.name.split(' — ')[0]) : 'none', d:gDone, n:gTot },
+    grammar: { t:'Grammar',     s: gram ? esc(gram.name.split(' — ')[0]) + (grammarLap().lap > 1 ? ` · 복습 ${grammarLap().lap}회차` : '') : 'none', d:gDone, n:gTot },
     speak:   { t:'Speaking',    s: kTot ? `${kDone}/${kTot}` : 'none',       d:kDone, n:kTot },
     scene:   { t:'Scenes',      s: sTot ? `${sDone}/${sTot}` : 'none',       d:sDone, n:sTot },
     article: { t:'News',        s: aTot ? `${aSent}/${aTot} sent.` : 'none', d:aSent, n:aTot },
@@ -2022,7 +2029,7 @@ function actGrammar(el){
   const g = todayGrammar();
   if (!g) { renderToday(); return; }
   drawWarmup(el, {
-    title: `문법 · ${g.name}`,
+    title: `문법 · ${g.name}` + ((L => ` (${L.lap > 1 ? `복습 ${L.lap}회차 · ` : ''}${L.i}/${L.n})`)(grammarLap())),
     nav: `<div class="vcard gcard">${gramHtml(g, false)}</div>`,
     context: `🗣 해보기 — ${g.try}`,
     items: g.ex.map(([en, ko]) => ({ term:en, kind:'phrase', meaning_ko:ko })),
