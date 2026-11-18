@@ -8,7 +8,7 @@ import assert from 'node:assert';
 const html = readFileSync(new URL('./english.html', import.meta.url), 'utf8');
 const cut = (a, b) => { const i = html.indexOf(a), j = html.indexOf(b, i); assert.ok(i >= 0 && j > i, `추출 실패: ${a}`); return html.slice(i, j); };
 const block = cut('const STAGES = {', '/* GRAMMAR 끝') +
-  cut('function todayGrammar(){', '\n}\n') + '\n}\n';
+  cut('let gKnown = new Set();', 'function grammarLap(){');
 const KL = new Function(cut('const KIND_LABEL =', ';\n') + '; return KIND_LABEL;')();
 
 let TODAY = '2026-10-22', DB = null, wrote = null;
@@ -23,7 +23,7 @@ const env = new Function('ctx', `
   }) };
   ${block}
   return { STAGES, PROMOTE, GRAMMAR, stageGot, todayGrammar, loadStage, setStage,
-           get: () => ({ tStage, tStageSince, tStageNext }),
+           get: () => ({ tStage, tStageSince, tStageNext }), known: gKnown,
            set: (n, since) => { tStage = n; tStageSince = since; } };`)({
   today: () => TODAY, db: () => DB, wrote: r => { wrote = r; } });
 const { STAGES, PROMOTE, GRAMMAR, stageGot, todayGrammar } = env;
@@ -97,6 +97,13 @@ TODAY = kst(Date.parse('2026-10-22T00:00:00+09:00') + s1.length * 864e5);
 assert.strictEqual(todayGrammar(), s1[0], '다 돌면 처음부터 복습');
 env.set(4, '2026-10-22'); TODAY = '2026-10-22';
 assert.strictEqual(todayGrammar(), GRAMMAR[0], 'S4 는 앞 단계 전체를 복습한다');
+// 5-1) 「이건 안다」로 뺀 건 바퀴에서 빠지고, 단계 걸 다 빼면 다음 단계 것을 당겨온다
+env.set(1, '2026-10-22'); TODAY = '2026-10-22';
+env.known.add(s1[0].name);
+assert.strictEqual(todayGrammar(), s1[1], '뺀 문법이 또 나왔다');
+s1.forEach(g => env.known.add(g.name));
+assert.strictEqual(todayGrammar().st, 2, 'S1 을 다 알면 S2 문법을 미리 해야 한다');
+env.known.clear();
 function kst(t){ return new Date(t + 9*3600e3).toISOString().slice(0,10); }
 
 // 6) 판 — 완주·퀴즈·판 그리기가 같은 칸 계산을 쓴다
